@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 
-public class BulletScript : MonoBehaviour
+public class bulletSpawnScript : MonoBehaviour
 {
-
-    public float speed;
+    [SerializeField] private GameObject bullet;
 
     // Start is called before the first frame update
     void Start()
@@ -17,6 +15,9 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        if (Input.GetKeyDown("space"))
+        {
+            Instantiate(bullet, transform.position, transform.rotation);
+        }
     }
 }
