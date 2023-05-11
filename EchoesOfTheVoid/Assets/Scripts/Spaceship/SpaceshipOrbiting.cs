@@ -11,8 +11,9 @@ public class SpaceshipOrbiting : MonoBehaviour
     private Vector3 offset; // the offset from the center object position
     public float rotationDirection = 0f; // the direction of the rotation
     [SerializeField]
-    public float angularSpeedFactor = 20f; // the factor to apply to base angular speed
+    public float angularSpeedFactor = 40f; // the factor to apply to base angular speed
     public float baseAngularSpeed = 2f; // the base angular speed
+    public SpaceshipCollection spaceshipCollection;
 
     void Start()
     {
@@ -24,24 +25,27 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     void Update()
     {
-        // Determine if clockwise or anticlockwise rotation should be applied based on key presses
-        rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f : 0f;
+        if(spaceshipCollection.collectionMode == false){
 
-        // Calculate the position of the center of rotation by adding the center position and the offset vector
-        Vector3 centerPos = centerObject.position + offset;
+            // Determine if clockwise or anticlockwise rotation should be applied based on key presses
+            rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f : 0f;
 
-        // Calculate the new position of the object based on current angle
-        angle += baseAngularSpeed * angularSpeedFactor * Time.deltaTime * rotationDirection;
-        var x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius + centerPos.x;
-        var y = Mathf.Sin(angle * Mathf.Deg2Rad) * radius + centerPos.y;
-        var newPosition = new Vector3(x, y, transform.position.z);
+            // Calculate the position of the center of rotation by adding the center position and the offset vector
+            Vector3 centerPos = centerObject.position + offset;
 
-        // Set the rotation of the object to face the current angle of rotation
-        transform.rotation = Quaternion.Euler(0, 0, angle);
+            // Calculate the new position of the object based on current angle
+            angle += baseAngularSpeed * angularSpeedFactor * Time.deltaTime * rotationDirection;
+            var x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius + centerPos.x;
+            var y = Mathf.Sin(angle * Mathf.Deg2Rad) * radius + centerPos.y;
+            var newPosition = new Vector3(x, y, transform.position.z);
 
-        // Set the position of the object
-        transform.position = newPosition;
-     
+            // Set the rotation of the object to face the current angle of rotation
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+
+            // Set the position of the object
+            transform.position = newPosition;
+
+        }
     }
 
     void OnDrawGizmosSelected()
