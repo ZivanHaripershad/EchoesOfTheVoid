@@ -18,7 +18,7 @@ public class bulletSpawnScript : MonoBehaviour
     void Update()
     {
         if (timePassed > maxShootSpeed) 
-            if (Input.GetKeyDown("space"))
+            if (Input.GetMouseButtonDown(0))
             {
                 timePassed = 0; 
                 Instantiate(bullet, transform.position, transform.rotation);
