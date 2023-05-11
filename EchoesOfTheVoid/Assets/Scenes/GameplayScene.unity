@@ -505,10 +505,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: maxY
+      value: 8.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: centerObject
       value: 
       objectReference: {fileID: 454874806}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: angularSpeedFactor
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: spaceshipCollection
       value: 

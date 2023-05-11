@@ -11,7 +11,7 @@ public class SpaceshipOrbiting : MonoBehaviour
     private Vector3 offset; // the offset from the center object position
     public float rotationDirection = 0f; // the direction of the rotation
     [SerializeField]
-    public float angularSpeedFactor = 20f; // the factor to apply to base angular speed
+    public float angularSpeedFactor = 40f; // the factor to apply to base angular speed
     public float baseAngularSpeed = 2f; // the base angular speed
     public SpaceshipCollection spaceshipCollection;
 
@@ -46,8 +46,6 @@ public class SpaceshipOrbiting : MonoBehaviour
             transform.position = newPosition;
 
         }
-        
-     
     }
 
     void OnDrawGizmosSelected()
