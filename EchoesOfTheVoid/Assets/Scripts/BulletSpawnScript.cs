@@ -5,26 +5,26 @@ using UnityEngine;
 public class BulletSpawnScript : MonoBehaviour
 {
 
-    [SerializeField]
+    [SerializeField] 
     private GameObject bullet;
-
-
-    [SerializeField]
-    private Transform spawnPoint;
+    public float maxShootSpeed;
+    private float timePassed;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        timePassed = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            //spawn a bullet
-
-        }
+        if (timePassed > maxShootSpeed) 
+            if (Input.GetMouseButtonDown(0))
+            {
+                timePassed = 0; 
+                Instantiate(bullet, transform.position, transform.rotation);
+            }
+        timePassed += Time.deltaTime;
     }
 }
