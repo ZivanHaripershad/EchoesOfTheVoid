@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.Tilemaps;
+using Random = UnityEngine.Random;
 using UnityEngine;
 
 public class FollowRoute : MonoBehaviour
@@ -10,6 +9,9 @@ public class FollowRoute : MonoBehaviour
     private Transform[] routes; //all the created routes
 
     private int routeToGoTo; //the current route to follow
+
+    [SerializeField]
+    private float rotationSpeed;
 
     private float tParam;
 
@@ -22,8 +24,7 @@ public class FollowRoute : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //randomize later
-        routeToGoTo = 0;
+        routeToGoTo = (int) Random.Range(0, routes.Length);
         tParam = 0f;
         coroutineAllowed = true;
         enemySpeed = 0.5f;
@@ -48,10 +49,10 @@ public class FollowRoute : MonoBehaviour
         coroutineAllowed = false;
 
         //store the positions of the control points
-        Vector2 p0 = routes[routeNumber].GetChild(0).position;
-        Vector2 p1 = routes[routeNumber].GetChild(1).position;
-        Vector2 p2 = routes[routeNumber].GetChild(2).position;
-        Vector2 p3 = routes[routeNumber].GetChild(3).position;
+        Vector3 p0 = routes[routeNumber].GetChild(0).position;
+        Vector3 p1 = routes[routeNumber].GetChild(1).position;
+        Vector3 p2 = routes[routeNumber].GetChild(2).position;
+        Vector3 p3 = routes[routeNumber].GetChild(3).position;
 
         //reset to start point
         tParam = 0f;
@@ -69,17 +70,18 @@ public class FollowRoute : MonoBehaviour
 
             transform.position = enemyPosition;
 
+            Vector3 toTarget = p3 - transform.position;
+            float angle = Mathf.Atan2(toTarget.y, toTarget.x) * Mathf.Rad2Deg;
+            Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+            transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+
             //only render 1 per frame 
             yield return new WaitForEndOfFrame();
         }
 
         
 
-        routeToGoTo += 1;
-
-        //change to random that's not = current
-        if (routeToGoTo > routes.Length - 1)
-            routeToGoTo = 0;
+        routeToGoTo = (int) Random.Range(0, routes.Length);
 
         //after routine is over
         coroutineAllowed = true;
