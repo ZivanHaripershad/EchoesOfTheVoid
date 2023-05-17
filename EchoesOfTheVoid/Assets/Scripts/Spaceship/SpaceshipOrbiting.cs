@@ -13,7 +13,7 @@ public class SpaceshipOrbiting : MonoBehaviour
     [SerializeField]
     public float angularSpeedFactor = 40f; // the factor to apply to base angular speed
     public float baseAngularSpeed = 2f; // the base angular speed
-    public SpaceshipCollection spaceshipCollection;
+    public SpaceshipMode spaceshipMode;
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     void Update()
     {
-        if(spaceshipCollection.collectionMode == false){
+        if(spaceshipMode.collectionMode == false){
 
             // Determine if clockwise or anticlockwise rotation should be applied based on key presses
             rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f : 0f;
