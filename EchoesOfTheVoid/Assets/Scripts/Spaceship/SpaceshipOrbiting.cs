@@ -6,7 +6,7 @@ public class SpaceshipOrbiting : MonoBehaviour
 {
     [SerializeField]
     public Transform centerObject; // the center object to rotate around
-    public float radius = 1.5f; // the radius of the circular path
+    public float radius = 1.3f; // the radius of the circular path
     private float angle = 90f; // the current angle of rotation
     private Vector3 offset; // the offset from the center object position
     public float rotationDirection = 0f; // the direction of the rotation
