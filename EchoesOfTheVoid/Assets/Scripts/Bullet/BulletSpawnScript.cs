@@ -10,6 +10,11 @@ public class BulletSpawnScript : MonoBehaviour
     public float maxShootSpeed;
     private float timePassed;
 
+    public SpaceshipMode spaceshipMode;
+
+    [SerializeField]
+    private AudioSource shootSoundEffect;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,12 +24,16 @@ public class BulletSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timePassed > maxShootSpeed) 
-            if (Input.GetMouseButtonDown(0))
-            {
-                timePassed = 0; 
-                Instantiate(bullet, transform.position, transform.rotation);
-            }
-        timePassed += Time.deltaTime;
+    
+        if(spaceshipMode.collectionMode == false){
+            if (timePassed > maxShootSpeed) 
+                if (Input.GetMouseButtonDown(0))
+                {
+                    shootSoundEffect.Play();
+                    timePassed = 0; 
+                    Instantiate(bullet, transform.position, transform.rotation);
+                }
+            timePassed += Time.deltaTime;
+        }
     }
 }

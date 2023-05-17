@@ -9,10 +9,12 @@ public class SpaceshipCollection : MonoBehaviour
     // the speed of object movement
     public float moveSpeed = 5;
 
+    public SpaceshipMode spaceshipMode;
+
     void Start()
     {
         //set the original position of the spaceship
-        collectionMode = false;
+        spaceshipMode.collectionMode = false;
         transform.position = new Vector3(0f, 0f, 0f);
     }
 
@@ -22,11 +24,11 @@ public class SpaceshipCollection : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            collectionMode = !collectionMode;
+            spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
         }
         
 
-        if(collectionMode == true){
+        if(spaceshipMode.collectionMode == true){
             
             //boundary for top of screen
             float padding = 0.5f;
