@@ -262,6 +262,24 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 117805895, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
   m_PrefabInstance: {fileID: 5000476146835965084}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1893380744 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6011693492742368898, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+  m_PrefabInstance: {fileID: 5000476146835965084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1893380748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893380744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda3cd3632aca2945972dad6196d0a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
 --- !u!4 &2062384544 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1058781007632373354, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
@@ -331,6 +349,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 3198996151780028344, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: explosion
+      value: 
+      objectReference: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
     - target: {fileID: 3198996151780028344, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: rotationSpeed
       value: 100
