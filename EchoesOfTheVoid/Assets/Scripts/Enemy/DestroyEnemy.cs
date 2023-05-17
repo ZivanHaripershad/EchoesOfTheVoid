@@ -9,6 +9,9 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField]
     GameObject explosion;
 
+    [SerializeField]
+    GameObject enemy;
+
     private bool canBeDestroyed = false;
 
     // Start is called before the first frame update
@@ -20,11 +23,11 @@ public class DestroyEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (canBeDestroyed)
+        if (canBeDestroyed && (collision.gameObject.tag == "Earth" || collision.gameObject.tag == "Bullet"))
         {
             canBeDestroyed = false;
             Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            Destroy(enemy);
         }
     }
 }

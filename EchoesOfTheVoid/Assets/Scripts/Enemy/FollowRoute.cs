@@ -15,6 +15,7 @@ public class FollowRoute : MonoBehaviour
 
     private float tParam;
 
+    [SerializeField]
     public float enemySpeed;
 
     private Vector2 enemyPosition;
@@ -27,7 +28,6 @@ public class FollowRoute : MonoBehaviour
         routeToGoTo = (int) Random.Range(0, routes.Length);
         tParam = 0f;
         coroutineAllowed = true;
-        enemySpeed = 0.5f;
     }
 
     // Update is called once per frame

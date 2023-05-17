@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Orb
+  - Earth
+  - Bullet
   layers:
   - Default
   - TransparentFX
