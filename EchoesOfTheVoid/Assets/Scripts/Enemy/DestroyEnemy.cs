@@ -22,6 +22,7 @@ public class DestroyEnemy : MonoBehaviour
     {
         if (canBeDestroyed)
         {
+            canBeDestroyed = false;
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
