@@ -2212,6 +2212,7 @@ GameObject:
   - component: {fileID: 1893380752}
   - component: {fileID: 1893380748}
   - component: {fileID: 760735901930795275}
+  - component: {fileID: 2751778085961175231}
   m_Layer: 0
   m_Name: Graphics
   m_TagString: Untagged
@@ -2338,6 +2339,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
+--- !u!114 &2751778085961175231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6011693492742368898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bda3cd3632aca2945972dad6196d0a52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
 --- !u!1 &6041722056654733175
 GameObject:
   m_ObjectHideFlags: 0
@@ -2421,14 +2435,7 @@ MonoBehaviour:
   - {fileID: 117805895}
   - {fileID: 1316519399}
   - {fileID: 1708422079}
-  - {fileID: 721433791}
-  - {fileID: 512440863}
-  - {fileID: 1197404774}
-  - {fileID: 1979539808}
-  - {fileID: 474288682}
-  - {fileID: 2062982267}
-  - {fileID: 1588469029}
-  rotationSpeed: 20
+  rotationSpeed: 100
   enemySpeed: 0.2
 --- !u!50 &1084118513
 Rigidbody2D:
