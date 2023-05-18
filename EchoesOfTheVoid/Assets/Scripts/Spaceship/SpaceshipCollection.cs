@@ -11,6 +11,8 @@ public class SpaceshipCollection : MonoBehaviour
 
     public SpaceshipMode spaceshipMode;
 
+    public OrbDepositingMode orbDepositingMode;
+
     void Start()
     {
         //set the original position of the spaceship
@@ -28,7 +30,7 @@ public class SpaceshipCollection : MonoBehaviour
         }
         
 
-        if(spaceshipMode.collectionMode == true){
+        if(spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false){
             
             //boundary for top of screen
             float padding = 0.5f;

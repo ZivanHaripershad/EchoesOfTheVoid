@@ -20,7 +20,7 @@ public class OrbCounterUI : MonoBehaviour
     }
 
     // Update is called once per frame
-    public void IncreaseOrbs(int orbs)
+    public void UpdateOrbs(int orbs)
     {
         orbCounterText.text = orbs.ToString();
     }

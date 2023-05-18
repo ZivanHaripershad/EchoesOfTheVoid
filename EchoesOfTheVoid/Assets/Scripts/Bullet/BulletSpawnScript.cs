@@ -12,6 +12,8 @@ public class BulletSpawnScript : MonoBehaviour
 
     public SpaceshipMode spaceshipMode;
 
+    public OrbDepositingMode orbDepositingMode;
+
     [SerializeField]
     private AudioSource shootSoundEffect;
 
@@ -24,8 +26,7 @@ public class BulletSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
-        if(spaceshipMode.collectionMode == false){
+        if(spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false){
             if (timePassed > maxShootSpeed) 
                 if (Input.GetMouseButtonDown(0))
                 {
