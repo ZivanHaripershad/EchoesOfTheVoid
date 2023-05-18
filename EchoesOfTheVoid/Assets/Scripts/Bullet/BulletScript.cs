@@ -25,6 +25,7 @@ public class BulletScript : MonoBehaviour
             jitter -= 0.001f;
         
         transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector3.up * jitter * Time.deltaTime);
 
         if (transform.position.x < -10 || transform.position.x > 10)
             Destroy(gameObject);

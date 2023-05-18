@@ -10,7 +10,7 @@ public class DestroyEnemy : MonoBehaviour
     GameObject explosion;
 
     [SerializeField]
-    GameObject enemy;
+    GameObject orb;
 
     private bool canBeDestroyed = false;
 
@@ -26,8 +26,19 @@ public class DestroyEnemy : MonoBehaviour
         if (canBeDestroyed && (collision.gameObject.tag == "Earth" || collision.gameObject.tag == "Bullet"))
         {
             canBeDestroyed = false;
+
+            //instantiate an orb
+            Instantiate(orb, transform.position, Quaternion.identity);
+
+            //Instantiate the explosion
             Instantiate(explosion, transform.position, Quaternion.identity);
-            Destroy(enemy);
+
+            //destroy the enemy 
+            Destroy(gameObject);
+
+            //destroy the bullet
+            if (collision.gameObject.tag == "Bullet")
+                Destroy(collision.gameObject);
         }
     }
 }
