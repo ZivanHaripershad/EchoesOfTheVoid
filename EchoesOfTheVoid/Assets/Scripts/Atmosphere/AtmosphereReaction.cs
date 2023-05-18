@@ -20,6 +20,8 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField]
     public GameObject powerFactory;
 
+    public OrbDepositingMode orbDepositingMode;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -31,7 +33,7 @@ public class AtmosphereReaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode == true)
         {
             if (transform.localScale.x < maxSize)
             {
