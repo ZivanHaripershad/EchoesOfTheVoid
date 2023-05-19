@@ -20,18 +20,24 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField]
     public GameObject powerFactory;
 
+    [SerializeField]
+    public GameObject shieldFactory;
+
+    public OrbDepositingMode orbDepositingMode;
+
     // Start is called before the first frame update
     void Start()
     {
         bulletFactory.SetActive(false);
         powerFactory.SetActive(false);
+        shieldFactory.SetActive(false);
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode == true)
         {
             if (transform.localScale.x < maxSize)
             {
@@ -42,6 +48,7 @@ public class AtmosphereReaction : MonoBehaviour
         {
             bulletFactory.SetActive(false);
             powerFactory.SetActive(false);
+            shieldFactory.SetActive(false);
             targetSize = minSize;
         }
 
@@ -53,6 +60,7 @@ public class AtmosphereReaction : MonoBehaviour
         {
             bulletFactory.SetActive(true);
             powerFactory.SetActive(true);
+            shieldFactory.SetActive(true);
         }
     }
 }

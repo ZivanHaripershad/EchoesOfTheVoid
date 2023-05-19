@@ -145,6 +145,7 @@ MonoBehaviour:
   maxShootSpeed: 0.5
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
+  bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   shootSoundEffect: {fileID: 1682849612}
 --- !u!1 &770972426
 GameObject:
@@ -455,16 +456,28 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: shootingSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 173be841c983b8b448a5ffcdd81457a1, type: 3}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: spriteRenderer
+      value: 
+      objectReference: {fileID: 1166407025544540979}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: collectionSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d120a7b2f5d21b645bae73778e509b24, type: 3}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: orbDepositingMode
       value: 
       objectReference: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
     - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.7
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.7
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_LocalPosition.x
@@ -474,6 +487,26 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 270
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476107, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 173be841c983b8b448a5ffcdd81457a1, type: 3}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: centerObject
       value: 
@@ -540,6 +573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+--- !u!212 &1166407025544540979 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 1581476107, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+  m_PrefabInstance: {fileID: 1166407026991520312}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1166407025729058372 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}

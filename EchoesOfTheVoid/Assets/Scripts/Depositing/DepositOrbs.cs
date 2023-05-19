@@ -19,12 +19,15 @@ public class DepositOrbs : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKey(KeyCode.LeftShift)){
-            orbDepositingMode.depositingMode = true;
+        if(spaceshipMode.collectionMode == false){
+            if(Input.GetKey(KeyCode.S)){
+                orbDepositingMode.depositingMode = true;
+            }
+            else
+            {
+                orbDepositingMode.depositingMode = false;
+            }
         }
-        else
-        {
-            orbDepositingMode.depositingMode = false;
-        }
+        
     }
 }
