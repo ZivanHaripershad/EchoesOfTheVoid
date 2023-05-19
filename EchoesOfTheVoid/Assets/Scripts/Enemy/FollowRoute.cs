@@ -18,6 +18,9 @@ public class FollowRoute : MonoBehaviour
     [SerializeField]
     public float enemySpeed;
 
+    [SerializeField]
+    private GlobalVariables variables;
+
     private Vector2 enemyPosition;
 
     private bool coroutineAllowed;
@@ -79,9 +82,17 @@ public class FollowRoute : MonoBehaviour
             yield return new WaitForEndOfFrame();
         }
 
-        
+        int prevPrev = variables.getPrevPrevEnemySpawned();
+        int prev = variables.getPrevEnemySpawned();
 
         routeToGoTo = (int) Random.Range(0, routes.Length);
+
+        while (routeToGoTo == prev || routeToGoTo == prevPrev)
+            routeToGoTo = (int) Random.Range(0, routes.Length);
+
+        //set prev and prevprev
+        variables.setPrevPrevEnemySpawned(variables.getPrevEnemySpawned());
+        variables.setPrevEnemySpawned(routeToGoTo);
 
         //after routine is over
         coroutineAllowed = true;

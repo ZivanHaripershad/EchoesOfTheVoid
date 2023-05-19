@@ -27,8 +27,8 @@ public class DestroyEnemy : MonoBehaviour
         {
             canBeDestroyed = false;
 
-            //instantiate an orb
-            Instantiate(orb, transform.position, Quaternion.identity);
+            if (collision.gameObject.tag != "Earth")
+                Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
 
             //Instantiate the explosion
             Instantiate(explosion, transform.position, Quaternion.identity);
