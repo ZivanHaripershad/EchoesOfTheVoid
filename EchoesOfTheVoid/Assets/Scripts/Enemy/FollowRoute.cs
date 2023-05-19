@@ -23,9 +23,6 @@ public class FollowRoute : MonoBehaviour
 
     private Vector2 enemyPosition;
 
-    static int prevRoute = -1;
-    static int prevPrevRoute = -2;
-
     private bool coroutineAllowed;
 
     // Start is called before the first frame update
