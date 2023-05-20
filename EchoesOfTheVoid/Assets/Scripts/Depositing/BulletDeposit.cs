@@ -8,6 +8,9 @@ public class BulletDeposit : MonoBehaviour
     public FactoryCosts factoryCosts;
     public BulletCount bulletCount;
 
+    [SerializeField]
+    private AudioSource depositSoundEffect;
+
     // Start is called before the first frame update
     public void OnMouseDown(){
         if(orbCounter.orbsCollected >= factoryCosts.bulletCost){
@@ -16,6 +19,8 @@ public class BulletDeposit : MonoBehaviour
 
             bulletCount.currentBullets = bulletCount.maxBullets;
             BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
+
+            depositSoundEffect.Play();
         }
     }
 

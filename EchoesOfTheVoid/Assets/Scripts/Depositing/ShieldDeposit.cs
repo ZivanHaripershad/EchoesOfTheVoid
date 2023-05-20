@@ -8,6 +8,9 @@ public class ShieldDeposit : MonoBehaviour
     public FactoryCosts factoryCosts;
     public ShieldCounter shieldCounter;
 
+    [SerializeField]
+    private AudioSource depositSoundEffect;
+
     public void OnMouseDown(){
         if(orbCounter.orbsCollected >= factoryCosts.shieldCost && !shieldCounter.isShieldActive){
             orbCounter.orbsCollected = orbCounter.orbsCollected - factoryCosts.shieldCost;
@@ -15,6 +18,8 @@ public class ShieldDeposit : MonoBehaviour
 
             shieldCounter.isShieldActive = true;
             shieldCounter.currentShieldAmount = 3;
+
+            depositSoundEffect.Play();
         }
     }
 
