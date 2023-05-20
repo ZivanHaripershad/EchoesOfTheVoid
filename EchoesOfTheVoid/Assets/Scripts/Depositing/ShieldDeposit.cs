@@ -9,7 +9,7 @@ public class ShieldDeposit : MonoBehaviour
     public ShieldCounter shieldCounter;
 
     public void OnMouseDown(){
-        if(orbCounter.orbsCollected >= factoryCosts.shieldCost){
+        if(orbCounter.orbsCollected >= factoryCosts.shieldCost && !shieldCounter.isShieldActive){
             orbCounter.orbsCollected = orbCounter.orbsCollected - factoryCosts.shieldCost;
             OrbCounterUI.instance.UpdateOrbs(orbCounter.orbsCollected);
 

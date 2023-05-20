@@ -147,6 +147,7 @@ MonoBehaviour:
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   shootSoundEffect: {fileID: 1682849612}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
 --- !u!1 &770972426
 GameObject:
   m_ObjectHideFlags: 0

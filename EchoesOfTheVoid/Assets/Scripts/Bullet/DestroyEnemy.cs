@@ -14,6 +14,8 @@ public class DestroyEnemy : MonoBehaviour
 
     private bool canBeDestroyed = false;
 
+    public ShieldCounter shieldCounter;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -26,6 +28,10 @@ public class DestroyEnemy : MonoBehaviour
         if (canBeDestroyed && (collision.gameObject.tag == "Earth" || collision.gameObject.tag == "Bullet"))
         {
             canBeDestroyed = false;
+
+            if(collision.gameObject.tag == "Earth" && shieldCounter.isShieldActive){
+                shieldCounter.currentShieldAmount = shieldCounter.currentShieldAmount -1;
+            }
 
             if (collision.gameObject.tag != "Earth")
                 Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
