@@ -23,7 +23,7 @@ public class PowerDeposit : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        transform.localScale += new Vector3(0.3f, 0.3f, 0f); //adjust these values as you see fit
+        transform.localScale = new Vector3(1.3f, 1.3f, 0f); //adjust these values as you see fit
     }
 
 

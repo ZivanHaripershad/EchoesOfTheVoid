@@ -26,7 +26,7 @@ public class BulletDeposit : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        transform.localScale += new Vector3(0.4f, 0.4f, 0f); //adjust these values as you see fit
+        transform.localScale = new Vector3(1.6f, 1.6f, 0f); //adjust these values as you see fit
     }
 
 

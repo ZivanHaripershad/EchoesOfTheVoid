@@ -1835,7 +1835,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cost: 3 Orb'
+  m_Text: 'Cost: 3 Orbs'
 --- !u!1 &1663939222
 GameObject:
   m_ObjectHideFlags: 0

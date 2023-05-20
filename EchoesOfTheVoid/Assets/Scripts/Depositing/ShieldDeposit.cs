@@ -25,7 +25,7 @@ public class ShieldDeposit : MonoBehaviour
 
     public void OnMouseEnter()
     {
-        transform.localScale += new Vector3(0.05f, 0.05f, 0f); //adjust these values as you see fit
+        transform.localScale = new Vector3(0.18f, 0.18f, 0f); //adjust these values as you see fit
     }
 
 
