@@ -17,4 +17,15 @@ public class ShieldDeposit : MonoBehaviour
             shieldCounter.currentShieldAmount = 3;
         }
     }
+
+    public void OnMouseEnter()
+    {
+        transform.localScale += new Vector3(0.05f, 0.05f, 0f); //adjust these values as you see fit
+    }
+
+
+    public void OnMouseExit()
+    {
+        transform.localScale = new Vector3(0.15f, 0.15f, 1f);  // assuming you want it to return to its original size when your mouse leaves it.
+    }
 }

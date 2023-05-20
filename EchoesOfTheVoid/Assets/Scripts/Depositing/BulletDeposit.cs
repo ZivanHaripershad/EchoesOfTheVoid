@@ -18,4 +18,16 @@ public class BulletDeposit : MonoBehaviour
             BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
         }
     }
+
+    public void OnMouseEnter()
+    {
+        transform.localScale += new Vector3(0.4f, 0.4f, 0f); //adjust these values as you see fit
+    }
+
+
+    public void OnMouseExit()
+    {
+        transform.localScale = new Vector3(1.3f, 1.3f, 1f);  // assuming you want it to return to its original size when your mouse leaves it.
+    }
+ 
 }

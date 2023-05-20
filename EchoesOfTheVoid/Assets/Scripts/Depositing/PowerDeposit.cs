@@ -15,4 +15,15 @@ public class PowerDeposit : MonoBehaviour
             orbCounter.planetOrbsDeposited = orbCounter.planetOrbsDeposited + 1;
         }
     }
+
+    public void OnMouseEnter()
+    {
+        transform.localScale += new Vector3(0.3f, 0.3f, 0f); //adjust these values as you see fit
+    }
+
+
+    public void OnMouseExit()
+    {
+        transform.localScale = new Vector3(1f, 1f, 1f);  // assuming you want it to return to its original size when your mouse leaves it.
+    }
 }
