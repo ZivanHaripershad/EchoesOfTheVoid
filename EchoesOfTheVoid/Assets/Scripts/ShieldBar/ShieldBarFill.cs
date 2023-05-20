@@ -33,6 +33,9 @@ public class ShieldBarFill : MonoBehaviour
             slider.value = Mathf.Clamp01(fillValue);
         }
 
+        if(shieldCounter.currentShieldAmount == 0){
+            shieldCounter.isShieldActive = false;
+        }
         
     }
 }
