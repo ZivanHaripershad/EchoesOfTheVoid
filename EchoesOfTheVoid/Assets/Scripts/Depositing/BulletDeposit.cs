@@ -8,6 +8,9 @@ public class BulletDeposit : MonoBehaviour
     public FactoryCosts factoryCosts;
     public BulletCount bulletCount;
 
+    [SerializeField]
+    private AudioSource depositSoundEffect;
+
     // Start is called before the first frame update
     public void OnMouseDown(){
         if(orbCounter.orbsCollected >= factoryCosts.bulletCost){
@@ -16,6 +19,20 @@ public class BulletDeposit : MonoBehaviour
 
             bulletCount.currentBullets = bulletCount.maxBullets;
             BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
+
+            depositSoundEffect.Play();
         }
     }
+
+    public void OnMouseEnter()
+    {
+        transform.localScale = new Vector3(1.6f, 1.6f, 0f); //adjust these values as you see fit
+    }
+
+
+    public void OnMouseExit()
+    {
+        transform.localScale = new Vector3(1.3f, 1.3f, 1f);  // assuming you want it to return to its original size when your mouse leaves it.
+    }
+ 
 }

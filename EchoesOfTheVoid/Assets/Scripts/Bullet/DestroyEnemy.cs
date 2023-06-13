@@ -16,6 +16,9 @@ public class DestroyEnemy : MonoBehaviour
 
     public ShieldCounter shieldCounter;
 
+    [SerializeField]
+    private AudioSource explosionSoundEffect;
+
     // Start is called before the first frame update
     IEnumerator Start()
     {
@@ -28,6 +31,8 @@ public class DestroyEnemy : MonoBehaviour
         if (canBeDestroyed && (collision.gameObject.tag == "Earth" || collision.gameObject.tag == "Bullet"))
         {
             canBeDestroyed = false;
+
+            explosionSoundEffect.Play();
 
             if(collision.gameObject.tag == "Earth" && shieldCounter.isShieldActive){
                 shieldCounter.currentShieldAmount = shieldCounter.currentShieldAmount -1;
