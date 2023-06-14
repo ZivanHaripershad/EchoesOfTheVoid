@@ -45,7 +45,7 @@ public class BulletSpawnScript : MonoBehaviour
             bulletCount.generateBullets = false;
         }
 
-        if(spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false){
+        if(spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false && spaceshipMode.canRotateAroundPlanet == true){
             if (timePassed > maxShootSpeed) 
                 if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
                 {

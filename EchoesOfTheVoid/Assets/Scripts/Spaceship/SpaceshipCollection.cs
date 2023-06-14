@@ -17,6 +17,7 @@ public class SpaceshipCollection : MonoBehaviour
     public Sprite collectionSprite;
     public Sprite shootingSprite;
 
+
     void Start()
     {
         //set the original position of the spaceship
@@ -28,6 +29,8 @@ public class SpaceshipCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spaceshipMode.currentPosition = transform.position;
+
         if(orbDepositingMode.depositingMode == false){
 
             if (Input.GetKeyDown(KeyCode.Space))
@@ -35,9 +38,11 @@ public class SpaceshipCollection : MonoBehaviour
                 spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
                 if(spaceshipMode.collectionMode){
                     spriteRenderer.sprite = collectionSprite;
+                    spaceshipMode.canRotateAroundPlanet = false;
                 }
                 else{
                     spriteRenderer.sprite = shootingSprite;
+                    spaceshipMode.returningToPlanet = true;
                 }
             }
             
