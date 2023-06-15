@@ -6,4 +6,9 @@ using UnityEngine;
 public class SpaceshipMode : ScriptableObject
 {
     public bool collectionMode;
+    public Vector3 currentPosition;
+    public Vector3 oldPosition;
+    public bool returningToPlanet;
+    public bool isOnCenterObjectsRadius;
+    public bool canRotateAroundPlanet;
 }
