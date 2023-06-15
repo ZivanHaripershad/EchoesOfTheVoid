@@ -21,6 +21,11 @@ public class FollowRoute : MonoBehaviour
     [SerializeField]
     private GlobalVariables variables;
 
+    [SerializeField]
+    private GameObject enemy;
+
+    private SpriteRenderer sp;
+
     private Vector2 enemyPosition;
 
     private bool coroutineAllowed;
@@ -31,6 +36,9 @@ public class FollowRoute : MonoBehaviour
         routeToGoTo = (int) Random.Range(0, routes.Length);
         tParam = 0f;
         coroutineAllowed = true;
+
+        sp = enemy.GetComponent<SpriteRenderer>();
+        sp.material.color = new Color(1f, 1f, 1f, 0);
     }
 
     // Update is called once per frame
@@ -72,6 +80,7 @@ public class FollowRoute : MonoBehaviour
                 Mathf.Pow(tParam, 3) * p3;
 
             transform.position = enemyPosition;
+            sp.material.color = new Color(1f, 1f, 1f, 1f);
 
             Vector3 toTarget = p3 - transform.position;
             float angle = Mathf.Atan2(toTarget.y, toTarget.x) * Mathf.Rad2Deg;

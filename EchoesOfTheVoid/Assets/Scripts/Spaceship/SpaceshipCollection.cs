@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,14 @@ public class SpaceshipCollection : MonoBehaviour
     public Sprite collectionSprite;
     public Sprite shootingSprite;
 
+    [SerializeField]
+    private SpriteRenderer fireSpriteA;
+
+    [SerializeField]
+    private SpriteRenderer fireSpriteB;
+
+    [SerializeField]
+    private float trailFadeAmount;
 
     void Start()
     {
@@ -69,8 +78,18 @@ public class SpaceshipCollection : MonoBehaviour
                 newPosition.x = Mathf.Clamp(newPosition.x, minX, maxX);
                 newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
+                //lower the opacity of the idle animation depending on the speed
+                float difference = (newPosition - transform.position).magnitude;
+                //square the difference
+                difference = difference * 20;
+                Debug.Log(difference);
+                fireSpriteA.material.color = new Color(1f, 1f, 1f, 1 - difference);
+                fireSpriteB.material.color = new Color(1f, 1f, 1f, 1 - difference);
+
                 transform.position = newPosition;
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // rotate the object to face the current angle
+
+                if (movement.x + movement.y != 0)
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // rotate the object to face the current angle
             }
         }
     }
