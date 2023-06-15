@@ -15,45 +15,99 @@ public class SpaceshipOrbiting : MonoBehaviour
     public float baseAngularSpeed = 2f; // the base angular speed
     public SpaceshipMode spaceshipMode;
 
+    public float speed = 2f;
+
+
     void Start()
     {
         //set the original position of the spaceship
         transform.position = new Vector3(0f, 0f, 0f);
+        spaceshipMode.currentPosition = new Vector3(0f, 0f, 0f);
 
-        offset = transform.position - centerObject.position;
+        offset = spaceshipMode.currentPosition - centerObject.position;
+        spaceshipMode.returningToPlanet = false;
+        spaceshipMode.isOnCenterObjectsRadius = false;
+        spaceshipMode.canRotateAroundPlanet = false;
     }
 
     void Update()
     {
-        if(spaceshipMode.collectionMode == false){
-
+        //this is for when the game starts and you initially move around the planet
+        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == false){
             // Determine if clockwise or anticlockwise rotation should be applied based on key presses
             rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f : 0f;
 
-            // Calculate the position of the center of rotation by adding the center position and the offset vector
+            // // Calculate the position of the center of rotation by adding the center position and the offset vector
             Vector3 centerPos = centerObject.position + offset;
 
-            // Calculate the new position of the object based on current angle
+            // // Calculate the new position of the object based on current angle
             angle += baseAngularSpeed * angularSpeedFactor * Time.deltaTime * rotationDirection;
             var x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius + centerPos.x;
             var y = Mathf.Sin(angle * Mathf.Deg2Rad) * radius + centerPos.y;
             var newPosition = new Vector3(x, y, transform.position.z);
 
-            // Set the rotation of the object to face the current angle of rotation
+            // // Set the rotation of the object to face the current angle of rotation
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            // Set the position of the object
+            // // Set the position of the object
             transform.position = newPosition;
 
+            spaceshipMode.oldPosition = transform.position;
+
+        }
+
+        //this is for every instance after you do your first collection, which then allows you to go to the nearest position of the planet and rotate again
+        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == true){
+    
+            Vector3 centerPos = centerObject.position + offset;
+            // calculate nearest point on the centerObjects radius
+            var dx = centerPos.x - transform.position.x;
+            var dy = centerPos.y - transform.position.y;
+            var length = Mathf.Sqrt(dx * dx + dy * dy);
+            dx /= length;
+            dy /= length;
+            var nearestPoint = new Vector3(centerPos.x - dx * radius, centerPos.y - dy * radius, transform.position.z);
+
+            spaceshipMode.isOnCenterObjectsRadius = length <= radius;
+            angle = 180f + Mathf.Atan2(dy, dx) * Mathf.Rad2Deg;
+
+
+            if(spaceshipMode.isOnCenterObjectsRadius || spaceshipMode.canRotateAroundPlanet){
+
+                // Update the angle based on the object's movement
+                spaceshipMode.canRotateAroundPlanet = true;
+                rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f : 0f;
+
+                // // Calculate the position of the center of rotation by adding the center position and the offset vector
+                spaceshipMode.currentPosition = new Vector3(0f, 0f, 0f);
+                offset = spaceshipMode.currentPosition - centerObject.position;
+
+
+                centerPos = centerObject.position + offset;
+
+                // // Calculate the new position of the object based on current angle
+                angle += baseAngularSpeed * angularSpeedFactor * Time.deltaTime * rotationDirection;
+                var x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius + centerPos.x;
+                var y = Mathf.Sin(angle * Mathf.Deg2Rad) * radius + centerPos.y;
+                var newPosition = new Vector3(x, y, transform.position.z);
+
+                // // Set the rotation of the object to face the current angle of rotation
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+
+                // // Set the position of the object
+                transform.position = newPosition;
+
+                spaceshipMode.oldPosition = transform.position;
+            }
+            else{
+                // move object towards nearest point
+                var direction = (nearestPoint - transform.position).normalized;
+                transform.Translate(direction * speed * Time.deltaTime, Space.World);
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+
+            
         }
     }
-
-    void OnDrawGizmosSelected()
-    {
-        // Draw a circle to represent the circular path
-        Gizmos.color = Color.white;
-        Gizmos.DrawWireSphere(centerObject.position, radius);
-    }
-
     
 }

@@ -989,6 +989,10 @@ PrefabInstance:
       value: 8.38
       objectReference: {fileID: 0}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: centerObject
+      value: 
+      objectReference: {fileID: 5000476146650059306}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: fireSprite
       value: 
       objectReference: {fileID: 709506904}
