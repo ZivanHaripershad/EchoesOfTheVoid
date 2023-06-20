@@ -25,6 +25,11 @@ public class SpaceshipCollection : MonoBehaviour
     private SpriteRenderer fireSpriteB;
 
     [SerializeField]
+    private TrailRenderer trailRendererRight;
+    [SerializeField]
+    private TrailRenderer trailRendererLeft;
+
+    [SerializeField]
     private float trailFadeAmount;
 
     void Start()
@@ -41,6 +46,9 @@ public class SpaceshipCollection : MonoBehaviour
         spaceshipMode.currentPosition = transform.position;
 
         if(orbDepositingMode.depositingMode == false){
+            //set the trail renderer opacity to 1 while flying
+            trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f));
+            trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f));
 
             if (Input.GetKeyDown(KeyCode.Space))
             {

@@ -989,10 +989,6 @@ PrefabInstance:
       value: 8.38
       objectReference: {fileID: 0}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
-      propertyPath: centerObject
-      value: 
-      objectReference: {fileID: 5000476146650059306}
-    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: fireSprite
       value: 
       objectReference: {fileID: 709506904}
@@ -1004,6 +1000,10 @@ PrefabInstance:
       propertyPath: fireSpriteB
       value: 
       objectReference: {fileID: 122996877}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: centerObject
+      value: 
+      objectReference: {fileID: 5000476146650059306}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: spaceshipMode
       value: 
@@ -1028,6 +1028,14 @@ PrefabInstance:
       propertyPath: orbDepositingMode
       value: 
       objectReference: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: trailRendererLeft
+      value: 
+      objectReference: {fileID: 2061250742}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: trailRendererRight
+      value: 
+      objectReference: {fileID: 563524237}
     - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -1073,9 +1081,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: trailRendererLeft
+      value: 
+      objectReference: {fileID: 2061250742}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: angularSpeedFactor
       value: 40
       objectReference: {fileID: 0}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: trailRendererRight
+      value: 
+      objectReference: {fileID: 563524237}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: spaceshipCollection
       value: 

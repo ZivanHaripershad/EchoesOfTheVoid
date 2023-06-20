@@ -15,6 +15,11 @@ public class SpaceshipOrbiting : MonoBehaviour
     public float baseAngularSpeed = 2f; // the base angular speed
     public SpaceshipMode spaceshipMode;
 
+    [SerializeField]
+    private TrailRenderer trailRendererRight;
+    [SerializeField]
+    private TrailRenderer trailRendererLeft;
+
     public float speed = 2f;
 
 
@@ -53,6 +58,10 @@ public class SpaceshipOrbiting : MonoBehaviour
             transform.position = newPosition;
 
             spaceshipMode.oldPosition = transform.position;
+
+            //set the trail renderer opacity to 0 while orbiting
+            trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
+            trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
 
         }
 
@@ -106,7 +115,10 @@ public class SpaceshipOrbiting : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
 
-            
+            //set the trail renderer opacity to 0 while returning to planet
+            trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
+            trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
+
         }
     }
     
