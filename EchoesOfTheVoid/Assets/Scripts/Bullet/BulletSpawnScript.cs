@@ -26,7 +26,7 @@ public class BulletSpawnScript : MonoBehaviour
     {
         bulletCount.currentBullets = bulletCount.maxBullets;
         bulletCount.generateBullets = false;
-        timePassed = 0;
+        timePassed = maxShootSpeed;
     }
 
     // Update is called once per frame

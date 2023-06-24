@@ -10,11 +10,10 @@ public class SplitterEnemyMovement : MonoBehaviour
 
     [SerializeField]
     private float moveSpeed;
-
     //move towards 000
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -22,5 +21,8 @@ public class SplitterEnemyMovement : MonoBehaviour
     {
         transform.position = Vector3.MoveTowards(transform.position, target, moveSpeed * Time.deltaTime);
         transform.up = target - transform.position;
+
+        
+
     }
 }

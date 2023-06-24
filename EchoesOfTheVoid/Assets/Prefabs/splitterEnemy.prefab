@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1381573030025537192}
   - component: {fileID: 398538982487601324}
+  - component: {fileID: 8257959086819848391}
   m_Layer: 0
   m_Name: RightWing
   m_TagString: Untagged
@@ -84,6 +85,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &8257959086819848391
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268650698167922381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb17d48672d98b45853597c7a2a891b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitDelay: 1
+  isRightWing: 1
+  movementSpeed: 1
 --- !u!1 &4426219235026493349
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +148,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 1.5
+  splitDelay: 1
 --- !u!1 &4463196419408843399
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3963640235868678690}
   - component: {fileID: 7674193536923729249}
+  - component: {fileID: 3037849795284894593}
   m_Layer: 0
   m_Name: LeftWing
   m_TagString: Untagged
@@ -216,6 +234,21 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &3037849795284894593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4463196419408843399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcb17d48672d98b45853597c7a2a891b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splitDelay: 1
+  isRightWing: 0
+  movementSpeed: 1
 --- !u!1 &6437216111729755402
 GameObject:
   m_ObjectHideFlags: 0
