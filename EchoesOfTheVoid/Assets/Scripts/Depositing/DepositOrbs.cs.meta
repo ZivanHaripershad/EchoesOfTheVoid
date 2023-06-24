@@ -3,7 +3,10 @@ guid: 75b78ad6811365e44be31cc1e8fef7d4
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
+  - spaceshipMode: {instanceID: 0}
+  - depositSoundEffect: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

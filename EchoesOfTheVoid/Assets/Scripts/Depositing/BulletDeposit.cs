@@ -7,6 +7,7 @@ public class BulletDeposit : MonoBehaviour
     public OrbCounter orbCounter;
     public FactoryCosts factoryCosts;
     public BulletCount bulletCount;
+    public OrbCounter orbCount; 
 
     [SerializeField]
     private AudioSource depositSoundEffect;

@@ -25,6 +25,11 @@ public class SpaceshipCollection : MonoBehaviour
     private SpriteRenderer fireSpriteB;
 
     [SerializeField]
+    private TrailRenderer trailRendererRight;
+    [SerializeField]
+    private TrailRenderer trailRendererLeft;
+
+    [SerializeField]
     private float trailFadeAmount;
 
     void Start()
@@ -42,6 +47,10 @@ public class SpaceshipCollection : MonoBehaviour
 
         if(orbDepositingMode.depositingMode == false){
 
+            //set the trail renderer opacity to 1 while flying
+            trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f));
+            trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 1f));
+
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
@@ -54,10 +63,11 @@ public class SpaceshipCollection : MonoBehaviour
                     spaceshipMode.returningToPlanet = true;
                 }
             }
-            
 
-            if(spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false){
-                
+
+            if (spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false)
+            {
+
                 //boundary for top of screen
                 float padding = 0.5f;
                 Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
@@ -67,7 +77,7 @@ public class SpaceshipCollection : MonoBehaviour
                 float maxX = upperRight.x - padding;
                 float minY = lowerLeft.y + padding;
                 float maxY = upperRight.y - padding;
-                
+
                 float horizontal = Input.GetAxis("Horizontal"); // get the horizontal input
                 float vertical = Input.GetAxis("Vertical"); // get the vertical input
                 Vector2 movement = new Vector2(horizontal, vertical);
@@ -90,6 +100,11 @@ public class SpaceshipCollection : MonoBehaviour
 
                 if (movement.x + movement.y != 0)
                     transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // rotate the object to face the current angle
+            } 
+            else
+            {
+                fireSpriteA.material.color = new Color(1f, 1f, 1f, 1);
+                fireSpriteB.material.color = new Color(1f, 1f, 1f, 1);
             }
         }
     }

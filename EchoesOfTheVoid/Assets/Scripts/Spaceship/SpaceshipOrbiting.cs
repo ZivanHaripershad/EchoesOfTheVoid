@@ -17,6 +17,11 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     public float speed = 2f;
 
+    [SerializeField]
+    private TrailRenderer trailRendererRight;
+    [SerializeField]
+    private TrailRenderer trailRendererLeft;
+
 
     void Start()
     {
@@ -54,6 +59,9 @@ public class SpaceshipOrbiting : MonoBehaviour
 
             spaceshipMode.oldPosition = transform.position;
 
+            //set the trail renderer opacity to 0 while orbiting
+            trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
+            trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
         }
 
         //this is for every instance after you do your first collection, which then allows you to go to the nearest position of the planet and rotate again
@@ -106,7 +114,10 @@ public class SpaceshipOrbiting : MonoBehaviour
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
 
-            
+            //set the trail renderer opacity to 0 while returning to planet
+            trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
+            trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
+
         }
     }
     
