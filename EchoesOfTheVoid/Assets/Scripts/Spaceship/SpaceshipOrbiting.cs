@@ -27,7 +27,7 @@ public class SpaceshipOrbiting : MonoBehaviour
         offset = spaceshipMode.currentPosition - centerObject.position;
         spaceshipMode.returningToPlanet = false;
         spaceshipMode.isOnCenterObjectsRadius = false;
-        spaceshipMode.canRotateAroundPlanet = false;
+        spaceshipMode.canRotateAroundPlanet = true;
     }
 
     void Update()

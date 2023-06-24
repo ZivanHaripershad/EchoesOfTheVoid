@@ -39,7 +39,12 @@ public class DestroyEnemy : MonoBehaviour
             }
 
             if (collision.gameObject.tag != "Earth")
-                Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
+            {
+                GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
+                Rigidbody2D rb = myOrb.GetComponent<Rigidbody2D>();
+
+                rb.AddForce(new Vector2(1 * Random.Range(-1f, 1f), 1 * Random.Range(-1f, 1f)));
+            }
 
             //Instantiate the explosion
             Instantiate(explosion, transform.position, Quaternion.identity);
