@@ -19,11 +19,11 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (jitter > 0)  
+        if (jitter > 0)
             jitter += 0.001f;
         else
             jitter -= 0.001f;
-        
+
         transform.Translate(Vector3.right * speed * Time.deltaTime);
         transform.Translate(Vector3.up * jitter * Time.deltaTime);
 
