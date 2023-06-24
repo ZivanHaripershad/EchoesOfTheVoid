@@ -5,7 +5,10 @@ using UnityEngine;
 public class EnemySpawning : MonoBehaviour
 {
     [SerializeField]
-    public GameObject enemy;
+    public GameObject pathFollowEnemy;
+
+    [SerializeField]
+    public GameObject splittingEnemy;
 
     private float timer;
 
@@ -25,7 +28,7 @@ public class EnemySpawning : MonoBehaviour
 
         if(timer > spawnRate){
             timer = 0;
-            Instantiate(enemy, transform.position, transform.rotation);
+            Instantiate(pathFollowEnemy, transform.position, transform.rotation);
         }
     }
 }

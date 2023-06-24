@@ -1972,7 +1972,7 @@ GameObject:
   - component: {fileID: 3835791776055904588}
   - component: {fileID: 1887997956655803700}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: pathFollowEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
