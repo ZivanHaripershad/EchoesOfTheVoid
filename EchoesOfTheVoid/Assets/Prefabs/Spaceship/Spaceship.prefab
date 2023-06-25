@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c24eaef65013e574fb3e758f97564340, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 173be841c983b8b448a5ffcdd81457a1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -206,7 +206,8 @@ MonoBehaviour:
   rotationDirection: 0
   angularSpeedFactor: 20
   baseAngularSpeed: 2
-  spaceshipCollection: {fileID: 0}
+  spaceshipMode: {fileID: 0}
+  speed: 2
 --- !u!114 &1262546044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -220,8 +221,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collectionMode: 0
-  speed: 5
-  maxY: 0
-  minY: 0
-  maxX: 0
-  minX: 0
+  moveSpeed: 5
+  spaceshipMode: {fileID: 0}
+  orbDepositingMode: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  collectionSprite: {fileID: 0}
+  shootingSprite: {fileID: 0}
+  fireSpriteA: {fileID: 0}
+  fireSpriteB: {fileID: 0}
+  trailFadeAmount: 0

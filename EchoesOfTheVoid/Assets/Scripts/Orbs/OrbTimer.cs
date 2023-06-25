@@ -12,18 +12,13 @@ public class OrbTimer : MonoBehaviour
     float keepAliveTimer;
 
     [SerializeField]
-    float blinkRate;
+    Animator animator;
 
-    private float CurrentOpacity;
-    private SpriteRenderer SR;
-    private bool increaseOpacity; 
 
     // Start is called before the first frame update
     void Start()
     {
-        CurrentOpacity = fateOutTimer; 
-        SR = GetComponent<SpriteRenderer>();
-        increaseOpacity = false;
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -32,27 +27,14 @@ public class OrbTimer : MonoBehaviour
 
         keepAliveTimer -= Time.deltaTime;
                     
-        if (keepAliveTimer < 5) { 
-            if (increaseOpacity)
+        if (keepAliveTimer < 5) {
+            if (animator != null)
             {
-                CurrentOpacity += Time.deltaTime * blinkRate;
-                if (CurrentOpacity > 1)
-                {
-                    CurrentOpacity = 1;
-                    increaseOpacity = false;
-                }
-            } 
-            else
-            {
-                CurrentOpacity -= Time.deltaTime * blinkRate;
-                if (CurrentOpacity < 0.2)
-                {
-                    CurrentOpacity = 0.2f;
-                    increaseOpacity = true;
-                }
+                animator.SetBool("lowTime", true);
             }
+            else
+                Debug.LogWarning("animator is null");
             
-            SR.color = new Color(1f, 1f, 1f, CurrentOpacity);
         }
 
         if (keepAliveTimer < 0)
