@@ -15,7 +15,7 @@ public class SpaceshipOrbiting : MonoBehaviour
     public float baseAngularSpeed = 2f; // the base angular speed
     public SpaceshipMode spaceshipMode;
 
-    public float speed = 2f;
+    public float returnSpeed = 3f;
 
     [SerializeField]
     private TrailRenderer trailRendererRight;
@@ -110,7 +110,7 @@ public class SpaceshipOrbiting : MonoBehaviour
             else{
                 // move object towards nearest point
                 var direction = (nearestPoint - transform.position).normalized;
-                transform.Translate(direction * speed * Time.deltaTime, Space.World);
+                transform.Translate(direction * returnSpeed * Time.deltaTime, Space.World);
                 transform.rotation = Quaternion.Euler(0, 0, angle);
             }
 
