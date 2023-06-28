@@ -8,6 +8,10 @@ public class EnemySpawning : MonoBehaviour
     public GameObject enemy;
 
     private float timer;
+    private float randomNum;
+
+    [SerializeField]
+    private float spawnTimerVariation; 
 
     [SerializeField]
     public float spawnRate;
@@ -16,6 +20,7 @@ public class EnemySpawning : MonoBehaviour
     void Start()
     {
         timer = 0f;
+        randomNum = Random.Range(0f, spawnTimerVariation);
     }
 
     // Update is called once per frame
@@ -23,7 +28,8 @@ public class EnemySpawning : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer > spawnRate){
+        if(timer > spawnRate + randomNum){
+            randomNum = Random.Range(0f, 7f);
             timer = 0;
             Instantiate(enemy, transform.position, transform.rotation);
         }

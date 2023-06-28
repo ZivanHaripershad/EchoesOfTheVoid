@@ -18,7 +18,6 @@ public class FollowRoute : MonoBehaviour
     [SerializeField]
     public float enemySpeed;
 
-    [SerializeField]
     private GlobalVariables variables;
 
     [SerializeField]
@@ -32,13 +31,15 @@ public class FollowRoute : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        routeToGoTo = (int) Random.Range(0, routes.Length);
+    {       
         tParam = 0f;
         coroutineAllowed = true;
 
         sp = enemy.GetComponent<SpriteRenderer>();
         sp.material.color = new Color(1f, 1f, 1f, 0);
+
+        variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
+        
     }
 
     // Update is called once per frame
@@ -65,6 +66,18 @@ public class FollowRoute : MonoBehaviour
         Vector3 p2 = routes[routeNumber].GetChild(2).position;
         Vector3 p3 = routes[routeNumber].GetChild(3).position;
 
+        int prevPrev = variables.getPrevPrevEnemySpawned();
+        int prev = variables.getPrevEnemySpawned();
+
+        routeToGoTo = (int)Random.Range(0, routes.Length);
+
+        while (routeToGoTo == prev || routeToGoTo == prevPrev)
+            routeToGoTo = (int)Random.Range(0, routes.Length);
+
+        //set prev and prevprev
+        variables.setPrevPrevEnemySpawned(prev);
+        variables.setPrevEnemySpawned(routeToGoTo);
+
         //reset to start point
         tParam = 0f;
 
@@ -90,18 +103,6 @@ public class FollowRoute : MonoBehaviour
             //only render 1 per frame 
             yield return new WaitForEndOfFrame();
         }
-
-        int prevPrev = variables.getPrevPrevEnemySpawned();
-        int prev = variables.getPrevEnemySpawned();
-
-        routeToGoTo = (int) Random.Range(0, routes.Length);
-
-        while (routeToGoTo == prev || routeToGoTo == prevPrev)
-            routeToGoTo = (int) Random.Range(0, routes.Length);
-
-        //set prev and prevprev
-        variables.setPrevPrevEnemySpawned(variables.getPrevEnemySpawned());
-        variables.setPrevEnemySpawned(routeToGoTo);
 
         //after routine is over
         coroutineAllowed = true;

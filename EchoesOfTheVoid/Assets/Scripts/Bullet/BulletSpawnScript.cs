@@ -36,12 +36,12 @@ public class BulletSpawnScript : MonoBehaviour
             bulletCount.generateBullets = true;
         }
 
-        if(bulletCount.generateBullets && bulletCount.currentBullets < 5){
+        if(bulletCount.generateBullets && bulletCount.currentBullets < 14){
             bulletCount.currentBullets = bulletCount.currentBullets + 1;
             BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
         }
 
-        if(bulletCount.generateBullets && bulletCount.currentBullets == 5){
+        if(bulletCount.generateBullets && bulletCount.currentBullets == 14){
             bulletCount.generateBullets = false;
         }
 
