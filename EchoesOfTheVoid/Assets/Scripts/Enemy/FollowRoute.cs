@@ -58,9 +58,6 @@ public class FollowRoute : MonoBehaviour
         int prevPrev = variables.getPrevPrevEnemySpawned();
         int prev = variables.getPrevEnemySpawned();
 
-        Debug.Log(prevPrev);
-        Debug.Log(prev);
-
         int routeToGoTo = (int)Random.Range(0, routes.Length);
 
         while (routeToGoTo == prev || routeToGoTo == prevPrev)
