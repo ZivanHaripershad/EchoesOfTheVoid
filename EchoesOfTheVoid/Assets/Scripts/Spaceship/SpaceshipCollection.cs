@@ -92,7 +92,7 @@ public class SpaceshipCollection : MonoBehaviour
                 float difference = (newPosition - transform.position).magnitude;
                 //square the difference
                 difference = difference * 20;
-                Debug.Log(difference);
+                
                 fireSpriteA.material.color = new Color(1f, 1f, 1f, 1 - difference);
                 fireSpriteB.material.color = new Color(1f, 1f, 1f, 1 - difference);
 
