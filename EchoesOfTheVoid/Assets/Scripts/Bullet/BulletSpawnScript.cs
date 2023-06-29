@@ -15,6 +15,8 @@ public class BulletSpawnScript : MonoBehaviour
     private TextMeshPro reloadMessage;
     [SerializeField]
     private TextMeshPro cannotFireMessage;
+    [SerializeField]
+    private TextMeshPro purchaseAmmoMessage;
 
     public SpaceshipMode spaceshipMode;
 
@@ -48,6 +50,7 @@ public class BulletSpawnScript : MonoBehaviour
         currReloadTime = 0;
         cannotFireMessage.enabled = false;
         reloadMessage.enabled = false;
+        purchaseAmmoMessage.enabled = false;
     }
 
     // Update is called once per frame
@@ -73,6 +76,9 @@ public class BulletSpawnScript : MonoBehaviour
                 bulletCount.generateBullets = true;
             }
         }
+
+        if (bulletCount.currentBullets > 0)
+            purchaseAmmoMessage.enabled = false;
 
         if(bulletCount.generateBullets && bulletCount.currentBullets < 14){
             reloadMessage.enabled = false;
@@ -109,8 +115,10 @@ public class BulletSpawnScript : MonoBehaviour
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
+                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected < 2)
                     reloadMessage.enabled = true;
+                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected >= 2)
+                    purchaseAmmoMessage.enabled = true;
              }
 
             timePassed += Time.deltaTime;
