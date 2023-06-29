@@ -8,8 +8,6 @@ public class FollowRoute : MonoBehaviour
     [SerializeField]
     private Transform[] routes; //all the created routes
 
-    private int routeToGoTo; //the current route to follow
-
     [SerializeField]
     private float rotationSpeed;
 
@@ -18,7 +16,6 @@ public class FollowRoute : MonoBehaviour
     [SerializeField]
     public float enemySpeed;
 
-    [SerializeField]
     private GlobalVariables variables;
 
     [SerializeField]
@@ -32,13 +29,15 @@ public class FollowRoute : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        routeToGoTo = (int) Random.Range(0, routes.Length);
+    {       
         tParam = 0f;
         coroutineAllowed = true;
 
         sp = enemy.GetComponent<SpriteRenderer>();
         sp.material.color = new Color(1f, 1f, 1f, 0);
+
+        variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
+        
     }
 
     // Update is called once per frame
@@ -50,20 +49,34 @@ public class FollowRoute : MonoBehaviour
             gameObject.transform.position = resetPosition;
 
             Console.WriteLine("Starting core routin");
-            StartCoroutine(GoByRoute(routeToGoTo));
+            StartCoroutine(GoByRoute());
         }
     }
 
-    private IEnumerator GoByRoute(int routeNumber)
+    private IEnumerator GoByRoute()
     {
+        int prevPrev = variables.getPrevPrevEnemySpawned();
+        int prev = variables.getPrevEnemySpawned();
+
+        int routeToGoTo = (int)Random.Range(0, routes.Length);
+
+        while (routeToGoTo == prev || routeToGoTo == prevPrev)
+            routeToGoTo = (int)Random.Range(0, routes.Length);
+
+        //set prev and prevprev
+        variables.setPrevPrevEnemySpawned(prev);
+        variables.setPrevEnemySpawned(routeToGoTo);
+
         //don't start new follow until this one is over
         coroutineAllowed = false;
 
         //store the positions of the control points
-        Vector3 p0 = routes[routeNumber].GetChild(0).position;
-        Vector3 p1 = routes[routeNumber].GetChild(1).position;
-        Vector3 p2 = routes[routeNumber].GetChild(2).position;
-        Vector3 p3 = routes[routeNumber].GetChild(3).position;
+        Vector3 p0 = routes[routeToGoTo].GetChild(0).position;
+        Vector3 p1 = routes[routeToGoTo].GetChild(1).position;
+        Vector3 p2 = routes[routeToGoTo].GetChild(2).position;
+        Vector3 p3 = routes[routeToGoTo].GetChild(3).position;
+
+        
 
         //reset to start point
         tParam = 0f;
@@ -90,18 +103,6 @@ public class FollowRoute : MonoBehaviour
             //only render 1 per frame 
             yield return new WaitForEndOfFrame();
         }
-
-        int prevPrev = variables.getPrevPrevEnemySpawned();
-        int prev = variables.getPrevEnemySpawned();
-
-        routeToGoTo = (int) Random.Range(0, routes.Length);
-
-        while (routeToGoTo == prev || routeToGoTo == prevPrev)
-            routeToGoTo = (int) Random.Range(0, routes.Length);
-
-        //set prev and prevprev
-        variables.setPrevPrevEnemySpawned(variables.getPrevEnemySpawned());
-        variables.setPrevEnemySpawned(routeToGoTo);
 
         //after routine is over
         coroutineAllowed = true;

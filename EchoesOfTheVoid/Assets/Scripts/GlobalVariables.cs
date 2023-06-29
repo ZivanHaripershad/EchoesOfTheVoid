@@ -9,8 +9,8 @@ public class GlobalVariables : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        prevEnemySpawned = -1;
-        prevPrevEnemySpawned = -2;
+        prevEnemySpawned = -100;
+        prevPrevEnemySpawned = -200;
     }
 
     // Update is called once per frame
@@ -26,7 +26,8 @@ public class GlobalVariables : MonoBehaviour
 
     public void setPrevEnemySpawned(int prevEnemySpawned)
     {
-        this.prevPrevEnemySpawned = prevEnemySpawned;
+        this.prevEnemySpawned = prevEnemySpawned;
+        
     }
 
     public void setPrevPrevEnemySpawned(int prevPrevEnemySpawned)
