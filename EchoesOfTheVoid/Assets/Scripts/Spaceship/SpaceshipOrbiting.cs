@@ -114,51 +114,9 @@ public class SpaceshipOrbiting : MonoBehaviour
 
 
             if(spaceshipMode.isOnCenterObjectsRadius || spaceshipMode.canRotateAroundPlanet){
-
-                // Update the angle based on the object's movement
+                spaceshipMode.collectionMode = false;
+                spaceshipMode.returningToPlanet = false;
                 spaceshipMode.canRotateAroundPlanet = true;
-                rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f : 0f;
-
-                //////////////// inertia //////////////////
-                if (Input.GetKey(KeyCode.D))
-                    inertia = -driftSpeed;
-
-                if (Input.GetKey(KeyCode.A))
-                    inertia = driftSpeed;
-
-                if (inertia > 0)
-                    inertia -= inertiaReductionFactor * Time.deltaTime;
-
-                if (inertia < 0)
-                    inertia += inertiaReductionFactor * Time.deltaTime;
-
-                if (inertia < 0.0001 && inertia > -0.0001)
-                    inertia = 0;
-                /////////////////////////////////////////////////
-
-                // // Calculate the position of the center of rotation by adding the center position and the offset vector
-                spaceshipMode.currentPosition = new Vector3(0f, 0f, 0f);
-                offset = spaceshipMode.currentPosition - centerObject.position;
-
-
-                centerPos = centerObject.position + offset;
-
-                // // Calculate the new position of the object based on current angle
-                angle += baseAngularSpeed * angularSpeedFactor * Time.deltaTime * rotationDirection;
-
-                //
-
-                var x = Mathf.Cos(angle * Mathf.Deg2Rad) * radius + centerPos.x;
-                var y = Mathf.Sin(angle * Mathf.Deg2Rad) * radius + centerPos.y;
-                var newPosition = new Vector3(x, y, transform.position.z);
-
-                // // Set the rotation of the object to face the current angle of rotation
-                transform.rotation = Quaternion.Euler(0, 0, angle);
-
-                // // Set the position of the object
-                transform.position = newPosition;
-
-                spaceshipMode.oldPosition = transform.position;
             }
             else{
                 // move object towards nearest point

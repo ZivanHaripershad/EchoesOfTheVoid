@@ -71,7 +71,6 @@ public class BulletSpawnScript : MonoBehaviour
                 ready = false;
                 //reload 
                 bulletCount.generateBullets = true;
-                 
             }
         }
 
