@@ -767,8 +767,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
-  spawnTimerVariation: 0
-  spawnRate: 5
+  spawnTimerVariation: 1
+  spawnRate: 6
+  spawnIntevalBetweenSuccessiveEnemies: 2
 --- !u!1 &5000476146650059304
 GameObject:
   m_ObjectHideFlags: 0
@@ -1102,6 +1103,10 @@ PrefabInstance:
       propertyPath: spaceshipCollection
       value: 
       objectReference: {fileID: 1166407025729058372}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: inertiaReductionFactor
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 6145913263776041513, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_RootOrder
       value: 0

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.TextCore.Text;
 using UnityEngine;
 
@@ -9,7 +10,6 @@ public class EnemySpawning : MonoBehaviour
     public GameObject enemy;
 
     private float timer;
-    private float randomNum;
 
     [SerializeField]
     private float spawnTimerVariation; 
@@ -17,23 +17,18 @@ public class EnemySpawning : MonoBehaviour
     [SerializeField]
     public float spawnRate;
 
-    private bool isSpawning; 
+    [SerializeField]
+    private float spawnIntevalBetweenSuccessiveEnemies;
 
     // Start is called before the first frame update
     void Start()
     {
         timer = 0f;
-        randomNum = Random.Range(0f, spawnTimerVariation);
-        isSpawning = false;
     }
 
-    void spawnEnemies(int numEnemies)
+    void instantiate()
     {
-        isSpawning = true;
-
-
-
-        isSpawning = false;
+        Instantiate(enemy, transform.position, transform.rotation);
     }
 
     // Update is called once per frame
@@ -41,18 +36,16 @@ public class EnemySpawning : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        if(timer > spawnRate + randomNum){
-            randomNum = Random.Range(0f, 7f);
-            timer = 0;
+        if(timer > spawnRate){
 
             int enemiesToSpawn = Random.Range(1, 3);
 
             for (int i = 0; i < enemiesToSpawn; i++)
             {
-                Instantiate(enemy, transform.position, transform.rotation);
-
+                Invoke("instantiate", (i * spawnIntevalBetweenSuccessiveEnemies) + Random.Range(0f, spawnTimerVariation));
             }
 
+            timer = 0;
         }
     }
 }
