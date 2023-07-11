@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6241773122269242721}
   - component: {fileID: 4190329642830927277}
   - component: {fileID: 8861402736122148692}
+  - component: {fileID: 5998828387618721001}
   m_Layer: 0
   m_Name: Orb
   m_TagString: Orb
@@ -171,3 +172,17 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5998828387618721001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434657277462207545}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c77a0cb8985e1d24db6a58a23a10f576, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatSpeed: 0.5
+  driftTimeInOneDirection: 5

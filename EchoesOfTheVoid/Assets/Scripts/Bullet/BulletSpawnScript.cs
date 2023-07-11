@@ -6,7 +6,7 @@ using UnityEngine;
 public class BulletSpawnScript : MonoBehaviour
 {
 
-    [SerializeField] 
+    [SerializeField]
     private GameObject bullet;
     public float maxShootSpeed;
     private float timePassed;
@@ -39,7 +39,7 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField]
     private float reloadTimePerBullet;
 
-    private float currReloadTime; 
+    private float currReloadTime;
 
     // Start is called before the first frame update
     void Start()
@@ -56,8 +56,9 @@ public class BulletSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false){
-            
+        if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
+        {
+
 
             if (Input.GetKeyDown(KeyCode.R) && ready == false)
             {
@@ -80,24 +81,28 @@ public class BulletSpawnScript : MonoBehaviour
         if (bulletCount.currentBullets > 0)
             purchaseAmmoMessage.enabled = false;
 
-        if(bulletCount.generateBullets && bulletCount.currentBullets < 14){
+        if (bulletCount.generateBullets && bulletCount.currentBullets < 14)
+        {
             reloadMessage.enabled = false;
             if (currReloadTime < reloadTimePerBullet)
                 currReloadTime += Time.deltaTime;
             else
             {
-                currReloadTime = 0; 
+                currReloadTime = 0;
                 bulletCount.currentBullets = bulletCount.currentBullets + 1;
                 BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
             }
         }
 
-        if(bulletCount.generateBullets && bulletCount.currentBullets == 14){
+        if (bulletCount.generateBullets && bulletCount.currentBullets == 14)
+        {
             bulletCount.generateBullets = false;
         }
 
-        if(spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false && spaceshipMode.canRotateAroundPlanet == true){
-            if (timePassed > maxShootSpeed) {
+        if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false && spaceshipMode.canRotateAroundPlanet == true)
+        {
+            if (timePassed > maxShootSpeed)
+            {
                 if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
                 {
                     if (bulletCount.generateBullets == false)
@@ -119,7 +124,7 @@ public class BulletSpawnScript : MonoBehaviour
                     reloadMessage.enabled = true;
                 if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected >= 2)
                     purchaseAmmoMessage.enabled = true;
-             }
+            }
 
             timePassed += Time.deltaTime;
         }

@@ -372,10 +372,6 @@ PrefabInstance:
       propertyPath: purchaseAmmoMessage
       value: 
       objectReference: {fileID: 1185405909}
-    - target: {fileID: 1883152205773968858, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
-      propertyPath: inertiaReductionFactor
-      value: 0.05
-      objectReference: {fileID: 0}
     - target: {fileID: 3490931976703119853, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: m_RootOrder
       value: 0
