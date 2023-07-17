@@ -259,6 +259,7 @@ MonoBehaviour:
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   countDown: 2
   reloadTimePerBullet: 0.2
+  progressBarInner: {fileID: 0}
 --- !u!1 &563524235
 GameObject:
   m_ObjectHideFlags: 0
@@ -1079,6 +1080,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 173be841c983b8b448a5ffcdd81457a1, type: 3}
+    - target: {fileID: 1581476107, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: centerObject
       value: 

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BulletSpawnScript : MonoBehaviour
@@ -39,7 +41,18 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField]
     private float reloadTimePerBullet;
 
+    [SerializeField]
+    private GameObject progressBarInner;
+
     private float currReloadTime;
+
+    private SpriteRenderer progressBar;
+
+    private const float MAX_PROGRESS_BAR_SIZE = 38.36f;
+
+    private bool fade = false;
+
+    private float fadeColor = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -51,35 +64,71 @@ public class BulletSpawnScript : MonoBehaviour
         cannotFireMessage.enabled = false;
         reloadMessage.enabled = false;
         purchaseAmmoMessage.enabled = false;
+        progressBar = progressBarInner.GetComponent<SpriteRenderer>();
+        progressBar.size = new Vector2(0, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
+
+        if (fade)
+        {
+            progressBar.GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f, 1 - fadeColor);
+            fadeColor += Time.deltaTime;
+            if (fadeColor > 1)
+            {
+                fadeColor = 0;
+                fade = false;
+            }
+        }
+
+
         if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
         {
-
 
             if (Input.GetKeyDown(KeyCode.R) && ready == false)
             {
                 downTime = Time.time;
                 pressTime = downTime + countDown;
                 ready = true;
+
             }
+
             if (Input.GetKeyUp(KeyCode.R))
             {
                 ready = false;
             }
+
+            if (Time.time < pressTime && ready == true)
+            {
+                float progress = (Time.time - downTime) / countDown;
+
+                progressBar.GetComponent<SpriteRenderer>().color = new Color(1 - progress, progress, 1 - progress);
+                progressBar.size = new Vector2(progress * MAX_PROGRESS_BAR_SIZE, 1);
+            }
+
             if (Time.time >= pressTime && ready == true)
             {
                 ready = false;
                 //reload 
                 bulletCount.generateBullets = true;
+                fade = true;
+                fadeColor = 0;
             }
         }
 
         if (bulletCount.currentBullets > 0)
+        {
             purchaseAmmoMessage.enabled = false;
+            reloadMessage.enabled = false;
+        }
+
+        if (orbCounter.orbsCollected >= 2 && bulletCount.currentBullets == 0)
+        {
+            reloadMessage.enabled = false;
+            purchaseAmmoMessage.enabled = true;
+        }
 
         if (bulletCount.generateBullets && bulletCount.currentBullets < 14)
         {

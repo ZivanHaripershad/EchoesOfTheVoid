@@ -15,6 +15,9 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
     private float driftTimeInOneDirection;
     private float currentDriftTime;
 
+    [SerializeField]
+    private float randomForceMagnitude;
+
     private Rigidbody2D rb;
 
     private float randomYForce;
@@ -55,8 +58,8 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
         else
         {
             //create a different random force to float in another direction
-            randomXForce = Random.Range(-1f, 1f);
-            randomYForce = Random.Range(-1f, 1f);
+            randomXForce = Random.Range(-randomForceMagnitude, randomForceMagnitude);
+            randomYForce = Random.Range(-randomForceMagnitude, randomForceMagnitude);
             currentDriftTime = 0; 
         }
     }
