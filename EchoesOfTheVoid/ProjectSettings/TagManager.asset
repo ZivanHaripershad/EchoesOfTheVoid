@@ -8,6 +8,10 @@ TagManager:
   - Earth
   - Bullet
   - GlobalVars
+  - progressBarInner
+  - ReloadMessage
+  - PurchaseAmmoMessage
+  - CannotFireMessage
   layers:
   - Default
   - TransparentFX
