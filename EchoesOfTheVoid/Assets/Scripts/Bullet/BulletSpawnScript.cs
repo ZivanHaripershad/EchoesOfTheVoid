@@ -13,11 +13,8 @@ public class BulletSpawnScript : MonoBehaviour
     public float maxShootSpeed;
     private float timePassed;
 
-    [SerializeField]
     private TextMeshPro reloadMessage;
-    [SerializeField]
     private TextMeshPro cannotFireMessage;
-    [SerializeField]
     private TextMeshPro purchaseAmmoMessage;
 
     public SpaceshipMode spaceshipMode;
@@ -35,13 +32,12 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField]
     public float countDown;
 
-    private float downTime, upTime, pressTime = 0;
+    private float downTime, pressTime = 0;
     private bool ready = false;
 
     [SerializeField]
     private float reloadTimePerBullet;
 
-    [SerializeField]
     private GameObject progressBarInner;
 
     private float currReloadTime;
@@ -57,15 +53,21 @@ public class BulletSpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        reloadMessage = GameObject.FindGameObjectWithTag("ReloadMessage").gameObject.GetComponent<TextMeshPro>();
+        cannotFireMessage = GameObject.FindGameObjectWithTag("CannotFireMessage").gameObject.GetComponent<TextMeshPro>();
+        purchaseAmmoMessage = GameObject.FindGameObjectWithTag("PurchaseAmmoMessage").gameObject.GetComponent<TextMeshPro>();
+
         bulletCount.currentBullets = bulletCount.maxBullets;
         bulletCount.generateBullets = false;
         timePassed = 0;
         currReloadTime = 0;
         cannotFireMessage.enabled = false;
-        reloadMessage.enabled = false;
+        
         purchaseAmmoMessage.enabled = false;
+        progressBarInner = GameObject.FindGameObjectsWithTag("progressBarInner")[0];
         progressBar = progressBarInner.GetComponent<SpriteRenderer>();
         progressBar.size = new Vector2(0, 1);
+    
     }
 
     // Update is called once per frame

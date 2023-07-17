@@ -259,7 +259,6 @@ MonoBehaviour:
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   countDown: 2
   reloadTimePerBullet: 0.2
-  progressBarInner: {fileID: 0}
 --- !u!1 &563524235
 GameObject:
   m_ObjectHideFlags: 0
