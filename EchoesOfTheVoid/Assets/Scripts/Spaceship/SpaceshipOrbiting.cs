@@ -40,6 +40,8 @@ public class SpaceshipOrbiting : MonoBehaviour
         spaceshipMode.isOnCenterObjectsRadius = false;
         spaceshipMode.canRotateAroundPlanet = true;
         inertia = 0; 
+
+        Cursor.visible = false;
     }
 
     void Update()

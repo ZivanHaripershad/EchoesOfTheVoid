@@ -55,11 +55,11 @@ public class SpaceshipCollection : MonoBehaviour
             {
                 spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
                 if(spaceshipMode.collectionMode){
-                    spriteRenderer.sprite = collectionSprite;
+                    // spriteRenderer.sprite = collectionSprite;
                     spaceshipMode.canRotateAroundPlanet = false;
                 }
                 else{
-                    spriteRenderer.sprite = shootingSprite;
+                    // spriteRenderer.sprite = shootingSprite;
                     spaceshipMode.returningToPlanet = true;
                 }
             }
