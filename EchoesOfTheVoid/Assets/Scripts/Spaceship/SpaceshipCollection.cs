@@ -32,6 +32,9 @@ public class SpaceshipCollection : MonoBehaviour
     [SerializeField]
     private float trailFadeAmount;
 
+    [SerializeField]
+    Animator animator;
+
     void Start()
     {
         //set the original position of the spaceship
@@ -54,12 +57,21 @@ public class SpaceshipCollection : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
+                if (animator != null)
+                {
+                    animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
+                    animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
+                }
+                else{
+                    Debug.LogWarning("animator is null");
+                }
+                
                 if(spaceshipMode.collectionMode){
-                    spriteRenderer.sprite = collectionSprite;
+                    // spriteRenderer.sprite = collectionSprite;
                     spaceshipMode.canRotateAroundPlanet = false;
                 }
                 else{
-                    spriteRenderer.sprite = shootingSprite;
+                    // spriteRenderer.sprite = shootingSprite;
                     spaceshipMode.returningToPlanet = true;
                 }
             }

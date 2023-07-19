@@ -27,6 +27,8 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     public float inertia;
 
+    [SerializeField]
+    Animator animator;
 
 
     void Start()
@@ -40,6 +42,8 @@ public class SpaceshipOrbiting : MonoBehaviour
         spaceshipMode.isOnCenterObjectsRadius = false;
         spaceshipMode.canRotateAroundPlanet = true;
         inertia = 0; 
+
+        Cursor.visible = false;
     }
 
     void Update()
@@ -120,6 +124,15 @@ public class SpaceshipOrbiting : MonoBehaviour
                 spaceshipMode.collectionMode = false;
                 spaceshipMode.returningToPlanet = false;
                 spaceshipMode.canRotateAroundPlanet = true;
+
+                if (animator != null)
+                {
+                    animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
+                    animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
+                }
+                else{
+                    Debug.LogWarning("animator is null");
+                }
             }
             else{
                 // move object towards nearest point
