@@ -12,6 +12,14 @@ public class BulletDeposit : MonoBehaviour
     [SerializeField]
     private AudioSource depositSoundEffect;
 
+    [SerializeField]
+    Animator animator;
+
+    void Start()
+    {
+        animator.enabled = false;
+    }
+
     // Start is called before the first frame update
     public void OnMouseDown(){
         if(orbCounter.orbsCollected >= factoryCosts.bulletCost){

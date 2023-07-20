@@ -18,6 +18,9 @@ public class DepositOrbs : MonoBehaviour
     public OrbCounter orbCounter;
     public BulletCount bulletCount;
 
+    [SerializeField]
+    Animator bulletFactoryAnimator;
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,6 +50,7 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.I))
                     if (orbCounter.orbsCollected >= 2)
                     {
+                        bulletFactoryAnimator.enabled = true;
                         orbCounter.orbsCollected -= 2;
                         deposited = true;
 
@@ -54,7 +58,7 @@ public class DepositOrbs : MonoBehaviour
                         BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
                     }
                     else
-                            cannotDepositSoundEffect.Play();
+                        cannotDepositSoundEffect.Play();
 
                 //Shield
                 if (Input.GetKeyDown(KeyCode.L))

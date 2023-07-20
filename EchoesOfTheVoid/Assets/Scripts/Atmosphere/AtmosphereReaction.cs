@@ -28,7 +28,7 @@ public class AtmosphereReaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletFactory.SetActive(false);
+        bulletFactory.SetActive(true);
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
 
@@ -46,7 +46,7 @@ public class AtmosphereReaction : MonoBehaviour
         }
         else
         {
-            bulletFactory.SetActive(false);
+            bulletFactory.SetActive(true);
             powerFactory.SetActive(false);
             shieldFactory.SetActive(false);
             targetSize = minSize;

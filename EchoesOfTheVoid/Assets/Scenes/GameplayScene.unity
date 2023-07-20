@@ -128,6 +128,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7987754314443918444, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
   m_PrefabInstance: {fileID: 1878423872088169272}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &284307719 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 284307719, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -395,6 +400,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: bulletFactoryAnimator
+      value: 
+      objectReference: {fileID: 284307719}
     - target: {fileID: 3490931976703119853, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: m_RootOrder
       value: 0
