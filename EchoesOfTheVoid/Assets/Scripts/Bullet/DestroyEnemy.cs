@@ -12,6 +12,8 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField]
     GameObject orb;
 
+    public HealthCount healthCount;
+
     private bool canBeDestroyed = false;
 
     public ShieldCounter shieldCounter;
@@ -28,6 +30,13 @@ public class DestroyEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (canBeDestroyed && collision.gameObject.tag =="Earth")
+        {
+            healthCount.currentHealth -= 1;
+            Debug.Log(healthCount.currentHealth);
+            Debug.Log("take damage");
+        }
+
         if (canBeDestroyed && (collision.gameObject.tag == "Earth" || collision.gameObject.tag == "Bullet"))
         {
             canBeDestroyed = false;

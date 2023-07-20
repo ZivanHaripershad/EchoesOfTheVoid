@@ -45,6 +45,7 @@ public class BulletSpawnScript : MonoBehaviour
     private SpriteRenderer progressBar;
 
     private const float MAX_PROGRESS_BAR_SIZE = 38.36f;
+    private const float PROGRESS_BAR_HEIGHT = 1.3f;
 
     private bool fade = false;
 
@@ -107,7 +108,7 @@ public class BulletSpawnScript : MonoBehaviour
                 float progress = (Time.time - downTime) / countDown;
 
                 progressBar.GetComponent<SpriteRenderer>().color = new Color(1 - progress, progress, 1 - progress);
-                progressBar.size = new Vector2(progress * MAX_PROGRESS_BAR_SIZE, 1);
+                progressBar.size = new Vector2(progress * MAX_PROGRESS_BAR_SIZE, PROGRESS_BAR_HEIGHT);
             }
 
             if (Time.time >= pressTime && ready == true)

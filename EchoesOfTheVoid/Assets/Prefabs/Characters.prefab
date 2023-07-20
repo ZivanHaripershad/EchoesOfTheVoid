@@ -249,9 +249,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
   maxShootSpeed: 0.5
-  reloadMessage: {fileID: 0}
-  cannotFireMessage: {fileID: 0}
-  purchaseAmmoMessage: {fileID: 0}
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}

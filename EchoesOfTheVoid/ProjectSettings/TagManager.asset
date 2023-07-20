@@ -12,6 +12,7 @@ TagManager:
   - ReloadMessage
   - PurchaseAmmoMessage
   - CannotFireMessage
+  - Enemy
   layers:
   - Default
   - TransparentFX

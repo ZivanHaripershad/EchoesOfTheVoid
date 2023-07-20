@@ -1973,7 +1973,7 @@ GameObject:
   - component: {fileID: 1887997956655803700}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2014,7 +2014,6 @@ MonoBehaviour:
   - {fileID: 4350141238943973822}
   rotationSpeed: 100
   enemySpeed: 0.2
-  variables: {fileID: 0}
   enemy: {fileID: 8012780089176710275}
 --- !u!50 &4350141238360582128
 Rigidbody2D:
@@ -2051,6 +2050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   orb: {fileID: 434657277462207545, guid: 872e95c08d9a45343904527f2d274f42, type: 3}
+  healthCount: {fileID: 11400000, guid: b4075475380b5c047a56e7d6a14d038f, type: 2}
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   explosionSoundEffect: {fileID: 1887997956655803700}
 --- !u!82 &1887997956655803700
