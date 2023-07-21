@@ -9,4 +9,5 @@ public class OrbCounter : ScriptableObject
     public int orbsCollected;
     public int planetOrbMax;
     public int planetOrbsDeposited;
+    public int orbsDeposited;
 }

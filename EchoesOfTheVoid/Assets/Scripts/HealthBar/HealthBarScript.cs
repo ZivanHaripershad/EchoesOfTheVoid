@@ -22,7 +22,6 @@ public class HealthBarScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(healthCount.currentHealth);
         spriteRenderer.sprite = sprites[healthCount.currentHealth - 1];
     }
 }
