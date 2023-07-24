@@ -19,8 +19,6 @@ public class BulletDeposit : MonoBehaviour
             OrbCounterUI.instance.UpdateOrbs(orbCounter.orbsCollected);
 
             bulletCount.currentBullets = bulletCount.maxBullets;
-            BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
-
             depositSoundEffect.Play();
         }
     }

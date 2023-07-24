@@ -38,6 +38,7 @@ public class DepositOrbs : MonoBehaviour
                     if (orbCounter.orbsCollected >= 1)
                     {
                         orbCounter.orbsCollected -= 1;
+                        orbCounter.planetOrbsDeposited += 1;
                         deposited = true;
                     }
                     else
@@ -51,7 +52,6 @@ public class DepositOrbs : MonoBehaviour
                         deposited = true;
 
                         bulletCount.currentBullets = bulletCount.maxBullets;
-                        BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
                     }
                     else
                             cannotDepositSoundEffect.Play();

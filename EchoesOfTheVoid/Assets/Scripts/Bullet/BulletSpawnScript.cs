@@ -133,7 +133,7 @@ public class BulletSpawnScript : MonoBehaviour
             purchaseAmmoMessage.enabled = true;
         }
 
-        if (bulletCount.generateBullets && bulletCount.currentBullets < 14)
+        if (bulletCount.generateBullets && bulletCount.currentBullets < bulletCount.maxBullets)
         {
             reloadMessage.enabled = false;
             if (currReloadTime < reloadTimePerBullet)
@@ -142,11 +142,10 @@ public class BulletSpawnScript : MonoBehaviour
             {
                 currReloadTime = 0;
                 bulletCount.currentBullets = bulletCount.currentBullets + 1;
-                BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
             }
         }
 
-        if (bulletCount.generateBullets && bulletCount.currentBullets == 14)
+        if (bulletCount.generateBullets && bulletCount.currentBullets == bulletCount.maxBullets)
         {
             bulletCount.generateBullets = false;
         }
@@ -163,7 +162,6 @@ public class BulletSpawnScript : MonoBehaviour
                         timePassed = 0;
                         Instantiate(bullet, transform.position, transform.rotation);
                         bulletCount.currentBullets = bulletCount.currentBullets - 1;
-                        BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
                         cannotFireMessage.enabled = false;
                     }
                     else
