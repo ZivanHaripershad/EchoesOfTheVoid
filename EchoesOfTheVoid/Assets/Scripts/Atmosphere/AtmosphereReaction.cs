@@ -4,16 +4,6 @@ using UnityEngine;
 
 public class AtmosphereReaction : MonoBehaviour
 {
-
-    // Define initial and target sizes herE;
-    private float minSize = 0.13f;
-    private float maxSize = 0.4f;
-    private float targetSize = 0.4f;
-
-    
-    // Define speed of resizing
-    public float resizeSpeed = 2f;
-
     [SerializeField]
     public GameObject bulletFactory;
 
@@ -23,7 +13,12 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField]
     public GameObject shieldFactory;
 
+    [SerializeField]
+    public GameObject healthFactory;
+
     public OrbDepositingMode orbDepositingMode;
+
+    public float fadeDuration = 1f; // The duration of the fade-in effect
 
     // Start is called before the first frame update
     void Start()
@@ -31,36 +26,58 @@ public class AtmosphereReaction : MonoBehaviour
         bulletFactory.SetActive(false);
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
+        healthFactory.SetActive(false);
 
     }
 
-    // Update is called once per frame
+    IEnumerator Fade(GameObject gameObject, float startAlpha, float targetAlpha)
+    {
+        float elapsedTime = 0f;
+        Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
+
+        // Gradually fade the renderers
+        while (elapsedTime < fadeDuration)
+        {
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration);
+
+            foreach (var renderer in renderers)
+            {
+                Color color = renderer.material.color;
+                color.a = alpha;
+                renderer.material.color = color;
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        // After the fade-out effect is complete, disable the game object
+        if (targetAlpha == 0f)
+        {
+            gameObject.SetActive(false);
+        }
+    }
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode == true)
-        {
-            if (transform.localScale.x < maxSize)
-            {
-                targetSize = 0.4f;
-            }
-        }
-        else
-        {
-            bulletFactory.SetActive(false);
-            powerFactory.SetActive(false);
-            shieldFactory.SetActive(false);
-            targetSize = minSize;
-        }
-
-        // Resize circle using Mathf.Lerp function
-        float size = Mathf.Lerp(transform.localScale.x, targetSize, Time.deltaTime * resizeSpeed);
-        transform.localScale = new Vector3(size, size, 1f);
-
-        if (size >= (maxSize - 0.05))
+        if (Input.GetKeyDown(KeyCode.S) && orbDepositingMode.depositingMode)
         {
             bulletFactory.SetActive(true);
             powerFactory.SetActive(true);
             shieldFactory.SetActive(true);
+            healthFactory.SetActive(true);
+
+            StartCoroutine(Fade(bulletFactory, 0f, 1f));
+            StartCoroutine(Fade(powerFactory, 0f, 1f));
+            StartCoroutine(Fade(shieldFactory, 0f, 1f));
+            StartCoroutine(Fade(healthFactory, 0f, 1f));
+        }
+        else if (Input.GetKeyUp(KeyCode.S))
+        {
+            StartCoroutine(Fade(bulletFactory, 1f, 0f));
+            StartCoroutine(Fade(powerFactory, 1f, 0f));
+            StartCoroutine(Fade(shieldFactory, 1f, 0f));
+            StartCoroutine(Fade(healthFactory, 1f, 0f));
         }
     }
 }
