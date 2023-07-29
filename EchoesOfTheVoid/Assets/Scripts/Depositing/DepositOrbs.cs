@@ -18,13 +18,19 @@ public class DepositOrbs : MonoBehaviour
     public OrbCounter orbCounter;
     public BulletCount bulletCount;
 
-    [SerializeField]
-    Animator bulletFactoryAnimator;
+    private GameObject bulletFactory;
+    private GameObject powerFactory;
+    private GameObject shieldFactory;
+    private GameObject healthFactory;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        bulletFactory = GameObject.Find("BulletFactory");
+        powerFactory = GameObject.Find("PowerFactory");
+        shieldFactory = GameObject.Find("ShieldFactory");
+        healthFactory = GameObject.Find("HealthFactory");
         orbDepositingMode.depositingMode = false;
     }
 
@@ -40,6 +46,8 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.J))
                     if (orbCounter.orbsCollected >= 1)
                     {
+                        Animator powerFactoryAnimator = powerFactory.GetComponent<Animator>();
+                        powerFactoryAnimator.SetTrigger("isSelected");
                         orbCounter.orbsCollected -= 1;
                         deposited = true;
                     }
@@ -50,7 +58,8 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.I))
                     if (orbCounter.orbsCollected >= 2)
                     {
-                        bulletFactoryAnimator.enabled = true;
+                        Animator bulletFactoryAnimator = bulletFactory.GetComponent<Animator>();
+                        bulletFactoryAnimator.SetTrigger("isSelected");
                         orbCounter.orbsCollected -= 2;
                         deposited = true;
 
@@ -64,7 +73,21 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.L))
                     if (orbCounter.orbsCollected >= 3)
                     {
+                        Animator shieldFactoryAnimator = shieldFactory.GetComponent<Animator>();
+                        shieldFactoryAnimator.SetTrigger("isSelected");
                         orbCounter.orbsCollected -= 3;
+                        deposited = true;
+                    }
+                    else
+                        cannotDepositSoundEffect.Play();
+                
+                //Health
+                if (Input.GetKeyDown(KeyCode.K))
+                    if (orbCounter.orbsCollected >= 1)
+                    {
+                        Animator healthFactoryAnimator = healthFactory.GetComponent<Animator>();
+                        healthFactoryAnimator.SetTrigger("isSelected");
+                        orbCounter.orbsCollected -= 1;
                         deposited = true;
                     }
                     else

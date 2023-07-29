@@ -1525,7 +1525,6 @@ MonoBehaviour:
   cannotDepositSoundEffect: {fileID: 160186992}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
-  bulletFactoryAnimator: {fileID: 0}
 --- !u!114 &961352416
 MonoBehaviour:
   m_ObjectHideFlags: 0
