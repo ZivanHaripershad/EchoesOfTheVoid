@@ -56,3 +56,6 @@ TagManager:
   - name: PowerBar
     uniqueID: 3031241601
     locked: 0
+  - name: Clouds
+    uniqueID: 3256499977
+    locked: 0

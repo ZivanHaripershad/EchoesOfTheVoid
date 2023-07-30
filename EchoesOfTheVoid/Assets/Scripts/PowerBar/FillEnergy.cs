@@ -11,6 +11,12 @@ public class FillEnergy : MonoBehaviour
     [SerializeField]
     private OrbCounter counter;
 
+    [SerializeField]
+    private float scale;
+
+    [SerializeField]
+    private float yAdjust;
+
     private SpriteRenderer spriteRenderer;
 
     private int prevSprite; 
@@ -26,6 +32,9 @@ public class FillEnergy : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         prevSprite = 0;      
+        Vector2 newScale = new Vector2 (scale, scale);
+        transform.localScale = new Vector3(newScale.x, newScale.y, 1f);
+        transform.position += new Vector3(0f, yAdjust, 0f);
     }
 
 
@@ -37,7 +46,7 @@ public class FillEnergy : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
 
         int currSprite = (int) Mathf.Round((counter.planetOrbsDeposited * 1.0f / counter.planetOrbMax) * (sprites.Length - 1));
         
