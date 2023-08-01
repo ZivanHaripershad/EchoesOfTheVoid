@@ -23,10 +23,6 @@ public class AtmosphereReaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletFactory.SetActive(false);
-        powerFactory.SetActive(false);
-        shieldFactory.SetActive(false);
-        healthFactory.SetActive(false);
 
     }
 
@@ -60,7 +56,7 @@ public class AtmosphereReaction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && orbDepositingMode.depositingMode)
+        if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {
             bulletFactory.SetActive(true);
             powerFactory.SetActive(true);
