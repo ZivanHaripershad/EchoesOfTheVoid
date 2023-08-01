@@ -32,7 +32,7 @@ public class EnemySpawning : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public void SpawnEnemies()
     {
         timer += Time.deltaTime;
 
