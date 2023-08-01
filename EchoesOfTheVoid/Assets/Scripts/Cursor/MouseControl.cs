@@ -5,7 +5,17 @@ using UnityEngine;
 public class MouseControl : MonoBehaviour
 {
 
-    private void Start(){
+    public Texture2D cursorTexture;
+    private Vector2 hotSpot = Vector2.zero;
+    private CursorMode cursorMode = CursorMode.Auto;
+    
+    public void EnableMouse()
+    {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    }
+
+    public void DisableMouse()
+    {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
