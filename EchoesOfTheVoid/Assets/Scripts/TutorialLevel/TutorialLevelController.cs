@@ -11,6 +11,8 @@ public class TutorialLevelController : MonoBehaviour
 
     public EnemySpawning enemySpawning;
 
+    public UIManager uiManager;
+
     private int popUpIndex;
 
     private void Start()
@@ -45,6 +47,9 @@ public class TutorialLevelController : MonoBehaviour
         }
         else if (popUpIndex == 2)
         {
+            uiManager.SetLevelObjectsToActive();
+            enemySpawning.SpawnEnemies();
+
             //show player how to move and wait for left and right arrow key input
         }
         else if (popUpIndex == 3)
