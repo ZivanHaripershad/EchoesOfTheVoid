@@ -5,13 +5,20 @@ using UnityEngine;
 public class UIManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject earth;
-    public GameObject spaceship;
-    public AtmosphereReaction atmosphereReaction;
-    public GameObject bulletFactory;
-    public GameObject powerFactory;
-    public GameObject shieldFactory;
-    public GameObject healthFactory;
+    [SerializeField] private GameObject earth;
+    [SerializeField] private GameObject spaceship;
+    [SerializeField] private AtmosphereReaction atmosphereReaction;
+    [SerializeField] private GameObject bulletFactory;
+    [SerializeField] private GameObject powerFactory;
+    [SerializeField] private GameObject shieldFactory;
+    [SerializeField] private GameObject healthFactory;
+    [SerializeField] private GameObject bulletUi;
+    [SerializeField] private GameObject healthUi;
+    [SerializeField] private GameObject reloadMessage;
+    [SerializeField] private GameObject orbUi;
+    [SerializeField] private GameObject orbText;
+
+    public GameObject bulletMessages; 
     void Start()
     {
         earth.SetActive(false);
@@ -20,6 +27,11 @@ public class UIManager : MonoBehaviour
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
+        bulletUi.SetActive(false);
+        healthUi.SetActive(false);
+        reloadMessage.SetActive(false);
+        orbUi.SetActive(false);
+        orbText.SetActive(false);
     }
 
     // Update is called once per frame
@@ -32,5 +44,11 @@ public class UIManager : MonoBehaviour
     {
         earth.SetActive(true);
         spaceship.SetActive(true);
+        bulletUi.SetActive(true);
+        bulletUi.SetActive(true);
+        healthUi.SetActive(true);
+        orbUi.SetActive(true);
+        orbText.SetActive(true);
+        reloadMessage.SetActive(true);
     }
 }

@@ -16,6 +16,8 @@ public class DestroyEnemy : MonoBehaviour
 
     public ShieldCounter shieldCounter;
 
+    private GameObject earth;
+
     [SerializeField]
     private AudioSource explosionSoundEffect;
 
@@ -24,6 +26,7 @@ public class DestroyEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         canBeDestroyed = true;
+        earth = GameObject.FindGameObjectWithTag("Earth");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -36,6 +39,11 @@ public class DestroyEnemy : MonoBehaviour
 
             if(collision.gameObject.tag == "Earth" && shieldCounter.isShieldActive){
                 shieldCounter.currentShieldAmount = shieldCounter.currentShieldAmount -1;
+            }
+
+            if (collision.gameObject.tag == "Earth" && !shieldCounter.isShieldActive)
+            {
+                earth.GetComponent<EarthTakeDamage>().takeDamage(1);
             }
 
             if (collision.gameObject.tag != "Earth")
