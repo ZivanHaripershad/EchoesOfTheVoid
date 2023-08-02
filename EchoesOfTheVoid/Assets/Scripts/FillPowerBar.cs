@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FillPowerBar : MonoBehaviour
@@ -52,7 +50,7 @@ public class FillPowerBar : MonoBehaviour
         {
             currTimeFilled += Time.deltaTime;
 
-            if (currTimeFilled > barFillSpeed)
+            if (currTimeFilled > (1/barFillSpeed))
             {
                 currTimeFilled = 0;
                 prevSprite++; 

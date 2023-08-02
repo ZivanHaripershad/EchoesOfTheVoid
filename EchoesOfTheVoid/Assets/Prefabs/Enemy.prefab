@@ -2015,6 +2015,7 @@ MonoBehaviour:
   rotationSpeed: 100
   enemySpeed: 0.2
   enemy: {fileID: 8012780089176710275}
+  radius: 5
 --- !u!50 &4350141238360582128
 Rigidbody2D:
   serializedVersion: 4

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using Random = UnityEngine.Random;
 using UnityEngine;
@@ -21,12 +20,19 @@ public class FollowRoute : MonoBehaviour
     [SerializeField]
     private GameObject enemy;
 
+    [SerializeField] private float radius;
+
     private SpriteRenderer sp;
 
     private Vector2 enemyPosition;
 
     private bool coroutineAllowed;
 
+    private Camera mainCamera;
+
+    private Vector3 worldCenterPosition;
+
+    private bool firstUpdate;
     // Start is called before the first frame update
     void Start()
     {       
@@ -37,7 +43,11 @@ public class FollowRoute : MonoBehaviour
         sp.material.color = new Color(1f, 1f, 1f, 0);
 
         variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
-        
+
+        firstUpdate = true;
+        mainCamera = Camera.main;
+
+        worldCenterPosition = new Vector3(0, 0, 0);
     }
 
     // Update is called once per frame
@@ -48,24 +58,23 @@ public class FollowRoute : MonoBehaviour
             Vector3 resetPosition = new Vector3 (0, 0, 0);
             gameObject.transform.position = resetPosition;
 
-            Console.WriteLine("Starting core routin");
             StartCoroutine(GoByRoute());
         }
     }
 
     private IEnumerator GoByRoute()
     {
-        int prevPrev = variables.getPrevPrevEnemySpawned();
-        int prev = variables.getPrevEnemySpawned();
+        int prevPrev = variables.prevPrevEnemySpawned;
+        int prev = variables.prevEnemySpawned;
 
-        int routeToGoTo = (int)Random.Range(0, routes.Length);
+        int routeToGoTo = Random.Range(0, routes.Length);
 
         while (routeToGoTo == prev || routeToGoTo == prevPrev)
-            routeToGoTo = (int)Random.Range(0, routes.Length);
+            routeToGoTo = Random.Range(0, routes.Length);
 
         //set prev and prevprev
-        variables.setPrevPrevEnemySpawned(prev);
-        variables.setPrevEnemySpawned(routeToGoTo);
+        variables.prevPrevEnemySpawned = prev;
+        variables.prevEnemySpawned = routeToGoTo;
 
         //don't start new follow until this one is over
         coroutineAllowed = false;
@@ -76,16 +85,24 @@ public class FollowRoute : MonoBehaviour
         Vector3 p2 = routes[routeToGoTo].GetChild(2).position;
         Vector3 p3 = routes[routeToGoTo].GetChild(3).position;
 
-        
-
         //reset to start point
         tParam = 0f;
 
         while (tParam < 1)
         {
-            //smooth the movement
-            tParam += Time.deltaTime * enemySpeed;
 
+            Debug.Log("puase: " + variables.mustPause);
+            Debug.Log("pos: " + Vector3.Distance(transform.position, worldCenterPosition));
+            Debug.Log("rad: " + radius);
+            
+            if (variables.mustPause && Vector3.Distance(transform.position, worldCenterPosition) < radius && !firstUpdate)
+            {
+                yield return null;
+                continue;
+            }
+            
+            tParam += Time.deltaTime * enemySpeed;
+            
             //calculate the position
             enemyPosition = Mathf.Pow(1 - tParam, 3) * p0 +
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
@@ -93,6 +110,9 @@ public class FollowRoute : MonoBehaviour
                 Mathf.Pow(tParam, 3) * p3;
 
             transform.position = enemyPosition;
+            
+            firstUpdate = false;
+
             sp.material.color = new Color(1f, 1f, 1f, 1f);
 
             Vector3 toTarget = p3 - transform.position;

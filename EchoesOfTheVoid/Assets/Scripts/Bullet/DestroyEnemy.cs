@@ -77,7 +77,7 @@ public class DestroyEnemy : MonoBehaviour
 
             //Instantiate the explosion
             Instantiate(explosion, transform.position, Quaternion.identity);
-
+            
             //destroy the enemy 
             Destroy(gameObject);
 

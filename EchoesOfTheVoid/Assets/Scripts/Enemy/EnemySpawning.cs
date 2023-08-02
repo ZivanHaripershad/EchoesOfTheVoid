@@ -1,51 +1,47 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.TextCore.Text;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
-public class EnemySpawning : MonoBehaviour
-{
-    [SerializeField]
-    public GameObject enemy;
+public class EnemySpawning : MonoBehaviour {
+    
+    [SerializeField] private float spawnRate;
+    [SerializeField] private int minEnemiesToSpawn;
+    [SerializeField] private int maxEnemiesToSpawn;
+    [SerializeField] private float spawnInterval;
+    [SerializeField] private float spawnTimerVariation;
+    [SerializeField] private GameObject enemy;
 
-    private float timer;
+    private bool hasStarted;
+    
 
-    [SerializeField]
-    private float spawnTimerVariation; 
-
-    [SerializeField]
-    public float spawnRate;
-
-    [SerializeField]
-    private float spawnIntevalBetweenSuccessiveEnemies;
-
-    // Start is called before the first frame update
-    void Start()
+    public void StartSpawningEnemies()
     {
-        timer = 0f;
+        if (!hasStarted)
+        {
+            hasStarted = true;
+            StartCoroutine(SpawnEnemiesCoroutine());
+        }
     }
 
-    void instantiate()
+    private IEnumerator SpawnEnemiesCoroutine()
     {
-        Instantiate(enemy, transform.position, transform.rotation);
-    }
-
-    // Update is called once per frame
-    public void SpawnEnemies()
-    {
-        timer += Time.deltaTime;
-
-        if(timer > spawnRate){
-
-            int enemiesToSpawn = Random.Range(1, 3);
+        while (true)
+        {
+            yield return new WaitForSeconds(spawnRate);
+            int enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
 
             for (int i = 0; i < enemiesToSpawn; i++)
             {
-                Invoke("instantiate", (i * spawnIntevalBetweenSuccessiveEnemies) + Random.Range(0f, spawnTimerVariation));
+                float randomNumber = Random.Range(0f, spawnTimerVariation);
+                yield return new WaitForSeconds(spawnInterval + randomNumber);
+                Instantiate(enemy, Vector3.zero, quaternion.identity);
             }
 
-            timer = 0;
         }
+
     }
+
 }
+
