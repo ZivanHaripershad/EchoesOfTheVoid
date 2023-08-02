@@ -205,7 +205,7 @@ GameObject:
   m_Component:
   - component: {fileID: 314055302}
   - component: {fileID: 314055304}
-  - component: {fileID: 314055305}
+  - component: {fileID: 688061529}
   m_Layer: 0
   m_Name: HealthBarUI
   m_TagString: Untagged
@@ -280,7 +280,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &314055305
+--- !u!114 &688061529
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -289,10 +289,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 314055301}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 971da02c4cfe37f439289e8ebea7bfb7, type: 3}
+  m_Script: {fileID: 11500000, guid: a3440961edf878f439fbd9c7b4673726, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   sprites:
+  - {fileID: 21300000, guid: 7d56fd1434511954493a0f3421a434c5, type: 3}
   - {fileID: 21300000, guid: 7d56fd1434511954493a0f3421a434c5, type: 3}
   - {fileID: 21300000, guid: 85c02f1cf93bac64a9e5291f945a32e1, type: 3}
   - {fileID: 21300000, guid: 1545bd0b91ea07c43bcb250f66a7fcb8, type: 3}
@@ -303,7 +304,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3d469f20618348e46a07e68bdb5d3a73, type: 3}
   - {fileID: 21300000, guid: 0ad64c5896e4dfd42bf1835d0a3fd011, type: 3}
   - {fileID: 21300000, guid: b57f50ad860939d4b80b0d659fbb7254, type: 3}
-  healthCount: {fileID: 11400000, guid: ed60210e5609a834e8f3943172042296, type: 2}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
 --- !u!1 &334396011
 GameObject:
   m_ObjectHideFlags: 0

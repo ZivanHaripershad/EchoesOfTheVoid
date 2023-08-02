@@ -2014,7 +2014,6 @@ MonoBehaviour:
   - {fileID: 4350141238943973822}
   rotationSpeed: 100
   enemySpeed: 0.2
-  variables: {fileID: 0}
   enemy: {fileID: 8012780089176710275}
 --- !u!50 &4350141238360582128
 Rigidbody2D:
@@ -2053,6 +2052,7 @@ MonoBehaviour:
   orb: {fileID: 434657277462207545, guid: 872e95c08d9a45343904527f2d274f42, type: 3}
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   explosionSoundEffect: {fileID: 1887997956655803700}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
 --- !u!82 &1887997956655803700
 AudioSource:
   m_ObjectHideFlags: 0

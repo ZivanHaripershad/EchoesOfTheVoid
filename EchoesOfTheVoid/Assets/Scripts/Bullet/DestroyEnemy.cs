@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class DestroyEnemy : MonoBehaviour
 {
@@ -12,7 +11,7 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField]
     GameObject orb;
 
-    private bool canBeDestroyed = false;
+    private bool canBeDestroyed;
 
     public ShieldCounter shieldCounter;
 
@@ -20,6 +19,8 @@ public class DestroyEnemy : MonoBehaviour
 
     [SerializeField]
     private AudioSource explosionSoundEffect;
+
+    [SerializeField] private HealthCount healthCount; 
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -31,22 +32,25 @@ public class DestroyEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (canBeDestroyed && (collision.gameObject.tag == "Earth" || collision.gameObject.tag == "Bullet"))
+        if (canBeDestroyed && (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet")))
         {
             canBeDestroyed = false;
 
             explosionSoundEffect.Play();
 
-            if(collision.gameObject.tag == "Earth" && shieldCounter.isShieldActive){
+            if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive)
+            {
+                Debug.Log("shield damage");
                 shieldCounter.currentShieldAmount = shieldCounter.currentShieldAmount -1;
             }
 
-            if (collision.gameObject.tag == "Earth" && !shieldCounter.isShieldActive)
+            if (collision.gameObject.CompareTag("Earth") && !shieldCounter.isShieldActive)
             {
-                earth.GetComponent<EarthTakeDamage>().takeDamage(1);
+                Debug.Log("earth damage");
+                healthCount.currentHealth--;
             }
 
-            if (collision.gameObject.tag != "Earth")
+            if (!collision.gameObject.CompareTag("Earth"))
             {
                 GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
                 Rigidbody2D rb = myOrb.GetComponent<Rigidbody2D>();
@@ -78,7 +82,7 @@ public class DestroyEnemy : MonoBehaviour
             Destroy(gameObject);
 
             //destroy the bullet
-            if (collision.gameObject.tag == "Bullet")
+            if (collision.gameObject.CompareTag("Bullet"))
                 Destroy(collision.gameObject);
         }
     }

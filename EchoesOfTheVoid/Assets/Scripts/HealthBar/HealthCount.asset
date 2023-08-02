@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: HealthCount
   m_EditorClassIdentifier: 
   maxHealth: 10
-  currentHealth: 0
+  currentHealth: 10
