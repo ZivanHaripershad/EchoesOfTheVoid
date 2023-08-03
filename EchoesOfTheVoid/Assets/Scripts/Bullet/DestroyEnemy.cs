@@ -10,17 +10,15 @@ public class DestroyEnemy : MonoBehaviour
 
     [SerializeField]
     GameObject orb;
-
-    private bool canBeDestroyed;
-
+    
     public ShieldCounter shieldCounter;
-
+    public GameManagerData gameManagerData;
+    
+    [SerializeField] private AudioSource explosionSoundEffect;
+    [SerializeField] private HealthCount healthCount;
+    private bool canBeDestroyed;
     private GameObject earth;
 
-    [SerializeField]
-    private AudioSource explosionSoundEffect;
-
-    [SerializeField] private HealthCount healthCount; 
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -48,6 +46,13 @@ public class DestroyEnemy : MonoBehaviour
             {
                 Debug.Log("earth damage");
                 healthCount.currentHealth--;
+            }
+
+            if (collision.gameObject.CompareTag("Bullet"))
+            {
+                Debug.Log("enemy damage");
+                gameManagerData.numberOfEnemiesKilled++;
+
             }
 
             if (!collision.gameObject.CompareTag("Earth"))

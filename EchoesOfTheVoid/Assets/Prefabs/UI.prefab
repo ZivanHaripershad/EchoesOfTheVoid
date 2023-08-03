@@ -551,9 +551,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
-  spriteRenderer: {fileID: 334396013}
   enabledFactorySprite: {fileID: 21300000, guid: d26e4cf66c8c6724191ce12bd2a32272, type: 3}
-  disabledFactorySprite: {fileID: 21300000, guid: d26e4cf66c8c6724191ce12bd2a32272, type: 3}
+  disabledFactorySprite: {fileID: 21300000, guid: 05d61d7058b31754da79c5c592f47a32, type: 3}
 --- !u!1 &339201751
 GameObject:
   m_ObjectHideFlags: 0
@@ -729,9 +728,8 @@ MonoBehaviour:
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
-  spriteRenderer: {fileID: 543851232}
   enabledFactorySprite: {fileID: 21300000, guid: 0db1aca46ffbca84e87dc44d5864fb9b, type: 3}
-  disabledFactorySprite: {fileID: 21300000, guid: 0db1aca46ffbca84e87dc44d5864fb9b, type: 3}
+  disabledFactorySprite: {fileID: 21300000, guid: 5e22740eeda909f4b935f75d1e4539e9, type: 3}
 --- !u!82 &974942145
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1341,7 +1339,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000013351, y: -205}
+  m_AnchoredPosition: {x: -0.000013351, y: -115}
   m_SizeDelta: {x: 97.276, y: 26.9152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &850397853
@@ -2233,9 +2231,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
-  spriteRenderer: {fileID: 1779784236}
   enabledFactorySprite: {fileID: 21300000, guid: e6df37d2524b0b84391aca7aaa7e5d32, type: 3}
-  disabledFactorySprite: {fileID: 21300000, guid: e6df37d2524b0b84391aca7aaa7e5d32, type: 3}
+  disabledFactorySprite: {fileID: 21300000, guid: c41ee36733738974fb0de7dbee51c351, type: 3}
 --- !u!82 &1918870034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2946,9 +2943,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
-  spriteRenderer: {fileID: 1924396201}
   enabledFactorySprite: {fileID: 21300000, guid: 69b1f535115560046a24a4cc16f3ffbe, type: 3}
-  disabledFactorySprite: {fileID: 21300000, guid: 69b1f535115560046a24a4cc16f3ffbe, type: 3}
+  disabledFactorySprite: {fileID: 21300000, guid: 2c662a8a26ab4054fabaa9b9cb5b8fb0, type: 3}
 --- !u!1 &1938465647
 GameObject:
   m_ObjectHideFlags: 0

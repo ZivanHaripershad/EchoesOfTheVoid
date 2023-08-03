@@ -7,15 +7,16 @@ public class HealthDeposit : MonoBehaviour
     public OrbCounter orbCounter;
     public FactoryCosts factoryCosts;
 
-    public SpriteRenderer spriteRenderer;
+    private SpriteRenderer spriteRenderer;
     public Sprite enabledFactorySprite;
     public Sprite disabledFactorySprite;
 
     void Start(){
-        spriteRenderer.sprite = enabledFactorySprite;
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = disabledFactorySprite;
     }
 
-    public void OnMouseDown(){
+    void Update(){
         if(orbCounter.orbsCollected >= factoryCosts.healthCost){
             spriteRenderer.sprite = enabledFactorySprite;
         }

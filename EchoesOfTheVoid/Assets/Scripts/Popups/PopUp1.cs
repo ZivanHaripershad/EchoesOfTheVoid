@@ -7,9 +7,20 @@ public class PopUp1 : MonoBehaviour
 {
     // Start is called before the first frame update
     public TutorialData tutorialData;
+    public MouseControl mouseControl;
 
+    void Start()
+    {
+        mouseControl.EnableMouse();
+    }
+    
     private void OnMouseDown()
     {
         tutorialData.popUpIndex = 1;
+    }
+    
+    private void OnMouseEnter()
+    {
+        mouseControl.EnableMouse();
     }
 }

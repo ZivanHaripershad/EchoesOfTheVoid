@@ -5,7 +5,7 @@ public class UIManager : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] private GameObject earth;
     [SerializeField] private GameObject spaceship;
-    [SerializeField] private AtmosphereReaction atmosphereReaction;
+    [SerializeField] private GameObject atmosphereReaction;
     [SerializeField] private GameObject bulletFactory;
     [SerializeField] private GameObject powerFactory;
     [SerializeField] private GameObject shieldFactory;
@@ -19,6 +19,7 @@ public class UIManager : MonoBehaviour
     public GameObject bulletMessages; 
     void Start()
     {
+        atmosphereReaction.SetActive(false);
         earth.SetActive(false);
         spaceship.SetActive(false);
         bulletFactory.SetActive(false);
@@ -32,12 +33,11 @@ public class UIManager : MonoBehaviour
         orbText.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetAtmosphereObjectToActive()
     {
-        
+        atmosphereReaction.SetActive(true);
     }
-
+    
     public void SetLevelObjectsToActive()
     {
         earth.SetActive(true);

@@ -65,7 +65,6 @@ public class DepositOrbs : MonoBehaviour
                         deposited = true;
 
                         bulletCount.currentBullets = bulletCount.maxBullets;
-                        BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -100,6 +99,7 @@ public class DepositOrbs : MonoBehaviour
                     depositSoundEffect.Play();
 
                     //update the HUD
+                    Debug.Log("orbcounter orbs: " + orbCounter.orbsCollected);
                     OrbCounterUI.instance.UpdateOrbs(orbCounter.orbsCollected);
                 }
                 

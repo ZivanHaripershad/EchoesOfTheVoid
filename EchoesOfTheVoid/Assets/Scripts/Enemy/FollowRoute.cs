@@ -90,11 +90,6 @@ public class FollowRoute : MonoBehaviour
 
         while (tParam < 1)
         {
-
-            Debug.Log("puase: " + variables.mustPause);
-            Debug.Log("pos: " + Vector3.Distance(transform.position, worldCenterPosition));
-            Debug.Log("rad: " + radius);
-            
             if (variables.mustPause && Vector3.Distance(transform.position, worldCenterPosition) < radius && !firstUpdate)
             {
                 yield return null;
