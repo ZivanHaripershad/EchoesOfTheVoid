@@ -11,6 +11,7 @@ public class NewGame : MonoBehaviour
     public Texture2D cursorTexture;
     private Vector2 hotSpot = Vector2.zero;
     private CursorMode cursorMode = CursorMode.Auto;
+    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,7 @@ public class NewGame : MonoBehaviour
 
     private void OnMouseDown()
     {
+        audioSource.Play();
         SceneManager.LoadScene("TutorialLevel");
     }
 
