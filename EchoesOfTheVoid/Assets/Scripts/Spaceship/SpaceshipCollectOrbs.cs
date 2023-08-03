@@ -10,7 +10,8 @@ public class SpaceshipCollectOrbs : MonoBehaviour
     private AudioSource orbCollectSoundEffect;
 
     public OrbCounter orbCounter;
-
+    public GameManagerData gameManagerData;
+    
     void Start()
     {
         //set the orbs collected to 0;
@@ -20,9 +21,10 @@ public class SpaceshipCollectOrbs : MonoBehaviour
 
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collider){
-        if(collider.gameObject.tag == "Orb"){
+        if(collider.gameObject.CompareTag("Orb")){
             orbCollectSoundEffect.Play();
 
+            gameManagerData.numberOfOrbsCollected++;
             orbsCollected = ++orbCounter.orbsCollected;
             OrbCounterUI.instance.UpdateOrbs(orbsCollected);
             Destroy(collider.gameObject);

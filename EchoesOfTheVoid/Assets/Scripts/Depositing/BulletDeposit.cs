@@ -5,18 +5,19 @@ using UnityEngine;
 public class BulletDeposit : MonoBehaviour
 {
     public OrbCounter orbCounter;
-    public FactoryCosts factoryCosts;
-
-    public SpriteRenderer spriteRenderer;
+    public FactoryCosts factoryCosts; 
+    private SpriteRenderer spriteRenderer;
     public Sprite enabledFactorySprite;
     public Sprite disabledFactorySprite;
 
-    void Start(){
-        spriteRenderer.sprite = enabledFactorySprite;
+    void Start()
+    {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = disabledFactorySprite;
     }
 
     // Start is called before the first frame update
-    public void OnMouseDown(){
+    void Update(){
         if(orbCounter.orbsCollected >= factoryCosts.bulletCost){
             spriteRenderer.sprite = enabledFactorySprite;
         }

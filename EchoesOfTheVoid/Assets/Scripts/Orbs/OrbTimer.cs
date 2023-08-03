@@ -14,6 +14,8 @@ public class OrbTimer : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    public GameManagerData gameManagerData;
+
 
     // Start is called before the first frame update
     void Start()
@@ -27,7 +29,7 @@ public class OrbTimer : MonoBehaviour
 
         keepAliveTimer -= Time.deltaTime;
                     
-        if (keepAliveTimer < 5) {
+        if (keepAliveTimer < 5 && gameManagerData.expireOrbs) {
             if (animator != null)
             {
                 animator.SetBool("lowTime", true);
@@ -37,7 +39,7 @@ public class OrbTimer : MonoBehaviour
             
         }
 
-        if (keepAliveTimer < 0)
+        if (keepAliveTimer < 0 && gameManagerData.expireOrbs)
             Destroy(gameObject);
         
 

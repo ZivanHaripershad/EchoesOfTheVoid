@@ -51,6 +51,8 @@ public class BulletSpawnScript : MonoBehaviour
 
     private float fadeColor = 0;
 
+    public GameManagerData gameManagerData;
+
     // Start is called before the first frame update
     void Start()    
     {
@@ -62,6 +64,7 @@ public class BulletSpawnScript : MonoBehaviour
         currReloadTime = 0;
         cannotFireMessage.enabled = false;
         bulletCount.currentBullets = bulletCount.maxBullets;
+        bulletCount.generateBullets = false;
         
         purchaseAmmoMessage.enabled = false;
         progressBarInner = GameObject.FindGameObjectsWithTag("progressBarInner")[0];
@@ -84,52 +87,44 @@ public class BulletSpawnScript : MonoBehaviour
                 fade = false;
             }
         }
+        
+        CheckBulletStatus();
 
-
-        if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
+        if (gameManagerData.tutorialActive)
         {
-
-            if (Input.GetKeyDown(KeyCode.R) && ready == false)
+            if (bulletCount.currentBullets == 0 && bulletCount.generateBullets == false)
             {
-                downTime = Time.time;
-                pressTime = downTime + countDown;
-                ready = true;
-
+                reloadMessage.enabled = true;
+                ReplenishAmmo();
             }
 
-            if (Input.GetKeyUp(KeyCode.R))
-            {
-                ready = false;
-            }
-
-            if (Time.time < pressTime && ready == true)
-            {
-                float progress = (Time.time - downTime) / countDown;
-
-                progressBar.GetComponent<SpriteRenderer>().color = new Color(1 - progress, progress, 1 - progress);
-                progressBar.size = new Vector2(progress * MAX_PROGRESS_BAR_SIZE, 1);
-            }
-
-            if (Time.time >= pressTime && ready == true)
-            {
-                ready = false;
-                //reload 
-                bulletCount.generateBullets = true;
-                fade = true;
-                fadeColor = 0;
-            }
+            Shoot();
         }
+        else
+        {
+            if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
+            {
+                reloadMessage.enabled = true;
+                ReplenishAmmo();
+            }
+            
+            if (orbCounter.orbsCollected >= 2 && bulletCount.currentBullets == 0)
+            {
+                reloadMessage.enabled = false;
+                purchaseAmmoMessage.enabled = true;
+            }
 
+            Shoot();
+        }
+        
+    }
+
+    private void CheckBulletStatus()
+    {
         if (bulletCount.currentBullets > 0)
         {
             purchaseAmmoMessage.enabled = false;
             reloadMessage.enabled = false;
-        }
-
-        if (orbCounter.orbsCollected >= 2 && bulletCount.currentBullets == 0)
-        {
-            reloadMessage.enabled = false;
-            purchaseAmmoMessage.enabled = true;
         }
 
         if (bulletCount.generateBullets && bulletCount.currentBullets < bulletCount.maxBullets)
@@ -141,7 +136,6 @@ public class BulletSpawnScript : MonoBehaviour
             {
                 currReloadTime = 0;
                 bulletCount.currentBullets += 1;
-                BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
             }
         }
 
@@ -149,8 +143,12 @@ public class BulletSpawnScript : MonoBehaviour
         {
             bulletCount.generateBullets = false;
         }
+    }
 
-        if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false && spaceshipMode.canRotateAroundPlanet == true)
+    private void Shoot()
+    {
+        if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false &&
+            spaceshipMode.canRotateAroundPlanet == true)
         {
             if (timePassed > maxShootSpeed)
             {
@@ -170,13 +168,46 @@ public class BulletSpawnScript : MonoBehaviour
                     }
                 }
 
-                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected < 2)
+                /*if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected < 2)
                     reloadMessage.enabled = true;
                 if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected >= 2)
-                    purchaseAmmoMessage.enabled = true;
+                    purchaseAmmoMessage.enabled = true;*/
             }
 
             timePassed += Time.deltaTime;
+        }
+    }
+
+    private void ReplenishAmmo()
+    {
+        if (Input.GetKeyDown(KeyCode.R) && ready == false)
+        {
+            downTime = Time.time;
+            pressTime = downTime + countDown;
+            ready = true;
+        }
+
+        if (Input.GetKeyUp(KeyCode.R))
+        {
+            ready = false;
+        }
+
+        if (Time.time < pressTime && ready)
+        {
+            float progress = (Time.time - downTime) / countDown;
+
+            progressBar.GetComponent<SpriteRenderer>().color = new Color(1 - progress, progress, 1 - progress);
+            progressBar.size = new Vector2(progress * MAX_PROGRESS_BAR_SIZE, 1);
+        }
+
+        if (Time.time >= pressTime && ready)
+        {
+            Debug.Log("Generating bullets");
+            ready = false;
+            //reload 
+            bulletCount.generateBullets = true;
+            fade = true;
+            fadeColor = 0;
         }
     }
 }

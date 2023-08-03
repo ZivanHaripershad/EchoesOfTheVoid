@@ -17,20 +17,29 @@ public class EnemySpawning : MonoBehaviour {
 
     private int numberSpawned;
     private int maxSpawned;
-    
+
+    public void ResetSpawning()
+    {
+        hasStarted = false;
+    }
 
     public void StartSpawningEnemies(int numToSpawn, bool continueSpawning)
     {
-        
         numberSpawned = 0;
         maxSpawned = numToSpawn;
+        
+        StopTheCoroutine();
         
         if (!hasStarted)
         {
             hasStarted = true;
-            Debug.Log("calling core routine");
             StartCoroutine(SpawnEnemiesCoroutine(numToSpawn, continueSpawning));
         }
+    }
+    
+    public void StopTheCoroutine()
+    {
+        StopCoroutine(SpawnEnemiesCoroutine(0, false));
     }
 
     private IEnumerator SpawnEnemiesCoroutine(int enemiesToSpawn, bool continueSpawning)
