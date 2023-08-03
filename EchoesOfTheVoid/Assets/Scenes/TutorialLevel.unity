@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &113081610 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1663939222, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &125581800
 GameObject:
   m_ObjectHideFlags: 0
@@ -543,6 +548,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &465019977 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1453295742, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &502642323
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,6 +913,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 835232267}
   m_CullTransparentMesh: 1
+--- !u!1 &954199149 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2070318715, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &956225181 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 543851228, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
@@ -1244,10 +1259,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d184a9baf086fc4299a284f330063ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnRate: 8
+  minEnemiesToSpawn: 1
+  maxEnemiesToSpawn: 3
+  spawnInterval: 1
+  spawnTimerVariation: 2
   enemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
-  spawnTimerVariation: 1
-  spawnRate: 6
-  spawnIntevalBetweenSuccessiveEnemies: 2
 --- !u!1 &1551474403
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1336,12 @@ MonoBehaviour:
   powerFactory: {fileID: 522807963}
   shieldFactory: {fileID: 956225181}
   healthFactory: {fileID: 1342986541}
+  bulletUi: {fileID: 1752295807}
+  healthUi: {fileID: 1887656179}
+  reloadMessage: {fileID: 465019977}
+  orbUi: {fileID: 113081610}
+  orbText: {fileID: 1893344459}
+  bulletMessages: {fileID: 954199149}
 --- !u!4 &1574702510
 Transform:
   m_ObjectHideFlags: 0
@@ -1634,6 +1657,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
+--- !u!1 &1752295807 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1592705493608382526, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1787457181 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5000476146650059304, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
@@ -1815,6 +1843,16 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876774586}
   m_CullTransparentMesh: 1
+--- !u!1 &1887656179 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1887656179, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1893344459 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 308460052, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983064768
 GameObject:
   m_ObjectHideFlags: 0
@@ -1899,22 +1937,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
-    - target: {fileID: 306638981, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1352400524, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1352400524, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2046129068, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7400859371959236105, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: m_Name
       value: UI

@@ -21,7 +21,7 @@ public class BulletBarUI : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    { 
+    {
         spriteRenderer.sprite = sprites[bulletCount.currentBullets];
     }
 }

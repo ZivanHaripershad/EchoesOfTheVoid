@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TutorialLevelController : MonoBehaviour
 {
@@ -14,11 +13,14 @@ public class TutorialLevelController : MonoBehaviour
     public UIManager uiManager;
 
     private int popUpIndex;
+    
+    private GlobalVariables variables;
 
     private void Start()
     {
         tutorialData.popUpIndex = 0;
         mouseControl.EnableMouse();
+        variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
     }
 
     private void Update()
@@ -48,7 +50,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 2)
         {
             uiManager.SetLevelObjectsToActive();
-            enemySpawning.SpawnEnemies();
+            variables.mustPause = true;
+            enemySpawning.StartSpawningEnemies(4, false);
 
             //show player how to move and wait for left and right arrow key input
         }

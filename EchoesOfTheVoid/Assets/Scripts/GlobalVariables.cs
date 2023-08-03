@@ -4,34 +4,14 @@ using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
 {
-    private int prevEnemySpawned;
-    private int prevPrevEnemySpawned;
+    public int prevEnemySpawned;
+    public int prevPrevEnemySpawned;
+    public bool mustPause;
     // Start is called before the first frame update
     void Start()
     {
         prevEnemySpawned = -100;
         prevPrevEnemySpawned = -200;
-    }
-
-    // Update is called once per frame
-    public int getPrevEnemySpawned()
-    {
-        return prevEnemySpawned;
-    }
-
-    public int getPrevPrevEnemySpawned()
-    {
-        return prevPrevEnemySpawned;
-    }
-
-    public void setPrevEnemySpawned(int prevEnemySpawned)
-    {
-        this.prevEnemySpawned = prevEnemySpawned;
-        
-    }
-
-    public void setPrevPrevEnemySpawned(int prevPrevEnemySpawned)
-    {
-        this.prevPrevEnemySpawned = prevPrevEnemySpawned;
+        mustPause = false;
     }
 }

@@ -48,7 +48,8 @@ public class DepositOrbs : MonoBehaviour
                     {
                         Animator powerFactoryAnimator = powerFactory.GetComponent<Animator>();
                         powerFactoryAnimator.SetTrigger("isSelected");
-                        orbCounter.orbsCollected -= 1;
+                        orbCounter.planetOrbsDeposited++;
+                        orbCounter.orbsCollected--;
                         deposited = true;
                     }
                     else

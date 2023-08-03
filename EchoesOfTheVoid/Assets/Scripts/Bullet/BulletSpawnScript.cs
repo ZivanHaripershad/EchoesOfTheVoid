@@ -13,6 +13,7 @@ public class BulletSpawnScript : MonoBehaviour
     public float maxShootSpeed;
     private float timePassed;
 
+    
     private TextMeshPro reloadMessage;
     private TextMeshPro cannotFireMessage;
     private TextMeshPro purchaseAmmoMessage;
@@ -51,17 +52,16 @@ public class BulletSpawnScript : MonoBehaviour
     private float fadeColor = 0;
 
     // Start is called before the first frame update
-    void Start()
+    void Start()    
     {
         reloadMessage = GameObject.FindGameObjectWithTag("ReloadMessage").gameObject.GetComponent<TextMeshPro>();
         cannotFireMessage = GameObject.FindGameObjectWithTag("CannotFireMessage").gameObject.GetComponent<TextMeshPro>();
         purchaseAmmoMessage = GameObject.FindGameObjectWithTag("PurchaseAmmoMessage").gameObject.GetComponent<TextMeshPro>();
-
-        bulletCount.currentBullets = bulletCount.maxBullets;
-        bulletCount.generateBullets = false;
+        
         timePassed = 0;
         currReloadTime = 0;
         cannotFireMessage.enabled = false;
+        bulletCount.currentBullets = bulletCount.maxBullets;
         
         purchaseAmmoMessage.enabled = false;
         progressBarInner = GameObject.FindGameObjectsWithTag("progressBarInner")[0];
@@ -132,7 +132,7 @@ public class BulletSpawnScript : MonoBehaviour
             purchaseAmmoMessage.enabled = true;
         }
 
-        if (bulletCount.generateBullets && bulletCount.currentBullets < 14)
+        if (bulletCount.generateBullets && bulletCount.currentBullets < bulletCount.maxBullets)
         {
             reloadMessage.enabled = false;
             if (currReloadTime < reloadTimePerBullet)
@@ -140,12 +140,12 @@ public class BulletSpawnScript : MonoBehaviour
             else
             {
                 currReloadTime = 0;
-                bulletCount.currentBullets = bulletCount.currentBullets + 1;
+                bulletCount.currentBullets += 1;
                 BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
             }
         }
 
-        if (bulletCount.generateBullets && bulletCount.currentBullets == 14)
+        if (bulletCount.generateBullets && bulletCount.currentBullets == bulletCount.maxBullets)
         {
             bulletCount.generateBullets = false;
         }
@@ -162,7 +162,6 @@ public class BulletSpawnScript : MonoBehaviour
                         timePassed = 0;
                         Instantiate(bullet, transform.position, transform.rotation);
                         bulletCount.currentBullets = bulletCount.currentBullets - 1;
-                        BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
                         cannotFireMessage.enabled = false;
                     }
                     else
