@@ -51,7 +51,7 @@ public class TutorialLevelController : MonoBehaviour
         {
             uiManager.SetLevelObjectsToActive();
             variables.mustPause = true;
-            enemySpawning.StartSpawningEnemies();
+            enemySpawning.StartSpawningEnemies(4, false);
 
             //show player how to move and wait for left and right arrow key input
         }

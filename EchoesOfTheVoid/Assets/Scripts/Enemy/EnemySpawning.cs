@@ -14,34 +14,55 @@ public class EnemySpawning : MonoBehaviour {
     [SerializeField] private GameObject enemy;
 
     private bool hasStarted;
+
+    private int numberSpawned;
+    private int maxSpawned;
     
 
-    public void StartSpawningEnemies()
+    public void StartSpawningEnemies(int numToSpawn, bool continueSpawning)
     {
+        
+        numberSpawned = 0;
+        maxSpawned = numToSpawn;
+        
         if (!hasStarted)
         {
             hasStarted = true;
-            StartCoroutine(SpawnEnemiesCoroutine());
+            Debug.Log("calling core routine");
+            StartCoroutine(SpawnEnemiesCoroutine(numToSpawn, continueSpawning));
         }
     }
 
-    private IEnumerator SpawnEnemiesCoroutine()
+    private IEnumerator SpawnEnemiesCoroutine(int enemiesToSpawn, bool continueSpawning)
     {
+        
         while (true)
         {
-            yield return new WaitForSeconds(spawnRate);
-            int enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
 
-            for (int i = 0; i < enemiesToSpawn; i++)
+            if (continueSpawning)
             {
+                enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
+            }
+
+            for (int i = 0; i < enemiesToSpawn || continueSpawning; i++)
+            {
+                //enemies in a wave
                 float randomNumber = Random.Range(0f, spawnTimerVariation);
                 yield return new WaitForSeconds(spawnInterval + randomNumber);
                 Instantiate(enemy, Vector3.zero, quaternion.identity);
+                numberSpawned++;
+                //
+                // if (numberSpawned >= maxSpawned)
+                //     break;
             }
 
+            //waves
+            yield return new WaitForSeconds(spawnRate);
+
+            if (!continueSpawning)
+                break;
         }
 
     }
-
 }
 
