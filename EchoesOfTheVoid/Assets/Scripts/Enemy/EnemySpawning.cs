@@ -28,7 +28,6 @@ public class EnemySpawning : MonoBehaviour {
         if (!hasStarted)
         {
             hasStarted = true;
-            Debug.Log("calling core routine");
             StartCoroutine(SpawnEnemiesCoroutine(numToSpawn, continueSpawning));
         }
     }

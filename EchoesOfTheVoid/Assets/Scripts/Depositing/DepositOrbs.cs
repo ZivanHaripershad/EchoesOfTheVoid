@@ -65,7 +65,6 @@ public class DepositOrbs : MonoBehaviour
                         deposited = true;
 
                         bulletCount.currentBullets = bulletCount.maxBullets;
-                        BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
                     }
                     else
                         cannotDepositSoundEffect.Play();

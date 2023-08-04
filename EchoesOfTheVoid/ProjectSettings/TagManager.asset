@@ -12,6 +12,12 @@ TagManager:
   - ReloadMessage
   - PurchaseAmmoMessage
   - CannotFireMessage
+  - BulletMessages
+  - BulletFactory
+  - PowerFactory
+  - ShieldFactory
+  - HealthFactory
+  - Atmosphere
   layers:
   - Default
   - TransparentFX

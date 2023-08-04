@@ -141,7 +141,6 @@ public class BulletSpawnScript : MonoBehaviour
             {
                 currReloadTime = 0;
                 bulletCount.currentBullets += 1;
-                BulletCounterUI.instance.UpdateBullets(bulletCount.currentBullets);
             }
         }
 
