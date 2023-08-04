@@ -25,6 +25,8 @@ public class FillPowerBar : MonoBehaviour
 
     private float currTimeFilled;
 
+    private AudioSource[] fillEnergySound;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -32,6 +34,7 @@ public class FillPowerBar : MonoBehaviour
         Vector2 newScale = new Vector2 (scale, scale);
         transform.localScale = new Vector3(newScale.x, newScale.y, 1f);
         transform.position += new Vector3(0f, yAdjust, 0f);
+        fillEnergySound = GetComponents<AudioSource>();
     }
 
 
@@ -55,6 +58,22 @@ public class FillPowerBar : MonoBehaviour
                 currTimeFilled = 0;
                 prevSprite++; 
             }
+
+            if (prevSprite == 7) 
+                fillEnergySound[0].Play();
+
+            if (prevSprite == 38)
+                fillEnergySound[1].Play();
+            
+            if (prevSprite == 69)
+                fillEnergySound[2].Play();
+
+            if (prevSprite == 101)
+                fillEnergySound[3].Play();
+            
+            if (prevSprite == 142)
+                fillEnergySound[4].Play();
+
         }
 
         if (prevSprite > sprites.Length - 1)

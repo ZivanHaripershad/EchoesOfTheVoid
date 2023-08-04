@@ -20,6 +20,7 @@ public class HealthBarUpdate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        spriteRenderer.sprite = sprites[healthCount.currentHealth];
+        if (healthCount.currentHealth > 0 && healthCount.currentHealth < sprites.Length)
+            spriteRenderer.sprite = sprites[healthCount.currentHealth];
     }
 }

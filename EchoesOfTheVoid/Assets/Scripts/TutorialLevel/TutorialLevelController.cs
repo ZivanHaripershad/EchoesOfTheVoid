@@ -17,6 +17,8 @@ public class TutorialLevelController : MonoBehaviour
     private int popUpIndex;
     
     private GlobalVariables variables;
+
+    [SerializeField] private OrbCounter orbCounter;
     
     private float waitTime;
     
@@ -96,6 +98,11 @@ public class TutorialLevelController : MonoBehaviour
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
             
+            if (!Input.GetKey(KeyCode.S) && orbCounter.orbsCollected < 3)
+            {
+                Debug.Log("FAILED");
+            }
+            
             //show player how to spend orbs
             if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.J))
             {
@@ -118,6 +125,11 @@ public class TutorialLevelController : MonoBehaviour
                 waitTime -= Time.deltaTime;
             }
             //let player play and win against enemies
+
+            if (orbCounter.orbsCollected >= orbCounter.planetOrbMax)
+            {
+                Debug.Log("Player wins!!!");
+            }
         }
     }
 }

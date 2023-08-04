@@ -130,6 +130,7 @@ public class BulletSpawnScript : MonoBehaviour
         if (bulletCount.generateBullets && bulletCount.currentBullets < bulletCount.maxBullets)
         {
             reloadMessage.enabled = false;
+            purchaseAmmoMessage.enabled = false;
             if (currReloadTime < reloadTimePerBullet)
                 currReloadTime += Time.deltaTime;
             else
@@ -141,6 +142,8 @@ public class BulletSpawnScript : MonoBehaviour
 
         if (bulletCount.generateBullets && bulletCount.currentBullets == bulletCount.maxBullets)
         {
+            purchaseAmmoMessage.enabled = false;
+            reloadMessage.enabled = false;
             bulletCount.generateBullets = false;
         }
     }
