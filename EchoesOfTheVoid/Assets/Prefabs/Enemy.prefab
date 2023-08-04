@@ -2020,7 +2020,7 @@ MonoBehaviour:
   - {fileID: 4350141239264964218}
   - {fileID: 4350141238799953700}
   rotationSpeed: 100
-  enemySpeed: 0.2
+  enemySpeed: 0.1
   enemy: {fileID: 8012780089176710275}
   radius: 5
 --- !u!50 &4350141238360582128

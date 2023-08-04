@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject reloadMessage;
     [SerializeField] private GameObject orbUi;
     [SerializeField] private GameObject orbText;
+    
 
     public GameObject bulletMessages; 
     void Start()
