@@ -5,8 +5,8 @@ using UnityEngine;
 public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
 {
 
-    const float MAX_Y = 4.45f;
-    const float MAX_X = 8.4f;
+    float MAX_Y = 4.45f;
+    float MAX_X = 8.4f;
 
     [SerializeField]
     private float floatSpeed;
@@ -23,6 +23,12 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
     private float randomYForce;
     private float randomXForce;
 
+    private float spawnX;
+    private float spawnY;
+
+    [SerializeField]
+    private float bounds;
+
 
     // Start is called before the first frame update
     void Start()
@@ -30,7 +36,10 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         randomXForce = Random.Range(-1f, 1f);
         randomYForce = Random.Range(-1f, 1f);
-        currentDriftTime = 0; 
+        currentDriftTime = 0;
+
+        spawnX = gameObject.transform.position.x;
+        spawnY = gameObject.transform.position.y;
     }
 
     // Update is called once per frame
@@ -47,6 +56,15 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
         if (transform.position.y < -MAX_Y)
             rb.AddForce(new Vector3(0, floatSpeed, 0));
 
+        //restrict orbs to area of instantiation
+        if (transform.position.x > spawnX + bounds)
+            rb.AddForce(new Vector3(-floatSpeed, 0, 0));
+        if (transform.position.x < spawnX - bounds)
+            rb.AddForce(new Vector3(floatSpeed, 0, 0));
+        if (transform.position.y > spawnY + bounds)
+            rb.AddForce(new Vector3(0, -floatSpeed, 0));
+        if (transform.position.y < spawnY - bounds)
+            rb.AddForce(new Vector3(0, floatSpeed, 0));
 
         //floating animation
         if (currentDriftTime < driftTimeInOneDirection)
