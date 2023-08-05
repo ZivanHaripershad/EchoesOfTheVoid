@@ -14,11 +14,6 @@ public class BulletSpawnScript : MonoBehaviour
     public float maxShootSpeed;
     private float timePassed;
 
-    
-    public Text reloadMessage;
-    public Text cannotFireMessage;
-    public Text purchaseAmmoMessage;
-
     public SpaceshipMode spaceshipMode;
 
     public OrbDepositingMode orbDepositingMode;
@@ -53,10 +48,19 @@ public class BulletSpawnScript : MonoBehaviour
     private float fadeColor = 0;
 
     public GameManagerData gameManagerData;
+    
+    
+    private Text reloadMessage;
+    private Text cannotFireMessage;
+    private Text purchaseAmmoMessage;
 
     // Start is called before the first frame update
-    void Start()    
+    void Start()
     {
+        reloadMessage = GameObject.FindGameObjectWithTag("Reload").GetComponent<Text>();
+        cannotFireMessage = GameObject.FindGameObjectWithTag("CannotFire").GetComponent<Text>();
+        purchaseAmmoMessage = GameObject.FindGameObjectWithTag("PurchaseAmmo").GetComponent<Text>();
+        
         timePassed = 0;
         currReloadTime = 0;
         cannotFireMessage.enabled = false;

@@ -17,7 +17,6 @@ public class BulletDeposit : MonoBehaviour
         
         if(orbCounter.orbsCollected >= factoryCosts.bulletCost){
             spriteRenderer.sprite = enabledFactorySprite;
-            Debug.Log("Enabled");
         }
         else{
             spriteRenderer.sprite = disabledFactorySprite;
@@ -28,7 +27,6 @@ public class BulletDeposit : MonoBehaviour
     void Update(){
         if(orbCounter.orbsCollected >= factoryCosts.bulletCost){
             spriteRenderer.sprite = enabledFactorySprite;
-            Debug.Log("Enabled");
         }
         else{
             spriteRenderer.sprite = disabledFactorySprite;

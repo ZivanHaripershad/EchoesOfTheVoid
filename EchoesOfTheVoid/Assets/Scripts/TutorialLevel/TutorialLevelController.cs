@@ -128,6 +128,12 @@ public class TutorialLevelController : MonoBehaviour
             if (orbCounter.orbsCollected >= orbCounter.planetOrbMax)
             {
                 Debug.Log("Player wins!!!");
+                
+                //hide everything
+                uiManager.SetLevelObjectsToInactive();
+                
+                //show the end of level screen and play the animation
+                
             }
         }
     }

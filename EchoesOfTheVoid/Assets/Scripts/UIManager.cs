@@ -52,4 +52,16 @@ public class UIManager : MonoBehaviour
         orbText.SetActive(true);
         reloadMessage.SetActive(true);
     }
+
+    public void SetLevelObjectsToInactive()
+    {
+        earth.SetActive(false);
+        spaceship.SetActive(false);
+        bulletUi.SetActive(false);
+        bulletUi.SetActive(false);
+        healthUi.SetActive(false);
+        orbUi.SetActive(false);
+        orbText.SetActive(false);
+        reloadMessage.SetActive(false);
+    }
 }

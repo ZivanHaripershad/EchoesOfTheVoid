@@ -18,15 +18,6 @@ public class DepositOrbs : MonoBehaviour
     public OrbCounter orbCounter;
     public BulletCount bulletCount;
 
-    [SerializeField]
-    private GameObject bulletFactory;
-    [SerializeField]
-    private GameObject powerFactory;
-    [SerializeField]
-    private GameObject shieldFactory;
-    [SerializeField]
-    private GameObject healthFactory;
-    
     private Animator bulletFactoryAnim;
     private Animator powerFactoryAnim;
     private Animator shieldFactoryAnim;
@@ -38,10 +29,10 @@ public class DepositOrbs : MonoBehaviour
     {
         orbDepositingMode.depositingMode = false;
 
-        bulletFactoryAnim = bulletFactory.GetComponent<Animator>();
-        powerFactoryAnim = powerFactory.GetComponent<Animator>();
-        shieldFactoryAnim= shieldFactory.GetComponent<Animator>();
-        healthFactoryAnim = healthFactory.GetComponent<Animator>();
+        bulletFactoryAnim = GameObject.Find("BulletFactory").GetComponent<Animator>();
+        powerFactoryAnim = GameObject.Find("PowerFactory").GetComponent<Animator>();
+        shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
+        healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
     }
     enum OrbFactoryDeposited
     {
