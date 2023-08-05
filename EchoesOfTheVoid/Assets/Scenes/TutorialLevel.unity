@@ -4586,6 +4586,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: powerFactory
+      value: 
+      objectReference: {fileID: 522807963}
+    - target: {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: bulletFactory
+      value: 
+      objectReference: {fileID: 673427604}
+    - target: {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: healthFactory
+      value: 
+      objectReference: {fileID: 1342986541}
+    - target: {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: shieldFactory
+      value: 
+      objectReference: {fileID: 956225181}
     - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: reloadMessage
       value: 

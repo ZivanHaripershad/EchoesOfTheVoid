@@ -98,16 +98,15 @@ public class TutorialLevelController : MonoBehaviour
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
             
-            if (!Input.GetKey(KeyCode.S) && orbCounter.orbsCollected < 3)
+            if (orbCounter.orbsCollected < 3 && orbCounter.planetOrbsDeposited < 1)
             {
                 Debug.Log("FAILED");
             }
             
             //show player how to spend orbs
-            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.J))
-            {
+
+            if (orbCounter.planetOrbsDeposited > 0)
                 tutorialData.popUpIndex++;
-            }
         }
         else if (popUpIndex == 6)
         {

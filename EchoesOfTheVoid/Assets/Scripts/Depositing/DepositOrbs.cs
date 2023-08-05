@@ -18,21 +18,40 @@ public class DepositOrbs : MonoBehaviour
     public OrbCounter orbCounter;
     public BulletCount bulletCount;
 
+    [SerializeField]
     private GameObject bulletFactory;
+    [SerializeField]
     private GameObject powerFactory;
+    [SerializeField]
     private GameObject shieldFactory;
+    [SerializeField]
     private GameObject healthFactory;
+    
+    private Animator bulletFactoryAnim;
+    private Animator powerFactoryAnim;
+    private Animator shieldFactoryAnim;
+    private Animator healthFactoryAnim;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        bulletFactory = GameObject.Find("BulletFactory");
-        powerFactory = GameObject.Find("PowerFactory");
-        shieldFactory = GameObject.Find("ShieldFactory");
-        healthFactory = GameObject.Find("HealthFactory");
         orbDepositingMode.depositingMode = false;
+
+        bulletFactoryAnim = bulletFactory.GetComponent<Animator>();
+        powerFactoryAnim = powerFactory.GetComponent<Animator>();
+        shieldFactoryAnim= shieldFactory.GetComponent<Animator>();
+        healthFactoryAnim = healthFactory.GetComponent<Animator>();
     }
+    enum OrbFactoryDeposited
+    {
+        POWER, 
+        AMMO, 
+        SHIELD, 
+        HEALTH
+    }
+    
+    private OrbFactoryDeposited factoryDeposited;
 
     // Update is called once per frame
     void Update()
@@ -46,11 +65,11 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.J))
                     if (orbCounter.orbsCollected >= 1)
                     {
-                        Animator powerFactoryAnimator = powerFactory.GetComponent<Animator>();
-                        powerFactoryAnimator.SetTrigger("isSelected");
                         orbCounter.planetOrbsDeposited++;
                         orbCounter.orbsCollected--;
                         deposited = true;
+
+                        factoryDeposited = OrbFactoryDeposited.POWER;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -59,12 +78,11 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.I))
                     if (orbCounter.orbsCollected >= 2)
                     {
-                        Animator bulletFactoryAnimator = bulletFactory.GetComponent<Animator>();
-                        bulletFactoryAnimator.SetTrigger("isSelected");
                         orbCounter.orbsCollected -= 2;
                         deposited = true;
-
                         bulletCount.currentBullets = bulletCount.maxBullets;
+
+                        factoryDeposited = OrbFactoryDeposited.AMMO;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -73,10 +91,10 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.L))
                     if (orbCounter.orbsCollected >= 3)
                     {
-                        Animator shieldFactoryAnimator = shieldFactory.GetComponent<Animator>();
-                        shieldFactoryAnimator.SetTrigger("isSelected");
                         orbCounter.orbsCollected -= 3;
                         deposited = true;
+
+                        factoryDeposited = OrbFactoryDeposited.SHIELD;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -85,10 +103,10 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.K))
                     if (orbCounter.orbsCollected >= 1)
                     {
-                        Animator healthFactoryAnimator = healthFactory.GetComponent<Animator>();
-                        healthFactoryAnimator.SetTrigger("isSelected");
                         orbCounter.orbsCollected -= 1;
                         deposited = true;
+
+                        factoryDeposited = OrbFactoryDeposited.HEALTH;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -99,8 +117,23 @@ public class DepositOrbs : MonoBehaviour
                     depositSoundEffect.Play();
 
                     //update the HUD
-                    Debug.Log("orbcounter orbs: " + orbCounter.orbsCollected);
                     OrbCounterUI.instance.UpdateOrbs(orbCounter.orbsCollected);
+
+                    switch (factoryDeposited)
+                    {
+                        case OrbFactoryDeposited.AMMO:
+                            bulletFactoryAnim.SetTrigger("isSelected");
+                            break;
+                        case OrbFactoryDeposited.POWER:
+                            powerFactoryAnim.SetTrigger("isSelected");
+                            break;
+                        case OrbFactoryDeposited.HEALTH:
+                            healthFactoryAnim.SetTrigger("isSelected");
+                            break;
+                        case OrbFactoryDeposited.SHIELD:
+                            shieldFactoryAnim.SetTrigger("isSelected");
+                            break;
+                    }
                 }
                 
             }
