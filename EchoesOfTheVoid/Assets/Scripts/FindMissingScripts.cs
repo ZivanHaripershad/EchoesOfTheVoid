@@ -8,7 +8,7 @@ using UnityEditor;
 public class FindMissingScripts 
 {
     // Start is called before the first frame update
-    [MenuItem("My menu/Find missing scripts")]
+    /*[MenuItem("My menu/Find missing scripts")]
     static void FindMissingScriptsInProject()
     {
         string[] prefabPaths = AssetDatabase.GetAllAssetPaths()
@@ -25,5 +25,5 @@ public class FindMissingScripts
                 }
             }
         }
-    }
+    }*/
 }

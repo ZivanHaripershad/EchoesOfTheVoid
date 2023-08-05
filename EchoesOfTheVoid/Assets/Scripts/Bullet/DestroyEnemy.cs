@@ -44,15 +44,12 @@ public class DestroyEnemy : MonoBehaviour
 
             if (collision.gameObject.CompareTag("Earth") && !shieldCounter.isShieldActive)
             {
-                Debug.Log("earth damage");
                 healthCount.currentHealth--;
             }
 
             if (collision.gameObject.CompareTag("Bullet"))
             {
-                Debug.Log("enemy damage");
                 gameManagerData.numberOfEnemiesKilled++;
-
             }
 
             if (!collision.gameObject.CompareTag("Earth"))

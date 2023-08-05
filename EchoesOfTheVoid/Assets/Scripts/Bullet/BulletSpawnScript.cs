@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BulletSpawnScript : MonoBehaviour
 {
@@ -14,9 +15,9 @@ public class BulletSpawnScript : MonoBehaviour
     private float timePassed;
 
     
-    private TextMeshPro reloadMessage;
-    private TextMeshPro cannotFireMessage;
-    private TextMeshPro purchaseAmmoMessage;
+    public Text reloadMessage;
+    public Text cannotFireMessage;
+    public Text purchaseAmmoMessage;
 
     public SpaceshipMode spaceshipMode;
 
@@ -56,10 +57,6 @@ public class BulletSpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()    
     {
-        reloadMessage = GameObject.FindGameObjectWithTag("ReloadMessage").gameObject.GetComponent<TextMeshPro>();
-        cannotFireMessage = GameObject.FindGameObjectWithTag("CannotFireMessage").gameObject.GetComponent<TextMeshPro>();
-        purchaseAmmoMessage = GameObject.FindGameObjectWithTag("PurchaseAmmoMessage").gameObject.GetComponent<TextMeshPro>();
-        
         timePassed = 0;
         currReloadTime = 0;
         cannotFireMessage.enabled = false;
@@ -130,6 +127,7 @@ public class BulletSpawnScript : MonoBehaviour
         if (bulletCount.generateBullets && bulletCount.currentBullets < bulletCount.maxBullets)
         {
             reloadMessage.enabled = false;
+            purchaseAmmoMessage.enabled = false;
             if (currReloadTime < reloadTimePerBullet)
                 currReloadTime += Time.deltaTime;
             else
@@ -141,6 +139,8 @@ public class BulletSpawnScript : MonoBehaviour
 
         if (bulletCount.generateBullets && bulletCount.currentBullets == bulletCount.maxBullets)
         {
+            purchaseAmmoMessage.enabled = false;
+            reloadMessage.enabled = false;
             bulletCount.generateBullets = false;
         }
     }
