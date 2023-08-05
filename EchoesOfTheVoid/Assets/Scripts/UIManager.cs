@@ -13,11 +13,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject bulletUi;
     [SerializeField] private GameObject healthUi;
     [SerializeField] private GameObject reloadMessage;
+    [SerializeField] private GameObject cannotFireMessage;
+    [SerializeField] private GameObject purchaseAmmoMessage;
     [SerializeField] private GameObject orbUi;
     [SerializeField] private GameObject orbText;
     
-
-    public GameObject bulletMessages; 
     void Start()
     {
         atmosphereReaction.SetActive(false);
@@ -30,6 +30,8 @@ public class UIManager : MonoBehaviour
         bulletUi.SetActive(false);
         healthUi.SetActive(false);
         reloadMessage.SetActive(false);
+        cannotFireMessage.SetActive(false);
+        purchaseAmmoMessage.SetActive(false);
         orbUi.SetActive(false);
         orbText.SetActive(false);
     }
