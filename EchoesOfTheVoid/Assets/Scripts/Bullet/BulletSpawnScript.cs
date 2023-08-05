@@ -23,6 +23,8 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField]
     private AudioSource shootSoundEffect;
 
+    [SerializeField] private AudioSource cannotFireSoundEffect;
+
     public OrbCounter orbCounter;
 
     //for bullet reload timer
@@ -122,6 +124,7 @@ public class BulletSpawnScript : MonoBehaviour
 
     private void CheckBulletStatus()
     {
+
         if (bulletCount.currentBullets > 0)
         {
             purchaseAmmoMessage.enabled = false;
@@ -171,11 +174,11 @@ public class BulletSpawnScript : MonoBehaviour
                         cannotFireMessage.enabled = true;
                     }
                 }
-
-                /*if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected < 2)
-                    reloadMessage.enabled = true;
-                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected >= 2)
-                    purchaseAmmoMessage.enabled = true;*/
+                else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
+                {
+                    cannotFireSoundEffect.Play();
+                    purchaseAmmoMessage.enabled = true;
+                }
             }
 
             timePassed += Time.deltaTime;
