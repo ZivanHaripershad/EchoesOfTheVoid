@@ -11,6 +11,7 @@ public class MouseControl : MonoBehaviour
     
     public void EnableMouse()
     {
+        Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
     }
 

@@ -11,23 +11,30 @@ public class TutorialLevelController : MonoBehaviour
     public MouseControl mouseControl;
 
     public EnemySpawning enemySpawning;
+    public BulletSpawnScript bulletSpawnScript;
 
     public UIManager uiManager;
+    public HealthCount healthCount;
 
+    public AudioSource tutorialBackgroundMusic;
+    public AudioSource gameBackgroundMusic;
+    
+    public HealthDeposit healthDeposit;
+    
     private int popUpIndex;
     
     private GlobalVariables variables;
 
     [SerializeField] private OrbCounter orbCounter;
-    
-    private float waitTime;
-    
+
     private void Start()
     {
+        orbCounter.planetOrbMax = 5;
         tutorialData.popUpIndex = 0;
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
-        waitTime = 10f;
+        gameManagerData.tutorialWaitTime = 10f;
+        gameManagerData.hasResetAmmo = true;
         mouseControl.EnableMouse();
         variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
     }
@@ -56,12 +63,12 @@ public class TutorialLevelController : MonoBehaviour
         {
             //show second screen
             enemySpawning.ResetSpawning();
-            enemySpawning.StopTheCoroutine();
         }
         else if (popUpIndex == 2)
         {
             //show player how to move and wait for left and right arrow key input and shoot
             mouseControl.DisableMouse();
+            uiManager.DisableAtmosphereObject();
             uiManager.SetLevelObjectsToActive();
             variables.mustPause = true;
             enemySpawning.StartSpawningEnemies(3, false);
@@ -98,22 +105,29 @@ public class TutorialLevelController : MonoBehaviour
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
             
-            if (!Input.GetKey(KeyCode.S) && orbCounter.orbsCollected < 3)
+            if (orbCounter.orbsCollected < 3 && orbCounter.planetOrbsDeposited < 1)
             {
                 Debug.Log("FAILED");
             }
             
             //show player how to spend orbs
-            if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.J))
+
+            if (orbCounter.planetOrbsDeposited > 0)
             {
                 tutorialData.popUpIndex++;
             }
         }
         else if (popUpIndex == 6)
         {
+            //let player play and win against enemies
+            
+            tutorialBackgroundMusic.Stop();
+            gameBackgroundMusic.Play();
+
             mouseControl.DisableMouse();
-            if (waitTime <= 0)
+            if (gameManagerData.tutorialWaitTime <= 0)
             {
+                bulletSpawnScript.AutomaticallyReplenishAmmoForPlayer();
                 variables.mustPause = false;
                 popUps[popUpIndex].SetActive(false);
                 gameManagerData.expireOrbs = true;
@@ -122,14 +136,38 @@ public class TutorialLevelController : MonoBehaviour
             }
             else
             {
-                waitTime -= Time.deltaTime;
+                gameManagerData.tutorialWaitTime -= Time.deltaTime;
             }
-            //let player play and win against enemies
 
-            if (orbCounter.orbsCollected >= orbCounter.planetOrbMax)
+            if (healthCount.currentHealth == 0)
             {
-                Debug.Log("Player wins!!!");
+                //show retry screen
+                enemySpawning.DestroyActiveEnemies();
+                uiManager.SetLevelObjectsToInactive();
+                tutorialData.popUpIndex = 8;
             }
+
+            if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && !HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+            {
+                //player wins so show winning screen
+                enemySpawning.DestroyActiveEnemies();
+                enemySpawning.ResetSpawning();
+                enemySpawning.StopTheCoroutine();
+                uiManager.SetLevelObjectsToInactive();
+                
+                tutorialData.popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 7)
+        {
+            //
+        }
+        else if (popUpIndex == 8)
+        {
+            //retry screen
+            mouseControl.EnableMouse();
+            enemySpawning.ResetSpawning();
+            enemySpawning.StopTheCoroutine();
         }
     }
 }

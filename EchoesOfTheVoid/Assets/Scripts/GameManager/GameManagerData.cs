@@ -9,4 +9,6 @@ public class GameManagerData : ScriptableObject
     public int numberOfOrbsCollected;
     public bool expireOrbs;
     public bool tutorialActive;
+    public float tutorialWaitTime;
+    public bool hasResetAmmo;
 }

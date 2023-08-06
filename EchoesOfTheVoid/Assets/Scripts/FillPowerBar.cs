@@ -1,4 +1,6 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class FillPowerBar : MonoBehaviour
 {
@@ -23,9 +25,13 @@ public class FillPowerBar : MonoBehaviour
     [SerializeField]
     private float barFillSpeed;
 
+    [SerializeField] private float fillSoundVolume;
+
     private float currTimeFilled;
 
     private AudioSource[] fillEnergySound;
+
+    [SerializeField] private float fillSoundFadeSpeed;
 
     void Start()
     {
@@ -48,9 +54,18 @@ public class FillPowerBar : MonoBehaviour
     void Update()
     {
         int currSprite = (int) Mathf.Round((counter.planetOrbsDeposited * 1.0f / counter.planetOrbMax) * (sprites.Length - 1));
+
+        if (prevSprite > currSprite)
+        {
+            prevSprite = currSprite;
+        }
         
         if (prevSprite < currSprite)
         {
+            fillEnergySound[5].volume = fillSoundVolume;
+            if (!fillEnergySound[5].isPlaying)
+                fillEnergySound[5].Play();//Shepherd tone
+            
             currTimeFilled += Time.deltaTime;
 
             if (currTimeFilled > (1/barFillSpeed))
@@ -73,7 +88,10 @@ public class FillPowerBar : MonoBehaviour
             
             if (prevSprite == 142)
                 fillEnergySound[4].Play();
-
+        }
+        else
+        {
+            fillEnergySound[5].volume -= fillSoundFadeSpeed * Time.deltaTime;
         }
 
         if (prevSprite > sprites.Length - 1)

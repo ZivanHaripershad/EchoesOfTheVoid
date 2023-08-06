@@ -12,6 +12,7 @@ public class EnemySpawning : MonoBehaviour {
     [SerializeField] private float spawnInterval;
     [SerializeField] private float spawnTimerVariation;
     [SerializeField] private GameObject enemy;
+    private Coroutine currentCoroutine;
 
     private bool hasStarted;
 
@@ -27,24 +28,21 @@ public class EnemySpawning : MonoBehaviour {
     {
         numberSpawned = 0;
         maxSpawned = numToSpawn;
-        
-        StopTheCoroutine();
-        
+
         if (!hasStarted)
         {
             hasStarted = true;
-            StartCoroutine(SpawnEnemiesCoroutine(numToSpawn, continueSpawning));
+            currentCoroutine = StartCoroutine(SpawnEnemiesCoroutine(numToSpawn, continueSpawning));
         }
     }
     
     public void StopTheCoroutine()
     {
-        StopCoroutine(SpawnEnemiesCoroutine(0, false));
+        StopCoroutine(currentCoroutine);
     }
 
     private IEnumerator SpawnEnemiesCoroutine(int enemiesToSpawn, bool continueSpawning)
     {
-        
         while (true)
         {
 
@@ -72,6 +70,16 @@ public class EnemySpawning : MonoBehaviour {
                 break;
         }
 
+    }
+
+    public void DestroyActiveEnemies()
+    {
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Destroy(enemies[i]);
+        }
     }
 }
 

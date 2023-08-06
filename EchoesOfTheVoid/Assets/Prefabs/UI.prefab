@@ -195,6 +195,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbCounterText: {fileID: 308460054}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
 --- !u!1 &314055301
 GameObject:
   m_ObjectHideFlags: 0
@@ -904,7 +906,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -1450,7 +1452,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
@@ -2427,6 +2429,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
   enabledFactorySprite: {fileID: 21300000, guid: 69b1f535115560046a24a4cc16f3ffbe, type: 3}
   disabledFactorySprite: {fileID: 21300000, guid: 2c662a8a26ab4054fabaa9b9cb5b8fb0, type: 3}
 --- !u!1 &1936227970
@@ -2951,7 +2954,7 @@ GameObject:
   - component: {fileID: 1673256029972869531}
   m_Layer: 5
   m_Name: PurchaseAmmoMessage
-  m_TagString: Untagged
+  m_TagString: PurchaseAmmo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3162,7 +3165,7 @@ GameObject:
   - component: {fileID: 5678135460743415179}
   m_Layer: 5
   m_Name: CannotFireMessage
-  m_TagString: Untagged
+  m_TagString: CannotFire
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3242,7 +3245,7 @@ GameObject:
   - component: {fileID: 3062484386626148861}
   m_Layer: 5
   m_Name: ReloadMessage
-  m_TagString: Untagged
+  m_TagString: Reload
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

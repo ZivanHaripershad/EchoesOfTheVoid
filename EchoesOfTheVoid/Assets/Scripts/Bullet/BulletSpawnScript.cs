@@ -9,54 +9,47 @@ using UnityEngine.UI;
 public class BulletSpawnScript : MonoBehaviour
 {
 
-    [SerializeField]
-    private GameObject bullet;
-    public float maxShootSpeed;
-    private float timePassed;
-
-    
-    public Text reloadMessage;
-    public Text cannotFireMessage;
-    public Text purchaseAmmoMessage;
-
-    public SpaceshipMode spaceshipMode;
-
-    public OrbDepositingMode orbDepositingMode;
-
-    public BulletCount bulletCount;
-
-    [SerializeField]
-    private AudioSource shootSoundEffect;
-
+    public GameManagerData gameManagerData;
     public OrbCounter orbCounter;
-
+    public float maxShootSpeed;
+    public SpaceshipMode spaceshipMode;
+    public OrbDepositingMode orbDepositingMode;
+    public BulletCount bulletCount;
     //for bullet reload timer
     [SerializeField]
     public float countDown;
-
+    
+    private float timePassed;
+    [SerializeField]
+    private AudioSource shootSoundEffect;
+    [SerializeField] private AudioSource cannotFireSoundEffect;
     private float downTime, pressTime = 0;
     private bool ready = false;
-
     [SerializeField]
     private float reloadTimePerBullet;
-
     private GameObject progressBarInner;
-
     private float currReloadTime;
-
     private SpriteRenderer progressBar;
-
     private const float MAX_PROGRESS_BAR_SIZE = 38.36f;
-
     private bool fade = false;
-
     private float fadeColor = 0;
+    [SerializeField]
+    private GameObject bullet;
 
-    public GameManagerData gameManagerData;
+    public GameObject canvasUI;
+    
+    private Text reloadMessage;
+    private Text cannotFireMessage;
+    private Text purchaseAmmoMessage;
 
     // Start is called before the first frame update
-    void Start()    
+    void Start()
     {
+        
+        reloadMessage = canvasUI.transform.Find("ReloadMessage").GetComponent<Text>();
+        cannotFireMessage = canvasUI.transform.Find("CannotFireMessage").GetComponent<Text>();
+        purchaseAmmoMessage = canvasUI.transform.Find("PurchaseAmmoMessage").GetComponent<Text>();
+        
         timePassed = 0;
         currReloadTime = 0;
         cannotFireMessage.enabled = false;
@@ -73,7 +66,6 @@ public class BulletSpawnScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (fade)
         {
             progressBar.GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f, 1 - fadeColor);
@@ -118,6 +110,7 @@ public class BulletSpawnScript : MonoBehaviour
 
     private void CheckBulletStatus()
     {
+
         if (bulletCount.currentBullets > 0)
         {
             purchaseAmmoMessage.enabled = false;
@@ -167,11 +160,11 @@ public class BulletSpawnScript : MonoBehaviour
                         cannotFireMessage.enabled = true;
                     }
                 }
-
-                /*if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected < 2)
-                    reloadMessage.enabled = true;
-                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0 && orbCounter.orbsCollected >= 2)
-                    purchaseAmmoMessage.enabled = true;*/
+                else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
+                {
+                    cannotFireSoundEffect.Play();
+                    purchaseAmmoMessage.enabled = true;
+                }
             }
 
             timePassed += Time.deltaTime;
@@ -208,6 +201,15 @@ public class BulletSpawnScript : MonoBehaviour
             bulletCount.generateBullets = true;
             fade = true;
             fadeColor = 0;
+        }
+    }
+
+    public void AutomaticallyReplenishAmmoForPlayer()
+    {
+        if (gameManagerData.hasResetAmmo)
+        {
+            bulletCount.currentBullets = bulletCount.maxBullets;
+            gameManagerData.hasResetAmmo = false;
         }
     }
 }

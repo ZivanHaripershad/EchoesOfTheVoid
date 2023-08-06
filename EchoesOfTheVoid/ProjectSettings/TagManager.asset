@@ -9,9 +9,10 @@ TagManager:
   - Bullet
   - GlobalVars
   - progressBarInner
-  - ReloadMessage
-  - PurchaseAmmoMessage
-  - CannotFireMessage
+  - CannotFire
+  - Reload
+  - PurchaseAmmo
+  - Enemy
   layers:
   - Default
   - TransparentFX
