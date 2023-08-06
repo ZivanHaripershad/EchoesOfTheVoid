@@ -14,7 +14,7 @@ public class DestroyEnemy : MonoBehaviour
     public ShieldCounter shieldCounter;
     public GameManagerData gameManagerData;
     
-    [SerializeField] private AudioSource explosionSoundEffect;
+    private AudioSource explosionSoundEffect;
     [SerializeField] private HealthCount healthCount;
     private bool canBeDestroyed;
     private GameObject earth;
@@ -26,6 +26,7 @@ public class DestroyEnemy : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         canBeDestroyed = true;
         earth = GameObject.FindGameObjectWithTag("Earth");
+        explosionSoundEffect = GetComponent<AudioSource>();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

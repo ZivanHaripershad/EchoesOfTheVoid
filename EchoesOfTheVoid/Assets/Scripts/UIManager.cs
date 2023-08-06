@@ -74,4 +74,14 @@ public class UIManager : MonoBehaviour
         cannotFireMessage.SetActive(false);
         purchaseAmmoMessage.SetActive(false);
     }
+
+    public void DestroyRemainingOrbs()
+    {
+        var orbs = GameObject.FindGameObjectsWithTag("Orb");
+
+        for (int i = 0; i < orbs.Length; i++)
+        {
+            Destroy(orbs[i]);
+        }
+    }
 }

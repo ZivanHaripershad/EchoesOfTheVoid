@@ -1,5 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class TutorialLevelController : MonoBehaviour
 {
@@ -16,11 +18,14 @@ public class TutorialLevelController : MonoBehaviour
     public UIManager uiManager;
     public HealthCount healthCount;
 
-    public AudioSource tutorialBackgroundMusic;
-    public AudioSource gameBackgroundMusic;
+    public AudioSource[] sounds;
     
     public HealthDeposit healthDeposit;
-    
+
+    public Text planetHealthNum;
+    public Text orbsNumber;
+    public Text enemiesNumber;
+
     private int popUpIndex;
     
     private GlobalVariables variables;
@@ -121,8 +126,8 @@ public class TutorialLevelController : MonoBehaviour
         {
             //let player play and win against enemies
             
-            tutorialBackgroundMusic.Stop();
-            gameBackgroundMusic.Play();
+            /*sounds[0].Stop();
+            sounds[1].Play();*/
 
             mouseControl.DisableMouse();
             if (gameManagerData.tutorialWaitTime <= 0)
@@ -142,6 +147,7 @@ public class TutorialLevelController : MonoBehaviour
             if (healthCount.currentHealth == 0)
             {
                 //show retry screen
+                uiManager.DestroyRemainingOrbs();
                 enemySpawning.DestroyActiveEnemies();
                 uiManager.SetLevelObjectsToInactive();
                 tutorialData.popUpIndex = 8;
@@ -150,6 +156,7 @@ public class TutorialLevelController : MonoBehaviour
             if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && !HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
             {
                 //player wins so show winning screen
+                uiManager.DestroyRemainingOrbs();
                 enemySpawning.DestroyActiveEnemies();
                 enemySpawning.ResetSpawning();
                 enemySpawning.StopTheCoroutine();
@@ -161,6 +168,9 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 7)
         {
             //Level complete screen
+            planetHealthNum.text = (Math.Ceiling((decimal)healthCount.currentHealth / healthCount.maxHealth) * 100) + "%";
+            orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
+            enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
         }
         else if (popUpIndex == 8)
         {
