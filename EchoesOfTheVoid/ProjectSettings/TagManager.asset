@@ -12,6 +12,7 @@ TagManager:
   - CannotFire
   - Reload
   - PurchaseAmmo
+  - Enemy
   layers:
   - Default
   - TransparentFX

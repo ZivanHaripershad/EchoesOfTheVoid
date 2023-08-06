@@ -54,6 +54,11 @@ public class FillPowerBar : MonoBehaviour
     void Update()
     {
         int currSprite = (int) Mathf.Round((counter.planetOrbsDeposited * 1.0f / counter.planetOrbMax) * (sprites.Length - 1));
+
+        if (prevSprite > currSprite)
+        {
+            prevSprite = currSprite;
+        }
         
         if (prevSprite < currSprite)
         {

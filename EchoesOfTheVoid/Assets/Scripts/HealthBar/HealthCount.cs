@@ -7,4 +7,11 @@ public class HealthCount : ScriptableObject
 {
     public int maxHealth;
     public int currentHealth;
+    
+    public enum HealthStatus
+    {
+        LOW, 
+        MEDIUM, 
+        HIGH
+    }
 }

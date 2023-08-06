@@ -23,17 +23,20 @@ public class UIManager : MonoBehaviour
         atmosphereReaction.SetActive(false);
         earth.SetActive(false);
         spaceship.SetActive(false);
+        
+        bulletUi.SetActive(false);
+        healthUi.SetActive(false);
+        orbUi.SetActive(false);
+        orbText.SetActive(false);
+        
+        reloadMessage.SetActive(false);
+        cannotFireMessage.SetActive(false);
+        purchaseAmmoMessage.SetActive(false);
+        
         bulletFactory.SetActive(false);
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
-        bulletUi.SetActive(false);
-        healthUi.SetActive(false);
-        reloadMessage.SetActive(false);
-        cannotFireMessage.SetActive(false);
-        purchaseAmmoMessage.SetActive(false);
-        orbUi.SetActive(false);
-        orbText.SetActive(false);
     }
 
     public void SetAtmosphereObjectToActive()
@@ -41,16 +44,22 @@ public class UIManager : MonoBehaviour
         atmosphereReaction.SetActive(true);
     }
     
+    public void DisableAtmosphereObject()
+    {
+        atmosphereReaction.SetActive(false);
+    }
+    
     public void SetLevelObjectsToActive()
     {
         earth.SetActive(true);
         spaceship.SetActive(true);
         bulletUi.SetActive(true);
-        bulletUi.SetActive(true);
         healthUi.SetActive(true);
         orbUi.SetActive(true);
         orbText.SetActive(true);
         reloadMessage.SetActive(true);
+        cannotFireMessage.SetActive(true);
+        purchaseAmmoMessage.SetActive(true);
     }
 
     public void SetLevelObjectsToInactive()
@@ -58,10 +67,11 @@ public class UIManager : MonoBehaviour
         earth.SetActive(false);
         spaceship.SetActive(false);
         bulletUi.SetActive(false);
-        bulletUi.SetActive(false);
         healthUi.SetActive(false);
         orbUi.SetActive(false);
         orbText.SetActive(false);
         reloadMessage.SetActive(false);
+        cannotFireMessage.SetActive(false);
+        purchaseAmmoMessage.SetActive(false);
     }
 }
