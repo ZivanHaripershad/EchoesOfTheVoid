@@ -15,6 +15,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject reloadMessage;
     [SerializeField] private GameObject cannotFireMessage;
     [SerializeField] private GameObject purchaseAmmoMessage;
+    [SerializeField] private GameObject healthLowMessage;
     [SerializeField] private GameObject orbUi;
     [SerializeField] private GameObject orbText;
     
@@ -32,6 +33,7 @@ public class UIManager : MonoBehaviour
         reloadMessage.SetActive(false);
         cannotFireMessage.SetActive(false);
         purchaseAmmoMessage.SetActive(false);
+        healthLowMessage.SetActive(false);
         
         bulletFactory.SetActive(false);
         powerFactory.SetActive(false);
@@ -60,6 +62,7 @@ public class UIManager : MonoBehaviour
         reloadMessage.SetActive(true);
         cannotFireMessage.SetActive(true);
         purchaseAmmoMessage.SetActive(true);
+        healthLowMessage.SetActive(true);
     }
 
     public void SetLevelObjectsToInactive()
@@ -73,5 +76,16 @@ public class UIManager : MonoBehaviour
         reloadMessage.SetActive(false);
         cannotFireMessage.SetActive(false);
         purchaseAmmoMessage.SetActive(false);
+        healthLowMessage.SetActive(false);
+    }
+
+    public void DestroyRemainingOrbs()
+    {
+        var orbs = GameObject.FindGameObjectsWithTag("Orb");
+
+        for (int i = 0; i < orbs.Length; i++)
+        {
+            Destroy(orbs[i]);
+        }
     }
 }

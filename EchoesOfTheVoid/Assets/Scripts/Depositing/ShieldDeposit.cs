@@ -8,6 +8,8 @@ public class ShieldDeposit : MonoBehaviour
     public FactoryCosts factoryCosts;
     public ShieldCounter shieldCounter;
 
+    public GameManager gameManager;
+
     private SpriteRenderer spriteRenderer;
     public Sprite enabledFactorySprite;
     public Sprite disabledFactorySprite;
@@ -18,6 +20,12 @@ public class ShieldDeposit : MonoBehaviour
     }
 
     void Update(){
+        if (!gameManager.IsShieldEnabled())
+        {
+            spriteRenderer.sprite = disabledFactorySprite;
+            return;
+        }
+        
         if(orbCounter.orbsCollected >= factoryCosts.shieldCost && !shieldCounter.isShieldActive){
             spriteRenderer.sprite = enabledFactorySprite;
         }

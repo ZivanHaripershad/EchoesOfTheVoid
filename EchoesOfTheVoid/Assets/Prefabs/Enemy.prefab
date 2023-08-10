@@ -1970,7 +1970,7 @@ GameObject:
   - component: {fileID: 1169757663990144441}
   - component: {fileID: 4350141238360582128}
   - component: {fileID: 3835791776055904588}
-  - component: {fileID: 1887997956655803700}
+  - component: {fileID: 7447307019642372920}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2060,9 +2060,8 @@ MonoBehaviour:
   orb: {fileID: 434657277462207545, guid: 872e95c08d9a45343904527f2d274f42, type: 3}
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-  explosionSoundEffect: {fileID: 1887997956655803700}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
---- !u!82 &1887997956655803700
+--- !u!82 &7447307019642372920
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2074,13 +2073,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 030df43787c1d9a48a25b63125395992, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.786
-  m_Pitch: 0
+  m_Volume: 1
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 191
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HealthDeposit : MonoBehaviour
 {
@@ -9,13 +10,20 @@ public class HealthDeposit : MonoBehaviour
     public FactoryCosts factoryCosts;
     public HealthCount healthCount;
 
-    private SpriteRenderer spriteRenderer;
+    public GameObject canvasUI;
+
     public Sprite enabledFactorySprite;
     public Sprite disabledFactorySprite;
+    private SpriteRenderer spriteRenderer;
+    
+
+    private Text healthLowMessage;
 
     void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = disabledFactorySprite;
+        healthLowMessage = canvasUI.transform.Find("HealthLowMessage").GetComponent<Text>();
+        healthLowMessage.enabled = false;
     }
 
     void Update(){
@@ -29,10 +37,9 @@ public class HealthDeposit : MonoBehaviour
 
     public HealthCount.HealthStatus GetHealthStatus()
     {
-        var lowHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.25);
-        var mediumHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.5);
-        var highHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.75);
-        
+        var lowHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.3);
+        var mediumHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.7);
+
         if (healthCount.currentHealth > 0 && healthCount.currentHealth <= lowHealthBounds)
         {
             return HealthCount.HealthStatus.LOW;
@@ -41,11 +48,16 @@ public class HealthDeposit : MonoBehaviour
         {
             return HealthCount.HealthStatus.MEDIUM;
         } 
-        if (healthCount.currentHealth > mediumHealthBounds && healthCount.currentHealth <= highHealthBounds)
+        if (healthCount.currentHealth > mediumHealthBounds && healthCount.currentHealth <= healthCount.maxHealth)
         {
             return HealthCount.HealthStatus.HIGH;
         }
 
         return HealthCount.HealthStatus.HIGH;
+    }
+
+    public void LowHealthStatus()
+    {
+        healthLowMessage.enabled = true;
     }
 }
