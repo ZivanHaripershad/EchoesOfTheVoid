@@ -20,6 +20,7 @@ public class DepositOrbs : MonoBehaviour
     public BulletCount bulletCount;
 
     public FactoryCosts factoryCosts;
+    public GameManager gameManager;
 
     private Animator bulletFactoryAnim;
     private Animator powerFactoryAnim;
@@ -81,7 +82,7 @@ public class DepositOrbs : MonoBehaviour
 
                 //Shield
                 if (Input.GetKeyDown(KeyCode.L))
-                    if (orbCounter.orbsCollected >= 3)
+                    if (orbCounter.orbsCollected >= 3 && gameManager.IsShieldEnabled())
                     {
                         deposited = true;
 

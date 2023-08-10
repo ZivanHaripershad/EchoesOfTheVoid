@@ -2177,6 +2177,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 617950202}
+  - component: {fileID: 617950203}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2197,8 +2198,20 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &617950203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 617950201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add951b01801130449c3eb720c89ae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &635162498
 GameObject:
   m_ObjectHideFlags: 0
@@ -3682,6 +3695,7 @@ MonoBehaviour:
   - {fileID: 749617130}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  gameManager: {fileID: 617950203}
   mouseControl: {fileID: 1615665836}
   enemySpawning: {fileID: 1526156601}
   bulletSpawnScript: {fileID: 404549409}
@@ -3741,7 +3755,7 @@ Transform:
   - {fileID: 1635129877}
   - {fileID: 1741351218}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1154919765
 GameObject:
@@ -5145,6 +5159,11 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1549538115 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5596176916392310718, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551474403
 GameObject:
   m_ObjectHideFlags: 0
@@ -5385,6 +5404,7 @@ MonoBehaviour:
   reloadMessage: {fileID: 314522385}
   cannotFireMessage: {fileID: 2145653}
   purchaseAmmoMessage: {fileID: 465778462}
+  healthLowMessage: {fileID: 1549538115}
   orbUi: {fileID: 113081610}
   orbText: {fileID: 1893344459}
 --- !u!4 &1574702510
@@ -7550,6 +7570,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 543851233, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 617950203}
     - target: {fileID: 7400859371959236105, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: m_Name
       value: UI
@@ -7607,6 +7631,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 617950203}
     - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: canvasUI
       value: 

@@ -9,6 +9,7 @@ public class TutorialLevelController : MonoBehaviour
 
     public TutorialData tutorialData;
     public GameManagerData gameManagerData;
+    public GameManager gameManager;
 
     public MouseControl mouseControl;
 
@@ -36,10 +37,14 @@ public class TutorialLevelController : MonoBehaviour
     {
         orbCounter.planetOrbMax = 5;
         tutorialData.popUpIndex = 0;
+        
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
+        
+        gameManager.DisableShield();
+        
         mouseControl.EnableMouse();
         variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
     }
@@ -153,6 +158,11 @@ public class TutorialLevelController : MonoBehaviour
                 tutorialData.popUpIndex = 8;
             }
 
+            if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+            {
+               healthDeposit.LowHealthStatus();
+            }
+            
             if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && !HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
             {
                 //player wins so show winning screen
@@ -168,7 +178,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 7)
         {
             //Level complete screen
-            planetHealthNum.text = (Math.Ceiling((decimal)healthCount.currentHealth / healthCount.maxHealth) * 100) + "%";
+            var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
+            planetHealthNum.text =  healthPercentage + "%";
             orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
             enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
         }
