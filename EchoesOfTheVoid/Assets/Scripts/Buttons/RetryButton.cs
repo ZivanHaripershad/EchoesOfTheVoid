@@ -27,7 +27,7 @@ public class RetryButton : MonoBehaviour
         audioSource.Play();
         uiManager.SetLevelObjectsToActive();
         uiManager.SetAtmosphereObjectToActive();
-        OrbCounterUI.instance.SetOrbText(2);
+        OrbCounterUI.GetInstance().SetOrbText(2);
         orbCounter.planetOrbsDeposited = 1;
         healthCount.currentHealth = healthCount.maxHealth;
         gameManagerData.numberOfOrbsCollected = 3;

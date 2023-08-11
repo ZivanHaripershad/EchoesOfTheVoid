@@ -114,19 +114,19 @@ public class DepositOrbs : MonoBehaviour
                     switch (factoryDeposited)
                     {
                         case OrbFactoryDeposited.AMMO:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.bulletCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.bulletCost);
                             bulletFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.POWER:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.powerCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.powerCost);
                             powerFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.HEALTH:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.healthCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.healthCost);
                             healthFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.SHIELD:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.shieldCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.shieldCost);
                             shieldFactoryAnim.SetTrigger("isSelected");
                             break;
                     }

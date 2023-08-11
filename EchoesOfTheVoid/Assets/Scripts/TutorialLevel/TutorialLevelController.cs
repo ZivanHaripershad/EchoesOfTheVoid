@@ -28,6 +28,8 @@ public class TutorialLevelController : MonoBehaviour
     public Text enemiesNumber;
 
     private int popUpIndex;
+
+    private bool soundsChanged; 
     
     private GlobalVariables variables;
 
@@ -42,12 +44,20 @@ public class TutorialLevelController : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
-        
+
+        soundsChanged = false;
+
         gameManager.DisableShield();
         
         mouseControl.EnableMouse();
         variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
     }
+
+    private void PlayGameAudio()
+    {
+        sounds[1].Play();
+    }
+    
 
     private void Update()
     {
@@ -130,9 +140,13 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 6)
         {
             //let player play and win against enemies
-            
-            /*sounds[0].Stop();
-            sounds[1].Play();*/
+
+            if (!soundsChanged)
+            {
+                soundsChanged = true;
+                sounds[0].Stop();
+                Invoke("PlayGameAudio", 5); 
+            }
 
             mouseControl.DisableMouse();
             if (gameManagerData.tutorialWaitTime <= 0)
