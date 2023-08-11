@@ -12,7 +12,7 @@ public class SpaceshipCollectOrbs : MonoBehaviour
         if(collider.gameObject.CompareTag("Orb")){
             orbCollectSoundEffect.Play();
 
-            OrbCounterUI.instance.IncrementOrbs();
+            OrbCounterUI.GetInstance().IncrementOrbs();
             Destroy(collider.gameObject);
         }
         

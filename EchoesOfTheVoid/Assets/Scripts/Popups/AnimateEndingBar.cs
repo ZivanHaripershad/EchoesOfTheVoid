@@ -59,7 +59,6 @@ public class AnimateEndingBar : MonoBehaviour
         if (normalisedTime > leafTime && !leafStarted)
         {
             leafStarted = true;
-            Debug.Log("leafTime");
             StartCoroutine(FadeIn(leaf));
         }
 

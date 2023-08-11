@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class OrbCounterUI : MonoBehaviour
 {
-    public static OrbCounterUI instance;
+    private static OrbCounterUI instance;
 
     public Text orbCounterText;
     
@@ -15,6 +15,14 @@ public class OrbCounterUI : MonoBehaviour
 
     void Awake(){
         instance = this;
+    }
+
+    public static OrbCounterUI GetInstance()
+    {
+        if (instance == null)
+            instance = new OrbCounterUI();
+        
+        return instance;
     }
 
     // Start is called before the first frame update

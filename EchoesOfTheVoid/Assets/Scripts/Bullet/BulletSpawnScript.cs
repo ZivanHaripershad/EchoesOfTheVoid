@@ -163,6 +163,7 @@ public class BulletSpawnScript : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
                 {
                     cannotFireSoundEffect.Play();
+                    reloadMessage.enabled = false;
                     purchaseAmmoMessage.enabled = true;
                 }
             }
