@@ -25,8 +25,8 @@ TagManager:
   - 
   - Water
   - UI
-  - Factory
-  - EndBar
+  - 
+  - 
   - 
   - 
   - 
@@ -54,4 +54,22 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Darker
+    uniqueID: 511916797
+    locked: 0
+  - name: UserInterface
+    uniqueID: 254803497
+    locked: 0
+  - name: Factory
+    uniqueID: 479793123
+    locked: 0
+  - name: Earth
+    uniqueID: 2760133829
+    locked: 0
+  - name: EndBar
+    uniqueID: 3705408371
+    locked: 0
+  - name: UI
+    uniqueID: 1972608465
     locked: 0

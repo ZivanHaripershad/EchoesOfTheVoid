@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -48,16 +49,42 @@ public class TutorialLevelController : MonoBehaviour
     private float normalAudioSpeed;
     [SerializeField]
     private float reducedAudioSpeed;
+
+    [SerializeField] 
+    private float audioSpeedChangeRate;
     
     private float audioSpeed;
-    public void ReduceAudioSpeed()
+
+    private IEnumerator DecreaseSpeed()
     {
+        Debug.Log("Decrease");
+        while (audioSpeed > reducedAudioSpeed)
+        {
+            audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
+            yield return null;
+        }
+
         audioSpeed = reducedAudioSpeed;
     }
 
-    public void NormalAudioSpeed()
+    private IEnumerator IncreaseSpeed()
     {
+        while (audioSpeed < normalAudioSpeed)
+        {
+            audioSpeed += audioSpeedChangeRate * Time.deltaTime;
+            yield return null;
+        }
         audioSpeed = normalAudioSpeed;
+    }
+
+    public void ReduceAudioSpeed()
+    {
+        StartCoroutine(DecreaseSpeed());
+    }
+
+    public void IncreaseAudioSpeed()
+    {
+        StartCoroutine(IncreaseSpeed());
     }
     
     private void Start()
@@ -96,7 +123,6 @@ public class TutorialLevelController : MonoBehaviour
 
         for (int i = 0; i < sounds.Length; i++)
         {
-            Debug.Log(audioSpeed);
             sounds[i].pitch = audioSpeed;
         }
 

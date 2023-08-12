@@ -38,7 +38,8 @@ public class EnemySpawning : MonoBehaviour {
     
     public void StopTheCoroutine()
     {
-        StopCoroutine(currentCoroutine);
+        if (currentCoroutine != null)
+            StopCoroutine(currentCoroutine);
     }
 
     private IEnumerator SpawnEnemiesCoroutine(int enemiesToSpawn, bool continueSpawning)
