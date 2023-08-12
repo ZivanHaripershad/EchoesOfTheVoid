@@ -341,6 +341,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647262818547443, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
   m_PrefabInstance: {fileID: 6852647262090430745}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &872643161 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6852647261852607449, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+  m_PrefabInstance: {fileID: 6852647262090430745}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &922499035 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647262913838786, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -360,6 +365,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1084518025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2093897180, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+  m_PrefabInstance: {fileID: 8575211596152410926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39348b3d0c765bd4986b54f36295d6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1097035917 stripped
@@ -449,17 +465,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1574702509 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
-  m_PrefabInstance: {fileID: 462461864928897760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3cc9a64cddc76d468fca0051b925b2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1615665836 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 339201753, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
@@ -520,9 +525,17 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 462461865946705876, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
+      propertyPath: variables
+      value: 
+      objectReference: {fileID: 1084518025}
+    - target: {fileID: 462461865946705876, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: orbsNumber
       value: 
       objectReference: {fileID: 1499791406}
+    - target: {fileID: 462461865946705876, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
+      propertyPath: popupParent
+      value: 
+      objectReference: {fileID: 872643161}
     - target: {fileID: 462461865946705876, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: mouseControl
       value: 
@@ -810,18 +823,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6852647261041411489, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1615665836}
-    - target: {fileID: 6852647261070074945, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1615665836}
-    - target: {fileID: 6852647261599552830, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1615665836}
     - target: {fileID: 6852647261852607448, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -870,18 +871,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popups
       objectReference: {fileID: 0}
-    - target: {fileID: 6852647262220259057, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1615665836}
-    - target: {fileID: 6852647262961389879, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
-      propertyPath: uiManager
-      value: 
-      objectReference: {fileID: 1574702509}
-    - target: {fileID: 6852647262961389879, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1615665836}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
 --- !u!1001 &7798037669646282110

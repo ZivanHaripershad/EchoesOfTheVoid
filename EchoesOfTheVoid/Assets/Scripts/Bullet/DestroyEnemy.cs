@@ -19,6 +19,10 @@ public class DestroyEnemy : MonoBehaviour
     private bool canBeDestroyed;
     private GameObject earth;
 
+    [SerializeField] private float soundDelay;
+
+    [SerializeField] private GameObject graphics;
+
 
     // Start is called before the first frame update
     IEnumerator Start()
@@ -27,6 +31,11 @@ public class DestroyEnemy : MonoBehaviour
         canBeDestroyed = true;
         earth = GameObject.FindGameObjectWithTag("Earth");
         explosionSoundEffect = GetComponent<AudioSource>();
+    }
+
+    void Destroy()
+    {
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,8 +90,11 @@ public class DestroyEnemy : MonoBehaviour
             //Instantiate the explosion
             Instantiate(explosion, transform.position, Quaternion.identity);
             
+            //Set the opacity to 0
+            graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
+            
             //destroy the enemy 
-            Destroy(gameObject);
+            Invoke("Destroy", soundDelay);
 
             //destroy the bullet
             if (collision.gameObject.CompareTag("Bullet"))

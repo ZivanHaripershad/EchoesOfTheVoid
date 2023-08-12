@@ -2020,7 +2020,6 @@ MonoBehaviour:
   - {fileID: 4350141239264964218}
   - {fileID: 4350141238799953700}
   rotationSpeed: 100
-  enemySpeed: 0.1
   enemy: {fileID: 8012780089176710275}
   radius: 2.7
 --- !u!50 &4350141238360582128
@@ -2061,6 +2060,8 @@ MonoBehaviour:
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  soundDelay: 0.6
+  graphics: {fileID: 8012780089176710275}
 --- !u!82 &7447307019642372920
 AudioSource:
   m_ObjectHideFlags: 0

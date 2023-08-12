@@ -315,7 +315,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6852647261041411503}
   defaultNewGameText: {fileID: 21300000, guid: 3bf4e30533b496245b2a69de77c8e2ce, type: 3}
   hoveredNewGameText: {fileID: 21300000, guid: 78b8ebde98cf7a747b22a73126010ce9, type: 3}
-  mouseControl: {fileID: 0}
   audioSource: {fileID: 6852647261041411502}
 --- !u!82 &6852647261041411502
 AudioSource:
@@ -648,7 +647,6 @@ MonoBehaviour:
   defaultNewGameText: {fileID: 21300000, guid: de92d1c8b386b574dac8023630a74174, type: 3}
   hoveredNewGameText: {fileID: 21300000, guid: 755f7659846fcdc41838a3fee9487c39, type: 3}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
-  mouseControl: {fileID: 0}
   audioSource: {fileID: 6852647261070074958}
 --- !u!82 &6852647261070074958
 AudioSource:
@@ -757,7 +755,7 @@ GameObject:
   - component: {fileID: 6852647261109531381}
   m_Layer: 0
   m_Name: Popup5
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -905,11 +903,11 @@ GameObject:
   - component: {fileID: 6852647261161596108}
   m_Layer: 0
   m_Name: Popup8
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6852647261161596108
 Transform:
   m_ObjectHideFlags: 0
@@ -1448,7 +1446,7 @@ GameObject:
   - component: {fileID: 6852647261381150495}
   m_Layer: 0
   m_Name: Popup4
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2146,8 +2144,6 @@ MonoBehaviour:
   defaultNewGameText: {fileID: 21300000, guid: d615fe9f172684f45a241ecfbbb7434c, type: 3}
   hoveredNewGameText: {fileID: 21300000, guid: 8faf160b2cb7d9d49ab25342fbd53188, type: 3}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
-  mouseControl: {fileID: 0}
-  audioSource: {fileID: 6852647261599552831}
 --- !u!82 &6852647261599552831
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2952,7 +2948,7 @@ GameObject:
   - component: {fileID: 6852647261830836488}
   m_Layer: 0
   m_Name: Popup2
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2985,7 +2981,7 @@ GameObject:
   - component: {fileID: 6852647261852607448}
   m_Layer: 0
   m_Name: Popups
-  m_TagString: Untagged
+  m_TagString: PopupParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3437,7 +3433,7 @@ GameObject:
   - component: {fileID: 6852647261945311471}
   m_Layer: 0
   m_Name: Popup3
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4279,8 +4275,6 @@ MonoBehaviour:
   defaultNewGameText: {fileID: 21300000, guid: d615fe9f172684f45a241ecfbbb7434c, type: 3}
   hoveredNewGameText: {fileID: 21300000, guid: 8faf160b2cb7d9d49ab25342fbd53188, type: 3}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
-  mouseControl: {fileID: 0}
-  audioSource: {fileID: 6852647262220259070}
 --- !u!82 &6852647262220259070
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4299,7 +4293,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -4472,7 +4466,7 @@ GameObject:
   - component: {fileID: 6852647262227947456}
   m_Layer: 0
   m_Name: Popup7
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5186,7 +5180,7 @@ GameObject:
   - component: {fileID: 6852647262527537037}
   m_Layer: 0
   m_Name: Popup1
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5825,7 +5819,7 @@ GameObject:
   - component: {fileID: 6852647262818547442}
   m_Layer: 0
   m_Name: Popup9
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6043,7 +6037,7 @@ GameObject:
   - component: {fileID: 6852647262913838789}
   m_Layer: 0
   m_Name: Popup6
-  m_TagString: Untagged
+  m_TagString: Popup
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6251,9 +6245,7 @@ MonoBehaviour:
   defaultExitGameText: {fileID: 21300000, guid: fea46af0c7c87924b83466fc1a685ad3, type: 3}
   hoveredExitGameText: {fileID: 21300000, guid: ebb31fe66229c9b429ee62b78e9aa8a8, type: 3}
   audioSource: {fileID: 6852647262961389876}
-  mouseControl: {fileID: 0}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
-  uiManager: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}

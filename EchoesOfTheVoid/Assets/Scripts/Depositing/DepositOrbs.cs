@@ -27,6 +27,8 @@ public class DepositOrbs : MonoBehaviour
     private Animator shieldFactoryAnim;
     private Animator healthFactoryAnim;
 
+    private EnemySpeedControl enemySpeedControl;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,7 @@ public class DepositOrbs : MonoBehaviour
         shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
         healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        enemySpeedControl = GameObject.FindGameObjectWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
     }
     enum OrbFactoryDeposited
     {
@@ -53,9 +56,12 @@ public class DepositOrbs : MonoBehaviour
     void Update()
     {
         if(spaceshipMode.collectionMode == false){
-            if(Input.GetKey(KeyCode.S)){
+            if(Input.GetKey(KeyCode.S))
+            {
                 orbDepositingMode.depositingMode = true;
                 bool deposited = false;
+                
+                enemySpeedControl.SlowDown();
 
                 //Energy
                 if (Input.GetKeyDown(KeyCode.J))
@@ -137,6 +143,7 @@ public class DepositOrbs : MonoBehaviour
             else
             {
                 orbDepositingMode.depositingMode = false;
+                enemySpeedControl.SpeedUp();
             }
         }
         

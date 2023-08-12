@@ -377,6 +377,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293ef75569c743b8a7606b48b195e924, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  gameManager: {fileID: 462461864330477851}
+  enemySpawning: {fileID: 462461866178193369}
+  uiManager: {fileID: 462461866058999629}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  sounds:
+  - {fileID: 462461865448337654}
+  - {fileID: 462461865420293075}
+  bulletSpawnScript: {fileID: 0}
   popUps:
   - {fileID: 0}
   - {fileID: 0}
@@ -387,22 +397,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
-  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-  gameManager: {fileID: 462461864330477851}
+  popupParent: {fileID: 0}
   mouseControl: {fileID: 0}
-  enemySpawning: {fileID: 462461866178193369}
-  bulletSpawnScript: {fileID: 0}
-  uiManager: {fileID: 462461866058999629}
-  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
-  sounds:
-  - {fileID: 462461865448337654}
-  - {fileID: 462461865420293075}
   healthDeposit: {fileID: 0}
   planetHealthNum: {fileID: 0}
   orbsNumber: {fileID: 0}
   enemiesNumber: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  variables: {fileID: 0}
 --- !u!1 &462461866058999628
 GameObject:
   m_ObjectHideFlags: 0

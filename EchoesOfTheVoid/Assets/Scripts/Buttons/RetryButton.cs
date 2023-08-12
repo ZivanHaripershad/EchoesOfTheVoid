@@ -6,9 +6,9 @@ public class RetryButton : MonoBehaviour
     public Sprite defaultExitGameText;
     public Sprite hoveredExitGameText;
     public AudioSource audioSource;
-    public MouseControl mouseControl;
+    private MouseControl mouseControl;
     public TutorialData tutorialData;
-    public UIManager uiManager;
+    private UIManager uiManager;
     public OrbCounter orbCounter;
     public HealthCount healthCount;
     public GameManagerData gameManagerData;
@@ -16,15 +16,14 @@ public class RetryButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        mouseControl = GameObject.Find("MouseControl").GetComponent<MouseControl>();
+        uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
         spriteRenderer.sprite = defaultExitGameText;
         mouseControl.EnableMouse();
     }
-
-    private void OnMouseDown()
+    
+    private void next()
     {
-        Debug.Log("retrying level");
-        mouseControl.EnableMouse();
-        audioSource.Play();
         uiManager.SetLevelObjectsToActive();
         uiManager.SetAtmosphereObjectToActive();
         OrbCounterUI.GetInstance().SetOrbText(2);
@@ -35,6 +34,17 @@ public class RetryButton : MonoBehaviour
         gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
         tutorialData.popUpIndex = 6;
+    }
+
+    private void OnMouseUp()
+    {
+        Invoke("next", 0.3f);
+    }
+
+    private void OnMouseDown()
+    {
+        mouseControl.EnableMouse();
+        audioSource.Play();
     }
 
     private void OnMouseEnter()
