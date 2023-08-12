@@ -8,7 +8,7 @@ public class ShieldDeposit : MonoBehaviour
     public FactoryCosts factoryCosts;
     public ShieldCounter shieldCounter;
 
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     private SpriteRenderer spriteRenderer;
     public Sprite enabledFactorySprite;
@@ -16,10 +16,11 @@ public class ShieldDeposit : MonoBehaviour
 
     void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = disabledFactorySprite;
+        spriteRenderer.sprite = enabledFactorySprite;
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
-    void Update(){
+    public void RenderSprites(){
         if (!gameManager.IsShieldEnabled())
         {
             spriteRenderer.sprite = disabledFactorySprite;

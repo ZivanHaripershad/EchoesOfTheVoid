@@ -8,21 +8,31 @@ public class MainMenuButton : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite defaultNewGameText;
     public Sprite hoveredNewGameText;
-    public MouseControl mouseControl;
+    private MouseControl mouseControl;
     public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.sprite = defaultNewGameText;
+        mouseControl = GameObject.Find("MouseControl").GetComponent<MouseControl>();
         mouseControl.EnableMouse();
+    }
+    
+    private void next()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    private void OnMouseUp()
+    {
+        Invoke("next", 0.3f);
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("going to main menu");
+        mouseControl.EnableMouse();
         audioSource.Play();
-        SceneManager.LoadScene("MainMenu");
     }
 
     private void OnMouseEnter()

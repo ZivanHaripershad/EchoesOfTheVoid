@@ -12,9 +12,6 @@ public class FollowRoute : MonoBehaviour
 
     private float tParam;
 
-    [SerializeField]
-    public float enemySpeed;
-
     private GlobalVariables variables;
 
     [SerializeField]
@@ -32,7 +29,12 @@ public class FollowRoute : MonoBehaviour
 
     private Vector3 worldCenterPosition;
 
+    private float enemySpeed;
+
     private bool firstUpdate;
+    
+    private EnemySpeedControl enemySpeedControl;
+
     // Start is called before the first frame update
     void Start()
     {       
@@ -43,6 +45,8 @@ public class FollowRoute : MonoBehaviour
         sp.material.color = new Color(1f, 1f, 1f, 0);
 
         variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
+
+        enemySpeedControl = GameObject.FindGameObjectWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
 
         firstUpdate = true;
         mainCamera = Camera.main;
@@ -60,6 +64,8 @@ public class FollowRoute : MonoBehaviour
 
             StartCoroutine(GoByRoute());
         }
+        
+        enemySpeed = enemySpeedControl.getSpeed();
     }
 
     private IEnumerator GoByRoute()

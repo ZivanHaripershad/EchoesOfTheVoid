@@ -1,40 +1,102 @@
 ﻿using System;
+using System.Collections;
+using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class TutorialLevelController : MonoBehaviour
 {
-    public GameObject[] popUps;
-
-    public TutorialData tutorialData;
-    public GameManagerData gameManagerData;
-    public GameManager gameManager;
-
-    public MouseControl mouseControl;
-
-    public EnemySpawning enemySpawning;
-    public BulletSpawnScript bulletSpawnScript;
-
-    public UIManager uiManager;
-    public HealthCount healthCount;
-
-    public AudioSource[] sounds;
-    
-    public HealthDeposit healthDeposit;
-
-    public Text planetHealthNum;
-    public Text orbsNumber;
-    public Text enemiesNumber;
-
-    private int popUpIndex;
-    
+    [SerializeField]
+    private TutorialData tutorialData;
+    [SerializeField]
+    private GameManagerData gameManagerData;
+    [SerializeField]
+    private GameManager gameManager;
+    [SerializeField]
+    private EnemySpawning enemySpawning;
+    [SerializeField]
+    private UIManager uiManager;
+    [SerializeField]
+    private HealthCount healthCount;
+    [SerializeField]
+    private AudioSource[] sounds;
+    [SerializeField]
+    private BulletSpawnScript bulletSpawnScript;
+    [SerializeField]
+    private GameObject[] popUps;
+    [SerializeField]
+    private GameObject popupParent;
+    [SerializeField]
+    private MouseControl mouseControl;
+    [SerializeField]
+    private HealthDeposit healthDeposit;
+    [SerializeField]
+    private Text planetHealthNum;
+    [SerializeField]
+    private Text orbsNumber;
+    [SerializeField]
+    private Text enemiesNumber;
+    [SerializeField] 
+    private OrbCounter orbCounter;
+    [SerializeField]
     private GlobalVariables variables;
 
-    [SerializeField] private OrbCounter orbCounter;
+    private int popUpIndex;
+    private bool soundsChanged;
 
+    [SerializeField]
+    private float normalAudioSpeed;
+    [SerializeField]
+    private float reducedAudioSpeed;
+
+    [SerializeField] 
+    private float audioSpeedChangeRate;
+    
+    private float audioSpeed;
+
+    private IEnumerator DecreaseSpeed()
+    {
+        Debug.Log("Decrease");
+        while (audioSpeed > reducedAudioSpeed)
+        {
+            audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
+            yield return null;
+        }
+
+        audioSpeed = reducedAudioSpeed;
+    }
+
+    private IEnumerator IncreaseSpeed()
+    {
+        while (audioSpeed < normalAudioSpeed)
+        {
+            audioSpeed += audioSpeedChangeRate * Time.deltaTime;
+            yield return null;
+        }
+        audioSpeed = normalAudioSpeed;
+    }
+
+    public void ReduceAudioSpeed()
+    {
+        StartCoroutine(DecreaseSpeed());
+    }
+
+    public void IncreaseAudioSpeed()
+    {
+        StartCoroutine(IncreaseSpeed());
+    }
+    
     private void Start()
     {
+        popupParent.SetActive(true);
+        for (int i = 0; i < popUps.Length; i++)
+        {
+            popUps[i].SetActive(true);
+        }
+
+        audioSpeed = 1;
+
         orbCounter.planetOrbMax = 5;
         tutorialData.popUpIndex = 0;
         
@@ -42,16 +104,27 @@ public class TutorialLevelController : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
-        
+
+        soundsChanged = false;
+
         gameManager.DisableShield();
-        
         mouseControl.EnableMouse();
-        variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
     }
+
+    private void PlayGameAudio()
+    {
+        sounds[1].Play();
+    }
+    
 
     private void Update()
     {
         popUpIndex = tutorialData.popUpIndex;
+
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            sounds[i].pitch = audioSpeed;
+        }
 
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -130,9 +203,13 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 6)
         {
             //let player play and win against enemies
-            
-            /*sounds[0].Stop();
-            sounds[1].Play();*/
+
+            if (!soundsChanged)
+            {
+                soundsChanged = true;
+                sounds[0].Stop();
+                Invoke("PlayGameAudio", 5); 
+            }
 
             mouseControl.DisableMouse();
             if (gameManagerData.tutorialWaitTime <= 0)

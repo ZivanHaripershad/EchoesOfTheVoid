@@ -10,21 +10,32 @@ public class PopUp1 : MonoBehaviour
     public Sprite defaultNewGameText;
     public Sprite hoveredNewGameText;
     public TutorialData tutorialData;
-    public MouseControl mouseControl;
-    public AudioSource audioSource;
+    private MouseControl mouseControl;
+    private AudioSource audioSource;
 
     void Start()
     {
         spriteRenderer.sprite = defaultNewGameText;
+        audioSource = GetComponent<AudioSource>();
+        mouseControl = GameObject.Find("MouseControl").GetComponent<MouseControl>();
         mouseControl.EnableMouse();
+    }
+
+    private void next()
+    {
+        tutorialData.popUpIndex = 1;
     }
     
     private void OnMouseDown()
     {
         audioSource.Play();
-        tutorialData.popUpIndex = 1;
     }
-    
+
+    private void OnMouseUp()
+    {
+        Invoke("next", 0.3f);
+    }
+
     private void OnMouseEnter()
     {
         mouseControl.EnableMouse();

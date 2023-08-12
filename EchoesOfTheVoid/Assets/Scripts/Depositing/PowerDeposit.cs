@@ -13,10 +13,10 @@ public class PowerDeposit : MonoBehaviour
 
     void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = disabledFactorySprite;
+        spriteRenderer.sprite = enabledFactorySprite;
     }
 
-    void Update(){
+    public void RenderSprites(){
         if(orbCounter.orbsCollected >= factoryCosts.powerCost){
             spriteRenderer.sprite = enabledFactorySprite;
         }

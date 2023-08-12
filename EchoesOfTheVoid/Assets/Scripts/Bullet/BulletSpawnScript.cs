@@ -36,7 +36,7 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField]
     private GameObject bullet;
 
-    public GameObject canvasUI;
+    private GameObject canvasUI;
     
     private Text reloadMessage;
     private Text cannotFireMessage;
@@ -45,7 +45,7 @@ public class BulletSpawnScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        canvasUI = GameObject.FindGameObjectWithTag("UI");
         reloadMessage = canvasUI.transform.Find("ReloadMessage").GetComponent<Text>();
         cannotFireMessage = canvasUI.transform.Find("CannotFireMessage").GetComponent<Text>();
         purchaseAmmoMessage = canvasUI.transform.Find("PurchaseAmmoMessage").GetComponent<Text>();

@@ -13,18 +13,11 @@ public class BulletDeposit : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = disabledFactorySprite;
-        
-        if(orbCounter.orbsCollected >= factoryCosts.bulletCost){
-            spriteRenderer.sprite = enabledFactorySprite;
-        }
-        else{
-            spriteRenderer.sprite = disabledFactorySprite;
-        }
+        spriteRenderer.sprite = enabledFactorySprite;
     }
 
     // Start is called before the first frame update
-    void Update(){
+    public void RenderSprites(){
         if(orbCounter.orbsCollected >= factoryCosts.bulletCost){
             spriteRenderer.sprite = enabledFactorySprite;
         }
@@ -32,5 +25,4 @@ public class BulletDeposit : MonoBehaviour
             spriteRenderer.sprite = disabledFactorySprite;
         }
     }
- 
 }

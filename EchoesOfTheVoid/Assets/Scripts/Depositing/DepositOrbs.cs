@@ -20,12 +20,14 @@ public class DepositOrbs : MonoBehaviour
     public BulletCount bulletCount;
 
     public FactoryCosts factoryCosts;
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     private Animator bulletFactoryAnim;
     private Animator powerFactoryAnim;
     private Animator shieldFactoryAnim;
     private Animator healthFactoryAnim;
+
+    private EnemySpeedControl enemySpeedControl;
 
 
     // Start is called before the first frame update
@@ -37,6 +39,8 @@ public class DepositOrbs : MonoBehaviour
         powerFactoryAnim = GameObject.Find("PowerFactory").GetComponent<Animator>();
         shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
         healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        enemySpeedControl = GameObject.FindGameObjectWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
     }
     enum OrbFactoryDeposited
     {
@@ -52,9 +56,12 @@ public class DepositOrbs : MonoBehaviour
     void Update()
     {
         if(spaceshipMode.collectionMode == false){
-            if(Input.GetKey(KeyCode.S)){
+            if(Input.GetKey(KeyCode.S))
+            {
                 orbDepositingMode.depositingMode = true;
                 bool deposited = false;
+                
+                enemySpeedControl.SlowDown();
 
                 //Energy
                 if (Input.GetKeyDown(KeyCode.J))
@@ -114,19 +121,19 @@ public class DepositOrbs : MonoBehaviour
                     switch (factoryDeposited)
                     {
                         case OrbFactoryDeposited.AMMO:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.bulletCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.bulletCost);
                             bulletFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.POWER:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.powerCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.powerCost);
                             powerFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.HEALTH:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.healthCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.healthCost);
                             healthFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.SHIELD:
-                            OrbCounterUI.instance.DecrementOrbs(factoryCosts.shieldCost);
+                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.shieldCost);
                             shieldFactoryAnim.SetTrigger("isSelected");
                             break;
                     }
@@ -136,6 +143,7 @@ public class DepositOrbs : MonoBehaviour
             else
             {
                 orbDepositingMode.depositingMode = false;
+                enemySpeedControl.SpeedUp();
             }
         }
         

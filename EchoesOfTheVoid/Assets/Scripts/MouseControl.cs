@@ -13,6 +13,7 @@ public class MouseControl : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.None;
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.visible = true;
     }
 
     public void DisableMouse()
