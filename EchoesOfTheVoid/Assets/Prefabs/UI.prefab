@@ -2537,6 +2537,7 @@ MonoBehaviour:
   healthDeposit: {fileID: 1924396202}
   powerDeposit: {fileID: 51791539}
   shieldDeposit: {fileID: 543851233}
+  tutorialLevelController: {fileID: 0}
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   fadeDuration: 1
 --- !u!1 &1962596712
@@ -2592,7 +2593,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ed18ce8fa4527fa4c80b67703b192197, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

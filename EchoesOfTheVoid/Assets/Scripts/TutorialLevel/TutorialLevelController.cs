@@ -43,8 +43,23 @@ public class TutorialLevelController : MonoBehaviour
 
     private int popUpIndex;
     private bool soundsChanged;
-    
 
+    [SerializeField]
+    private float normalAudioSpeed;
+    [SerializeField]
+    private float reducedAudioSpeed;
+    
+    private float audioSpeed;
+    public void ReduceAudioSpeed()
+    {
+        audioSpeed = reducedAudioSpeed;
+    }
+
+    public void NormalAudioSpeed()
+    {
+        audioSpeed = normalAudioSpeed;
+    }
+    
     private void Start()
     {
         popupParent.SetActive(true);
@@ -52,6 +67,8 @@ public class TutorialLevelController : MonoBehaviour
         {
             popUps[i].SetActive(true);
         }
+
+        audioSpeed = 1;
 
         orbCounter.planetOrbMax = 5;
         tutorialData.popUpIndex = 0;
@@ -76,6 +93,12 @@ public class TutorialLevelController : MonoBehaviour
     private void Update()
     {
         popUpIndex = tutorialData.popUpIndex;
+
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            Debug.Log(audioSpeed);
+            sounds[i].pitch = audioSpeed;
+        }
 
         for (int i = 0; i < popUps.Length; i++)
         {

@@ -21,15 +21,11 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField] private PowerDeposit powerDeposit;
     [SerializeField] private ShieldDeposit shieldDeposit;
 
+    public TutorialLevelController tutorialLevelController;
+
     public OrbDepositingMode orbDepositingMode;
 
     public float fadeDuration = 1f; // The duration of the fade-in effect
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     IEnumerator Fade(GameObject gameObject, float startAlpha, float targetAlpha)
     {
@@ -63,6 +59,9 @@ public class AtmosphereReaction : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {
+            //set speed of audio
+            tutorialLevelController.ReduceAudioSpeed();
+            
             bulletDeposit.GetComponent<BulletDeposit>().RenderSprites();
             bulletFactory.SetActive(true);
             powerDeposit.GetComponent<PowerDeposit>().RenderSprites();
@@ -79,6 +78,9 @@ public class AtmosphereReaction : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
+            //set speed to normal 
+            tutorialLevelController.NormalAudioSpeed();
+            
             StartCoroutine(Fade(bulletFactory, 1f, 0f));
             StartCoroutine(Fade(powerFactory, 1f, 0f));
             StartCoroutine(Fade(shieldFactory, 1f, 0f));
