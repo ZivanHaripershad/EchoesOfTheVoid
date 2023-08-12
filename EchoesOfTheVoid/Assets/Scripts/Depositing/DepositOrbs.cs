@@ -20,7 +20,7 @@ public class DepositOrbs : MonoBehaviour
     public BulletCount bulletCount;
 
     public FactoryCosts factoryCosts;
-    public GameManager gameManager;
+    private GameManager gameManager;
 
     private Animator bulletFactoryAnim;
     private Animator powerFactoryAnim;
@@ -37,6 +37,7 @@ public class DepositOrbs : MonoBehaviour
         powerFactoryAnim = GameObject.Find("PowerFactory").GetComponent<Animator>();
         shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
         healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
+        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
     enum OrbFactoryDeposited
     {

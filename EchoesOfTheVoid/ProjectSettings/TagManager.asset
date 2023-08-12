@@ -13,6 +13,7 @@ TagManager:
   - Reload
   - PurchaseAmmo
   - Enemy
+  - UI
   layers:
   - Default
   - TransparentFX

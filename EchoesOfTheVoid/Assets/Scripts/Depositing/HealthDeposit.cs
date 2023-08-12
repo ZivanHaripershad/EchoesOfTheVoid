@@ -21,12 +21,12 @@ public class HealthDeposit : MonoBehaviour
 
     void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = disabledFactorySprite;
+        spriteRenderer.sprite = enabledFactorySprite;
         healthLowMessage = canvasUI.transform.Find("HealthLowMessage").GetComponent<Text>();
         healthLowMessage.enabled = false;
     }
 
-    void Update(){
+    public void RenderSprites(){
         if(orbCounter.orbsCollected >= factoryCosts.healthCost && healthCount.currentHealth < healthCount.maxHealth){
             spriteRenderer.sprite = enabledFactorySprite;
         }

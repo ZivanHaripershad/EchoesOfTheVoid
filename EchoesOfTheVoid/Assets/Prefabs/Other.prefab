@@ -90,6 +90,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39348b3d0c765bd4986b54f36295d6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prevEnemySpawned: 0
+  prevPrevEnemySpawned: 0
+  mustPause: 0
+  stopSpawningEnemies: 0
 --- !u!1 &7724348955087736769
 GameObject:
   m_ObjectHideFlags: 0
@@ -134,3 +138,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39348b3d0c765bd4986b54f36295d6c6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prevEnemySpawned: 0
+  prevPrevEnemySpawned: 0
+  mustPause: 0
+  stopSpawningEnemies: 0

@@ -16,6 +16,11 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField]
     public GameObject healthFactory;
 
+    [SerializeField] private BulletDeposit bulletDeposit;
+    [SerializeField] private HealthDeposit healthDeposit;
+    [SerializeField] private PowerDeposit powerDeposit;
+    [SerializeField] private ShieldDeposit shieldDeposit;
+
     public OrbDepositingMode orbDepositingMode;
 
     public float fadeDuration = 1f; // The duration of the fade-in effect
@@ -23,7 +28,7 @@ public class AtmosphereReaction : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     IEnumerator Fade(GameObject gameObject, float startAlpha, float targetAlpha)
@@ -58,9 +63,13 @@ public class AtmosphereReaction : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {
+            bulletDeposit.GetComponent<BulletDeposit>().RenderSprites();
             bulletFactory.SetActive(true);
+            powerDeposit.GetComponent<PowerDeposit>().RenderSprites();
             powerFactory.SetActive(true);
+            shieldDeposit.GetComponent<ShieldDeposit>().RenderSprites();
             shieldFactory.SetActive(true);
+            healthDeposit.GetComponent<HealthDeposit>().RenderSprites();
             healthFactory.SetActive(true);
 
             StartCoroutine(Fade(bulletFactory, 0f, 1f));

@@ -6060,11 +6060,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1716939245 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2070318715, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-  m_PrefabInstance: {fileID: 1878423872088169272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1720293116
 GameObject:
   m_ObjectHideFlags: 0
@@ -7570,10 +7565,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
-    - target: {fileID: 543851233, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 617950203}
     - target: {fileID: 7400859371959236105, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: m_Name
       value: UI
@@ -7631,14 +7622,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
-    - target: {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
-      propertyPath: gameManager
-      value: 
-      objectReference: {fileID: 617950203}
-    - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
-      propertyPath: canvasUI
-      value: 
-      objectReference: {fileID: 1716939245}
     - target: {fileID: 3490931976703119853, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: m_RootOrder
       value: 0
