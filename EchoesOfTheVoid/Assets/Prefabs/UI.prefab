@@ -550,10 +550,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6183591030a47b74e84fbd991050687b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  gameManager: {fileID: 0}
+  spriteRenderer: {fileID: 334396013}
   enabledFactorySprite: {fileID: 21300000, guid: d26e4cf66c8c6724191ce12bd2a32272, type: 3}
   disabledFactorySprite: {fileID: 21300000, guid: 05d61d7058b31754da79c5c592f47a32, type: 3}
+  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
 --- !u!1 &339201751
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,11 +728,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79cf8a957eae7ed4a9c743ba273a8868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
-  shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
+  gameManager: {fileID: 0}
+  spriteRenderer: {fileID: 543851232}
   enabledFactorySprite: {fileID: 21300000, guid: 0db1aca46ffbca84e87dc44d5864fb9b, type: 3}
   disabledFactorySprite: {fileID: 21300000, guid: 5e22740eeda909f4b935f75d1e4539e9, type: 3}
+  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
 --- !u!82 &974942145
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1886,10 +1890,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bb1838aa238c3c4a96087baebb097f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  gameManager: {fileID: 0}
+  spriteRenderer: {fileID: 1779784236}
   enabledFactorySprite: {fileID: 21300000, guid: e6df37d2524b0b84391aca7aaa7e5d32, type: 3}
   disabledFactorySprite: {fileID: 21300000, guid: c41ee36733738974fb0de7dbee51c351, type: 3}
+  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
 --- !u!82 &1918870034
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2426,12 +2432,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693affcaedc2c18459d34f0bb07d2ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
-  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
-  canvasUI: {fileID: 2070318715}
+  gameManager: {fileID: 0}
+  spriteRenderer: {fileID: 1924396201}
   enabledFactorySprite: {fileID: 21300000, guid: 69b1f535115560046a24a4cc16f3ffbe, type: 3}
   disabledFactorySprite: {fileID: 21300000, guid: 2c662a8a26ab4054fabaa9b9cb5b8fb0, type: 3}
+  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  canvasUI: {fileID: 2070318715}
 --- !u!1 &1938465647
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,16 +6,16 @@ using UnityEngine;
 public class AtmosphereReaction : MonoBehaviour
 {
     [SerializeField]
-    public GameObject bulletFactory;
+    private GameObject bulletFactory;
 
     [SerializeField]
-    public GameObject powerFactory;
+    private GameObject powerFactory;
 
     [SerializeField]
-    public GameObject shieldFactory;
+    private GameObject shieldFactory;
 
     [SerializeField]
-    public GameObject healthFactory;
+    private GameObject healthFactory;
 
     [SerializeField] private BulletDeposit bulletDeposit;
     [SerializeField] private HealthDeposit healthDeposit;
@@ -73,6 +73,7 @@ public class AtmosphereReaction : MonoBehaviour
             shieldFactory.SetActive(true);
             healthDeposit.GetComponent<HealthDeposit>().RenderSprites();
             healthFactory.SetActive(true);
+            
             darkenBackground.SetActive(true);
 
             StartCoroutine(Fade(bulletFactory, 0f, 1f));

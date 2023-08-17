@@ -2,20 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PowerDeposit : MonoBehaviour
+public class PowerDeposit : Deposit
 {
-    public OrbCounter orbCounter;
-    public FactoryCosts factoryCosts;
-
-    private SpriteRenderer spriteRenderer;
-    public Sprite enabledFactorySprite;
-    public Sprite disabledFactorySprite;
-
-    void Start(){
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = enabledFactorySprite;
-    }
-
+    override 
     public void RenderSprites(){
         if(orbCounter.orbsCollected >= factoryCosts.powerCost){
             spriteRenderer.sprite = enabledFactorySprite;

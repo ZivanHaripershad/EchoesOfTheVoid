@@ -62,7 +62,6 @@ public class UIManager : MonoBehaviour
         reloadMessage.SetActive(true);
         cannotFireMessage.SetActive(true);
         purchaseAmmoMessage.SetActive(true);
-        healthLowMessage.SetActive(true);
     }
 
     public void SetLevelObjectsToInactive()

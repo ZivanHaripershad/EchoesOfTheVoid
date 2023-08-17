@@ -151,7 +151,13 @@ public class TutorialLevelController : MonoBehaviour
         {
             //show player how to move and wait for left and right arrow key input and shoot
             mouseControl.DisableMouse();
-            uiManager.DisableAtmosphereObject();
+            
+            //todo: remove comment
+            //uiManager.DisableAtmosphereObject();
+            
+            //todo: remove
+            uiManager.SetAtmosphereObjectToActive();
+            
             uiManager.SetLevelObjectsToActive();
             variables.mustPause = true;
             enemySpawning.StartSpawningEnemies(3, false);
