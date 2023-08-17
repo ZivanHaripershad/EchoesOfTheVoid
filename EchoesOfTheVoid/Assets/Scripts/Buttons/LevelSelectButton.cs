@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuButton : Button
+public class LevelSelectButton : Button
 {
     private void next()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("LevelSelect");
     }
 
     override 
-    public void OnMouseUp()
+        public void OnMouseUp()
     {
         Invoke("next", 0.3f);
     }

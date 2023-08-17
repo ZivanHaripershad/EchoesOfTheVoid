@@ -1,12 +1,7 @@
 using UnityEngine;
 
-public class RetryButton : MonoBehaviour
+public class RetryButton : Button
 {
-    public SpriteRenderer spriteRenderer;
-    public Sprite defaultExitGameText;
-    public Sprite hoveredExitGameText;
-    public AudioSource audioSource;
-    private MouseControl mouseControl;
     public TutorialData tutorialData;
     private UIManager uiManager;
     public OrbCounter orbCounter;
@@ -16,10 +11,7 @@ public class RetryButton : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mouseControl = GameObject.Find("MouseControl").GetComponent<MouseControl>();
         uiManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        spriteRenderer.sprite = defaultExitGameText;
-        mouseControl.EnableMouse();
     }
     
     private void next()
@@ -36,25 +28,9 @@ public class RetryButton : MonoBehaviour
         tutorialData.popUpIndex = 6;
     }
 
-    private void OnMouseUp()
+    override 
+    public void OnMouseUp()
     {
         Invoke("next", 0.3f);
-    }
-
-    private void OnMouseDown()
-    {
-        mouseControl.EnableMouse();
-        audioSource.Play();
-    }
-
-    private void OnMouseEnter()
-    {
-        mouseControl.EnableMouse();
-        spriteRenderer.sprite = hoveredExitGameText;
-    }
-
-    private void OnMouseExit()
-    {
-        spriteRenderer.sprite = defaultExitGameText;
     }
 }

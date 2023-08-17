@@ -2887,6 +2887,7 @@ GameObject:
   - component: {fileID: 3322359335123826979}
   - component: {fileID: 1888762763291356098}
   - component: {fileID: 1673256029972869531}
+  - component: {fileID: 465778466}
   m_Layer: 5
   m_Name: PurchaseAmmoMessage
   m_TagString: PurchaseAmmo
@@ -2956,6 +2957,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Purchase Ammo
+--- !u!114 &465778466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062226700450644679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b610f0e27e00e84fa7c38936b4a4e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashSpeed: 2
+  minOpacity: 0.2
+  maxOpacity: 1
 --- !u!1 &5533629612282211975
 GameObject:
   m_ObjectHideFlags: 0
@@ -3056,6 +3072,7 @@ GameObject:
   - component: {fileID: 8094307055119618840}
   - component: {fileID: 1339002466162401869}
   - component: {fileID: 6553570314109854255}
+  - component: {fileID: 1549538119}
   m_Layer: 5
   m_Name: HealthLowMessage
   m_TagString: PurchaseAmmo
@@ -3125,6 +3142,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Planet health is too low
+--- !u!114 &1549538119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5596176916392310718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b610f0e27e00e84fa7c38936b4a4e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashSpeed: 2
+  minOpacity: 0.2
+  maxOpacity: 1
 --- !u!1 &7400859371959236105
 GameObject:
   m_ObjectHideFlags: 0
@@ -3178,6 +3210,7 @@ GameObject:
   - component: {fileID: 5141685613782028597}
   - component: {fileID: 7817290680924408444}
   - component: {fileID: 5678135460743415179}
+  - component: {fileID: 2145657}
   m_Layer: 5
   m_Name: CannotFireMessage
   m_TagString: CannotFire
@@ -3247,6 +3280,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Cannot Fire While Reloading
+--- !u!114 &2145657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7421042517463517630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b610f0e27e00e84fa7c38936b4a4e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashSpeed: 2
+  minOpacity: 0.2
+  maxOpacity: 1
 --- !u!1 &8524234420344409200
 GameObject:
   m_ObjectHideFlags: 0
@@ -3258,6 +3306,7 @@ GameObject:
   - component: {fileID: 4701792869066292251}
   - component: {fileID: 2243456096339246646}
   - component: {fileID: 3062484386626148861}
+  - component: {fileID: 314522389}
   m_Layer: 5
   m_Name: ReloadMessage
   m_TagString: Reload
@@ -3327,3 +3376,18 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Hold R To Reload
+--- !u!114 &314522389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8524234420344409200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b610f0e27e00e84fa7c38936b4a4e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashSpeed: 2
+  minOpacity: 0.2
+  maxOpacity: 1

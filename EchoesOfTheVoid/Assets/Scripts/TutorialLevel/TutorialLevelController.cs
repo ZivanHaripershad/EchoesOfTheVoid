@@ -265,6 +265,7 @@ public class TutorialLevelController : MonoBehaviour
             planetHealthNum.text =  healthPercentage + "%";
             orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
             enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
+            mouseControl.EnableMouse();
         }
         else if (popUpIndex == 8)
         {
