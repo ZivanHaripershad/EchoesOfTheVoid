@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class BulletSpawnScript : MonoBehaviour
 {
-
     public GameManagerData gameManagerData;
     public OrbCounter orbCounter;
     public float maxShootSpeed;

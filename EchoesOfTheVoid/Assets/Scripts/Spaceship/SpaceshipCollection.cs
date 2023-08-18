@@ -5,35 +5,32 @@ using UnityEngine;
 
 public class SpaceshipCollection : MonoBehaviour
 {
-    public bool collectionMode;
-    
-    // the speed of object movement
     public float moveSpeed = 5;
+    
+    [SerializeField] private SpaceshipMode spaceshipMode;
+    [SerializeField] private OrbDepositingMode orbDepositingMode;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite shootingSprite;
 
-    public SpaceshipMode spaceshipMode;
-
-    public OrbDepositingMode orbDepositingMode;
-
-    public SpriteRenderer spriteRenderer;
-    public Sprite collectionSprite;
-    public Sprite shootingSprite;
-
+    //trail renderer
     [SerializeField]
     private SpriteRenderer fireSpriteA;
-
     [SerializeField]
     private SpriteRenderer fireSpriteB;
-
     [SerializeField]
     private TrailRenderer trailRendererRight;
     [SerializeField]
     private TrailRenderer trailRendererLeft;
 
     [SerializeField]
-    private float trailFadeAmount;
-
-    [SerializeField]
     Animator animator;
+
+    //to eject the spaceship when you press space
+    [SerializeField] private float ejectForce;
+    [SerializeField] private Rigidbody2D rb;
+
+    //to restrict the space ship to the screen
+    private Camera mainCamera; 
 
     void Start()
     {
@@ -41,6 +38,7 @@ public class SpaceshipCollection : MonoBehaviour
         spaceshipMode.collectionMode = false;
         spriteRenderer.sprite = shootingSprite;
         transform.position = new Vector3(0f, 0f, 0f);
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
@@ -57,18 +55,18 @@ public class SpaceshipCollection : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
-                if (animator != null)
-                {
-                    animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
-                    animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
-                }
-                else{
-                    Debug.LogWarning("animator is null");
-                }
+                
+                animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
+                animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
                 
                 if(spaceshipMode.collectionMode){
                     // spriteRenderer.sprite = collectionSprite;
                     spaceshipMode.canRotateAroundPlanet = false;
+                    //get direction it's facing 
+                    Vector3 facing = gameObject.transform.forward;
+                    //eject out 
+                    Debug.Log("Adding force" + facing * ejectForce);
+                    rb.AddForce(facing * ejectForce, ForceMode2D.Impulse);
                 }
                 else{
                     // spriteRenderer.sprite = shootingSprite;
@@ -82,8 +80,8 @@ public class SpaceshipCollection : MonoBehaviour
 
                 //boundary for top of screen
                 float padding = 0.5f;
-                Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-                Vector3 upperRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+                Vector3 lowerLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
+                Vector3 upperRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, 0));
 
                 float minX = lowerLeft.x + padding;
                 float maxX = upperRight.x - padding;

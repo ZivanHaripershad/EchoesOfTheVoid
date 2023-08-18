@@ -60,8 +60,10 @@ public class AtmosphereReaction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.S) && orbDepositingMode.depositingMode)
+        if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
             tutorialLevelController.ReduceAudioSpeed();
+        else 
+            tutorialLevelController.IncreaseAudioSpeed();
         
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {
@@ -84,9 +86,6 @@ public class AtmosphereReaction : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            //set speed to normal 
-            tutorialLevelController.IncreaseAudioSpeed();
-            
             StartCoroutine(Fade(bulletFactory, 1f, 0f));
             StartCoroutine(Fade(powerFactory, 1f, 0f));
             StartCoroutine(Fade(shieldFactory, 1f, 0f));

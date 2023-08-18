@@ -55,9 +55,10 @@ public class TutorialLevelController : MonoBehaviour
     
     private float audioSpeed;
 
+    private Coroutine audioCoroutine;
+
     private IEnumerator DecreaseSpeed()
     {
-        Debug.Log("Decrease");
         while (audioSpeed > reducedAudioSpeed)
         {
             audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
@@ -79,12 +80,16 @@ public class TutorialLevelController : MonoBehaviour
 
     public void ReduceAudioSpeed()
     {
-        StartCoroutine(DecreaseSpeed());
+        if (audioCoroutine != null)
+            StopCoroutine(audioCoroutine);
+        audioCoroutine = StartCoroutine(DecreaseSpeed());
     }
 
     public void IncreaseAudioSpeed()
     {
-        StartCoroutine(IncreaseSpeed());
+        if (audioCoroutine != null)
+            StopCoroutine(audioCoroutine);
+        audioCoroutine = StartCoroutine(IncreaseSpeed());
     }
     
     private void Start()
