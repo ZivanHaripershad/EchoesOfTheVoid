@@ -88,13 +88,8 @@ public class SpaceshipOrbiting : MonoBehaviour
             // // Set the rotation of the object to face the current angle of rotation
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            //calculate the difference between the old positon and the new position
-            Vector3 difference = transform.position - newPosition;
-
             // // Set the position of the object
             transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
-
-            spaceshipMode.oldPosition = transform.position;
 
             //set the trail renderer opacity to 0 while orbiting
             trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));

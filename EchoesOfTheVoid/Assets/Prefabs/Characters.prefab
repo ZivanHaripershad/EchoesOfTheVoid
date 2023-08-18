@@ -1964,6 +1964,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 3490931976703119853}
     m_Modifications:
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 5000476146717085714}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: maxY
       value: 8.38
       objectReference: {fileID: 0}
@@ -1971,6 +1975,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 791482942}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: ejectForce
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: fireSprite
       value: 
@@ -2135,6 +2143,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6145913263776041514, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LinearDrag
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6145913263776041519, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_Name
       value: Spaceship
@@ -2187,6 +2199,11 @@ MonoBehaviour:
 --- !u!4 &5000476146717085713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6145913263776041513, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+  m_PrefabInstance: {fileID: 1166407026991520312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &5000476146717085714 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6145913263776041514, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
   m_PrefabInstance: {fileID: 1166407026991520312}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5000476146717085719 stripped

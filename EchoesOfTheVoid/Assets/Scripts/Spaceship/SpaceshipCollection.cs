@@ -30,7 +30,8 @@ public class SpaceshipCollection : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
 
     //to restrict the space ship to the screen
-    private Camera mainCamera; 
+    private Camera mainCamera;
+    private bool isEjecting;
 
     void Start()
     {
@@ -39,6 +40,7 @@ public class SpaceshipCollection : MonoBehaviour
         spriteRenderer.sprite = shootingSprite;
         transform.position = new Vector3(0f, 0f, 0f);
         mainCamera = Camera.main;
+        isEjecting = false;
     }
 
     // Update is called once per frame
@@ -54,6 +56,19 @@ public class SpaceshipCollection : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                if (!spaceshipMode.collectionMode && !isEjecting)
+                {
+                    // Calculate the force direction based on the spaceship's current rotation
+                    Vector2 ejectDirection = transform.right; // Use transform.up for 2D space
+
+                    // Apply the ejectForce to the spaceship's Rigidbody2D
+                    rb.AddForce(ejectDirection * ejectForce, ForceMode2D.Impulse);
+                    
+                    Debug.Log("Ejecting...");
+
+                    isEjecting = true;
+                }
+
                 spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
                 
                 animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
@@ -62,22 +77,17 @@ public class SpaceshipCollection : MonoBehaviour
                 if(spaceshipMode.collectionMode){
                     // spriteRenderer.sprite = collectionSprite;
                     spaceshipMode.canRotateAroundPlanet = false;
-                    //get direction it's facing 
-                    Vector3 facing = gameObject.transform.forward;
-                    //eject out 
-                    Debug.Log("Adding force" + facing * ejectForce);
-                    rb.AddForce(facing * ejectForce, ForceMode2D.Impulse);
                 }
                 else{
                     // spriteRenderer.sprite = shootingSprite;
                     spaceshipMode.returningToPlanet = true;
+                    isEjecting = false;
                 }
             }
 
 
             if (spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false)
             {
-
                 //boundary for top of screen
                 float padding = 0.5f;
                 Vector3 lowerLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
@@ -99,10 +109,7 @@ public class SpaceshipCollection : MonoBehaviour
                 newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
                 //lower the opacity of the idle animation depending on the speed
-                float difference = (newPosition - transform.position).magnitude;
-                //square the difference
-                difference = difference * 20;
-                
+                float difference = (newPosition - transform.position).magnitude * 20;
                 fireSpriteA.material.color = new Color(1f, 1f, 1f, 1 - difference);
                 fireSpriteB.material.color = new Color(1f, 1f, 1f, 1 - difference);
 
