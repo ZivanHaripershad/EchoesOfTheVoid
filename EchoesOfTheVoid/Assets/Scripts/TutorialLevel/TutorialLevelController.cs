@@ -101,10 +101,10 @@ public class TutorialLevelController : MonoBehaviour
         }
 
         audioSpeed = 1;
-
         orbCounter.planetOrbMax = 5;
-        tutorialData.popUpIndex = 0;
         
+        tutorialData.popUpIndex = 0;
+
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
@@ -157,13 +157,10 @@ public class TutorialLevelController : MonoBehaviour
             //show player how to move and wait for left and right arrow key input and shoot
             mouseControl.DisableMouse();
             
-            //todo: remove comment
-            //uiManager.DisableAtmosphereObject();
-            
-            //todo: remove
-            uiManager.SetAtmosphereObjectToActive();
-            
+            uiManager.DisableAtmosphereObject();
+
             uiManager.SetLevelObjectsToActive();
+            
             variables.mustPause = true;
             enemySpawning.StartSpawningEnemies(3, false);
             gameManagerData.expireOrbs = false;

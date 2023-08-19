@@ -14,12 +14,12 @@ public class DestroyEnemy : MonoBehaviour
     public ShieldCounter shieldCounter;
     public GameManagerData gameManagerData;
     
-    private AudioSource explosionSoundEffect;
+    [SerializeField] private AudioSource destroyEnemySoundEffect;
+    [SerializeField] private AudioSource crashIntoPlanetSoundEffect;
     [SerializeField] private HealthCount healthCount;
     private bool canBeDestroyed;
-    private GameObject earth;
 
-    [SerializeField] private float soundDelay;
+    [SerializeField] private float bulletSoundDelay;
 
     [SerializeField] private GameObject graphics;
 
@@ -29,8 +29,6 @@ public class DestroyEnemy : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
         canBeDestroyed = true;
-        earth = GameObject.FindGameObjectWithTag("Earth");
-        explosionSoundEffect = GetComponent<AudioSource>();
     }
 
     void Destroy()
@@ -40,30 +38,32 @@ public class DestroyEnemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        bool planetDamage = false;
+        
+        if (canBeDestroyed && collision.gameObject.CompareTag("EarthSoundTrigger"))
+            crashIntoPlanetSoundEffect.Play();
+            
         if (canBeDestroyed && (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet")))
         {
             canBeDestroyed = false;
 
-            explosionSoundEffect.Play();
-
             if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive)
             {
                 Debug.Log("shield damage");
-                shieldCounter.currentShieldAmount = shieldCounter.currentShieldAmount -1;
+                shieldCounter.currentShieldAmount--;
             }
 
             if (collision.gameObject.CompareTag("Earth") && !shieldCounter.isShieldActive)
             {
                 healthCount.currentHealth--;
             }
-
+            
             if (collision.gameObject.CompareTag("Bullet"))
             {
                 gameManagerData.numberOfEnemiesKilled++;
-            }
-
-            if (!collision.gameObject.CompareTag("Earth"))
-            {
+                destroyEnemySoundEffect.Play();
+                
                 GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
                 Rigidbody2D rb = myOrb.GetComponent<Rigidbody2D>();
 
@@ -85,6 +85,9 @@ public class DestroyEnemy : MonoBehaviour
                 Vector2 withJitter = new Vector2((vel.x + jitterX) * 100, (vel.y + jitterY) * 100);
 
                 rb.AddForce(withJitter);
+                
+                //destroy the bullet
+                Destroy(collision.gameObject);
             }
 
             //Instantiate the explosion
@@ -93,12 +96,8 @@ public class DestroyEnemy : MonoBehaviour
             //Set the opacity to 0
             graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
             
-            //destroy the enemy 
-            Invoke("Destroy", soundDelay);
+            Invoke("Destroy", bulletSoundDelay);
 
-            //destroy the bullet
-            if (collision.gameObject.CompareTag("Bullet"))
-                Destroy(collision.gameObject);
         }
     }
 }
