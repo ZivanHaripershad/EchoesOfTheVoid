@@ -19,6 +19,8 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     public float returnSpeed = 3f;
 
+    public SpaceshipCollection spaceshipCollection;
+
 
     [SerializeField]
     private TrailRenderer trailRendererRight;
@@ -49,11 +51,10 @@ public class SpaceshipOrbiting : MonoBehaviour
     void Update()
     {
         //this is for when the game starts and you initially move around the planet
-        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == false){
+        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == false && !spaceshipCollection.isEjecting){
             // Determine if clockwise or anticlockwise rotation should be applied based on key presses
             rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f: 0f;
-
-
+            
             //////////////// inertia //////////////////
             if (Input.GetKey(KeyCode.D))
                 inertia = -driftSpeed;

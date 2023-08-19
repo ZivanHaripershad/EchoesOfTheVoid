@@ -31,7 +31,7 @@ public class SpaceshipCollection : MonoBehaviour
 
     //to restrict the space ship to the screen
     private Camera mainCamera;
-    private bool isEjecting;
+    public bool isEjecting;
 
     void Start()
     {
@@ -40,6 +40,11 @@ public class SpaceshipCollection : MonoBehaviour
         spriteRenderer.sprite = shootingSprite;
         transform.position = new Vector3(0f, 0f, 0f);
         mainCamera = Camera.main;
+        isEjecting = false;
+    }
+
+    private void SetEjectingToFalse()
+    {
         isEjecting = false;
     }
 
@@ -58,6 +63,8 @@ public class SpaceshipCollection : MonoBehaviour
             {
                 if (!spaceshipMode.collectionMode && !isEjecting)
                 {
+                    isEjecting = true;
+                    
                     // Calculate the force direction based on the spaceship's current rotation
                     Vector2 ejectDirection = transform.right; // Use transform.up for 2D space
 
@@ -65,8 +72,8 @@ public class SpaceshipCollection : MonoBehaviour
                     rb.AddForce(ejectDirection * ejectForce, ForceMode2D.Impulse);
                     
                     Debug.Log("Ejecting...");
-
-                    isEjecting = true;
+                    
+                    Invoke("SetEjectingToFalse", 0.1f);
                 }
 
                 spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
@@ -81,12 +88,11 @@ public class SpaceshipCollection : MonoBehaviour
                 else{
                     // spriteRenderer.sprite = shootingSprite;
                     spaceshipMode.returningToPlanet = true;
-                    isEjecting = false;
                 }
             }
 
 
-            if (spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false)
+            if (spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false && !isEjecting)
             {
                 //boundary for top of screen
                 float padding = 0.5f;
