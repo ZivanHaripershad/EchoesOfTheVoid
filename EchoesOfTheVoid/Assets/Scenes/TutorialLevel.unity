@@ -988,6 +988,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popups
       objectReference: {fileID: 0}
+    - target: {fileID: 8099378085749708540, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
 --- !u!4 &8437224163999602033 stripped
