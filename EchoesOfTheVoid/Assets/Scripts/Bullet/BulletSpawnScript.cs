@@ -107,6 +107,7 @@ public class BulletSpawnScript : MonoBehaviour
             if (orbCounter.orbsCollected >= 2 && bulletCount.currentBullets == 0)
             {
                 EnableMessage(purchaseAmmoMessage);
+                ReplenishAmmo();
             }
 
             Shoot();
