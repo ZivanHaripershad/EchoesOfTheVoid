@@ -21,7 +21,7 @@ public class LevelTwoSelect : MonoBehaviour
     private void OnMouseDown()
     {
         audioSource.Play();
-        SceneManager.LoadScene("TutorialLevel");
+        // SceneManager.LoadScene("TutorialLevel");
     }
 
     private void OnMouseEnter()
