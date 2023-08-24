@@ -508,6 +508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecf7837e4a457a4dba816774eee6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1650971347 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1929523084, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1752295807 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1592705493608382526, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
@@ -644,6 +649,10 @@ PrefabInstance:
       propertyPath: healthUi
       value: 
       objectReference: {fileID: 1887656179}
+    - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 1650971347}
     - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: spaceship
       value: 
