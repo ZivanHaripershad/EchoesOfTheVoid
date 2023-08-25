@@ -19,6 +19,8 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     public float returnSpeed = 3f;
 
+    public SpaceshipCollection spaceshipCollection;
+
 
     [SerializeField]
     private TrailRenderer trailRendererRight;
@@ -48,12 +50,17 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     void Update()
     {
+
+        bool isPaused = Mathf.Approximately(Time.timeScale, 0f);
+
+        if (isPaused)
+            return;
+        
         //this is for when the game starts and you initially move around the planet
-        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == false){
+        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == false && !spaceshipCollection.isEjecting){
             // Determine if clockwise or anticlockwise rotation should be applied based on key presses
             rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) ? 1f: 0f;
-
-
+            
             //////////////// inertia //////////////////
             if (Input.GetKey(KeyCode.D))
                 inertia = -driftSpeed;
@@ -88,13 +95,8 @@ public class SpaceshipOrbiting : MonoBehaviour
             // // Set the rotation of the object to face the current angle of rotation
             transform.rotation = Quaternion.Euler(0, 0, angle);
 
-            //calculate the difference between the old positon and the new position
-            Vector3 difference = transform.position - newPosition;
-
             // // Set the position of the object
             transform.position = new Vector3(newPosition.x, newPosition.y, newPosition.z);
-
-            spaceshipMode.oldPosition = transform.position;
 
             //set the trail renderer opacity to 0 while orbiting
             trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));

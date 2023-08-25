@@ -467,6 +467,7 @@ MonoBehaviour:
   healthLowMessage: {fileID: 0}
   orbUi: {fileID: 0}
   orbText: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!1 &462461866178193367
 GameObject:
   m_ObjectHideFlags: 0

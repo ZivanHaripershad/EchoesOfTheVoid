@@ -5,35 +5,33 @@ using UnityEngine;
 
 public class SpaceshipCollection : MonoBehaviour
 {
-    public bool collectionMode;
-    
-    // the speed of object movement
     public float moveSpeed = 5;
+    
+    [SerializeField] private SpaceshipMode spaceshipMode;
+    [SerializeField] private OrbDepositingMode orbDepositingMode;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite shootingSprite;
 
-    public SpaceshipMode spaceshipMode;
-
-    public OrbDepositingMode orbDepositingMode;
-
-    public SpriteRenderer spriteRenderer;
-    public Sprite collectionSprite;
-    public Sprite shootingSprite;
-
+    //trail renderer
     [SerializeField]
     private SpriteRenderer fireSpriteA;
-
     [SerializeField]
     private SpriteRenderer fireSpriteB;
-
     [SerializeField]
     private TrailRenderer trailRendererRight;
     [SerializeField]
     private TrailRenderer trailRendererLeft;
 
     [SerializeField]
-    private float trailFadeAmount;
-
-    [SerializeField]
     Animator animator;
+
+    //to eject the spaceship when you press space
+    [SerializeField] private float ejectForce;
+    [SerializeField] private Rigidbody2D rb;
+
+    //to restrict the space ship to the screen
+    private Camera mainCamera;
+    public bool isEjecting;
 
     void Start()
     {
@@ -41,6 +39,13 @@ public class SpaceshipCollection : MonoBehaviour
         spaceshipMode.collectionMode = false;
         spriteRenderer.sprite = shootingSprite;
         transform.position = new Vector3(0f, 0f, 0f);
+        mainCamera = Camera.main;
+        isEjecting = false;
+    }
+
+    private void SetEjectingToFalse()
+    {
+        isEjecting = false;
     }
 
     // Update is called once per frame
@@ -56,15 +61,25 @@ public class SpaceshipCollection : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
-                if (animator != null)
+                if (!spaceshipMode.collectionMode && !isEjecting)
                 {
-                    animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
-                    animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
+                    isEjecting = true;
+                    
+                    // Calculate the force direction based on the spaceship's current rotation
+                    Vector2 ejectDirection = transform.right; // Use transform.up for 2D space
+
+                    // Apply the ejectForce to the spaceship's Rigidbody2D
+                    rb.AddForce(ejectDirection * ejectForce, ForceMode2D.Impulse);
+                    
+                    Debug.Log("Ejecting...");
+                    
+                    Invoke("SetEjectingToFalse", 0.1f);
                 }
-                else{
-                    Debug.LogWarning("animator is null");
-                }
+
+                spaceshipMode.collectionMode = !spaceshipMode.collectionMode;
+                
+                animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
+                animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
                 
                 if(spaceshipMode.collectionMode){
                     // spriteRenderer.sprite = collectionSprite;
@@ -77,13 +92,12 @@ public class SpaceshipCollection : MonoBehaviour
             }
 
 
-            if (spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false)
+            if (spaceshipMode.collectionMode == true && orbDepositingMode.depositingMode == false && !isEjecting)
             {
-
                 //boundary for top of screen
                 float padding = 0.5f;
-                Vector3 lowerLeft = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, 0));
-                Vector3 upperRight = Camera.main.ViewportToWorldPoint(new Vector3(1, 1, 0));
+                Vector3 lowerLeft = mainCamera.ViewportToWorldPoint(new Vector3(0, 0, 0));
+                Vector3 upperRight = mainCamera.ViewportToWorldPoint(new Vector3(1, 1, 0));
 
                 float minX = lowerLeft.x + padding;
                 float maxX = upperRight.x - padding;
@@ -101,10 +115,7 @@ public class SpaceshipCollection : MonoBehaviour
                 newPosition.y = Mathf.Clamp(newPosition.y, minY, maxY);
 
                 //lower the opacity of the idle animation depending on the speed
-                float difference = (newPosition - transform.position).magnitude;
-                //square the difference
-                difference = difference * 20;
-                
+                float difference = (newPosition - transform.position).magnitude * 20;
                 fireSpriteA.material.color = new Color(1f, 1f, 1f, 1 - difference);
                 fireSpriteB.material.color = new Color(1f, 1f, 1f, 1 - difference);
 

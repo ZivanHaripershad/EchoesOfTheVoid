@@ -8,7 +8,6 @@ using UnityEngine.UI;
 
 public class BulletSpawnScript : MonoBehaviour
 {
-
     public GameManagerData gameManagerData;
     public OrbCounter orbCounter;
     public float maxShootSpeed;
@@ -63,6 +62,14 @@ public class BulletSpawnScript : MonoBehaviour
     
     }
 
+    void EnableMessage(Text message)
+    {
+        reloadMessage.enabled = false;
+        cannotFireMessage.enabled = false;
+        purchaseAmmoMessage.enabled = false;
+        message.enabled = true;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -83,7 +90,7 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if (bulletCount.currentBullets == 0 && bulletCount.generateBullets == false)
             {
-                reloadMessage.enabled = true;
+                EnableMessage(reloadMessage);
                 ReplenishAmmo();
             }
 
@@ -93,14 +100,14 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
             {
-                reloadMessage.enabled = true;
+                EnableMessage(reloadMessage);
                 ReplenishAmmo();
             }
             
             if (orbCounter.orbsCollected >= 2 && bulletCount.currentBullets == 0)
             {
-                reloadMessage.enabled = false;
-                purchaseAmmoMessage.enabled = true;
+                EnableMessage(purchaseAmmoMessage);
+                ReplenishAmmo();
             }
 
             Shoot();
@@ -157,13 +164,13 @@ public class BulletSpawnScript : MonoBehaviour
                     }
                     else
                     {
-                        cannotFireMessage.enabled = true;
+                        EnableMessage(cannotFireMessage);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
                 {
                     cannotFireSoundEffect.Play();
-                    purchaseAmmoMessage.enabled = true;
+                    EnableMessage(purchaseAmmoMessage);
                 }
             }
 
