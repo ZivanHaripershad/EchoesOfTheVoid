@@ -21,6 +21,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject orbText;
     [SerializeField] private GameObject pauseMenu;
 
+    private MouseControl mouseControl;
+
     private bool levelLayersAreActive; 
     
     void Start()
@@ -45,6 +47,7 @@ public class UIManager : MonoBehaviour
         healthFactory.SetActive(false);
 
         levelLayersAreActive = false;
+        mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
     }
 
     public void SetAtmosphereObjectToActive()
@@ -102,9 +105,9 @@ public class UIManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape) && levelLayersAreActive)
         {
             //puase the game
-            Debug.Log("Pausing...");
             pauseMenu.SetActive(true);
-
+            mouseControl.EnableMouse();
+            
             Time.timeScale = 0; 
         }
     }

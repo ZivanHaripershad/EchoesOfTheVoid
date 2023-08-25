@@ -13,8 +13,7 @@ public class PopUp2 : Button
         tutorialData.popUpIndex = 2;
     }
     
-    override 
-    public void OnMouseUp()
+    public override void OnMouseUp()
     {
         Invoke("Next", 0.3f);
     }

@@ -276,5 +276,9 @@ public class TutorialLevelController : MonoBehaviour
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
         }
+        
+        //if game is paused
+        if (Time.timeScale == 0)
+            mouseControl.EnableMouse();
     }
 }
