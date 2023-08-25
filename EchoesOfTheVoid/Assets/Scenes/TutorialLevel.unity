@@ -148,6 +148,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7987754314443918444, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
   m_PrefabInstance: {fileID: 1878423872088169272}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &201265730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4283590417314523930, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265443032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647262227947457, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -430,6 +435,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 693affcaedc2c18459d34f0bb07d2ddd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1435292192 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 462461864330477851, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
+  m_PrefabInstance: {fileID: 462461864928897760}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add951b01801130449c3eb720c89ae64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1499791406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6852647261396076855, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -634,6 +650,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1887656179}
     - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 201265730}
+    - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: spaceship
       value: 
       objectReference: {fileID: 717407492}
@@ -730,6 +750,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 51791539, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1435292192}
+    - target: {fileID: 495850743, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1435292192}
+    - target: {fileID: 543851233, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1435292192}
+    - target: {fileID: 1924396202, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 1435292192}
     - target: {fileID: 1938465650, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: darkenBackground
       value: 
@@ -909,6 +945,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2079459952, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
     - target: {fileID: 6852647261852607448, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -957,6 +997,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popups
       objectReference: {fileID: 0}
+    - target: {fileID: 8099378085749708540, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
 --- !u!4 &8437224163999602033 stripped

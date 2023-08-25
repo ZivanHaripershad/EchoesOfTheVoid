@@ -1568,6 +1568,76 @@ Transform:
   m_Father: {fileID: 5000476146717085713}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &831463765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 831463766}
+  - component: {fileID: 831463768}
+  - component: {fileID: 831463769}
+  m_Layer: 0
+  m_Name: EarthSoundTrigger
+  m_TagString: EarthSoundTrigger
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &831463766
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831463765}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.02, y: -0.02, z: 0}
+  m_LocalScale: {x: 2.22688, y: 2.22688, z: 4.45376}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3490931976703119853}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &831463768
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831463765}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 1
+  m_Constraints: 7
+--- !u!58 &831463769
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 831463765}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.002472535, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5321423
 --- !u!1 &1099625195
 GameObject:
   m_ObjectHideFlags: 0
@@ -1880,6 +1950,7 @@ Transform:
   m_Children:
   - {fileID: 5000476146650059306}
   - {fileID: 5000476146717085713}
+  - {fileID: 831463766}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1953,9 +2024,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.013286937, y: 0.3454615}
+  m_Offset: {x: 0.07618463, y: 0.31191}
   serializedVersion: 2
-  m_Radius: 1.4176866
+  m_Radius: 1.3505836
 --- !u!1001 &1166407026991520312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1964,6 +2035,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 3490931976703119853}
     m_Modifications:
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: rb
+      value: 
+      objectReference: {fileID: 5000476146717085714}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: maxY
       value: 8.38
       objectReference: {fileID: 0}
@@ -1971,6 +2046,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 791482942}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: ejectForce
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: fireSprite
       value: 
@@ -2135,6 +2214,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6145913263776041514, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_LinearDrag
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 6145913263776041519, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_Name
       value: Spaceship
@@ -2187,6 +2270,11 @@ MonoBehaviour:
 --- !u!4 &5000476146717085713 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6145913263776041513, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+  m_PrefabInstance: {fileID: 1166407026991520312}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &5000476146717085714 stripped
+Rigidbody2D:
+  m_CorrespondingSourceObject: {fileID: 6145913263776041514, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
   m_PrefabInstance: {fileID: 1166407026991520312}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &5000476146717085719 stripped

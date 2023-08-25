@@ -4,28 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HealthDeposit : MonoBehaviour
+public class HealthDeposit : Deposit
 {
-    public OrbCounter orbCounter;
-    public FactoryCosts factoryCosts;
-    public HealthCount healthCount;
-
-    public GameObject canvasUI;
-
-    public Sprite enabledFactorySprite;
-    public Sprite disabledFactorySprite;
-    private SpriteRenderer spriteRenderer;
-    
-
+    [SerializeField] private HealthCount healthCount;
+    [SerializeField] private GameObject canvasUI;
     private Text healthLowMessage;
 
     void Start(){
-        spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = enabledFactorySprite;
+        spriteRenderer.sprite = disabledFactorySprite;
         healthLowMessage = canvasUI.transform.Find("HealthLowMessage").GetComponent<Text>();
         healthLowMessage.enabled = false;
     }
 
+    override 
     public void RenderSprites(){
         if(orbCounter.orbsCollected >= factoryCosts.healthCost && healthCount.currentHealth < healthCount.maxHealth){
             spriteRenderer.sprite = enabledFactorySprite;
@@ -58,6 +49,6 @@ public class HealthDeposit : MonoBehaviour
 
     public void LowHealthStatus()
     {
-        healthLowMessage.enabled = true;
+       healthLowMessage.enabled = true;
     }
 }

@@ -55,9 +55,10 @@ public class TutorialLevelController : MonoBehaviour
     
     private float audioSpeed;
 
+    private Coroutine audioCoroutine;
+
     private IEnumerator DecreaseSpeed()
     {
-        Debug.Log("Decrease");
         while (audioSpeed > reducedAudioSpeed)
         {
             audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
@@ -79,12 +80,16 @@ public class TutorialLevelController : MonoBehaviour
 
     public void ReduceAudioSpeed()
     {
-        StartCoroutine(DecreaseSpeed());
+        if (audioCoroutine != null)
+            StopCoroutine(audioCoroutine);
+        audioCoroutine = StartCoroutine(DecreaseSpeed());
     }
 
     public void IncreaseAudioSpeed()
     {
-        StartCoroutine(IncreaseSpeed());
+        if (audioCoroutine != null)
+            StopCoroutine(audioCoroutine);
+        audioCoroutine = StartCoroutine(IncreaseSpeed());
     }
     
     private void Start()
@@ -96,10 +101,10 @@ public class TutorialLevelController : MonoBehaviour
         }
 
         audioSpeed = 1;
-
         orbCounter.planetOrbMax = 5;
-        tutorialData.popUpIndex = 0;
         
+        tutorialData.popUpIndex = 0;
+
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
@@ -151,8 +156,11 @@ public class TutorialLevelController : MonoBehaviour
         {
             //show player how to move and wait for left and right arrow key input and shoot
             mouseControl.DisableMouse();
+            
             uiManager.DisableAtmosphereObject();
+
             uiManager.SetLevelObjectsToActive();
+            
             variables.mustPause = true;
             enemySpawning.StartSpawningEnemies(3, false);
             gameManagerData.expireOrbs = false;
@@ -259,6 +267,7 @@ public class TutorialLevelController : MonoBehaviour
             planetHealthNum.text =  healthPercentage + "%";
             orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
             enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
+            mouseControl.EnableMouse();
         }
         else if (popUpIndex == 8)
         {
@@ -267,5 +276,9 @@ public class TutorialLevelController : MonoBehaviour
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
         }
+        
+        //if game is paused
+        if (Time.timeScale == 0)
+            mouseControl.EnableMouse();
     }
 }

@@ -18,6 +18,7 @@ TagManager:
   - Popup
   - PopupParent
   - MouseControl
+  - EarthSoundTrigger
   layers:
   - Default
   - TransparentFX
