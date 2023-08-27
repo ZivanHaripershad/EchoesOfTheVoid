@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
-  m_SortingOrder: 3
+  m_SortingOrder: 1
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -375,7 +375,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1839,7 +1839,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
-  m_SortingOrder: 2
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 20d11699859109e428edff7bd68f9f00, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2677,19 +2677,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &961352416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5000476146717085719}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20342c9fdf517df488abc21e8d475094, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  orbCollectSoundEffect: {fileID: 1193372699}
 --- !u!114 &717407503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2710,3 +2697,16 @@ MonoBehaviour:
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+--- !u!114 &961352416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5000476146717085719}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20342c9fdf517df488abc21e8d475094, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbCollectSoundEffect: {fileID: 1193372699}
