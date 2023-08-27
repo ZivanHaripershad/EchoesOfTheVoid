@@ -23,17 +23,35 @@ public class DestroyEnemy : MonoBehaviour
 
     [SerializeField] private GameObject graphics;
 
+    private Animator earthDamageAnimator;
+
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
         yield return new WaitForSeconds(0.1f);
         canBeDestroyed = true;
+        earthDamageAnimator = GameObject.FindGameObjectWithTag("EarthDamage").GetComponent<Animator>();
     }
 
     void Destroy()
     {
         Destroy(gameObject);
+    }
+
+    void checkDamage()
+    {
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.8) //20% damage
+            earthDamageAnimator.SetTrigger("damage1");
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.6) //40% damage
+            earthDamageAnimator.SetTrigger("damage2");
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.4) //60% damage
+            earthDamageAnimator.SetTrigger("damage3");
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.2) //80% damage
+            earthDamageAnimator.SetTrigger("damage4");
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.1) //90% damage
+            earthDamageAnimator.SetTrigger("damage5");
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -57,6 +75,7 @@ public class DestroyEnemy : MonoBehaviour
             if (collision.gameObject.CompareTag("Earth") && !shieldCounter.isShieldActive)
             {
                 healthCount.currentHealth--;
+                checkDamage();
             }
             
             if (collision.gameObject.CompareTag("Bullet"))
