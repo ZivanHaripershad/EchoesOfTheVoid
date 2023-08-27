@@ -362,6 +362,36 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5000476146717085719, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
   m_PrefabInstance: {fileID: 5000476146835965084}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &717407497 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 160186992, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+  m_PrefabInstance: {fileID: 5000476146835965084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &717407498 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 160186991, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+  m_PrefabInstance: {fileID: 5000476146835965084}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &717407503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717407492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75b78ad6811365e44be31cc1e8fef7d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
+  spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  depositSoundEffect: {fileID: 717407498}
+  cannotDepositSoundEffect: {fileID: 717407497}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
+  factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
 --- !u!1 &749617130 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647262818547443, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -774,6 +804,10 @@ PrefabInstance:
       propertyPath: tutorialLevelController
       value: 
       objectReference: {fileID: 312708574}
+    - target: {fileID: 4283590417314523930, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7400859371959236105, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: m_Name
       value: UI
@@ -936,7 +970,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Characters
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 795519972, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
 --- !u!1001 &6852647262090430745
 PrefabInstance:

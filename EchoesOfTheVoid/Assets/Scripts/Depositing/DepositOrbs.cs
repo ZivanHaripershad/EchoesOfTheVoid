@@ -58,8 +58,10 @@ public class DepositOrbs : MonoBehaviour
         if(spaceshipMode.collectionMode == false){
             if(Input.GetKey(KeyCode.S))
             {
-                orbDepositingMode.depositingMode = true;
+                
                 bool deposited = false;
+
+                orbDepositingMode.depositingMode = true;
                 
                 enemySpeedControl.SlowDown();
 
@@ -121,20 +123,20 @@ public class DepositOrbs : MonoBehaviour
                     switch (factoryDeposited)
                     {
                         case OrbFactoryDeposited.AMMO:
-                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.bulletCost);
-                            bulletFactoryAnim.SetTrigger("isSelected");
+                            // OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.bulletCost);
+                            // bulletFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.POWER:
-                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.powerCost);
-                            powerFactoryAnim.SetTrigger("isSelected");
+                            // OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.powerCost);
+                            // powerFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.HEALTH:
-                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.healthCost);
-                            healthFactoryAnim.SetTrigger("isSelected");
+                            // OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.healthCost);
+                            // healthFactoryAnim.SetTrigger("isSelected");
                             break;
                         case OrbFactoryDeposited.SHIELD:
-                            OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.shieldCost);
-                            shieldFactoryAnim.SetTrigger("isSelected");
+                            // OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.shieldCost);
+                            // shieldFactoryAnim.SetTrigger("isSelected");
                             break;
                     }
                 }
