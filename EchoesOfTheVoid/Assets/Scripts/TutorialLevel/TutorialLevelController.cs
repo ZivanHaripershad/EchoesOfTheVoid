@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
-public class TutorialLevelController : MonoBehaviour
+public class TutorialLevelController : LevelController
 {
     [SerializeField]
     private TutorialData tutorialData;
@@ -13,8 +13,6 @@ public class TutorialLevelController : MonoBehaviour
     private GameManagerData gameManagerData;
     [SerializeField]
     private GameManager gameManager;
-    [SerializeField]
-    private EnemySpawning enemySpawning;
     [SerializeField]
     private UIManager uiManager;
     [SerializeField]
@@ -31,67 +29,13 @@ public class TutorialLevelController : MonoBehaviour
     private MouseControl mouseControl;
     [SerializeField]
     private HealthDeposit healthDeposit;
-    [SerializeField]
-    private Text planetHealthNum;
-    [SerializeField]
-    private Text orbsNumber;
-    [SerializeField]
-    private Text enemiesNumber;
-    [SerializeField] 
-    private OrbCounter orbCounter;
+    
     [SerializeField]
     private GlobalVariables variables;
 
     private int popUpIndex;
     private bool soundsChanged;
 
-    [SerializeField]
-    private float normalAudioSpeed;
-    [SerializeField]
-    private float reducedAudioSpeed;
-
-    [SerializeField] 
-    private float audioSpeedChangeRate;
-    
-    private float audioSpeed;
-
-    private Coroutine audioCoroutine;
-
-    private IEnumerator DecreaseSpeed()
-    {
-        while (audioSpeed > reducedAudioSpeed)
-        {
-            audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
-            yield return null;
-        }
-
-        audioSpeed = reducedAudioSpeed;
-    }
-
-    private IEnumerator IncreaseSpeed()
-    {
-        while (audioSpeed < normalAudioSpeed)
-        {
-            audioSpeed += audioSpeedChangeRate * Time.deltaTime;
-            yield return null;
-        }
-        audioSpeed = normalAudioSpeed;
-    }
-
-    public void ReduceAudioSpeed()
-    {
-        if (audioCoroutine != null)
-            StopCoroutine(audioCoroutine);
-        audioCoroutine = StartCoroutine(DecreaseSpeed());
-    }
-
-    public void IncreaseAudioSpeed()
-    {
-        if (audioCoroutine != null)
-            StopCoroutine(audioCoroutine);
-        audioCoroutine = StartCoroutine(IncreaseSpeed());
-    }
-    
     private void Start()
     {
         popupParent.SetActive(true);
