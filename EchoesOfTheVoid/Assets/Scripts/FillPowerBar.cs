@@ -1,4 +1,5 @@
 using System.Collections;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -25,14 +26,19 @@ public class FillPowerBar : MonoBehaviour
     [SerializeField]
     private float barFillSpeed;
 
-    [SerializeField] private float fillSoundVolume;
+    [SerializeField] 
+    private float fillSoundVolume;
 
     private float currTimeFilled;
 
     private AudioSource[] fillEnergySound;
 
-    [SerializeField] private float fillSoundFadeSpeed;
+    [SerializeField] 
+    private float fillSoundFadeSpeed;
 
+    [SerializeField] 
+    private Animator haloAnimator;
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -88,10 +94,13 @@ public class FillPowerBar : MonoBehaviour
             
             if (prevSprite == 142)
                 fillEnergySound[4].Play();
+            
+            haloAnimator.SetBool("mustGlow", true);
         }
         else
         {
             fillEnergySound[5].volume -= fillSoundFadeSpeed * Time.deltaTime;
+            haloAnimator.SetBool("mustGlow", false);
         }
 
         if (prevSprite > sprites.Length - 1)

@@ -155,7 +155,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 2)
         {
             //show player how to move and wait for left and right arrow key input and shoot
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             
             uiManager.DisableAtmosphereObject();
 
@@ -174,7 +175,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 3)
         {
             //show player how to collect orbs
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             if (gameManagerData.numberOfOrbsCollected == 3)
             {
                 tutorialData.popUpIndex++;
@@ -183,7 +185,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 4)
         {
             //show player how to switch back to shooting mode
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             if (Input.GetKey(KeyCode.Space))
             {
                 tutorialData.popUpIndex++;
@@ -192,7 +195,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 5)
         {
             uiManager.SetAtmosphereObjectToActive();
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
             
@@ -219,7 +223,9 @@ public class TutorialLevelController : MonoBehaviour
                 Invoke("PlayGameAudio", 5); 
             }
 
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
+            
             if (gameManagerData.tutorialWaitTime <= 0)
             {
                 bulletSpawnScript.AutomaticallyReplenishAmmoForPlayer();
