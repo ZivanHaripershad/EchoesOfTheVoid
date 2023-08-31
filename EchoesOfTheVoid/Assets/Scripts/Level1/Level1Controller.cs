@@ -15,7 +15,7 @@ public class Level1Controller : MonoBehaviour
     [SerializeField]
     private GameManager gameManager;
     [SerializeField]
-    private EnemySpawning enemySpawning;
+    private EnemySpawningLevel1 enemySpawning;
     [SerializeField]
     private UIManager uiManager;
     [SerializeField]
@@ -154,11 +154,10 @@ public class Level1Controller : MonoBehaviour
         else if (popUpIndex == 1)
         {
             //show second screen
+            enemySpawning.ResetSpawning();
         }
         else if (popUpIndex == 2)
         {
-            enemySpawning.ResetSpawning();
-            
             if (Time.timeScale != 0)
                 mouseControl.DisableMouse();
             
@@ -168,6 +167,8 @@ public class Level1Controller : MonoBehaviour
             
             //play the game audio
             PlayGameAudio();
+            
+            enemySpawning.StartSpawningAllTypesOfEnemies();
         }
        
         

@@ -127,7 +127,7 @@ MonoBehaviour:
   level1Data: {fileID: 11400000, guid: 7fbd4839518bcdd4bb6ad48c2d0c22c9, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   gameManager: {fileID: 7018123690808852151}
-  enemySpawning: {fileID: 7018123691444164725}
+  enemySpawning: {fileID: 855804398686810282}
   uiManager: {fileID: 7018123691496249569}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
   sounds:
@@ -190,7 +190,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7018123691444164724}
-  - component: {fileID: 7018123691444164725}
+  - component: {fileID: 855804398686810282}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -213,7 +213,7 @@ Transform:
   m_Father: {fileID: 6535801911701228847}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7018123691444164725
+--- !u!114 &855804398686810282
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -222,15 +222,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7018123691444164731}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d184a9baf086fc4299a284f330063ca, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e148ebcea3f24e40b1323667c388d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 8
+  spawnRate: 3
   minEnemiesToSpawn: 1
-  maxEnemiesToSpawn: 3
-  spawnInterval: 3
-  spawnTimerVariation: 2
-  enemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
+  maxEnemiesToSpawn: 1
+  spawnInterval: 5
+  spawnTimerVariation: 4
+  pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
+  shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
 --- !u!1 &7018123691496249568
 GameObject:
   m_ObjectHideFlags: 0
