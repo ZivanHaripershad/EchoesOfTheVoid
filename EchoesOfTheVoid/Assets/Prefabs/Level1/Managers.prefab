@@ -137,12 +137,6 @@ MonoBehaviour:
   popUps:
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   popupParent: {fileID: 0}
   mouseControl: {fileID: 0}
   healthDeposit: {fileID: 0}
@@ -151,7 +145,7 @@ MonoBehaviour:
   enemiesNumber: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   variables: {fileID: 0}
-  normalAudioSpeed: 0
+  normalAudioSpeed: 1
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 1.8
 --- !u!1 &7018123691346075613

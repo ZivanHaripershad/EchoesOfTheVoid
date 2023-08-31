@@ -10,7 +10,7 @@ public class PopUp1 : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite defaultNewGameText;
     public Sprite hoveredNewGameText;
-    public Level1Data level1Data;
+    public TutorialData tutorialData;
     private MouseControl mouseControl;
     private AudioSource audioSource;
 
@@ -24,7 +24,7 @@ public class PopUp1 : MonoBehaviour
 
     private void next()
     {
-        level1Data.popUpIndex = 1;
+        tutorialData.popUpIndex = 1;
     }
     
     private void OnMouseDown()
