@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PopUp1 : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class PopUp1 : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite defaultNewGameText;
     public Sprite hoveredNewGameText;
-    public TutorialData tutorialData;
+    public Level1Data level1Data;
     private MouseControl mouseControl;
     private AudioSource audioSource;
 
@@ -23,7 +24,7 @@ public class PopUp1 : MonoBehaviour
 
     private void next()
     {
-        tutorialData.popUpIndex = 1;
+        level1Data.popUpIndex = 1;
     }
     
     private void OnMouseDown()
