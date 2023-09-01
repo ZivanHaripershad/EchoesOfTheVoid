@@ -27,6 +27,15 @@ public class MotherShipMovement : MonoBehaviour
     [SerializeField] private float shakeTime;
     [SerializeField] private float shakeIntensity;
     [SerializeField] private float shakeSpeed;
+    [SerializeField] private float nearEnemyThreshold; 
+
+    private Vector3 lastPositionInOval; 
+    
+    private bool isReturning;
+
+    private float returnTimer; 
+    
+    
 
     private void Start()
     {
@@ -35,10 +44,12 @@ public class MotherShipMovement : MonoBehaviour
         isShaking = false;
         currentShake = 0;
         sp = GetComponent<SpriteRenderer>();
+        isReturning = false;
     }
 
     void MoveInOval()
     {
+        
         if (isMovingForward)
         {
             timer += Time.deltaTime * speed;
@@ -107,13 +118,25 @@ public class MotherShipMovement : MonoBehaviour
             }
         }
 
-        if (toFlyTo != null) //no enemies to fly to, fly in oval
+        if (toFlyTo != null) 
         {
-            MoveToNearestEnemy(toFlyTo);
+            MoveToNearestEnemy(toFlyTo.transform.position);
+            returnTimer = 0;
+            isReturning = true;
         }
-        else //fly to the nearest enemy
+        else 
         {
-            MoveInOval();
+            if (isReturning)
+            {
+                MoveToNearestEnemy(lastPositionInOval);
+                if ((transform.position - lastPositionInOval).magnitude < nearEnemyThreshold)
+                    isReturning = false;
+            }
+            else
+            {
+                lastPositionInOval = transform.position;
+                MoveInOval();
+            }
         }
 
         if (isShaking)
@@ -124,11 +147,9 @@ public class MotherShipMovement : MonoBehaviour
         }
     }
 
-    private void MoveToNearestEnemy(GameObject toFlyTo)
+    private void MoveToNearestEnemy(Vector3 targetPosition)
     {
         // Calculate the new position to move towards.
-        Vector3 targetPosition = toFlyTo.gameObject.transform.position;
-
         Vector3 lookDirection = Vector3.left - transform.position;
 
         if (lookDirection != Vector3.left)
