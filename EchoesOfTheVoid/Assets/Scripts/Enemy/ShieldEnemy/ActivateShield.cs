@@ -14,15 +14,10 @@ public class ActivateShield : MonoBehaviour
         isActive = false;
     }
 
-    void SetShieldActive()
-    {
-        isActive = true;
-    }
-
     public void Activate()
     {
+        isActive = true;
         animator.SetBool("shieldActive", true);
-        Invoke("SetShieldActive", 1.5f);
     }
 
     public bool IsActive()
