@@ -15,6 +15,7 @@ public class ShieldEnemyMovement : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         transform.rotation = rotation;
         
-        transform.Translate(direction * speed * Time.deltaTime);
+        var step =  speed * Time.deltaTime; // calculate distance to move
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
     }
 }

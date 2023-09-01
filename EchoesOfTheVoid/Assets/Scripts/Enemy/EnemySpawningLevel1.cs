@@ -21,6 +21,8 @@ public class EnemySpawningLevel1 : MonoBehaviour {
     private int numberSpawned;
     private int maxSpawned;
 
+    [SerializeField] private Transform[] shieldEnemySpawnPoints; 
+
     public void ResetSpawning()
     {
         hasStarted = false;
@@ -58,7 +60,7 @@ public class EnemySpawningLevel1 : MonoBehaviour {
         while (true)
         {
             int result = Random.Range(0, 2);
-
+            
             if (result == 0)
             {
                 int enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
@@ -75,7 +77,13 @@ public class EnemySpawningLevel1 : MonoBehaviour {
             {
                 float randomNumber = Random.Range(0f, spawnTimerVariation);
                 yield return new WaitForSeconds(spawnInterval + randomNumber);
-                Instantiate(shieldEnemy, Vector3.zero, quaternion.identity);
+                
+                //get a random spawn point
+                int point = Random.Range(0, shieldEnemySpawnPoints.Length - 1);
+                Instantiate(shieldEnemy, new Vector3(
+                        shieldEnemySpawnPoints[point].transform.position.x,
+                        shieldEnemySpawnPoints[point].transform.position.y, 0),
+                    quaternion.identity);
             }
             
             

@@ -12,10 +12,7 @@ public class MotherShipDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             //damage
-            Debug.Log("Damage");
             motherShipMovement.StartShaking();
         }
-        
-        Debug.Log("Trigger enter!!!!");
     }
 }

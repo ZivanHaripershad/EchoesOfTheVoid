@@ -232,6 +232,35 @@ MonoBehaviour:
   spawnTimerVariation: 4
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
   shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
+  shieldEnemySpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &7018123691496249568
 GameObject:
   m_ObjectHideFlags: 0
