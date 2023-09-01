@@ -129,9 +129,9 @@ public class MotherShipMovement : MonoBehaviour
         // Calculate the new position to move towards.
         Vector3 targetPosition = toFlyTo.gameObject.transform.position;
 
-        Vector3 lookDirection = Vector3.right - transform.position;
+        Vector3 lookDirection = Vector3.left - transform.position;
 
-        if (lookDirection != Vector3.right)
+        if (lookDirection != Vector3.left)
         {
             // Calculate the angle (in degrees) between the lookDirection and the forward direction of the sprite.
             float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + 90;

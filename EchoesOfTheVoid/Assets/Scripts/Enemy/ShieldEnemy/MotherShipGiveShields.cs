@@ -11,7 +11,6 @@ public class MotherShipGiveShields : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Trigger entered of type enemy");
             ActivateShield activateShield = other.GetComponent<ActivateShield>();
             if (activateShield != null)
             {
