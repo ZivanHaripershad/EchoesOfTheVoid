@@ -105,12 +105,12 @@ public class MotherShipMovement : MonoBehaviour
         //get nearest enemy
         foreach (var enemy in enemies)
         {
-            ActivateShield activateShield = enemy.GetComponent<ActivateShield>();
+            ActivateShield activateShield = enemy.GetComponentInChildren<ActivateShield>();
             
             if (activateShield != null)
             {
                 float tryMe = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
-                if (tryMe < minDistance && !activateShield.IsActive())
+                if (tryMe < minDistance && !activateShield.IsActive() && activateShield.CanBeActivated())
                 {
                     minDistance = tryMe;
                     toFlyTo = enemy;

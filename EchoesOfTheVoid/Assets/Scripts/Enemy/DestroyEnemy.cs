@@ -17,7 +17,6 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField] private AudioSource destroyEnemySoundEffect;
     [SerializeField] private AudioSource crashIntoPlanetSoundEffect;
     [SerializeField] private HealthCount healthCount;
-    private bool canBeDestroyed;
 
     [SerializeField] private float bulletSoundDelay;
 
@@ -32,9 +31,8 @@ public class DestroyEnemy : MonoBehaviour
     IEnumerator Start()
     {
         yield return new WaitForSeconds(0.1f);
-        canBeDestroyed = true;
         earthDamageAnimator = GameObject.FindGameObjectWithTag("EarthDamage").GetComponent<Animator>();
-        activateShield = GetComponent<ActivateShield>();
+        activateShield = GetComponentInChildren<ActivateShield>();
     }
 
     void Destroy()
@@ -57,9 +55,11 @@ public class DestroyEnemy : MonoBehaviour
         
     }
 
-    void DestroyGameObject()
+    public void DestroyGameObject(Collider2D collision)
     {
+        graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         Invoke("Destroy", bulletSoundDelay);
+        SpawnOrb(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -67,13 +67,11 @@ public class DestroyEnemy : MonoBehaviour
 
         bool planetDamage = false;
         
-        if (canBeDestroyed && collision.gameObject.CompareTag("EarthSoundTrigger"))
+        if (collision.gameObject.CompareTag("EarthSoundTrigger"))
             crashIntoPlanetSoundEffect.Play();
             
-        if (canBeDestroyed && (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet")))
+        if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet"))
         {
-            canBeDestroyed = false;
-
             if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive)
             {
                 Debug.Log("shield damage");
@@ -88,6 +86,8 @@ public class DestroyEnemy : MonoBehaviour
             
             if (collision.gameObject.CompareTag("Bullet"))
             {
+                
+                Debug.Log(activateShield);
 
                 if (activateShield != null && activateShield.IsActive()) //has shield
                 {
@@ -96,11 +96,7 @@ public class DestroyEnemy : MonoBehaviour
                 else { //no shield
                     Debug.Log("No shield");
                     //no shield
-                    Invoke("Destroy", bulletSoundDelay);
-                    //Set the opacity to 0
-                    graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-                    
-                    SpawnOrb(collision);
+                    DestroyGameObject(collision);
                 }
 
                 //destroy the bullet

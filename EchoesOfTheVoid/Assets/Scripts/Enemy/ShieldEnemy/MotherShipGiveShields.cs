@@ -11,8 +11,8 @@ public class MotherShipGiveShields : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            ActivateShield activateShield = other.GetComponent<ActivateShield>();
-            if (activateShield != null)
+            ActivateShield activateShield = other.GetComponentInChildren<ActivateShield>();
+            if (activateShield != null && activateShield.CanBeActivated())
             {
                 activateShield.Activate();
                 animator.SetTrigger("isActive");

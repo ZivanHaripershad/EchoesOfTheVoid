@@ -170,6 +170,8 @@ public class Level1Controller : MonoBehaviour
             
             enemySpawning.StartSpawningAllTypesOfEnemies();
         }
+        
+        //todo: check if the player has won
        
         
         //if game is paused
