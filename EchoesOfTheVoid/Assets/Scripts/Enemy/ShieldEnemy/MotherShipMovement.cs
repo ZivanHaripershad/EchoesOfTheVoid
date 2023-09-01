@@ -10,6 +10,7 @@ public class MotherShipMovement : MonoBehaviour
     public float xRadius;
     public float yRadius;
     public float rotationSpeed;
+    public float moveSpeed;
 
     private float timer;
     private bool isMovingForward;
@@ -36,7 +37,7 @@ public class MotherShipMovement : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
     }
 
-    private void Update()
+    void MoveInOval()
     {
         if (isMovingForward)
         {
@@ -79,6 +80,68 @@ public class MotherShipMovement : MonoBehaviour
                 Quaternion.LookRotation(Vector3.forward, moveDirection) * Quaternion.Euler(0, 0, 90);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
         }
+    }
+
+    private void Update()
+    {
+        
+        //Find the nearest enemy
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        GameObject toFlyTo = null;
+
+        float minDistance = 1000f;
+
+        //get nearest enemy
+        foreach (var enemy in enemies)
+        {
+            ActivateShield activateShield = enemy.GetComponent<ActivateShield>();
+            
+            if (activateShield != null)
+            {
+                float tryMe = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
+                if (tryMe < minDistance && !activateShield.IsActive())
+                {
+                    minDistance = tryMe;
+                    toFlyTo = enemy;
+                }
+            }
+        }
+
+        if (toFlyTo != null) //no enemies to fly to, fly in oval
+        {
+            MoveToNearestEnemy(toFlyTo);
+        }
+        else //fly to the nearest enemy
+        {
+            MoveInOval();
+        }
+
+        if (isShaking)
+        {
+            currentShake = Mathf.Sin(Time.time * shakeSpeed) * shakeIntensity;
+            //get current direction 
+            transform.position += new Vector3(currentShake, currentShake, 0f);
+        }
+    }
+
+    private void MoveToNearestEnemy(GameObject toFlyTo)
+    {
+        // Calculate the new position to move towards.
+        Vector3 targetPosition = toFlyTo.gameObject.transform.position;
+
+        Vector3 lookDirection = Vector3.right - transform.position;
+
+        if (lookDirection != Vector3.right)
+        {
+            // Calculate the angle (in degrees) between the lookDirection and the forward direction of the sprite.
+            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + 90;
+
+            // Rotate the sprite around the Z-axis to face the target position. 
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
+        // Interpolate between the current position and the target position.
+        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
     }
 
     IEnumerator Shake()

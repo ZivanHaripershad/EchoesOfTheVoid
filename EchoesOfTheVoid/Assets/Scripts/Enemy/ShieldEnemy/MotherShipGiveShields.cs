@@ -5,12 +5,7 @@ using UnityEngine;
 
 public class MotherShipGiveShields : MonoBehaviour
 {
-    // Update is called once per frame
-    void Update()
-    {
-        //get all game objects in a certain proximity
-        
-    }
+    [SerializeField] private Animator animator;
 
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -21,6 +16,7 @@ public class MotherShipGiveShields : MonoBehaviour
             if (activateShield != null)
             {
                 activateShield.Activate();
+                animator.SetTrigger("isActive");
             }
         }
     }
