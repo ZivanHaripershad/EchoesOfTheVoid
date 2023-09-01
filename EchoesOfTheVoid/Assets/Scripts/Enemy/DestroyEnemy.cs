@@ -55,11 +55,15 @@ public class DestroyEnemy : MonoBehaviour
         
     }
 
-    public void DestroyGameObject(Collider2D collision)
+    public void DestroyGameObject(Collider2D collision, bool musSpawnOrb, Transform orbSpawnPoint)
     {
         graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         Invoke("Destroy", bulletSoundDelay);
-        SpawnOrb(collision);
+        Instantiate(explosion, orbSpawnPoint.position, orbSpawnPoint.rotation);
+        destroyEnemySoundEffect.Play();
+        
+        if (musSpawnOrb)
+            SpawnOrb(collision);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -82,6 +86,7 @@ public class DestroyEnemy : MonoBehaviour
             {
                 healthCount.currentHealth--;
                 checkDamage();
+                DestroyGameObject(collision, false, gameObject.transform);
             }
             
             if (collision.gameObject.CompareTag("Bullet"))
@@ -96,7 +101,7 @@ public class DestroyEnemy : MonoBehaviour
                 else { //no shield
                     Debug.Log("No shield");
                     //no shield
-                    DestroyGameObject(collision);
+                    DestroyGameObject(collision, true, collision.gameObject.transform);
                 }
 
                 //destroy the bullet
