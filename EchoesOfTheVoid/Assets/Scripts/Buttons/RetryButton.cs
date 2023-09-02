@@ -27,9 +27,8 @@ public class RetryButton : Button
         gameManagerData.hasResetAmmo = true;
         tutorialData.popUpIndex = 6;
     }
-
-    override 
-    public void OnMouseUp()
+    
+    public override void OnMouseUp()
     {
         Invoke("next", 0.3f);
     }

@@ -16,7 +16,7 @@ public abstract class Button : MonoBehaviour
         spriteRenderer.sprite = defaultText;
     }
     
-    private void OnMouseDown()
+    public void OnMouseDown()
     {
         mouseControl.EnableMouse();
         audioSource.Play();

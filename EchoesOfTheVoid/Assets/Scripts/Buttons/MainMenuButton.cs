@@ -9,9 +9,8 @@ public class MainMenuButton : Button
     {
         SceneManager.LoadScene("MainMenu");
     }
-
-    override 
-    public void OnMouseUp()
+    
+    public override void OnMouseUp()
     {
         Invoke("next", 0.3f);
     }

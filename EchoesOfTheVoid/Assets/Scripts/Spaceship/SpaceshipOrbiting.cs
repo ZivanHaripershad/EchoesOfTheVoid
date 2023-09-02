@@ -50,6 +50,12 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     void Update()
     {
+
+        bool isPaused = Mathf.Approximately(Time.timeScale, 0f);
+
+        if (isPaused)
+            return;
+        
         //this is for when the game starts and you initially move around the planet
         if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == false && !spaceshipCollection.isEjecting){
             // Determine if clockwise or anticlockwise rotation should be applied based on key presses

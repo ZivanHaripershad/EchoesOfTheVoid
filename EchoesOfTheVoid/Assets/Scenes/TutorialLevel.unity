@@ -148,6 +148,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7987754314443918444, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
   m_PrefabInstance: {fileID: 1878423872088169272}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &201265730 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4283590417314523930, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265443032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647262227947457, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -645,6 +650,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1887656179}
     - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
+      propertyPath: pauseMenu
+      value: 
+      objectReference: {fileID: 201265730}
+    - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: spaceship
       value: 
       objectReference: {fileID: 717407492}
@@ -988,6 +997,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popups
       objectReference: {fileID: 0}
+    - target: {fileID: 8099378085749708540, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
 --- !u!4 &8437224163999602033 stripped

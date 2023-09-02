@@ -101,10 +101,10 @@ public class TutorialLevelController : MonoBehaviour
         }
 
         audioSpeed = 1;
-
         orbCounter.planetOrbMax = 5;
-        tutorialData.popUpIndex = 0;
         
+        tutorialData.popUpIndex = 0;
+
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
@@ -155,15 +155,13 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 2)
         {
             //show player how to move and wait for left and right arrow key input and shoot
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             
-            //todo: remove comment
-            //uiManager.DisableAtmosphereObject();
-            
-            //todo: remove
-            uiManager.SetAtmosphereObjectToActive();
-            
+            uiManager.DisableAtmosphereObject();
+
             uiManager.SetLevelObjectsToActive();
+            
             variables.mustPause = true;
             enemySpawning.StartSpawningEnemies(3, false);
             gameManagerData.expireOrbs = false;
@@ -177,7 +175,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 3)
         {
             //show player how to collect orbs
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             if (gameManagerData.numberOfOrbsCollected == 3)
             {
                 tutorialData.popUpIndex++;
@@ -186,7 +185,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 4)
         {
             //show player how to switch back to shooting mode
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             if (Input.GetKey(KeyCode.Space))
             {
                 tutorialData.popUpIndex++;
@@ -195,7 +195,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 5)
         {
             uiManager.SetAtmosphereObjectToActive();
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
             
@@ -222,7 +223,9 @@ public class TutorialLevelController : MonoBehaviour
                 Invoke("PlayGameAudio", 5); 
             }
 
-            mouseControl.DisableMouse();
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
+            
             if (gameManagerData.tutorialWaitTime <= 0)
             {
                 bulletSpawnScript.AutomaticallyReplenishAmmoForPlayer();
@@ -279,5 +282,9 @@ public class TutorialLevelController : MonoBehaviour
             enemySpawning.ResetSpawning();
             enemySpawning.StopTheCoroutine();
         }
+        
+        //if game is paused
+        if (Time.timeScale == 0)
+            mouseControl.EnableMouse();
     }
 }

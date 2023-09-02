@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -18,6 +19,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject healthLowMessage;
     [SerializeField] private GameObject orbUi;
     [SerializeField] private GameObject orbText;
+    [SerializeField] private GameObject pauseMenu;
+
+    private MouseControl mouseControl;
+
+    private bool levelLayersAreActive; 
     
     void Start()
     {
@@ -39,6 +45,9 @@ public class UIManager : MonoBehaviour
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
+
+        levelLayersAreActive = false;
+        mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
     }
 
     public void SetAtmosphereObjectToActive()
@@ -62,6 +71,8 @@ public class UIManager : MonoBehaviour
         reloadMessage.SetActive(true);
         cannotFireMessage.SetActive(true);
         purchaseAmmoMessage.SetActive(true);
+
+        levelLayersAreActive = true;
     }
 
     public void SetLevelObjectsToInactive()
@@ -85,6 +96,19 @@ public class UIManager : MonoBehaviour
         for (int i = 0; i < orbs.Length; i++)
         {
             Destroy(orbs[i]);
+        }
+    }
+
+    private void Update()
+    {
+        //check when the user presses exit
+        if (Input.GetKeyDown(KeyCode.Escape) && levelLayersAreActive)
+        {
+            //puase the game
+            pauseMenu.SetActive(true);
+            mouseControl.EnableMouse();
+            
+            Time.timeScale = 0; 
         }
     }
 }
