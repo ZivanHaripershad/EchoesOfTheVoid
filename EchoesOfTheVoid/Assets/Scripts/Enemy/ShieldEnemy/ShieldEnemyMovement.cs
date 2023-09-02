@@ -6,7 +6,12 @@ using UnityEngine;
 public class ShieldEnemyMovement : MonoBehaviour
 {
     [SerializeField] private Vector3 targetPosition;
-    [SerializeField] private float speed;
+
+    private EnemySpeedControl enemySpeedControl;
+    private void Start()
+    {
+        enemySpeedControl = GameObject.FindWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
+    }
 
     private void FixedUpdate()
     {
@@ -15,7 +20,7 @@ public class ShieldEnemyMovement : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
         transform.rotation = rotation;
         
-        var step =  speed * Time.deltaTime; // calculate distance to move
+        var step =  enemySpeedControl.GetShieldEnemySpeed() * Time.deltaTime; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, step);
     }
 }

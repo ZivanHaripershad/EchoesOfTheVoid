@@ -6,11 +6,8 @@ using UnityEngine;
 
 public class MotherShipMovement : MonoBehaviour
 {
-    public float speed;
     public float xRadius;
     public float yRadius;
-    public float rotationSpeed;
-    public float moveSpeed;
 
     private float timer;
     private bool isMovingForward;
@@ -27,21 +24,18 @@ public class MotherShipMovement : MonoBehaviour
     [SerializeField] private float shakeTime;
     [SerializeField] private float shakeIntensity;
     [SerializeField] private float shakeSpeed;
-    [SerializeField] private float nearEnemyThreshold; 
+    [SerializeField] private float nearEnemyThreshold;
+    [SerializeField] private float flightPathRotationSpeed;
 
+    private EnemySpeedControl enemySpeedControl;
     private Vector3 lastPositionInOval; 
-    
     private bool isReturning;
-
-    private float returnTimer;
-
     private bool hasEnteredScene;
-
     private int flightEntrancePathNumber; 
 
     private void Start()
     {
-        isMovingForward = true;
+        isMovingForward = false;
         isCoolingDown = false;
         isShaking = false;
         currentShake = 0;
@@ -50,6 +44,7 @@ public class MotherShipMovement : MonoBehaviour
         hasEnteredScene = false;
         flightEntrancePathNumber = 0; 
         gameObject.transform.position = new Vector3(2.39f, -5.86f, 0f);
+        enemySpeedControl = GameObject.FindWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
     }
 
     void MoveInOval()
@@ -60,13 +55,13 @@ public class MotherShipMovement : MonoBehaviour
         
         if (isMovingForward)
         {
-            timer += Time.deltaTime * speed;
+            timer += Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
             sp.flipX = false;
             sp.flipY = false;
         }
         else
         {
-            timer -= Time.deltaTime * speed;
+            timer -= Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
             sp.flipX = true;
             sp.flipY = true;
         }
@@ -92,13 +87,13 @@ public class MotherShipMovement : MonoBehaviour
         {
             Quaternion targetRotation =
                 Quaternion.LookRotation(Vector3.forward, moveDirection) * Quaternion.Euler(0, 0, 90);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, flightPathRotationSpeed * Time.deltaTime);
         }
     }
 
     private bool EnterScene(float yThreshold, Vector3 direction)
     {
-        transform.position += moveSpeed * Time.deltaTime * direction;
+        transform.position += enemySpeedControl.GetMotherShipMoveSpeed() * Time.deltaTime * direction;
         
         if (gameObject.transform.position.y > yThreshold)
             return true;
@@ -175,7 +170,6 @@ public class MotherShipMovement : MonoBehaviour
         if (toFlyTo != null)
         {
             MoveToNearestEnemy(toFlyTo.transform.position, true);
-            returnTimer = 0;
             isReturning = true;
         }
         else
@@ -220,7 +214,9 @@ public class MotherShipMovement : MonoBehaviour
         }
 
         // Interpolate between the current position and the target position.
-        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime * 5/(transform.position - targetPosition).magnitude);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, 
+            enemySpeedControl.GetMotherShipMoveSpeed() * Time.deltaTime * 
+            5/(transform.position - targetPosition).magnitude);
     }
 
     IEnumerator Shake()

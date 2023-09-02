@@ -2009,6 +2009,38 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: shieldEnemyNormalSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: shieldEnemyReducedSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: motherShipNormalMoveSpeed
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: motherShipNormalOrbitSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: motherShipReducedMoveSpeed
+      value: 0.08
+      objectReference: {fileID: 0}
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: motherShipReducedOrbitSpeed
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: pathFollowingEnemyNormalSpeed
+      value: 0.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+      propertyPath: pathFollowingEnemyReducedSpeed
+      value: 0.03
+      objectReference: {fileID: 0}
     - target: {fileID: 5091084255568859236, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
       propertyPath: m_Name
       value: Other

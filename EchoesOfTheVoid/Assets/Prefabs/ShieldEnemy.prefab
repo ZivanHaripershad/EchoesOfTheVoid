@@ -234,6 +234,7 @@ GameObject:
   - component: {fileID: 262785705939155601}
   - component: {fileID: 1706391047348335963}
   - component: {fileID: 7061990432360051228}
+  - component: {fileID: -6097810784694257161}
   m_Layer: 0
   m_Name: ShieldEnemy
   m_TagString: Enemy
@@ -322,7 +323,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  speed: 0.5
+  enemySpeedControl: {fileID: -6097810784694257161}
 --- !u!50 &1279954328741182331
 Rigidbody2D:
   serializedVersion: 4
@@ -588,3 +589,17 @@ MonoBehaviour:
   powerDownEffect: {fileID: 1128788339936674594}
   activateShield: {fileID: 7091070577312179103}
   destroyEnemy: {fileID: 1706391047348335963}
+--- !u!114 &-6097810784694257161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5832461917253914927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47c1ae68f3e2cc44b74eb7912a42419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyNormalSpeed: 0.5
+  enemyReducedSpeed: 0.15
