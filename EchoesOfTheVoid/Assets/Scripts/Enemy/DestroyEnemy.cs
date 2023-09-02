@@ -93,8 +93,6 @@ public class DestroyEnemy : MonoBehaviour
             {
 
                 gameManagerData.numberOfEnemiesKilled++;
-                
-                Debug.Log(activateShield);
 
                 if (activateShield != null && activateShield.IsActive()) //has shield
                 {

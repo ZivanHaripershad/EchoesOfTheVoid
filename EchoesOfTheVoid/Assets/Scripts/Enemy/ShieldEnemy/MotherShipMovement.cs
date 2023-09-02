@@ -174,7 +174,7 @@ public class MotherShipMovement : MonoBehaviour
 
         if (toFlyTo != null)
         {
-            MoveToNearestEnemy(toFlyTo.transform.position);
+            MoveToNearestEnemy(toFlyTo.transform.position, true);
             returnTimer = 0;
             isReturning = true;
         }
@@ -182,7 +182,7 @@ public class MotherShipMovement : MonoBehaviour
         {
             if (isReturning)
             {
-                MoveToNearestEnemy(lastPositionInOval);
+                MoveToNearestEnemy(lastPositionInOval, false);
                 if ((transform.position - lastPositionInOval).magnitude < nearEnemyThreshold)
                     isReturning = false;
             }
@@ -201,7 +201,7 @@ public class MotherShipMovement : MonoBehaviour
         }
     }
 
-    private void MoveToNearestEnemy(Vector3 targetPosition)
+    private void MoveToNearestEnemy(Vector3 targetPosition, bool isGoingTo)
     {
         // Calculate the new position to move towards.
         Vector3 lookDirection = Vector3.left - transform.position;
@@ -209,14 +209,18 @@ public class MotherShipMovement : MonoBehaviour
         if (lookDirection != Vector3.left)
         {
             // Calculate the angle (in degrees) between the lookDirection and the forward direction of the sprite.
-            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg + 90;
+            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+
+            if (isGoingTo)
+                angle += 90;
+            else angle -= 90;
 
             // Rotate the sprite around the Z-axis to face the target position. 
             transform.rotation = Quaternion.Euler(0, 0, angle);
         }
 
         // Interpolate between the current position and the target position.
-        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime * 5/(transform.position - targetPosition).magnitude);
     }
 
     IEnumerator Shake()
