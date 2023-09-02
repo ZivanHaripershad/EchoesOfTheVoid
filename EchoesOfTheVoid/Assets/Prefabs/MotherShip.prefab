@@ -187,16 +187,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39925474ea074ea4cb3d278313669e49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.3
   xRadius: 5
   yRadius: 3
-  rotationSpeed: 5
-  moveSpeed: 1
   coolDowntimer: 1
   shakeTime: 1
   shakeIntensity: 0.11
   shakeSpeed: 25
   nearEnemyThreshold: 0.5
+  flightPathRotationSpeed: 10
 --- !u!70 &7975090668442905499
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

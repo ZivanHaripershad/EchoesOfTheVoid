@@ -31,11 +31,11 @@ public class MotherShipMovement : MonoBehaviour
     private Vector3 lastPositionInOval; 
     private bool isReturning;
     private bool hasEnteredScene;
-    private int flightEntrancePathNumber; 
+    private int flightEntrancePathNumber;
 
     private void Start()
     {
-        isMovingForward = false;
+        isMovingForward = true;
         isCoolingDown = false;
         isShaking = false;
         currentShake = 0;
@@ -49,10 +49,6 @@ public class MotherShipMovement : MonoBehaviour
 
     void MoveInOval()
     {
-        // Calculate the new position of the GameObject on the oval path
-        float x = Mathf.Cos(timer) * xRadius;
-        float y = Mathf.Sin(timer) * yRadius;
-        
         if (isMovingForward)
         {
             timer += Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
@@ -65,9 +61,14 @@ public class MotherShipMovement : MonoBehaviour
             sp.flipX = true;
             sp.flipY = true;
         }
-        
+    
+        // Calculate the new position of the GameObject on the oval path
+        float x = Mathf.Cos(timer) * xRadius;
+        float y = Mathf.Sin(timer) * yRadius;
+    
+        Vector3 moveDirection = new Vector3(-yRadius * Mathf.Sin(timer), xRadius * Mathf.Cos(timer), 0f).normalized;
         transform.position = new Vector3(x, y, 0f);
-
+    
         if (isShaking)
         {
             currentShake = Mathf.Sin(Time.time * shakeSpeed) * shakeIntensity;
@@ -78,18 +79,13 @@ public class MotherShipMovement : MonoBehaviour
         {
             currentShake = 0; 
         }
-
-        // Calculate the direction the GameObject is moving
-        Vector3 moveDirection = new Vector3(Mathf.Cos(timer), Mathf.Sin(timer), 0f);
-
-        // If the GameObject is moving, rotate it to face the movement direction
-        if (moveDirection != Vector3.zero)
-        {
-            Quaternion targetRotation =
-                Quaternion.LookRotation(Vector3.forward, moveDirection) * Quaternion.Euler(0, 0, 90);
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, flightPathRotationSpeed * Time.deltaTime);
-        }
+   
+        // Rotate to face the direction of movement in the z-axis
+         float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+         Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, flightPathRotationSpeed * Time.deltaTime);
     }
+
 
     private bool EnterScene(float yThreshold, Vector3 direction)
     {
@@ -205,9 +201,12 @@ public class MotherShipMovement : MonoBehaviour
             // Calculate the angle (in degrees) between the lookDirection and the forward direction of the sprite.
             float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
-            if (isGoingTo)
-                angle += 90;
-            else angle -= 90;
+            // //todo: modify
+            //  if (isGoingTo)
+            //      angle -= 90;
+            //  else angle += 90;
+
+             angle += 90;
 
             // Rotate the sprite around the Z-axis to face the target position. 
             transform.rotation = Quaternion.Euler(0, 0, angle);
