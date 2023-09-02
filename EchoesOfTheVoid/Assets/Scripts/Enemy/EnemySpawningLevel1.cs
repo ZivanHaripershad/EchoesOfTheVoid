@@ -49,7 +49,7 @@ public class EnemySpawningLevel1 : MonoBehaviour {
         }
     }
     
-    public void StopTheCoroutine()
+    public void StopSpawning()
     {
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);

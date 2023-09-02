@@ -33,9 +33,11 @@ public class MotherShipMovement : MonoBehaviour
     
     private bool isReturning;
 
-    private float returnTimer; 
-    
-    
+    private float returnTimer;
+
+    private bool hasEnteredScene;
+
+    private int flightEntrancePathNumber; 
 
     private void Start()
     {
@@ -45,10 +47,16 @@ public class MotherShipMovement : MonoBehaviour
         currentShake = 0;
         sp = GetComponent<SpriteRenderer>();
         isReturning = false;
+        hasEnteredScene = false;
+        flightEntrancePathNumber = 0; 
+        gameObject.transform.position = new Vector3(2.39f, -5.86f, 0f);
     }
 
     void MoveInOval()
     {
+        // Calculate the new position of the GameObject on the oval path
+        float x = Mathf.Cos(timer) * xRadius;
+        float y = Mathf.Sin(timer) * yRadius;
         
         if (isMovingForward)
         {
@@ -62,11 +70,6 @@ public class MotherShipMovement : MonoBehaviour
             sp.flipX = true;
             sp.flipY = true;
         }
-
-
-        // Calculate the new position of the GameObject on the oval path
-        float x = Mathf.Cos(timer) * xRadius;
-        float y = Mathf.Sin(timer) * yRadius;
         
         transform.position = new Vector3(x, y, 0f);
 
@@ -93,9 +96,60 @@ public class MotherShipMovement : MonoBehaviour
         }
     }
 
+    private bool EnterScene(float yThreshold, Vector3 direction)
+    {
+        transform.position += moveSpeed * Time.deltaTime * direction;
+        
+        if (gameObject.transform.position.y > yThreshold)
+            return true;
+        
+        return false;
+    }
+
     private void Update()
     {
         
+        if (!hasEnteredScene)
+            switch (flightEntrancePathNumber)
+            {
+                case 0:
+                    //move over the bottom right corner
+                    if (EnterScene(1.62f, new Vector3(1f, 1f, 0f)))
+                    {
+                        //set position to just left of screen
+                        gameObject.transform.position = new Vector3(-9.7f, 0.71f, 0f);
+                        flightEntrancePathNumber++;
+                    }
+                    break;
+                case 1:
+                    //move over the top left corner
+                    if (EnterScene(5.65f, new Vector3(1f, 1f, 0f)))
+                    {
+                        //set position
+                        gameObject.transform.position = new Vector3(5.19f, -6.24f, 0f);
+                        flightEntrancePathNumber++;
+                        gameObject.transform.rotation = new Quaternion(0f, 0f, 0f, 0f);
+                    }
+                    break;
+                case 2: 
+                    //move to starting position of rotation
+                    if (EnterScene(0, new Vector3(0f, 1f, 0f)))
+                    {
+                        hasEnteredScene = true;
+                    }
+                    else
+                    {
+                        Debug.Log("not entered...");
+                    }
+                    break;
+            }
+        else
+            HelpEnemies();
+        
+    }
+
+    private void HelpEnemies()
+    {
         //Find the nearest enemy
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
         GameObject toFlyTo = null;
@@ -106,7 +160,7 @@ public class MotherShipMovement : MonoBehaviour
         foreach (var enemy in enemies)
         {
             ActivateShield activateShield = enemy.GetComponentInChildren<ActivateShield>();
-            
+
             if (activateShield != null)
             {
                 float tryMe = Vector3.Distance(enemy.transform.position, gameObject.transform.position);
@@ -118,13 +172,13 @@ public class MotherShipMovement : MonoBehaviour
             }
         }
 
-        if (toFlyTo != null) 
+        if (toFlyTo != null)
         {
             MoveToNearestEnemy(toFlyTo.transform.position);
             returnTimer = 0;
             isReturning = true;
         }
-        else 
+        else
         {
             if (isReturning)
             {
