@@ -62,6 +62,8 @@ public class Level1Controller : MonoBehaviour
     private GameObject motherShipInstance;
 
     public UpgradeScene1Manager upgradeScene1Manager;
+
+    private int popupIndex;
     
     struct SceneManager
     {
@@ -146,6 +148,8 @@ public class Level1Controller : MonoBehaviour
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.DisableShield();
+
+        healthCount.currentHealth = healthCount.maxHealth;
         
         //set mothership instance to null to check if it's spawned
         motherShipInstance = null;
@@ -164,27 +168,85 @@ public class Level1Controller : MonoBehaviour
     
     private void Update()
     {
+        popupIndex = level1Data.popUpIndex;
+
         HandleAudioSpeedChanges();
         HandlePopups();
-
-        switch (level1Data.popUpIndex)
+        
+        switch (popupIndex)
         {
             case 0: //show first screen
-                break;
-            case 1: //show second screen
                 enemySpawning.ResetSpawning();
                 break;
-            case 2: //normal enemies
+            case 1: //gameplay
                 SpawnNormalEnemies();
+                if (healthCount.currentHealth == 0)
+                {
+                    //show retry screen
+                    uiManager.DestroyRemainingOrbs();
+                    enemySpawning.DestroyActiveEnemies();
+                    uiManager.SetLevelObjectsToInactive();
+                    level1Data.popUpIndex = 3;
+                }
+                if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+                {
+                    healthDeposit.LowHealthStatus();
+                }
+            
+                if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && !HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+                {
+                    //player wins so show winning screen
+                    uiManager.DestroyRemainingOrbs();
+                    enemySpawning.DestroyActiveEnemies();
+                    enemySpawning.ResetSpawning();
+                    enemySpawning.StopSpawning();
+                    uiManager.SetLevelObjectsToInactive();
+                
+                    level1Data.popUpIndex = 2;
+                }
                 break;
-            case 3: 
-                SpawnBoss();
+            case 2: //end screen
+                var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
+                planetHealthNum.text =  healthPercentage + "%";
+                orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
+                enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
+                mouseControl.EnableMouse();
                 break;
+            case 3: //retry
+                mouseControl.EnableMouse();
+                enemySpawning.ResetSpawning();
+                enemySpawning.StopSpawning();
+                break;
+
         }
         
         //if game is paused
         if (Time.timeScale == 0)
             mouseControl.EnableMouse();
+    }
+    
+    private void SpawnNormalEnemies()
+    {
+        if (Time.timeScale != 0)
+            mouseControl.DisableMouse();
+
+        //activate level objects
+        uiManager.SetLevelObjectsToActive();
+        uiManager.SetAtmosphereObjectToActive();
+
+        //play the game audio
+        PlayAudio(TrackPlaying.GAMEPLAY);
+
+        if (!sceneManager.hasStartedSpawning)
+        {
+            sceneManager.hasStartedSpawning = true;
+            enemySpawning.StartSpawningAllTypesOfEnemies();
+        }
+
+        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
+        {
+            SpawnBoss();
+        }
     }
 
     private void SpawnBoss()
@@ -226,41 +288,12 @@ public class Level1Controller : MonoBehaviour
         level1Data.popUpIndex = 2;
     }
 
-    private void SpawnNormalEnemies()
-    {
-        if (Time.timeScale != 0)
-            mouseControl.DisableMouse();
-
-        //activate level objects
-        uiManager.SetLevelObjectsToActive();
-        uiManager.SetAtmosphereObjectToActive();
-
-        //play the game audio
-        PlayAudio(TrackPlaying.GAMEPLAY);
-
-        if (!sceneManager.hasStartedSpawning)
-        {
-            sceneManager.hasStartedSpawning = true;
-            enemySpawning.StartSpawningAllTypesOfEnemies();
-        }
-
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
-        {
-            enemySpawning.ResetSpawning();
-            level1Data.popUpIndex++;
-        }
-    }
-
     private void HandlePopups()
     {
         for (int i = 0; i < popUps.Length; i++)
         {
-            if (i == 2)
-            {
-                Debug.Log("Popup index = 2");
-                Debug.Log(popUps[i].gameObject.name);
-            }
-            if (i == level1Data.popUpIndex)
+            
+            if (i == popupIndex)
             {
                 popUps[i].SetActive(true);
             }
