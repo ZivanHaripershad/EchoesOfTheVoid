@@ -45,7 +45,7 @@ public class SpaceshipOrbiting : MonoBehaviour
         spaceshipMode.canRotateAroundPlanet = true;
         inertia = 0;
 
-        if (SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
             SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShipHandlingUpgrade")
         {
             var upgradeInertia = SelectedUpgradeLevel1.Instance.GetUpgrade().GetValue();

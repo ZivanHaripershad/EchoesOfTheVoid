@@ -92,7 +92,7 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
 
         var mustAttract = false;
 
-        if (SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
         {
             var upgrade = SelectedUpgradeLevel1.Instance.GetUpgrade();
             mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
