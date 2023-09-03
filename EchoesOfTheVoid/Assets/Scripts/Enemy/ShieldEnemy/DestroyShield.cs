@@ -31,7 +31,9 @@ public class DestroyShield : MonoBehaviour
             else
             {
                 Debug.Log("Destroying enemy!!!");
-                destroyEnemy.DestroyGameObject(other, true, other.transform);
+                
+                if (activateShield.ShouldSpawnTwoOrbs())
+                    destroyEnemy.DestroyGameObject(other, true, other.transform);
             }
         } 
     }

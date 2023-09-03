@@ -27,6 +27,15 @@ public class ActivateShield : MonoBehaviour
         }
     }
 
+    public bool ShouldSpawnTwoOrbs()
+    {
+        if (!canBeActivated) //enemy has previously had a shield
+            return true;
+        
+        //enemy has not had a shield
+        return false;
+    }
+
     public void Deactivate()
     {
         isActive = false;
