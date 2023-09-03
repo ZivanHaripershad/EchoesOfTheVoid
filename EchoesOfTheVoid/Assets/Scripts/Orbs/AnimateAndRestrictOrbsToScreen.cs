@@ -25,9 +25,14 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
 
     private float spawnX;
     private float spawnY;
+    
+    [SerializeField] private float bounds;
+    [SerializeField] private float orbMagnetForce;
+    [SerializeField] private float orbMagnetRadius;
 
-    [SerializeField]
-    private float bounds;
+    public bool mustAttract;
+
+    private GameObject player;
 
 
     // Start is called before the first frame update
@@ -40,6 +45,8 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
 
         spawnX = gameObject.transform.position.x;
         spawnY = gameObject.transform.position.y;
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
@@ -79,6 +86,16 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
             randomXForce = Random.Range(-randomForceMagnitude, randomForceMagnitude);
             randomYForce = Random.Range(-randomForceMagnitude, randomForceMagnitude);
             currentDriftTime = 0; 
+        }
+        
+        //add attraction force to player
+        Vector3 direction = player.transform.position - transform.position;
+        float distance = direction.magnitude;
+
+        if (distance < orbMagnetRadius && mustAttract)
+        {
+            Vector3 attraction = direction.normalized * orbMagnetForce;
+            rb.AddForce(attraction);
         }
     }
 }

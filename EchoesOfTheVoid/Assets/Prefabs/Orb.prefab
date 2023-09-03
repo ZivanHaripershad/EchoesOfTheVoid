@@ -189,3 +189,5 @@ MonoBehaviour:
   driftTimeInOneDirection: 4
   randomForceMagnitude: 0.3
   bounds: 3
+  orbMagnetForce: 6
+  orbMagnetRadius: 2
