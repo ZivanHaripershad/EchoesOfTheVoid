@@ -2,32 +2,63 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class EnemySpeedControl : MonoBehaviour
 {
     
-    [SerializeField] private float enemyNormalSpeed;
-    [SerializeField] private float enemyReducedSpeed;
+    [SerializeField] private float pathFollowingEnemyNormalSpeed;
+    [SerializeField] private float pathFollowingEnemyReducedSpeed;
 
-    private float currentSpeed;
+    [SerializeField] private float shieldEnemyNormalSpeed;
+    [SerializeField] private float shieldEnemyReducedSpeed;
+
+    [SerializeField] private float motherShipNormalMoveSpeed;
+    [SerializeField] private float motherShipReducedMoveSpeed;
+    [SerializeField] private float motherShipNormalOrbitSpeed;
+    [SerializeField] private float motherShipReducedOrbitSpeed;
+
+    private float pathFollowingEnemyCurrentSpeed;
+    private float shieldEnemyCurrentSpeed;
+    private float motherShipMoveSpeed;
+    private float motherShipOrbitSpeed;
 
     private void Start()
     {
-        currentSpeed = enemyNormalSpeed;
+        SpeedUp();
     }
 
     public void SpeedUp()
     {
-        currentSpeed = enemyNormalSpeed;
+        pathFollowingEnemyCurrentSpeed = pathFollowingEnemyNormalSpeed;
+        shieldEnemyCurrentSpeed = shieldEnemyNormalSpeed;
+        motherShipMoveSpeed = motherShipNormalMoveSpeed;
+        motherShipOrbitSpeed = motherShipNormalOrbitSpeed;
     }
 
     public void SlowDown()
     {
-        currentSpeed = enemyReducedSpeed;
+        pathFollowingEnemyCurrentSpeed = pathFollowingEnemyReducedSpeed;
+        shieldEnemyCurrentSpeed = shieldEnemyReducedSpeed;
+        motherShipMoveSpeed = motherShipReducedMoveSpeed;
+        motherShipOrbitSpeed = motherShipReducedOrbitSpeed;
     }
 
-    public float getSpeed()
+    public float GetPathFollowingEnemySpeed()
     {
-        return currentSpeed;
+        return pathFollowingEnemyCurrentSpeed;
+    }
+
+    public float GetShieldEnemySpeed()
+    {
+        return shieldEnemyCurrentSpeed;
+    }
+    public float GetMotherShipMoveSpeed()
+    {
+        return motherShipMoveSpeed;
+    }
+    public float GetMotherShipOrbitSpeed()
+    {
+        return motherShipOrbitSpeed;
     }
 }

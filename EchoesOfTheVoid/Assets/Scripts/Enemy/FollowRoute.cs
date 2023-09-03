@@ -4,54 +4,39 @@ using UnityEngine;
 
 public class FollowRoute : MonoBehaviour
 {
-    [SerializeField]
-    private Transform[] routes; //all the created routes
-
-    [SerializeField]
-    private float rotationSpeed;
-
-    private float tParam;
-
-    private GlobalVariables variables;
-
-    [SerializeField]
-    private GameObject enemy;
-
+    [SerializeField] private Transform[] routes; //all the created routes
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private GameObject enemy;
     [SerializeField] private float radius;
-
-    private SpriteRenderer sp;
-
-    private Vector2 enemyPosition;
-
-    private bool coroutineAllowed;
-
-    private Camera mainCamera;
-
-    private Vector3 worldCenterPosition;
-
-    private float enemySpeed;
-
-    private bool firstUpdate;
     
+    private float tParam;
+    private GlobalVariables variables;
+    private SpriteRenderer sp;
+    private Vector2 enemyPosition;
+    private bool coroutineAllowed;
+    private Vector3 worldCenterPosition;
+    private float enemySpeed;
+    private bool firstUpdate;
     private EnemySpeedControl enemySpeedControl;
+    private BoxCollider2D collider;
 
     // Start is called before the first frame update
     void Start()
     {       
         tParam = 0f;
         coroutineAllowed = true;
+        firstUpdate = true;
 
         sp = enemy.GetComponent<SpriteRenderer>();
         sp.material.color = new Color(1f, 1f, 1f, 0);
 
         variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
-
         enemySpeedControl = GameObject.FindGameObjectWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
-
-        firstUpdate = true;
-        mainCamera = Camera.main;
-
+        
         worldCenterPosition = new Vector3(0, 0, 0);
+
+        collider = GetComponentInChildren<BoxCollider2D>();
+        collider.enabled = false;
     }
 
     // Update is called once per frame
@@ -65,7 +50,7 @@ public class FollowRoute : MonoBehaviour
             StartCoroutine(GoByRoute());
         }
         
-        enemySpeed = enemySpeedControl.getSpeed();
+        enemySpeed = enemySpeedControl.GetPathFollowingEnemySpeed();
     }
 
     private IEnumerator GoByRoute()
@@ -109,6 +94,8 @@ public class FollowRoute : MonoBehaviour
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
                 Mathf.Pow(tParam, 3) * p3;
+
+            collider.enabled = true;
 
             transform.position = enemyPosition;
             

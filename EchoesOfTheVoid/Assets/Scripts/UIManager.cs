@@ -111,4 +111,14 @@ public class UIManager : MonoBehaviour
             Time.timeScale = 0; 
         }
     }
+
+    public void DestoryRemainingEnemies()
+    {
+        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
+        
+        for (int i = 0; i < enemies.Length; i++)
+        {
+            Destroy(enemies[i]);
+        }
+    }
 }

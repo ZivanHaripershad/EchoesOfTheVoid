@@ -5,14 +5,14 @@ using UnityEngine;
 public class Upgrade
 {
     private string name;
-    private string value;
+    private float value;
 
     protected void SetName(string name)
     {
         this.name = name;
     }
     
-    protected void SetValue(string value)
+    public void SetValue(float value)
     {
         this.value = value;
     }
@@ -22,7 +22,7 @@ public class Upgrade
         return name;
     }
 
-    public string GetValue()
+    public float GetValue()
     {
         return value;
     }

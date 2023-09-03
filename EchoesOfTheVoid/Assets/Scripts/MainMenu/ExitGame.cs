@@ -14,6 +14,7 @@ public class ExitGame : MonoBehaviour
     {
         spriteRenderer.sprite = defaultExitGameText;
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
     }
 
     private void OnMouseDown()

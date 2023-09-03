@@ -69,6 +69,11 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public void ToggleMusicOff()
+    {
+        Instance.musicSource.Stop();
+    }
+    
     public void ToggleMusic()
     {
         Instance.musicSource.mute = !Instance.musicSource.mute;

@@ -9,6 +9,7 @@ public class GlobalVariables : MonoBehaviour
     public bool mustPause;
 
     public bool stopSpawningEnemies;
+    
     // Start is called before the first frame update
     void Start()
     {

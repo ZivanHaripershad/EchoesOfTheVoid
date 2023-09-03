@@ -20,6 +20,7 @@ public class StartLevel1 : MonoBehaviour
     {
         spriteRenderer.enabled = true;
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
     }
 
     private void Update()
@@ -43,6 +44,7 @@ public class StartLevel1 : MonoBehaviour
     {
         if (upgradeScene1Manager.GetUpgrade() != null)
         {
+            SelectedUpgradeLevel1.Instance.SetUpgrade(upgradeScene1Manager.GetUpgrade());
             AudioManager.Instance.PlaySFX("ButtonClick");
             SceneManager.LoadScene("Level1");
         }

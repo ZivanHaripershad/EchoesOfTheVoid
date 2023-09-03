@@ -71,8 +71,6 @@ public class SpaceshipCollection : MonoBehaviour
                     // Apply the ejectForce to the spaceship's Rigidbody2D
                     rb.AddForce(ejectDirection * ejectForce, ForceMode2D.Impulse);
                     
-                    Debug.Log("Ejecting...");
-                    
                     Invoke("SetEjectingToFalse", 0.1f);
                 }
 
