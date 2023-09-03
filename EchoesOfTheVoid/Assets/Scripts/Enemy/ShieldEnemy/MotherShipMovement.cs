@@ -26,12 +26,15 @@ public class MotherShipMovement : MonoBehaviour
     [SerializeField] private float shakeSpeed;
     [SerializeField] private float nearEnemyThreshold;
     [SerializeField] private float flightPathRotationSpeed;
+    [SerializeField] private float enterSpeedModifier;
 
     private EnemySpeedControl enemySpeedControl;
     private Vector3 lastPositionInOval; 
     private bool isReturning;
     private bool hasEnteredScene;
     private int flightEntrancePathNumber;
+    [SerializeField]
+    private SpriteRenderer healthSp;
 
     private void Start()
     {
@@ -54,12 +57,18 @@ public class MotherShipMovement : MonoBehaviour
             timer += Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
             sp.flipX = false;
             sp.flipY = false;
+            healthSp.flipX = false;
+            healthSp.flipY = false;
         }
         else
         {
             timer -= Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
             sp.flipX = true;
             sp.flipY = true;
+            healthSp.flipX = true;
+            healthSp.flipY = true;
+            
+            //todo: position correctly
         }
     
         // Calculate the new position of the GameObject on the oval path
@@ -89,7 +98,7 @@ public class MotherShipMovement : MonoBehaviour
 
     private bool EnterScene(float yThreshold, Vector3 direction)
     {
-        transform.position += enemySpeedControl.GetMotherShipMoveSpeed() * Time.deltaTime * direction;
+        transform.position += enemySpeedControl.GetMotherShipMoveSpeed() * Time.deltaTime * direction * enterSpeedModifier;
         
         if (gameObject.transform.position.y > yThreshold)
             return true;

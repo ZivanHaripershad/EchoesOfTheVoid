@@ -18,6 +18,7 @@ public class FollowRoute : MonoBehaviour
     private float enemySpeed;
     private bool firstUpdate;
     private EnemySpeedControl enemySpeedControl;
+    private BoxCollider2D collider;
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +34,9 @@ public class FollowRoute : MonoBehaviour
         enemySpeedControl = GameObject.FindGameObjectWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
         
         worldCenterPosition = new Vector3(0, 0, 0);
+
+        collider = GetComponentInChildren<BoxCollider2D>();
+        collider.enabled = false;
     }
 
     // Update is called once per frame
@@ -90,6 +94,8 @@ public class FollowRoute : MonoBehaviour
                 3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
                 3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
                 Mathf.Pow(tParam, 3) * p3;
+
+            collider.enabled = true;
 
             transform.position = enemyPosition;
             
