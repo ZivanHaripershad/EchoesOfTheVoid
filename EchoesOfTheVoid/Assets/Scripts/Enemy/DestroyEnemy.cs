@@ -91,9 +91,6 @@ public class DestroyEnemy : MonoBehaviour
             
             if (collision.gameObject.CompareTag("Bullet"))
             {
-
-                gameManagerData.numberOfEnemiesKilled++;
-
                 if (activateShield != null && activateShield.IsActive()) //has shield
                 {
                 }
