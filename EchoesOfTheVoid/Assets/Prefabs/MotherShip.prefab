@@ -119,8 +119,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ecd0e73cc9c5142b50a9b97df286fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
-  lowHealth: 3
+  maxHealth: 5
+  lowHealth: 1
   animator: {fileID: 8430692945547833122}
 --- !u!1 &7975090668322753650
 GameObject:
@@ -328,8 +328,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   motherShipMovement: {fileID: 7975090668442905496}
   hitBoss: {fileID: -8464398043955780724}
+  killMotherShip: {fileID: 0}
   motherShipHealth: {fileID: 1092106289473344820}
   explosion: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
+  delayAfterKillingMothership: 5
+  shieldSpriteRenderer: {fileID: 6576416008249461642}
 --- !u!82 &-8464398043955780724
 AudioSource:
   m_ObjectHideFlags: 0

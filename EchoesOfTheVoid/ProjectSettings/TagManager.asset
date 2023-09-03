@@ -20,7 +20,7 @@ TagManager:
   - MouseControl
   - EarthSoundTrigger
   - EarthDamage
-  - MotherShipDeadZone
+  - Level1Manager
   layers:
   - Default
   - TransparentFX

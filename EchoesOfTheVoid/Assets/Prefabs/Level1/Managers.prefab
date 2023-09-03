@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 1152025910}
   m_Layer: 0
   m_Name: Level1Manager
-  m_TagString: Untagged
+  m_TagString: Level1Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -277,7 +277,7 @@ MonoBehaviour:
   normalAudioSpeed: 1
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 1.8
-  numberOfEnemiesToKillToProceedToBoss: 3
+  numberOfEnemiesToKillToProceedToBoss: 0
   motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
 --- !u!1 &7018123691346075613
 GameObject:

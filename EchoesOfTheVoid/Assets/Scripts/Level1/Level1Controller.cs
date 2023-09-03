@@ -58,6 +58,8 @@ public class Level1Controller : MonoBehaviour
     private GameObject motherShip;
 
     private Coroutine audioCoroutine;
+
+    private GameObject motherShipInstance;
     
     struct SceneManager
     {
@@ -142,6 +144,9 @@ public class Level1Controller : MonoBehaviour
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.DisableShield();
+        
+        //set mothership instance to null to check if it's spawned
+        motherShipInstance = null;
     }
 
     private void PlayAudio(TrackPlaying trackPlaying)
@@ -205,8 +210,13 @@ public class Level1Controller : MonoBehaviour
         if (!sceneManager.motherShipHasEntered)
         {
             sceneManager.motherShipHasEntered = true;
-            Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
+            motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
         }
+    }
+
+    public void displayEndingScene()
+    {
+        Debug.Log("Display ending!!!");
     }
 
     private void SpawnNormalEnemies()
