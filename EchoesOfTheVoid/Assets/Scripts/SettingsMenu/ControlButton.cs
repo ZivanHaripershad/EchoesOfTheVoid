@@ -14,7 +14,6 @@ public class ControlButton : MonoBehaviour
     public Texture2D cursorTexture;
     private Vector2 hotSpot = Vector2.zero;
     private CursorMode cursorMode = CursorMode.Auto;
-    public AudioSource audioSource;
     public SettingsDataLive settingsData;
 
     // Start is called before the first frame update
@@ -30,7 +29,7 @@ public class ControlButton : MonoBehaviour
         //audioSource.Play();
         // gameObject.parent.parent.SetActive(false);
         // SettingsController.Instance.SetPopUpIndex(1);
-        AudioManager.Instance.PlaySFX("Click");
+        AudioManager.Instance.PlaySFX("ButtonClick");
         //SettingsController.Instance.popUpIndex = 1;
 
     }
