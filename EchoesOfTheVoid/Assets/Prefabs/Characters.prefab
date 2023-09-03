@@ -2437,6 +2437,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spaceship
       objectReference: {fileID: 0}
+    - target: {fileID: 6145913263776041519, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6145913263776041524, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
@@ -2805,6 +2809,7 @@ MonoBehaviour:
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  enemySpeedControl: {fileID: 0}
 --- !u!114 &961352416
 MonoBehaviour:
   m_ObjectHideFlags: 0

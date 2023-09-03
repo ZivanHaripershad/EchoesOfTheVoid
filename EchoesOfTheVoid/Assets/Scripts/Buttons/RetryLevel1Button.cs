@@ -10,6 +10,6 @@ public class RetryLevel1Button : Button
     {
         //going 
         Time.timeScale = 1;
-        SceneManager.LoadScene("UpgradeScene1");
+        SceneManager.LoadScene("Level1");
     }
 }

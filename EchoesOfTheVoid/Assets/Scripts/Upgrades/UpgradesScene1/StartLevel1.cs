@@ -20,6 +20,7 @@ public class StartLevel1 : MonoBehaviour
     {
         spriteRenderer.enabled = true;
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
     }
 
     private void Update()

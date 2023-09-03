@@ -13,5 +13,6 @@ public class Card2 : Card
         upgrade = new BulletFireRateUpgrade();
         upgrade.SetValue(0.15f);
         currentSprite = normalSprite;
+        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
     }
 }

@@ -17,6 +17,7 @@ public class LevelSelect : MonoBehaviour
     {
         spriteRenderer.sprite = defaultLevelSelect;
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
     }
 
     private void OnMouseDown()

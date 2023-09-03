@@ -27,6 +27,7 @@ public class Card : MonoBehaviour
         spriteRenderer.enabled = true;
         cardDesc.SetActive(false);
         Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
     }
 
     private void OnMouseDown()
