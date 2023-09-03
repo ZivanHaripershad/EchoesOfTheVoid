@@ -60,6 +60,8 @@ public class Level1Controller : MonoBehaviour
     private Coroutine audioCoroutine;
 
     private GameObject motherShipInstance;
+
+    public UpgradeScene1Manager upgradeScene1Manager;
     
     struct SceneManager
     {
@@ -214,9 +216,14 @@ public class Level1Controller : MonoBehaviour
         }
     }
 
-    public void displayEndingScene()
+    public void DisplayEndingScene()
     {
         Debug.Log("Display ending!!!");
+        enemySpawning.StopSpawning();
+        uiManager.SetLevelObjectsToInactive();
+        uiManager.DestroyRemainingOrbs();
+        uiManager.DestoryRemainingEnemies();
+        level1Data.popUpIndex = 2;
     }
 
     private void SpawnNormalEnemies()
@@ -248,13 +255,18 @@ public class Level1Controller : MonoBehaviour
     {
         for (int i = 0; i < popUps.Length; i++)
         {
+            if (i == 2)
+            {
+                Debug.Log("Popup index = 2");
+                Debug.Log(popUps[i].gameObject.name);
+            }
             if (i == level1Data.popUpIndex)
             {
                 popUps[i].SetActive(true);
             }
             else
             {
-                popUps[i].SetActive(false);
+               popUps[i].SetActive(false);
             }
         }
     }

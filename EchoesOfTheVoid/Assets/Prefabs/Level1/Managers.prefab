@@ -266,6 +266,8 @@ MonoBehaviour:
   popUps:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   popupParent: {fileID: 0}
   mouseControl: {fileID: 0}
   healthDeposit: {fileID: 0}
@@ -279,6 +281,7 @@ MonoBehaviour:
   audioSpeedChangeRate: 1.8
   numberOfEnemiesToKillToProceedToBoss: 0
   motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
+  upgradeScene1Manager: {fileID: 0}
 --- !u!1 &7018123691346075613
 GameObject:
   m_ObjectHideFlags: 0

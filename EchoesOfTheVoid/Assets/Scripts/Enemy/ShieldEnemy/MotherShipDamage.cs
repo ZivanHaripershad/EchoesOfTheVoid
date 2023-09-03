@@ -26,7 +26,7 @@ public class MotherShipDamage : MonoBehaviour
 
     private void EndLevel()
     {
-        level1Controller.displayEndingScene();
+        level1Controller.DisplayEndingScene();
         Destroy(gameObject);
     }
 

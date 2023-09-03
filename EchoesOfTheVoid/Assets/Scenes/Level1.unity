@@ -1176,6 +1176,11 @@ Transform:
   m_Father: {fileID: 1901341731}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1812992252 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2296508910039267845, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
+  m_PrefabInstance: {fileID: 2296508909307217391}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1892759539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1311,6 +1316,11 @@ Transform:
 --- !u!1 &1983064768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2296508911222910767, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
+  m_PrefabInstance: {fileID: 2296508909307217391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1987381457 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2296508910563354683, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
   m_PrefabInstance: {fileID: 2296508909307217391}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2005858320 stripped
@@ -1761,6 +1771,14 @@ PrefabInstance:
       propertyPath: popUps.Array.data[1]
       value: 
       objectReference: {fileID: 2005858320}
+    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: popUps.Array.data[2]
+      value: 
+      objectReference: {fileID: 1987381457}
+    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: popUps.Array.data[3]
+      value: 
+      objectReference: {fileID: 1812992252}
     - target: {fileID: 855804398686810282, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: shieldEnemySpawnPoints.Array.data[0]
       value: 
