@@ -44,8 +44,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b47c1ae68f3e2cc44b74eb7912a42419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyNormalSpeed: 0.1
-  enemyReducedSpeed: 0.03
+  pathFollowingEnemyNormalSpeed: 0.12
+  pathFollowingEnemyReducedSpeed: 0.03
+  shieldEnemyNormalSpeed: 0.4
+  shieldEnemyReducedSpeed: 0.1
+  motherShipNormalMoveSpeed: 0.6
+  motherShipReducedMoveSpeed: 0.08
+  motherShipNormalOrbitSpeed: 0.4
+  motherShipReducedOrbitSpeed: 0.05
 --- !u!1 &2079121146
 GameObject:
   m_ObjectHideFlags: 0

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MotherShipMovement : MonoBehaviour
 {
@@ -28,13 +29,13 @@ public class MotherShipMovement : MonoBehaviour
     [SerializeField] private float flightPathRotationSpeed;
     [SerializeField] private float enterSpeedModifier;
 
+    [SerializeField] private SpriteRenderer healthWindowSpriteRenderer;
+
     private EnemySpeedControl enemySpeedControl;
     private Vector3 lastPositionInOval; 
     private bool isReturning;
     private bool hasEnteredScene;
     private int flightEntrancePathNumber;
-    [SerializeField]
-    private SpriteRenderer healthSp;
 
     private void Start()
     {
@@ -57,18 +58,18 @@ public class MotherShipMovement : MonoBehaviour
             timer += Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
             sp.flipX = false;
             sp.flipY = false;
-            healthSp.flipX = false;
-            healthSp.flipY = false;
+            healthWindowSpriteRenderer.flipX = false;
+            healthWindowSpriteRenderer.flipY = false;
         }
         else
         {
             timer -= Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
             sp.flipX = true;
             sp.flipY = true;
-            healthSp.flipX = true;
-            healthSp.flipY = true;
             
             //todo: position correctly
+            healthWindowSpriteRenderer.flipX = true;
+            healthWindowSpriteRenderer.flipY = true;
         }
     
         // Calculate the new position of the GameObject on the oval path

@@ -5,24 +5,21 @@ using UnityEngine;
 public class MotherShipHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    [SerializeField] private Sprite[] healthSprites;
+    [SerializeField] private int lowHealth;
 
-    private SpriteRenderer sp;
+    [SerializeField] private Animator animator;
     private int health;
     // Start is called before the first frame update
     void Start()
     {
         health = maxHealth;
-        sp = GetComponent<SpriteRenderer>();
     }
 
     public void TakeDamage()
     {
         health--;
-        if (health >= 0 && health < healthSprites.Length)
-            sp.sprite = healthSprites[health];
-        else
-            Debug.Log("Invalid mothership health");
+        if (health <= lowHealth)
+            animator.SetBool("isLowHealth", true);
     }
 
     public bool IsDead()
