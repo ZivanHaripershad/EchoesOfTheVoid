@@ -26,8 +26,6 @@ public class DepositOrbs : MonoBehaviour
     private Animator powerFactoryAnim;
     private Animator shieldFactoryAnim;
     private Animator healthFactoryAnim;
-
-    [SerializeField]
     private EnemySpeedControl enemySpeedControl;
 
 
@@ -40,6 +38,7 @@ public class DepositOrbs : MonoBehaviour
         shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
         healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        enemySpeedControl = GameObject.Find("EnemySpeedControl").GetComponent<EnemySpeedControl>();
     }
     enum OrbFactoryDeposited
     {
