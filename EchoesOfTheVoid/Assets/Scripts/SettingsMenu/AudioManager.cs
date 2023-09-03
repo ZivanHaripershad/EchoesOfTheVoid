@@ -2,40 +2,41 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System;
+using System.Linq;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
-    public Slider musicSlider, sfxSlider;
-    public static AudioManager Instance;
+    private Slider musicSlider, sfxSlider;
+    private static AudioManager instance;
 
-    public Sound[] musicSounfs, sfxSounfs;
+    public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
 
-    private void Awake()
+    void Awake()
     {
-        if(Instance == null)
+        if (instance != null && instance != this)
         {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
+            Debug.Log("Destroying instance");
             Destroy(gameObject);
+            return;
+        } else {
+            Debug.Log("Creating instance");
+            instance = this;
         }
 
-        
+        DontDestroyOnLoad(this);
     }
 
-    private void Start()
+    public static AudioManager Instance
     {
-        //PlayMusic("Background");
+        get { return instance; }
     }
 
     public void PlayMusic(string clipname)
     {
-        Sound s = Array.Find(musicSounfs, x => x.clipName == clipname);
+        Sound s = Array.Find(Instance.musicSounds, x => x.clipName == clipname);
         if (s == null)
         {
             Debug.LogError("Sound: " + clipname + " does NOT exist");
@@ -43,14 +44,20 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            musicSource.clip = s.clip;
-            musicSource.Play();
+            Instance.musicSource.clip = s.clip;
+            Instance.musicSource.loop = true;
+            Instance.musicSource.Play();
         }
+    }
+
+    public bool IsMusicPlaying()
+    {
+        return Instance.musicSource.isPlaying;
     }
 
     public void PlaySFX(string clipname)
     {
-        Sound s = Array.Find(sfxSounfs, x => x.clipName == clipname);
+        Sound s = Array.Find(Instance.sfxSounds, x => x.clipName == clipname);
         if (s == null)
         {
             Debug.LogError("Sound: " + clipname + " does NOT exist");
@@ -58,38 +65,50 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-           sfxSource.PlayOneShot(s.clip);
+            Instance.sfxSource.PlayOneShot(s.clip);
         }
     }
 
     public void ToggleMusic()
     {
-        musicSource.mute = !musicSource.mute;
+        Instance.musicSource.mute = !Instance.musicSource.mute;
     }
 
     public void ToggleSFX()
     {
-        sfxSource.mute = !sfxSource.mute;
+        Instance.sfxSource.mute = !Instance.sfxSource.mute;
     }
 
     public void MusicVolume(float volume)
     {
-        musicSource.volume = volume;
+        Instance.musicSource.volume = volume;
     }
 
-    public void sfxVolume(float volume)
+    public void SfxVolume(float volume)
     {
-        sfxSource.volume = volume;
+        Instance.sfxSource.volume = volume;
     }
 
     public void MusicVolumeControl()
     {
-        MusicVolume(musicSlider.value);
+        Debug.Log("slider adjusting for music");
+        Instance.musicSlider = FindObjectsOfType<Slider>().ToList().Find( x=>x.name == "BackGroundSlider");
+        if (Instance.musicSlider != null)
+        {
+            Debug.Log("slider volume: " + Instance.musicSlider.value);
+            MusicVolume(Instance.musicSlider.value);
+        }
     }
 
     public void sfxVolumeControl()
     {
-        sfxVolume(sfxSlider.value);
+        Instance.sfxSlider = FindObjectsOfType<Slider>().ToList().Find( x=>x.name == "EffectsSlider");
+        Debug.Log("slider adjusting for effects");
+        if (Instance.sfxSlider != null)
+        {
+            Debug.Log("slider volume: " + Instance.sfxSlider.value);
+            SfxVolume(Instance.sfxSlider.value);
+        }
     }
 
 

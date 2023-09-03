@@ -11,7 +11,6 @@ public class SettingsPage: MonoBehaviour
     public Texture2D cursorTexture;
     private Vector2 hotSpot = Vector2.zero;
     private CursorMode cursorMode = CursorMode.Auto;
-    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +21,7 @@ public class SettingsPage: MonoBehaviour
 
     private void OnMouseDown()
     {
-        audioSource.Play();
+        AudioManager.Instance.PlaySFX("ButtonClick");
         SceneManager.LoadScene("SettingsPage");
     }
 

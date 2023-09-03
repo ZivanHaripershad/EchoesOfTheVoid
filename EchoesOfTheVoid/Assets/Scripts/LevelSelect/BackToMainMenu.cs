@@ -8,7 +8,6 @@ public class BackToMainMenu : MonoBehaviour
     public Sprite defaultExitGameText;
     public Sprite hoveredExitGameText;
     public Texture2D cursorTexture;
-    public AudioSource audioSource;
     private Vector2 hotSpot = Vector2.zero;
     private CursorMode cursorMode = CursorMode.Auto;
 
@@ -21,7 +20,7 @@ public class BackToMainMenu : MonoBehaviour
 
     private void OnMouseDown()
     {
-        audioSource.Play();
+        AudioManager.Instance.PlaySFX("ButtonClick");
         SceneManager.LoadScene("MainMenu");
     }
 

@@ -9,7 +9,6 @@ public class LevelOneSelect : MonoBehaviour
     public Texture2D cursorTexture;
     private Vector2 hotSpot = Vector2.zero;
     private CursorMode cursorMode = CursorMode.Auto;
-    public AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
@@ -20,8 +19,8 @@ public class LevelOneSelect : MonoBehaviour
 
     private void OnMouseDown()
     {
-        audioSource.Play();
-        SceneManager.LoadScene("TutorialLevel");
+        AudioManager.Instance.PlaySFX("ButtonClick");
+        SceneManager.LoadScene("UpgradeScene1");
     }
 
     private void OnMouseEnter()
