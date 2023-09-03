@@ -121,6 +121,7 @@ public class Level1Controller : MonoBehaviour
     
     private void Start()
     {
+        AudioManager.Instance.ToggleMusicOff();
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -136,7 +137,7 @@ public class Level1Controller : MonoBehaviour
         sceneManager.bossTimer = 10f;
         
         //reset counters
-        orbCounter.planetOrbMax = 5;
+        orbCounter.planetOrbMax = 10;
         level1Data.popUpIndex = 0;
 
         //set up game manager

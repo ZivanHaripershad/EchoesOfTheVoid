@@ -24,12 +24,6 @@ public class MotherShipDamage : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
     }
 
-    private void EndLevel()
-    {
-        level1Controller.DisplayEndingScene();
-        Destroy(gameObject);
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -44,7 +38,6 @@ public class MotherShipDamage : MonoBehaviour
                 healthWindowSp.color = new Color(1f, 1f, 1f, 0f);
                 Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
                 killMotherShip.Play();
-                Invoke("EndLevel", delayAfterKillingMothership);
             }
             else 
                 motherShipMovement.StartShaking();

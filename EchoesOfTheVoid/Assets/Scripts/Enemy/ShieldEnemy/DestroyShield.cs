@@ -31,7 +31,7 @@ public class DestroyShield : MonoBehaviour
             else
             {
                 Debug.Log("Destroying enemy!!!");
-                destroyEnemy.DestroyGameObject(other, true, other.transform);
+                // destroyEnemy.DestroyGameObject(other, true, other.transform);
             }
         } 
     }

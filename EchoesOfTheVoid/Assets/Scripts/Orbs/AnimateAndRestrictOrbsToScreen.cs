@@ -30,8 +30,6 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
     [SerializeField] private float orbMagnetForce;
     [SerializeField] private float orbMagnetRadius;
 
-    public bool mustAttract;
-
     private GameObject player;
 
 
@@ -91,6 +89,14 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
         //add attraction force to player
         Vector3 direction = player.transform.position - transform.position;
         float distance = direction.magnitude;
+
+        var mustAttract = false;
+
+        if (SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        {
+            var upgrade = SelectedUpgradeLevel1.Instance.GetUpgrade();
+            mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
+        }
 
         if (distance < orbMagnetRadius && mustAttract)
         {

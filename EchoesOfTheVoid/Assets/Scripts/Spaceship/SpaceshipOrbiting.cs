@@ -15,7 +15,7 @@ public class SpaceshipOrbiting : MonoBehaviour
     public float baseAngularSpeed = 2f; // the base angular speed
     public SpaceshipMode spaceshipMode;
     public float driftSpeed = 0.3f; //movment inertia
-    public float inertiaReductionFactor = 0.01f; //how much the inertia reduces by each interval
+    public float inertiaReductionFactor; //how much the inertia reduces by each interval
 
     public float returnSpeed = 3f;
 
@@ -43,7 +43,14 @@ public class SpaceshipOrbiting : MonoBehaviour
         spaceshipMode.returningToPlanet = false;
         spaceshipMode.isOnCenterObjectsRadius = false;
         spaceshipMode.canRotateAroundPlanet = true;
-        inertia = 0; 
+        inertia = 0;
+
+        if (SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+            SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShipHandlingUpgrade")
+        {
+            var upgradeInertia = SelectedUpgradeLevel1.Instance.GetUpgrade().GetValue();
+            inertiaReductionFactor += (inertiaReductionFactor * upgradeInertia);
+        }
 
         Cursor.visible = false;
     }

@@ -59,6 +59,12 @@ public class BulletSpawnScript : MonoBehaviour
         progressBarInner = GameObject.FindGameObjectsWithTag("progressBarInner")[0];
         progressBar = progressBarInner.GetComponent<SpriteRenderer>();
         progressBar.size = new Vector2(0, 1);
+
+        if (SelectedUpgradeLevel1.Instance.GetUpgrade() != null && SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "BulletFireRateUpgrade")
+        {
+            var upgradeSpeed = SelectedUpgradeLevel1.Instance.GetUpgrade().GetValue();
+            maxShootSpeed += (maxShootSpeed * upgradeSpeed);
+        }
     
     }
 

@@ -94,6 +94,8 @@ public class TutorialLevelController : MonoBehaviour
     
     private void Start()
     {
+        AudioManager.Instance.ToggleMusicOff();
+
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
         {
