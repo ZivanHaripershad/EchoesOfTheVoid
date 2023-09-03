@@ -167,6 +167,8 @@ public class TutorialLevelController : MonoBehaviour
             gameManagerData.expireOrbs = false;
             gameManagerData.tutorialActive = true;
 
+            Debug.Log(gameManagerData.numberOfEnemiesKilled);
+            
             if (gameManagerData.numberOfEnemiesKilled == 3)
             {
                 tutorialData.popUpIndex++;
@@ -181,6 +183,7 @@ public class TutorialLevelController : MonoBehaviour
             {
                 tutorialData.popUpIndex++;
             }
+            Debug.Log("tutorial on 3");
         }
         else if (popUpIndex == 4)
         {

@@ -128,6 +128,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7421042517463517630, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
   m_PrefabInstance: {fileID: 1878423872088169272}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &73341725 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
+  m_PrefabInstance: {fileID: 8575211596152410926}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b47c1ae68f3e2cc44b74eb7912a42419, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &113081610 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1663939222, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
@@ -888,6 +899,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 717407503, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: enemySpeedControl
+      value: 
+      objectReference: {fileID: 73341725}
     - target: {fileID: 3490931976703119853, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -936,6 +951,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Characters
       objectReference: {fileID: 0}
+    - target: {fileID: 5000476146717085719, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
 --- !u!1001 &6852647262090430745
@@ -949,6 +968,10 @@ PrefabInstance:
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1615665836}
+    - target: {fileID: 6852647261381150492, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6852647261852607448, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
       propertyPath: m_RootOrder
       value: 3
