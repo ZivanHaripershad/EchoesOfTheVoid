@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class LevelSelectButton : Button
@@ -10,6 +7,11 @@ public class LevelSelectButton : Button
         SceneManager.LoadScene("LevelSelect");
     }
 
+    public override void OnMouseDown()
+    {
+        mouseControl.EnableMouse();
+        AudioManager.Instance.PlaySFX("ButtonClick");
+    }
      
     public override void OnMouseUp()
     {

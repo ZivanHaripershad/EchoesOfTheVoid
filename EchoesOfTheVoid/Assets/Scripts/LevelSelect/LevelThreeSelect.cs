@@ -1,37 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LevelThreeSelect : MonoBehaviour
+public class LevelThreeSelect : LevelSelectButtonInterface
 {
-    public SpriteRenderer spriteRenderer;
-    public Texture2D cursorTexture;
-    private Vector2 hotSpot = Vector2.zero;
-    private CursorMode cursorMode = CursorMode.Auto;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        spriteRenderer.enabled = false;
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
-    }
-
-    private void OnMouseDown()
+    public override void OnMouseDown()
     {
         AudioManager.Instance.PlaySFX("CannotDeposit");
-        // SceneManager.LoadScene("TutorialLevel");
-    }
-
-    private void OnMouseEnter()
-    {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        spriteRenderer.enabled = true;
-    }
-
-    private void OnMouseExit()
-    {
-        spriteRenderer.enabled = false;
+        // SceneManager.LoadScene("Level3");
     }
 }

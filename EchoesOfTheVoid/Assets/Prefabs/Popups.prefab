@@ -102,7 +102,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 2079459953}
   defaultText: {fileID: 21300000, guid: 3bf4e30533b496245b2a69de77c8e2ce, type: 3}
   hoveredText: {fileID: 21300000, guid: 78b8ebde98cf7a747b22a73126010ce9, type: 3}
-  audioSource: {fileID: 2079459951}
   mouseControl: {fileID: 0}
 --- !u!82 &2079459951
 AudioSource:
@@ -450,7 +449,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1093207052064347746}
   defaultText: {fileID: 21300000, guid: 767f7ba2072e4f6429496d7b8d6f4713, type: 3}
   hoveredText: {fileID: 21300000, guid: bd6bfd8a751b00a48b90311af12c486e, type: 3}
-  audioSource: {fileID: 2503543194103091510}
   mouseControl: {fileID: 0}
 --- !u!1 &6852647260959461039
 GameObject:
@@ -765,9 +763,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6852647261041411503}
-  defaultText: {fileID: 0}
-  hoveredText: {fileID: 0}
-  audioSource: {fileID: 6852647261041411502}
+  defaultText: {fileID: 21300000, guid: 3bf4e30533b496245b2a69de77c8e2ce, type: 3}
+  hoveredText: {fileID: 21300000, guid: 78b8ebde98cf7a747b22a73126010ce9, type: 3}
   mouseControl: {fileID: 0}
 --- !u!82 &6852647261041411502
 AudioSource:
@@ -1099,7 +1096,6 @@ MonoBehaviour:
   spriteRenderer: {fileID: 6852647261070074947}
   defaultText: {fileID: 21300000, guid: de92d1c8b386b574dac8023630a74174, type: 3}
   hoveredText: {fileID: 21300000, guid: 755f7659846fcdc41838a3fee9487c39, type: 3}
-  audioSource: {fileID: 6852647261070074958}
   mouseControl: {fileID: 0}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
 --- !u!82 &6852647261070074958
@@ -2595,8 +2591,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6852647261599552816}
-  defaultNewGameText: {fileID: 21300000, guid: d615fe9f172684f45a241ecfbbb7434c, type: 3}
-  hoveredNewGameText: {fileID: 21300000, guid: 8faf160b2cb7d9d49ab25342fbd53188, type: 3}
+  defaultText: {fileID: 21300000, guid: d615fe9f172684f45a241ecfbbb7434c, type: 3}
+  hoveredText: {fileID: 21300000, guid: 8faf160b2cb7d9d49ab25342fbd53188, type: 3}
+  mouseControl: {fileID: 0}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
 --- !u!82 &6852647261599552831
 AudioSource:
@@ -4726,8 +4723,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6852647262220259059}
-  defaultNewGameText: {fileID: 21300000, guid: d615fe9f172684f45a241ecfbbb7434c, type: 3}
-  hoveredNewGameText: {fileID: 21300000, guid: 8faf160b2cb7d9d49ab25342fbd53188, type: 3}
+  defaultText: {fileID: 21300000, guid: d615fe9f172684f45a241ecfbbb7434c, type: 3}
+  hoveredText: {fileID: 21300000, guid: 8faf160b2cb7d9d49ab25342fbd53188, type: 3}
+  mouseControl: {fileID: 0}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
 --- !u!82 &6852647262220259070
 AudioSource:
@@ -6698,9 +6696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 6852647262961389877}
-  defaultText: {fileID: 0}
-  hoveredText: {fileID: 0}
-  audioSource: {fileID: 6852647262961389876}
+  defaultText: {fileID: 21300000, guid: fea46af0c7c87924b83466fc1a685ad3, type: 3}
+  hoveredText: {fileID: 21300000, guid: ebb31fe66229c9b429ee62b78e9aa8a8, type: 3}
   mouseControl: {fileID: 0}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}

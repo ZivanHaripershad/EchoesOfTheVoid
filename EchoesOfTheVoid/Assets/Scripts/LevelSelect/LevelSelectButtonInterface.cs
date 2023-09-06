@@ -1,17 +1,15 @@
 ﻿using UnityEngine;
 
-public abstract class Button : MonoBehaviour
+public abstract class LevelSelectButtonInterface : MonoBehaviour
 {
     [SerializeField] protected SpriteRenderer spriteRenderer;
-    [SerializeField] protected Sprite defaultText;
-    [SerializeField] protected Sprite hoveredText;
     [SerializeField] protected MouseControl mouseControl;
-
-    private void Start()
+    
+    void Start()
     {
+        spriteRenderer.enabled = false;
         mouseControl = GameObject.Find("MouseControl").GetComponent<MouseControl>();
         mouseControl.EnableMouse();
-        spriteRenderer.sprite = defaultText;
     }
 
     public abstract void OnMouseDown();
@@ -19,13 +17,11 @@ public abstract class Button : MonoBehaviour
     private void OnMouseEnter()
     {
         mouseControl.EnableMouse();
-        spriteRenderer.sprite = hoveredText;
+        spriteRenderer.enabled = true;
     }
 
     private void OnMouseExit()
     {
-        spriteRenderer.sprite = defaultText;
+        spriteRenderer.enabled = false;
     }
-
-    public abstract void OnMouseUp();
 }

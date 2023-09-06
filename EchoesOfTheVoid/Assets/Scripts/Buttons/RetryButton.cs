@@ -28,6 +28,12 @@ public class RetryButton : Button
         tutorialData.popUpIndex = 6;
     }
     
+    public override void OnMouseDown()
+    {
+        mouseControl.EnableMouse();
+        AudioManager.Instance.PlaySFX("ButtonClick");
+    }
+    
     public override void OnMouseUp()
     {
         Invoke("next", 0.3f);
