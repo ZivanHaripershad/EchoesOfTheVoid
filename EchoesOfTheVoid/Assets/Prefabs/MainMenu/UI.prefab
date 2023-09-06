@@ -125,9 +125,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1319233387}
-  defaultExitGameText: {fileID: 21300000, guid: 5a16a648efdc3c0468031fbedc15f068, type: 3}
-  hoveredExitGameText: {fileID: 21300000, guid: 680792e1b7e73014f85692fde9848945, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  defaultText: {fileID: 21300000, guid: 5a16a648efdc3c0468031fbedc15f068, type: 3}
+  hoveredText: {fileID: 21300000, guid: 680792e1b7e73014f85692fde9848945, type: 3}
+  mouseControl: {fileID: 4617232363038497582}
 --- !u!1 &727243275257810318
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,9 +253,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 5959777652159738135}
-  defaultSettingsPage: {fileID: 21300000, guid: a4b1e57c2e7c97f47bc731d615813bae, type: 3}
-  hoveredSettingsPage: {fileID: 21300000, guid: 0a3ec6e80c6929e48ba6a527ce159fff, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  defaultText: {fileID: 21300000, guid: a4b1e57c2e7c97f47bc731d615813bae, type: 3}
+  hoveredText: {fileID: 21300000, guid: 0a3ec6e80c6929e48ba6a527ce159fff, type: 3}
+  mouseControl: {fileID: 4617232363038497582}
 --- !u!1 &4098149243104164594
 GameObject:
   m_ObjectHideFlags: 0
@@ -489,9 +489,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 4098149244431286822}
-  defaultNewGameText: {fileID: 21300000, guid: 54bb5c38a86c87a4f83b410a610dc245, type: 3}
-  hoveredNewGameText: {fileID: 21300000, guid: 160d4be93e93ff048808a792f9411d88, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  defaultText: {fileID: 21300000, guid: 54bb5c38a86c87a4f83b410a610dc245, type: 3}
+  hoveredText: {fileID: 21300000, guid: 160d4be93e93ff048808a792f9411d88, type: 3}
+  mouseControl: {fileID: 4617232363038497582}
 --- !u!61 &4098149244431286821
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -688,6 +688,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1047886784731768476}
-  defaultLevelSelect: {fileID: 21300000, guid: beeb87b83effbbe49bb6644259448d3e, type: 3}
-  hoveredLevelSelect: {fileID: 21300000, guid: c779d701ce8480040a454e1874fc93bf, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  defaultText: {fileID: 21300000, guid: beeb87b83effbbe49bb6644259448d3e, type: 3}
+  hoveredText: {fileID: 21300000, guid: c779d701ce8480040a454e1874fc93bf, type: 3}
+  mouseControl: {fileID: 4617232363038497582}

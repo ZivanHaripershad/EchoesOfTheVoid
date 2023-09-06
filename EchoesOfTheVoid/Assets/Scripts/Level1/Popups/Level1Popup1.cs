@@ -1,8 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.Serialization;
 
 public class Level1Popup1 : Button
 {
@@ -13,6 +8,12 @@ public class Level1Popup1 : Button
     private void next()
     {
         level1Data.popUpIndex = 1;
+    }
+    
+    public override void OnMouseDown()
+    {
+        mouseControl.EnableMouse();
+        AudioManager.Instance.PlaySFX("ButtonClick");
     }
 
     override 

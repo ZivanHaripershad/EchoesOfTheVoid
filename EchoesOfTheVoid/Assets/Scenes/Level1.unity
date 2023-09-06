@@ -1588,6 +1588,10 @@ PrefabInstance:
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1878423871885546977}
+    - target: {fileID: 2296508910997281224, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1878423871885546977}
     - target: {fileID: 2296508911222910766, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
       propertyPath: m_RootOrder
       value: 1

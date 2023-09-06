@@ -964,6 +964,18 @@ PrefabInstance:
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1615665836}
+    - target: {fileID: 6852647261041411489, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
+    - target: {fileID: 6852647261070074945, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
+    - target: {fileID: 6852647261599552830, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
     - target: {fileID: 6852647261852607448, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1012,6 +1024,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popups
       objectReference: {fileID: 0}
+    - target: {fileID: 6852647262220259057, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
+    - target: {fileID: 6852647262961389879, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1615665836}
     - target: {fileID: 8099378085749708540, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
       propertyPath: mouseControl
       value: 

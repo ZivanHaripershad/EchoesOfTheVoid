@@ -7,6 +7,12 @@ public class PopUp2 : Button
 {
     // Start is called before the first frame update
     public TutorialData tutorialData;
+    
+    public override void OnMouseDown()
+    {
+        mouseControl.EnableMouse();
+        AudioManager.Instance.PlaySFX("ButtonClick");
+    }
 
     private void Next()
     {

@@ -1,12 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResumeButton : Button
 {
     [SerializeField] 
     private GameObject pauseMenu;
+    
+    public override void OnMouseDown()
+    {
+        mouseControl.EnableMouse();
+        AudioManager.Instance.PlaySFX("ButtonClick");
+    }
     
     public override void OnMouseUp()
     {
