@@ -28,7 +28,6 @@ public class MotherShipMovement : MonoBehaviour
     [SerializeField] private float nearEnemyThreshold;
     [SerializeField] private float flightPathRotationSpeed;
     [SerializeField] private float enterSpeedModifier;
-
     [SerializeField] private SpriteRenderer healthWindowSpriteRenderer;
 
     private EnemySpeedControl enemySpeedControl;
@@ -95,8 +94,7 @@ public class MotherShipMovement : MonoBehaviour
          Quaternion targetRotation = Quaternion.Euler(0f, 0f, angle - 90f);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, flightPathRotationSpeed * Time.deltaTime);
     }
-
-
+    
     private bool EnterScene(float yThreshold, Vector3 direction)
     {
         transform.position += enemySpeedControl.GetMotherShipMoveSpeed() * Time.deltaTime * direction * enterSpeedModifier;
@@ -109,7 +107,6 @@ public class MotherShipMovement : MonoBehaviour
 
     private void Update()
     {
-        
         if (!hasEnteredScene)
             switch (flightEntrancePathNumber)
             {
@@ -137,10 +134,6 @@ public class MotherShipMovement : MonoBehaviour
                     if (EnterScene(0, new Vector3(0f, 1f, 0f)))
                     {
                         hasEnteredScene = true;
-                    }
-                    else
-                    {
-                        Debug.Log("not entered...");
                     }
                     break;
             }

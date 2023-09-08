@@ -14,6 +14,7 @@ public class MotherShipDamage : MonoBehaviour
     [SerializeField] private GameObject explosion;
     [SerializeField] private float delayAfterKillingMothership;
     [SerializeField] private SpriteRenderer healthWindowSp;
+    [SerializeField] private MotherShipGiveShields motherShipGiveShields;
     
     private Level1Controller level1Controller;
     private SpriteRenderer sp;
@@ -22,6 +23,11 @@ public class MotherShipDamage : MonoBehaviour
     {
         level1Controller = GameObject.FindGameObjectWithTag("Level1Manager").GetComponent<Level1Controller>();
         sp = GetComponent<SpriteRenderer>();
+    }
+
+    void DestroyGameObject()
+    {
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -38,6 +44,8 @@ public class MotherShipDamage : MonoBehaviour
                 healthWindowSp.color = new Color(1f, 1f, 1f, 0f);
                 Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
                 killMotherShip.Play();
+                motherShipGiveShields.enabled = false;
+                Invoke("DestroyGameObject", 1f);
             }
             else 
                 motherShipMovement.StartShaking();

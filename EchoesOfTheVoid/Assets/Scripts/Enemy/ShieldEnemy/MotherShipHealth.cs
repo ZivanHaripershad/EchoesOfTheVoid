@@ -24,6 +24,14 @@ public class MotherShipHealth : MonoBehaviour
 
     public bool IsDead()
     {
-        return health <= 0;
+        if (health <= 0)
+        {
+            GetComponent<MotherShipDamage>().enabled = false;
+            GetComponent<MotherShipMovement>().enabled = false;
+            GetComponent<MotherShipGiveShields>().enabled = false;
+            return true;
+        }
+
+        return false;
     }
 }

@@ -43,10 +43,10 @@ public class DepositOrbs : MonoBehaviour
     }
     enum OrbFactoryDeposited
     {
-        POWER, 
-        AMMO, 
-        SHIELD, 
-        HEALTH
+        Power, 
+        Ammo, 
+        Shield, 
+        Health
     }
     
     private OrbFactoryDeposited factoryDeposited;
@@ -70,7 +70,7 @@ public class DepositOrbs : MonoBehaviour
                     {
                         orbCounter.planetOrbsDeposited++;
                         deposited = true;
-                        factoryDeposited = OrbFactoryDeposited.POWER;
+                        factoryDeposited = OrbFactoryDeposited.Power;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -81,7 +81,7 @@ public class DepositOrbs : MonoBehaviour
                     {
                         deposited = true;
                         bulletCount.currentBullets = bulletCount.maxBullets;
-                        factoryDeposited = OrbFactoryDeposited.AMMO;
+                        factoryDeposited = OrbFactoryDeposited.Ammo;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -92,7 +92,7 @@ public class DepositOrbs : MonoBehaviour
                     {
                         deposited = true;
 
-                        factoryDeposited = OrbFactoryDeposited.SHIELD;
+                        factoryDeposited = OrbFactoryDeposited.Shield;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -105,7 +105,7 @@ public class DepositOrbs : MonoBehaviour
                         {
                             healthCount.currentHealth++;
                             deposited = true;
-                            factoryDeposited = OrbFactoryDeposited.HEALTH;
+                            factoryDeposited = OrbFactoryDeposited.Health;
                         }
                         
                     }
@@ -119,19 +119,19 @@ public class DepositOrbs : MonoBehaviour
 
                     switch (factoryDeposited)
                     {
-                        case OrbFactoryDeposited.AMMO:
+                        case OrbFactoryDeposited.Ammo:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.bulletCost);
                              bulletFactoryAnim.SetTrigger("isSelected");
                             break;
-                        case OrbFactoryDeposited.POWER:
+                        case OrbFactoryDeposited.Power:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.powerCost);
                              powerFactoryAnim.SetTrigger("isSelected");
                             break;
-                        case OrbFactoryDeposited.HEALTH:
+                        case OrbFactoryDeposited.Health:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.healthCost);
                              healthFactoryAnim.SetTrigger("isSelected");
                             break;
-                        case OrbFactoryDeposited.SHIELD:
+                        case OrbFactoryDeposited.Shield:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.shieldCost);
                              shieldFactoryAnim.SetTrigger("isSelected");
                             break;

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
@@ -13,9 +14,22 @@ public class AudioManager : MonoBehaviour
 
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    
+    [SerializeField]
+    private float normalAudioSpeed = 1f;
+    [SerializeField]
+    private float reducedAudioSpeed = 0.5f;
+
+    [SerializeField] 
+    private float audioSpeedChangeRate = 0.8f;
+
+    private float audioSpeed;
+    private Coroutine audioCoroutine;
+    private bool isReduced;
 
     void Awake()
     {
+        
         if (instance != null && instance != this)
         {
             Debug.Log("Destroying instance");
@@ -27,6 +41,9 @@ public class AudioManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(this);
+
+        audioCoroutine = null;
+        isReduced = false;
     }
 
     public static AudioManager Instance
@@ -42,13 +59,72 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Sound: " + clipname + " does NOT exist");
             return;
         }
-        else
+        
+        Instance.musicSource.clip = s.clip;
+        Instance.musicSource.loop = true;
+        Instance.musicSource.Play();
+        
+    }
+
+    void SetSoundSpeed()
+    {
+        Debug.Log(audioSpeed);
+        Instance.musicSource.pitch = audioSpeed;
+        Instance.sfxSource.pitch = audioSpeed;
+    }
+
+    private IEnumerator ReduceRoutine()
+    {
+        while (audioSpeed > reducedAudioSpeed)
         {
-            Instance.musicSource.clip = s.clip;
-            Instance.musicSource.loop = true;
-            Instance.musicSource.Play();
+            audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
+            SetSoundSpeed();
+            yield return null;
+        }
+
+        audioSpeed = reducedAudioSpeed;
+        SetSoundSpeed();
+    }
+
+    public void ReduceAudioSpeed()
+    {
+        if (!isReduced)
+        {
+            isReduced = true;
+            
+            if (audioCoroutine != null)
+                StopCoroutine(audioCoroutine);
+
+            audioCoroutine = StartCoroutine(ReduceRoutine());
         }
     }
+    
+    private IEnumerator IncreaseRoutine()
+    {
+        while (audioSpeed < normalAudioSpeed)
+        {
+            audioSpeed += audioSpeedChangeRate * Time.deltaTime;
+            SetSoundSpeed();
+            yield return null;
+        }
+
+        audioSpeed = normalAudioSpeed;
+        SetSoundSpeed();
+    }
+
+    public void IncreaseAudioSpeed()
+    {
+        if (isReduced)
+        {
+            isReduced = false;
+            
+            if (audioCoroutine != null)
+                StopCoroutine(audioCoroutine);
+        
+            audioCoroutine = StartCoroutine(IncreaseRoutine());
+        }
+    }
+    
 
     public bool IsMusicPlaying()
     {

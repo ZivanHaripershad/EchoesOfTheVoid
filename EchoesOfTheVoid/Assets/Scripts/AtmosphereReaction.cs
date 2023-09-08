@@ -58,12 +58,19 @@ public class AtmosphereReaction : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
-            tutorialLevelController.ReduceAudioSpeed();
-        else 
-            tutorialLevelController.IncreaseAudioSpeed();
+    void Update(){
+        
+        if (Input.GetKeyDown(KeyCode.S) && orbDepositingMode.depositingMode)
+        {
+            Debug.Log("reducing");
+            AudioManager.Instance.ReduceAudioSpeed();
+        }
+        
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            Debug.Log("increasing");
+            AudioManager.Instance.IncreaseAudioSpeed();
+        }
         
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {

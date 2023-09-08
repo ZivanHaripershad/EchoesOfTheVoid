@@ -20,8 +20,6 @@ public class TutorialLevelController : MonoBehaviour
     [SerializeField]
     private HealthCount healthCount;
     [SerializeField]
-    private AudioSource[] sounds;
-    [SerializeField]
     private BulletSpawnScript bulletSpawnScript;
     [SerializeField]
     private GameObject[] popUps;
@@ -45,56 +43,12 @@ public class TutorialLevelController : MonoBehaviour
     private int popUpIndex;
     private bool soundsChanged;
 
-    [SerializeField]
-    private float normalAudioSpeed;
-    [SerializeField]
-    private float reducedAudioSpeed;
-
-    [SerializeField] 
-    private float audioSpeedChangeRate;
     
-    private float audioSpeed;
-
-    private Coroutine audioCoroutine;
-
-    private IEnumerator DecreaseSpeed()
-    {
-        while (audioSpeed > reducedAudioSpeed)
-        {
-            audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
-            yield return null;
-        }
-
-        audioSpeed = reducedAudioSpeed;
-    }
-
-    private IEnumerator IncreaseSpeed()
-    {
-        while (audioSpeed < normalAudioSpeed)
-        {
-            audioSpeed += audioSpeedChangeRate * Time.deltaTime;
-            yield return null;
-        }
-        audioSpeed = normalAudioSpeed;
-    }
-
-    public void ReduceAudioSpeed()
-    {
-        if (audioCoroutine != null)
-            StopCoroutine(audioCoroutine);
-        audioCoroutine = StartCoroutine(DecreaseSpeed());
-    }
-
-    public void IncreaseAudioSpeed()
-    {
-        if (audioCoroutine != null)
-            StopCoroutine(audioCoroutine);
-        audioCoroutine = StartCoroutine(IncreaseSpeed());
-    }
     
     private void Start()
     {
         AudioManager.Instance.ToggleMusicOff();
+        AudioManager.Instance.PlayMusic("TutorialLevelMusic");
         
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
@@ -102,7 +56,6 @@ public class TutorialLevelController : MonoBehaviour
             popUps[i].SetActive(true);
         }
 
-        audioSpeed = 1;
         orbCounter.planetOrbMax = 5;
         
         tutorialData.popUpIndex = 0;
@@ -118,20 +71,9 @@ public class TutorialLevelController : MonoBehaviour
         mouseControl.EnableMouse();
     }
 
-    private void PlayGameAudio()
-    {
-        sounds[1].Play();
-    }
-    
-
     private void Update()
     {
         popUpIndex = tutorialData.popUpIndex;
-
-        for (int i = 0; i < sounds.Length; i++)
-        {
-            sounds[i].pitch = audioSpeed;
-        }
 
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -221,7 +163,6 @@ public class TutorialLevelController : MonoBehaviour
             if (!soundsChanged)
             {
                 soundsChanged = true;
-                sounds[0].Stop();
                 Invoke("PlayGameAudio", 5); 
             }
 
