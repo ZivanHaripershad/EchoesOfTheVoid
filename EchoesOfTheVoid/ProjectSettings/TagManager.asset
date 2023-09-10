@@ -22,6 +22,7 @@ TagManager:
   - EarthDamage
   - Level1Manager
   - HealthLowMessage
+  - Shield
   layers:
   - Default
   - TransparentFX

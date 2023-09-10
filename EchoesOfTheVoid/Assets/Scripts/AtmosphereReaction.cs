@@ -24,8 +24,6 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField] private GameObject darkenBackground;
     [SerializeField] private float darkenBackgroundAlpha;
 
-    public TutorialLevelController tutorialLevelController;
-
     public OrbDepositingMode orbDepositingMode;
 
     public float fadeDuration = 1f; // The duration of the fade-in effect

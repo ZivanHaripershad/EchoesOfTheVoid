@@ -55,6 +55,8 @@ public class Level1Controller : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance!.ToggleMusicOff();
+        AudioManager.Instance.PlayMusic("TutorialLevelMusic");
+        
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -62,7 +64,6 @@ public class Level1Controller : MonoBehaviour
         }
 
         //set up scene manager
-        sceneManager.audioSpeed = 1;
         sceneManager.soundsChanged = false;
         sceneManager.hasStartedSpawning = false; 
         sceneManager.motherShipIntroScene = false;
@@ -81,7 +82,6 @@ public class Level1Controller : MonoBehaviour
 
         //set up shield and mouse
         mouseControl.EnableMouse();
-        gameManager.DisableShield();
 
         healthCount.currentHealth = healthCount.maxHealth;
         

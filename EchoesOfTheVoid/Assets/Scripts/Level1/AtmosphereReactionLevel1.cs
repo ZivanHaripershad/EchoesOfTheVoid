@@ -63,7 +63,9 @@ public class AtmosphereReactionLevel1 : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {
-            AudioManager.Instance.ReduceAudioSpeed();
+            if (AudioManager.Instance)
+                AudioManager.Instance.ReduceAudioSpeed();
+            
             bulletDeposit.GetComponent<BulletDeposit>().RenderSprites();
             bulletFactory.SetActive(true);
             powerDeposit.GetComponent<PowerDeposit>().RenderSprites();
@@ -83,7 +85,8 @@ public class AtmosphereReactionLevel1 : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
-            AudioManager.Instance.IncreaseAudioSpeed();
+            if (AudioManager.Instance)
+                AudioManager.Instance.IncreaseAudioSpeed();
             StartCoroutine(Fade(bulletFactory, 1f, 0f));
             StartCoroutine(Fade(powerFactory, 1f, 0f));
             StartCoroutine(Fade(shieldFactory, 1f, 0f));

@@ -103,6 +103,15 @@ public class DestroyEnemy : MonoBehaviour
             }
                 
         }
+
+        if (collision.gameObject.CompareTag("Shield"))
+        {
+            Debug.Log("Destroy Shield");
+            if (collision.gameObject.GetComponent<ShieldLogic>().DestroyShield())
+            {
+                DestroyGameObject(collision, false, collision.gameObject.transform);
+            }
+        }
     }
 
     private void SpawnOrb(Collider2D collision)

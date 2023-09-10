@@ -57,7 +57,6 @@ public class TutorialLevelController : MonoBehaviour
         }
 
         orbCounter.planetOrbMax = 5;
-        
         tutorialData.popUpIndex = 0;
 
         gameManagerData.numberOfEnemiesKilled = 0;
