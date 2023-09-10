@@ -35,11 +35,6 @@ public class DestroyEnemy : MonoBehaviour
         activateShield = GetComponentInChildren<ActivateShield>();
     }
 
-    void Destroy()
-    {
-        Destroy(gameObject);
-    }
-
     void checkDamage()
     {
         if (healthCount.currentHealth < healthCount.maxHealth * 0.8) //20% damage
@@ -52,18 +47,20 @@ public class DestroyEnemy : MonoBehaviour
             earthDamageAnimator.SetTrigger("damage4");
         if (healthCount.currentHealth < healthCount.maxHealth * 0.1) //90% damage
             earthDamageAnimator.SetTrigger("damage5");
-        
     }
 
     public void DestroyGameObject(Collider2D collision, bool musSpawnOrb, Transform orbSpawnPoint)
     {
+        gameObject.GetComponentInChildren<Collider2D>().enabled = false;
         graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-        Invoke("Destroy", bulletSoundDelay);
+        
+        AudioManager.Instance.PlaySFX("DestroyEnemy");
         Instantiate(explosion, orbSpawnPoint.position, orbSpawnPoint.rotation);
-        destroyEnemySoundEffect.Play();
         
         if (musSpawnOrb)
             SpawnOrb(collision);
+        
+        Destroy(gameObject);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
