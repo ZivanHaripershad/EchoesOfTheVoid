@@ -106,8 +106,7 @@ public class DestroyEnemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Shield"))
         {
-            Debug.Log("Destroy Shield");
-            if (collision.gameObject.GetComponent<ShieldLogic>().DestroyShield())
+            if (collision.gameObject.GetComponent<ShieldLogic>().DestroyShield(gameObject.transform.position))
             {
                 DestroyGameObject(collision, false, collision.gameObject.transform);
             }

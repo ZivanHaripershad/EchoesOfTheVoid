@@ -9,23 +9,18 @@ public class ShieldLogic : MonoBehaviour
     [SerializeField] private Animator shieldAnimator;
 
     private int shieldCount;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    public bool DestroyShield()
+    public bool DestroyShield(Vector3 enemyTransform)
     {
         if (shieldCount > 0)
         {
+            //rotate the game object
+            Vector3 direction = enemyTransform - Vector3.zero;
+            float angleRadians = Mathf.Atan2(direction.y, direction.x);
+            float angleDegrees = angleRadians * Mathf.Rad2Deg;
+            
+            gameObject.transform.rotation = Quaternion.Euler(0, 0, angleDegrees);
+            
             shieldAnimator.SetInteger("shieldCount", --shieldCount);
             return true;
         }
@@ -44,11 +39,8 @@ public class ShieldLogic : MonoBehaviour
         return false;
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public bool CanAddShields()
     {
-        if (other.gameObject.tag.Equals("Enemy"))
-        {
-            Debug.Log("Destoy shield...");
-        }
+        return shieldCount < 3;
     }
 }

@@ -52,11 +52,15 @@ public class Level1Controller : MonoBehaviour
 
     private SceneManager sceneManager;
     
+    
     private void Start()
     {
-        AudioManager.Instance!.ToggleMusicOff();
-        AudioManager.Instance.PlayMusic("TutorialLevelMusic");
-        
+        if (AudioManager.Instance)
+        {
+            AudioManager.Instance!.ToggleMusicOff();
+            AudioManager.Instance.PlayMusic("TutorialLevelMusic");
+        }
+
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -82,6 +86,8 @@ public class Level1Controller : MonoBehaviour
 
         //set up shield and mouse
         mouseControl.EnableMouse();
+        gameManager.EnableShield();
+        Debug.Log(gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
         
@@ -192,7 +198,8 @@ public class Level1Controller : MonoBehaviour
         {
             Debug.Log("spawning boss");
             //play boss audio
-            AudioManager.Instance!.ToggleMusicOff();
+            if (AudioManager.Instance)
+                AudioManager.Instance!.ToggleMusicOff();
             //AudioManager.Instance.PlayMusic("BossMusicIntro");
             SpawnBoss();
         }
@@ -226,7 +233,8 @@ public class Level1Controller : MonoBehaviour
         {
             Debug.Log("Playing boss music");
             //play music for boss fight
-            AudioManager.Instance.ToggleMusicOff();
+            if (AudioManager.Instance)
+                AudioManager.Instance.ToggleMusicOff();
             //AudioManager.Instance.PlayMusic("BossMusicIntro");
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));

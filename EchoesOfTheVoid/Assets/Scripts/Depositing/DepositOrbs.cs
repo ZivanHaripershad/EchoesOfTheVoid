@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DepositOrbs : MonoBehaviour
@@ -26,6 +28,7 @@ public class DepositOrbs : MonoBehaviour
     private Animator powerFactoryAnim;
     private Animator shieldFactoryAnim;
     private Animator healthFactoryAnim;
+    private ShieldLogic shieldLogic; 
 
     [SerializeField]
     private EnemySpeedControl enemySpeedControl;
@@ -35,12 +38,18 @@ public class DepositOrbs : MonoBehaviour
     void Start()
     {
         orbDepositingMode.depositingMode = false;
+    }
+
+    private void OnEnable()
+    {
         bulletFactoryAnim = GameObject.Find("BulletFactory").GetComponent<Animator>();
         powerFactoryAnim = GameObject.Find("PowerFactory").GetComponent<Animator>();
         shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
         healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        shieldLogic = GameObject.Find("Shield").GetComponent<ShieldLogic>();
     }
+
     enum OrbFactoryDeposited
     {
         Power, 
@@ -88,10 +97,10 @@ public class DepositOrbs : MonoBehaviour
 
                 //Shield
                 if (Input.GetKeyDown(KeyCode.L))
-                    if (orbCounter.orbsCollected >= 3 && gameManager.IsShieldEnabled())
+                    if (orbCounter.orbsCollected >= 3 && gameManager.IsShieldEnabled() && shieldLogic.CanAddShields())
                     {
                         deposited = true;
-
+                        shieldLogic.AddShield();
                         factoryDeposited = OrbFactoryDeposited.Shield;
                     }
                     else

@@ -42,8 +42,6 @@ public class TutorialLevelController : MonoBehaviour
 
     private int popUpIndex;
     private bool soundsChanged;
-
-    
     
     private void Start()
     {

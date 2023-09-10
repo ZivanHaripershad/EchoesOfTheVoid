@@ -8,7 +8,8 @@ public class ResumeButton : Button
     public override void OnMouseDown()
     {
         mouseControl.EnableMouse();
-        AudioManager.Instance.PlaySFX("ButtonClick");
+        if (AudioManager.Instance)
+            AudioManager.Instance.PlaySFX("ButtonClick");
     }
     
     public override void OnMouseUp()

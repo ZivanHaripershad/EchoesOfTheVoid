@@ -12,4 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d260caad98aca734ea30215d57ce46b5, type: 3}
   m_Name: GameManagerDataLive
   m_EditorClassIdentifier: 
-  numberOfEnemiesKilled: 0
+  numberOfEnemiesKilled: 1
+  numberOfOrbsCollected: 0
+  expireOrbs: 0
+  tutorialActive: 0
+  tutorialWaitTime: 10
+  hasResetAmmo: 1
