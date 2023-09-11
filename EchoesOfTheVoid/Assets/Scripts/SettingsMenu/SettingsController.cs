@@ -44,7 +44,7 @@ public class SettingsController : MonoBehaviour
 
     private void PlayGameAudio()
     {
-        AudioManager.Instance.PlayMusic("Background");
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
     }
     
 

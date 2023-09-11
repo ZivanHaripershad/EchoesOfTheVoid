@@ -46,7 +46,7 @@ public class TutorialLevelController : MonoBehaviour
     private void Start()
     {
         AudioManager.Instance.ToggleMusicOff();
-        AudioManager.Instance.PlayMusic("TutorialLevelMusic");
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.TutorialLevelMusic);
         
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
@@ -66,6 +66,11 @@ public class TutorialLevelController : MonoBehaviour
 
         gameManager.DisableShield();
         mouseControl.EnableMouse();
+    }
+
+    private void PlayGameAudio()
+    {
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
     }
 
     private void Update()

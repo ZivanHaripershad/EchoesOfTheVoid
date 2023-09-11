@@ -191,7 +191,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 634cfcff9ef88b2408dec32c2c0a6e40, type: 3}
   - clipName: TutorialLevelMusic
     clip: {fileID: 8300000, guid: 4bb1d65fe66dd7948bb92ff719e8ab52, type: 3}
-  - clipName: BossMusicIntro
+  - clipName: BossMusic
     clip: {fileID: 8300000, guid: ec875f34fa9681943b5b8ff43820e465, type: 3}
   sfxSounds:
   - clipName: ButtonClick
@@ -228,7 +228,7 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0480004414ca1b54085c27146e663e9d, type: 3}
   musicSource: {fileID: 2406677496876818795}
   sfxSource: {fileID: 242568350414305245}
-  normalAudioSpeed: 0.8
+  normalAudioSpeed: 1
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 0.8
 --- !u!1 &8652413427407366345

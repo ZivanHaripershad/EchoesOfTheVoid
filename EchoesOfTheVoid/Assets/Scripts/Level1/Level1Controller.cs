@@ -55,12 +55,10 @@ public class Level1Controller : MonoBehaviour
     
     private void Start()
     {
+        
         if (AudioManager.Instance)
-        {
             AudioManager.Instance!.ToggleMusicOff();
-            AudioManager.Instance.PlayMusic("TutorialLevelMusic");
-        }
-
+        
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -87,7 +85,6 @@ public class Level1Controller : MonoBehaviour
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.EnableShield();
-        Debug.Log(gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
         
@@ -196,17 +193,14 @@ public class Level1Controller : MonoBehaviour
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
         if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            Debug.Log("spawning boss");
             //play boss audio
-            if (AudioManager.Instance)
-                AudioManager.Instance!.ToggleMusicOff();
-            //AudioManager.Instance.PlayMusic("BossMusicIntro");
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             SpawnBoss();
         }
         else
         {
-            //play the game audio
-            //AudioManager.Instance.PlayMusic("GamePlayMusic");
+           // play the game audio
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
         }
     }
 

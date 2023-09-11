@@ -10,7 +10,7 @@ using UnityEngine.Audio;
 public class AudioManager : MonoBehaviour
 {
     private Slider musicSlider, sfxSlider;
-    private static AudioManager instance;
+    private static AudioManager _instance;
 
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
@@ -26,44 +26,82 @@ public class AudioManager : MonoBehaviour
     private float audioSpeed;
     private Coroutine audioCoroutine;
     private bool isReduced;
+    private MusicFileNames currentlyPlaying;
 
     void Awake()
     {
-        
-        if (instance != null && instance != this)
-        {
-            Debug.Log("Destroying instance");
-            Destroy(gameObject);
-            return;
-        } else {
-            Debug.Log("Creating instance");
-            instance = this;
-        }
-
         DontDestroyOnLoad(this);
 
         audioCoroutine = null;
         isReduced = false;
+
+        currentlyPlaying = MusicFileNames.NoMusic;
+    }
+
+    public enum MusicFileNames
+    {
+        NoMusic,
+        MainMenuMusic, 
+        GamePlayMusic, 
+        BossMusic, 
+        TutorialLevelMusic
     }
 
     public static AudioManager Instance
     {
-        get { return instance; }
+        get
+        {
+            if (_instance == null)
+            {
+                // If the _instance is null, try to find an existing AudioManager in the scene
+                _instance = FindObjectOfType<AudioManager>();
+
+                // If no AudioManager exists, create a new one
+                if (_instance == null)
+                {
+                    GameObject newGameObject = new GameObject("AudioManager");
+                    _instance = newGameObject.AddComponent<AudioManager>();
+                }
+            }
+            return _instance;
+        }
     }
 
-    public void PlayMusic(string clipname)
+    public void PlayMusic(MusicFileNames clip)
     {
-        Sound s = Array.Find(Instance.musicSounds, x => x.clipName == clipname);
-        if (s == null)
-        {
-            Debug.LogError("Sound: " + clipname + " does NOT exist");
+
+        Debug.Log("Play music");
+        if (clip == _instance.currentlyPlaying)
             return;
+
+        String fileName = "";
+
+        switch (clip)
+        {
+            case MusicFileNames.MainMenuMusic:
+                fileName = "MainMenuMusic";
+                break;
+            case MusicFileNames.GamePlayMusic:
+                fileName = "GamePlayMusic";
+                break;
+            case MusicFileNames.BossMusic:
+                fileName = "BossMusic";
+                break;
+            case MusicFileNames.TutorialLevelMusic:
+                fileName = "TutorialLevelMusic";
+                break;
         }
         
-        Instance.musicSource.clip = s.clip;
-        Instance.musicSource.loop = true;
-        Instance.musicSource.Play();
+        Sound s = Array.Find(_instance.musicSounds, x => x.clipName == fileName);
         
+        _instance.musicSource.clip = s.clip;
+        _instance.musicSource.loop = true;
+        
+        _instance.musicSource.Pause();
+       
+        _instance.musicSource.Play();
+       
+
     }
 
     void SetSoundSpeed()
