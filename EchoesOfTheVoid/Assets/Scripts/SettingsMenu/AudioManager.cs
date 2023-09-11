@@ -70,8 +70,7 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(MusicFileNames clip)
     {
 
-        Debug.Log("Play music");
-        if (clip == _instance.currentlyPlaying)
+        if (clip == Instance.currentlyPlaying)
             return;
 
         String fileName = "";
@@ -92,21 +91,19 @@ public class AudioManager : MonoBehaviour
                 break;
         }
         
-        Sound s = Array.Find(_instance.musicSounds, x => x.clipName == fileName);
+        Sound s = Array.Find(Instance.musicSounds, x => x.clipName == fileName);
         
-        _instance.musicSource.clip = s.clip;
-        _instance.musicSource.loop = true;
+        if (s == null)
+            Debug.Log("sound not found");
         
-        _instance.musicSource.Pause();
-       
-        _instance.musicSource.Play();
-       
-
+        Instance.musicSource.Stop();
+        Instance.musicSource.clip = s.clip;
+        Instance.musicSource.loop = true;
+        Instance.musicSource.Play();
     }
 
     void SetSoundSpeed()
     {
-        Debug.Log(audioSpeed);
         Instance.musicSource.pitch = audioSpeed;
         Instance.sfxSource.pitch = audioSpeed;
     }

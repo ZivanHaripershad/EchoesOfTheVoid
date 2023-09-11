@@ -56,8 +56,8 @@ public class Level1Controller : MonoBehaviour
     private void Start()
     {
         
-        if (AudioManager.Instance)
-            AudioManager.Instance!.ToggleMusicOff();
+        AudioManager.Instance.ToggleMusicOff();
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
         
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
@@ -197,11 +197,6 @@ public class Level1Controller : MonoBehaviour
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             SpawnBoss();
         }
-        else
-        {
-           // play the game audio
-            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
-        }
     }
 
     private void SpawnBoss()
@@ -226,10 +221,7 @@ public class Level1Controller : MonoBehaviour
         if (!sceneManager.motherShipHasEntered)
         {
             Debug.Log("Playing boss music");
-            //play music for boss fight
-            if (AudioManager.Instance)
-                AudioManager.Instance.ToggleMusicOff();
-            //AudioManager.Instance.PlayMusic("BossMusicIntro");
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
         }
