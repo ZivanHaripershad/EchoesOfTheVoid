@@ -25,14 +25,6 @@ public class OrbCounterUI : MonoBehaviour
         return instance;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        //todo: set to 0
-        orbCounter.orbsCollected = 10;
-        orbCounterText.text = "10";
-    }
-
     // Update is called once per frame
     public void IncrementOrbs(int numOrbs = 1)
     {
