@@ -8,61 +8,36 @@ using UnityEngine.UI;
 
 public class Level1Controller : MonoBehaviour
 {
-    [SerializeField]
-    private Level1Data level1Data;
-    [SerializeField]
-    private GameManagerData gameManagerData;
-    [SerializeField]
-    private GameManager gameManager;
-    [SerializeField]
-    private EnemySpawningLevel1 enemySpawning;
-    [SerializeField]
-    private UIManager uiManager;
-    [SerializeField]
-    private HealthCount healthCount;
-    [SerializeField]
-    private AudioSource[] sounds;
-    [SerializeField]
-    private BulletSpawnScript bulletSpawnScript;
-    [SerializeField]
-    private GameObject[] popUps;
-    [SerializeField]
-    private GameObject popupParent;
-    [SerializeField]
-    private MouseControl mouseControl;
-    [SerializeField]
-    private HealthDeposit healthDeposit;
-    [SerializeField]
-    private Text planetHealthNum;
-    [SerializeField]
-    private Text orbsNumber;
-    [SerializeField]
-    private Text enemiesNumber;
-    [SerializeField] 
-    private OrbCounter orbCounter;
-    [SerializeField]
-    private GlobalVariables variables;
+    [SerializeField] private Level1Data level1Data;
+    [SerializeField] private GameManagerData gameManagerData;
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private EnemySpawningLevel1 enemySpawning;
+    [SerializeField] private UIManager uiManager;
+    [SerializeField] private HealthCount healthCount;
+    [SerializeField] private BulletSpawnScript bulletSpawnScript;
+    [SerializeField] private GameObject[] popUps;
+    [SerializeField] private GameObject popupParent;
+    [SerializeField] private MouseControl mouseControl;
+    [SerializeField] private HealthDeposit healthDeposit;
+    [SerializeField] private Text planetHealthNum;
+    [SerializeField] private Text orbsNumber;
+    [SerializeField] private Text enemiesNumber;
+    [SerializeField] private OrbCounter orbCounter;
+    [SerializeField] private GlobalVariables variables;
+    
+    [SerializeField] private float normalAudioSpeed;
+    [SerializeField] private float reducedAudioSpeed;
+    [SerializeField] private float audioSpeedChangeRate;
 
-    [SerializeField]
-    private float normalAudioSpeed;
-    [SerializeField]
-    private float reducedAudioSpeed;
+    [SerializeField] private int numberOfEnemiesToKillToProceedToBoss;
+    [SerializeField] private GameObject motherShip;
 
-    [SerializeField] 
-    private float audioSpeedChangeRate;
-
-    [SerializeField] 
-    private int numberOfEnemiesToKillToProceedToBoss;
-
-    [SerializeField] 
-    private GameObject motherShip;
+    [SerializeField] private GameObject healthLowMessage;
+    [SerializeField] private GameObject primaryTargetNotEliminated;
 
     private Coroutine audioCoroutine;
-
     private GameObject motherShipInstance;
-
     public UpgradeScene1Manager upgradeScene1Manager;
-
     private int popupIndex;
     
     struct SceneManager
@@ -77,51 +52,13 @@ public class Level1Controller : MonoBehaviour
 
     private SceneManager sceneManager;
     
-    enum TrackPlaying
-    {
-        INTRO,
-        GAMEPLAY,
-        BOSS
-    }
-    
-    private IEnumerator DecreaseSpeed()
-    {
-        while (sceneManager.audioSpeed > reducedAudioSpeed)
-        {
-            sceneManager.audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
-            yield return null;
-        }
-
-        sceneManager.audioSpeed  = reducedAudioSpeed;
-    }
-
-    private IEnumerator IncreaseSpeed()
-    {
-        while (sceneManager.audioSpeed  < normalAudioSpeed)
-        {
-            sceneManager.audioSpeed  += audioSpeedChangeRate * Time.deltaTime;
-            yield return null;
-        }
-        sceneManager.audioSpeed  = normalAudioSpeed;
-    }
-
-    public void ReduceAudioSpeed()
-    {
-        if (audioCoroutine != null)
-            StopCoroutine(audioCoroutine);
-        audioCoroutine = StartCoroutine(DecreaseSpeed());
-    }
-
-    public void IncreaseAudioSpeed()
-    {
-        if (audioCoroutine != null)
-            StopCoroutine(audioCoroutine);
-        audioCoroutine = StartCoroutine(IncreaseSpeed());
-    }
     
     private void Start()
     {
+        
         AudioManager.Instance.ToggleMusicOff();
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
+        
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
         {
@@ -129,7 +66,6 @@ public class Level1Controller : MonoBehaviour
         }
 
         //set up scene manager
-        sceneManager.audioSpeed = 1;
         sceneManager.soundsChanged = false;
         sceneManager.hasStartedSpawning = false; 
         sceneManager.motherShipIntroScene = false;
@@ -148,7 +84,7 @@ public class Level1Controller : MonoBehaviour
 
         //set up shield and mouse
         mouseControl.EnableMouse();
-        gameManager.DisableShield();
+        gameManager.EnableShield();
 
         healthCount.currentHealth = healthCount.maxHealth;
         
@@ -156,27 +92,57 @@ public class Level1Controller : MonoBehaviour
         motherShipInstance = null;
     }
 
-    private void PlayAudio(TrackPlaying trackPlaying)
+    private bool CheckEndingCriteria()
     {
-        if (!sounds[(int)trackPlaying].isPlaying)
+        //check planet orbs
+        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+            return false; //not enough orbs
+        
+        //check health status
+        if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
-            for (int i = 0; i < sounds.Length; i++)
-                sounds[i].Pause();
-
-            sounds[(int)trackPlaying].Play();
+            //show health too low message
+            healthLowMessage.SetActive(true);
+            return false;
+        } 
+        healthLowMessage.SetActive(false); //has enough health
+        
+        //check that mothership has entered
+        if (!sceneManager.motherShipHasEntered)
+        {
+            primaryTargetNotEliminated.SetActive(true);
+            return false;
         }
+        primaryTargetNotEliminated.SetActive(false);
+        
+        //mother has entered, but has not been killed
+        if (motherShipInstance != null) 
+        {
+            primaryTargetNotEliminated.SetActive(true);
+            return false;
+        }
+        primaryTargetNotEliminated.SetActive(false);
+
+        //check that health is medium
+        if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+        {
+            healthLowMessage.SetActive(true);
+            return false;
+        }
+        healthLowMessage.SetActive(false);
+        
+        return true; //all ending criteria has been met
     }
     
     private void Update()
     {
         popupIndex = level1Data.popUpIndex;
-
-        HandleAudioSpeedChanges();
+        
         HandlePopups();
         
         switch (popupIndex)
         {
-            case 0: //show first screen
+            case 0: //show mission brief
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //gameplay
@@ -184,41 +150,24 @@ public class Level1Controller : MonoBehaviour
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
-                    uiManager.DestroyRemainingOrbs();
-                    enemySpawning.DestroyActiveEnemies();
-                    uiManager.SetLevelObjectsToInactive();
-                    level1Data.popUpIndex = 3;
+                    RemoveLevelObjects();
+                    level1Data.popUpIndex = 2;
                 }
+                
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
                 {
                     healthDeposit.LowHealthStatus();
                 }
-            
-                if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && !HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
-                {
-                    //player wins so show winning screen
-                    uiManager.DestroyRemainingOrbs();
-                    enemySpawning.DestroyActiveEnemies();
-                    enemySpawning.ResetSpawning();
-                    enemySpawning.StopSpawning();
-                    uiManager.SetLevelObjectsToInactive();
-                
-                    level1Data.popUpIndex = 2;
-                }
-                break;
-            case 2: //end screen
-                var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
-                planetHealthNum.text =  healthPercentage + "%";
-                orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
-                enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
-                mouseControl.EnableMouse();
-                break;
-            case 3: //retry
-                mouseControl.EnableMouse();
-                enemySpawning.ResetSpawning();
-                enemySpawning.StopSpawning();
-                break;
 
+                if (CheckEndingCriteria())
+                {
+                    RemoveLevelObjects();
+                    DisplayEndingScene();
+                }
+
+                break;
+            case 2: //retry screen
+                break;
         }
         
         //if game is paused
@@ -235,26 +184,23 @@ public class Level1Controller : MonoBehaviour
         uiManager.SetLevelObjectsToActive();
         uiManager.SetAtmosphereObjectToActive();
 
-        //play the game audio
-        PlayAudio(TrackPlaying.GAMEPLAY);
-
         if (!sceneManager.hasStartedSpawning)
         {
             sceneManager.hasStartedSpawning = true;
             enemySpawning.StartSpawningAllTypesOfEnemies();
         }
 
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
+        //killed enough to proceed to boss, and kill the rest of the enemies on screen
+        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
+            //play boss audio
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             SpawnBoss();
         }
     }
 
     private void SpawnBoss()
     {
-        //play music for boss fight
-        PlayAudio(TrackPlaying.BOSS);
-
         //intro scene has not finished yet
         if (!sceneManager.motherShipIntroScene)
         {
@@ -274,6 +220,8 @@ public class Level1Controller : MonoBehaviour
 
         if (!sceneManager.motherShipHasEntered)
         {
+            Debug.Log("Playing boss music");
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
         }
@@ -281,12 +229,19 @@ public class Level1Controller : MonoBehaviour
 
     public void DisplayEndingScene()
     {
-        Debug.Log("Display ending!!!");
+        var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
+        planetHealthNum.text =  healthPercentage + "%";
+        orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
+        enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
+        mouseControl.EnableMouse();
+    }
+
+    private void RemoveLevelObjects()
+    {
+        uiManager.DestroyRemainingOrbs();
+        enemySpawning.DestroyActiveEnemies();
         enemySpawning.StopSpawning();
         uiManager.SetLevelObjectsToInactive();
-        uiManager.DestroyRemainingOrbs();
-        uiManager.DestoryRemainingEnemies();
-        level1Data.popUpIndex = 2;
     }
 
     private void HandlePopups()
@@ -307,9 +262,11 @@ public class Level1Controller : MonoBehaviour
 
     private void HandleAudioSpeedChanges()
     {
-        for (int i = 0; i < sounds.Length; i++)
+        
+        //todo: offload to audiomanager
+        /*for (int i = 0; i < sounds.Length; i++)
         {
             sounds[i].pitch = sceneManager.audioSpeed;
-        }
+        }*/
     }
 }

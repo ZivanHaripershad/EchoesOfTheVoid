@@ -231,6 +231,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2165110729248641386, guid: 8e693997b252f0c4386564cf1bd20cc8, type: 3}
   m_PrefabInstance: {fileID: 2165110729117150409}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &139371830 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 139371830, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &367537116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1768,6 +1773,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1008797422}
     - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: healthLowMessage
+      value: 
+      objectReference: {fileID: 6320834848699198598}
+    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: bulletSpawnScript
       value: 
       objectReference: {fileID: 5000476146227674071}
@@ -1787,6 +1796,10 @@ PrefabInstance:
       propertyPath: popUps.Array.data[3]
       value: 
       objectReference: {fileID: 12250192}
+    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: primaryTargetNotEliminated
+      value: 
+      objectReference: {fileID: 139371830}
     - target: {fileID: 855804398686810282, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: shieldEnemySpawnPoints.Array.data[0]
       value: 
@@ -2011,6 +2024,10 @@ PrefabInstance:
       propertyPath: purchaseAmmoMessage
       value: 
       objectReference: {fileID: 472597367300954623}
+    - target: {fileID: 7018123691496249569, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: primaryTargetMessage
+      value: 
+      objectReference: {fileID: 139371830}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
 --- !u!1 &7808584819547608904 stripped

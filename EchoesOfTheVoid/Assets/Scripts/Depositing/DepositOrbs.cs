@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DepositOrbs : MonoBehaviour
@@ -26,6 +28,7 @@ public class DepositOrbs : MonoBehaviour
     private Animator powerFactoryAnim;
     private Animator shieldFactoryAnim;
     private Animator healthFactoryAnim;
+    private ShieldLogic shieldLogic; 
 
     [SerializeField]
     private EnemySpeedControl enemySpeedControl;
@@ -35,18 +38,24 @@ public class DepositOrbs : MonoBehaviour
     void Start()
     {
         orbDepositingMode.depositingMode = false;
+    }
+
+    private void OnEnable()
+    {
         bulletFactoryAnim = GameObject.Find("BulletFactory").GetComponent<Animator>();
         powerFactoryAnim = GameObject.Find("PowerFactory").GetComponent<Animator>();
         shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
         healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
         gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        shieldLogic = GameObject.Find("Shield").GetComponent<ShieldLogic>();
     }
+
     enum OrbFactoryDeposited
     {
-        POWER, 
-        AMMO, 
-        SHIELD, 
-        HEALTH
+        Power, 
+        Ammo, 
+        Shield, 
+        Health
     }
     
     private OrbFactoryDeposited factoryDeposited;
@@ -70,7 +79,7 @@ public class DepositOrbs : MonoBehaviour
                     {
                         orbCounter.planetOrbsDeposited++;
                         deposited = true;
-                        factoryDeposited = OrbFactoryDeposited.POWER;
+                        factoryDeposited = OrbFactoryDeposited.Power;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -81,18 +90,18 @@ public class DepositOrbs : MonoBehaviour
                     {
                         deposited = true;
                         bulletCount.currentBullets = bulletCount.maxBullets;
-                        factoryDeposited = OrbFactoryDeposited.AMMO;
+                        factoryDeposited = OrbFactoryDeposited.Ammo;
                     }
                     else
                         cannotDepositSoundEffect.Play();
 
                 //Shield
                 if (Input.GetKeyDown(KeyCode.L))
-                    if (orbCounter.orbsCollected >= 3 && gameManager.IsShieldEnabled())
+                    if (orbCounter.orbsCollected >= 3 && gameManager.IsShieldEnabled() && shieldLogic.CanAddShields())
                     {
                         deposited = true;
-
-                        factoryDeposited = OrbFactoryDeposited.SHIELD;
+                        shieldLogic.AddShield();
+                        factoryDeposited = OrbFactoryDeposited.Shield;
                     }
                     else
                         cannotDepositSoundEffect.Play();
@@ -105,7 +114,7 @@ public class DepositOrbs : MonoBehaviour
                         {
                             healthCount.currentHealth++;
                             deposited = true;
-                            factoryDeposited = OrbFactoryDeposited.HEALTH;
+                            factoryDeposited = OrbFactoryDeposited.Health;
                         }
                         
                     }
@@ -119,19 +128,19 @@ public class DepositOrbs : MonoBehaviour
 
                     switch (factoryDeposited)
                     {
-                        case OrbFactoryDeposited.AMMO:
+                        case OrbFactoryDeposited.Ammo:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.bulletCost);
                              bulletFactoryAnim.SetTrigger("isSelected");
                             break;
-                        case OrbFactoryDeposited.POWER:
+                        case OrbFactoryDeposited.Power:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.powerCost);
                              powerFactoryAnim.SetTrigger("isSelected");
                             break;
-                        case OrbFactoryDeposited.HEALTH:
+                        case OrbFactoryDeposited.Health:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.healthCost);
                              healthFactoryAnim.SetTrigger("isSelected");
                             break;
-                        case OrbFactoryDeposited.SHIELD:
+                        case OrbFactoryDeposited.Shield:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.shieldCost);
                              shieldFactoryAnim.SetTrigger("isSelected");
                             break;

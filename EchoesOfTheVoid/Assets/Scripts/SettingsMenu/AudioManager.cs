@@ -3,52 +3,163 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using UnityEditor;
 using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class AudioManager : MonoBehaviour
 {
     private Slider musicSlider, sfxSlider;
-    private static AudioManager instance;
+    private static AudioManager _instance;
 
     public Sound[] musicSounds, sfxSounds;
     public AudioSource musicSource, sfxSource;
+    
+    [SerializeField]
+    private float normalAudioSpeed = 1f;
+    [SerializeField]
+    private float reducedAudioSpeed = 0.5f;
+
+    [SerializeField] 
+    private float audioSpeedChangeRate = 0.8f;
+
+    private float audioSpeed;
+    private Coroutine audioCoroutine;
+    private bool isReduced;
+    private MusicFileNames currentlyPlaying;
 
     void Awake()
     {
-        if (instance != null && instance != this)
-        {
-            Debug.Log("Destroying instance");
-            Destroy(gameObject);
-            return;
-        } else {
-            Debug.Log("Creating instance");
-            instance = this;
-        }
-
         DontDestroyOnLoad(this);
+
+        audioCoroutine = null;
+        isReduced = false;
+
+        currentlyPlaying = MusicFileNames.NoMusic;
+    }
+
+    public enum MusicFileNames
+    {
+        NoMusic,
+        MainMenuMusic, 
+        GamePlayMusic, 
+        BossMusic, 
+        TutorialLevelMusic
     }
 
     public static AudioManager Instance
     {
-        get { return instance; }
+        get
+        {
+            if (_instance == null)
+            {
+                // If the _instance is null, try to find an existing AudioManager in the scene
+                _instance = FindObjectOfType<AudioManager>();
+
+                // If no AudioManager exists, create a new one
+                if (_instance == null)
+                {
+                    GameObject newGameObject = new GameObject("AudioManager");
+                    _instance = newGameObject.AddComponent<AudioManager>();
+                }
+            }
+            return _instance;
+        }
     }
 
-    public void PlayMusic(string clipname)
+    public void PlayMusic(MusicFileNames clip)
     {
-        Sound s = Array.Find(Instance.musicSounds, x => x.clipName == clipname);
-        if (s == null)
-        {
-            Debug.LogError("Sound: " + clipname + " does NOT exist");
+
+        if (clip == Instance.currentlyPlaying)
             return;
-        }
-        else
+
+        String fileName = "";
+
+        switch (clip)
         {
-            Instance.musicSource.clip = s.clip;
-            Instance.musicSource.loop = true;
-            Instance.musicSource.Play();
+            case MusicFileNames.MainMenuMusic:
+                fileName = "MainMenuMusic";
+                break;
+            case MusicFileNames.GamePlayMusic:
+                fileName = "GamePlayMusic";
+                break;
+            case MusicFileNames.BossMusic:
+                fileName = "BossMusic";
+                break;
+            case MusicFileNames.TutorialLevelMusic:
+                fileName = "TutorialLevelMusic";
+                break;
+        }
+        
+        Sound s = Array.Find(Instance.musicSounds, x => x.clipName == fileName);
+        
+        if (s == null)
+            Debug.Log("sound not found");
+        
+        Instance.musicSource.Stop();
+        Instance.musicSource.clip = s.clip;
+        Instance.musicSource.loop = true;
+        Instance.musicSource.Play();
+    }
+
+    void SetSoundSpeed()
+    {
+        Instance.musicSource.pitch = audioSpeed;
+        Instance.sfxSource.pitch = audioSpeed;
+    }
+
+    private IEnumerator ReduceRoutine()
+    {
+        while (audioSpeed > reducedAudioSpeed)
+        {
+            audioSpeed -= audioSpeedChangeRate * Time.deltaTime;
+            SetSoundSpeed();
+            yield return null;
+        }
+
+        audioSpeed = reducedAudioSpeed;
+        SetSoundSpeed();
+    }
+
+    public void ReduceAudioSpeed()
+    {
+        if (!isReduced)
+        {
+            isReduced = true;
+            
+            if (audioCoroutine != null)
+                StopCoroutine(audioCoroutine);
+
+            audioCoroutine = StartCoroutine(ReduceRoutine());
         }
     }
+    
+    private IEnumerator IncreaseRoutine()
+    {
+        while (audioSpeed < normalAudioSpeed)
+        {
+            audioSpeed += audioSpeedChangeRate * Time.deltaTime;
+            SetSoundSpeed();
+            yield return null;
+        }
+
+        audioSpeed = normalAudioSpeed;
+        SetSoundSpeed();
+    }
+
+    public void IncreaseAudioSpeed()
+    {
+        if (isReduced)
+        {
+            isReduced = false;
+            
+            if (audioCoroutine != null)
+                StopCoroutine(audioCoroutine);
+        
+            audioCoroutine = StartCoroutine(IncreaseRoutine());
+        }
+    }
+    
 
     public bool IsMusicPlaying()
     {

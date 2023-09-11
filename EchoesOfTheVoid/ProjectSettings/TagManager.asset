@@ -21,6 +21,8 @@ TagManager:
   - EarthSoundTrigger
   - EarthDamage
   - Level1Manager
+  - HealthLowMessage
+  - Shield
   layers:
   - Default
   - TransparentFX

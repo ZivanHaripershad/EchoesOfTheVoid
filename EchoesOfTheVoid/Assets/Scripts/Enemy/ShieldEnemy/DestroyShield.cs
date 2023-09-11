@@ -24,14 +24,12 @@ public class DestroyShield : MonoBehaviour
                 //destroy the shield
                 powerDownEffect.Play();
                 
-                Debug.Log("Crashed into shield destroying: " + other.gameObject.tag);
                 Destroy(other.gameObject);
                 Invoke("DeactivateShield", 0.5f);
             }
             else
             {
                 Debug.Log("Destroying enemy!!!");
-                // destroyEnemy.DestroyGameObject(other, true, other.transform);
             }
         } 
     }

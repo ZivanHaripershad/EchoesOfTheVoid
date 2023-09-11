@@ -24,8 +24,6 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField] private GameObject darkenBackground;
     [SerializeField] private float darkenBackgroundAlpha;
 
-    public TutorialLevelController tutorialLevelController;
-
     public OrbDepositingMode orbDepositingMode;
 
     public float fadeDuration = 1f; // The duration of the fade-in effect
@@ -58,12 +56,19 @@ public class AtmosphereReaction : MonoBehaviour
         }
     }
 
-    void Update()
-    {
-        if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
-            tutorialLevelController.ReduceAudioSpeed();
-        else 
-            tutorialLevelController.IncreaseAudioSpeed();
+    void Update(){
+        
+        if (Input.GetKeyDown(KeyCode.S) && orbDepositingMode.depositingMode)
+        {
+            Debug.Log("reducing");
+            AudioManager.Instance.ReduceAudioSpeed();
+        }
+        
+        if (Input.GetKeyUp(KeyCode.S))
+        {
+            Debug.Log("increasing");
+            AudioManager.Instance.IncreaseAudioSpeed();
+        }
         
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {

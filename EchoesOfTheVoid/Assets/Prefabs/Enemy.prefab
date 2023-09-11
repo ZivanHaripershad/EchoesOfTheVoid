@@ -2255,7 +2255,7 @@ MonoBehaviour:
   destroyEnemySoundEffect: {fileID: 7447307019642372920}
   crashIntoPlanetSoundEffect: {fileID: 7447307019642372920}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
-  bulletSoundDelay: 0.1
+  bulletSoundDelay: 1
   graphics: {fileID: 8012780089176710275}
 --- !u!1 &8012780089176710275
 GameObject:

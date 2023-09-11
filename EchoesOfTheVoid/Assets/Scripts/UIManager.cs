@@ -20,6 +20,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject orbUi;
     [SerializeField] private GameObject orbText;
     [SerializeField] private GameObject pauseMenu;
+    
+    //level1
+    [SerializeField] private GameObject primaryTargetMessage; 
 
     private MouseControl mouseControl;
 
@@ -45,6 +48,10 @@ public class UIManager : MonoBehaviour
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
+        
+        //todo: level1
+        if (primaryTargetMessage)
+            primaryTargetMessage.SetActive(false);
 
         levelLayersAreActive = false;
         mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
@@ -68,10 +75,6 @@ public class UIManager : MonoBehaviour
         healthUi.SetActive(true);
         orbUi.SetActive(true);
         orbText.SetActive(true);
-        reloadMessage.SetActive(true);
-        cannotFireMessage.SetActive(true);
-        purchaseAmmoMessage.SetActive(true);
-
         levelLayersAreActive = true;
     }
 
@@ -87,6 +90,10 @@ public class UIManager : MonoBehaviour
         cannotFireMessage.SetActive(false);
         purchaseAmmoMessage.SetActive(false);
         healthLowMessage.SetActive(false);
+        
+        //todo: level1
+        if (primaryTargetMessage)
+            primaryTargetMessage.SetActive(false);
     }
 
     public void DestroyRemainingOrbs()
@@ -106,6 +113,10 @@ public class UIManager : MonoBehaviour
         {
             //puase the game
             pauseMenu.SetActive(true);
+            
+            if (mouseControl == null) 
+                mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
+            
             mouseControl.EnableMouse();
             
             Time.timeScale = 0; 

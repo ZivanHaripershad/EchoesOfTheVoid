@@ -2547,7 +2547,6 @@ MonoBehaviour:
   shieldDeposit: {fileID: 543851233}
   darkenBackground: {fileID: 0}
   darkenBackgroundAlpha: 0.3
-  tutorialLevelController: {fileID: 0}
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   fadeDuration: 1
 --- !u!1 &1962596712

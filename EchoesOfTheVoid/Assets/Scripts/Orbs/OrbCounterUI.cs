@@ -25,17 +25,10 @@ public class OrbCounterUI : MonoBehaviour
         return instance;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        orbCounter.orbsCollected = 0;
-        orbCounterText.text = "0";
-    }
-
     // Update is called once per frame
     public void IncrementOrbs(int numOrbs = 1)
     {
-        gameManagerData.numberOfOrbsCollected++;
+        gameManagerData.numberOfOrbsCollected += numOrbs;
         orbCounter.orbsCollected += numOrbs;
         orbCounterText.text = orbCounter.orbsCollected.ToString();
     }

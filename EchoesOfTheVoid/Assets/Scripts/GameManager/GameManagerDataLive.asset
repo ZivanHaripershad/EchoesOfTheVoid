@@ -13,3 +13,8 @@ MonoBehaviour:
   m_Name: GameManagerDataLive
   m_EditorClassIdentifier: 
   numberOfEnemiesKilled: 0
+  numberOfOrbsCollected: 0
+  expireOrbs: 0
+  tutorialActive: 0
+  tutorialWaitTime: 10
+  hasResetAmmo: 1

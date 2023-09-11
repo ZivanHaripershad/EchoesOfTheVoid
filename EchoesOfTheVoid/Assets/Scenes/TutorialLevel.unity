@@ -158,17 +158,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647262227947457, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
   m_PrefabInstance: {fileID: 6852647262090430745}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &312708574 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 462461865946705876, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
-  m_PrefabInstance: {fileID: 462461864928897760}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 293ef75569c743b8a7606b48b195e924, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &314522385 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8524234420344409200, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
@@ -781,10 +770,6 @@ PrefabInstance:
       propertyPath: darkenBackground
       value: 
       objectReference: {fileID: 137018785}
-    - target: {fileID: 1938465650, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-      propertyPath: tutorialLevelController
-      value: 
-      objectReference: {fileID: 312708574}
     - target: {fileID: 7400859371959236105, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: m_Name
       value: UI
