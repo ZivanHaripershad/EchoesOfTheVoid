@@ -16,7 +16,7 @@ public class PopUp2 : Button
 
     private void Next()
     {
-        tutorialData.popUpIndex = 2;
+        tutorialData.popUpIndex = 1;
     }
     
     public override void OnMouseUp()

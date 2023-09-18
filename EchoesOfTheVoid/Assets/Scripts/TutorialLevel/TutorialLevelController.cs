@@ -41,8 +41,12 @@ public class TutorialLevelController : MonoBehaviour
     private GlobalVariables variables;
 
     private int popUpIndex;
-    private bool soundsChanged;
     
+    private bool wPressed;
+    private bool aPressed;
+    private bool sPressed;
+    private bool dPressed;
+
     private void Start()
     {
         AudioManager.Instance.ToggleMusicOff();
@@ -54,7 +58,7 @@ public class TutorialLevelController : MonoBehaviour
             popUps[i].SetActive(true);
         }
 
-        orbCounter.planetOrbMax = 5;
+        orbCounter.planetOrbMax = 1;
         tutorialData.popUpIndex = 0;
 
         gameManagerData.numberOfEnemiesKilled = 0;
@@ -62,15 +66,13 @@ public class TutorialLevelController : MonoBehaviour
         gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
 
-        soundsChanged = false;
-
         gameManager.DisableShield();
         mouseControl.EnableMouse();
-    }
 
-    private void PlayGameAudio()
-    {
-        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
+        wPressed = false;
+        aPressed = false;
+        sPressed = false;
+        dPressed = false;
     }
 
     private void Update()
@@ -89,129 +91,226 @@ public class TutorialLevelController : MonoBehaviour
             }
         }
 
+ 
         if (popUpIndex == 0)
         {
-            //show first screen
+            //intro screen
+            if (gameManagerData.tutorialWaitTime <= 0)
+            {
+                gameManagerData.tutorialWaitTime = 5;
+                tutorialData.popUpIndex++;
+            }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
         }
         else if (popUpIndex == 1)
         {
-            //show second screen
-            enemySpawning.ResetSpawning();
+            uiManager.DisableAtmosphereObject();
+            uiManager.SetLevelObjectsToActive();
+            
+            //assignment 1 screen
+            if (gameManagerData.tutorialWaitTime <= 0)
+            {
+                tutorialData.popUpIndex++;
+            }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
         }
         else if (popUpIndex == 2)
         {
-            //show player how to move and wait for left and right arrow key input and shoot
-            if (Time.timeScale != 0)
-                mouseControl.DisableMouse();
-            
-            uiManager.DisableAtmosphereObject();
+            //a and d screen
 
-            uiManager.SetLevelObjectsToActive();
-            
-            variables.mustPause = true;
-            enemySpawning.StartSpawningEnemies(3, false);
-            gameManagerData.expireOrbs = false;
-            gameManagerData.tutorialActive = true;
-
-            if (gameManagerData.numberOfEnemiesKilled == 3)
+            if (Input.GetKey(KeyCode.A))
             {
+                aPressed = true;
+            }
+
+            if (Input.GetKey(KeyCode.D))
+            {
+                dPressed = true;
+            }
+
+            if (aPressed && dPressed)
+            {
+                gameManagerData.tutorialWaitTime = 5;
                 tutorialData.popUpIndex++;
             }
         }
         else if (popUpIndex == 3)
         {
-            //show player how to collect orbs
-            if (Time.timeScale != 0)
-                mouseControl.DisableMouse();
-            if (gameManagerData.numberOfOrbsCollected == 3)
+            //assignment 2 screen
+            
+            if (gameManagerData.tutorialWaitTime <= 0)
             {
+                enemySpawning.ResetSpawning();
                 tutorialData.popUpIndex++;
             }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
         }
         else if (popUpIndex == 4)
         {
-            //show player how to switch back to shooting mode
+            // shoot enemies screen
             if (Time.timeScale != 0)
                 mouseControl.DisableMouse();
+
+            variables.mustPause = true;
+            enemySpawning.StartSpawningEnemies(4, false);
+            gameManagerData.expireOrbs = false;
+            gameManagerData.tutorialActive = true;
+            
+            if (gameManagerData.numberOfEnemiesKilled == 4)
+            {
+                gameManagerData.tutorialWaitTime = 5;
+                tutorialData.popUpIndex++;
+            }
+            
+        }
+        else if (popUpIndex == 5)
+        {
+            //assignment 3 screen
+            
+            if (gameManagerData.tutorialWaitTime <= 0)
+            {
+                gameManagerData.tutorialWaitTime = 10;
+                tutorialData.popUpIndex++;
+            }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
+        }
+        else if (popUpIndex == 6)
+        {
+            //explaining orbs screen
+            
+            if (gameManagerData.tutorialWaitTime <= 0)
+            {
+                tutorialData.popUpIndex++;
+            }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
+        }
+        else if (popUpIndex == 7)
+        {
+            //transition to collection mode screen
+            
             if (Input.GetKey(KeyCode.Space))
             {
                 tutorialData.popUpIndex++;
             }
         }
-        else if (popUpIndex == 5)
+        else if (popUpIndex == 8)
         {
-            uiManager.SetAtmosphereObjectToActive();
-            if (Time.timeScale != 0)
-                mouseControl.DisableMouse();
-            enemySpawning.ResetSpawning();
-            enemySpawning.StopTheCoroutine();
+            //movement in collection mode screen
             
-            if (orbCounter.orbsCollected < 3 && orbCounter.planetOrbsDeposited < 1)
+            if (Input.GetKey(KeyCode.W))
             {
-                Debug.Log("FAILED");
+                wPressed = true;
             }
             
-            //show player how to spend orbs
+            if (Input.GetKey(KeyCode.A))
+            {
+                aPressed = true;
+            }
 
-            if (orbCounter.planetOrbsDeposited > 0)
+            if (Input.GetKey(KeyCode.S))
+            {
+                sPressed = true;
+            }
+            
+            if (Input.GetKey(KeyCode.D))
+            {
+                dPressed = true;
+            }
+
+            if (wPressed && aPressed && sPressed && dPressed)
             {
                 tutorialData.popUpIndex++;
             }
         }
-        else if (popUpIndex == 6)
+        else if (popUpIndex == 9)
         {
-            //let player play and win against enemies
-
-            if (!soundsChanged)
-            {
-                soundsChanged = true;
-                Invoke("PlayGameAudio", 5); 
-            }
-
-            if (Time.timeScale != 0)
-                mouseControl.DisableMouse();
+            //collecting orbs screen
             
+            if (gameManagerData.numberOfOrbsCollected == 4)
+            {
+                tutorialData.popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 10)
+        {
+            //congrats for collecting orbs screen
+            
+            if (Input.GetKey(KeyCode.Space))
+            {
+                gameManagerData.tutorialWaitTime = 5;
+                tutorialData.popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 11)
+        {
+            //assignment 4 screen
+
             if (gameManagerData.tutorialWaitTime <= 0)
             {
-                bulletSpawnScript.AutomaticallyReplenishAmmoForPlayer();
-                variables.mustPause = false;
-                popUps[popUpIndex].SetActive(false);
-                gameManagerData.expireOrbs = true;
-                gameManagerData.tutorialActive = false;
-                enemySpawning.StartSpawningEnemies(3, true);
+                tutorialData.popUpIndex++;
             }
-            else
-            {
-                gameManagerData.tutorialWaitTime -= Time.deltaTime;
-            }
-
-            if (healthCount.currentHealth == 0)
-            {
-                //show retry screen
-                uiManager.DestroyRemainingOrbs();
-                enemySpawning.DestroyActiveEnemies();
-                uiManager.SetLevelObjectsToInactive();
-                tutorialData.popUpIndex = 8;
-            }
-
-            if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
-            {
-               healthDeposit.LowHealthStatus();
-            }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
+        }
+        else if (popUpIndex == 12)
+        {
+            //bring up orb menu screen
             
-            if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && !HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+            uiManager.SetAtmosphereObjectToActive();
+            
+            if (Input.GetKey(KeyCode.S))
             {
-                //player wins so show winning screen
-                uiManager.DestroyRemainingOrbs();
-                enemySpawning.DestroyActiveEnemies();
-                enemySpawning.ResetSpawning();
-                enemySpawning.StopTheCoroutine();
-                uiManager.SetLevelObjectsToInactive();
-                
                 tutorialData.popUpIndex++;
             }
         }
-        else if (popUpIndex == 7)
+        else if (popUpIndex == 13)
+        {
+            //deposit to planet network
+            
+            if (Input.GetKey(KeyCode.J))
+            {
+                gameManagerData.tutorialWaitTime = 10;
+                tutorialData.popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 14)
+        {
+            //planet network explanation
+            if (gameManagerData.tutorialWaitTime <= 0)
+            {
+                tutorialData.popUpIndex++;
+            }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
+        }
+        else if (popUpIndex == 15)
+        {
+            //deposit to replenish ammo
+            
+            if (Input.GetKey(KeyCode.I))
+            {
+                tutorialData.popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 16)
+        {
+            //deposit to planet health
+            
+            if (Input.GetKey(KeyCode.K))
+            {
+                gameManagerData.tutorialWaitTime = 10;
+                tutorialData.popUpIndex++;
+            }
+        }
+        else if (popUpIndex == 17)
+        {
+            //congrats player screen
+            if (gameManagerData.tutorialWaitTime <= 0)
+            {
+                uiManager.SetLevelObjectsToInactive();
+                tutorialData.popUpIndex++;
+            }
+            gameManagerData.tutorialWaitTime -= Time.deltaTime;
+        }
+        else if (popUpIndex == 18)
         {
             //Level complete screen
             var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
@@ -220,14 +319,7 @@ public class TutorialLevelController : MonoBehaviour
             enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
             mouseControl.EnableMouse();
         }
-        else if (popUpIndex == 8)
-        {
-            //retry screen
-            mouseControl.EnableMouse();
-            enemySpawning.ResetSpawning();
-            enemySpawning.StopTheCoroutine();
-        }
-        
+
         //if game is paused
         if (Time.timeScale == 0)
             mouseControl.EnableMouse();
