@@ -49,7 +49,7 @@ public class UIManager : MonoBehaviour
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
         
-        //todo: level1
+        //todo: level1 uiManager
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
 
