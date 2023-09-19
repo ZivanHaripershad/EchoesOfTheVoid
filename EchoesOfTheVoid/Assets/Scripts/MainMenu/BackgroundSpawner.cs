@@ -32,7 +32,7 @@ public class BackgroundSpawner : MonoBehaviour
      {
          yield return new WaitForSeconds(interval);
 
-         GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-10f, 10), Random.Range(-4f, 5f), 0), Quaternion.identity);
+         GameObject newEnemy = Instantiate(enemy, new Vector3(Random.Range(-12f, 12f), Random.Range(-5f, 4f), 0), Quaternion.identity);
          StartCoroutine(spawnEnemy(interval, enemy));
      }
 }
