@@ -113,7 +113,6 @@ public class Level1Controller : MonoBehaviour
             primaryTargetNotEliminated.SetActive(true);
             return false;
         }
-        primaryTargetNotEliminated.SetActive(false);
         
         //mother has entered, but has not been killed
         if (motherShipInstance != null) 
@@ -121,6 +120,7 @@ public class Level1Controller : MonoBehaviour
             primaryTargetNotEliminated.SetActive(true);
             return false;
         }
+        
         primaryTargetNotEliminated.SetActive(false);
 
         //check that health is medium
@@ -161,6 +161,7 @@ public class Level1Controller : MonoBehaviour
 
                 if (CheckEndingCriteria())
                 {
+                    AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
                 }
@@ -193,8 +194,6 @@ public class Level1Controller : MonoBehaviour
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
         if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            //play boss audio
-            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             SpawnBoss();
         }
     }
@@ -220,7 +219,6 @@ public class Level1Controller : MonoBehaviour
 
         if (!sceneManager.motherShipHasEntered)
         {
-            Debug.Log("Playing boss music");
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
@@ -259,14 +257,5 @@ public class Level1Controller : MonoBehaviour
             }
         }
     }
-
-    private void HandleAudioSpeedChanges()
-    {
-        
-        //todo: offload to audiomanager
-        /*for (int i = 0; i < sounds.Length; i++)
-        {
-            sounds[i].pitch = sceneManager.audioSpeed;
-        }*/
-    }
+    
 }

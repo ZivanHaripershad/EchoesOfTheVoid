@@ -335,7 +335,7 @@ MonoBehaviour:
   explosion: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   delayAfterKillingMothership: 5
   healthWindowSp: {fileID: 6576416008249461642}
-  motherShipGiveShields: {fileID: 0}
+  motherShipGiveShields: {fileID: 7975090669408555782}
 --- !u!82 &-8464398043955780724
 AudioSource:
   m_ObjectHideFlags: 0

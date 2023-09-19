@@ -40,12 +40,9 @@ public class MotherShipDamage : MonoBehaviour
 
             if (motherShipHealth.IsDead())
             {
-                sp.color = new Color(1f, 1f, 1f, 0f);
-                healthWindowSp.color = new Color(1f, 1f, 1f, 0f);
                 Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-                killMotherShip.Play();
-                motherShipGiveShields.enabled = false;
-                Invoke("DestroyGameObject", 1f);
+                AudioManager.Instance.PlaySFX("KillMotherShip");
+                Destroy(gameObject);
             }
             else 
                 motherShipMovement.StartShaking();
