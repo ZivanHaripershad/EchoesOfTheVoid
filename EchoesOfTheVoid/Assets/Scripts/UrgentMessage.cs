@@ -18,6 +18,7 @@ public class UrgentMessage : MonoBehaviour
     {
         isEnabled = false;
         textComponent = GetComponent<Text>();
+        Hide();
     }
 
     public void Hide()

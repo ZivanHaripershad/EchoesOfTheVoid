@@ -45,11 +45,6 @@ public class UIManager : MonoBehaviour
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
         
-        healthLowMessage.GetComponent<UrgentMessage>().Hide();
-        cannotFireMessage.GetComponent<UrgentMessage>().Hide();
-        purchaseAmmoMessage.GetComponent<UrgentMessage>().Hide();
-        reloadMessage.GetComponent<UrgentMessage>().Hide();
-        
         //todo: level1 uiManager
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
