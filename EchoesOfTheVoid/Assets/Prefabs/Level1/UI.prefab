@@ -95,7 +95,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashSpeed: 2
   minOpacity: 0.2
-  maxOpacity: 1
 --- !u!1 &232053701153888226
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,7 +3144,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashSpeed: 2
   minOpacity: 0.2
-  maxOpacity: 1
 --- !u!1 &1799307003525579059
 GameObject:
   m_ObjectHideFlags: 0
@@ -3514,7 +3512,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashSpeed: 2
   minOpacity: 0.2
-  maxOpacity: 1
 --- !u!1 &5324639818092348303
 GameObject:
   m_ObjectHideFlags: 0
@@ -3970,7 +3967,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashSpeed: 2
   minOpacity: 0.2
-  maxOpacity: 1
 --- !u!1 &7518517109057697540
 GameObject:
   m_ObjectHideFlags: 0
@@ -4439,7 +4435,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flashSpeed: 2
   minOpacity: 0.2
-  maxOpacity: 1
 --- !u!1 &8962565282504497342
 GameObject:
   m_ObjectHideFlags: 0

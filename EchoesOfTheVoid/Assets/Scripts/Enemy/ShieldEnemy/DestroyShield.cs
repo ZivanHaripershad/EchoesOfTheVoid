@@ -27,10 +27,6 @@ public class DestroyShield : MonoBehaviour
                 Destroy(other.gameObject);
                 Invoke("DeactivateShield", 0.5f);
             }
-            else
-            {
-                Debug.Log("Destroying enemy!!!");
-            }
         } 
     }
 }
