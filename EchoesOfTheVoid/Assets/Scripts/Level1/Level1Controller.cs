@@ -64,6 +64,10 @@ public class Level1Controller : MonoBehaviour
         {
             popUps[i].SetActive(true);
         }
+        
+        //messages
+        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Hide();
+        healthLowMessage.GetComponent<UrgentMessage>().Hide();
 
         //set up scene manager
         sceneManager.soundsChanged = false;
@@ -102,34 +106,34 @@ public class Level1Controller : MonoBehaviour
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
             //show health too low message
-            healthLowMessage.SetActive(true);
+            healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         } 
-        healthLowMessage.SetActive(false); //has enough health
+        healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
         
         //check that mothership has entered
         if (!sceneManager.motherShipHasEntered)
         {
-            primaryTargetNotEliminated.SetActive(true);
+            primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
             return false;
         }
         
         //mother has entered, but has not been killed
         if (motherShipInstance != null) 
         {
-            primaryTargetNotEliminated.SetActive(true);
+            primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
             return false;
         }
         
-        primaryTargetNotEliminated.SetActive(false);
+        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Hide();
 
         //check that health is medium
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
-            healthLowMessage.SetActive(true);
+            healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         }
-        healthLowMessage.SetActive(false);
+        healthLowMessage.GetComponent<UrgentMessage>().Hide();
         
         return true; //all ending criteria has been met
     }
