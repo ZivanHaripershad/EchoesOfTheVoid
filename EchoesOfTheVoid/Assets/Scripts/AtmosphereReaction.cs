@@ -60,13 +60,11 @@ public class AtmosphereReaction : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.S) && orbDepositingMode.depositingMode)
         {
-            Debug.Log("reducing");
             AudioManager.Instance.ReduceAudioSpeed();
         }
         
         if (Input.GetKeyUp(KeyCode.S))
         {
-            Debug.Log("increasing");
             AudioManager.Instance.IncreaseAudioSpeed();
         }
         

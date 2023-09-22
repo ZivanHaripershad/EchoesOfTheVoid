@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 7975090668442905498}
   - component: {fileID: -8464398043955780724}
   - component: {fileID: 5867821504800781024}
+  - component: {fileID: -7504938269219230000}
   m_Layer: 0
   m_Name: MotherShip
   m_TagString: Untagged
@@ -331,9 +332,10 @@ MonoBehaviour:
   hitBoss: {fileID: -8464398043955780724}
   killMotherShip: {fileID: 5867821504800781024}
   motherShipHealth: {fileID: 1092106289473344820}
-  explosion: {fileID: 4132646580132597291, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
+  explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   delayAfterKillingMothership: 5
   healthWindowSp: {fileID: 6576416008249461642}
+  motherShipGiveShields: {fileID: 7975090669408555782}
 --- !u!82 &-8464398043955780724
 AudioSource:
   m_ObjectHideFlags: 0
@@ -526,6 +528,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!111 &-7504938269219230000
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7975090668442905501}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 545096df21ff04344b8d7a88dbfa2fc0, type: 2}
+  m_Animations: []
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &7975090669408555781
 GameObject:
   m_ObjectHideFlags: 0

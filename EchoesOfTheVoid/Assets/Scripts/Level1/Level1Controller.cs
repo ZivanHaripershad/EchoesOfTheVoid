@@ -64,6 +64,10 @@ public class Level1Controller : MonoBehaviour
         {
             popUps[i].SetActive(true);
         }
+        
+        //messages
+        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Hide();
+        healthLowMessage.GetComponent<UrgentMessage>().Hide();
 
         //set up scene manager
         sceneManager.soundsChanged = false;
@@ -102,34 +106,34 @@ public class Level1Controller : MonoBehaviour
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
             //show health too low message
-            healthLowMessage.SetActive(true);
+            healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         } 
-        healthLowMessage.SetActive(false); //has enough health
+        healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
         
         //check that mothership has entered
         if (!sceneManager.motherShipHasEntered)
         {
-            primaryTargetNotEliminated.SetActive(true);
+            primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
             return false;
         }
-        primaryTargetNotEliminated.SetActive(false);
         
         //mother has entered, but has not been killed
         if (motherShipInstance != null) 
         {
-            primaryTargetNotEliminated.SetActive(true);
+            primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
             return false;
         }
-        primaryTargetNotEliminated.SetActive(false);
+        
+        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Hide();
 
         //check that health is medium
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
-            healthLowMessage.SetActive(true);
+            healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         }
-        healthLowMessage.SetActive(false);
+        healthLowMessage.GetComponent<UrgentMessage>().Hide();
         
         return true; //all ending criteria has been met
     }
@@ -161,6 +165,7 @@ public class Level1Controller : MonoBehaviour
 
                 if (CheckEndingCriteria())
                 {
+                    AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
                 }
@@ -193,8 +198,6 @@ public class Level1Controller : MonoBehaviour
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
         if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            //play boss audio
-            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             SpawnBoss();
         }
     }
@@ -220,7 +223,6 @@ public class Level1Controller : MonoBehaviour
 
         if (!sceneManager.motherShipHasEntered)
         {
-            Debug.Log("Playing boss music");
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
@@ -259,14 +261,5 @@ public class Level1Controller : MonoBehaviour
             }
         }
     }
-
-    private void HandleAudioSpeedChanges()
-    {
-        
-        //todo: offload to audiomanager
-        /*for (int i = 0; i < sounds.Length; i++)
-        {
-            sounds[i].pitch = sceneManager.audioSpeed;
-        }*/
-    }
+    
 }

@@ -11,11 +11,24 @@ public class UrgentMessage : MonoBehaviour
 
     public float flashSpeed = 2.0f;
     public float minOpacity = 0.2f;
-    public float maxOpacity = 1.0f;
+
+    private bool isEnabled;
 
     private void Start()
     {
+        isEnabled = false;
         textComponent = GetComponent<Text>();
+        Hide();
+    }
+
+    public void Hide()
+    {
+        textComponent.color = new Color(1f, 1f, 1f, 0f);
+    }
+
+    public void Show()
+    {
+        textComponent.color = new Color(1f, 1f, 1f, 1f);
     }
 
     private void OnEnable()

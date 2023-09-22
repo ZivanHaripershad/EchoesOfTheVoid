@@ -37,25 +37,24 @@ public class BulletSpawnScript : MonoBehaviour
 
     private GameObject canvasUI;
     
-    private Text reloadMessage;
-    private Text cannotFireMessage;
-    private Text purchaseAmmoMessage;
+    private GameObject reloadMessage;
+    private GameObject cannotFireMessage;
+    private GameObject purchaseAmmoMessage;
 
     // Start is called before the first frame update
     void Start()
     {
         canvasUI = GameObject.FindGameObjectWithTag("UI");
-        reloadMessage = canvasUI.transform.Find("ReloadMessage").GetComponent<Text>();
-        cannotFireMessage = canvasUI.transform.Find("CannotFireMessage").GetComponent<Text>();
-        purchaseAmmoMessage = canvasUI.transform.Find("PurchaseAmmoMessage").GetComponent<Text>();
+        reloadMessage = GameObject.FindGameObjectWithTag("Reload");
+        cannotFireMessage = GameObject.FindGameObjectWithTag("CannotFire");
+        purchaseAmmoMessage = GameObject.FindGameObjectWithTag("PurchaseAmmo");
         
         timePassed = 0;
         currReloadTime = 0;
-        cannotFireMessage.enabled = false;
+        
         bulletCount.currentBullets = bulletCount.maxBullets;
         bulletCount.generateBullets = false;
         
-        purchaseAmmoMessage.enabled = false;
         progressBarInner = GameObject.FindGameObjectsWithTag("progressBarInner")[0];
         progressBar = progressBarInner.GetComponent<SpriteRenderer>();
         progressBar.size = new Vector2(0, 1);
@@ -68,12 +67,16 @@ public class BulletSpawnScript : MonoBehaviour
     
     }
 
-    void EnableMessage(Text message)
+    void EnableMessage(GameObject message, bool toEnable)
     {
-        reloadMessage.enabled = false;
-        cannotFireMessage.enabled = false;
-        purchaseAmmoMessage.enabled = false;
-        message.enabled = true;
+        reloadMessage.GetComponent<UrgentMessage>().Hide();
+        cannotFireMessage.GetComponent<UrgentMessage>().Hide();
+        purchaseAmmoMessage.GetComponent<UrgentMessage>().Hide();
+        
+        if (toEnable)
+            message.GetComponent<UrgentMessage>().Show();
+        else
+            message.GetComponent<UrgentMessage>().Hide();
     }
 
     // Update is called once per frame
@@ -96,7 +99,7 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if (bulletCount.currentBullets == 0 && bulletCount.generateBullets == false)
             {
-                EnableMessage(reloadMessage);
+                EnableMessage(reloadMessage, true);
                 ReplenishAmmo();
             }
 
@@ -106,13 +109,13 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
             {
-                EnableMessage(reloadMessage);
+                EnableMessage(reloadMessage, true);
                 ReplenishAmmo();
             }
             
             if (orbCounter.orbsCollected >= 2 && bulletCount.currentBullets == 0)
             {
-                EnableMessage(purchaseAmmoMessage);
+                EnableMessage(purchaseAmmoMessage, true);
                 ReplenishAmmo();
             }
 
@@ -126,14 +129,12 @@ public class BulletSpawnScript : MonoBehaviour
 
         if (bulletCount.currentBullets > 0)
         {
-            purchaseAmmoMessage.enabled = false;
-            reloadMessage.enabled = false;
+            EnableMessage(purchaseAmmoMessage, false);
         }
 
         if (bulletCount.generateBullets && bulletCount.currentBullets < bulletCount.maxBullets)
         {
-            reloadMessage.enabled = false;
-            purchaseAmmoMessage.enabled = false;
+            EnableMessage(reloadMessage, false);
             if (currReloadTime < reloadTimePerBullet)
                 currReloadTime += Time.deltaTime;
             else
@@ -145,8 +146,7 @@ public class BulletSpawnScript : MonoBehaviour
 
         if (bulletCount.generateBullets && bulletCount.currentBullets == bulletCount.maxBullets)
         {
-            purchaseAmmoMessage.enabled = false;
-            reloadMessage.enabled = false;
+            EnableMessage(reloadMessage, false);
             bulletCount.generateBullets = false;
         }
     }
@@ -166,17 +166,16 @@ public class BulletSpawnScript : MonoBehaviour
                         timePassed = 0;
                         Instantiate(bullet, transform.position, transform.rotation);
                         bulletCount.currentBullets = bulletCount.currentBullets - 1;
-                        cannotFireMessage.enabled = false;
+                        EnableMessage(cannotFireMessage, false);
                     }
                     else
                     {
-                        EnableMessage(cannotFireMessage);
+                        EnableMessage(cannotFireMessage, true);
                     }
                 }
                 else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
                 {
                     cannotFireSoundEffect.Play();
-                    EnableMessage(purchaseAmmoMessage);
                 }
             }
 

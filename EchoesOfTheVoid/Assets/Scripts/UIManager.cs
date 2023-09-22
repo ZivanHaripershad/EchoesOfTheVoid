@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class UIManager : MonoBehaviour
@@ -38,18 +39,13 @@ public class UIManager : MonoBehaviour
         healthUi.SetActive(false);
         orbUi.SetActive(false);
         orbText.SetActive(false);
-        
-        reloadMessage.SetActive(false);
-        cannotFireMessage.SetActive(false);
-        purchaseAmmoMessage.SetActive(false);
-        healthLowMessage.SetActive(false);
-        
+       
         bulletFactory.SetActive(false);
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
         
-        //todo: level1
+        //todo: level1 uiManager
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
 
@@ -86,10 +82,6 @@ public class UIManager : MonoBehaviour
         healthUi.SetActive(false);
         orbUi.SetActive(false);
         orbText.SetActive(false);
-        reloadMessage.SetActive(false);
-        cannotFireMessage.SetActive(false);
-        purchaseAmmoMessage.SetActive(false);
-        healthLowMessage.SetActive(false);
         
         //todo: level1
         if (primaryTargetMessage)

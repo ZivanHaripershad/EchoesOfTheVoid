@@ -193,6 +193,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 4bb1d65fe66dd7948bb92ff719e8ab52, type: 3}
   - clipName: BossMusic
     clip: {fileID: 8300000, guid: ec875f34fa9681943b5b8ff43820e465, type: 3}
+  - clipName: EndingMusic
+    clip: {fileID: 8300000, guid: a118135cd4dc9ae46bf76806117a569b, type: 3}
   sfxSounds:
   - clipName: ButtonClick
     clip: {fileID: 8300000, guid: 230a2ca6d9e96834f8376a92a8a025e7, type: 3}
@@ -226,6 +228,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8e4da42285e318249b008eddbb67b676, type: 3}
   - clipName: DestroyEnemy
     clip: {fileID: 8300000, guid: 0480004414ca1b54085c27146e663e9d, type: 3}
+  - clipName: KillMotherShip
+    clip: {fileID: 8300000, guid: 55956378b09ed444db836d2604565c93, type: 3}
   musicSource: {fileID: 2406677496876818795}
   sfxSource: {fileID: 242568350414305245}
   normalAudioSpeed: 1
