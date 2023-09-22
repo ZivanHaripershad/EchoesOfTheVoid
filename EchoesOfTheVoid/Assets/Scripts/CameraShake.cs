@@ -17,6 +17,7 @@ public class CameraShake : MonoBehaviour
     [SerializeField] private float decreaseFactor;
 
     private float currentShake;
+    private float currentShakeAmount; 
 	
     Vector3 originalPos;
 	
@@ -35,20 +36,22 @@ public class CameraShake : MonoBehaviour
 
     public void Shake()
     {
+        Debug.Log("Camear recieved shake");
         currentShake = shakeDuration;
+        currentShakeAmount = shakeAmount;
     }
 
     private void Start()
     {
-        currentShake = shakeDuration; 
+        currentShake = 0; 
     }
 
     void Update()
     {
         if (currentShake > 0)
         {
-            camTransform.localPosition = originalPos + Random.insideUnitSphere * shakeAmount;
-            shakeAmount *= decreaseFactor;
+            camTransform.localPosition = originalPos + Random.insideUnitSphere * currentShakeAmount;
+            currentShakeAmount *= decreaseFactor;
             currentShake -= Time.deltaTime;
         }
         else
