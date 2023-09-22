@@ -3060,7 +3060,7 @@ GameObject:
   - component: {fileID: 2376041520401135662}
   - component: {fileID: 1500889048039025359}
   - component: {fileID: 1862968953509556374}
-  - component: {fileID: 1072420876249970223}
+  - component: {fileID: 472597367300954628}
   m_Layer: 5
   m_Name: PurchaseAmmoMessage
   m_TagString: PurchaseAmmo
@@ -3130,7 +3130,7 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Hold R or purchase ammo
---- !u!114 &1072420876249970223
+--- !u!114 &472597367300954628
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
