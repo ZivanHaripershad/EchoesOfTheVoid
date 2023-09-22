@@ -40,7 +40,7 @@ public class CameraShake : MonoBehaviour
 
     private void Start()
     {
-        currentShake = 0; 
+        currentShake = shakeDuration; 
     }
 
     void Update()
