@@ -66,7 +66,7 @@ public class Level1Controller : MonoBehaviour
         }
         
         //messages
-        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Hide();
+        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
         healthLowMessage.GetComponent<UrgentMessage>().Hide();
 
         //set up scene manager
@@ -94,6 +94,9 @@ public class Level1Controller : MonoBehaviour
         
         //set mothership instance to null to check if it's spawned
         motherShipInstance = null;
+        
+        //todo: remove
+        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
     }
 
     private bool CheckEndingCriteria()
