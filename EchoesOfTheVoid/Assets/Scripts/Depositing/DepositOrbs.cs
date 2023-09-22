@@ -75,7 +75,7 @@ public class DepositOrbs : MonoBehaviour
 
                 //Energy
                 if (Input.GetKeyDown(KeyCode.J))
-                    if (orbCounter.orbsCollected >= 1)
+                    if (orbCounter.orbsCollected >= 1 && orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
                     {
                         orbCounter.planetOrbsDeposited++;
                         deposited = true;
