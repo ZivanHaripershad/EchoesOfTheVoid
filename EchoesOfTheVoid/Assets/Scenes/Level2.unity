@@ -1154,17 +1154,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1905418252 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2123847065859019878, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
-  m_PrefabInstance: {fileID: 2123847065029719146}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1905877153
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1445,17 @@ PrefabInstance:
       objectReference: {fileID: 1878423871885546977}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+--- !u!114 &2123847065029719147 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2123847065071919467, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+  m_PrefabInstance: {fileID: 2123847065029719146}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2291373139196448235
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1574,6 +1574,62 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: variables
+      value: 
+      objectReference: {fileID: 8575211594881418994}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: orbsNumber
+      value: 
+      objectReference: {fileID: 1499791406}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: popupParent
+      value: 
+      objectReference: {fileID: 1983064768}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1878423871885546977}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: enemiesNumber
+      value: 
+      objectReference: {fileID: 2123847065029719147}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: healthDeposit
+      value: 
+      objectReference: {fileID: 1878423872397520786}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: planetHealthNum
+      value: 
+      objectReference: {fileID: 1008797422}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: healthLowMessage
+      value: 
+      objectReference: {fileID: 6320834848699198598}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: bulletSpawnScript
+      value: 
+      objectReference: {fileID: 5000476146227674071}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: popUps.Array.data[0]
+      value: 
+      objectReference: {fileID: 2005858320}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: popUps.Array.data[1]
+      value: 
+      objectReference: {fileID: 2296508910440384774}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: popUps.Array.data[2]
+      value: 
+      objectReference: {fileID: 1331899860}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: popUps.Array.data[3]
+      value: 
+      objectReference: {fileID: 749617130}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: primaryTargetNotEliminated
+      value: 
+      objectReference: {fileID: 7463887477165316775}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: earth
       value: 
@@ -1754,62 +1810,6 @@ PrefabInstance:
       propertyPath: shieldEnemySpawnPoints.Array.data[27]
       value: 
       objectReference: {fileID: 1000279249}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: variables
-      value: 
-      objectReference: {fileID: 8575211594881418994}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: orbsNumber
-      value: 
-      objectReference: {fileID: 1499791406}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: popupParent
-      value: 
-      objectReference: {fileID: 1983064768}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1878423871885546977}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: enemiesNumber
-      value: 
-      objectReference: {fileID: 1905418252}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: healthDeposit
-      value: 
-      objectReference: {fileID: 1878423872397520786}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: planetHealthNum
-      value: 
-      objectReference: {fileID: 1008797422}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: healthLowMessage
-      value: 
-      objectReference: {fileID: 6320834848699198598}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: bulletSpawnScript
-      value: 
-      objectReference: {fileID: 5000476146227674071}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: popUps.Array.data[0]
-      value: 
-      objectReference: {fileID: 2005858320}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: popUps.Array.data[1]
-      value: 
-      objectReference: {fileID: 2296508910440384774}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: popUps.Array.data[2]
-      value: 
-      objectReference: {fileID: 1331899860}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: popUps.Array.data[3]
-      value: 
-      objectReference: {fileID: 749617130}
-    - target: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: primaryTargetNotEliminated
-      value: 
-      objectReference: {fileID: 7463887477165316775}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
 --- !u!114 &5000476146227674071 stripped
@@ -1885,17 +1885,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3083105169350143528, guid: f19ac13e48498ce49aebf0c94153cbb4, type: 3}
   m_PrefabInstance: {fileID: 9039144599941612206}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7018123691340173434 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6862345298419579759, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-  m_PrefabInstance: {fileID: 4494188772095388437}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589acb91b0e31504bbcda46f0c5b9c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7463887477165316775 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1937796894625749001, guid: f19ac13e48498ce49aebf0c94153cbb4, type: 3}
@@ -2078,6 +2067,6 @@ PrefabInstance:
     - target: {fileID: 8328139798648135875, guid: f19ac13e48498ce49aebf0c94153cbb4, type: 3}
       propertyPath: level1Controller
       value: 
-      objectReference: {fileID: 7018123691340173434}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19ac13e48498ce49aebf0c94153cbb4, type: 3}

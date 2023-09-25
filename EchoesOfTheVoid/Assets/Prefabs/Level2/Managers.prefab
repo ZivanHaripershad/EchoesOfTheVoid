@@ -53,10 +53,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4494188773246103072}
-  - component: {fileID: 6862345298419579759}
+  - component: {fileID: 4494188772095388441}
   m_Layer: 0
-  m_Name: Level1Manager
-  m_TagString: Level1Manager
+  m_Name: Level2Manager
+  m_TagString: Level2Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,7 +76,7 @@ Transform:
   m_Father: {fileID: 398612021080306550}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6862345298419579759
+--- !u!114 &4494188772095388441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -85,10 +85,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4494188773246103078}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589acb91b0e31504bbcda46f0c5b9c25, type: 3}
+  m_Script: {fileID: 11500000, guid: 15f6d6e49b8e32141996c04934535bd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  level1Data: {fileID: 11400000, guid: 7fbd4839518bcdd4bb6ad48c2d0c22c9, type: 2}
+  level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   gameManager: {fileID: 4494188772704796910}
   enemySpawning: {fileID: 6114655880853442291}
@@ -112,7 +112,7 @@ MonoBehaviour:
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 1.8
   numberOfEnemiesToKillToProceedToBoss: 7
-  motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
+  motherShip: {fileID: 0}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}
   upgradeScene1Manager: {fileID: 0}
