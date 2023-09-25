@@ -91,7 +91,7 @@ MonoBehaviour:
   level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   gameManager: {fileID: 4494188772704796910}
-  enemySpawning: {fileID: 6114655880853442291}
+  enemySpawning: {fileID: 2741840032809944355}
   uiManager: {fileID: 4494188773660649144}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
   bulletSpawnScript: {fileID: 0}
@@ -111,8 +111,8 @@ MonoBehaviour:
   normalAudioSpeed: 1
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 1.8
-  numberOfEnemiesToKillToProceedToBoss: 7
-  motherShip: {fileID: 0}
+  numberOfEnemiesToKillToProceedToBoss: 1
+  motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}
   upgradeScene1Manager: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4494188773545616941}
-  - component: {fileID: 6114655880853442291}
+  - component: {fileID: 2741840032809944355}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -148,7 +148,7 @@ Transform:
   m_Father: {fileID: 398612021080306550}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6114655880853442291
+--- !u!114 &2741840032809944355
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -157,7 +157,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4494188773545616930}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e148ebcea3f24e40b1323667c388d4e, type: 3}
+  m_Script: {fileID: 11500000, guid: fa01aee57605679479ef0b56964a51e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spawnRate: 3
