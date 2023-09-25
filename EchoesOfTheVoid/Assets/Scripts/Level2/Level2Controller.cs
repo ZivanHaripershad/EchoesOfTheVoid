@@ -11,7 +11,7 @@ public class Level2Controller : MonoBehaviour
     [SerializeField] private Level2Data level2Data;
     [SerializeField] private GameManagerData gameManagerData;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private EnemySpawningLevel1 enemySpawning;
+    [SerializeField] private EnemySpawningLevel2 enemySpawning;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private HealthCount healthCount;
     [SerializeField] private BulletSpawnScript bulletSpawnScript;
@@ -76,6 +76,7 @@ public class Level2Controller : MonoBehaviour
         
         //reset counters
         orbCounter.planetOrbMax = 10;
+        orbCounter.planetOrbsDeposited = 0;
         level2Data.popUpIndex = 0;
 
         //set up game manager
@@ -92,6 +93,7 @@ public class Level2Controller : MonoBehaviour
         
         //set mothership instance to null to check if it's spawned
         motherShipInstance = null;
+        
     }
 
     private bool CheckEndingCriteria()
@@ -153,6 +155,8 @@ public class Level2Controller : MonoBehaviour
                 break;
             case 1: //gameplay
                 
+                SpawnNormalEnemies();
+                
                 if (CheckEndingCriteria())
                 {
                     level2Data.popUpIndex = 2;
@@ -162,7 +166,7 @@ public class Level2Controller : MonoBehaviour
                     return;
                 }
                 
-                SpawnNormalEnemies();
+                
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
@@ -205,17 +209,21 @@ public class Level2Controller : MonoBehaviour
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
         if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            Debug.Log("Spawn L2 bosss");
-            //SpawnBoss();
+            
+            SpawnBoss();
         }
     }
 
-    /*
+    
     private void SpawnBoss()
     {
         //intro scene has not finished yet
         if (!sceneManager.motherShipIntroScene)
         {
+            
+            Debug.Log("Intro scene");
+            
+            
             enemySpawning.StopSpawning();
             enemySpawning.ResetSpawning();
             
@@ -237,8 +245,6 @@ public class Level2Controller : MonoBehaviour
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
         }
     }
-    
-    */
 
     private void DisplayEndingScene()
     {

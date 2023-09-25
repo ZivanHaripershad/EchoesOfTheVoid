@@ -76,6 +76,7 @@ public class Level1Controller : MonoBehaviour
         
         //reset counters
         orbCounter.planetOrbMax = 10;
+        orbCounter.planetOrbsDeposited = 0;
         level1Data.popUpIndex = 0;
 
         //set up game manager
