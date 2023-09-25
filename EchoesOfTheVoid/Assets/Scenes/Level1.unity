@@ -1730,10 +1730,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1983064768}
     - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
-      propertyPath: endingScreen
-      value: 
-      objectReference: {fileID: 1987381457}
-    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1878423871885546977}

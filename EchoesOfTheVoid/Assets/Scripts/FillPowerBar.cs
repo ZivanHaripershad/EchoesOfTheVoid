@@ -48,7 +48,7 @@ public class FillPowerBar : MonoBehaviour
         transform.localScale = new Vector3(newScale.x, newScale.y, 1f);
         transform.position += new Vector3(0f, yAdjust, 0f);
         fillEnergySound = GetComponents<AudioSource>();
-        isStillFilling = false;
+        isStillFilling = true;
     }
 
     public bool IsStillFilling()
@@ -75,7 +75,6 @@ public class FillPowerBar : MonoBehaviour
         
         if (prevSprite < currSprite)
         {
-            isStillFilling = true;
             
             fillEnergySound[5].volume = fillSoundVolume;
             if (!fillEnergySound[5].isPlaying)
@@ -110,12 +109,14 @@ public class FillPowerBar : MonoBehaviour
         {
             fillEnergySound[5].volume -= fillSoundFadeSpeed * Time.deltaTime;
             haloAnimator.SetBool("mustGlow", false);
-            isStillFilling = false;
         }
 
         if (prevSprite > sprites.Length - 1)
             prevSprite = sprites.Length - 1;
         
         spriteRenderer.sprite = sprites[prevSprite];
+
+        if (prevSprite == sprites.Length - 1)
+            isStillFilling = false;
     }
 }

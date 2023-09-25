@@ -134,7 +134,7 @@ public class Level1Controller : MonoBehaviour
         healthLowMessage.GetComponent<UrgentMessage>().Hide();
         
         //check filling status, if power bar is still filling up, don't end level
-        if (GameObject.FindGameObjectWithTag("Earth").GetComponentInChildren<FillPowerBar>().IsStillFilling())
+        if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
             return false;
         
         return true; //all ending criteria has been met
@@ -241,7 +241,6 @@ public class Level1Controller : MonoBehaviour
         if (!sceneManager.displayedEnding)
         {
             sceneManager.displayedEnding = true;
-            Debug.Log("displaying ending");
             var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
             planetHealthNum.text =  healthPercentage + "%";
             orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
