@@ -11,7 +11,7 @@ public class Level2Controller : MonoBehaviour
     [SerializeField] private Level2Data level2Data;
     [SerializeField] private GameManagerData gameManagerData;
     [SerializeField] private GameManager gameManager;
-    [SerializeField] private EnemySpawningLevel1 enemySpawning;
+    [SerializeField] private EnemySpawningLevel2 enemySpawning;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private HealthCount healthCount;
     [SerializeField] private BulletSpawnScript bulletSpawnScript;
@@ -92,6 +92,7 @@ public class Level2Controller : MonoBehaviour
         
         //set mothership instance to null to check if it's spawned
         motherShipInstance = null;
+        
     }
 
     private bool CheckEndingCriteria()
@@ -153,6 +154,8 @@ public class Level2Controller : MonoBehaviour
                 break;
             case 1: //gameplay
                 
+                SpawnNormalEnemies();
+                
                 if (CheckEndingCriteria())
                 {
                     level2Data.popUpIndex = 2;
@@ -162,7 +165,7 @@ public class Level2Controller : MonoBehaviour
                     return;
                 }
                 
-                SpawnNormalEnemies();
+                
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen

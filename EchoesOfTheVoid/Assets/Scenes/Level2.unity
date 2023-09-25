@@ -1375,10 +1375,6 @@ PrefabInstance:
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1878423871885546977}
-    - target: {fileID: 191329355174665438, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1878423871885546977}
     - target: {fileID: 2123847065512437837, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: mouseControl
       value: 
@@ -1440,6 +1436,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1878423871885546977}
     - target: {fileID: 4782846751199213315, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1878423871885546977}
+    - target: {fileID: 6426685096105088487, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1878423871885546977}
@@ -1574,6 +1574,118 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[0]
+      value: 
+      objectReference: {fileID: 367537117}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[1]
+      value: 
+      objectReference: {fileID: 441742735}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[2]
+      value: 
+      objectReference: {fileID: 1249369377}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[3]
+      value: 
+      objectReference: {fileID: 1892759540}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[4]
+      value: 
+      objectReference: {fileID: 759455479}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[5]
+      value: 
+      objectReference: {fileID: 1650872995}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[6]
+      value: 
+      objectReference: {fileID: 1905877154}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[7]
+      value: 
+      objectReference: {fileID: 1043098762}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[8]
+      value: 
+      objectReference: {fileID: 1497552358}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[9]
+      value: 
+      objectReference: {fileID: 1240154353}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[10]
+      value: 
+      objectReference: {fileID: 1542619405}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[11]
+      value: 
+      objectReference: {fileID: 1368839152}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[12]
+      value: 
+      objectReference: {fileID: 1045810574}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[13]
+      value: 
+      objectReference: {fileID: 1019595220}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[14]
+      value: 
+      objectReference: {fileID: 1184472824}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[15]
+      value: 
+      objectReference: {fileID: 1774247326}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[16]
+      value: 
+      objectReference: {fileID: 1675377096}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[17]
+      value: 
+      objectReference: {fileID: 787126687}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[18]
+      value: 
+      objectReference: {fileID: 11925627}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[19]
+      value: 
+      objectReference: {fileID: 782534240}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[20]
+      value: 
+      objectReference: {fileID: 84479579}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[21]
+      value: 
+      objectReference: {fileID: 1047662707}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[22]
+      value: 
+      objectReference: {fileID: 2111470758}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[23]
+      value: 
+      objectReference: {fileID: 368565803}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[24]
+      value: 
+      objectReference: {fileID: 1447928256}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[25]
+      value: 
+      objectReference: {fileID: 111720565}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[26]
+      value: 
+      objectReference: {fileID: 384812373}
+    - target: {fileID: 2741840032809944355, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: shieldEnemySpawnPoints.Array.data[27]
+      value: 
+      objectReference: {fileID: 1000279249}
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: variables
       value: 
@@ -1698,118 +1810,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[0]
-      value: 
-      objectReference: {fileID: 367537117}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[1]
-      value: 
-      objectReference: {fileID: 441742735}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[2]
-      value: 
-      objectReference: {fileID: 1249369377}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[3]
-      value: 
-      objectReference: {fileID: 1892759540}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[4]
-      value: 
-      objectReference: {fileID: 759455479}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[5]
-      value: 
-      objectReference: {fileID: 1650872995}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[6]
-      value: 
-      objectReference: {fileID: 1905877154}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[7]
-      value: 
-      objectReference: {fileID: 1043098762}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[8]
-      value: 
-      objectReference: {fileID: 1497552358}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[9]
-      value: 
-      objectReference: {fileID: 1240154353}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[10]
-      value: 
-      objectReference: {fileID: 1542619405}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[11]
-      value: 
-      objectReference: {fileID: 1368839152}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[12]
-      value: 
-      objectReference: {fileID: 1045810574}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[13]
-      value: 
-      objectReference: {fileID: 1019595220}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[14]
-      value: 
-      objectReference: {fileID: 1184472824}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[15]
-      value: 
-      objectReference: {fileID: 1774247326}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[16]
-      value: 
-      objectReference: {fileID: 1675377096}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[17]
-      value: 
-      objectReference: {fileID: 787126687}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[18]
-      value: 
-      objectReference: {fileID: 11925627}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[19]
-      value: 
-      objectReference: {fileID: 782534240}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[20]
-      value: 
-      objectReference: {fileID: 84479579}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[21]
-      value: 
-      objectReference: {fileID: 1047662707}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[22]
-      value: 
-      objectReference: {fileID: 2111470758}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[23]
-      value: 
-      objectReference: {fileID: 368565803}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[24]
-      value: 
-      objectReference: {fileID: 1447928256}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[25]
-      value: 
-      objectReference: {fileID: 111720565}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[26]
-      value: 
-      objectReference: {fileID: 384812373}
-    - target: {fileID: 6114655880853442291, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
-      propertyPath: shieldEnemySpawnPoints.Array.data[27]
-      value: 
-      objectReference: {fileID: 1000279249}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
 --- !u!114 &5000476146227674071 stripped
@@ -2064,9 +2064,5 @@ PrefabInstance:
       propertyPath: darkenBackground
       value: 
       objectReference: {fileID: 137018785}
-    - target: {fileID: 8328139798648135875, guid: f19ac13e48498ce49aebf0c94153cbb4, type: 3}
-      propertyPath: level1Controller
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f19ac13e48498ce49aebf0c94153cbb4, type: 3}

@@ -2910,7 +2910,7 @@ GameObject:
   - component: {fileID: 2123847066039654704}
   - component: {fileID: 2123847066039654707}
   - component: {fileID: 2123847066039654717}
-  - component: {fileID: 191329355174665438}
+  - component: {fileID: 6426685096105088487}
   m_Layer: 0
   m_Name: StartMission
   m_TagString: Untagged
@@ -3107,7 +3107,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &191329355174665438
+--- !u!114 &6426685096105088487
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3116,14 +3116,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 2123847066039654719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8bec9ba16c554a44bf3af7df115771c, type: 3}
+  m_Script: {fileID: 11500000, guid: b976bc99332c42747aca0d1a0f146ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2123847066039654704}
   defaultText: {fileID: 21300000, guid: de92d1c8b386b574dac8023630a74174, type: 3}
   hoveredText: {fileID: 21300000, guid: 755f7659846fcdc41838a3fee9487c39, type: 3}
   mouseControl: {fileID: 0}
-  level1Data: {fileID: 11400000, guid: 7fbd4839518bcdd4bb6ad48c2d0c22c9, type: 2}
+  level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
 --- !u!1 &2123847066052952284
 GameObject:
   m_ObjectHideFlags: 0
