@@ -146,11 +146,8 @@ MonoBehaviour:
   normalAudioSpeed: 1
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 1.8
-  numberOfEnemiesToKillToProceedToBoss: 7
-  motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
+  numberOfEnemiesToKill: 20
   healthLowMessage: {fileID: 0}
-  primaryTargetNotEliminated: {fileID: 0}
-  upgradeScene1Manager: {fileID: 0}
 --- !u!1 &7018123691444164731
 GameObject:
   m_ObjectHideFlags: 0
@@ -200,37 +197,7 @@ MonoBehaviour:
   maxEnemiesToSpawn: 1
   spawnInterval: 5
   spawnTimerVariation: 4
-  pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
-  shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
-  shieldEnemySpawnPoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  enemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
 --- !u!1 &7018123691496249568
 GameObject:
   m_ObjectHideFlags: 0

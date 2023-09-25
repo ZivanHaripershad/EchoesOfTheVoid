@@ -6,22 +6,19 @@ using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class EnemySpawningLevel1 : MonoBehaviour {
-    
+
     [SerializeField] private float spawnRate;
     [SerializeField] private int minEnemiesToSpawn;
     [SerializeField] private int maxEnemiesToSpawn;
     [SerializeField] private float spawnInterval;
     [SerializeField] private float spawnTimerVariation;
-    [SerializeField] private GameObject pathFollowingEnemy;
-    [SerializeField] private GameObject shieldEnemy;
+    [SerializeField] private GameObject enemy;
     private Coroutine currentCoroutine;
 
     private bool hasStarted;
 
     private int numberSpawned;
     private int maxSpawned;
-
-    [SerializeField] private Transform[] shieldEnemySpawnPoints; 
 
     public void ResetSpawning()
     {
@@ -39,57 +36,13 @@ public class EnemySpawningLevel1 : MonoBehaviour {
             currentCoroutine = StartCoroutine(SpawnEnemiesCoroutine(numToSpawn, continueSpawning));
         }
     }
-
-    public void StartSpawningAllTypesOfEnemies()
-    {
-        if (!hasStarted)
-        {
-            hasStarted = true;
-            currentCoroutine = StartCoroutine(SpawnAllTypesOfEnemiesCoroutine());
-        }
-    }
     
-    public void StopSpawning()
+    public void StopTheCoroutine()
     {
         if (currentCoroutine != null)
             StopCoroutine(currentCoroutine);
     }
 
-    private IEnumerator SpawnAllTypesOfEnemiesCoroutine()
-    {
-        while (true)
-        {
-            int result = Random.Range(0, 2);
-            
-            if (result == 0)
-            {
-                int enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
-            
-                for (int i = 0; i < enemiesToSpawn; i++)
-                {
-                    //enemies in a wave
-                    float randomNumber = Random.Range(0f, spawnTimerVariation);
-                    yield return new WaitForSeconds(spawnInterval + randomNumber);
-                    Instantiate(pathFollowingEnemy, Vector3.zero, quaternion.identity);
-                }
-            }
-            else
-            {
-                float randomNumber = Random.Range(0f, spawnTimerVariation);
-                yield return new WaitForSeconds(spawnInterval + randomNumber);
-                
-                //get a random spawn point
-                int point = Random.Range(0, shieldEnemySpawnPoints.Length - 1);
-                Instantiate(shieldEnemy, new Vector3(
-                        shieldEnemySpawnPoints[point].transform.position.x,
-                        shieldEnemySpawnPoints[point].transform.position.y, 0),
-                    quaternion.identity);
-            }
-            
-            
-        }
-    }
-    
     private IEnumerator SpawnEnemiesCoroutine(int enemiesToSpawn, bool continueSpawning)
     {
         while (true)
@@ -105,8 +58,11 @@ public class EnemySpawningLevel1 : MonoBehaviour {
                 //enemies in a wave
                 float randomNumber = Random.Range(0f, spawnTimerVariation);
                 yield return new WaitForSeconds(spawnInterval + randomNumber);
-                Instantiate(pathFollowingEnemy, Vector3.zero, quaternion.identity);
+                Instantiate(enemy, Vector3.zero, quaternion.identity);
                 numberSpawned++;
+                //
+                // if (numberSpawned >= maxSpawned)
+                //     break;
             }
 
             //waves

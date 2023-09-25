@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
-using System.Net.Mime;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class Level1Controller : MonoBehaviour
@@ -29,15 +25,11 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private float reducedAudioSpeed;
     [SerializeField] private float audioSpeedChangeRate;
 
-    [SerializeField] private int numberOfEnemiesToKillToProceedToBoss;
-    [SerializeField] private GameObject motherShip;
+    [SerializeField] private int numberOfEnemiesToKill;
 
     [SerializeField] private GameObject healthLowMessage;
-    [SerializeField] private GameObject primaryTargetNotEliminated;
 
     private Coroutine audioCoroutine;
-    private GameObject motherShipInstance;
-    public UpgradeScene1Manager upgradeScene1Manager;
     private int popupIndex;
     
     struct SceneManager
@@ -45,13 +37,9 @@ public class Level1Controller : MonoBehaviour
         public float audioSpeed;
         public bool soundsChanged;
         public bool hasStartedSpawning;
-        public bool motherShipIntroScene;
-        public bool motherShipHasEntered;
-        public float bossTimer; 
     }
 
     private SceneManager sceneManager;
-    
     
     private void Start()
     {
@@ -67,11 +55,8 @@ public class Level1Controller : MonoBehaviour
 
         //set up scene manager
         sceneManager.soundsChanged = false;
-        sceneManager.hasStartedSpawning = false; 
-        sceneManager.motherShipIntroScene = false;
-        sceneManager.motherShipHasEntered = false;
-        sceneManager.bossTimer = 10f;
-        
+        sceneManager.hasStartedSpawning = false;
+
         //reset counters
         orbCounter.planetOrbMax = 10;
         level1Data.popUpIndex = 0;
@@ -79,7 +64,6 @@ public class Level1Controller : MonoBehaviour
         //set up game manager
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
-        gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
 
         //set up shield and mouse
@@ -87,9 +71,6 @@ public class Level1Controller : MonoBehaviour
         gameManager.EnableShield();
 
         healthCount.currentHealth = healthCount.maxHealth;
-        
-        //set mothership instance to null to check if it's spawned
-        motherShipInstance = null;
     }
 
     private bool CheckEndingCriteria()
@@ -97,39 +78,11 @@ public class Level1Controller : MonoBehaviour
         //check planet orbs
         if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
             return false; //not enough orbs
-        
-        //check health status
-        if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
-        {
-            //show health too low message
-            healthLowMessage.GetComponent<UrgentMessage>().Show();
-            return false;
-        } 
-        healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
-        
-        //check that mothership has entered
-        if (!sceneManager.motherShipHasEntered)
-        {
-            primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
-            return false;
-        }
-        
-        //mother has entered, but has not been killed
-        if (motherShipInstance != null) 
-        {
-            primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
-            return false;
-        }
-        
-        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Hide();
 
-        //check that health is medium
-        if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+        if (gameManagerData.numberOfEnemiesKilled < numberOfEnemiesToKill)
         {
-            healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         }
-        healthLowMessage.GetComponent<UrgentMessage>().Hide();
         
         return true; //all ending criteria has been met
     }
@@ -152,11 +105,6 @@ public class Level1Controller : MonoBehaviour
                     //show retry screen
                     RemoveLevelObjects();
                     level1Data.popUpIndex = 2;
-                }
-                
-                if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
-                {
-                    healthDeposit.LowHealthStatus();
                 }
 
                 if (CheckEndingCriteria())
@@ -185,46 +133,9 @@ public class Level1Controller : MonoBehaviour
         uiManager.SetLevelObjectsToActive();
         uiManager.SetAtmosphereObjectToActive();
 
-        if (!sceneManager.hasStartedSpawning)
-        {
-            sceneManager.hasStartedSpawning = true;
-            enemySpawning.StartSpawningAllTypesOfEnemies();
-        }
-
-        //killed enough to proceed to boss, and kill the rest of the enemies on screen
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
-            SpawnBoss();
-        }
+        enemySpawning.StartSpawningEnemies(3, true);
     }
-
-    private void SpawnBoss()
-    {
-        //intro scene has not finished yet
-        if (!sceneManager.motherShipIntroScene)
-        {
-            enemySpawning.StopSpawning();
-            enemySpawning.ResetSpawning();
-            
-            //give boss time to start circling
-            if (sceneManager.bossTimer > 0)
-                sceneManager.bossTimer -= Time.deltaTime;
-            else
-                sceneManager.motherShipIntroScene = true;
-        }
-        else
-        {
-            enemySpawning.StartSpawningAllTypesOfEnemies();
-        }
-
-        if (!sceneManager.motherShipHasEntered)
-        {
-            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
-            sceneManager.motherShipHasEntered = true;
-            motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
-        }
-    }
-
+    
     public void DisplayEndingScene()
     {
         var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
@@ -238,7 +149,7 @@ public class Level1Controller : MonoBehaviour
     {
         uiManager.DestroyRemainingOrbs();
         enemySpawning.DestroyActiveEnemies();
-        enemySpawning.StopSpawning();
+        enemySpawning.StopTheCoroutine();
         uiManager.SetLevelObjectsToInactive();
     }
 
