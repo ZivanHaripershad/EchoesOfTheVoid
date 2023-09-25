@@ -310,6 +310,7 @@ public class TutorialLevelController : MonoBehaviour
             {
                 uiManager.SetLevelObjectsToInactive();
                 tutorialData.popUpIndex++;
+                AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
             }
             gameManagerData.tutorialWaitTime -= Time.deltaTime;
         }

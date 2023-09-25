@@ -69,6 +69,7 @@ public class Level1Controller : MonoBehaviour
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
+        gameManagerData.expireOrbs = true;
 
         //set up shield and mouse
         mouseControl.EnableMouse();

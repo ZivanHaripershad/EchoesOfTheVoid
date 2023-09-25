@@ -39,6 +39,8 @@ public class Level2Controller : MonoBehaviour
     private GameObject motherShipInstance;
     public UpgradeScene1Manager upgradeScene1Manager;
     private int popupIndex;
+
+    private float popUpWaitTime;
     
     struct SceneManager
     {
@@ -83,6 +85,7 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
+        gameManagerData.expireOrbs = true;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -94,7 +97,9 @@ public class Level2Controller : MonoBehaviour
         
         //set mothership instance to null to check if it's spawned
         motherShipInstance = null;
-        
+
+        popUpWaitTime = 0f;
+
     }
 
     private bool CheckEndingCriteria()
@@ -152,25 +157,49 @@ public class Level2Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
+                
                 enemySpawning.ResetSpawning();
                 break;
-            case 1: //gameplay
+            case 1: //initialize gameplay
+                
+                SpawnNormalEnemies();
+                popUpWaitTime = 5;
+                level2Data.popUpIndex++;
 
+                break;
+            case 2: //Shieldians intro
+                SpawnNormalEnemies();
+                if (popUpWaitTime <= 0)
+                {
+                    popUpWaitTime = 5;
+                }
+                popUpWaitTime -= Time.deltaTime;
+                break;
+            case 3: //Mothership intro
+                SpawnNormalEnemies();
+                if (popUpWaitTime <= 0)
+                {
+                    level2Data.popUpIndex++;
+                }
+                popUpWaitTime -= Time.deltaTime;
+                break;
+            case 4: //continue gameplay
+
+                SpawnNormalEnemies();
                 if (CheckEndingCriteria())
                 {
-                    level2Data.popUpIndex = 2;
+                    level2Data.popUpIndex = 5;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
                     return;
                 }
-                
-                SpawnNormalEnemies();
+
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
                     RemoveLevelObjects();
-                    level2Data.popUpIndex = 3;
+                    level2Data.popUpIndex = 6;
                 }
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
@@ -178,10 +207,6 @@ public class Level2Controller : MonoBehaviour
                     healthDeposit.LowHealthStatus();
                 }
 
-                break;
-            case 2: //retry screen
-                break;
-            case 3: //ending screen
                 break;
         }
         
@@ -206,9 +231,8 @@ public class Level2Controller : MonoBehaviour
         }
 
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
         {
-            
             SpawnBoss();
         }
     }
@@ -235,6 +259,7 @@ public class Level2Controller : MonoBehaviour
 
         if (!sceneManager.motherShipHasEntered)
         {
+            level2Data.popUpIndex++;
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
