@@ -109,6 +109,7 @@ public class DestroyEnemy : MonoBehaviour
             if (collision.gameObject.GetComponent<ShieldLogic>().DestroyShield(gameObject.transform.position))
             {
                 DestroyGameObject(collision, false, collision.gameObject.transform);
+                AudioManager.Instance.PlaySFX("EarthShieldDestroyed");
             }
         }
     }

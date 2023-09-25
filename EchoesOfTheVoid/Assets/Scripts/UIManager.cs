@@ -66,7 +66,9 @@ public class UIManager : MonoBehaviour
     public void SetLevelObjectsToActive()
     {
         earth.SetActive(true);
-        spaceship.SetActive(true);
+        
+        if (spaceship)
+            spaceship.SetActive(true);
         bulletUi.SetActive(true);
         healthUi.SetActive(true);
         orbUi.SetActive(true);
@@ -77,7 +79,9 @@ public class UIManager : MonoBehaviour
     public void SetLevelObjectsToInactive()
     {
         earth.SetActive(false);
-        spaceship.SetActive(false);
+         
+        if (spaceship)
+            spaceship.SetActive(false);
         bulletUi.SetActive(false);
         healthUi.SetActive(false);
         orbUi.SetActive(false);

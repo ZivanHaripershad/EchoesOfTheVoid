@@ -37,6 +37,7 @@ public class Level1Controller : MonoBehaviour
         public float audioSpeed;
         public bool soundsChanged;
         public bool hasStartedSpawning;
+        public bool displayedEnding;
     }
 
     private SceneManager sceneManager;
@@ -56,6 +57,7 @@ public class Level1Controller : MonoBehaviour
         //set up scene manager
         sceneManager.soundsChanged = false;
         sceneManager.hasStartedSpawning = false;
+        sceneManager.displayedEnding = false;
 
         //reset counters
         orbCounter.planetOrbMax = 10;
@@ -78,11 +80,28 @@ public class Level1Controller : MonoBehaviour
         //check planet orbs
         if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
             return false; //not enough orbs
-
-        if (gameManagerData.numberOfEnemiesKilled < numberOfEnemiesToKill)
+        
+        //check health status
+        if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
+            //show health too low message
+            healthLowMessage.GetComponent<UrgentMessage>().Show();
+            return false;
+        } 
+        healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
+
+
+        //check that health is medium
+        if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+        {
+            healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         }
+        healthLowMessage.GetComponent<UrgentMessage>().Hide();
+        
+        //check filling status, if power bar is still filling up, don't end level
+        if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
+            return false;
         
         return true; //all ending criteria has been met
     }
@@ -99,23 +118,33 @@ public class Level1Controller : MonoBehaviour
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //gameplay
+                
+                if (CheckEndingCriteria())
+                {
+                    level1Data.popUpIndex = 2;
+                    AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
+                    RemoveLevelObjects();
+                    DisplayEndingScene();
+                    return;
+                }
+                
                 SpawnNormalEnemies();
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
                     RemoveLevelObjects();
-                    level1Data.popUpIndex = 2;
+                    level1Data.popUpIndex = 3;
                 }
-
-                if (CheckEndingCriteria())
+                
+                if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
                 {
-                    AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
-                    RemoveLevelObjects();
-                    DisplayEndingScene();
+                    healthDeposit.LowHealthStatus();
                 }
 
                 break;
-            case 2: //retry screen
+            case 2: //ending screen
+                break;
+            case 3: //retry screen
                 break;
         }
         
@@ -136,13 +165,17 @@ public class Level1Controller : MonoBehaviour
         enemySpawning.StartSpawningEnemies(3, true);
     }
     
-    public void DisplayEndingScene()
+    private void DisplayEndingScene()
     {
-        var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
-        planetHealthNum.text =  healthPercentage + "%";
-        orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
-        enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
-        mouseControl.EnableMouse();
+        if (!sceneManager.displayedEnding)
+        {
+            sceneManager.displayedEnding = true;
+            var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
+            planetHealthNum.text =  healthPercentage + "%";
+            orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
+            enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
+            mouseControl.EnableMouse();
+        }
     }
 
     private void RemoveLevelObjects()

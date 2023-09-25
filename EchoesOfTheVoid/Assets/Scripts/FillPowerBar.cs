@@ -37,6 +37,8 @@ public class FillPowerBar : MonoBehaviour
 
     [SerializeField] 
     private Animator haloAnimator;
+
+    private bool isStillFilling;
     
     void Start()
     {
@@ -46,6 +48,12 @@ public class FillPowerBar : MonoBehaviour
         transform.localScale = new Vector3(newScale.x, newScale.y, 1f);
         transform.position += new Vector3(0f, yAdjust, 0f);
         fillEnergySound = GetComponents<AudioSource>();
+        isStillFilling = true;
+    }
+
+    public bool IsStillFilling()
+    {
+        return isStillFilling;
     }
 
 
@@ -67,6 +75,7 @@ public class FillPowerBar : MonoBehaviour
         
         if (prevSprite < currSprite)
         {
+            
             fillEnergySound[5].volume = fillSoundVolume;
             if (!fillEnergySound[5].isPlaying)
                 fillEnergySound[5].Play();//Shepherd tone
@@ -106,5 +115,8 @@ public class FillPowerBar : MonoBehaviour
             prevSprite = sprites.Length - 1;
         
         spriteRenderer.sprite = sprites[prevSprite];
+
+        if (prevSprite == sprites.Length - 1)
+            isStillFilling = false;
     }
 }
