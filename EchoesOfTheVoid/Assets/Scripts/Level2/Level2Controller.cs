@@ -171,7 +171,7 @@ public class Level2Controller : MonoBehaviour
                 SpawnNormalEnemies();
                 if (popUpWaitTime <= 0)
                 {
-                    popUpWaitTime = 5;
+                    popUpWaitTime = 10;
                 }
                 popUpWaitTime -= Time.deltaTime;
                 break;
