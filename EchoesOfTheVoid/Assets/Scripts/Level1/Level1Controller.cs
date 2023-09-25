@@ -62,6 +62,7 @@ public class Level1Controller : MonoBehaviour
         //reset counters
         orbCounter.planetOrbMax = 10;
         orbCounter.planetOrbsDeposited = 0;
+        orbCounter.orbsCollected = 0;
         level1Data.popUpIndex = 0;
 
         //set up game manager
@@ -72,6 +73,8 @@ public class Level1Controller : MonoBehaviour
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.EnableShield();
+        
+        Debug.Log("Is Level 1 Shield Enabled: " + gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
     }
@@ -81,16 +84,11 @@ public class Level1Controller : MonoBehaviour
         //check planet orbs
         if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
             return false; //not enough orbs
-        
-        //check health status
-        if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
-        {
-            //show health too low message
-            healthLowMessage.GetComponent<UrgentMessage>().Show();
-            return false;
-        } 
-        healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
 
+        if (gameManagerData.numberOfEnemiesKilled < numberOfEnemiesToKill)
+        {
+            return false;
+        }
 
         //check that health is medium
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))

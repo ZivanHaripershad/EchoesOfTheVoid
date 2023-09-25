@@ -10,6 +10,11 @@ public class ShieldLogic : MonoBehaviour
 
     private int shieldCount;
 
+    private void Start()
+    {
+        shieldCount = 0;
+    }
+
     public bool DestroyShield(Vector3 enemyTransform)
     {
         if (shieldCount > 0)

@@ -53,7 +53,6 @@ public class Level2Controller : MonoBehaviour
 
     private SceneManager sceneManager;
     
-    
     private void Start()
     {
         
@@ -77,17 +76,19 @@ public class Level2Controller : MonoBehaviour
         //reset counters
         orbCounter.planetOrbMax = 10;
         orbCounter.planetOrbsDeposited = 0;
+        orbCounter.orbsCollected = 0;
         level2Data.popUpIndex = 0;
 
         //set up game manager
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
-        gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.EnableShield();
+        
+        Debug.Log("Is Level 2 Shield Enabled: " + gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
         
@@ -154,9 +155,7 @@ public class Level2Controller : MonoBehaviour
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //gameplay
-                
-                SpawnNormalEnemies();
-                
+
                 if (CheckEndingCriteria())
                 {
                     level2Data.popUpIndex = 2;
@@ -166,7 +165,7 @@ public class Level2Controller : MonoBehaviour
                     return;
                 }
                 
-                
+                SpawnNormalEnemies();
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
@@ -220,10 +219,6 @@ public class Level2Controller : MonoBehaviour
         //intro scene has not finished yet
         if (!sceneManager.motherShipIntroScene)
         {
-            
-            Debug.Log("Intro scene");
-            
-            
             enemySpawning.StopSpawning();
             enemySpawning.ResetSpawning();
             

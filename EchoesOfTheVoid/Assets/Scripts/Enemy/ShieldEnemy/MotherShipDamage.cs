@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MotherShipDamage : MonoBehaviour
 {
@@ -16,13 +11,9 @@ public class MotherShipDamage : MonoBehaviour
     [SerializeField] private SpriteRenderer healthWindowSp;
     [SerializeField] private MotherShipGiveShields motherShipGiveShields;
     
-    private Level1Controller level1Controller;
-    private SpriteRenderer sp;
 
     private void Start()
     {
-        level1Controller = GameObject.FindGameObjectWithTag("Level1Manager").GetComponent<Level1Controller>();
-        sp = GetComponent<SpriteRenderer>();
     }
 
     void OnTriggerEnter2D(Collider2D other)

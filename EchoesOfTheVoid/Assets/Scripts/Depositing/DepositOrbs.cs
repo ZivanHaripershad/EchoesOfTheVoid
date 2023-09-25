@@ -42,7 +42,7 @@ public class DepositOrbs : MonoBehaviour
         powerFactoryAnim = GameObject.Find("PowerFactory").GetComponent<Animator>();
         shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
         healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
-        gameManager = GameObject.Find("GameManager").GetComponent<GameManager>();
+        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
         shieldLogic = GameObject.Find("Shield").GetComponent<ShieldLogic>();
     }
 

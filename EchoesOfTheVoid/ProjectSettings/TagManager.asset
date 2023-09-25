@@ -25,6 +25,7 @@ TagManager:
   - Shield
   - PowerBar
   - Level2Manager
+  - GameManager
   layers:
   - Default
   - TransparentFX
