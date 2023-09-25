@@ -76,6 +76,7 @@ public class Level2Controller : MonoBehaviour
         
         //reset counters
         orbCounter.planetOrbMax = 10;
+        orbCounter.planetOrbsDeposited = 0;
         level2Data.popUpIndex = 0;
 
         //set up game manager
@@ -208,17 +209,21 @@ public class Level2Controller : MonoBehaviour
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
         if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
         {
-            Debug.Log("Spawn L2 bosss");
-            //SpawnBoss();
+            
+            SpawnBoss();
         }
     }
 
-    /*
+    
     private void SpawnBoss()
     {
         //intro scene has not finished yet
         if (!sceneManager.motherShipIntroScene)
         {
+            
+            Debug.Log("Intro scene");
+            
+            
             enemySpawning.StopSpawning();
             enemySpawning.ResetSpawning();
             
@@ -240,8 +245,6 @@ public class Level2Controller : MonoBehaviour
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
         }
     }
-    
-    */
 
     private void DisplayEndingScene()
     {
