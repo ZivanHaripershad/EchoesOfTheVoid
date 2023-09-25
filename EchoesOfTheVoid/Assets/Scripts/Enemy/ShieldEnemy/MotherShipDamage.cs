@@ -25,11 +25,6 @@ public class MotherShipDamage : MonoBehaviour
         sp = GetComponent<SpriteRenderer>();
     }
 
-    void DestroyGameObject()
-    {
-        Destroy(gameObject);
-    }
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Bullet"))
@@ -42,6 +37,7 @@ public class MotherShipDamage : MonoBehaviour
             {
                 Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
                 AudioManager.Instance.PlaySFX("KillMotherShip");
+                AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
                 Destroy(gameObject);
             }
             else 
