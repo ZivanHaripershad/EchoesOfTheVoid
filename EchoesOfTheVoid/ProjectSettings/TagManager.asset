@@ -24,6 +24,7 @@ TagManager:
   - HealthLowMessage
   - Shield
   - PowerBar
+  - Level2Manager
   layers:
   - Default
   - TransparentFX

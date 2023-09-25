@@ -48,6 +48,23 @@ public class EnemySpawningLevel1 : MonoBehaviour {
             currentCoroutine = StartCoroutine(SpawnAllTypesOfEnemiesCoroutine());
         }
     }
+
+    public void StartSpawningLevel2Enemies()
+    {
+        if (!hasStarted)
+        {
+            hasStarted = true;
+            currentCoroutine = StartCoroutine(SpawnLevelTwoEnemiesCoroutine());
+        }
+    }
+
+    private IEnumerator SpawnLevelTwoEnemiesCoroutine()
+    {
+        while (true)
+        {
+            Debug.Log("Spawning l2 enemies");
+        }
+    }
     
     public void StopSpawning()
     {
