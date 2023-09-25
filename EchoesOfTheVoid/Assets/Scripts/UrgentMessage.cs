@@ -16,40 +16,34 @@ public class UrgentMessage : MonoBehaviour
 
     private void Start()
     {
-        isEnabled = false;
+        isEnabled = true;
         textComponent = GetComponent<Text>();
         Hide();
+        flashingCoroutine = StartCoroutine(FlashText());
     }
 
     public void Hide()
     {
-        textComponent.color = new Color(1f, 1f, 1f, 0f);
+        if (isEnabled)
+        {
+            isEnabled = false;
+            textComponent.color = new Color(188f / 255f, 66f / 255f, 66f / 255f, 0f);
+        }
     }
 
     public void Show()
     {
-        textComponent.color = new Color(1f, 1f, 1f, 1f);
+        if (!isEnabled)
+        {
+            isEnabled = true;
+            textComponent.color = new Color(188f / 255f, 66f / 255f, 66f / 255f, 1f);
+        }
     }
-
-    private void OnEnable()
-    {
-        if (flashingCoroutine != null)
-            StopCoroutine(flashingCoroutine);
-
-        flashingCoroutine = StartCoroutine(FlashText());
-    }
-
-    private void OnDisable()
-    {
-        if (flashingCoroutine != null)
-            StopCoroutine(flashingCoroutine);
-    }
-
     private IEnumerator FlashText()
     {
         Color originalColor = textComponent.color;
 
-        while (true)
+        while (isEnabled)
         {
             float t = Mathf.PingPong(Time.time * flashSpeed, 1);
             Color lerpedColor = Color.Lerp(originalColor, new Color(originalColor.r, originalColor.g, originalColor.b, minOpacity), t);

@@ -37,6 +37,9 @@ public class DestroyEnemy : MonoBehaviour
 
     void checkDamage()
     {
+        Debug.Log("shaking camera"); 
+        GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake();
+        
         if (healthCount.currentHealth < healthCount.maxHealth * 0.8) //20% damage
             earthDamageAnimator.SetTrigger("damage1");
         if (healthCount.currentHealth < healthCount.maxHealth * 0.6) //40% damage
@@ -106,6 +109,7 @@ public class DestroyEnemy : MonoBehaviour
             if (collision.gameObject.GetComponent<ShieldLogic>().DestroyShield(gameObject.transform.position))
             {
                 DestroyGameObject(collision, false, collision.gameObject.transform);
+                AudioManager.Instance.PlaySFX("EarthShieldDestroyed");
             }
         }
     }

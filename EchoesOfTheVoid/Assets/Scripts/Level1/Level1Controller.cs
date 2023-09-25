@@ -47,7 +47,8 @@ public class Level1Controller : MonoBehaviour
         public bool hasStartedSpawning;
         public bool motherShipIntroScene;
         public bool motherShipHasEntered;
-        public float bossTimer; 
+        public float bossTimer;
+        public bool displayedEnding;
     }
 
     private SceneManager sceneManager;
@@ -64,16 +65,13 @@ public class Level1Controller : MonoBehaviour
         {
             popUps[i].SetActive(true);
         }
-        
-        //messages
-        primaryTargetNotEliminated.GetComponent<UrgentMessage>().Hide();
-        healthLowMessage.GetComponent<UrgentMessage>().Hide();
 
         //set up scene manager
         sceneManager.soundsChanged = false;
         sceneManager.hasStartedSpawning = false; 
         sceneManager.motherShipIntroScene = false;
         sceneManager.motherShipHasEntered = false;
+        sceneManager.displayedEnding = false;
         sceneManager.bossTimer = 10f;
         
         //reset counters
@@ -135,6 +133,10 @@ public class Level1Controller : MonoBehaviour
         }
         healthLowMessage.GetComponent<UrgentMessage>().Hide();
         
+        //check filling status, if power bar is still filling up, don't end level
+        if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
+            return false;
+        
         return true; //all ending criteria has been met
     }
     
@@ -150,12 +152,22 @@ public class Level1Controller : MonoBehaviour
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //gameplay
+                
+                if (CheckEndingCriteria())
+                {
+                    level1Data.popUpIndex = 2;
+                    AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
+                    RemoveLevelObjects();
+                    DisplayEndingScene();
+                    return;
+                }
+                
                 SpawnNormalEnemies();
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
                     RemoveLevelObjects();
-                    level1Data.popUpIndex = 2;
+                    level1Data.popUpIndex = 3;
                 }
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
@@ -163,15 +175,10 @@ public class Level1Controller : MonoBehaviour
                     healthDeposit.LowHealthStatus();
                 }
 
-                if (CheckEndingCriteria())
-                {
-                    AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
-                    RemoveLevelObjects();
-                    DisplayEndingScene();
-                }
-
                 break;
             case 2: //retry screen
+                break;
+            case 3: //ending screen
                 break;
         }
         
@@ -229,13 +236,17 @@ public class Level1Controller : MonoBehaviour
         }
     }
 
-    public void DisplayEndingScene()
+    private void DisplayEndingScene()
     {
-        var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
-        planetHealthNum.text =  healthPercentage + "%";
-        orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
-        enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
-        mouseControl.EnableMouse();
+        if (!sceneManager.displayedEnding)
+        {
+            sceneManager.displayedEnding = true;
+            var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
+            planetHealthNum.text =  healthPercentage + "%";
+            orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
+            enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
+            mouseControl.EnableMouse();
+        }
     }
 
     private void RemoveLevelObjects()

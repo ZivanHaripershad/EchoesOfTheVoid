@@ -230,6 +230,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0480004414ca1b54085c27146e663e9d, type: 3}
   - clipName: KillMotherShip
     clip: {fileID: 8300000, guid: 55956378b09ed444db836d2604565c93, type: 3}
+  - clipName: EarthShieldDestroyed
+    clip: {fileID: 8300000, guid: 9a890dc986474c54696b053805dfe1ba, type: 3}
   musicSource: {fileID: 2406677496876818795}
   sfxSource: {fileID: 242568350414305245}
   normalAudioSpeed: 1
