@@ -6,9 +6,9 @@ using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
 
-public class Level2Controller : MonoBehaviour
+public class Level3Controller : MonoBehaviour
 {
-    [SerializeField] private Level2Data level2Data;
+    [SerializeField] private Level3Data level3Data;
     [SerializeField] private GameManagerData gameManagerData;
     [SerializeField] private GameManager gameManager;
     [SerializeField] private EnemySpawningLevel2 enemySpawning;
@@ -37,17 +37,11 @@ public class Level2Controller : MonoBehaviour
 
     private Coroutine audioCoroutine;
     private GameObject motherShipInstance;
-    public UpgradeScene1Manager upgradeScene1Manager;
     private int popupIndex;
     
     struct SceneManager
     {
         public float audioSpeed;
-        public bool soundsChanged;
-        public bool hasStartedSpawning;
-        public bool motherShipIntroScene;
-        public bool motherShipHasEntered;
-        public float bossTimer;
         public bool displayedEnding;
     }
 
@@ -56,6 +50,8 @@ public class Level2Controller : MonoBehaviour
     
     private void Start()
     {
+        
+        Debug.Log("Level3 comtroller");
         
         AudioManager.Instance.ToggleMusicOff();
         AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
@@ -67,17 +63,12 @@ public class Level2Controller : MonoBehaviour
         }
 
         //set up scene manager
-        sceneManager.soundsChanged = false;
-        sceneManager.hasStartedSpawning = false; 
-        sceneManager.motherShipIntroScene = false;
-        sceneManager.motherShipHasEntered = false;
         sceneManager.displayedEnding = false;
-        sceneManager.bossTimer = 10f;
         
         //reset counters
         orbCounter.planetOrbMax = 10;
         orbCounter.planetOrbsDeposited = 0;
-        level2Data.popUpIndex = 0;
+        level3Data.popUpIndex = 0;
 
         //set up game manager
         gameManagerData.numberOfEnemiesKilled = 0;
@@ -99,7 +90,7 @@ public class Level2Controller : MonoBehaviour
     private bool CheckEndingCriteria()
     {
         //check planet orbs
-        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+       /* if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
             return false; //not enough orbs
         
         //check health status
@@ -137,14 +128,14 @@ public class Level2Controller : MonoBehaviour
         
         //check filling status, if power bar is still filling up, don't end level
         if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
-            return false;
+            return false;*/
         
         return true; //all ending criteria has been met
     }
     
     private void Update()
     {
-        popupIndex = level2Data.popUpIndex;
+        popupIndex = level3Data.popUpIndex;
         
         HandlePopups();
         
@@ -161,27 +152,27 @@ public class Level2Controller : MonoBehaviour
                 
                 SpawnNormalEnemies();
                 
-                if (CheckEndingCriteria())
-                {
-                    level2Data.popUpIndex = 2;
-                    AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
-                    RemoveLevelObjects();
-                    DisplayEndingScene();
-                    return;
-                }
-                
-                
-                if (healthCount.currentHealth == 0)
-                {
-                    //show retry screen
-                    RemoveLevelObjects();
-                    level2Data.popUpIndex = 3;
-                }
-                
-                if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
-                {
-                    healthDeposit.LowHealthStatus();
-                }
+                // if (CheckEndingCriteria())
+                // {
+                //     level2Data.popUpIndex = 2;
+                //     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
+                //     RemoveLevelObjects();
+                //     DisplayEndingScene();
+                //     return;
+                // }
+                //
+                //
+                // if (healthCount.currentHealth == 0)
+                // {
+                //     //show retry screen
+                //     RemoveLevelObjects();
+                //     level2Data.popUpIndex = 3;
+                // }
+                //
+                // if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
+                // {
+                //     healthDeposit.LowHealthStatus();
+                // }
 
                 break;
             case 2: //retry screen
@@ -197,53 +188,32 @@ public class Level2Controller : MonoBehaviour
     
     private void SpawnNormalEnemies()
     {
-        if (Time.timeScale != 0)
-            mouseControl.DisableMouse();
-
-        if (!sceneManager.hasStartedSpawning)
-        {
-            sceneManager.hasStartedSpawning = true;
-            enemySpawning.StartSpawningLevel2Enemies();
-        }
+        // if (Time.timeScale != 0)
+        //     mouseControl.DisableMouse();
+        //
+        // //activate level objects
+        // uiManager.SetLevelObjectsToActive();
+        // uiManager.SetAtmosphereObjectToActive();
+        //
+        // if (!sceneManager.hasStartedSpawning)
+        // {
+        //     sceneManager.hasStartedSpawning = true;
+        //     enemySpawning.StartSpawningLevel2Enemies();
+        // }
 
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
-        {
+        // if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        // {
             
             SpawnBoss();
-        }
+            
+        // }
     }
 
     
     private void SpawnBoss()
     {
-        //intro scene has not finished yet
-        if (!sceneManager.motherShipIntroScene)
-        {
-            
-            Debug.Log("Intro scene");
-            
-            
-            enemySpawning.StopSpawning();
-            enemySpawning.ResetSpawning();
-            
-            //give boss time to start circling
-            if (sceneManager.bossTimer > 0)
-                sceneManager.bossTimer -= Time.deltaTime;
-            else
-                sceneManager.motherShipIntroScene = true;
-        }
-        else
-        {
-            enemySpawning.StartSpawningAllTypesOfEnemies();
-        }
-
-        if (!sceneManager.motherShipHasEntered)
-        {
-            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
-            sceneManager.motherShipHasEntered = true;
-            motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
-        }
+        Debug.Log("Spawning boss");
     }
 
     private void DisplayEndingScene()

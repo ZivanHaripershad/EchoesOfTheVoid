@@ -5,7 +5,7 @@ public class LevelTwoSelect : LevelSelectButtonInterface
 {
     public override void OnMouseDown()
     {
-        AudioManager.Instance.PlaySFX("ButtonClicked");
+        AudioManager.Instance.PlaySFX("ButtonClick");
         SceneManager.LoadScene("Level2");
     }
 }

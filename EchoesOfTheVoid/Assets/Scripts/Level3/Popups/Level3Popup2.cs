@@ -1,14 +1,12 @@
-using System;
-using UnityEngine;
-
-public class Level2Popup2 : Button
+﻿public class Level3Popup2: Button
 {
+    
     // Start is called before the first frame update
-    public Level2Data level2Data;
+    public Level3Data level3Data;
     
     private void Next()
     {
-        level2Data.popUpIndex = 1;
+        level3Data.popUpIndex = 1;
     }
     
     public override void OnMouseDown()
@@ -21,5 +19,5 @@ public class Level2Popup2 : Button
     {
         Invoke("Next", 0.3f);
     }
-
+    
 }
