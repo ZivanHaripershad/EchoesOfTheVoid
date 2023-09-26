@@ -87,7 +87,7 @@ public class UIManager : MonoBehaviour
         orbUi.SetActive(false);
         orbText.SetActive(false);
         
-        //todo: level1
+        //todo: level2
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
     }
@@ -116,16 +116,6 @@ public class UIManager : MonoBehaviour
             mouseControl.EnableMouse();
             
             Time.timeScale = 0; 
-        }
-    }
-
-    public void DestoryRemainingEnemies()
-    {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            Destroy(enemies[i]);
         }
     }
 }

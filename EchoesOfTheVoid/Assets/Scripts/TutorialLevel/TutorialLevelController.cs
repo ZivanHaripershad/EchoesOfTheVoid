@@ -59,6 +59,9 @@ public class TutorialLevelController : MonoBehaviour
         }
 
         orbCounter.planetOrbMax = 1;
+        orbCounter.planetOrbsDeposited = 0;
+        orbCounter.orbsCollected = 0;
+
         tutorialData.popUpIndex = 0;
 
         gameManagerData.numberOfEnemiesKilled = 0;
@@ -307,6 +310,7 @@ public class TutorialLevelController : MonoBehaviour
             {
                 uiManager.SetLevelObjectsToInactive();
                 tutorialData.popUpIndex++;
+                AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
             }
             gameManagerData.tutorialWaitTime -= Time.deltaTime;
         }
