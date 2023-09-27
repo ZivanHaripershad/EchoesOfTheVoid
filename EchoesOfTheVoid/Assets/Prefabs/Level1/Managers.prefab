@@ -148,6 +148,8 @@ MonoBehaviour:
   audioSpeedChangeRate: 1.8
   numberOfEnemiesToKill: 20
   healthLowMessage: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
+  missionObjectiveCanvas: {fileID: 0}
 --- !u!1 &7018123691444164731
 GameObject:
   m_ObjectHideFlags: 0

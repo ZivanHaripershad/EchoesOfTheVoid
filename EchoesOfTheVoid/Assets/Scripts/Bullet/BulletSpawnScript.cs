@@ -154,7 +154,7 @@ public class BulletSpawnScript : MonoBehaviour
     private void Shoot()
     {
         if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false &&
-            spaceshipMode.canRotateAroundPlanet == true)
+            spaceshipMode.canRotateAroundPlanet)
         {
             if (timePassed > maxShootSpeed)
             {

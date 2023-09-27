@@ -422,10 +422,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
-    - target: {fileID: 1072420874778190434, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1072420874795578791, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
       propertyPath: gameManager
       value: 
@@ -500,6 +496,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+--- !u!1 &1509692780408560182 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8681103831452953971, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1509692780408560183 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4423573024136877461, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b8c543be3464c9bb9c0c02b2d013808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1878423871544580580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1072420876093096913, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
@@ -764,6 +776,10 @@ PrefabInstance:
       propertyPath: enemySpeedControl
       value: 
       objectReference: {fileID: 369470761}
+    - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: missionObjectiveBanner
+      value: 
+      objectReference: {fileID: 1509692780408560183}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
 --- !u!114 &5000476146227674071 stripped
@@ -841,6 +857,14 @@ PrefabInstance:
       propertyPath: popUps.Array.data[3]
       value: 
       objectReference: {fileID: 12250192}
+    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: missionObjectiveBanner
+      value: 
+      objectReference: {fileID: 1509692780408560183}
+    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: missionObjectiveCanvas
+      value: 
+      objectReference: {fileID: 1509692780408560182}
     - target: {fileID: 1415707349470762499, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: m_Name
       value: Managers

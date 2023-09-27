@@ -17,10 +17,9 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField] private AudioSource destroyEnemySoundEffect;
     [SerializeField] private AudioSource crashIntoPlanetSoundEffect;
     [SerializeField] private HealthCount healthCount;
-
     [SerializeField] private float bulletSoundDelay;
-
     [SerializeField] private GameObject graphics;
+    [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
 
     private Animator earthDamageAnimator; 
 
@@ -118,6 +117,12 @@ public class DestroyEnemy : MonoBehaviour
     {
         gameManagerData.numberOfEnemiesKilled++;
         destroyEnemySoundEffect.Play();
+        
+        if (gameManagerData.numberOfEnemiesKilled % 5 == 0)
+        {
+            var enemiesKilledUpdate = gameManagerData.numberOfEnemiesKilled + "/" + gameManagerData.numberOfEnemiesToKill + " enemies destroyed";
+            missionObjectiveBanner.AddMissionUpdate(enemiesKilledUpdate);
+        }
 
         GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
         Rigidbody2D rb = myOrb.GetComponent<Rigidbody2D>();

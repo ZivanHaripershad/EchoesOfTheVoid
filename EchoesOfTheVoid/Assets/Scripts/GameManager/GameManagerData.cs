@@ -11,4 +11,5 @@ public class GameManagerData : ScriptableObject
     public bool tutorialActive;
     public float tutorialWaitTime;
     public bool hasResetAmmo;
+    public int numberOfEnemiesToKill;
 }

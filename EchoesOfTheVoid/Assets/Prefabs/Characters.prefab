@@ -2823,3 +2823,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbCollectSoundEffect: {fileID: 1193372699}
+  spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}

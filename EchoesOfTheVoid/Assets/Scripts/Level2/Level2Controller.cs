@@ -260,6 +260,7 @@ public class Level2Controller : MonoBehaviour
         if (!sceneManager.motherShipHasEntered)
         {
             level2Data.popUpIndex++;
+            popUpWaitTime = 10;
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));

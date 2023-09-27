@@ -2898,6 +2898,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbCollectSoundEffect: {fileID: 6723253171343151474}
+  spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
 --- !u!114 &6723253170875594854
 MonoBehaviour:
   m_ObjectHideFlags: 0
