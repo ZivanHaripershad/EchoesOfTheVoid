@@ -213,7 +213,7 @@ public class Level3Controller : MonoBehaviour
     
     private void SpawnBoss()
     {
-        Debug.Log("Spawning boss");
+        // Debug.Log("Spawning boss");
     }
 
     private void DisplayEndingScene()
