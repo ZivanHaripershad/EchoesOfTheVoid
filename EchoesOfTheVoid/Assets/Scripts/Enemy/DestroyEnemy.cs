@@ -75,7 +75,7 @@ public class DestroyEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
             crashIntoPlanetSoundEffect.Play();
             
-        if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("DoubleDamageBullet"))
         {
             if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive)
             {
@@ -98,6 +98,15 @@ public class DestroyEnemy : MonoBehaviour
                 else { //no shield
                     DestroyGameObject(collision, true, collision.gameObject.transform);
                 }
+
+                //destroy the bullet
+                Destroy(collision.gameObject);
+            }
+            
+            if (collision.gameObject.CompareTag("DoubleDamageBullet"))
+            {
+                
+                DestroyGameObject(collision, true, collision.gameObject.transform);
 
                 //destroy the bullet
                 Destroy(collision.gameObject);

@@ -28,6 +28,7 @@ TagManager:
   - GameManager
   - MissionObjective
   - ObjectiveManager
+  - DoubleDamageBullet
   layers:
   - Default
   - TransparentFX

@@ -92,6 +92,14 @@ public class Level1Controller : MonoBehaviour
         healthCount.currentHealth = healthCount.maxHealth;
         
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
+
+        //remove upgrades from other levels
+        if (SelectedUpgradeLevel2.Instance != null &&
+            SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
+        {
+            SelectedUpgradeLevel2.Instance.SetUpgrade(null);
+        }
+        
     }
 
     private bool CheckEndingCriteria()

@@ -111,6 +111,12 @@ public class Level2Controller : MonoBehaviour
         
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
 
+        //remove upgrades from other levels
+        if (SelectedUpgradeLevel1.Instance != null &&
+            SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        {
+            SelectedUpgradeLevel1.Instance.SetUpgrade(null);
+        }
     }
 
     private bool CheckEndingCriteria()
@@ -321,10 +327,6 @@ public class Level2Controller : MonoBehaviour
         Queue<string> missionUpdates = missionObjectiveBanner.GetMissionUpdates();
         bool isBannerAvailable = missionObjectiveBanner.GetIsBannerAvailable();
         
-        Debug.Log("Is Banner Available:" + isBannerAvailable);
-        Debug.Log("Banner Count:" + missionUpdates.Count);
-
-
         if (missionUpdates.Count > 0 && isBannerAvailable)
         {
             missionBannerWaitTime = missionObjectiveBanner.GetBannerWaitTime();

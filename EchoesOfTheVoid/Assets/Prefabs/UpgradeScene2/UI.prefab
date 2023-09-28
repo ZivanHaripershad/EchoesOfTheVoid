@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 168458190}
   - component: {fileID: 168458194}
   - component: {fileID: 168458193}
-  - component: {fileID: 168458195}
+  - component: {fileID: 8746157230398008220}
   m_Layer: 0
   m_Name: StartLevel
   m_TagString: Untagged
@@ -112,7 +112,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.1161766, y: 1.0390489}
   m_EdgeRadius: 0
---- !u!114 &168458195
+--- !u!114 &8746157230398008220
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -121,14 +121,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 168458189}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70c4d8ff94f14bc09e36ea0e09a7b368, type: 3}
+  m_Script: {fileID: 11500000, guid: 780d9ca0014443d0b5743f272b3bbc26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 168458194}
   enabledButton: {fileID: 21300000, guid: 66f83c157bba2f348bb109aa1c7a51c4, type: 3}
   disabledButton: {fileID: 21300000, guid: 6ee93d736809e3840ba3b59f318e0f81, type: 3}
   onHoverButton: {fileID: 21300000, guid: 44a374cde22e7ee499c1758baf6fc7f4, type: 3}
-  upgradeScene1Manager: {fileID: 0}
+  upgradeScene2Manager: {fileID: 0}
   mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &236035898
 GameObject:
@@ -655,7 +655,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "Fire rate is \nincreased by 15%"
+  m_Text: 'Damage is doubled
+
+    on every third shot'
 --- !u!1 &1206842528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1153,7 +1155,7 @@ GameObject:
   - component: {fileID: 1555595373530551551}
   - component: {fileID: 1555595373530551545}
   - component: {fileID: 1555595373530551546}
-  - component: {fileID: 6199255241935872710}
+  - component: {fileID: 1003444827584389465}
   m_Layer: 0
   m_Name: Card1
   m_TagString: Untagged
@@ -1254,7 +1256,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.85603, y: 3.7748513}
   m_EdgeRadius: 0
---- !u!114 &6199255241935872710
+--- !u!114 &1003444827584389465
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1263,7 +1265,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1555595373530551550}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f184287b37ceba14589ccb49633b4518, type: 3}
+  m_Script: {fileID: 11500000, guid: d265b192585040418fd66fb93ed2c419, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1555595373530551545}
@@ -1271,7 +1273,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: 1f96253acf35824418a490c8c9437155, type: 3}
   selectedSprite: {fileID: 21300000, guid: 0a6fec67531a1c24f9cdf6c14ce34e90, type: 3}
   normalSprite: {fileID: 21300000, guid: 1899193cf12cde34cbbb9b2709c6450e, type: 3}
-  upgradeScene1Manager: {fileID: 0}
+  upgradeScene2Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
   mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &1555595373565661382
@@ -1574,7 +1576,7 @@ GameObject:
   - component: {fileID: 3263166644291205362}
   - component: {fileID: 3263166644291205358}
   - component: {fileID: 3263166644291205360}
-  - component: {fileID: 4098149244116149920}
+  - component: {fileID: 6990656384303054241}
   m_Layer: 0
   m_Name: Card3
   m_TagString: Untagged
@@ -1675,7 +1677,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.8901758, y: 3.802894}
   m_EdgeRadius: 0
---- !u!114 &4098149244116149920
+--- !u!114 &6990656384303054241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1684,7 +1686,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3263166644291205363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: df907248051c40e38080d215957b84ba, type: 3}
+  m_Script: {fileID: 11500000, guid: 54c2adcc5ec145d7bae8a321a1253cc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3263166644291205358}
@@ -1692,7 +1694,7 @@ MonoBehaviour:
   hoverSprite: {fileID: 21300000, guid: f9ed8ce05e0665f4ab9c5abf79009f76, type: 3}
   selectedSprite: {fileID: 21300000, guid: 76659b2f33f9b0b448af5036e857e022, type: 3}
   normalSprite: {fileID: 21300000, guid: b602a6ee252de4446aa2e643961e5313, type: 3}
-  upgradeScene1Manager: {fileID: 0}
+  upgradeScene2Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
   mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &3263166644426051355
@@ -1888,7 +1890,7 @@ GameObject:
   - component: {fileID: 3263166644844677010}
   - component: {fileID: 3263166644844677006}
   - component: {fileID: 3263166644844677008}
-  - component: {fileID: 4098149243564038656}
+  - component: {fileID: 7959007633025483944}
   m_Layer: 0
   m_Name: Card2
   m_TagString: Untagged
@@ -1905,7 +1907,7 @@ Transform:
   m_GameObject: {fileID: 3263166644844677011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.6, y: 0.4, z: -1.2014425}
-  m_LocalScale: {x: 0.25, y: 0.25, z: 1.25}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1555595373565661383}
@@ -1952,7 +1954,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: cbcbdfea0a2ca054e9cb6a18b8fc78c5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 480eff07eb8198d4788f3aee60335321, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1976,20 +1978,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.023291588, y: 0.013141453}
+  m_Offset: {x: -0.013480186, y: -0.004484117}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 12.1, y: 15.98}
+    oldSize: {x: 2.91, y: 3.84}
     newSize: {x: 4.02, y: 1.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8365107, y: 3.7473302}
+  m_Size: {x: 2.9136267, y: 3.8253899}
   m_EdgeRadius: 0
---- !u!114 &4098149243564038656
+--- !u!114 &7959007633025483944
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1998,14 +2000,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3263166644844677011}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: af686446306745e2bdd895de332b4c78, type: 3}
+  m_Script: {fileID: 11500000, guid: 46556ee3228949b18a8ef12ac61bf985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3263166644844677006}
   cardDesc: {fileID: 1206842528}
-  hoverSprite: {fileID: 21300000, guid: 61856f63d8200ac44bd527a933dbccef, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 50cb84c7f50c0d346abff3491285200c, type: 3}
-  normalSprite: {fileID: 21300000, guid: a8fd1cb0d7f2c974c89f7cabd1f7ffe0, type: 3}
-  upgradeScene1Manager: {fileID: 0}
+  hoverSprite: {fileID: 21300000, guid: b6075d8281891c348a75fbf8beceb02b, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 2870ec65d38beb9449157855e545f80c, type: 3}
+  normalSprite: {fileID: 21300000, guid: 480eff07eb8198d4788f3aee60335321, type: 3}
+  upgradeScene2Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
   mouseControl: {fileID: 6556346273793334640}

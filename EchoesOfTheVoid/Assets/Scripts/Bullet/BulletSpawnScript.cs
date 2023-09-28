@@ -32,8 +32,8 @@ public class BulletSpawnScript : MonoBehaviour
     private const float MAX_PROGRESS_BAR_SIZE = 38.36f;
     private bool fade = false;
     private float fadeColor = 0;
-    [SerializeField]
-    private GameObject bullet;
+    [SerializeField] private GameObject bullet;
+    [SerializeField] private GameObject doubleDamageBullet;
 
     private GameObject canvasUI;
     
@@ -164,7 +164,24 @@ public class BulletSpawnScript : MonoBehaviour
                     {
                         shootSoundEffect.Play();
                         timePassed = 0;
-                        Instantiate(bullet, transform.position, transform.rotation);
+                        if (bulletCount.currentBullets % 3 != 0)
+                        {
+                            Instantiate(bullet, transform.position, transform.rotation);
+                        }
+                        else
+                        {
+                            if (SelectedUpgradeLevel2.Instance != null &&
+                                SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                                SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
+                            {
+                                Instantiate(doubleDamageBullet, transform.position, transform.rotation);
+                            }
+                            else
+                            {
+                                Instantiate(bullet, transform.position, transform.rotation);
+                            }
+                        }
+                        
                         bulletCount.currentBullets = bulletCount.currentBullets - 1;
                         EnableMessage(cannotFireMessage, false);
                     }

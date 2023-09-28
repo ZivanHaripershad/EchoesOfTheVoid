@@ -214,6 +214,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1003444827584389465, guid: c3343aa1e262e2741a11e28e5bfaa1e5, type: 3}
+      propertyPath: upgradeScene2Manager
+      value: 
+      objectReference: {fileID: 499793014}
     - target: {fileID: 1555595373565661382, guid: c3343aa1e262e2741a11e28e5bfaa1e5, type: 3}
       propertyPath: m_Name
       value: UI
@@ -262,6 +266,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6990656384303054241, guid: c3343aa1e262e2741a11e28e5bfaa1e5, type: 3}
+      propertyPath: upgradeScene2Manager
+      value: 
+      objectReference: {fileID: 499793014}
+    - target: {fileID: 7959007633025483944, guid: c3343aa1e262e2741a11e28e5bfaa1e5, type: 3}
+      propertyPath: upgradeScene2Manager
+      value: 
+      objectReference: {fileID: 499793014}
+    - target: {fileID: 8746157230398008220, guid: c3343aa1e262e2741a11e28e5bfaa1e5, type: 3}
+      propertyPath: upgradeScene2Manager
+      value: 
+      objectReference: {fileID: 499793014}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c3343aa1e262e2741a11e28e5bfaa1e5, type: 3}
 --- !u!1 &499793011

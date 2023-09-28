@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,7 +7,7 @@ public class StartLevel2 : MonoBehaviour
     public Sprite enabledButton;
     public Sprite disabledButton;
     public Sprite onHoverButton;
-    public UpgradeScene1Manager upgradeScene1Manager;
+    public UpgradeScene2Manager upgradeScene2Manager;
     public MouseControl mouseControl;
 
     // Start is called before the first frame update
@@ -27,7 +24,7 @@ public class StartLevel2 : MonoBehaviour
 
     private void CheckIfUpgradeIsSet(Sprite enabledSprite)
     {
-        if (upgradeScene1Manager.GetUpgrade() != null)
+        if (upgradeScene2Manager.GetUpgrade() != null)
         {
             spriteRenderer.sprite = enabledSprite;
         }
@@ -39,11 +36,12 @@ public class StartLevel2 : MonoBehaviour
 
     private void OnMouseDown()
     {
-        if (upgradeScene1Manager.GetUpgrade() != null)
+        if (upgradeScene2Manager.GetUpgrade() != null)
         {
-            SelectedUpgradeLevel1.Instance.SetUpgrade(upgradeScene1Manager.GetUpgrade());
+            Debug.Log("Level 2 Upgrade: " + upgradeScene2Manager.GetUpgrade().GetName());
+            SelectedUpgradeLevel2.Instance.SetUpgrade(upgradeScene2Manager.GetUpgrade());
             AudioManager.Instance.PlaySFX("ButtonClick");
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level2");
         }
         else
         {

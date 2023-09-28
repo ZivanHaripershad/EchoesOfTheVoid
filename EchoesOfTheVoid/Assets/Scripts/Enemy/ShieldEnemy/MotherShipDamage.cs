@@ -23,12 +23,22 @@ public class MotherShipDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             //damage
+            motherShipHealth.TakeDamage(1);
+        }
+        
+        if (other.gameObject.CompareTag("DoubleDamageBullet"))
+        {
+            //damage
+            motherShipHealth.TakeDamage(2);
+        }
+        
+        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("DoubleDamageBullet"))
+        {
             hitBoss.Play();
-            motherShipHealth.TakeDamage();
 
             if (motherShipHealth.IsDead())
             {
-                if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+                if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
                 {
                     objectiveManager.UpdateMothershipDestroyedBanner();
                 }

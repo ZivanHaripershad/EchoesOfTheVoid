@@ -15,9 +15,9 @@ public class MotherShipHealth : MonoBehaviour
         health = maxHealth;
     }
 
-    public void TakeDamage()
+    public void TakeDamage(int damage)
     {
-        health--;
+        health -= damage;
         if (health <= lowHealth)
             animator.SetBool("isLowHealth", true);
     }
