@@ -1070,7 +1070,7 @@ Transform:
   m_GameObject: {fileID: 6723253170086449090}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.09, y: 0.29, z: 0}
-  m_LocalScale: {x: 0.95, y: 0.95, z: 0.95}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1740792631550029635}
@@ -1117,7 +1117,7 @@ SpriteRenderer:
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c0723cab1229b0046a5fcf7f99fe2053, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 302004f1c92653a4c9536b60c81c7c36, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2920,6 +2920,7 @@ MonoBehaviour:
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
   enemySpeedControl: {fileID: 0}
+  objectiveManager: {fileID: 0}
 --- !u!114 &5576056815979170605 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}

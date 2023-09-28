@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -19,7 +20,7 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField] private HealthCount healthCount;
     [SerializeField] private float bulletSoundDelay;
     [SerializeField] private GameObject graphics;
-    [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
+    private ObjectiveManager objectiveManager;
 
     private Animator earthDamageAnimator; 
 
@@ -32,6 +33,7 @@ public class DestroyEnemy : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         earthDamageAnimator = GameObject.FindGameObjectWithTag("EarthDamage").GetComponent<Animator>();
         activateShield = GetComponentInChildren<ActivateShield>();
+        objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
     }
 
     void checkDamage()
@@ -117,11 +119,10 @@ public class DestroyEnemy : MonoBehaviour
     {
         gameManagerData.numberOfEnemiesKilled++;
         destroyEnemySoundEffect.Play();
-        
-        if (gameManagerData.numberOfEnemiesKilled % 5 == 0)
+
+        if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
         {
-            var enemiesKilledUpdate = gameManagerData.numberOfEnemiesKilled + "/" + gameManagerData.numberOfEnemiesToKill + " enemies destroyed";
-            missionObjectiveBanner.AddMissionUpdate(enemiesKilledUpdate);
+            objectiveManager.UpdateEnemiesDestroyedBanner();
         }
 
         GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb

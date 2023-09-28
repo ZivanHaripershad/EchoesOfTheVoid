@@ -68,6 +68,10 @@ public class TutorialLevelController : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
+        gameManagerData.level = GameManagerData.Level.Tutorial;
+
+        healthCount.currentHealth = healthCount.maxHealth - 1;
+
 
         gameManager.DisableShield();
         mouseControl.EnableMouse();

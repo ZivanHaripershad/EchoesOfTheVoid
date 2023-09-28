@@ -31,7 +31,7 @@ public class DepositOrbs : MonoBehaviour
     [SerializeField]
     private EnemySpeedControl enemySpeedControl;
 
-    [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
+    public ObjectiveManager objectiveManager;
 
     // Start is called before the first frame update
     void Start()
@@ -77,12 +77,7 @@ public class DepositOrbs : MonoBehaviour
                     if (orbCounter.orbsCollected >= 1 && orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
                     {
                         orbCounter.planetOrbsDeposited++;
-                        var energyPercentage = Math.Round((decimal)orbCounter.planetOrbsDeposited / orbCounter.planetOrbMax * 100);
-                        if (energyPercentage % 25 == 0)
-                        {
-                            var energyPercentageUpdate = energyPercentage + "% Network Completed";
-                            missionObjectiveBanner.AddMissionUpdate(energyPercentageUpdate);
-                        }
+                        objectiveManager.UpdatePlanetEnergyBanner();
                         
                         deposited = true;
                         factoryDeposited = OrbFactoryDeposited.Power;

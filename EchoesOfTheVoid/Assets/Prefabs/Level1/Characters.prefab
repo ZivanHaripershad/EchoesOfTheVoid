@@ -2920,7 +2920,7 @@ MonoBehaviour:
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
   enemySpeedControl: {fileID: 0}
-  missionObjectiveBanner: {fileID: 0}
+  objectiveManager: {fileID: 0}
 --- !u!114 &8867782665444800076 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}

@@ -32,9 +32,57 @@ Transform:
   - {fileID: 7018123691444164724}
   - {fileID: 7018123690808852150}
   - {fileID: 7018123691340173433}
+  - {fileID: 9056077670002553084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4648332997381298813
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9056077670002553084}
+  - component: {fileID: 3682701456991162650}
+  m_Layer: 0
+  m_Name: ObjectiveManager
+  m_TagString: ObjectiveManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9056077670002553084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4648332997381298813}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6535801911701228847}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3682701456991162650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4648332997381298813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3999c99ce688415c80af9457f61047b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  missionObjectiveBanner: {fileID: 0}
 --- !u!1 &7018123690808852149
 GameObject:
   m_ObjectHideFlags: 0
@@ -260,4 +308,5 @@ MonoBehaviour:
   orbUi: {fileID: 0}
   orbText: {fileID: 0}
   pauseMenu: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
   primaryTargetMessage: {fileID: 0}

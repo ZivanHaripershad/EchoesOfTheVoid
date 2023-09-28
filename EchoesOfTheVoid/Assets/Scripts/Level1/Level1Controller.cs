@@ -81,6 +81,7 @@ public class Level1Controller : MonoBehaviour
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
         gameManagerData.numberOfEnemiesToKill = numberOfEnemiesToKill;
+        gameManagerData.level = GameManagerData.Level.Level1;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -221,9 +222,7 @@ public class Level1Controller : MonoBehaviour
     {
         Queue<string> missionUpdates = missionObjectiveBanner.GetMissionUpdates();
         bool isBannerAvailable = missionObjectiveBanner.GetIsBannerAvailable();
-        Debug.Log("Mission Count:" + missionUpdates.Count);
-        Debug.Log("Is Banner Available:" + isBannerAvailable);
-        
+
         if (missionUpdates.Count > 0 && isBannerAvailable)
         {
             missionBannerWaitTime = missionObjectiveBanner.GetBannerWaitTime();
