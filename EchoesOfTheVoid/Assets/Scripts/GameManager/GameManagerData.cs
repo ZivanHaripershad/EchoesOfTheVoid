@@ -11,4 +11,14 @@ public class GameManagerData : ScriptableObject
     public bool tutorialActive;
     public float tutorialWaitTime;
     public bool hasResetAmmo;
+    public int numberOfEnemiesToKill;
+    public Level level;
+    
+    public enum Level
+    {
+        Tutorial, 
+        Level1, 
+        Level2,
+        Level3
+    }
 }

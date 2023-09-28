@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -42,6 +43,13 @@ public class Level2Controller : MonoBehaviour
 
     private float popUpWaitTime;
     
+    [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
+    [SerializeField] private GameObject missionObjectiveCanvas;
+    
+    
+    private Text missionObjectiveText;
+    private float missionBannerWaitTime;
+
     struct SceneManager
     {
         public float audioSpeed;
@@ -86,6 +94,7 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
+        gameManagerData.level = GameManagerData.Level.Level2;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -99,6 +108,8 @@ public class Level2Controller : MonoBehaviour
         motherShipInstance = null;
 
         popUpWaitTime = 0f;
+        
+        missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
 
     }
 
@@ -161,11 +172,6 @@ public class Level2Controller : MonoBehaviour
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //initialize gameplay
-                
-                //activate level objects
-                uiManager.SetLevelObjectsToActive();
-                uiManager.SetAtmosphereObjectToActive();
-                
                 SpawnNormalEnemies();
                 popUpWaitTime = 5;
                 level2Data.popUpIndex++;
@@ -173,6 +179,7 @@ public class Level2Controller : MonoBehaviour
                 break;
             case 2: //Shieldians intro
                 SpawnNormalEnemies();
+                HandleMissionUpdates();
                 if (popUpWaitTime <= 0)
                 {
                     popUpWaitTime = 10;
@@ -181,6 +188,7 @@ public class Level2Controller : MonoBehaviour
                 break;
             case 3: //Mothership intro
                 SpawnNormalEnemies();
+                HandleMissionUpdates();
                 if (popUpWaitTime <= 0)
                 {
                     level2Data.popUpIndex++;
@@ -188,7 +196,7 @@ public class Level2Controller : MonoBehaviour
                 popUpWaitTime -= Time.deltaTime;
                 break;
             case 4: //continue gameplay
-
+                HandleMissionUpdates();
                 SpawnNormalEnemies();
                 if (CheckEndingCriteria())
                 {
@@ -223,6 +231,10 @@ public class Level2Controller : MonoBehaviour
     {
         if (Time.timeScale != 0)
             mouseControl.DisableMouse();
+
+        //activate level objects
+        uiManager.SetLevelObjectsToActive();
+        uiManager.SetAtmosphereObjectToActive();
 
         if (!sceneManager.hasStartedSpawning)
         {
@@ -260,6 +272,7 @@ public class Level2Controller : MonoBehaviour
         if (!sceneManager.motherShipHasEntered)
         {
             level2Data.popUpIndex++;
+            popUpWaitTime = 10;
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
@@ -301,6 +314,36 @@ public class Level2Controller : MonoBehaviour
                popUps[i].SetActive(false);
             }
         }
+    }
+    
+    private void HandleMissionUpdates()
+    {
+        Queue<string> missionUpdates = missionObjectiveBanner.GetMissionUpdates();
+        bool isBannerAvailable = missionObjectiveBanner.GetIsBannerAvailable();
+        
+        Debug.Log("Is Banner Available:" + isBannerAvailable);
+        Debug.Log("Banner Count:" + missionUpdates.Count);
+
+
+        if (missionUpdates.Count > 0 && isBannerAvailable)
+        {
+            missionBannerWaitTime = missionObjectiveBanner.GetBannerWaitTime();
+            missionObjectiveBanner.SetIsBannerAvailable(false);
+            missionObjectiveBanner.gameObject.SetActive(true);
+            var missionUpdate = missionUpdates.Dequeue();
+            Debug.Log("Updating Banner:" + missionUpdate);
+
+            missionObjectiveText.text = missionUpdate;
+        }
+        
+        if (missionBannerWaitTime <= 0)
+        {
+            missionObjectiveBanner.SetIsBannerAvailable(true);
+            missionObjectiveBanner.gameObject.SetActive(false);
+            missionObjectiveBanner.ResetBannerWaitTime();
+        }
+        
+        missionBannerWaitTime -= Time.deltaTime;
     }
     
 }

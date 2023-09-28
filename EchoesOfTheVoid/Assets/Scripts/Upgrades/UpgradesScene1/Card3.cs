@@ -13,6 +13,5 @@ public class Card3 : Card
         upgrade = new ShipHandlingUpgrade();
         upgrade.SetValue(0.5f);
         currentSprite = normalSprite;
-        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
     }
 }

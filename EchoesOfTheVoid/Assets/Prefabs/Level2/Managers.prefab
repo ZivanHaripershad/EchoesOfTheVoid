@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3484862540850577046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3916559323366939671}
+  - component: {fileID: 9101455898971688634}
+  m_Layer: 0
+  m_Name: ObjectiveManager
+  m_TagString: ObjectiveManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3916559323366939671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484862540850577046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 398612021080306550}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9101455898971688634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484862540850577046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3999c99ce688415c80af9457f61047b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  missionObjectiveBanner: {fileID: 0}
 --- !u!1 &4494188772704796908
 GameObject:
   m_ObjectHideFlags: 0
@@ -119,6 +166,8 @@ MonoBehaviour:
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}
   upgradeScene1Manager: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
+  missionObjectiveCanvas: {fileID: 0}
 --- !u!1 &4494188773545616930
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +308,7 @@ MonoBehaviour:
   orbUi: {fileID: 0}
   orbText: {fileID: 0}
   pauseMenu: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
   primaryTargetMessage: {fileID: 0}
 --- !u!1 &5520965529951086682
 GameObject:
@@ -292,6 +342,7 @@ Transform:
   - {fileID: 4494188773545616941}
   - {fileID: 4494188772704796911}
   - {fileID: 4494188773246103072}
+  - {fileID: 3916559323366939671}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

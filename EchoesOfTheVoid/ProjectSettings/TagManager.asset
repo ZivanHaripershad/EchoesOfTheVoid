@@ -26,6 +26,8 @@ TagManager:
   - PowerBar
   - Level2Manager
   - GameManager
+  - MissionObjective
+  - ObjectiveManager
   layers:
   - Default
   - TransparentFX

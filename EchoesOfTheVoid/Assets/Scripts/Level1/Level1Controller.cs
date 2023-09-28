@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,9 +30,17 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private int numberOfEnemiesToKill;
 
     [SerializeField] private GameObject healthLowMessage;
+    [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
+    [SerializeField] private GameObject missionObjectiveCanvas;
+    
+    
+    private Text missionObjectiveText;
+
 
     private Coroutine audioCoroutine;
     private int popupIndex;
+
+    private float missionBannerWaitTime;
     
     struct SceneManager
     {
@@ -70,6 +80,8 @@ public class Level1Controller : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
+        gameManagerData.numberOfEnemiesToKill = numberOfEnemiesToKill;
+        gameManagerData.level = GameManagerData.Level.Level1;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -78,6 +90,8 @@ public class Level1Controller : MonoBehaviour
         Debug.Log("Is Level 1 Shield Enabled: " + gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
+        
+        missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
     }
 
     private bool CheckEndingCriteria()
@@ -118,7 +132,9 @@ public class Level1Controller : MonoBehaviour
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //gameplay
-                
+
+                HandleMissionUpdates();
+
                 if (CheckEndingCriteria())
                 {
                     level1Data.popUpIndex = 2;
@@ -201,5 +217,31 @@ public class Level1Controller : MonoBehaviour
             }
         }
     }
-    
+
+    private void HandleMissionUpdates()
+    {
+        Queue<string> missionUpdates = missionObjectiveBanner.GetMissionUpdates();
+        bool isBannerAvailable = missionObjectiveBanner.GetIsBannerAvailable();
+
+        if (missionUpdates.Count > 0 && isBannerAvailable)
+        {
+            missionBannerWaitTime = missionObjectiveBanner.GetBannerWaitTime();
+            missionObjectiveBanner.SetIsBannerAvailable(false);
+            missionObjectiveBanner.gameObject.SetActive(true);
+            var missionUpdate = missionUpdates.Dequeue();
+            Debug.Log("Updating Banner:" + missionUpdate);
+
+            missionObjectiveText.text = missionUpdate;
+        }
+        
+        if (missionBannerWaitTime <= 0)
+        {
+            missionObjectiveBanner.SetIsBannerAvailable(true);
+            missionObjectiveBanner.gameObject.SetActive(false);
+            missionObjectiveBanner.ResetBannerWaitTime();
+        }
+        
+        missionBannerWaitTime -= Time.deltaTime;
+    }
+
 }

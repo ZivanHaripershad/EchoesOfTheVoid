@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DepositOrbs : MonoBehaviour
 {
@@ -24,11 +26,12 @@ public class DepositOrbs : MonoBehaviour
     private Animator powerFactoryAnim;
     private Animator shieldFactoryAnim;
     private Animator healthFactoryAnim;
-    private ShieldLogic shieldLogic; 
+    private ShieldLogic shieldLogic;
 
     [SerializeField]
     private EnemySpeedControl enemySpeedControl;
 
+    public ObjectiveManager objectiveManager;
 
     // Start is called before the first frame update
     void Start()
@@ -74,6 +77,8 @@ public class DepositOrbs : MonoBehaviour
                     if (orbCounter.orbsCollected >= 1 && orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
                     {
                         orbCounter.planetOrbsDeposited++;
+                        objectiveManager.UpdatePlanetEnergyBanner();
+                        
                         deposited = true;
                         factoryDeposited = OrbFactoryDeposited.Power;
                     }

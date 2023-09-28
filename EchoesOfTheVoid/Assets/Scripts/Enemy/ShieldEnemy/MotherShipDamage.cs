@@ -10,10 +10,12 @@ public class MotherShipDamage : MonoBehaviour
     [SerializeField] private float delayAfterKillingMothership;
     [SerializeField] private SpriteRenderer healthWindowSp;
     [SerializeField] private MotherShipGiveShields motherShipGiveShields;
-    
+    private ObjectiveManager objectiveManager;
+    public GameManagerData gameManagerData;
 
     private void Start()
     {
+        objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -26,6 +28,10 @@ public class MotherShipDamage : MonoBehaviour
 
             if (motherShipHealth.IsDead())
             {
+                if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+                {
+                    objectiveManager.UpdateMothershipDestroyedBanner();
+                }
                 Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
                 AudioManager.Instance.PlaySFX("KillMotherShip");
                 AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);

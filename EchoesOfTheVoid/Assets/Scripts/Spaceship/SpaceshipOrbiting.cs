@@ -111,7 +111,7 @@ public class SpaceshipOrbiting : MonoBehaviour
         }
 
         //this is for every instance after you do your first collection, which then allows you to go to the nearest position of the planet and rotate again
-        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == true){
+        if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet){
 
             //reset the inertia when returning
             inertia = 0; 

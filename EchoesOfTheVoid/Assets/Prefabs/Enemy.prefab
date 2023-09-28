@@ -2257,6 +2257,7 @@ MonoBehaviour:
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
   bulletSoundDelay: 1
   graphics: {fileID: 8012780089176710275}
+  missionObjectiveBanner: {fileID: 71648045883311448, guid: 964255a6aa596b54e82c184ebf76f0d3, type: 3}
 --- !u!1 &8012780089176710275
 GameObject:
   m_ObjectHideFlags: 0

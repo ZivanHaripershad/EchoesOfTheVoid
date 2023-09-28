@@ -128,8 +128,8 @@ MonoBehaviour:
   enabledButton: {fileID: 21300000, guid: 66f83c157bba2f348bb109aa1c7a51c4, type: 3}
   disabledButton: {fileID: 21300000, guid: 6ee93d736809e3840ba3b59f318e0f81, type: 3}
   onHoverButton: {fileID: 21300000, guid: 44a374cde22e7ee499c1758baf6fc7f4, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
   upgradeScene1Manager: {fileID: 0}
+  mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &236035898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecf7837e4a457a4dba816774eee6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  cursorTexture: {fileID: 2800000, guid: 12f3675feaa27c64d88376efc1b325b1, type: 3}
 --- !u!1 &1555595373530551550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1274,6 +1274,7 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: 1899193cf12cde34cbbb9b2709c6450e, type: 3}
   upgradeScene1Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
+  mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &1555595373565661382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1695,6 +1696,7 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: b602a6ee252de4446aa2e643961e5313, type: 3}
   upgradeScene1Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
+  mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &3263166644426051355
 GameObject:
   m_ObjectHideFlags: 0
@@ -2009,3 +2011,4 @@ MonoBehaviour:
   normalSprite: {fileID: 21300000, guid: a8fd1cb0d7f2c974c89f7cabd1f7ffe0, type: 3}
   upgradeScene1Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
+  mouseControl: {fileID: 6556346273793334640}

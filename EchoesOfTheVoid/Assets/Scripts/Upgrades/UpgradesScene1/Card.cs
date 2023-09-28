@@ -10,15 +10,13 @@ public class Card : MonoBehaviour
     // Start is called before the first frame update
     public SpriteRenderer spriteRenderer;
     public GameObject cardDesc;
-    public Texture2D cursorTexture;
     public Sprite hoverSprite;
     public Sprite selectedSprite;
     public Sprite normalSprite;
     public UpgradeScene1Manager upgradeScene1Manager;
     public Text upgradesSelectedText;
+    public MouseControl mouseControl;
     protected Upgrade upgrade;
-    private Vector2 hotSpot = Vector2.zero;
-    private CursorMode cursorMode = CursorMode.Auto;
     protected Sprite currentSprite;
 
     // Start is called before the first frame update
@@ -26,8 +24,7 @@ public class Card : MonoBehaviour
     {
         spriteRenderer.enabled = true;
         cardDesc.SetActive(false);
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
+        mouseControl.EnableMouse();
     }
 
     private void OnMouseDown()
@@ -50,7 +47,7 @@ public class Card : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        mouseControl.EnableMouse();
         spriteRenderer.sprite = hoverSprite;
         transform.localScale = new Vector3(1.1f, 1.1f, 1f);
         cardDesc.SetActive(true);

@@ -31,6 +31,8 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
     [SerializeField] private float orbMagnetRadius;
 
     private GameObject player;
+    
+    [SerializeField] private SpaceshipMode spaceshipMode;
 
 
     // Start is called before the first frame update
@@ -98,7 +100,7 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
             mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
         }
 
-        if (distance < orbMagnetRadius && mustAttract)
+        if (distance < orbMagnetRadius && mustAttract && spaceshipMode.collectionMode)
         {
             Vector3 attraction = direction.normalized * orbMagnetForce;
             rb.AddForce(attraction);
