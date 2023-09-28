@@ -122,8 +122,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minePlanted: {fileID: 998427232293872887}
-  explodeDelay: 2.55
-  explodeRadius: 5
+  explodeDelay: 0.02
+  explosionRadius: 0.5
+  detectionRadius: 0.5
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
 --- !u!82 &998427232293872880
 AudioSource:
@@ -135,7 +136,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: c958b1933b22038438219eb9d22525da, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8c9fb1ed571e1b04ab52953ae38122cc, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

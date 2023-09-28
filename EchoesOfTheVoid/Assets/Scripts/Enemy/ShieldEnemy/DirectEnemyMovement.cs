@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShieldEnemyMovement : MonoBehaviour
+public class DirectEnemyMovement : MonoBehaviour
 {
     [SerializeField] private Vector3 targetPosition;
 
@@ -17,7 +17,7 @@ public class ShieldEnemyMovement : MonoBehaviour
     {
         Vector2 direction = targetPosition - transform.position;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(0f, 0f, angle);
+        Quaternion rotation = Quaternion.Euler(0f, 0f, angle - 90);
         transform.rotation = rotation;
         
         var step =  enemySpeedControl.GetShieldEnemySpeed() * Time.deltaTime; // calculate distance to move
