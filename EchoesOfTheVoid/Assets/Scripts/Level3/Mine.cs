@@ -32,21 +32,16 @@ public class Mine : MonoBehaviour
         InvokeRepeating("CheckMine", 0f, 0.1f);
         player = GameObject.FindGameObjectWithTag("Player");
         cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
-        
-        print(player);
-        print(cameraShake);
     }
 
     // Update is called once per frame
     void CheckMine()
     {
-
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("Player");
             return;
         }
-
 
         if (isCountingDown == false)
         {
@@ -71,6 +66,7 @@ public class Mine : MonoBehaviour
                 {
                     //set off mine to explode
                     cameraShake.Shake();
+                    player.GetComponent<SpaceshipCollection>().Stun();
                 }
                 
                 Destroy(gameObject);
@@ -83,4 +79,5 @@ public class Mine : MonoBehaviour
     {
         return Vector3.Distance(player.transform.position, gameObject.transform.position);
     }
+    
 }

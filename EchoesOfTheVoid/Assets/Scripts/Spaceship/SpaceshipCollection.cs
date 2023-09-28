@@ -32,6 +32,8 @@ public class SpaceshipCollection : MonoBehaviour
     //to restrict the space ship to the screen
     private Camera mainCamera;
     public bool isEjecting;
+    [SerializeField] private float stunWaitTime;
+    private bool isStunned;
 
     void Start()
     {
@@ -51,6 +53,10 @@ public class SpaceshipCollection : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        if (isStunned)
+            return;
+        
         spaceshipMode.currentPosition = transform.position;
 
         if(orbDepositingMode.depositingMode == false){
@@ -128,5 +134,18 @@ public class SpaceshipCollection : MonoBehaviour
                 fireSpriteB.material.color = new Color(1f, 1f, 1f, 1);
             }
         }
+    }
+
+    public void Stun()
+    {
+        print("Stunning");
+        StartCoroutine(StunPlayerCoroutine());
+    }
+
+    private IEnumerator StunPlayerCoroutine()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(stunWaitTime);
+        isStunned = false;
     }
 }
