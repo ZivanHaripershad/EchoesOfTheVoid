@@ -10,17 +10,14 @@ public class StartLevel1 : MonoBehaviour
     public Sprite enabledButton;
     public Sprite disabledButton;
     public Sprite onHoverButton;
-    public Texture2D cursorTexture;
     public UpgradeScene1Manager upgradeScene1Manager;
-    private Vector2 hotSpot = Vector2.zero;
-    private CursorMode cursorMode = CursorMode.Auto;
+    public MouseControl mouseControl;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.enabled = true;
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>().EnableMouse();
+        mouseControl.EnableMouse();
     }
 
     private void Update()
@@ -57,7 +54,7 @@ public class StartLevel1 : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        mouseControl.EnableMouse();
         CheckIfUpgradeIsSet(onHoverButton);
     }
 

@@ -128,8 +128,8 @@ MonoBehaviour:
   enabledButton: {fileID: 21300000, guid: 66f83c157bba2f348bb109aa1c7a51c4, type: 3}
   disabledButton: {fileID: 21300000, guid: 6ee93d736809e3840ba3b59f318e0f81, type: 3}
   onHoverButton: {fileID: 21300000, guid: 44a374cde22e7ee499c1758baf6fc7f4, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
   upgradeScene1Manager: {fileID: 0}
+  mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &236035898
 GameObject:
   m_ObjectHideFlags: 0
@@ -1141,7 +1141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecf7837e4a457a4dba816774eee6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  cursorTexture: {fileID: 2800000, guid: cf1c1f38c48cc0c438d20a8dcaf9f91c, type: 3}
 --- !u!1 &1555595373530551550
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,12 +1268,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1555595373530551545}
   cardDesc: {fileID: 1470234715}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
   hoverSprite: {fileID: 21300000, guid: 1f96253acf35824418a490c8c9437155, type: 3}
   selectedSprite: {fileID: 21300000, guid: 0a6fec67531a1c24f9cdf6c14ce34e90, type: 3}
   normalSprite: {fileID: 21300000, guid: 1899193cf12cde34cbbb9b2709c6450e, type: 3}
   upgradeScene1Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
+  mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &1555595373565661382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,6 +1327,7 @@ GameObject:
   - component: {fileID: 1555595374320233518}
   - component: {fileID: 1555595374320233519}
   - component: {fileID: 3263166645008546084}
+  - component: {fileID: 5448279517991034479}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1422,6 +1423,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5448279517991034479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1555595374320233517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d485df917cc34a7bb8a4490ce4293bef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3263166643789541815
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,12 +1689,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3263166644291205358}
   cardDesc: {fileID: 1502176003}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
   hoverSprite: {fileID: 21300000, guid: f9ed8ce05e0665f4ab9c5abf79009f76, type: 3}
   selectedSprite: {fileID: 21300000, guid: 76659b2f33f9b0b448af5036e857e022, type: 3}
   normalSprite: {fileID: 21300000, guid: b602a6ee252de4446aa2e643961e5313, type: 3}
   upgradeScene1Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
+  mouseControl: {fileID: 6556346273793334640}
 --- !u!1 &3263166644426051355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1990,9 +2003,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3263166644844677006}
   cardDesc: {fileID: 1206842528}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
   hoverSprite: {fileID: 21300000, guid: 61856f63d8200ac44bd527a933dbccef, type: 3}
   selectedSprite: {fileID: 21300000, guid: 50cb84c7f50c0d346abff3491285200c, type: 3}
   normalSprite: {fileID: 21300000, guid: a8fd1cb0d7f2c974c89f7cabd1f7ffe0, type: 3}
   upgradeScene1Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
+  mouseControl: {fileID: 6556346273793334640}

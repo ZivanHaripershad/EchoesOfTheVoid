@@ -25,6 +25,10 @@ TagManager:
   - Shield
   - PowerBar
   - Level2Manager
+  - GameManager
+  - MissionObjective
+  - ObjectiveManager
+  - DoubleDamageBullet
   layers:
   - Default
   - TransparentFX

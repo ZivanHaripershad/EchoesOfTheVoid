@@ -14,6 +14,7 @@ public class OrbCounterUI : MonoBehaviour
     [SerializeField] private OrbCounter orbCounter;
 
     void Awake(){
+        orbCounterText.text = "0";
         instance = this;
     }
 

@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3484862540850577046
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3916559323366939671}
+  - component: {fileID: 9101455898971688634}
+  m_Layer: 0
+  m_Name: ObjectiveManager
+  m_TagString: ObjectiveManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3916559323366939671
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484862540850577046}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 398612021080306550}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9101455898971688634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3484862540850577046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3999c99ce688415c80af9457f61047b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  missionObjectiveBanner: {fileID: 0}
 --- !u!1 &4494188772704796908
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,7 +59,7 @@ GameObject:
   - component: {fileID: 4494188772704796910}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,6 +147,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   popupParent: {fileID: 0}
   mouseControl: {fileID: 0}
   healthDeposit: {fileID: 0}
@@ -111,11 +161,12 @@ MonoBehaviour:
   normalAudioSpeed: 1
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 1.8
-  numberOfEnemiesToKillToProceedToBoss: 1
+  numberOfEnemiesToKillToProceedToBoss: 5
   motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}
-  upgradeScene1Manager: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
+  missionObjectiveCanvas: {fileID: 0}
 --- !u!1 &4494188773545616930
 GameObject:
   m_ObjectHideFlags: 0
@@ -160,11 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa01aee57605679479ef0b56964a51e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 3
   minEnemiesToSpawn: 1
-  maxEnemiesToSpawn: 1
-  spawnInterval: 5
-  spawnTimerVariation: 4
+  maxEnemiesToSpawn: 3
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
   shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
   shieldEnemySpawnPoints:
@@ -256,6 +305,7 @@ MonoBehaviour:
   orbUi: {fileID: 0}
   orbText: {fileID: 0}
   pauseMenu: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
   primaryTargetMessage: {fileID: 0}
 --- !u!1 &5520965529951086682
 GameObject:
@@ -289,6 +339,7 @@ Transform:
   - {fileID: 4494188773545616941}
   - {fileID: 4494188772704796911}
   - {fileID: 4494188773246103072}
+  - {fileID: 3916559323366939671}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

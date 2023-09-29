@@ -21,6 +21,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject orbUi;
     [SerializeField] private GameObject orbText;
     [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject missionObjectiveBanner;
     
     //level1
     [SerializeField] private GameObject primaryTargetMessage; 
@@ -45,9 +46,12 @@ public class UIManager : MonoBehaviour
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
         
-        //todo: level1 uiManager
+        //todo: level2 uiManager
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
+        
+        if (missionObjectiveBanner)
+            missionObjectiveBanner.SetActive(false);
 
         levelLayersAreActive = false;
         mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
@@ -87,9 +91,12 @@ public class UIManager : MonoBehaviour
         orbUi.SetActive(false);
         orbText.SetActive(false);
         
-        //todo: level1
+        //todo: level2
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
+        
+        if (missionObjectiveBanner)
+            missionObjectiveBanner.SetActive(false);
     }
 
     public void DestroyRemainingOrbs()
@@ -116,16 +123,6 @@ public class UIManager : MonoBehaviour
             mouseControl.EnableMouse();
             
             Time.timeScale = 0; 
-        }
-    }
-
-    public void DestoryRemainingEnemies()
-    {
-        var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        
-        for (int i = 0; i < enemies.Length; i++)
-        {
-            Destroy(enemies[i]);
         }
     }
 }

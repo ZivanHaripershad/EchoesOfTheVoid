@@ -1,9 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MotherShipDamage : MonoBehaviour
 {
@@ -15,14 +10,12 @@ public class MotherShipDamage : MonoBehaviour
     [SerializeField] private float delayAfterKillingMothership;
     [SerializeField] private SpriteRenderer healthWindowSp;
     [SerializeField] private MotherShipGiveShields motherShipGiveShields;
-    
-    private Level1Controller level1Controller;
-    private SpriteRenderer sp;
+    private ObjectiveManager objectiveManager;
+    public GameManagerData gameManagerData;
 
     private void Start()
     {
-        level1Controller = GameObject.FindGameObjectWithTag("Level1Manager").GetComponent<Level1Controller>();
-        sp = GetComponent<SpriteRenderer>();
+        objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -30,11 +23,25 @@ public class MotherShipDamage : MonoBehaviour
         if (other.gameObject.CompareTag("Bullet"))
         {
             //damage
+            motherShipHealth.TakeDamage(1);
+        }
+        
+        if (other.gameObject.CompareTag("DoubleDamageBullet"))
+        {
+            //damage
+            motherShipHealth.TakeDamage(2);
+        }
+        
+        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("DoubleDamageBullet"))
+        {
             hitBoss.Play();
-            motherShipHealth.TakeDamage();
 
             if (motherShipHealth.IsDead())
             {
+                if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                {
+                    objectiveManager.UpdateMothershipDestroyedBanner();
+                }
                 Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
                 AudioManager.Instance.PlaySFX("KillMotherShip");
                 AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);

@@ -10,17 +10,14 @@ public class AudioButton : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite defaultAudioButtonText;
     public Sprite hoveredAudioButtonText;
-    public Texture2D cursorTexture;
-    private Vector2 hotSpot = Vector2.zero;
-    private CursorMode cursorMode = CursorMode.Auto;
+    [SerializeField] private MouseControl mouseControl;
     public SettingsDataLive settingsData;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.sprite = defaultAudioButtonText;
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        
+        mouseControl.EnableMouse();
     }
 
     private void OnMouseDown()
@@ -43,7 +40,7 @@ public class AudioButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        mouseControl.EnableMouse();
         spriteRenderer.sprite = hoveredAudioButtonText;
     }
 

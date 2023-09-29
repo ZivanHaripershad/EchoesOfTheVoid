@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ecd0e73cc9c5142b50a9b97df286fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
   lowHealth: 1
   animator: {fileID: 8430692945547833122}
 --- !u!1 &7975090668322753650
@@ -336,6 +336,7 @@ MonoBehaviour:
   delayAfterKillingMothership: 5
   healthWindowSp: {fileID: 6576416008249461642}
   motherShipGiveShields: {fileID: 7975090669408555782}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
 --- !u!82 &-8464398043955780724
 AudioSource:
   m_ObjectHideFlags: 0

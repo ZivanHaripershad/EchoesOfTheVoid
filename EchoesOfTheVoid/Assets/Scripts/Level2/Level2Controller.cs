@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -37,9 +38,17 @@ public class Level2Controller : MonoBehaviour
 
     private Coroutine audioCoroutine;
     private GameObject motherShipInstance;
-    public UpgradeScene1Manager upgradeScene1Manager;
     private int popupIndex;
+
+    private float popUpWaitTime;
     
+    [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
+    [SerializeField] private GameObject missionObjectiveCanvas;
+    
+    
+    private Text missionObjectiveText;
+    private float missionBannerWaitTime;
+
     struct SceneManager
     {
         public float audioSpeed;
@@ -52,7 +61,6 @@ public class Level2Controller : MonoBehaviour
     }
 
     private SceneManager sceneManager;
-    
     
     private void Start()
     {
@@ -77,23 +85,47 @@ public class Level2Controller : MonoBehaviour
         //reset counters
         orbCounter.planetOrbMax = 10;
         orbCounter.planetOrbsDeposited = 0;
+        orbCounter.orbsCollected = 0;
         level2Data.popUpIndex = 0;
 
         //set up game manager
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
-        gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
+        gameManagerData.expireOrbs = true;
+        gameManagerData.level = GameManagerData.Level.Level2;
+        gameManagerData.isShieldUp = false;
+        gameManagerData.spawnInterval = 3;
+        gameManagerData.spawnTimerVariation = 2;
+        gameManagerData.timeTillNextWave = 4;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.EnableShield();
+        
+        Debug.Log("Is Level 2 Shield Enabled: " + gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
         
         //set mothership instance to null to check if it's spawned
         motherShipInstance = null;
+
+        popUpWaitTime = 0f;
         
+        missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
+
+        //remove upgrades from other levels
+        if (SelectedUpgradeLevel1.Instance != null &&
+            SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        {
+            SelectedUpgradeLevel1.Instance.SetUpgrade(null);
+        }
+
+        if (SelectedUpgradeLevel3.Instance != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
+        {
+            SelectedUpgradeLevel3.Instance.SetUpgrade(null);
+        }
     }
 
     private bool CheckEndingCriteria()
@@ -151,27 +183,50 @@ public class Level2Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
+                
                 enemySpawning.ResetSpawning();
                 break;
-            case 1: //gameplay
-                
+            case 1: //initialize gameplay
                 SpawnNormalEnemies();
-                
+                popUpWaitTime = 5;
+                level2Data.popUpIndex++;
+
+                break;
+            case 2: //Shieldians intro
+                SpawnNormalEnemies();
+                HandleMissionUpdates();
+                if (popUpWaitTime <= 0)
+                {
+                    popUpWaitTime = 10;
+                }
+                popUpWaitTime -= Time.deltaTime;
+                break;
+            case 3: //Mothership intro
+                SpawnNormalEnemies();
+                HandleMissionUpdates();
+                if (popUpWaitTime <= 0)
+                {
+                    level2Data.popUpIndex++;
+                }
+                popUpWaitTime -= Time.deltaTime;
+                break;
+            case 4: //continue gameplay
+                HandleMissionUpdates();
+                SpawnNormalEnemies();
                 if (CheckEndingCriteria())
                 {
-                    level2Data.popUpIndex = 2;
+                    level2Data.popUpIndex = 5;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
                     return;
                 }
-                
-                
+
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
                     RemoveLevelObjects();
-                    level2Data.popUpIndex = 3;
+                    level2Data.popUpIndex = 6;
                 }
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
@@ -179,10 +234,6 @@ public class Level2Controller : MonoBehaviour
                     healthDeposit.LowHealthStatus();
                 }
 
-                break;
-            case 2: //retry screen
-                break;
-            case 3: //ending screen
                 break;
         }
         
@@ -207,9 +258,8 @@ public class Level2Controller : MonoBehaviour
         }
 
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss && GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
         {
-            
             SpawnBoss();
         }
     }
@@ -220,10 +270,6 @@ public class Level2Controller : MonoBehaviour
         //intro scene has not finished yet
         if (!sceneManager.motherShipIntroScene)
         {
-            
-            Debug.Log("Intro scene");
-            
-            
             enemySpawning.StopSpawning();
             enemySpawning.ResetSpawning();
             
@@ -240,6 +286,8 @@ public class Level2Controller : MonoBehaviour
 
         if (!sceneManager.motherShipHasEntered)
         {
+            level2Data.popUpIndex++;
+            popUpWaitTime = 10;
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
             sceneManager.motherShipHasEntered = true;
             motherShipInstance = Instantiate(motherShip, new Vector3(2.41f, -6.48f, 0), Quaternion.Euler(0, 0, -45));
@@ -281,6 +329,32 @@ public class Level2Controller : MonoBehaviour
                popUps[i].SetActive(false);
             }
         }
+    }
+    
+    private void HandleMissionUpdates()
+    {
+        Queue<string> missionUpdates = missionObjectiveBanner.GetMissionUpdates();
+        bool isBannerAvailable = missionObjectiveBanner.GetIsBannerAvailable();
+        
+        if (missionUpdates.Count > 0 && isBannerAvailable)
+        {
+            missionBannerWaitTime = missionObjectiveBanner.GetBannerWaitTime();
+            missionObjectiveBanner.SetIsBannerAvailable(false);
+            missionObjectiveBanner.gameObject.SetActive(true);
+            var missionUpdate = missionUpdates.Dequeue();
+            Debug.Log("Updating Banner:" + missionUpdate);
+
+            missionObjectiveText.text = missionUpdate;
+        }
+        
+        if (missionBannerWaitTime <= 0)
+        {
+            missionObjectiveBanner.SetIsBannerAvailable(true);
+            missionObjectiveBanner.gameObject.SetActive(false);
+            missionObjectiveBanner.ResetBannerWaitTime();
+        }
+        
+        missionBannerWaitTime -= Time.deltaTime;
     }
     
 }

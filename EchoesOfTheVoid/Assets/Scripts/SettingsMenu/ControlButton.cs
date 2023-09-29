@@ -11,17 +11,14 @@ public class ControlButton : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite defaultControlButtonText;
     public Sprite hoveredControlButtonText;
-    public Texture2D cursorTexture;
-    private Vector2 hotSpot = Vector2.zero;
-    private CursorMode cursorMode = CursorMode.Auto;
     public SettingsDataLive settingsData;
+    [SerializeField] private MouseControl mouseControl;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.sprite = defaultControlButtonText;
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
-        
+        mouseControl.EnableMouse();
     }
 
     public void OnMouseDown()
@@ -46,7 +43,7 @@ public class ControlButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        mouseControl.EnableMouse();
         spriteRenderer.sprite = hoveredControlButtonText;
     }
 

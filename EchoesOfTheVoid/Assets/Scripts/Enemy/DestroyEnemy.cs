@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -17,10 +18,9 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField] private AudioSource destroyEnemySoundEffect;
     [SerializeField] private AudioSource crashIntoPlanetSoundEffect;
     [SerializeField] private HealthCount healthCount;
-
     [SerializeField] private float bulletSoundDelay;
-
     [SerializeField] private GameObject graphics;
+    private ObjectiveManager objectiveManager;
 
     private Animator earthDamageAnimator; 
 
@@ -33,6 +33,7 @@ public class DestroyEnemy : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         earthDamageAnimator = GameObject.FindGameObjectWithTag("EarthDamage").GetComponent<Animator>();
         activateShield = GetComponentInChildren<ActivateShield>();
+        objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
     }
 
     void checkDamage()
@@ -74,7 +75,7 @@ public class DestroyEnemy : MonoBehaviour
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
             crashIntoPlanetSoundEffect.Play();
             
-        if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("DoubleDamageBullet"))
         {
             if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive)
             {
@@ -101,6 +102,15 @@ public class DestroyEnemy : MonoBehaviour
                 //destroy the bullet
                 Destroy(collision.gameObject);
             }
+            
+            if (collision.gameObject.CompareTag("DoubleDamageBullet"))
+            {
+                
+                DestroyGameObject(collision, true, collision.gameObject.transform);
+
+                //destroy the bullet
+                Destroy(collision.gameObject);
+            }
                 
         }
 
@@ -118,6 +128,11 @@ public class DestroyEnemy : MonoBehaviour
     {
         gameManagerData.numberOfEnemiesKilled++;
         destroyEnemySoundEffect.Play();
+
+        if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+        {
+            objectiveManager.UpdateEnemiesDestroyedBanner();
+        }
 
         GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
         Rigidbody2D rb = myOrb.GetComponent<Rigidbody2D>();

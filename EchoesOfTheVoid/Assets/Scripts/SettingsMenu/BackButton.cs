@@ -8,15 +8,13 @@ public class BackButton : MonoBehaviour
     public SpriteRenderer spriteRenderer;
     public Sprite defaultMainMenuText;
     public Sprite hoveredMainMenueText;
-    public Texture2D cursorTexture;
-    private Vector2 hotSpot = Vector2.zero;
-    private CursorMode cursorMode = CursorMode.Auto;
+    [SerializeField] private MouseControl mouseControl;
 
     // Start is called before the first frame update
     void Start()
     {
         spriteRenderer.sprite = defaultMainMenuText;
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        mouseControl.EnableMouse();
     }
 
     private void OnMouseDown()
@@ -27,7 +25,7 @@ public class BackButton : MonoBehaviour
 
     private void OnMouseEnter()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        mouseControl.EnableMouse();
         spriteRenderer.sprite = hoveredMainMenueText;
     }
 

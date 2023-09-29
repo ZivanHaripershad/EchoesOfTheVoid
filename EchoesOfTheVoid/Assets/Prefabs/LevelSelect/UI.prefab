@@ -160,7 +160,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 750a2ba3bbbea8c4086f3a08d7043f71, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc020f38f87bde84cb7331e8f93bf3fe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -184,7 +184,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011187434, y: -0.04441309}
+  m_Offset: {x: 0.07744777, y: -0.110889435}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -195,7 +195,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.069595, y: 1.9679601}
+  m_Size: {x: 4.1525326, y: 4.361122}
   m_EdgeRadius: 0
 --- !u!114 &1961207137504684255
 MonoBehaviour:
@@ -311,7 +311,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.021429062, y: -0.023931503}
+  m_Offset: {x: 0.03396797, y: -0.07932818}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -322,7 +322,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.090076, y: 2.0089228}
+  m_Size: {x: 4.150854, y: 4.069702}
   m_EdgeRadius: 0
 --- !u!114 &1961207137657125907
 MonoBehaviour:
@@ -397,7 +397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.43137255}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -932,7 +932,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.011188269, y: -0.023931503}
+  m_Offset: {x: 0.010970831, y: 0.05362487}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -943,7 +943,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9467049, y: 1.9679599}
+  m_Size: {x: 4.2069135, y: 4.0287385}
   m_EdgeRadius: 0
 --- !u!114 &1961207138214527859
 MonoBehaviour:
@@ -1363,6 +1363,7 @@ GameObject:
   - component: {fileID: 2587342751565911984}
   - component: {fileID: 2587342751565911985}
   - component: {fileID: 1961207137765851834}
+  - component: {fileID: 710875783}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -1458,6 +1459,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &710875783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587342751565911987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a7a55012ee44a7ebb28f118003923a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2587342752320777048
 GameObject:
   m_ObjectHideFlags: 0
@@ -1573,7 +1586,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 439bc064ffb0ff544a7deedc1fd81a66, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ec637309b328204791182e68b37b0ca, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1597,7 +1610,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.052150846, y: -0.0034499168}
+  m_Offset: {x: -0.118626595, y: 0.040868044}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -1608,7 +1621,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.0286314, y: 2.0498857}
+  m_Size: {x: 4.155887, y: 3.8669162}
   m_EdgeRadius: 0
 --- !u!114 &1961207138178780103
 MonoBehaviour:
@@ -1668,4 +1681,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecf7837e4a457a4dba816774eee6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  cursorTexture: {fileID: 2800000, guid: cf1c1f38c48cc0c438d20a8dcaf9f91c, type: 3}

@@ -1,9 +1,11 @@
 
+using UnityEngine.SceneManagement;
+
 public class LevelThreeSelect : LevelSelectButtonInterface
 {
     public override void OnMouseDown()
     {
-        AudioManager.Instance.PlaySFX("CannotDeposit");
-        // SceneManager.LoadScene("Level3");
+        AudioManager.Instance.PlaySFX("ButtonClick");
+        SceneManager.LoadScene("UpgradeScene3");
     }
 }
