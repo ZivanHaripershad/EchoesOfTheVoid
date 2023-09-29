@@ -38,7 +38,6 @@ public class Level2Controller : MonoBehaviour
 
     private Coroutine audioCoroutine;
     private GameObject motherShipInstance;
-    public UpgradeScene1Manager upgradeScene1Manager;
     private int popupIndex;
 
     private float popUpWaitTime;
@@ -96,6 +95,9 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.expireOrbs = true;
         gameManagerData.level = GameManagerData.Level.Level2;
         gameManagerData.isShieldUp = false;
+        gameManagerData.spawnInterval = 3;
+        gameManagerData.spawnTimerVariation = 2;
+        gameManagerData.timeTillNextWave = 4;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -117,6 +119,12 @@ public class Level2Controller : MonoBehaviour
             SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
         {
             SelectedUpgradeLevel1.Instance.SetUpgrade(null);
+        }
+
+        if (SelectedUpgradeLevel3.Instance != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
+        {
+            SelectedUpgradeLevel3.Instance.SetUpgrade(null);
         }
     }
 

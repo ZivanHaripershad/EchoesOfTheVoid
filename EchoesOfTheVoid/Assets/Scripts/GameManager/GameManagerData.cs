@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu]
@@ -14,6 +12,9 @@ public class GameManagerData : ScriptableObject
     public int numberOfEnemiesToKill;
     public Level level;
     public bool isShieldUp;
+    public float spawnInterval;
+    public float timeTillNextWave;
+    public float spawnTimerVariation;
     
     public enum Level
     {

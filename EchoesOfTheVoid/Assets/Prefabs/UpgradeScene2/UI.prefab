@@ -312,7 +312,7 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: 'Ship handling is
 
-    increased by 5%'
+    increased by 10%'
 --- !u!1 &468748538
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1640,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: b602a6ee252de4446aa2e643961e5313, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 6755e3acd6460044b93d054210b04b13, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1691,9 +1691,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3263166644291205358}
   cardDesc: {fileID: 1502176003}
-  hoverSprite: {fileID: 21300000, guid: f9ed8ce05e0665f4ab9c5abf79009f76, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 76659b2f33f9b0b448af5036e857e022, type: 3}
-  normalSprite: {fileID: 21300000, guid: b602a6ee252de4446aa2e643961e5313, type: 3}
+  hoverSprite: {fileID: 21300000, guid: fcff126e1e0a51d43aec0c4d3af13b48, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 9ef53c07639e5c844a43d560b14f8270, type: 3}
+  normalSprite: {fileID: 21300000, guid: 6755e3acd6460044b93d054210b04b13, type: 3}
   upgradeScene2Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
   mouseControl: {fileID: 6556346273793334640}

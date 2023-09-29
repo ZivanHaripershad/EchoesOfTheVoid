@@ -51,6 +51,12 @@ public class SpaceshipOrbiting : MonoBehaviour
             var upgradeInertia = SelectedUpgradeLevel1.Instance.GetUpgrade().GetValue();
             inertiaReductionFactor += (inertiaReductionFactor * upgradeInertia);
         }
+        else if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+            SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "ShipHandlingUpgrade")
+        {
+            var upgradeInertia = SelectedUpgradeLevel2.Instance.GetUpgrade().GetValue();
+            inertiaReductionFactor += (inertiaReductionFactor * upgradeInertia);
+        }
 
         Cursor.visible = false;
     }

@@ -242,12 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e148ebcea3f24e40b1323667c388d4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 3
   minEnemiesToSpawn: 1
-  maxEnemiesToSpawn: 1
-  spawnInterval: 5
-  spawnTimerVariation: 4
+  maxEnemiesToSpawn: 3
   enemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
 --- !u!1 &7018123691496249568
 GameObject:
   m_ObjectHideFlags: 0

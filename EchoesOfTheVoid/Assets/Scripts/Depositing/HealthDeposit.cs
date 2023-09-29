@@ -40,7 +40,7 @@ public class HealthDeposit : Deposit
         var lowHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.3);
         var mediumHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.7);
 
-        if (healthCount.currentHealth > 0 && healthCount.currentHealth <= lowHealthBounds)
+        if (healthCount.currentHealth <= lowHealthBounds)
         {
             return HealthCount.HealthStatus.LOW;
         }

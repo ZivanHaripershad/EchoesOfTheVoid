@@ -20,7 +20,7 @@ public class ShieldDeposit : Deposit
                 return;
             }
         }
-        
+
         if(orbCounter.orbsCollected >= factoryCosts.shieldCost && !gameManagerData.isShieldUp){
             spriteRenderer.sprite = enabledFactorySprite;
         }

@@ -21,6 +21,7 @@ public class ShieldLogic : MonoBehaviour
         if (shieldCount == 0)
         {
             gameManagerData.isShieldUp = false;
+            return;
         }
 
         gameManagerData.isShieldUp = true;

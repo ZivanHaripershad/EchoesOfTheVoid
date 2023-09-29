@@ -13,6 +13,13 @@ public class BulletScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (SelectedUpgradeLevel3.Instance != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "BulletAccuracyUpgrade")
+        {
+            innacuracy -= (innacuracy * SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue());
+        }
+        
         jitter = Random.Range(-innacuracy, innacuracy);
     }
 

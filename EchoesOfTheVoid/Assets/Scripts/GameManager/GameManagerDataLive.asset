@@ -18,3 +18,9 @@ MonoBehaviour:
   tutorialActive: 0
   tutorialWaitTime: 10
   hasResetAmmo: 1
+  numberOfEnemiesToKill: 20
+  level: 1
+  isShieldUp: 0
+  spawnInterval: 3
+  timeTillNextWave: 4
+  spawnTimerVariation: 2

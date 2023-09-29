@@ -176,6 +176,12 @@ public class BulletSpawnScript : MonoBehaviour
                             {
                                 Instantiate(doubleDamageBullet, transform.position, transform.rotation);
                             }
+                            else if (SelectedUpgradeLevel3.Instance != null &&
+                                     SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                                     SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
+                            {
+                                Instantiate(doubleDamageBullet, transform.position, transform.rotation);
+                            }
                             else
                             {
                                 Instantiate(bullet, transform.position, transform.rotation);
