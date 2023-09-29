@@ -51,7 +51,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         Vector3 initialScale = transform.localScale;
         float elapsedTime = 0f;
         float scaleUpElapsedTime = 0f;
-
+        
         while (elapsedTime < duration)
         {
             transform.localScale = Vector3.Lerp(initialScale, Vector3.zero, elapsedTime / duration);

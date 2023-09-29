@@ -18,7 +18,11 @@ public class MineDroppingMovement : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float rotationOffset;
     [SerializeField] private int waypointVariation;
+    [SerializeField] private GameObject mine;
+    [SerializeField] private float mineWaitDuration;
 
+    private float currentWaitDuration;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +32,7 @@ public class MineDroppingMovement : MonoBehaviour
         isFlyingToWaypoint = true;
 
         waypoints = new Vector3[waypointObjects.Length];
+        currentWaitDuration = mineWaitDuration;
 
         for (int i = 0; i < waypoints.Length; i++)
         {
@@ -66,6 +71,8 @@ public class MineDroppingMovement : MonoBehaviour
 
     private void Update()
     {
+        currentWaitDuration -= Time.deltaTime;
+        
         if (isFlyingToWaypoint)
         {
             Vector3 targetDirection = GetDirection(waypoints[currentWaypoint]);
@@ -105,6 +112,11 @@ public class MineDroppingMovement : MonoBehaviour
         {
             currentWaypoint = GetNewWaypoint();
             isFlyingToWaypoint = true;
+            if (currentWaitDuration < 0)
+            {
+                Instantiate(mine, transform.position, new Quaternion(0, 0, 0, 0));
+                currentWaitDuration = mineWaitDuration;
+            }
         }
 
     }

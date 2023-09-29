@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minePlanted: {fileID: 998427232293872887}
   explodeDelay: 0.02
-  explosionRadius: 0.5
-  detectionRadius: 0.5
+  explosionRadius: 2
+  detectionRadius: 2
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
 --- !u!82 &998427232293872880
 AudioSource:
