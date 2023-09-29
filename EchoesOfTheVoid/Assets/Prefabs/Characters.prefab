@@ -1280,6 +1280,7 @@ MonoBehaviour:
   cannotFireSoundEffect: {fileID: 1078472946}
   reloadTimePerBullet: 0.2
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
+  doubleDamageBullet: {fileID: 0}
 --- !u!82 &1078472946
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2810,6 +2811,9 @@ MonoBehaviour:
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
   enemySpeedControl: {fileID: 0}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
+  objectiveManager: {fileID: 0}
 --- !u!114 &961352416
 MonoBehaviour:
   m_ObjectHideFlags: 0

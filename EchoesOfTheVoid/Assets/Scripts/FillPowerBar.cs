@@ -40,6 +40,10 @@ public class FillPowerBar : MonoBehaviour
 
     private bool isStillFilling;
     
+    [SerializeField] private GameManagerData gameManagerData;
+    [SerializeField] private float reduceSpawnIntervalAndVariation;
+    [SerializeField] private float reduceTimeTillNextWave;
+    
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -86,22 +90,37 @@ public class FillPowerBar : MonoBehaviour
             {
                 currTimeFilled = 0;
                 prevSprite++; 
+                
+                if (prevSprite == 7)
+                {
+                    fillEnergySound[0].Play();
+                    ReduceEnemySpawning();
+                }
+
+                if (prevSprite == 38)
+                {
+                    fillEnergySound[1].Play();
+                    ReduceEnemySpawning();
+                }
+
+                if (prevSprite == 69)
+                {
+                    fillEnergySound[2].Play();
+                    ReduceEnemySpawning();
+                }
+
+                if (prevSprite == 101)
+                {
+                    fillEnergySound[3].Play();
+                    ReduceEnemySpawning();
+                }
+
+                if (prevSprite == 142)
+                {
+                    fillEnergySound[4].Play();
+                    ReduceEnemySpawning();
+                }
             }
-
-            if (prevSprite == 7) 
-                fillEnergySound[0].Play();
-
-            if (prevSprite == 38)
-                fillEnergySound[1].Play();
-            
-            if (prevSprite == 69)
-                fillEnergySound[2].Play();
-
-            if (prevSprite == 101)
-                fillEnergySound[3].Play();
-            
-            if (prevSprite == 142)
-                fillEnergySound[4].Play();
             
             haloAnimator.SetBool("mustGlow", true);
         }
@@ -118,5 +137,12 @@ public class FillPowerBar : MonoBehaviour
 
         if (prevSprite == sprites.Length - 1)
             isStillFilling = false;
+    }
+
+    private void ReduceEnemySpawning()
+    {
+        gameManagerData.spawnInterval *= reduceSpawnIntervalAndVariation;
+        gameManagerData.spawnTimerVariation *= reduceSpawnIntervalAndVariation;
+        gameManagerData.timeTillNextWave *= reduceTimeTillNextWave;
     }
 }

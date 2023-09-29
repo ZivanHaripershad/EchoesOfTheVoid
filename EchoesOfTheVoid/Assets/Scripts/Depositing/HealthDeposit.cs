@@ -18,6 +18,15 @@ public class HealthDeposit : Deposit
 
     override 
     public void RenderSprites(){
+        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+        {
+            if (!tutorialData.depositHealth)
+            {
+                spriteRenderer.sprite = disabledFactorySprite;
+                return;
+            }
+        }
+        
         if(orbCounter.orbsCollected >= factoryCosts.healthCost && healthCount.currentHealth < healthCount.maxHealth){
             spriteRenderer.sprite = enabledFactorySprite;
         }
@@ -31,7 +40,7 @@ public class HealthDeposit : Deposit
         var lowHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.3);
         var mediumHealthBounds = Math.Ceiling(healthCount.maxHealth * 0.7);
 
-        if (healthCount.currentHealth > 0 && healthCount.currentHealth <= lowHealthBounds)
+        if (healthCount.currentHealth <= lowHealthBounds)
         {
             return HealthCount.HealthStatus.LOW;
         }

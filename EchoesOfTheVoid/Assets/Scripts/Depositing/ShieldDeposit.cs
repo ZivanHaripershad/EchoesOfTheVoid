@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class ShieldDeposit : Deposit
 {
-    public ShieldCounter shieldCounter;
-
     override 
     public void RenderSprites(){
         if (!gameManager.IsShieldEnabled())
@@ -14,7 +12,16 @@ public class ShieldDeposit : Deposit
             return;
         }
         
-        if(orbCounter.orbsCollected >= factoryCosts.shieldCost && !shieldCounter.isShieldActive){
+        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+        {
+            if (!tutorialData.depositShield)
+            {
+                spriteRenderer.sprite = disabledFactorySprite;
+                return;
+            }
+        }
+
+        if(orbCounter.orbsCollected >= factoryCosts.shieldCost && !gameManagerData.isShieldUp){
             spriteRenderer.sprite = enabledFactorySprite;
         }
         else{

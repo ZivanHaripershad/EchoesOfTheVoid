@@ -6,4 +6,8 @@ using UnityEngine;
 public class TutorialData : ScriptableObject
 {
     public int popUpIndex;
+    public bool depositPower;
+    public bool depositAmmo;
+    public bool depositHealth;
+    public bool depositShield;
 }

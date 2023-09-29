@@ -3,6 +3,7 @@ using System.Collections;
 using System.Net.Mime;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 public class TutorialLevelController : MonoBehaviour
@@ -13,8 +14,8 @@ public class TutorialLevelController : MonoBehaviour
     private GameManagerData gameManagerData;
     [SerializeField]
     private GameManager gameManager;
-    [SerializeField]
-    private EnemySpawning enemySpawning;
+    [FormerlySerializedAs("enemySpawning")] [SerializeField]
+    private TutorialEnemySpawning tutorialEnemySpawning;
     [SerializeField]
     private UIManager uiManager;
     [SerializeField]
@@ -63,12 +64,19 @@ public class TutorialLevelController : MonoBehaviour
         orbCounter.orbsCollected = 0;
 
         tutorialData.popUpIndex = 0;
+        tutorialData.depositPower = false;
+        tutorialData.depositAmmo = false;
+        tutorialData.depositHealth = false;
+        tutorialData.depositShield = false;
 
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.tutorialWaitTime = 10f;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.level = GameManagerData.Level.Tutorial;
+        gameManagerData.spawnInterval = 3;
+        gameManagerData.spawnTimerVariation = 2;
+        gameManagerData.timeTillNextWave = 4;
 
         healthCount.currentHealth = healthCount.maxHealth - 1;
 
@@ -92,6 +100,12 @@ public class TutorialLevelController : MonoBehaviour
             SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
         {
             SelectedUpgradeLevel2.Instance.SetUpgrade(null);
+        }
+        
+        if (SelectedUpgradeLevel3.Instance != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
+        {
+            SelectedUpgradeLevel3.Instance.SetUpgrade(null);
         }
     }
 
@@ -160,7 +174,7 @@ public class TutorialLevelController : MonoBehaviour
             
             if (gameManagerData.tutorialWaitTime <= 0)
             {
-                enemySpawning.ResetSpawning();
+                tutorialEnemySpawning.ResetSpawning();
                 tutorialData.popUpIndex++;
             }
             gameManagerData.tutorialWaitTime -= Time.deltaTime;
@@ -172,7 +186,7 @@ public class TutorialLevelController : MonoBehaviour
                 mouseControl.DisableMouse();
 
             variables.mustPause = true;
-            enemySpawning.StartSpawningEnemies(4, false);
+            tutorialEnemySpawning.StartSpawningEnemies(4, false);
             gameManagerData.expireOrbs = false;
             gameManagerData.tutorialActive = true;
             
@@ -276,7 +290,8 @@ public class TutorialLevelController : MonoBehaviour
             //bring up orb menu screen
             
             uiManager.SetAtmosphereObjectToActive();
-            
+            tutorialData.depositPower = true;
+
             if (Input.GetKey(KeyCode.S))
             {
                 tutorialData.popUpIndex++;
@@ -285,7 +300,7 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 13)
         {
             //deposit to planet network
-            
+
             if (Input.GetKey(KeyCode.J))
             {
                 gameManagerData.tutorialWaitTime = 10;
@@ -294,6 +309,8 @@ public class TutorialLevelController : MonoBehaviour
         }
         else if (popUpIndex == 14)
         {
+            tutorialData.depositPower = false;
+
             //planet network explanation
             if (gameManagerData.tutorialWaitTime <= 0)
             {
@@ -304,7 +321,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 15)
         {
             //deposit to replenish ammo
-            
+            tutorialData.depositAmmo = true;
+
             if (Input.GetKey(KeyCode.I))
             {
                 tutorialData.popUpIndex++;
@@ -313,7 +331,9 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 16)
         {
             //deposit to planet health
-            
+            tutorialData.depositAmmo = false;
+            tutorialData.depositHealth = true;
+
             if (Input.GetKey(KeyCode.K))
             {
                 gameManagerData.tutorialWaitTime = 10;
@@ -322,6 +342,8 @@ public class TutorialLevelController : MonoBehaviour
         }
         else if (popUpIndex == 17)
         {
+            tutorialData.depositHealth = false;
+
             //congrats player screen
             if (gameManagerData.tutorialWaitTime <= 0)
             {

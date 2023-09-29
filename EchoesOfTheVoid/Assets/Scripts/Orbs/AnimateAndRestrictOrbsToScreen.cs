@@ -99,6 +99,12 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
             var upgrade = SelectedUpgradeLevel1.Instance.GetUpgrade();
             mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
         }
+        
+        if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
+        {
+            var upgrade = SelectedUpgradeLevel2.Instance.GetUpgrade();
+            mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
+        }
 
         if (distance < orbMagnetRadius && mustAttract && spaceshipMode.collectionMode)
         {

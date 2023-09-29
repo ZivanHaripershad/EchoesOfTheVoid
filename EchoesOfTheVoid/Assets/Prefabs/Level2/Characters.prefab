@@ -213,6 +213,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldAnimator: {fileID: 1740792631097883126}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
 --- !u!1 &6723253170065122563
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,6 +469,9 @@ MonoBehaviour:
   fillSoundVolume: 0.3
   fillSoundFadeSpeed: 1
   haloAnimator: {fileID: 6723253170947183119}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  reduceSpawnIntervalAndVariation: 0.98
+  reduceTimeTillNextWave: 0.98
 --- !u!82 &6723253171217500709
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2921,6 +2925,8 @@ MonoBehaviour:
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
   enemySpeedControl: {fileID: 0}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   objectiveManager: {fileID: 0}
 --- !u!114 &5576056815979170605 stripped
 MonoBehaviour:

@@ -165,7 +165,6 @@ MonoBehaviour:
   motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}
-  upgradeScene1Manager: {fileID: 0}
   missionObjectiveBanner: {fileID: 0}
   missionObjectiveCanvas: {fileID: 0}
 --- !u!1 &4494188773545616930
@@ -212,11 +211,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa01aee57605679479ef0b56964a51e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 3
   minEnemiesToSpawn: 1
-  maxEnemiesToSpawn: 1
-  spawnInterval: 5
-  spawnTimerVariation: 4
+  maxEnemiesToSpawn: 3
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
   shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
   shieldEnemySpawnPoints:

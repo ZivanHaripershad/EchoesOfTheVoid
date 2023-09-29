@@ -33,13 +33,9 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
     [SerializeField] private GameObject missionObjectiveCanvas;
     
-    
     private Text missionObjectiveText;
-
-
     private Coroutine audioCoroutine;
     private int popupIndex;
-
     private float missionBannerWaitTime;
     
     struct SceneManager
@@ -82,6 +78,10 @@ public class Level1Controller : MonoBehaviour
         gameManagerData.expireOrbs = true;
         gameManagerData.numberOfEnemiesToKill = numberOfEnemiesToKill;
         gameManagerData.level = GameManagerData.Level.Level1;
+        gameManagerData.isShieldUp = false;
+        gameManagerData.spawnInterval = 3;
+        gameManagerData.spawnTimerVariation = 2;
+        gameManagerData.timeTillNextWave = 4;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -99,7 +99,12 @@ public class Level1Controller : MonoBehaviour
         {
             SelectedUpgradeLevel2.Instance.SetUpgrade(null);
         }
-        
+
+        if (SelectedUpgradeLevel3.Instance != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
+        {
+            SelectedUpgradeLevel3.Instance.SetUpgrade(null);
+        }
     }
 
     private bool CheckEndingCriteria()
@@ -186,7 +191,7 @@ public class Level1Controller : MonoBehaviour
         uiManager.SetLevelObjectsToActive();
         uiManager.SetAtmosphereObjectToActive();
 
-        enemySpawning.StartSpawningEnemies(3, true);
+        enemySpawning.StartSpawningEnemies();
     }
     
     private void DisplayEndingScene()
@@ -206,7 +211,7 @@ public class Level1Controller : MonoBehaviour
     {
         uiManager.DestroyRemainingOrbs();
         enemySpawning.DestroyActiveEnemies();
-        enemySpawning.StopTheCoroutine();
+        enemySpawning.StopSpawning();
         uiManager.SetLevelObjectsToInactive();
     }
 

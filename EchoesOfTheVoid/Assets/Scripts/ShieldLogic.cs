@@ -7,12 +7,24 @@ public class ShieldLogic : MonoBehaviour
 {
 
     [SerializeField] private Animator shieldAnimator;
+    [SerializeField] private GameManagerData gameManagerData;
 
     private int shieldCount;
 
     private void Start()
     {
         shieldCount = 0;
+    }
+
+    private void Update()
+    {
+        if (shieldCount == 0)
+        {
+            gameManagerData.isShieldUp = false;
+            return;
+        }
+
+        gameManagerData.isShieldUp = true;
     }
 
     public bool DestroyShield(Vector3 enemyTransform)
@@ -33,19 +45,17 @@ public class ShieldLogic : MonoBehaviour
         return false;
     }
 
-    public bool AddShield()
+    public void AddShield()
     {
-        if (shieldCount < 3)
+        for (int k = 1; k < 4; k++)
         {
-            shieldAnimator.SetInteger("shieldCount", ++shieldCount);
-            return true;
+            shieldCount = k;
+            shieldAnimator.SetInteger("shieldCount", k);
         }
-
-        return false;
     }
 
     public bool CanAddShields()
     {
-        return shieldCount < 3;
+        return shieldCount == 0;
     }
 }
