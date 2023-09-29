@@ -13,6 +13,7 @@ public class GameManagerData : ScriptableObject
     public bool hasResetAmmo;
     public int numberOfEnemiesToKill;
     public Level level;
+    public bool isShieldUp;
     
     public enum Level
     {

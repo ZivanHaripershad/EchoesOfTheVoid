@@ -95,6 +95,7 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
         gameManagerData.level = GameManagerData.Level.Level2;
+        gameManagerData.isShieldUp = false;
 
         //set up shield and mouse
         mouseControl.EnableMouse();

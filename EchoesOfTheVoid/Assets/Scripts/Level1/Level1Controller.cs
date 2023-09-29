@@ -82,6 +82,7 @@ public class Level1Controller : MonoBehaviour
         gameManagerData.expireOrbs = true;
         gameManagerData.numberOfEnemiesToKill = numberOfEnemiesToKill;
         gameManagerData.level = GameManagerData.Level.Level1;
+        gameManagerData.isShieldUp = false;
 
         //set up shield and mouse
         mouseControl.EnableMouse();

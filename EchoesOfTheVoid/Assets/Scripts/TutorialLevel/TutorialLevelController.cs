@@ -63,6 +63,10 @@ public class TutorialLevelController : MonoBehaviour
         orbCounter.orbsCollected = 0;
 
         tutorialData.popUpIndex = 0;
+        tutorialData.depositPower = false;
+        tutorialData.depositAmmo = false;
+        tutorialData.depositHealth = false;
+        tutorialData.depositShield = false;
 
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
@@ -276,7 +280,8 @@ public class TutorialLevelController : MonoBehaviour
             //bring up orb menu screen
             
             uiManager.SetAtmosphereObjectToActive();
-            
+            tutorialData.depositPower = true;
+
             if (Input.GetKey(KeyCode.S))
             {
                 tutorialData.popUpIndex++;
@@ -285,7 +290,7 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 13)
         {
             //deposit to planet network
-            
+
             if (Input.GetKey(KeyCode.J))
             {
                 gameManagerData.tutorialWaitTime = 10;
@@ -294,6 +299,8 @@ public class TutorialLevelController : MonoBehaviour
         }
         else if (popUpIndex == 14)
         {
+            tutorialData.depositPower = false;
+
             //planet network explanation
             if (gameManagerData.tutorialWaitTime <= 0)
             {
@@ -304,7 +311,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 15)
         {
             //deposit to replenish ammo
-            
+            tutorialData.depositAmmo = true;
+
             if (Input.GetKey(KeyCode.I))
             {
                 tutorialData.popUpIndex++;
@@ -313,7 +321,9 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 16)
         {
             //deposit to planet health
-            
+            tutorialData.depositAmmo = false;
+            tutorialData.depositHealth = true;
+
             if (Input.GetKey(KeyCode.K))
             {
                 gameManagerData.tutorialWaitTime = 10;
@@ -322,6 +332,8 @@ public class TutorialLevelController : MonoBehaviour
         }
         else if (popUpIndex == 17)
         {
+            tutorialData.depositHealth = false;
+
             //congrats player screen
             if (gameManagerData.tutorialWaitTime <= 0)
             {

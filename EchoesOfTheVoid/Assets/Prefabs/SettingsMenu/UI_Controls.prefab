@@ -512,7 +512,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 951553468277498524}
   defaultAudioButtonText: {fileID: 21300000, guid: 1b9a5715e117e4d43aa704397427957e, type: 3}
   hoveredAudioButtonText: {fileID: 21300000, guid: 1cea64c742bd989488fe40608ccf46d9, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  mouseControl: {fileID: 0}
   settingsData: {fileID: 11400000, guid: 4f36d9cb429879f4ca4012b6e07fb536, type: 2}
 --- !u!1 &1292630149139974784
 GameObject:
@@ -772,7 +772,7 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1292630149552154238}
   defaultMainMenuText: {fileID: 21300000, guid: e4fe59378b4710c47a83975ffd32c16e, type: 3}
   hoveredMainMenueText: {fileID: 21300000, guid: ee188778eac7018459d801b9fa127c73, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
+  mouseControl: {fileID: 0}
 --- !u!1 &2326482939497574178
 GameObject:
   m_ObjectHideFlags: 0
@@ -1638,8 +1638,8 @@ MonoBehaviour:
   spriteRenderer: {fileID: 1219757032773582648}
   defaultControlButtonText: {fileID: 21300000, guid: b23a6c8a46deeea45913a57ade35eb9a, type: 3}
   hoveredControlButtonText: {fileID: 21300000, guid: d896734467584484388ea3fe6132b922, type: 3}
-  cursorTexture: {fileID: 2800000, guid: 055cdcb9ff458cc408de6c7285cadd09, type: 3}
-  settingsData: {fileID: 0}
+  settingsData: {fileID: 11400000, guid: 4f36d9cb429879f4ca4012b6e07fb536, type: 2}
+  mouseControl: {fileID: 0}
 --- !u!1 &5543108457068112077
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,8 @@ public abstract class Deposit : MonoBehaviour
     [SerializeField] protected Sprite enabledFactorySprite;
     [SerializeField] protected Sprite disabledFactorySprite;
     [SerializeField] protected FactoryCosts factoryCosts;
+    [SerializeField] protected GameManagerData gameManagerData;
+    [SerializeField] protected TutorialData tutorialData;
     public OrbCounter orbCounter;
     
     void Start(){

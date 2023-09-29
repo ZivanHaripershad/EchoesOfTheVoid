@@ -30,6 +30,9 @@ public class DepositOrbs : MonoBehaviour
 
     [SerializeField]
     private EnemySpeedControl enemySpeedControl;
+    
+    [SerializeField] private GameManagerData gameManagerData;
+    [SerializeField] private TutorialData tutorialData;
 
     public ObjectiveManager objectiveManager;
 
@@ -76,6 +79,14 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.J))
                     if (orbCounter.orbsCollected >= 1 && orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
                     {
+                        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                        {
+                            if (!tutorialData.depositPower)
+                            {
+                                cannotDepositSoundEffect.Play();
+                                return;
+                            }
+                        }
                         orbCounter.planetOrbsDeposited++;
                         objectiveManager.UpdatePlanetEnergyBanner();
                         
@@ -89,6 +100,15 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.I))
                     if (orbCounter.orbsCollected >= 2)
                     {
+                        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                        {
+                            if (!tutorialData.depositAmmo)
+                            {
+                                cannotDepositSoundEffect.Play();
+                                return;
+                            }
+                        }
+                        
                         deposited = true;
                         bulletCount.currentBullets = bulletCount.maxBullets;
                         factoryDeposited = OrbFactoryDeposited.Ammo;
@@ -100,6 +120,15 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.L))
                     if (orbCounter.orbsCollected >= 3 && gameManager.IsShieldEnabled() && shieldLogic.CanAddShields())
                     {
+                        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                        {
+                            if (!tutorialData.depositShield)
+                            {
+                                cannotDepositSoundEffect.Play();
+                                return;
+                            }
+                        }
+
                         deposited = true;
                         shieldLogic.AddShield();
                         factoryDeposited = OrbFactoryDeposited.Shield;
@@ -113,6 +142,15 @@ public class DepositOrbs : MonoBehaviour
                     {
                         if (healthCount.currentHealth < healthCount.maxHealth)
                         {
+                            if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                            {
+                                if (!tutorialData.depositHealth)
+                                {
+                                    cannotDepositSoundEffect.Play();
+                                    return;
+                                }
+                            }
+                            
                             healthCount.currentHealth++;
                             deposited = true;
                             factoryDeposited = OrbFactoryDeposited.Health;
