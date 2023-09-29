@@ -95,6 +95,7 @@ MonoBehaviour:
   orbUi: {fileID: 0}
   orbText: {fileID: 0}
   pauseMenu: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
   primaryTargetMessage: {fileID: 0}
 --- !u!1 &5771408474997582948
 GameObject:

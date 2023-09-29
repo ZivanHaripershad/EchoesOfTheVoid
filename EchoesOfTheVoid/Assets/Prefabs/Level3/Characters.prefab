@@ -1,5 +1,53 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2049471600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2049471601}
+  - component: {fileID: 2049471602}
+  m_Layer: 0
+  m_Name: MineDroppingEnemyAvoid
+  m_TagString: AvoidArea
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2049471601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049471600}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8368030273535035260}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &2049471602
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2049471600}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.15218137, y: 0.2790002}
+  serializedVersion: 2
+  m_Radius: 3.3660915
 --- !u!1 &572196724026087439
 GameObject:
   m_ObjectHideFlags: 0
@@ -944,6 +992,7 @@ MonoBehaviour:
   cannotFireSoundEffect: {fileID: 3550091861947934116}
   reloadTimePerBullet: 0.2
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
+  doubleDamageBullet: {fileID: 0}
 --- !u!82 &3550091861947934116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2340,6 +2389,7 @@ Transform:
   - {fileID: 3550091862961378324}
   - {fileID: 3550091862255483442}
   - {fileID: 6519855353013085743}
+  - {fileID: 2049471601}
   m_Father: {fileID: 87324993361298619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2934,6 +2984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbCollectSoundEffect: {fileID: 3550091861823600973}
+  spaceshipMode: {fileID: 0}
 --- !u!114 &3550091862325039193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2955,6 +3006,7 @@ MonoBehaviour:
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
   enemySpeedControl: {fileID: 0}
+  objectiveManager: {fileID: 0}
 --- !u!50 &8368030273467811140 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6145913263776041514, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}

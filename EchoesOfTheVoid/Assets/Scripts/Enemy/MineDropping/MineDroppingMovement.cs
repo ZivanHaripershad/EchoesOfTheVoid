@@ -17,6 +17,7 @@ public class MineDroppingMovement : MonoBehaviour
     [SerializeField] private double centerAvoidRadius;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float rotationOffset;
+    [SerializeField] private int waypointVariation;
 
     // Start is called before the first frame update
     void Start()
@@ -34,17 +35,33 @@ public class MineDroppingMovement : MonoBehaviour
         }
     }
 
+    int InBounds(int number)
+    {
+        if (number > waypoints.Length - 1)
+            return number - (waypoints.Length - 1);
+
+        if (number < 0)
+            return number + waypoints.Length;
+
+        return number;
+    }
+
     int GetNewWaypoint()
     {
-        int waypoint = Random.Range(0, waypoints.Length);
+        int waypoint = InBounds(lastWaypoint + Random.Range(-waypointVariation, waypointVariation));
 
         while (waypoint == lastWaypoint)
         {
-            waypoint =  Random.Range(0, waypoints.Length);
+            waypoint = InBounds(lastWaypoint + Random.Range(-waypointVariation, waypointVariation));
         }
 
         lastWaypoint = waypoint;
         return waypoint;
+    }
+
+    public void UpdateWaypoint()
+    {
+        currentWaypoint = GetNewWaypoint();
     }
 
     private void Update()

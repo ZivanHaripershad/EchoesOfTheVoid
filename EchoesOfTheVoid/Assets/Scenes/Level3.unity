@@ -436,11 +436,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8368030273535035262, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
   m_PrefabInstance: {fileID: 8368030273351815626}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &454874805 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8368030273535035260, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-  m_PrefabInstance: {fileID: 8368030273351815626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &617950203 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5771408476975303336, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
@@ -465,6 +460,8 @@ GameObject:
   - component: {fileID: 667202713}
   - component: {fileID: 667202712}
   - component: {fileID: 667202716}
+  - component: {fileID: 667202719}
+  - component: {fileID: 667202717}
   m_Layer: 0
   m_Name: MineDroppingEnemy
   m_TagString: Untagged
@@ -499,12 +496,14 @@ MonoBehaviour:
   - {fileID: 744658778}
   - {fileID: 1137702040}
   - {fileID: 1443550350}
-  thresholdMagnitude: 3
+  thresholdMagnitude: 2
   driftForce: 7
   velReductionFactor: 0.8
   avoidFoce: 50
   centerAvoidRadius: 3
   rotationSpeed: 1
+  rotationOffset: 80
+  waypointVariation: 4
 --- !u!212 &667202713
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -585,14 +584,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667202711}
-  m_LocalRotation: {x: -0, y: -0, z: -0.59199226, w: 0.80594367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -7.84, y: -3.1, z: 0}
-  m_LocalScale: {x: 0.16, y: 0.16, z: 0.16}
+  m_LocalScale: {x: 0.13, y: 0.13, z: 0.13}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -72.597}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &667202716
 Rigidbody2D:
   serializedVersion: 4
@@ -614,6 +613,51 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &667202717
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667202711}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.026538968, y: 2.023073}
+  serializedVersion: 2
+  m_Radius: 2.5850315
+--- !u!114 &667202719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667202711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2114dc0bece3524ca995d61747f506a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  teleportPoints:
+  - {fileID: 1938274054}
+  - {fileID: 1687993034}
+  - {fileID: 1322411047}
+  - {fileID: 145488597}
+  - {fileID: 1508849856}
+  - {fileID: 1006646571}
+  - {fileID: 1987423648}
+  - {fileID: 1288150727}
+  - {fileID: 1957109582}
+  - {fileID: 1223711228}
+  - {fileID: 1222531789}
+  - {fileID: 744658778}
+  - {fileID: 1137702040}
+  - {fileID: 1443550350}
+  duration: 0.1
+  targetScale: {x: 0.13, y: 0.13, z: 0.13}
 --- !u!1 &691307910
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,54 +1998,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2273266005496151790, guid: b5a1a35d49fe01747887d4b6fd506074, type: 3}
   m_PrefabInstance: {fileID: 2273266005304100606}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2049471600
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2049471601}
-  - component: {fileID: 2049471602}
-  m_Layer: 0
-  m_Name: MineDroppingEnemyAvoid
-  m_TagString: AvoidArea
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2049471601
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049471600}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 454874805}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &2049471602
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2049471600}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.15218137, y: 0.2790002}
-  serializedVersion: 2
-  m_Radius: 3.3660915
 --- !u!1 &2111470757
 GameObject:
   m_ObjectHideFlags: 0
