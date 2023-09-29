@@ -10,8 +10,7 @@ public class Level2Card2 : Level2Card
     {
         cardDesc = GameObject.Find("Card2Desc").gameObject;
         cardDesc.SetActive(false);
-        upgrade = new BulletFireRateUpgrade();
-        upgrade.SetValue(0.15f);
+        upgrade = new DoubleDamageUpgrade();
         currentSprite = normalSprite;
     }
 }

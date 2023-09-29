@@ -2041,6 +2041,7 @@ MonoBehaviour:
   cannotFireSoundEffect: {fileID: 7727992633848869114}
   reloadTimePerBullet: 0.2
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
+  doubleDamageBullet: {fileID: 7841022512663862257, guid: df62b4321451111488e51893b85c296d, type: 3}
 --- !u!82 &7727992633848869114
 AudioSource:
   m_ObjectHideFlags: 0
