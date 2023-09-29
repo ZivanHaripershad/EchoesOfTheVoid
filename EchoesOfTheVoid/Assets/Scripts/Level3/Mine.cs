@@ -59,20 +59,34 @@ public class Mine : MonoBehaviour
             
             if (explodeDelay <= 0)
             {
-                Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
-
-                //player in the blast radius of the mine
-                if (GetDistance() < explosionRadius)
-                {
-                    //set off mine to explode
-                    cameraShake.Shake();
-                    player.GetComponent<SpaceshipCollection>().Stun();
-                }
-                
-                Destroy(gameObject);
+                AudioManager.Instance.PlaySFX("MineExplodesNoBeep");
+                Explode();
             }
         }
         
+    }
+
+    private void Explode()
+    {
+        Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+
+        //player in the blast radius of the mine
+        if (GetDistance() < explosionRadius)
+        {
+            //set off mine to explode
+            cameraShake.Shake();
+            player.GetComponent<SpaceshipCollection>().Stun();
+        }
+
+        Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet"))
+        {
+            Explode();   
+        }
     }
 
     private float GetDistance()

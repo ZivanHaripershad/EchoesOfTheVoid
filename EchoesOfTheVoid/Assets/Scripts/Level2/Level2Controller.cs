@@ -131,7 +131,7 @@ public class Level2Controller : MonoBehaviour
             //show health too low message
             healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
-        } 
+        }
         healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
         
         //check that mothership has entered

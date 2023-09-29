@@ -50,6 +50,11 @@ public class SpaceshipCollection : MonoBehaviour
         isEjecting = false;
     }
 
+    public bool IsStunned()
+    {
+        return isStunned;
+    }
+
     // Update is called once per frame
     void Update()
     {

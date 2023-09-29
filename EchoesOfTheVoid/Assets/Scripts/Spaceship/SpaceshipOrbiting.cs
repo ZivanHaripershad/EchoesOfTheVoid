@@ -60,7 +60,7 @@ public class SpaceshipOrbiting : MonoBehaviour
 
         bool isPaused = Mathf.Approximately(Time.timeScale, 0f);
 
-        if (isPaused)
+        if (isPaused || spaceshipCollection.IsStunned())
             return;
         
         //this is for when the game starts and you initially move around the planet
