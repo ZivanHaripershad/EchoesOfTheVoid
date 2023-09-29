@@ -29,6 +29,7 @@ TagManager:
   - MissionObjective
   - ObjectiveManager
   - DoubleDamageBullet
+  - AvoidArea
   layers:
   - Default
   - TransparentFX
