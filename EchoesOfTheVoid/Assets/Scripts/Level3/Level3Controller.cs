@@ -242,6 +242,7 @@ public class Level3Controller : MonoBehaviour
                 break;
             
             case 6: //retry screen
+                mouseControl.EnableMouse();
                 break;
             
         }
@@ -309,7 +310,7 @@ public class Level3Controller : MonoBehaviour
             popUpWaitTime = 10;
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GreenBossMusic);
             sceneManager.mineEnemyShipHasEntered = true;
-            mineEnemyInstance = Instantiate(mineEnemy, new Vector3(-7.84f, -3.1f, 0), Quaternion.Euler(0, 0, -45));
+            mineEnemyInstance = Instantiate(mineEnemy, new Vector3(-10.76f, 3.72f, 0), Quaternion.Euler(0, 0, -45));
         }
     }
 

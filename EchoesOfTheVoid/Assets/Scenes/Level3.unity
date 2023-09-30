@@ -1957,6 +1957,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 425440913943884532, guid: 7b886b3918e1cdd419770a0b385a0346, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1707906549}
     - target: {fileID: 2123847065512437837, guid: 7b886b3918e1cdd419770a0b385a0346, type: 3}
       propertyPath: mouseControl
       value: 
@@ -2022,10 +2026,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1707906549}
     - target: {fileID: 4782846751199213315, guid: 7b886b3918e1cdd419770a0b385a0346, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1707906549}
-    - target: {fileID: 7150427300550806714, guid: 7b886b3918e1cdd419770a0b385a0346, type: 3}
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1707906549}

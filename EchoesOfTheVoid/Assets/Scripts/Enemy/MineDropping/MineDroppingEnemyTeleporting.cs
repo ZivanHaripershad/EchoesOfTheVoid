@@ -13,6 +13,8 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
 
     [SerializeField] private float duration;
     [SerializeField] private Vector3 targetScale;
+    [SerializeField] private GameObject damage;
+    [SerializeField] private AudioSource damageAudio;
 
     private void Start()
     {
@@ -31,6 +33,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
+            Instantiate(damage, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
             Teleport();
         }
     }
@@ -41,7 +44,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         int randomInt = random.Next(transformsPoints.Length - 1);
         Vector3 newTransform = transformsPoints[randomInt].transform.position;
         transform.rotation = Quaternion.LookRotation(newTransform);
-
+        damageAudio.Play();
         StartCoroutine(ChangeScale(newTransform));
         mineDroppingMovement.UpdateWaypoint();
     }

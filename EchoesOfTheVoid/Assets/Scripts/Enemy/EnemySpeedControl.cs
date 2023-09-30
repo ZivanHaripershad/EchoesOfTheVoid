@@ -22,6 +22,8 @@ public class EnemySpeedControl : MonoBehaviour
     private float shieldEnemyCurrentSpeed;
     private float motherShipMoveSpeed;
     private float motherShipOrbitSpeed;
+    private float currentTimeScale;
+    
 
     private void Start()
     {
@@ -34,6 +36,7 @@ public class EnemySpeedControl : MonoBehaviour
         shieldEnemyCurrentSpeed = shieldEnemyNormalSpeed;
         motherShipMoveSpeed = motherShipNormalMoveSpeed;
         motherShipOrbitSpeed = motherShipNormalOrbitSpeed;
+        currentTimeScale = 1;
     }
 
     public void SlowDown()
@@ -42,6 +45,12 @@ public class EnemySpeedControl : MonoBehaviour
         shieldEnemyCurrentSpeed = shieldEnemyReducedSpeed;
         motherShipMoveSpeed = motherShipReducedMoveSpeed;
         motherShipOrbitSpeed = motherShipReducedOrbitSpeed;
+        currentTimeScale = 0.3f;
+    }
+
+    public float GetCurrentTimeScale()
+    {
+        return currentTimeScale;
     }
 
     public float GetPathFollowingEnemySpeed()

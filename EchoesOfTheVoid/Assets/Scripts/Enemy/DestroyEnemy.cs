@@ -37,7 +37,6 @@ public class DestroyEnemy : MonoBehaviour
 
     void checkDamage()
     {
-        Debug.Log("shaking camera"); 
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake();
         
         if (healthCount.currentHealth < healthCount.maxHealth * 0.8) //20% damage

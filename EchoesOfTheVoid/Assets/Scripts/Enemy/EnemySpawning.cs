@@ -30,9 +30,20 @@ public class EnemySpawning : MonoBehaviour {
     {
         var enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
-        for (int i = 0; i < enemies.Length; i++)
+        foreach (var enemy in enemies)
         {
-            Destroy(enemies[i]);
+            Destroy(enemy);
+        }
+
+        var mineEnemy = GameObject.FindGameObjectWithTag("MineEnemy");
+        if (mineEnemy != null)
+            Destroy(mineEnemy);
+
+        var mines = GameObject.FindGameObjectsWithTag("Mine");
+
+        foreach (var mine in mines)
+        {
+            Destroy(mine);
         }
     }
 }

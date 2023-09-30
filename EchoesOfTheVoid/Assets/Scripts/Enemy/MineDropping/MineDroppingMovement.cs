@@ -75,6 +75,7 @@ public class MineDroppingMovement : MonoBehaviour
         currentWaypoint = GetNewWaypoint();
     }
 
+    //todo: add time dialation, enemy speed control
     private void Update()
     {
         currentWaitDuration -= Time.deltaTime;

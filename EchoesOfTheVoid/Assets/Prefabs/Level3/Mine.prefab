@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 3050419877521715074}
   m_Layer: 0
   m_Name: Mine
-  m_TagString: Untagged
+  m_TagString: Mine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,6 +127,7 @@ MonoBehaviour:
   explosionRadius: 2
   detectionRadius: 2
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
+  expirationTime: 15
 --- !u!82 &998427232293872880
 AudioSource:
   m_ObjectHideFlags: 0

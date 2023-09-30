@@ -32,6 +32,8 @@ TagManager:
   - AvoidArea
   - Level3Manager
   - MineEnemyWayPoints
+  - MineEnemy
+  - Mine
   layers:
   - Default
   - TransparentFX

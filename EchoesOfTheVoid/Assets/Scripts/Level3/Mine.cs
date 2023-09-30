@@ -22,7 +22,10 @@ public class Mine : MonoBehaviour
     private GameObject player;
     private CameraShake cameraShake;
 
-    private bool isCountingDown; 
+    private bool isCountingDown;
+    [SerializeField] private float expirationTime;
+
+    private EnemySpeedControl enemySpeedControl;
 
     // Start is called before the first frame update
     void Start()
@@ -32,9 +35,17 @@ public class Mine : MonoBehaviour
         InvokeRepeating("CheckMine", 0f, 0.1f);
         player = GameObject.FindGameObjectWithTag("Player");
         cameraShake = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>();
+        enemySpeedControl = GameObject.FindGameObjectWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
     }
 
-    // Update is called once per frame
+    private void Update()
+    {
+        expirationTime -= Time.deltaTime * enemySpeedControl.GetCurrentTimeScale();
+        if (expirationTime < 0)
+            Explode();
+    }
+
+
     void CheckMine()
     {
         if (player == null)
