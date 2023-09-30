@@ -1073,7 +1073,7 @@ GameObject:
   - component: {fileID: 7998895241559093411}
   - component: {fileID: 4374579256182068740}
   - component: {fileID: 8494148048592527391}
-  - component: {fileID: 8494148048592527388}
+  - component: {fileID: 6136391953127392124}
   m_Layer: 5
   m_Name: Exit
   m_TagString: Untagged
@@ -1270,7 +1270,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &8494148048592527388
+--- !u!114 &6136391953127392124
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4325053307576165977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 057829e978eb4e14eb145df16fe61eea, type: 3}
+  m_Script: {fileID: 11500000, guid: 37677e2979e3414fac96c8ec971213d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 7998895241559093411}

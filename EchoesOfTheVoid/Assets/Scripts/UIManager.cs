@@ -45,7 +45,7 @@ public class UIManager : MonoBehaviour
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
-        
+
         //todo: level2 uiManager
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
@@ -90,6 +90,11 @@ public class UIManager : MonoBehaviour
         healthUi.SetActive(false);
         orbUi.SetActive(false);
         orbText.SetActive(false);
+        
+        reloadMessage.SetActive(false);
+        cannotFireMessage.SetActive(false);
+        purchaseAmmoMessage.SetActive(false);
+        healthLowMessage.SetActive(false);
         
         //todo: level2
         if (primaryTargetMessage)

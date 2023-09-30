@@ -7,7 +7,7 @@ using Random = System.Random;
 
 public class MineDroppingEnemyTeleporting : MonoBehaviour
 {
-    [SerializeField] private GameObject[] teleportPoints;
+    private GameObject[] teleportPoints;
     private Transform[] transformsPoints;
     private MineDroppingMovement mineDroppingMovement;
 
@@ -16,6 +16,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
 
     private void Start()
     {
+        teleportPoints = GameObject.FindGameObjectsWithTag("MineEnemyWayPoints");
         transformsPoints = new Transform[teleportPoints.Length];
         for (int i = 0; i < teleportPoints.Length; i++)
         {

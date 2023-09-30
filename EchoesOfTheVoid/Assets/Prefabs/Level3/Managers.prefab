@@ -32,6 +32,7 @@ Transform:
   - {fileID: 5771408474997582955}
   - {fileID: 5771408476975303337}
   - {fileID: 5771408475363288166}
+  - {fileID: 4089568824173871819}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,7 +107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5771408474997582955}
-  - component: {fileID: 5209047891917786981}
+  - component: {fileID: 8999630309965493207}
   m_Layer: 0
   m_Name: SpawnManager
   m_TagString: Untagged
@@ -129,7 +130,7 @@ Transform:
   m_Father: {fileID: 7768320180343929136}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5209047891917786981
+--- !u!114 &8999630309965493207
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -138,11 +139,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5771408474997582948}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa01aee57605679479ef0b56964a51e0, type: 3}
+  m_Script: {fileID: 11500000, guid: d9edd290df2e437c950bc7d8cdd7625a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   minEnemiesToSpawn: 1
-  maxEnemiesToSpawn: 1
+  maxEnemiesToSpawn: 3
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
   shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
@@ -222,11 +223,13 @@ MonoBehaviour:
   level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   gameManager: {fileID: 5771408476975303336}
-  enemySpawning: {fileID: 5209047891917786981}
+  enemySpawning: {fileID: 8999630309965493207}
   uiManager: {fileID: 5771408474944810238}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
-  bulletSpawnScript: {fileID: 0}
   popUps:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
@@ -238,14 +241,12 @@ MonoBehaviour:
   orbsNumber: {fileID: 0}
   enemiesNumber: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  variables: {fileID: 0}
-  normalAudioSpeed: 1
-  reducedAudioSpeed: 0.5
-  audioSpeedChangeRate: 1.8
-  numberOfEnemiesToKillToProceedToBoss: 1
-  motherShip: {fileID: 0}
+  numberOfEnemiesToKillToProceedToBoss: 5
+  mineEnemy: {fileID: 2715511332520450952, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}
+  missionObjectiveBanner: {fileID: 0}
+  missionObjectiveCanvas: {fileID: 0}
 --- !u!1 &5771408476975303338
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,3 +291,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add951b01801130449c3eb720c89ae64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8724692607964894515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4089568824173871819}
+  - component: {fileID: 4793841669839872055}
+  m_Layer: 0
+  m_Name: ObjectiveManager
+  m_TagString: ObjectiveManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4089568824173871819
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724692607964894515}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7768320180343929136}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4793841669839872055
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8724692607964894515}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3999c99ce688415c80af9457f61047b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  missionObjectiveBanner: {fileID: 0}

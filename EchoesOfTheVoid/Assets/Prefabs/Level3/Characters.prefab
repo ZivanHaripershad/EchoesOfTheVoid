@@ -2802,7 +2802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   orbCollectSoundEffect: {fileID: 3550091861823600973}
-  spaceshipMode: {fileID: 0}
+  spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
 --- !u!114 &3550091862325039193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2823,6 +2823,7 @@ MonoBehaviour:
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  shieldLogic: {fileID: 8368030273351815619}
   enemySpeedControl: {fileID: 0}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}

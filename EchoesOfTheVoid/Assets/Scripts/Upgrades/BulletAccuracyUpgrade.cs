@@ -7,6 +7,6 @@ public class BulletAccuracyUpgrade : Upgrade
 {
     public BulletAccuracyUpgrade()
     {
-        SetName("QuantumChargeUpgrade");
+        SetName("BulletAccuracyUpgrade");
     }
 }

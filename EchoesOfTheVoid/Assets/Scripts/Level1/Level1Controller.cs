@@ -172,24 +172,21 @@ public class Level1Controller : MonoBehaviour
 
                 break;
             case 2: //ending screen
-                if (healthCount.currentHealth < healthCount.maxHealth)
+                if (healthCount.currentHealth == healthCount.maxHealth)
                 {
-                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level1, false);
-
+                    if (AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level1))
+                    {
+                        AchievementsManager.Instance.UpdateLevelCompletedDictionary(GameManagerData.Level.Level1, true);
+                    }
+                    
                     if (!AchievementsManager.Instance.GetProtectorCompletionStatus())
                     {
-                        AchievementsManager.Instance.SetProtectorCompletionStatus(false);
+                        AchievementsManager.Instance.SetProtectorCompletionStatus(true);
                     }
-                }
-                else
-                {
-                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level1, true);
-                    AchievementsManager.Instance.SetProtectorCompletionStatus( true);
                 }
                 
                 break;
             case 3: //retry screen
-                AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level1, false);
                 break;
         }
         

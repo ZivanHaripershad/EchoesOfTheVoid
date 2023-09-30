@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 public class MineDroppingMovement : MonoBehaviour
 {
     private Vector3[] waypoints;
-    [SerializeField] private GameObject[] waypointObjects;
+    private GameObject[] waypointObjects;
     private Rigidbody2D rb;
     private int lastWaypoint;
     private bool isFlyingToWaypoint;
@@ -21,6 +21,8 @@ public class MineDroppingMovement : MonoBehaviour
     [SerializeField] private GameObject mine;
     [SerializeField] private float mineWaitDuration;
 
+    private int randomNum;
+
     private float currentWaitDuration;
     
     // Start is called before the first frame update
@@ -30,7 +32,10 @@ public class MineDroppingMovement : MonoBehaviour
         lastWaypoint = 0;
         currentWaypoint = 0; 
         isFlyingToWaypoint = true;
+        randomNum = 0;
 
+        waypointObjects = GameObject.FindGameObjectsWithTag("MineEnemyWayPoints");
+        Debug.Log("Num Waypoints: " + waypointObjects.Length);
         waypoints = new Vector3[waypointObjects.Length];
         currentWaitDuration = mineWaitDuration;
 
@@ -88,6 +93,15 @@ public class MineDroppingMovement : MonoBehaviour
 
             if ((Vector3.zero - transform.position).magnitude < centerAvoidRadius)
             {
+                if (randomNum == 0)
+                {
+                    rb.AddForce((transform.position - Vector3.right));
+                }
+                else
+                {
+                    rb.AddForce((transform.position - Vector3.left));
+                }
+                
                 rb.AddForce((transform.position - Vector3.zero));
             }
 
@@ -114,6 +128,7 @@ public class MineDroppingMovement : MonoBehaviour
             isFlyingToWaypoint = true;
             if (currentWaitDuration < 0)
             {
+                randomNum = Random.Range(0, 1);
                 Instantiate(mine, transform.position, new Quaternion(0, 0, 0, 0));
                 currentWaitDuration = mineWaitDuration;
             }

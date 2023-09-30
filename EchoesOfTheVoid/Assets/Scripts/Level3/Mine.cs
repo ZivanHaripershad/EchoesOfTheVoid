@@ -59,7 +59,7 @@ public class Mine : MonoBehaviour
             
             if (explodeDelay <= 0)
             {
-                AudioManager.Instance.PlaySFX("MineExplodesNoBeep");
+                // AudioManager.Instance.PlaySFX("MineExplodesNoBeep");
                 Explode();
             }
         }

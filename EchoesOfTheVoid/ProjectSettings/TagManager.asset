@@ -30,6 +30,8 @@ TagManager:
   - ObjectiveManager
   - DoubleDamageBullet
   - AvoidArea
+  - Level3Manager
+  - MineEnemyWayPoints
   layers:
   - Default
   - TransparentFX

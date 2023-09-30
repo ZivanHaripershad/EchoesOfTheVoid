@@ -47,6 +47,10 @@ public class AchievementsManager : MonoBehaviour
         achievements.Add(Achievement.GodModeAchievement, false);
 
         levelsCompletedWithoutLosingHealth = new Dictionary<GameManagerData.Level, bool>();
+        
+        levelsCompletedWithoutLosingHealth.Add(GameManagerData.Level.Level1, false);
+        levelsCompletedWithoutLosingHealth.Add(GameManagerData.Level.Level2, false);
+        levelsCompletedWithoutLosingHealth.Add(GameManagerData.Level.Level3, false);
 
         godModeCompleted = false;
         godModeCheck = false;
@@ -102,23 +106,15 @@ public class AchievementsManager : MonoBehaviour
         achievements[achievement] = true;
     }
 
-    public void AddToLevelCompletedDictionary(GameManagerData.Level level, bool completedWithoutLosingHealth)
+    public void UpdateLevelCompletedDictionary(GameManagerData.Level level, bool completedWithoutLosingHealth)
     {
-        try
-        {
-            levelsCompletedWithoutLosingHealth.Add(level, completedWithoutLosingHealth);
-        }
-        catch (ArgumentException)
-        {
-            Debug.Log(level + "already completed and added to dictionary");
-        }
+        levelsCompletedWithoutLosingHealth[level] = completedWithoutLosingHealth;
     }
 
     private void Update()
     {
-        if (levelsCompletedWithoutLosingHealth.Count == 3 && !godModeCompleted && !godModeCheck)
+        if (!godModeCompleted)
         {
-            Debug.Log(levelsCompletedWithoutLosingHealth);
             bool hasGodModeBeenDone = true;
             
             foreach (var kvp in levelsCompletedWithoutLosingHealth)
@@ -130,11 +126,13 @@ public class AchievementsManager : MonoBehaviour
                 }
             }
             
-            Debug.Log("Has God Mode Been Done: " + hasGodModeBeenDone);
-
-            godModeCheck = true;
             godModeCompleted = hasGodModeBeenDone;
         }
+    }
+    
+    public bool CheckLevelGodModeCompleted(GameManagerData.Level level)
+    {
+        return levelsCompletedWithoutLosingHealth[level];
     }
 
     public void CheckIfGodModeCompleted()

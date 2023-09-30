@@ -197,6 +197,8 @@ public class Level2Controller : MonoBehaviour
                 break;
             case 1: //initialize gameplay
                 SpawnNormalEnemies();
+                HandleMissionUpdates();
+                CheckHealth();
                 popUpWaitTime = 5;
                 level2Data.popUpIndex++;
 
@@ -243,13 +245,12 @@ public class Level2Controller : MonoBehaviour
                 break;
             //end screen
             case 5:
-                if (healthCount.currentHealth < healthCount.maxHealth)
+                if (healthCount.currentHealth == healthCount.maxHealth)
                 {
-                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level2, false);
-                }
-                else
-                {
-                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level2, true);
+                    if (AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level2))
+                    {
+                        AchievementsManager.Instance.UpdateLevelCompletedDictionary(GameManagerData.Level.Level2, true);
+                    }
                 }
 
                 if (gameManagerData.numLevel2ShieldsUsed == 0 && !AchievementsManager.Instance.GetRiskTakerCompletionStatus())
@@ -262,7 +263,6 @@ public class Level2Controller : MonoBehaviour
             case 6:
                 completedLevelTime = 0f;
                 gameManagerData.level2TimeCompletion = 0f;
-                AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level2, false);
                 break;
         }
         

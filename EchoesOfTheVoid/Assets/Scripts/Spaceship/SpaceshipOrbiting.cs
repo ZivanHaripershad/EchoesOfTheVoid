@@ -120,8 +120,10 @@ public class SpaceshipOrbiting : MonoBehaviour
         //this is for every instance after you do your first collection, which then allows you to go to the nearest position of the planet and rotate again
         if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet){
 
+            Debug.Log("Time spent flying: " + gameManagerData.timeSpentFlying);
             if (gameManagerData.timeSpentFlying >= 15f && !AchievementsManager.Instance.GetCollectorCompletionStatus())
             {
+                Debug.Log("Completed Collector Status");
                 AchievementsManager.Instance.SetCollectorCompletionStatus(true);
             }
 
