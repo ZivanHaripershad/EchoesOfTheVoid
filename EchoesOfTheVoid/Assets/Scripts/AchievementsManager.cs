@@ -34,6 +34,8 @@ public class AchievementsManager : MonoBehaviour
     {
         DontDestroyOnLoad(this);
 
+        achievements = new Dictionary<Achievement, bool>();
+
         achievements.Add(Achievement.ScholarAchievement, false);
         achievements.Add(Achievement.DeflectorAchievement, false);
         achievements.Add(Achievement.ProtectorAchievement, false);
@@ -43,6 +45,8 @@ public class AchievementsManager : MonoBehaviour
         achievements.Add(Achievement.SpeedRunnerAchievement, false);
         achievements.Add(Achievement.RampageAchievement, false);
         achievements.Add(Achievement.GodModeAchievement, false);
+
+        levelsCompletedWithoutLosingHealth = new Dictionary<GameManagerData.Level, bool>();
 
         godModeCompleted = false;
         godModeCheck = false;
