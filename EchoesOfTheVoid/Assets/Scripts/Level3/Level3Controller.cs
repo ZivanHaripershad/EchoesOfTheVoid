@@ -97,8 +97,6 @@ public class Level3Controller : MonoBehaviour
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.EnableShield();
-        
-        Debug.Log("Is Level 3 Shield Enabled: " + gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
         
@@ -309,7 +307,7 @@ public class Level3Controller : MonoBehaviour
         {
             level3Data.popUpIndex++;
             popUpWaitTime = 10;
-            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.BossMusic);
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GreenBossMusic);
             sceneManager.mineEnemyShipHasEntered = true;
             mineEnemyInstance = Instantiate(mineEnemy, new Vector3(-7.84f, -3.1f, 0), Quaternion.Euler(0, 0, -45));
         }

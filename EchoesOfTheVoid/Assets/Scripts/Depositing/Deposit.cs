@@ -14,7 +14,6 @@ public abstract class Deposit : MonoBehaviour
     void Start(){
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.sprite = enabledFactorySprite;
-        Debug.Log(gameManager);
     }
 
     void Enable()

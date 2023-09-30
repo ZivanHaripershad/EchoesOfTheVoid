@@ -24,7 +24,8 @@ public class MineDroppingMovement : MonoBehaviour
     private int randomNum;
 
     private float currentWaitDuration;
-    
+    [SerializeField] private float avoidForce;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -91,15 +92,18 @@ public class MineDroppingMovement : MonoBehaviour
             if (rb.velocity.magnitude > thresholdMagnitude)
                 rb.velocity = new Vector2(rb.velocity.x * velReductionFactor, rb.velocity.y * velReductionFactor);
 
-            if ((Vector3.zero - transform.position).magnitude < centerAvoidRadius)
+            float distanceFromCenter = (Vector3.zero - transform.position).magnitude;
+
+            if (distanceFromCenter < centerAvoidRadius)
             {
+                float relativeAvoidForce = avoidForce / (distanceFromCenter * distanceFromCenter);
                 if (randomNum == 0)
                 {
-                    rb.AddForce((transform.position - Vector3.right));
+                    rb.AddForce((transform.position - Vector3.right) * relativeAvoidForce);
                 }
                 else
                 {
-                    rb.AddForce((transform.position - Vector3.left));
+                    rb.AddForce((transform.position - Vector3.left) * relativeAvoidForce);
                 }
                 
                 rb.AddForce((transform.position - Vector3.zero));

@@ -20,7 +20,6 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         transformsPoints = new Transform[teleportPoints.Length];
         for (int i = 0; i < teleportPoints.Length; i++)
         {
-            Debug.Log("Adding");
             transformsPoints[i] = teleportPoints[i].transform;
         }
 

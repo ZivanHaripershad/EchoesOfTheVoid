@@ -16,7 +16,6 @@ public class DestroyEnemy : MonoBehaviour
     public GameManagerData gameManagerData;
     
     [SerializeField] private AudioSource destroyEnemySoundEffect;
-    [SerializeField] private AudioSource crashIntoPlanetSoundEffect;
     [SerializeField] private HealthCount healthCount;
     [SerializeField] private float bulletSoundDelay;
     [SerializeField] private GameObject graphics;
@@ -61,8 +60,6 @@ public class DestroyEnemy : MonoBehaviour
     {
         gameObject.GetComponentInChildren<Collider2D>().enabled = false;
         graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-        
-        AudioManager.Instance.PlaySFX("DestroyEnemy");
         Instantiate(explosion, orbSpawnPoint.position, orbSpawnPoint.rotation);
         
         if (musSpawnOrb)
@@ -77,7 +74,7 @@ public class DestroyEnemy : MonoBehaviour
         bool planetDamage = false;
         
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
-            crashIntoPlanetSoundEffect.Play();
+            AudioManager.Instance.PlaySFX("CrashIntoPlanet");
             
         if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("DoubleDamageBullet"))
         {
@@ -100,6 +97,7 @@ public class DestroyEnemy : MonoBehaviour
                 {
                 }
                 else { //no shield
+                    AudioManager.Instance.PlaySFX("DestroyEnemy");
                     DestroyGameObject(collision, true, collision.gameObject.transform);
                 }
 
@@ -109,9 +107,8 @@ public class DestroyEnemy : MonoBehaviour
             
             if (collision.gameObject.CompareTag("DoubleDamageBullet"))
             {
-                
                 DestroyGameObject(collision, true, collision.gameObject.transform);
-
+                AudioManager.Instance.PlaySFX("DestroyEnemy");
                 //destroy the bullet
                 Destroy(collision.gameObject);
             }

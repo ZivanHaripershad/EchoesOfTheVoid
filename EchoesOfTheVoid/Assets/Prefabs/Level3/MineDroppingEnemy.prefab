@@ -98,7 +98,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8e2ebe611b1895d4a80fffc3f49b3528, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -122,21 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5e1fe01d485a8a4cb89d46e2da12367, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waypointObjects:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
   thresholdMagnitude: 2
   driftForce: 7
   velReductionFactor: 0.8
@@ -147,6 +132,7 @@ MonoBehaviour:
   waypointVariation: 4
   mine: {fileID: 998427232293872886, guid: 32f9d86d28ad2df40a639e442b229713, type: 3}
   mineWaitDuration: 7
+  avoidForce: 0
 --- !u!50 &2715511332520450947
 Rigidbody2D:
   serializedVersion: 4
@@ -180,7 +166,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2114dc0bece3524ca995d61747f506a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teleportPoints: []
   duration: 0.1
   targetScale: {x: 0.13, y: 0.13, z: 0.13}
 --- !u!58 &2715511332520450946

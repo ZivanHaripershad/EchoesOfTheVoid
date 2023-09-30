@@ -48,18 +48,15 @@ public class Mine : MonoBehaviour
             //player enters the detection radius of the mine, 
             //start counting down
             if (GetDistance() < detectionRadius)
-            {
-                AudioManager.Instance.PlaySFX("MineExplodes");
                 isCountingDown = true;
-            }
         }
         else
         {
             explodeDelay -= Time.deltaTime;
-            
+
             if (explodeDelay <= 0)
             {
-                // AudioManager.Instance.PlaySFX("MineExplodesNoBeep");
+                AudioManager.Instance.PlaySFX("MineExplodes");
                 Explode();
             }
         }
@@ -77,7 +74,7 @@ public class Mine : MonoBehaviour
             cameraShake.Shake();
             player.GetComponent<SpaceshipCollection>().Stun();
         }
-
+        
         Destroy(gameObject);
     }
 
@@ -85,7 +82,8 @@ public class Mine : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Bullet"))
         {
-            Explode();   
+            AudioManager.Instance.PlaySFX("MineExplodesNoBeep");
+            Explode();
         }
     }
 
