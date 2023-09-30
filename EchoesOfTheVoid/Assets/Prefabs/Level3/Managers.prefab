@@ -143,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minEnemiesToSpawn: 1
   maxEnemiesToSpawn: 1
-  gameManagerData: {fileID: 0}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
   shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
   shieldEnemySpawnPoints:

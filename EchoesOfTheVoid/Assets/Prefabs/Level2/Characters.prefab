@@ -2357,6 +2357,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5576056816297971290}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: gameManagerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: trailFadeAmount
       value: 100
       objectReference: {fileID: 0}
@@ -2428,6 +2432,10 @@ PrefabInstance:
       propertyPath: spaceshipMode
       value: 
       objectReference: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: gameManagerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: trailRendererLeft
       value: 

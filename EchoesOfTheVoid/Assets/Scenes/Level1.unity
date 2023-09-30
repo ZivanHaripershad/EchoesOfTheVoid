@@ -972,7 +972,7 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 472597367300954623}
     - target: {fileID: 7018123691496249569, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
-      propertyPath: primaryTargetMessage
+      propertyPath: missionObjectiveBanner
       value: 
       objectReference: {fileID: 1509692780408560184}
     m_RemovedComponents: []

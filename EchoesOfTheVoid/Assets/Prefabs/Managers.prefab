@@ -138,7 +138,7 @@ MonoBehaviour:
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   gameManager: {fileID: 462461864330477851}
-  enemySpawning: {fileID: 462461866178193369}
+  tutorialEnemySpawning: {fileID: 462461866178193369}
   uiManager: {fileID: 462461866058999629}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
   bulletSpawnScript: {fileID: 0}
@@ -276,9 +276,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d184a9baf086fc4299a284f330063ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnRate: 8
   minEnemiesToSpawn: 1
   maxEnemiesToSpawn: 3
+  gameManagerData: {fileID: 0}
+  spawnRate: 8
   spawnInterval: 3
   spawnTimerVariation: 2
   enemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}

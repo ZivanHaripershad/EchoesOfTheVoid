@@ -1714,7 +1714,7 @@ MonoBehaviour:
   cannotFireSoundEffect: {fileID: 3550091861947934116}
   reloadTimePerBullet: 0.2
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
-  doubleDamageBullet: {fileID: 0}
+  doubleDamageBullet: {fileID: 7841022512663862257, guid: df62b4321451111488e51893b85c296d, type: 3}
 --- !u!82 &3550091861947934116
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2292,6 +2292,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2408190774110545509}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: gameManagerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: trailFadeAmount
       value: 100
       objectReference: {fileID: 0}
@@ -2367,6 +2371,10 @@ PrefabInstance:
       propertyPath: spaceshipMode
       value: 
       objectReference: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: gameManagerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: trailRendererLeft
       value: 
