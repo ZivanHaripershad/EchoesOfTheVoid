@@ -42,15 +42,15 @@ public class DestroyEnemy : MonoBehaviour
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake();
         
         if (healthCount.currentHealth < healthCount.maxHealth * 0.8) //20% damage
-            earthDamageAnimator.SetTrigger("damage1");
+            earthDamageAnimator.SetBool("damage1", true);
         if (healthCount.currentHealth < healthCount.maxHealth * 0.6) //40% damage
-            earthDamageAnimator.SetTrigger("damage2");
+            earthDamageAnimator.SetBool("damage2", true);
         if (healthCount.currentHealth < healthCount.maxHealth * 0.4) //60% damage
-            earthDamageAnimator.SetTrigger("damage3");
+            earthDamageAnimator.SetBool("damage3", true);
         if (healthCount.currentHealth < healthCount.maxHealth * 0.2) //80% damage
-            earthDamageAnimator.SetTrigger("damage4");
+            earthDamageAnimator.SetBool("damage4", true);
         if (healthCount.currentHealth < healthCount.maxHealth * 0.1) //90% damage
-            earthDamageAnimator.SetTrigger("damage5");
+            earthDamageAnimator.SetBool("damage5", true);
     }
 
     public void DestroyGameObject(Collider2D collision, bool musSpawnOrb, Transform orbSpawnPoint)
