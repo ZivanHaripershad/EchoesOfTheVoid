@@ -877,7 +877,7 @@ GameObject:
   - component: {fileID: 2123847064695860294}
   - component: {fileID: 2123847064695860295}
   - component: {fileID: 2123847064695860293}
-  - component: {fileID: 191329353726915422}
+  - component: {fileID: 2141491985}
   m_Layer: 0
   m_Name: retry
   m_TagString: Untagged
@@ -1074,7 +1074,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.02, y: 1.18}
   m_EdgeRadius: 0
---- !u!114 &191329353726915422
+--- !u!114 &2141491985
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1083,7 +1083,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2123847064695860288}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a214070032f891c428db485a13b26140, type: 3}
+  m_Script: {fileID: 11500000, guid: 65df49ccf26107147bd9965338e15266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 2123847064695860294}

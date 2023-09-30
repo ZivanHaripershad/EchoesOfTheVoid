@@ -453,6 +453,11 @@ Transform:
   m_Father: {fileID: 1901341731}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &445037246 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8864007381204925480, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+  m_PrefabInstance: {fileID: 683248506313260095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &454874804 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1740792631550029633, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
@@ -472,6 +477,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ecf7837e4a457a4dba816774eee6b6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &658846987 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4494188772704796910, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+  m_PrefabInstance: {fileID: 4494188772095388437}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: add951b01801130449c3eb720c89ae64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &691307910
@@ -1208,6 +1224,11 @@ Transform:
   m_Father: {fileID: 1901341731}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1889094157 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2291373139059781706, guid: 0488e2d5c72b7f14794dfc1e2e8d5f88, type: 3}
+  m_PrefabInstance: {fileID: 2291373139196448235}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1892759539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1430,6 +1451,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 8864007380409591354, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 658846987}
+    - target: {fileID: 8864007381154072504, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+      propertyPath: darkenBackground
+      value: 
+      objectReference: {fileID: 1889094157}
+    - target: {fileID: 8864007381170278513, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 658846987}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
 --- !u!4 &683248506313260096 stripped
@@ -1559,6 +1592,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2141491985, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 643732201}
     - target: {fileID: 2123847065802448554, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: m_Name
       value: Popups
@@ -1955,7 +1992,7 @@ PrefabInstance:
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: healthUi
       value: 
-      objectReference: {fileID: 683248506313260099}
+      objectReference: {fileID: 445037246}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: pauseMenu
       value: 
@@ -2012,6 +2049,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 9101455898971688634, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: missionObjectiveBanner
+      value: 
+      objectReference: {fileID: 81112410}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
 --- !u!114 &4494188772095388438 stripped

@@ -43,12 +43,16 @@ public class DestroyEnemy : MonoBehaviour
         
         if (healthCount.currentHealth < healthCount.maxHealth * 0.8) //20% damage
             earthDamageAnimator.SetBool("damage1", true);
+            
         if (healthCount.currentHealth < healthCount.maxHealth * 0.6) //40% damage
             earthDamageAnimator.SetBool("damage2", true);
+        
         if (healthCount.currentHealth < healthCount.maxHealth * 0.4) //60% damage
             earthDamageAnimator.SetBool("damage3", true);
+        
         if (healthCount.currentHealth < healthCount.maxHealth * 0.2) //80% damage
             earthDamageAnimator.SetBool("damage4", true);
+        
         if (healthCount.currentHealth < healthCount.maxHealth * 0.1) //90% damage
             earthDamageAnimator.SetBool("damage5", true);
     }

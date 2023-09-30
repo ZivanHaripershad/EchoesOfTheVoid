@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numberOfEnemiesKilled: 0
   numberOfOrbsCollected: 0
-  expireOrbs: 0
+  expireOrbs: 1
   tutorialActive: 0
   tutorialWaitTime: 10
   hasResetAmmo: 1
   numberOfEnemiesToKill: 20
-  level: 1
+  level: 2
   isShieldUp: 0
   spawnInterval: 3
   timeTillNextWave: 4

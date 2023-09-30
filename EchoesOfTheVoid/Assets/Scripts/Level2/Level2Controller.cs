@@ -95,6 +95,7 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.expireOrbs = true;
         gameManagerData.level = GameManagerData.Level.Level2;
         gameManagerData.isShieldUp = false;
+        
         gameManagerData.spawnInterval = 3;
         gameManagerData.spawnTimerVariation = 2;
         gameManagerData.timeTillNextWave = 4;
@@ -200,10 +201,12 @@ public class Level2Controller : MonoBehaviour
                     popUpWaitTime = 10;
                 }
                 popUpWaitTime -= Time.deltaTime;
+                CheckHealth();
                 break;
             case 3: //Mothership intro
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
+                CheckHealth();
                 if (popUpWaitTime <= 0)
                 {
                     level2Data.popUpIndex++;
@@ -222,12 +225,7 @@ public class Level2Controller : MonoBehaviour
                     return;
                 }
 
-                if (healthCount.currentHealth == 0)
-                {
-                    //show retry screen
-                    RemoveLevelObjects();
-                    level2Data.popUpIndex = 6;
-                }
+                CheckHealth();
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
                 {
@@ -241,7 +239,17 @@ public class Level2Controller : MonoBehaviour
         if (Time.timeScale == 0)
             mouseControl.EnableMouse();
     }
-    
+
+    private void CheckHealth()
+    {
+        if (healthCount.currentHealth == 0)
+        {
+            //show retry screen
+            RemoveLevelObjects();
+            level2Data.popUpIndex = 6;
+        }
+    }
+
     private void SpawnNormalEnemies()
     {
         if (Time.timeScale != 0)
