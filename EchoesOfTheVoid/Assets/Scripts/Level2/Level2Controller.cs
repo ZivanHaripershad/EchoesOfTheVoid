@@ -48,6 +48,8 @@ public class Level2Controller : MonoBehaviour
     
     private Text missionObjectiveText;
     private float missionBannerWaitTime;
+    
+    private float completedLevelTime = 0f;
 
     struct SceneManager
     {
@@ -98,6 +100,8 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.spawnInterval = 3;
         gameManagerData.spawnTimerVariation = 2;
         gameManagerData.timeTillNextWave = 4;
+        gameManagerData.numLevel2ShieldsUsed = 0;
+        gameManagerData.level2TimeCompletion = 0f;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -126,6 +130,8 @@ public class Level2Controller : MonoBehaviour
         {
             SelectedUpgradeLevel3.Instance.SetUpgrade(null);
         }
+
+        completedLevelTime = 0f;
     }
 
     private bool CheckEndingCriteria()
@@ -179,6 +185,8 @@ public class Level2Controller : MonoBehaviour
         popupIndex = level2Data.popUpIndex;
         
         HandlePopups();
+
+        gameManagerData.level2TimeCompletion += Time.deltaTime;
         
         switch (popupIndex)
         {
@@ -234,6 +242,29 @@ public class Level2Controller : MonoBehaviour
                     healthDeposit.LowHealthStatus();
                 }
 
+                break;
+            //end screen
+            case 5:
+                if (healthCount.currentHealth < healthCount.maxHealth)
+                {
+                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level2, false);
+                }
+                else
+                {
+                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level2, true);
+                }
+
+                if (gameManagerData.numLevel2ShieldsUsed == 0 && !AchievementsManager.Instance.GetRiskTakerCompletionStatus())
+                {
+                    AchievementsManager.Instance.SetRiskTakerCompletionStatus(true);
+                }
+                
+                break;
+            //retry screen
+            case 6:
+                completedLevelTime = 0f;
+                gameManagerData.level2TimeCompletion = 0f;
+                AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level2, false);
                 break;
         }
         
@@ -298,6 +329,16 @@ public class Level2Controller : MonoBehaviour
     {
         if (!sceneManager.displayedEnding)
         {
+            if (completedLevelTime == 0f)
+            {
+                completedLevelTime = gameManagerData.level2TimeCompletion;
+
+                if (completedLevelTime >= 120f && !AchievementsManager.Instance.GetSpeedRunnerCompletionStatus())
+                {
+                    AchievementsManager.Instance.SetSpeedRunnerAchievementStatus(true);
+                }
+            }
+            
             sceneManager.displayedEnding = true;
             var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
             planetHealthNum.text =  healthPercentage + "%";

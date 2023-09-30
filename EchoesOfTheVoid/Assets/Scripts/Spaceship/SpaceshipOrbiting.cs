@@ -32,6 +32,7 @@ public class SpaceshipOrbiting : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    [SerializeField] private GameManagerData gameManagerData;
 
     void Start()
     {
@@ -118,6 +119,13 @@ public class SpaceshipOrbiting : MonoBehaviour
 
         //this is for every instance after you do your first collection, which then allows you to go to the nearest position of the planet and rotate again
         if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet){
+
+            if (gameManagerData.timeSpentFlying >= 15f && !AchievementsManager.Instance.GetCollectorCompletionStatus())
+            {
+                AchievementsManager.Instance.SetCollectorCompletionStatus(true);
+            }
+
+            gameManagerData.timeSpentFlying = 0f;
 
             //reset the inertia when returning
             inertia = 0; 

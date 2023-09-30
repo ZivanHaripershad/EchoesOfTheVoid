@@ -156,7 +156,7 @@ public class Level1Controller : MonoBehaviour
                     DisplayEndingScene();
                     return;
                 }
-                
+
                 SpawnNormalEnemies();
                 if (healthCount.currentHealth == 0)
                 {
@@ -172,8 +172,24 @@ public class Level1Controller : MonoBehaviour
 
                 break;
             case 2: //ending screen
+                if (healthCount.currentHealth < healthCount.maxHealth)
+                {
+                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level1, false);
+
+                    if (!AchievementsManager.Instance.GetProtectorCompletionStatus())
+                    {
+                        AchievementsManager.Instance.SetProtectorCompletionStatus(false);
+                    }
+                }
+                else
+                {
+                    AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level1, true);
+                    AchievementsManager.Instance.SetProtectorCompletionStatus( true);
+                }
+                
                 break;
             case 3: //retry screen
+                AchievementsManager.Instance.AddToLevelCompletedDictionary(GameManagerData.Level.Level1, false);
                 break;
         }
         

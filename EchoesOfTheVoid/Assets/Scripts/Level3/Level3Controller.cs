@@ -51,7 +51,7 @@ public class Level3Controller : MonoBehaviour
     private void Start()
     {
         
-        Debug.Log("Level3 comtroller");
+        Debug.Log("Level3 controller");
         
         AudioManager.Instance.ToggleMusicOff();
         AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);

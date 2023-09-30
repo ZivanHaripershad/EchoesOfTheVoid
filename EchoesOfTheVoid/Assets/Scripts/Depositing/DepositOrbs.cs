@@ -131,6 +131,13 @@ public class DepositOrbs : MonoBehaviour
 
                         deposited = true;
                         shieldLogic.AddShield();
+                        AchievementsManager.Instance.IncrementNumOfShieldsUsed();
+
+                        if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                        {
+                            gameManagerData.numLevel2ShieldsUsed++;
+                        }
+                        
                         factoryDeposited = OrbFactoryDeposited.Shield;
                     }
                     else

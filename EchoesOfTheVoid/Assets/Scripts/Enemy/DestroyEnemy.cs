@@ -127,6 +127,7 @@ public class DestroyEnemy : MonoBehaviour
     private void SpawnOrb(Collider2D collision)
     {
         gameManagerData.numberOfEnemiesKilled++;
+        AchievementsManager.Instance.IncrementNumOfEnemiesKilled();
         destroyEnemySoundEffect.Play();
 
         if (gameManagerData.level.Equals(GameManagerData.Level.Level1))

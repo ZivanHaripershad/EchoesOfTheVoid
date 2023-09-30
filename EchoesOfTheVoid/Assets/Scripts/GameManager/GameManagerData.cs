@@ -15,6 +15,9 @@ public class GameManagerData : ScriptableObject
     public float spawnInterval;
     public float timeTillNextWave;
     public float spawnTimerVariation;
+    public float timeSpentFlying;
+    public int numLevel2ShieldsUsed;
+    public float level2TimeCompletion;
     
     public enum Level
     {
