@@ -502,6 +502,26 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5346166239513973340, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
   m_PrefabInstance: {fileID: 1509692780408560181}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1509692780408560185 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1072420875557094416, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1509692780408560186 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1072420875731805426, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1509692780408560187 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1072420876287907323, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &1509692780408560188 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1072420874795578795, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1878423871544580580 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1072420876093096913, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
@@ -763,13 +783,33 @@ PrefabInstance:
       value: Characters
       objectReference: {fileID: 0}
     - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 617950203}
+    - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
       propertyPath: objectiveManager
       value: 
       objectReference: {fileID: 7018123690210432333}
     - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: powerFactoryAnim
+      value: 
+      objectReference: {fileID: 1509692780408560186}
+    - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: bulletFactoryAnim
+      value: 
+      objectReference: {fileID: 1509692780408560187}
+    - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
       propertyPath: enemySpeedControl
       value: 
       objectReference: {fileID: 369470761}
+    - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: healthFactoryAnim
+      value: 
+      objectReference: {fileID: 1509692780408560188}
+    - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: shieldFactoryAnim
+      value: 
+      objectReference: {fileID: 1509692780408560185}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
 --- !u!114 &5000476146227674071 stripped

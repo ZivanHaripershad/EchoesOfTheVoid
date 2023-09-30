@@ -362,8 +362,7 @@ public class Level3Controller : MonoBehaviour
             missionObjectiveBanner.SetIsBannerAvailable(false);
             missionObjectiveBanner.gameObject.SetActive(true);
             var missionUpdate = missionUpdates.Dequeue();
-            Debug.Log("Updating Banner:" + missionUpdate);
-
+            AudioManager.Instance.PlaySFX("ObjectiveInProgress");
             missionObjectiveText.text = missionUpdate;
         }
         

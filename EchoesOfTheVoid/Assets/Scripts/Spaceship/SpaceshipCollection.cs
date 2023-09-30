@@ -46,6 +46,13 @@ public class SpaceshipCollection : MonoBehaviour
         mainCamera = Camera.main;
         isEjecting = false;
         gameManagerData.timeSpentFlying = 0f;
+        
+        if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
+        {
+            var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
+            stunWaitTime -= (stunWaitTime * reducedStunPercentage);
+        }
     }
 
     private void SetEjectingToFalse()
@@ -133,7 +140,10 @@ public class SpaceshipCollection : MonoBehaviour
 
                 transform.position = newPosition;
 
-                gameManagerData.timeSpentFlying += Time.deltaTime;
+                if (!AchievementsManager.Instance.GetCollectorCompletionStatus())
+                {
+                    gameManagerData.timeSpentFlying += Time.deltaTime;
+                }
 
                 if (movement.x + movement.y != 0)
                     transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // rotate the object to face the current angle

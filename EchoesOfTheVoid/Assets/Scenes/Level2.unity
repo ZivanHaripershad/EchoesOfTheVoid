@@ -232,6 +232,26 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2291373139059781704, guid: 0488e2d5c72b7f14794dfc1e2e8d5f88, type: 3}
   m_PrefabInstance: {fileID: 2291373139196448235}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &274450027 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8864007380945625542, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+  m_PrefabInstance: {fileID: 683248506313260095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &274450028 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8864007379965575460, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+  m_PrefabInstance: {fileID: 683248506313260095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &274450029 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8864007379510210605, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+  m_PrefabInstance: {fileID: 683248506313260095}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &274450030 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8864007381170278525, guid: 7f1134b76a3716e43a749a1f0f1fd1e3, type: 3}
+  m_PrefabInstance: {fileID: 683248506313260095}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &367537116
 GameObject:
   m_ObjectHideFlags: 0
@@ -1431,13 +1451,33 @@ PrefabInstance:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
     - target: {fileID: 6723253170875594854, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 658846987}
+    - target: {fileID: 6723253170875594854, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
       propertyPath: objectiveManager
       value: 
       objectReference: {fileID: 4494188772095388438}
     - target: {fileID: 6723253170875594854, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
+      propertyPath: powerFactoryAnim
+      value: 
+      objectReference: {fileID: 274450028}
+    - target: {fileID: 6723253170875594854, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
+      propertyPath: bulletFactoryAnim
+      value: 
+      objectReference: {fileID: 274450029}
+    - target: {fileID: 6723253170875594854, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
       propertyPath: enemySpeedControl
       value: 
       objectReference: {fileID: 8575211595589895407}
+    - target: {fileID: 6723253170875594854, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
+      propertyPath: healthFactoryAnim
+      value: 
+      objectReference: {fileID: 274450030}
+    - target: {fileID: 6723253170875594854, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
+      propertyPath: shieldFactoryAnim
+      value: 
+      objectReference: {fileID: 274450027}
     - target: {fileID: 7780363621617037360, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
       propertyPath: m_Name
       value: Characters

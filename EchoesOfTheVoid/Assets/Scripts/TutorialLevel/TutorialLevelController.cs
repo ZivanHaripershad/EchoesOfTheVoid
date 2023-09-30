@@ -71,7 +71,7 @@ public class TutorialLevelController : MonoBehaviour
 
         gameManagerData.numberOfEnemiesKilled = 0;
         gameManagerData.numberOfOrbsCollected = 0;
-        gameManagerData.tutorialWaitTime = 10f;
+        gameManagerData.tutorialWaitTime = 5f;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.level = GameManagerData.Level.Tutorial;
         gameManagerData.spawnInterval = 3;
@@ -131,7 +131,7 @@ public class TutorialLevelController : MonoBehaviour
             //intro screen
             if (gameManagerData.tutorialWaitTime <= 0)
             {
-                gameManagerData.tutorialWaitTime = 5;
+                gameManagerData.tutorialWaitTime = 3;
                 tutorialData.popUpIndex++;
             }
             gameManagerData.tutorialWaitTime -= Time.deltaTime;
@@ -164,7 +164,7 @@ public class TutorialLevelController : MonoBehaviour
 
             if (aPressed && dPressed)
             {
-                gameManagerData.tutorialWaitTime = 5;
+                gameManagerData.tutorialWaitTime = 3;
                 tutorialData.popUpIndex++;
             }
         }
@@ -192,7 +192,7 @@ public class TutorialLevelController : MonoBehaviour
             
             if (gameManagerData.numberOfEnemiesKilled == 4)
             {
-                gameManagerData.tutorialWaitTime = 5;
+                gameManagerData.tutorialWaitTime = 3;
                 tutorialData.popUpIndex++;
             }
             
@@ -271,7 +271,7 @@ public class TutorialLevelController : MonoBehaviour
             
             if (Input.GetKey(KeyCode.Space))
             {
-                gameManagerData.tutorialWaitTime = 5;
+                gameManagerData.tutorialWaitTime = 3;
                 tutorialData.popUpIndex++;
             }
         }

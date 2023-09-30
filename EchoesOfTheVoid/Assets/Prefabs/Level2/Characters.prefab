@@ -2852,6 +2852,12 @@ MonoBehaviour:
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
+  gameManager: {fileID: 0}
+  bulletFactoryAnim: {fileID: 0}
+  powerFactoryAnim: {fileID: 0}
+  shieldFactoryAnim: {fileID: 0}
+  healthFactoryAnim: {fileID: 0}
+  shieldLogic: {fileID: 1740792631097883132}
   enemySpeedControl: {fileID: 0}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}

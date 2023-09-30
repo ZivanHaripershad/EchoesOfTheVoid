@@ -49,7 +49,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.677
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -238,6 +238,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 8c9fb1ed571e1b04ab52953ae38122cc, type: 3}
   - clipName: MineExplodesNoBeep
     clip: {fileID: 8300000, guid: 53187d700846a494aaf8b55928548452, type: 3}
+  - clipName: ObjectiveInProgress
+    clip: {fileID: 8300000, guid: a161b6a39b268c449a26bcaa7d5b8a7a, type: 3}
   musicSource: {fileID: 2406677496876818795}
   sfxSource: {fileID: 242568350414305245}
   normalAudioSpeed: 1
