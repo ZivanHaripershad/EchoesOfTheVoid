@@ -32,9 +32,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 788307405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 0}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.18, y: 0.3, z: 0}
+  m_LocalScale: {x: 1.34, y: 1.34, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 8368030273535035260}
   m_RootOrder: 4
@@ -202,15 +202,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 93b631f0fb11ccc4da126aa6e9c666e3, type: 3}
   - {fileID: 21300000, guid: f19c75f45534ba24797af53e123559ef, type: 3}
   counter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  scale: 0
-  yAdjust: 0
-  barFillSpeed: 0
-  fillSoundVolume: 0
-  fillSoundFadeSpeed: 0
-  haloAnimator: {fileID: 0}
-  gameManagerData: {fileID: 0}
-  reduceSpawnIntervalAndVariation: 0
-  reduceTimeTillNextWave: 0
+  barFillSpeed: 6
+  fillSoundVolume: 0.3
+  fillSoundFadeSpeed: 1
+  haloAnimator: {fileID: 3550091862255483440}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  reduceSpawnIntervalAndVariation: 0.9
+  reduceTimeTillNextWave: 0.9
   firstFilledSpriteNumber: 7
   secondFilledSpriteNumber: 38
   thirdFilledSpriteNumber: 69
@@ -2162,7 +2160,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldAnimator: {fileID: 8368030273351815625}
-  gameManagerData: {fileID: 0}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
 --- !u!1 &8368030273535035262
 GameObject:
   m_ObjectHideFlags: 0
@@ -2818,9 +2816,10 @@ MonoBehaviour:
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}
   enemySpeedControl: {fileID: 0}
-  gameManagerData: {fileID: 0}
-  tutorialData: {fileID: 0}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   objectiveManager: {fileID: 0}
+  earthDamageAnimator: {fileID: 6667398769317224880}
 --- !u!50 &8368030273467811140 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 6145913263776041514, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}

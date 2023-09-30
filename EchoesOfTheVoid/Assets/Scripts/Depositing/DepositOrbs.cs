@@ -1,4 +1,5 @@
 using System;
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +36,8 @@ public class DepositOrbs : MonoBehaviour
     [SerializeField] private TutorialData tutorialData;
 
     public ObjectiveManager objectiveManager;
+
+    [SerializeField] private Animator earthDamageAnimator; 
 
     // Start is called before the first frame update
     void Start()
@@ -161,6 +164,8 @@ public class DepositOrbs : MonoBehaviour
                             healthCount.currentHealth++;
                             deposited = true;
                             factoryDeposited = OrbFactoryDeposited.Health;
+
+                            CheckHealth(); 
                         }
                         
                     }
@@ -201,5 +206,23 @@ public class DepositOrbs : MonoBehaviour
             }
         }
         
+    }
+
+    private void CheckHealth()
+    {
+        if (healthCount.currentHealth > healthCount.maxHealth * 0.8) //20% damage
+            earthDamageAnimator.SetBool("damage1", false);
+            
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.6) //40% damage
+            earthDamageAnimator.SetBool("damage2", false);
+        
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.4) //60% damage
+            earthDamageAnimator.SetBool("damage3", false);
+        
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.2) //80% damage
+            earthDamageAnimator.SetBool("damage4", false);
+        
+        if (healthCount.currentHealth < healthCount.maxHealth * 0.1) //90% damage
+            earthDamageAnimator.SetBool("damage5", false);
     }
 }

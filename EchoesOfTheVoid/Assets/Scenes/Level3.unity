@@ -1729,10 +1729,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.size
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
       propertyPath: teleportPoints.Array.data[0]
       value: 
       objectReference: {fileID: 1938274054}
@@ -1788,62 +1784,6 @@ PrefabInstance:
       propertyPath: teleportPoints.Array.data[13]
       value: 
       objectReference: {fileID: 1443550350}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[14]
-      value: 
-      objectReference: {fileID: 1938274054}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[15]
-      value: 
-      objectReference: {fileID: 1687993034}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[16]
-      value: 
-      objectReference: {fileID: 1322411047}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[17]
-      value: 
-      objectReference: {fileID: 145488597}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[18]
-      value: 
-      objectReference: {fileID: 1508849856}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[19]
-      value: 
-      objectReference: {fileID: 1006646571}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[20]
-      value: 
-      objectReference: {fileID: 1987423648}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[21]
-      value: 
-      objectReference: {fileID: 1288150727}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[22]
-      value: 
-      objectReference: {fileID: 1957109582}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[23]
-      value: 
-      objectReference: {fileID: 1223711228}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[24]
-      value: 
-      objectReference: {fileID: 1222531789}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[25]
-      value: 
-      objectReference: {fileID: 744658778}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[26]
-      value: 
-      objectReference: {fileID: 1137702040}
-    - target: {fileID: 2715511332520450944, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: teleportPoints.Array.data[27]
-      value: 
-      objectReference: {fileID: 1443550350}
     - target: {fileID: 2715511332520450948, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
       propertyPath: m_RootOrder
       value: 7
@@ -1887,10 +1827,6 @@ PrefabInstance:
     - target: {fileID: 2715511332520450948, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2715511332520450951, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
-      propertyPath: waypointObjects.Array.size
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 2715511332520450951, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
       propertyPath: waypointObjects.Array.data[0]
@@ -2851,54 +2787,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
-    - target: {fileID: 788307406, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307406, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.34
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307406, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.18
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307406, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307406, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: m_ConstrainProportionsScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307409, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: barFillSpeed
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307409, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: haloAnimator
-      value: 
-      objectReference: {fileID: 8368030273351815627}
-    - target: {fileID: 788307409, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: fillSoundVolume
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307409, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: gameManagerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-    - target: {fileID: 788307409, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: fillSoundFadeSpeed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307409, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: reduceTimeTillNextWave
-      value: 0.9
-      objectReference: {fileID: 0}
-    - target: {fileID: 788307409, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: reduceSpawnIntervalAndVariation
-      value: 0.9
-      objectReference: {fileID: 0}
     - target: {fileID: 87324993361298619, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -2951,17 +2839,8 @@ PrefabInstance:
       propertyPath: enemySpeedControl
       value: 
       objectReference: {fileID: 8575211595589895407}
-    - target: {fileID: 8368030273351815619, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-      propertyPath: gameManagerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
---- !u!95 &8368030273351815627 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3550091862255483440, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
-  m_PrefabInstance: {fileID: 8368030273351815626}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8416019019511617364 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4082140902467798025, guid: bfb24768378483f49855bb3f4df405d1, type: 3}
