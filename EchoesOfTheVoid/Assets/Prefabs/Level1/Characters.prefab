@@ -779,8 +779,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f57cb29cbb6179747b64f00656c13571, type: 3}
   - {fileID: 21300000, guid: 8206cf7ef55ee0349abd75280858f9af, type: 3}
   counter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  scale: 0.95
-  yAdjust: 0
   barFillSpeed: 6
   fillSoundVolume: 0.3
   fillSoundFadeSpeed: 1
@@ -788,6 +786,11 @@ MonoBehaviour:
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   reduceSpawnIntervalAndVariation: 0.9
   reduceTimeTillNextWave: 0.9
+  firstFilledSpriteNumber: 7
+  secondFilledSpriteNumber: 38
+  thirdFilledSpriteNumber: 69
+  fourthFilledSpriteNumber: 101
+  fifthFilledSpriteNumber: 142
 --- !u!82 &7727992633616873284
 AudioSource:
   m_ObjectHideFlags: 0

@@ -265,17 +265,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1150766313, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
   m_PrefabInstance: {fileID: 2296508909307217391}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1152025910 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
-  m_PrefabInstance: {fileID: 7018123690210432332}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589acb91b0e31504bbcda46f0c5b9c25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1499791406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2296508910798095809, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
@@ -442,10 +431,6 @@ PrefabInstance:
       propertyPath: darkenBackground
       value: 
       objectReference: {fileID: 137018785}
-    - target: {fileID: 1878423872381352024, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
-      propertyPath: level1Controller
-      value: 
-      objectReference: {fileID: 1152025910}
     - target: {fileID: 6933350040456039777, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
       propertyPath: m_RootOrder
       value: 2
