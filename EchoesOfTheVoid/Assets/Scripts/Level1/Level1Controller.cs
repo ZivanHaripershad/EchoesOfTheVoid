@@ -109,15 +109,6 @@ public class Level1Controller : MonoBehaviour
 
     private bool CheckEndingCriteria()
     {
-        //check planet orbs
-        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
-            return false; //not enough orbs
-
-        if (gameManagerData.numberOfEnemiesKilled < numberOfEnemiesToKill)
-        {
-            return false;
-        }
-
         //check that health is medium
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
@@ -129,6 +120,17 @@ public class Level1Controller : MonoBehaviour
         //check filling status, if power bar is still filling up, don't end level
         if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
             return false;
+        
+        //check planet orbs
+        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+        {
+            return false; //not enough orbs
+        }
+        
+        if (gameManagerData.numberOfEnemiesKilled < numberOfEnemiesToKill)
+        {
+            return false;
+        }
         
         return true; //all ending criteria has been met
     }
@@ -145,7 +147,7 @@ public class Level1Controller : MonoBehaviour
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //gameplay
-
+                SpawnNormalEnemies();
                 HandleMissionUpdates();
 
                 if (CheckEndingCriteria())
@@ -156,8 +158,7 @@ public class Level1Controller : MonoBehaviour
                     DisplayEndingScene();
                     return;
                 }
-                
-                SpawnNormalEnemies();
+
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen
@@ -172,6 +173,19 @@ public class Level1Controller : MonoBehaviour
 
                 break;
             case 2: //ending screen
+                if (healthCount.currentHealth == healthCount.maxHealth)
+                {
+                    if (AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level1))
+                    {
+                        AchievementsManager.Instance.UpdateLevelCompletedDictionary(GameManagerData.Level.Level1, true);
+                    }
+                    
+                    if (!AchievementsManager.Instance.GetProtectorCompletionStatus())
+                    {
+                        AchievementsManager.Instance.SetProtectorCompletionStatus(true);
+                    }
+                }
+                
                 break;
             case 3: //retry screen
                 break;
@@ -242,8 +256,7 @@ public class Level1Controller : MonoBehaviour
             missionObjectiveBanner.SetIsBannerAvailable(false);
             missionObjectiveBanner.gameObject.SetActive(true);
             var missionUpdate = missionUpdates.Dequeue();
-            Debug.Log("Updating Banner:" + missionUpdate);
-
+            AudioManager.Instance.PlaySFX("ObjectiveInProgress");
             missionObjectiveText.text = missionUpdate;
         }
         

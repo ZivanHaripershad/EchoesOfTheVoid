@@ -10,12 +10,6 @@ public class FillPowerBar : MonoBehaviour
     [SerializeField]
     private OrbCounter counter;
 
-    [SerializeField]
-    private float scale;
-
-    [SerializeField]
-    private float yAdjust;
-
     private SpriteRenderer spriteRenderer;
 
     private int prevSprite; 
@@ -43,14 +37,17 @@ public class FillPowerBar : MonoBehaviour
     [SerializeField] private GameManagerData gameManagerData;
     [SerializeField] private float reduceSpawnIntervalAndVariation;
     [SerializeField] private float reduceTimeTillNextWave;
-    
+
+    [SerializeField] private int firstFilledSpriteNumber;
+    [SerializeField] private int secondFilledSpriteNumber;
+    [SerializeField] private int thirdFilledSpriteNumber;
+    [SerializeField] private  int fourthFilledSpriteNumber;
+    [SerializeField] private  int fifthFilledSpriteNumber;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        prevSprite = 0;      
-        Vector2 newScale = new Vector2 (scale, scale);
-        transform.localScale = new Vector3(newScale.x, newScale.y, 1f);
-        transform.position += new Vector3(0f, yAdjust, 0f);
+        prevSprite = 0;
         fillEnergySound = GetComponents<AudioSource>();
         isStillFilling = true;
     }
@@ -89,33 +86,33 @@ public class FillPowerBar : MonoBehaviour
             if (currTimeFilled > (1/barFillSpeed))
             {
                 currTimeFilled = 0;
-                prevSprite++; 
+                prevSprite++;
                 
-                if (prevSprite == 7)
+                if (prevSprite == firstFilledSpriteNumber)
                 {
                     fillEnergySound[0].Play();
                     ReduceEnemySpawning();
                 }
 
-                if (prevSprite == 38)
+                if (prevSprite == secondFilledSpriteNumber)
                 {
                     fillEnergySound[1].Play();
                     ReduceEnemySpawning();
                 }
 
-                if (prevSprite == 69)
+                if (prevSprite == thirdFilledSpriteNumber)
                 {
                     fillEnergySound[2].Play();
                     ReduceEnemySpawning();
                 }
 
-                if (prevSprite == 101)
+                if (prevSprite == fourthFilledSpriteNumber)
                 {
                     fillEnergySound[3].Play();
                     ReduceEnemySpawning();
                 }
 
-                if (prevSprite == 142)
+                if (prevSprite == fifthFilledSpriteNumber)
                 {
                     fillEnergySound[4].Play();
                     ReduceEnemySpawning();

@@ -20,13 +20,13 @@ public class DepositOrbs : MonoBehaviour
     public BulletCount bulletCount;
 
     public FactoryCosts factoryCosts;
-    private GameManager gameManager;
-
-    private Animator bulletFactoryAnim;
-    private Animator powerFactoryAnim;
-    private Animator shieldFactoryAnim;
-    private Animator healthFactoryAnim;
-    private ShieldLogic shieldLogic;
+    
+    [SerializeField] private GameManager gameManager;
+    [SerializeField] private Animator bulletFactoryAnim;
+    [SerializeField] private Animator powerFactoryAnim;
+    [SerializeField] private Animator shieldFactoryAnim;
+    [SerializeField] private Animator healthFactoryAnim;
+    [SerializeField] private ShieldLogic shieldLogic;
 
     [SerializeField]
     private EnemySpeedControl enemySpeedControl;
@@ -36,22 +36,13 @@ public class DepositOrbs : MonoBehaviour
 
     public ObjectiveManager objectiveManager;
 
+    [SerializeField] private Animator earthDamageAnimator; 
+
     // Start is called before the first frame update
     void Start()
     {
         orbDepositingMode.depositingMode = false;
     }
-
-    private void OnEnable()
-    {
-        bulletFactoryAnim = GameObject.Find("BulletFactory").GetComponent<Animator>();
-        powerFactoryAnim = GameObject.Find("PowerFactory").GetComponent<Animator>();
-        shieldFactoryAnim= GameObject.Find("ShieldFactory").GetComponent<Animator>();
-        healthFactoryAnim = GameObject.Find("HealthFactory").GetComponent<Animator>();
-        gameManager = GameObject.FindWithTag("GameManager").GetComponent<GameManager>();
-        shieldLogic = GameObject.Find("Shield").GetComponent<ShieldLogic>();
-    }
-
     enum OrbFactoryDeposited
     {
         Power, 
@@ -131,6 +122,13 @@ public class DepositOrbs : MonoBehaviour
 
                         deposited = true;
                         shieldLogic.AddShield();
+                        AchievementsManager.Instance.IncrementNumOfShieldsUsed();
+
+                        if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                        {
+                            gameManagerData.numLevel2ShieldsUsed++;
+                        }
+                        
                         factoryDeposited = OrbFactoryDeposited.Shield;
                     }
                     else
@@ -154,6 +152,8 @@ public class DepositOrbs : MonoBehaviour
                             healthCount.currentHealth++;
                             deposited = true;
                             factoryDeposited = OrbFactoryDeposited.Health;
+
+                            CheckHealth(); 
                         }
                         
                     }
@@ -194,5 +194,23 @@ public class DepositOrbs : MonoBehaviour
             }
         }
         
+    }
+
+    private void CheckHealth()
+    {
+        if (healthCount.currentHealth > healthCount.maxHealth * 0.1) //20% damage
+            earthDamageAnimator.SetBool("damage1", false);
+            
+        if (healthCount.currentHealth > healthCount.maxHealth * 0.2) //40% damage
+            earthDamageAnimator.SetBool("damage2", false);
+        
+        if (healthCount.currentHealth > healthCount.maxHealth * 0.4) //60% damage
+            earthDamageAnimator.SetBool("damage3", false);
+        
+        if (healthCount.currentHealth > healthCount.maxHealth * 0.6) //80% damage
+            earthDamageAnimator.SetBool("damage4", false);
+        
+        if (healthCount.currentHealth > healthCount.maxHealth * 0.8) //90% damage
+            earthDamageAnimator.SetBool("damage5", false);
     }
 }

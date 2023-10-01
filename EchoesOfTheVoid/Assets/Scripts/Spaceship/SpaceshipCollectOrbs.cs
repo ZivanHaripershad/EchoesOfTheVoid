@@ -13,7 +13,7 @@ public class SpaceshipCollectOrbs : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collider){
         if(collider.gameObject.CompareTag("Orb") && spaceshipMode.collectionMode){
             orbCollectSoundEffect.Play();
-
+            AchievementsManager.Instance.IncrementOrbsCollected();
             OrbCounterUI.GetInstance().IncrementOrbs();
             Destroy(collider.gameObject);
         }

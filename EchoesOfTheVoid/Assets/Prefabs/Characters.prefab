@@ -545,12 +545,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: f57cb29cbb6179747b64f00656c13571, type: 3}
   - {fileID: 21300000, guid: 8206cf7ef55ee0349abd75280858f9af, type: 3}
   counter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  scale: 0.95
-  yAdjust: 0
   barFillSpeed: 6
   fillSoundVolume: 0.3
   fillSoundFadeSpeed: 1
   haloAnimator: {fileID: 782200678}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  reduceSpawnIntervalAndVariation: 0
+  reduceTimeTillNextWave: 0
+  firstFilledSpriteNumber: 0
+  secondFilledSpriteNumber: 0
+  thirdFilledSpriteNumber: 0
+  fourthFilledSpriteNumber: 0
+  fifthFilledSpriteNumber: 0
 --- !u!82 &1589393228
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2295,6 +2301,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1166407025544540979}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: gameManagerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: trailFadeAmount
       value: 100
       objectReference: {fileID: 0}
@@ -2366,6 +2376,10 @@ PrefabInstance:
       propertyPath: spaceshipMode
       value: 
       objectReference: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: gameManagerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: trailRendererLeft
       value: 
@@ -2814,6 +2828,7 @@ MonoBehaviour:
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   objectiveManager: {fileID: 0}
+  earthDamageAnimator: {fileID: 0}
 --- !u!114 &961352416
 MonoBehaviour:
   m_ObjectHideFlags: 0

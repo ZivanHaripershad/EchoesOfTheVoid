@@ -121,6 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 10
   lowHealth: 1
+  missionObjectiveBanner: {fileID: 71648045883311448, guid: 964255a6aa596b54e82c184ebf76f0d3, type: 3}
   animator: {fileID: 8430692945547833122}
 --- !u!1 &7975090668322753650
 GameObject:

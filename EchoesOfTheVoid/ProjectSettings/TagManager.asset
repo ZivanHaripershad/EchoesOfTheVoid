@@ -29,6 +29,11 @@ TagManager:
   - MissionObjective
   - ObjectiveManager
   - DoubleDamageBullet
+  - AvoidArea
+  - Level3Manager
+  - MineEnemyWayPoints
+  - MineEnemy
+  - Mine
   layers:
   - Default
   - TransparentFX

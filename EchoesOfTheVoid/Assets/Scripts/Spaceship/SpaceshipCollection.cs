@@ -32,6 +32,10 @@ public class SpaceshipCollection : MonoBehaviour
     //to restrict the space ship to the screen
     private Camera mainCamera;
     public bool isEjecting;
+    [SerializeField] private float stunWaitTime;
+    private bool isStunned;
+
+    [SerializeField] private GameManagerData gameManagerData;
 
     void Start()
     {
@@ -41,6 +45,14 @@ public class SpaceshipCollection : MonoBehaviour
         transform.position = new Vector3(0f, 0f, 0f);
         mainCamera = Camera.main;
         isEjecting = false;
+        gameManagerData.timeSpentFlying = 0f;
+        
+        if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+            SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
+        {
+            var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
+            stunWaitTime -= (stunWaitTime * reducedStunPercentage);
+        }
     }
 
     private void SetEjectingToFalse()
@@ -48,9 +60,18 @@ public class SpaceshipCollection : MonoBehaviour
         isEjecting = false;
     }
 
+    public bool IsStunned()
+    {
+        return isStunned;
+    }
+
     // Update is called once per frame
     void Update()
     {
+        
+        if (isStunned)
+            return;
+        
         spaceshipMode.currentPosition = transform.position;
 
         if(orbDepositingMode.depositingMode == false){
@@ -119,6 +140,11 @@ public class SpaceshipCollection : MonoBehaviour
 
                 transform.position = newPosition;
 
+                if (!AchievementsManager.Instance.GetCollectorCompletionStatus())
+                {
+                    gameManagerData.timeSpentFlying += Time.deltaTime;
+                }
+
                 if (movement.x + movement.y != 0)
                     transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle)); // rotate the object to face the current angle
             } 
@@ -128,5 +154,17 @@ public class SpaceshipCollection : MonoBehaviour
                 fireSpriteB.material.color = new Color(1f, 1f, 1f, 1);
             }
         }
+    }
+
+    public void Stun()
+    {
+        StartCoroutine(StunPlayerCoroutine());
+    }
+
+    private IEnumerator StunPlayerCoroutine()
+    {
+        isStunned = true;
+        yield return new WaitForSeconds(stunWaitTime);
+        isStunned = false;
     }
 }

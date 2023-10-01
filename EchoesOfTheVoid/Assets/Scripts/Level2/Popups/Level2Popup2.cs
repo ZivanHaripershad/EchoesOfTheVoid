@@ -5,12 +5,7 @@ public class Level2Popup2 : Button
 {
     // Start is called before the first frame update
     public Level2Data level2Data;
-
-    private void OnEnable()
-    {
-        Debug.Log("Hello");
-    }
-
+    
     private void Next()
     {
         level2Data.popUpIndex = 1;

@@ -45,7 +45,9 @@ public class AudioManager : MonoBehaviour
         GamePlayMusic, 
         BossMusic, 
         TutorialLevelMusic, 
-        EndingMusic
+        EndingMusic, 
+        GreenBossMusic,
+        Level3Music
     }
 
     public static AudioManager Instance
@@ -92,6 +94,12 @@ public class AudioManager : MonoBehaviour
                 break;
             case MusicFileNames.EndingMusic:
                 fileName = "EndingMusic";
+                break;
+            case MusicFileNames.GreenBossMusic:
+                fileName = "GreenBossMusic";
+                break;
+            case MusicFileNames.Level3Music:
+                fileName = "Level3Music";
                 break;
         }
         

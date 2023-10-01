@@ -16,7 +16,6 @@ public class DestroyEnemy : MonoBehaviour
     public GameManagerData gameManagerData;
     
     [SerializeField] private AudioSource destroyEnemySoundEffect;
-    [SerializeField] private AudioSource crashIntoPlanetSoundEffect;
     [SerializeField] private HealthCount healthCount;
     [SerializeField] private float bulletSoundDelay;
     [SerializeField] private GameObject graphics;
@@ -38,27 +37,28 @@ public class DestroyEnemy : MonoBehaviour
 
     void checkDamage()
     {
-        Debug.Log("shaking camera"); 
         GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CameraShake>().Shake();
         
         if (healthCount.currentHealth < healthCount.maxHealth * 0.8) //20% damage
-            earthDamageAnimator.SetTrigger("damage1");
+            earthDamageAnimator.SetBool("damage1", true);
+            
         if (healthCount.currentHealth < healthCount.maxHealth * 0.6) //40% damage
-            earthDamageAnimator.SetTrigger("damage2");
+            earthDamageAnimator.SetBool("damage2", true);
+        
         if (healthCount.currentHealth < healthCount.maxHealth * 0.4) //60% damage
-            earthDamageAnimator.SetTrigger("damage3");
+            earthDamageAnimator.SetBool("damage3", true);
+        
         if (healthCount.currentHealth < healthCount.maxHealth * 0.2) //80% damage
-            earthDamageAnimator.SetTrigger("damage4");
+            earthDamageAnimator.SetBool("damage4", true);
+        
         if (healthCount.currentHealth < healthCount.maxHealth * 0.1) //90% damage
-            earthDamageAnimator.SetTrigger("damage5");
+            earthDamageAnimator.SetBool("damage5", true);
     }
 
     public void DestroyGameObject(Collider2D collision, bool musSpawnOrb, Transform orbSpawnPoint)
     {
         gameObject.GetComponentInChildren<Collider2D>().enabled = false;
         graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
-        
-        AudioManager.Instance.PlaySFX("DestroyEnemy");
         Instantiate(explosion, orbSpawnPoint.position, orbSpawnPoint.rotation);
         
         if (musSpawnOrb)
@@ -73,7 +73,7 @@ public class DestroyEnemy : MonoBehaviour
         bool planetDamage = false;
         
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
-            crashIntoPlanetSoundEffect.Play();
+            AudioManager.Instance.PlaySFX("CrashIntoPlanet");
             
         if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("DoubleDamageBullet"))
         {
@@ -96,6 +96,7 @@ public class DestroyEnemy : MonoBehaviour
                 {
                 }
                 else { //no shield
+                    AudioManager.Instance.PlaySFX("DestroyEnemy");
                     DestroyGameObject(collision, true, collision.gameObject.transform);
                 }
 
@@ -105,9 +106,8 @@ public class DestroyEnemy : MonoBehaviour
             
             if (collision.gameObject.CompareTag("DoubleDamageBullet"))
             {
-                
                 DestroyGameObject(collision, true, collision.gameObject.transform);
-
+                AudioManager.Instance.PlaySFX("DestroyEnemy");
                 //destroy the bullet
                 Destroy(collision.gameObject);
             }
@@ -127,6 +127,7 @@ public class DestroyEnemy : MonoBehaviour
     private void SpawnOrb(Collider2D collision)
     {
         gameManagerData.numberOfEnemiesKilled++;
+        AchievementsManager.Instance.IncrementNumOfEnemiesKilled();
         destroyEnemySoundEffect.Play();
 
         if (gameManagerData.level.Equals(GameManagerData.Level.Level1))

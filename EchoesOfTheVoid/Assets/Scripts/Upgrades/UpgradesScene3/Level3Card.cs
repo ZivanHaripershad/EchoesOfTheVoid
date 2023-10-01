@@ -67,7 +67,7 @@ public class Level3Card : MonoBehaviour
         var card2SpriteRenderer = card2.spriteRenderer;
         var card3SpriteRenderer = card3.spriteRenderer;
         
-        if (upgradeScene3Manager.GetUpgrade() != null && upgradeScene3Manager.GetUpgrade().GetName() == "ShipHandlingUpgrade")
+        if (upgradeScene3Manager.GetUpgrade() != null && upgradeScene3Manager.GetUpgrade().GetName() == "BulletAccuracyUpgrade")
         {
             card1SpriteRenderer.sprite = card1.normalSprite;
             card1.currentSprite = card1.normalSprite;
@@ -86,7 +86,7 @@ public class Level3Card : MonoBehaviour
             card3SpriteRenderer.sprite = card3.normalSprite;
             card3.currentSprite = card3.normalSprite;
         }
-        else if (upgradeScene3Manager.GetUpgrade() != null && upgradeScene3Manager.GetUpgrade().GetName() == "CollectionRadiusUpgrade")
+        else if (upgradeScene3Manager.GetUpgrade() != null && upgradeScene3Manager.GetUpgrade().GetName() == "ReduceStunUpgrade")
         {
             card1SpriteRenderer.sprite = card1.selectedSprite;
             card1.currentSprite = card1.selectedSprite;

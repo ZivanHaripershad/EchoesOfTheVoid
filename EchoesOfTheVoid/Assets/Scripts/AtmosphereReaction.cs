@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class AtmosphereReaction : MonoBehaviour
 {
@@ -56,20 +57,13 @@ public class AtmosphereReaction : MonoBehaviour
         }
     }
 
-    void Update(){
-        
-        if (Input.GetKeyDown(KeyCode.S) && orbDepositingMode.depositingMode)
-        {
-            AudioManager.Instance.ReduceAudioSpeed();
-        }
-        
-        if (Input.GetKeyUp(KeyCode.S))
-        {
-            AudioManager.Instance.IncreaseAudioSpeed();
-        }
-        
+    void Update()
+    {
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {
+            if (AudioManager.Instance)
+                AudioManager.Instance.ReduceAudioSpeed();
+            
             bulletDeposit.GetComponent<BulletDeposit>().RenderSprites();
             bulletFactory.SetActive(true);
             powerDeposit.GetComponent<PowerDeposit>().RenderSprites();
@@ -89,6 +83,8 @@ public class AtmosphereReaction : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
+            if (AudioManager.Instance)
+                AudioManager.Instance.IncreaseAudioSpeed();
             StartCoroutine(Fade(bulletFactory, 1f, 0f));
             StartCoroutine(Fade(powerFactory, 1f, 0f));
             StartCoroutine(Fade(shieldFactory, 1f, 0f));

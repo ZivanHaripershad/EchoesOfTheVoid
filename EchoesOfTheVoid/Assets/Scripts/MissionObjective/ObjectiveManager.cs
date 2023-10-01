@@ -33,4 +33,11 @@ public class ObjectiveManager : MonoBehaviour
         var mothershipDestroyedUpdate = "1/1 Mothership Destroyed";
         missionObjectiveBanner.AddMissionUpdate(mothershipDestroyedUpdate);
     }
+
+    public void UpdatePrimaryTargetHealthBanner(float healthPercentage)
+    {
+        var enemiesKilledUpdate = "Primary target health: " + (100 - healthPercentage) + "%";
+        missionObjectiveBanner.AddMissionUpdate(enemiesKilledUpdate);
+    }
+    
 }

@@ -36,7 +36,6 @@ public class CameraShake : MonoBehaviour
 
     public void Shake()
     {
-        Debug.Log("Camear recieved shake");
         currentShake = shakeDuration;
         currentShakeAmount = shakeAmount;
     }

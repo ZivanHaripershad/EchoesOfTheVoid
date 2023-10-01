@@ -455,7 +455,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1072420874778190434}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2bca513a6704254183a287fd61ccd6a, type: 3}
+  m_Script: {fileID: 11500000, guid: 537c540368e704f4abec81a9204a5cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bulletFactory: {fileID: 1072420876386499430}
@@ -467,8 +467,7 @@ MonoBehaviour:
   powerDeposit: {fileID: 1072420876647057342}
   shieldDeposit: {fileID: 1072420876093096940}
   darkenBackground: {fileID: 0}
-  darkenBackgroundAlpha: 0.3
-  level1Controller: {fileID: 0}
+  darkenBackgroundAlpha: 0.5
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   fadeDuration: 1
 --- !u!1 &1072420874795578793
@@ -2056,7 +2055,6 @@ MonoBehaviour:
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
 --- !u!82 &1072420875724713676
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2647,8 +2645,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -26, y: 478.1}
-  m_SizeDelta: {x: 55, y: 43.55}
+  m_AnchoredPosition: {x: -38, y: 478.1}
+  m_SizeDelta: {x: 100, y: 43.55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1072420876394576666
 CanvasRenderer:
@@ -2733,7 +2731,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072420876406528904}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.94, y: 4.4820004, z: 0}
+  m_LocalPosition: {x: -2.3, y: 4.4820004, z: 0}
   m_LocalScale: {x: 0.9960104, y: 0.9960104, z: 0.9960104}
   m_ConstrainProportionsScale: 1
   m_Children: []

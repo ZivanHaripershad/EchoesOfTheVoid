@@ -5,7 +5,8 @@ using UnityEngine;
 public class ShieldDeposit : Deposit
 {
     override 
-    public void RenderSprites(){
+    public void RenderSprites()
+    {
         if (!gameManager.IsShieldEnabled())
         {
             spriteRenderer.sprite = disabledFactorySprite;

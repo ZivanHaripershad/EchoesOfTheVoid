@@ -48,6 +48,8 @@ public class Level2Controller : MonoBehaviour
     
     private Text missionObjectiveText;
     private float missionBannerWaitTime;
+    
+    private float completedLevelTime = 0f;
 
     struct SceneManager
     {
@@ -95,9 +97,12 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.expireOrbs = true;
         gameManagerData.level = GameManagerData.Level.Level2;
         gameManagerData.isShieldUp = false;
+        
         gameManagerData.spawnInterval = 3;
         gameManagerData.spawnTimerVariation = 2;
         gameManagerData.timeTillNextWave = 4;
+        gameManagerData.numLevel2ShieldsUsed = 0;
+        gameManagerData.level2TimeCompletion = 0f;
 
         //set up shield and mouse
         mouseControl.EnableMouse();
@@ -126,21 +131,19 @@ public class Level2Controller : MonoBehaviour
         {
             SelectedUpgradeLevel3.Instance.SetUpgrade(null);
         }
+
+        completedLevelTime = 0f;
     }
 
     private bool CheckEndingCriteria()
     {
-        //check planet orbs
-        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
-            return false; //not enough orbs
-        
         //check health status
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
             //show health too low message
             healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
-        } 
+        }
         healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
         
         //check that mothership has entered
@@ -171,6 +174,12 @@ public class Level2Controller : MonoBehaviour
         if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
             return false;
         
+        //check planet orbs
+        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+        {
+            return false; //not enough orbs
+        }
+        
         return true; //all ending criteria has been met
     }
     
@@ -179,6 +188,8 @@ public class Level2Controller : MonoBehaviour
         popupIndex = level2Data.popUpIndex;
         
         HandlePopups();
+
+        gameManagerData.level2TimeCompletion += Time.deltaTime;
         
         switch (popupIndex)
         {
@@ -188,6 +199,8 @@ public class Level2Controller : MonoBehaviour
                 break;
             case 1: //initialize gameplay
                 SpawnNormalEnemies();
+                HandleMissionUpdates();
+                CheckHealth();
                 popUpWaitTime = 5;
                 level2Data.popUpIndex++;
 
@@ -200,10 +213,12 @@ public class Level2Controller : MonoBehaviour
                     popUpWaitTime = 10;
                 }
                 popUpWaitTime -= Time.deltaTime;
+                CheckHealth();
                 break;
             case 3: //Mothership intro
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
+                CheckHealth();
                 if (popUpWaitTime <= 0)
                 {
                     level2Data.popUpIndex++;
@@ -222,12 +237,7 @@ public class Level2Controller : MonoBehaviour
                     return;
                 }
 
-                if (healthCount.currentHealth == 0)
-                {
-                    //show retry screen
-                    RemoveLevelObjects();
-                    level2Data.popUpIndex = 6;
-                }
+                CheckHealth();
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
                 {
@@ -235,13 +245,44 @@ public class Level2Controller : MonoBehaviour
                 }
 
                 break;
+            //end screen
+            case 5:
+                if (healthCount.currentHealth == healthCount.maxHealth)
+                {
+                    if (AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level2))
+                    {
+                        AchievementsManager.Instance.UpdateLevelCompletedDictionary(GameManagerData.Level.Level2, true);
+                    }
+                }
+
+                if (gameManagerData.numLevel2ShieldsUsed == 0 && !AchievementsManager.Instance.GetRiskTakerCompletionStatus())
+                {
+                    AchievementsManager.Instance.SetRiskTakerCompletionStatus(true);
+                }
+                
+                break;
+            //retry screen
+            case 6:
+                completedLevelTime = 0f;
+                gameManagerData.level2TimeCompletion = 0f;
+                break;
         }
         
         //if game is paused
         if (Time.timeScale == 0)
             mouseControl.EnableMouse();
     }
-    
+
+    private void CheckHealth()
+    {
+        if (healthCount.currentHealth == 0)
+        {
+            //show retry screen
+            RemoveLevelObjects();
+            level2Data.popUpIndex = 6;
+        }
+    }
+
     private void SpawnNormalEnemies()
     {
         if (Time.timeScale != 0)
@@ -254,7 +295,7 @@ public class Level2Controller : MonoBehaviour
         if (!sceneManager.hasStartedSpawning)
         {
             sceneManager.hasStartedSpawning = true;
-            enemySpawning.StartSpawningLevel2Enemies();
+            enemySpawning.StartSpawningShieldians();
         }
 
         //killed enough to proceed to boss, and kill the rest of the enemies on screen
@@ -298,6 +339,16 @@ public class Level2Controller : MonoBehaviour
     {
         if (!sceneManager.displayedEnding)
         {
+            if (completedLevelTime == 0f)
+            {
+                completedLevelTime = gameManagerData.level2TimeCompletion;
+
+                if (completedLevelTime >= 120f && !AchievementsManager.Instance.GetSpeedRunnerCompletionStatus())
+                {
+                    AchievementsManager.Instance.SetSpeedRunnerAchievementStatus(true);
+                }
+            }
+            
             sceneManager.displayedEnding = true;
             var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
             planetHealthNum.text =  healthPercentage + "%";
@@ -342,8 +393,7 @@ public class Level2Controller : MonoBehaviour
             missionObjectiveBanner.SetIsBannerAvailable(false);
             missionObjectiveBanner.gameObject.SetActive(true);
             var missionUpdate = missionUpdates.Dequeue();
-            Debug.Log("Updating Banner:" + missionUpdate);
-
+            AudioManager.Instance.PlaySFX("ObjectiveInProgress");
             missionObjectiveText.text = missionUpdate;
         }
         

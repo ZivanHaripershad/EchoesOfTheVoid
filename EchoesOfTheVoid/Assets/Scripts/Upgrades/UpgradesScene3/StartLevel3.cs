@@ -41,7 +41,7 @@ public class StartLevel3 : MonoBehaviour
             Debug.Log("Level 3 Upgrade: " + upgradeScene3Manager.GetUpgrade().GetName());
             SelectedUpgradeLevel3.Instance.SetUpgrade(upgradeScene3Manager.GetUpgrade());
             AudioManager.Instance.PlaySFX("ButtonClick");
-            SceneManager.LoadScene("Level1");
+            SceneManager.LoadScene("Level3");
         }
         else
         {

@@ -26,7 +26,7 @@ public class SettingsController : MonoBehaviour
 
     [SerializeField]
     private SettingsDataLive settingsData;
-    public int popUpIndex;
+    private int popUpIndex;
 
     
     private void Start()
@@ -40,13 +40,6 @@ public class SettingsController : MonoBehaviour
         settingsData.popUpIndex = 0;
 
     }
-
-
-    private void PlayGameAudio()
-    {
-        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
-    }
-    
 
     private void Update()
     {

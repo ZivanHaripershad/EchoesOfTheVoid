@@ -49,7 +49,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.677
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -195,6 +195,10 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: ec875f34fa9681943b5b8ff43820e465, type: 3}
   - clipName: EndingMusic
     clip: {fileID: 8300000, guid: a118135cd4dc9ae46bf76806117a569b, type: 3}
+  - clipName: GreenBossMusic
+    clip: {fileID: 8300000, guid: a39bc9bc4d2907b4183a6c7010f99972, type: 3}
+  - clipName: Level3Music
+    clip: {fileID: 8300000, guid: 318214192feae9e428073bd6e41f1250, type: 3}
   sfxSounds:
   - clipName: ButtonClick
     clip: {fileID: 8300000, guid: 230a2ca6d9e96834f8376a92a8a025e7, type: 3}
@@ -232,6 +236,12 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 55956378b09ed444db836d2604565c93, type: 3}
   - clipName: EarthShieldDestroyed
     clip: {fileID: 8300000, guid: 9a890dc986474c54696b053805dfe1ba, type: 3}
+  - clipName: MineExplodes
+    clip: {fileID: 8300000, guid: 8c9fb1ed571e1b04ab52953ae38122cc, type: 3}
+  - clipName: MineExplodesNoBeep
+    clip: {fileID: 8300000, guid: 53187d700846a494aaf8b55928548452, type: 3}
+  - clipName: ObjectiveInProgress
+    clip: {fileID: 8300000, guid: a161b6a39b268c449a26bcaa7d5b8a7a, type: 3}
   musicSource: {fileID: 2406677496876818795}
   sfxSource: {fileID: 242568350414305245}
   normalAudioSpeed: 1
