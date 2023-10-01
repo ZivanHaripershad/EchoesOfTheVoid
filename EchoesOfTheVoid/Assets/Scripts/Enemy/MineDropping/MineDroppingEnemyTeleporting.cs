@@ -81,7 +81,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
             Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
             Destroy(gameObject);
             AudioManager.Instance.PlaySFX("KillMotherShip");
-            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.Level3Music);
         }
         else
         {

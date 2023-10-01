@@ -60,7 +60,7 @@ public class Level3Controller : MonoBehaviour
     {
         
         AudioManager.Instance.ToggleMusicOff();
-        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.Level3Music);
         
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
@@ -123,16 +123,11 @@ public class Level3Controller : MonoBehaviour
 
     private bool CheckEndingCriteria()
     {
-        //check planet orbs
-        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
-        {
-            return false; //not enough orbs
-        }
-        
         //check health status
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
             //show health too low message
+            Debug.Log("Health low message");
             healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         }
@@ -168,6 +163,12 @@ public class Level3Controller : MonoBehaviour
             return false;
         }
         
+        //check planet orbs
+        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+        {
+            return false; //not enough orbs
+        }
+        
         return true; //all ending criteria has been met
     }
     
@@ -180,7 +181,6 @@ public class Level3Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
-                
                 enemySpawning.ResetSpawning();
                 popUpWaitTime = 10;
                 break;
@@ -200,11 +200,16 @@ public class Level3Controller : MonoBehaviour
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 CheckHealth();
+                //killed enough to proceed to boss, and kill the rest of the enemies on screen
+                if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
+                {
+                    SpawnBoss();
+                }
                 popUpWaitTime = 10f;
 
                 break;
             case 3: // mine enemy intro
-                SpawnNormalEnemies();
+                SpawnBoss();
                 HandleMissionUpdates();
                 CheckHealth();
                 if (popUpWaitTime <= 0)
@@ -216,7 +221,8 @@ public class Level3Controller : MonoBehaviour
                 
             case 4: //gameplay
                 HandleMissionUpdates();
-                SpawnNormalEnemies();
+                SpawnBoss();
+
                 if (CheckEndingCriteria())
                 {
                     Debug.Log("Level 3 completed");
@@ -280,12 +286,6 @@ public class Level3Controller : MonoBehaviour
         {
             sceneManager.hasStartedSpawning = true;
             enemySpawning.StartSpawningLevel3Enemies();
-        }
-
-        //killed enough to proceed to boss, and kill the rest of the enemies on screen
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
-        {
-            SpawnBoss();
         }
     }
 

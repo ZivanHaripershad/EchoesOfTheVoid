@@ -197,6 +197,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a118135cd4dc9ae46bf76806117a569b, type: 3}
   - clipName: GreenBossMusic
     clip: {fileID: 8300000, guid: a39bc9bc4d2907b4183a6c7010f99972, type: 3}
+  - clipName: Level3Music
+    clip: {fileID: 8300000, guid: 318214192feae9e428073bd6e41f1250, type: 3}
   sfxSounds:
   - clipName: ButtonClick
     clip: {fileID: 8300000, guid: 230a2ca6d9e96834f8376a92a8a025e7, type: 3}

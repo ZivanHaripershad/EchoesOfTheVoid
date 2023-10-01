@@ -109,15 +109,6 @@ public class Level1Controller : MonoBehaviour
 
     private bool CheckEndingCriteria()
     {
-        //check planet orbs
-        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
-            return false; //not enough orbs
-
-        if (gameManagerData.numberOfEnemiesKilled < numberOfEnemiesToKill)
-        {
-            return false;
-        }
-
         //check that health is medium
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
@@ -129,6 +120,17 @@ public class Level1Controller : MonoBehaviour
         //check filling status, if power bar is still filling up, don't end level
         if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
             return false;
+        
+        //check planet orbs
+        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+        {
+            return false; //not enough orbs
+        }
+        
+        if (gameManagerData.numberOfEnemiesKilled < numberOfEnemiesToKill)
+        {
+            return false;
+        }
         
         return true; //all ending criteria has been met
     }
@@ -145,7 +147,7 @@ public class Level1Controller : MonoBehaviour
                 enemySpawning.ResetSpawning();
                 break;
             case 1: //gameplay
-
+                SpawnNormalEnemies();
                 HandleMissionUpdates();
 
                 if (CheckEndingCriteria())
@@ -157,7 +159,6 @@ public class Level1Controller : MonoBehaviour
                     return;
                 }
 
-                SpawnNormalEnemies();
                 if (healthCount.currentHealth == 0)
                 {
                     //show retry screen

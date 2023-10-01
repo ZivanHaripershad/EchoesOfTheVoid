@@ -48,11 +48,7 @@ public class HealthDeposit : Deposit
         {
             return HealthCount.HealthStatus.MEDIUM;
         } 
-        if (healthCount.currentHealth > mediumHealthBounds && healthCount.currentHealth <= healthCount.maxHealth)
-        {
-            return HealthCount.HealthStatus.HIGH;
-        }
-
+        
         return HealthCount.HealthStatus.HIGH;
     }
 

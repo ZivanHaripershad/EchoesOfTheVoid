@@ -137,10 +137,6 @@ public class Level2Controller : MonoBehaviour
 
     private bool CheckEndingCriteria()
     {
-        //check planet orbs
-        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
-            return false; //not enough orbs
-        
         //check health status
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
@@ -177,6 +173,12 @@ public class Level2Controller : MonoBehaviour
         //check filling status, if power bar is still filling up, don't end level
         if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
             return false;
+        
+        //check planet orbs
+        if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+        {
+            return false; //not enough orbs
+        }
         
         return true; //all ending criteria has been met
     }
@@ -281,28 +283,6 @@ public class Level2Controller : MonoBehaviour
         }
     }
 
-    private void SpawnShieldianEnemies()
-    {
-        if (Time.timeScale != 0)
-            mouseControl.DisableMouse();
-
-        //activate level objects
-        uiManager.SetLevelObjectsToActive();
-        uiManager.SetAtmosphereObjectToActive();
-
-        if (!sceneManager.hasStartedSpawning)
-        {
-            sceneManager.hasStartedSpawning = true;
-            enemySpawning.StartSpawningShieldians();
-        }
-
-        //killed enough to proceed to boss, and kill the rest of the enemies on screen
-        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
-        {
-            SpawnBoss();
-        }
-    }
-    
     private void SpawnNormalEnemies()
     {
         if (Time.timeScale != 0)
