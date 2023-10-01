@@ -36,7 +36,6 @@ public class MineDroppingMovement : MonoBehaviour
         randomNum = 0;
 
         waypointObjects = GameObject.FindGameObjectsWithTag("MineEnemyWayPoints");
-        Debug.Log("Num Waypoints: " + waypointObjects.Length);
         waypoints = new Vector3[waypointObjects.Length];
         currentWaitDuration = mineWaitDuration;
 

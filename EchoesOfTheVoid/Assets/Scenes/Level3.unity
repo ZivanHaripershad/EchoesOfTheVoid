@@ -2544,6 +2544,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
+    - target: {fileID: 788307405, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
+      propertyPath: m_TagString
+      value: PowerBar
+      objectReference: {fileID: 0}
     - target: {fileID: 87324993361298619, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
       propertyPath: m_RootOrder
       value: 1

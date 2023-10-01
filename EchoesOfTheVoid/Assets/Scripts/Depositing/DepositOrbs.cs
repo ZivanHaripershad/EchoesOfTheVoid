@@ -43,7 +43,6 @@ public class DepositOrbs : MonoBehaviour
     void Start()
     {
         orbDepositingMode.depositingMode = false;
-        Debug.Log(gameManager);
     }
     enum OrbFactoryDeposited
     {

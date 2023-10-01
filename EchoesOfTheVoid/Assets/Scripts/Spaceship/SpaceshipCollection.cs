@@ -158,7 +158,6 @@ public class SpaceshipCollection : MonoBehaviour
 
     public void Stun()
     {
-        print("Stunning");
         StartCoroutine(StunPlayerCoroutine());
     }
 

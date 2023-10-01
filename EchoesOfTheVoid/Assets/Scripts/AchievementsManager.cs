@@ -13,8 +13,6 @@ public class AchievementsManager : MonoBehaviour
     
     private bool godModeCompleted;
 
-    private bool godModeCheck;
-    
     private int numOfShieldsUsed;
 
     private bool protectorCompleted;
@@ -53,7 +51,6 @@ public class AchievementsManager : MonoBehaviour
         levelsCompletedWithoutLosingHealth.Add(GameManagerData.Level.Level3, false);
 
         godModeCompleted = false;
-        godModeCheck = false;
         numOfShieldsUsed = 0;
         protectorCompleted = false;
         collectorCompleted = false;

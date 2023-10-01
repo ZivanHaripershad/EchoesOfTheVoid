@@ -281,6 +281,28 @@ public class Level2Controller : MonoBehaviour
         }
     }
 
+    private void SpawnShieldianEnemies()
+    {
+        if (Time.timeScale != 0)
+            mouseControl.DisableMouse();
+
+        //activate level objects
+        uiManager.SetLevelObjectsToActive();
+        uiManager.SetAtmosphereObjectToActive();
+
+        if (!sceneManager.hasStartedSpawning)
+        {
+            sceneManager.hasStartedSpawning = true;
+            enemySpawning.StartSpawningShieldians();
+        }
+
+        //killed enough to proceed to boss, and kill the rest of the enemies on screen
+        if (gameManagerData.numberOfEnemiesKilled >= numberOfEnemiesToKillToProceedToBoss)
+        {
+            SpawnBoss();
+        }
+    }
+    
     private void SpawnNormalEnemies()
     {
         if (Time.timeScale != 0)
@@ -293,7 +315,7 @@ public class Level2Controller : MonoBehaviour
         if (!sceneManager.hasStartedSpawning)
         {
             sceneManager.hasStartedSpawning = true;
-            enemySpawning.StartSpawningLevel2Enemies();
+            enemySpawning.StartSpawningShieldians();
         }
 
         //killed enough to proceed to boss, and kill the rest of the enemies on screen

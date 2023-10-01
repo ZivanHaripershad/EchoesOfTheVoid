@@ -125,7 +125,9 @@ public class Level3Controller : MonoBehaviour
     {
         //check planet orbs
         if (orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
+        {
             return false; //not enough orbs
+        }
         
         //check health status
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
@@ -136,14 +138,14 @@ public class Level3Controller : MonoBehaviour
         }
         healthLowMessage.GetComponent<UrgentMessage>().Hide(); //has enough health
         
-        //check that mothership has entered
+        //check that mineEnemyShip has entered
         if (!sceneManager.mineEnemyShipHasEntered)
         {
             primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
             return false;
         }
         
-        //mother has entered, but has not been killed
+        //mine enemy has entered, but has not been killed
         if (mineEnemyInstance != null) 
         {
             primaryTargetNotEliminated.GetComponent<UrgentMessage>().Show();
@@ -162,7 +164,9 @@ public class Level3Controller : MonoBehaviour
         
         //check filling status, if power bar is still filling up, don't end level
         if (GameObject.FindGameObjectWithTag("PowerBar").GetComponent<FillPowerBar>().IsStillFilling())
+        {
             return false;
+        }
         
         return true; //all ending criteria has been met
     }
@@ -215,6 +219,7 @@ public class Level3Controller : MonoBehaviour
                 SpawnNormalEnemies();
                 if (CheckEndingCriteria())
                 {
+                    Debug.Log("Level 3 completed");
                     level3Data.popUpIndex = 5;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();

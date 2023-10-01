@@ -15,7 +15,13 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     [SerializeField] private Vector3 targetScale;
     [SerializeField] private GameObject damage;
     [SerializeField] private AudioSource damageAudio;
+    [SerializeField] private float maxHealth;
+    [SerializeField] private GameObject explosion;
 
+    private float currentHealth;
+    private ObjectiveManager objectiveManager;
+
+    
     private void Start()
     {
         teleportPoints = GameObject.FindGameObjectsWithTag("MineEnemyWayPoints");
@@ -25,7 +31,10 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
             transformsPoints[i] = teleportPoints[i].transform;
         }
 
+        currentHealth = maxHealth;
+
         mineDroppingMovement = GetComponent<MineDroppingMovement>();
+        objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
     }
 
     // Start is called before the first frame update
@@ -33,7 +42,51 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     {
         if (other.CompareTag("Bullet"))
         {
-            Instantiate(damage, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1), Quaternion.identity);
+            currentHealth--;
+            EnemyHealthBannerUpdate();
+            CheckHealth();
+        }
+        else if (other.gameObject.CompareTag("DoubleDamageBullet"))
+        {
+            currentHealth -= 2;
+            EnemyHealthBannerUpdate();
+            CheckHealth();
+        }
+    }
+
+    private void EnemyHealthBannerUpdate()
+    {
+        float healthPercentage = 0f;
+        if (currentHealth <= 0)
+        {
+            healthPercentage = 100;
+        }
+        else
+        {
+            healthPercentage = ((maxHealth - currentHealth) / maxHealth) * 100; 
+        }
+        
+        if (healthPercentage % 20 == 0)
+        {
+            objectiveManager.UpdatePrimaryTargetHealthBanner(healthPercentage);
+        }
+    }
+
+    private void CheckHealth()
+    {
+        if (currentHealth <= 0)
+        {
+            Instantiate(damage, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1),
+                Quaternion.identity);
+            Instantiate(explosion, gameObject.transform.position, gameObject.transform.rotation);
+            Destroy(gameObject);
+            AudioManager.Instance.PlaySFX("KillMotherShip");
+            AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
+        }
+        else
+        {
+            Instantiate(damage, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1),
+                Quaternion.identity);
             Teleport();
         }
     }

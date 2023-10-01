@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 5342910822115288346}
   - component: {fileID: 1219757032773582648}
   - component: {fileID: 536733453768271541}
-  - component: {fileID: 2328866002445996119}
+  - component: {fileID: 610490727}
   m_Layer: 5
   m_Name: Control_button
   m_TagString: Untagged
@@ -1279,7 +1279,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.25, y: 0.93}
   m_EdgeRadius: 0
---- !u!114 &2328866002445996119
+--- !u!114 &610490727
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1625,6 +1625,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1166037811346488743}
   - component: {fileID: 426775024283089675}
+  - component: {fileID: 1013909088976094271}
+  - component: {fileID: 375532224}
   m_Layer: 5
   m_Name: Credits_button
   m_TagString: Untagged
@@ -1704,6 +1706,49 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1013909088976094271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264928228212821586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3285fd858e9a452abaafc447a2c177de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 426775024283089675}
+  defaultControlButtonText: {fileID: 21300000, guid: 23f371a054b579f4b91423d039e4911d, type: 3}
+  hoveredControlButtonText: {fileID: 21300000, guid: d25d62f84abc6a049b005a5090728111, type: 3}
+  settingsData: {fileID: 11400000, guid: 4f36d9cb429879f4ca4012b6e07fb536, type: 2}
+  mouseControl: {fileID: 0}
+--- !u!61 &375532224
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8264928228212821586}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.75, y: 0.6}
+    newSize: {x: 1.75, y: 0.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.25, y: 0.93}
+  m_EdgeRadius: 0
 --- !u!1 &8472417600262980086
 GameObject:
   m_ObjectHideFlags: 0

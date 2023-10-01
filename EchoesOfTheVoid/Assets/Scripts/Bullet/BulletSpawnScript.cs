@@ -230,7 +230,6 @@ public class BulletSpawnScript : MonoBehaviour
 
         if (Time.time >= pressTime && ready)
         {
-            Debug.Log("Generating bullets");
             ready = false;
             //reload 
             bulletCount.generateBullets = true;

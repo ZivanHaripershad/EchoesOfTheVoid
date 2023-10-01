@@ -24,7 +24,6 @@ public class MissionObjectiveBanner : MonoBehaviour
     {
         if (missionUpdates != null)
         {
-            Debug.Log("Adding Mission:" + missionUpdate);
             missionUpdates.Enqueue(missionUpdate);
         }
     }
