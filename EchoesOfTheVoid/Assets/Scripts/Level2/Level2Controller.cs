@@ -263,6 +263,7 @@ public class Level2Controller : MonoBehaviour
                 break;
             //retry screen
             case 6:
+                mouseControl.EnableMouse();
                 completedLevelTime = 0f;
                 gameManagerData.level2TimeCompletion = 0f;
                 break;

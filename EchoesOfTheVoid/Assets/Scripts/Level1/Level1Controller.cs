@@ -188,6 +188,7 @@ public class Level1Controller : MonoBehaviour
                 
                 break;
             case 3: //retry screen
+                mouseControl.EnableMouse();
                 break;
         }
         

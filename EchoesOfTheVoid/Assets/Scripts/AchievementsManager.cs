@@ -112,10 +112,12 @@ public class AchievementsManager : MonoBehaviour
     {
         if (!godModeCompleted)
         {
+            // Debug.Log("Checking if God mode completed");
             bool hasGodModeBeenDone = true;
             
             foreach (var kvp in levelsCompletedWithoutLosingHealth)
             {
+                // Debug.Log(kvp.Key + " god mode achieved: " + kvp.Value);
                 if (!kvp.Value) //if not true, end loop because player lost health on this level
                 {
                     hasGodModeBeenDone = false;
