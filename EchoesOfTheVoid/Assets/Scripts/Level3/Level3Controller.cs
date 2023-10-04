@@ -245,7 +245,7 @@ public class Level3Controller : MonoBehaviour
             case 5: //endscreen
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
-                    if (AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level3))
+                    if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level3))
                     {
                         AchievementsManager.Instance.UpdateLevelCompletedDictionary(GameManagerData.Level.Level3, true);
                     }
