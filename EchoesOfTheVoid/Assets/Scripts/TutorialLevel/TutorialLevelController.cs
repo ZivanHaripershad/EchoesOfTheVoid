@@ -141,6 +141,9 @@ public class TutorialLevelController : MonoBehaviour
             uiManager.DisableAtmosphereObject();
             uiManager.SetLevelObjectsToActive();
             
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
+            
             //assignment 1 screen
             if (gameManagerData.tutorialWaitTime <= 0)
             {
@@ -151,6 +154,9 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 2)
         {
             //a and d screen
+            
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
 
             if (Input.GetKey(KeyCode.A))
             {
@@ -171,6 +177,9 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 3)
         {
             //assignment 2 screen
+            
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             
             if (gameManagerData.tutorialWaitTime <= 0)
             {
@@ -201,6 +210,9 @@ public class TutorialLevelController : MonoBehaviour
         {
             //assignment 3 screen
             
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
+            
             if (gameManagerData.tutorialWaitTime <= 0)
             {
                 gameManagerData.tutorialWaitTime = 10;
@@ -212,6 +224,9 @@ public class TutorialLevelController : MonoBehaviour
         {
             //explaining orbs screen
             
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
+            
             if (gameManagerData.tutorialWaitTime <= 0)
             {
                 tutorialData.popUpIndex++;
@@ -222,6 +237,9 @@ public class TutorialLevelController : MonoBehaviour
         {
             //transition to collection mode screen
             
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
+            
             if (Input.GetKey(KeyCode.Space))
             {
                 tutorialData.popUpIndex++;
@@ -230,6 +248,9 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 8)
         {
             //movement in collection mode screen
+            
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             
             if (Input.GetKey(KeyCode.W))
             {
@@ -259,6 +280,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 9)
         {
             //collecting orbs screen
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             
             if (gameManagerData.numberOfOrbsCollected == 4)
             {
@@ -268,6 +291,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 10)
         {
             //congrats for collecting orbs screen
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             
             if (Input.GetKey(KeyCode.Space))
             {
@@ -278,6 +303,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 11)
         {
             //assignment 4 screen
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
 
             if (gameManagerData.tutorialWaitTime <= 0)
             {
@@ -288,6 +315,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 12)
         {
             //bring up orb menu screen
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
             
             uiManager.SetAtmosphereObjectToActive();
             tutorialData.depositPower = true;
@@ -300,6 +329,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 13)
         {
             //deposit to planet network
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
 
             if (Input.GetKey(KeyCode.J))
             {
@@ -310,6 +341,8 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 14)
         {
             tutorialData.depositPower = false;
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
 
             //planet network explanation
             if (gameManagerData.tutorialWaitTime <= 0)
@@ -322,6 +355,8 @@ public class TutorialLevelController : MonoBehaviour
         {
             //deposit to replenish ammo
             tutorialData.depositAmmo = true;
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
 
             if (Input.GetKey(KeyCode.I))
             {
@@ -333,6 +368,9 @@ public class TutorialLevelController : MonoBehaviour
             //deposit to planet health
             tutorialData.depositAmmo = false;
             tutorialData.depositHealth = true;
+            
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
 
             if (Input.GetKey(KeyCode.K))
             {
@@ -343,6 +381,9 @@ public class TutorialLevelController : MonoBehaviour
         else if (popUpIndex == 17)
         {
             tutorialData.depositHealth = false;
+            
+            if (Time.timeScale != 0)
+                mouseControl.DisableMouse();
 
             //congrats player screen
             if (gameManagerData.tutorialWaitTime <= 0)

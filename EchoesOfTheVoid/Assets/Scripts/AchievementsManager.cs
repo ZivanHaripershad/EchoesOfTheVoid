@@ -108,7 +108,7 @@ public class AchievementsManager : MonoBehaviour
         levelsCompletedWithoutLosingHealth[level] = completedWithoutLosingHealth;
     }
 
-    private void Update()
+    private void CheckGodModeStatus()
     {
         if (!godModeCompleted)
         {
@@ -134,6 +134,8 @@ public class AchievementsManager : MonoBehaviour
 
     public void CheckIfGodModeCompleted()
     {
+        CheckGodModeStatus();
+        
         if (godModeCompleted)
         {
             SetAchievementToComplete(Achievement.GodModeAchievement);

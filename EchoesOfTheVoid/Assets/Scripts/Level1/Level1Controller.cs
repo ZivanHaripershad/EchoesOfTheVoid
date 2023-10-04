@@ -175,7 +175,7 @@ public class Level1Controller : MonoBehaviour
             case 2: //ending screen
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
-                    if (AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level1))
+                    if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level1))
                     {
                         AchievementsManager.Instance.UpdateLevelCompletedDictionary(GameManagerData.Level.Level1, true);
                     }
@@ -188,6 +188,7 @@ public class Level1Controller : MonoBehaviour
                 
                 break;
             case 3: //retry screen
+                mouseControl.EnableMouse();
                 break;
         }
         
