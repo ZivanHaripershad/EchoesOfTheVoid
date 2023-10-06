@@ -21,6 +21,7 @@ public class SpaceshipOrbiting : MonoBehaviour
 
     public SpaceshipCollection spaceshipCollection;
 
+    [SerializeField] private AtmosphereReaction atmosphereReaction;
 
     [SerializeField]
     private TrailRenderer trailRendererRight;
@@ -67,7 +68,7 @@ public class SpaceshipOrbiting : MonoBehaviour
 
         bool isPaused = Mathf.Approximately(Time.timeScale, 0f);
 
-        if (isPaused || spaceshipCollection.IsStunned())
+        if (isPaused || spaceshipCollection.IsStunned() || atmosphereReaction.IsUp())
             return;
         
         //this is for when the game starts and you initially move around the planet

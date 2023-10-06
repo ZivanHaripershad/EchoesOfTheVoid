@@ -27,17 +27,25 @@ public class AtmosphereReaction : MonoBehaviour
 
     public OrbDepositingMode orbDepositingMode;
 
-    public float fadeDuration = 1f; // The duration of the fade-in effect
+    [SerializeField] private float fadeInDuration;
+    [SerializeField] private float fadeOutDuration;
+    
+    private bool isUp;
 
-    IEnumerator Fade(GameObject gameObject, float startAlpha, float targetAlpha)
+    public bool IsUp()
+    {
+        return isUp;
+    }
+
+    IEnumerator Fade(GameObject gameObject, float startAlpha, float targetAlpha, float duration)
     {
         float elapsedTime = 0f;
         Renderer[] renderers = gameObject.GetComponentsInChildren<Renderer>();
 
         // Gradually fade the renderers
-        while (elapsedTime < fadeDuration)
+        while (elapsedTime < duration)
         {
-            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / fadeDuration); ;
+            float alpha = Mathf.Lerp(startAlpha, targetAlpha, elapsedTime / duration); ;
             
             foreach (var renderer in renderers)
             {
@@ -57,10 +65,16 @@ public class AtmosphereReaction : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        isUp = false;
+    }
+
     void Update()
     {
         if (Input.GetKey(KeyCode.S) && orbDepositingMode.depositingMode)
         {
+            isUp = true;
             if (AudioManager.Instance)
                 AudioManager.Instance.ReduceAudioSpeed();
             
@@ -75,21 +89,22 @@ public class AtmosphereReaction : MonoBehaviour
             
             darkenBackground.SetActive(true);
 
-            StartCoroutine(Fade(bulletFactory, 0f, 1f));
-            StartCoroutine(Fade(powerFactory, 0f, 1f));
-            StartCoroutine(Fade(shieldFactory, 0f, 1f));
-            StartCoroutine(Fade(healthFactory, 0f, 1f));
-            StartCoroutine(Fade(darkenBackground, 0f, darkenBackgroundAlpha));
+            StartCoroutine(Fade(bulletFactory, 0f, 1f, fadeInDuration));
+            StartCoroutine(Fade(powerFactory, 0f, 1f, fadeInDuration));
+            StartCoroutine(Fade(shieldFactory, 0f, 1f, fadeInDuration));
+            StartCoroutine(Fade(healthFactory, 0f, 1f, fadeInDuration));
+            StartCoroutine(Fade(darkenBackground, 0f, darkenBackgroundAlpha, fadeInDuration));
         }
         else if (Input.GetKeyUp(KeyCode.S))
         {
+            isUp = false;
             if (AudioManager.Instance)
                 AudioManager.Instance.IncreaseAudioSpeed();
-            StartCoroutine(Fade(bulletFactory, 1f, 0f));
-            StartCoroutine(Fade(powerFactory, 1f, 0f));
-            StartCoroutine(Fade(shieldFactory, 1f, 0f));
-            StartCoroutine(Fade(healthFactory, 1f, 0f));
-            StartCoroutine(Fade(darkenBackground, darkenBackgroundAlpha, 0f));
+            StartCoroutine(Fade(bulletFactory, 1f, 0f, fadeOutDuration));
+            StartCoroutine(Fade(powerFactory, 1f, 0f, fadeOutDuration));
+            StartCoroutine(Fade(shieldFactory, 1f, 0f, fadeOutDuration));
+            StartCoroutine(Fade(healthFactory, 1f, 0f, fadeOutDuration));
+            StartCoroutine(Fade(darkenBackground, darkenBackgroundAlpha, 0f, fadeOutDuration));
         }
     }
 }
