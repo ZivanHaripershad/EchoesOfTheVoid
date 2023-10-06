@@ -13,7 +13,6 @@ public class MineDroppingMovement : MonoBehaviour
     [SerializeField] private float thresholdMagnitude;
     [SerializeField] private float driftForce;
     [SerializeField] private float velReductionFactor;
-    [SerializeField] private float avoidFoce;
     [SerializeField] private double centerAvoidRadius;
     [SerializeField] private float rotationSpeed;
     [SerializeField] private float rotationOffset;
@@ -97,6 +96,9 @@ public class MineDroppingMovement : MonoBehaviour
             if (distanceFromCenter < centerAvoidRadius)
             {
                 float relativeAvoidForce = avoidForce / (distanceFromCenter * distanceFromCenter);
+                
+                Debug.Log(relativeAvoidForce);
+                
                 if (randomNum == 0)
                 {
                     rb.AddForce((transform.position - Vector3.right) * relativeAvoidForce);
@@ -106,7 +108,7 @@ public class MineDroppingMovement : MonoBehaviour
                     rb.AddForce((transform.position - Vector3.left) * relativeAvoidForce);
                 }
                 
-                rb.AddForce((transform.position - Vector3.zero));
+                rb.AddForce((transform.position - Vector3.zero) * relativeAvoidForce);
             }
 
             float targetAngle = Mathf.Atan2(vel.y, vel.x) + rotationOffset;
