@@ -3393,7 +3393,8 @@ MonoBehaviour:
   darkenBackground: {fileID: 0}
   darkenBackgroundAlpha: 0.5
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
-  fadeDuration: 1
+  fadeInDuration: 0.1
+  fadeOutDuration: 0.4
 --- !u!1 &8864007381170278527
 GameObject:
   m_ObjectHideFlags: 0

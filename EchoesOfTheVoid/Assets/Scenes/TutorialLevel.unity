@@ -921,6 +921,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+--- !u!114 &1878423872088169273 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1938465650, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097035917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 537c540368e704f4abec81a9204a5cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2165110729117150409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -993,6 +1004,10 @@ PrefabInstance:
       propertyPath: enemySpeedControl
       value: 
       objectReference: {fileID: 956678086}
+    - target: {fileID: 1883152205773968858, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: atmosphereReaction
+      value: 
+      objectReference: {fileID: 1878423872088169273}
     - target: {fileID: 3490931976703119853, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: m_RootOrder
       value: 1
