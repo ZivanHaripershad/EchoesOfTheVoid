@@ -15,7 +15,6 @@ public class Level2Controller : MonoBehaviour
     [SerializeField] private EnemySpawningLevel2 enemySpawning;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private HealthCount healthCount;
-    [SerializeField] private BulletSpawnScript bulletSpawnScript;
     [SerializeField] private GameObject[] popUps;
     [SerializeField] private GameObject popupParent;
     [SerializeField] private MouseControl mouseControl;
@@ -24,12 +23,6 @@ public class Level2Controller : MonoBehaviour
     [SerializeField] private Text orbsNumber;
     [SerializeField] private Text enemiesNumber;
     [SerializeField] private OrbCounter orbCounter;
-    [SerializeField] private GlobalVariables variables;
-    
-    [SerializeField] private float normalAudioSpeed;
-    [SerializeField] private float reducedAudioSpeed;
-    [SerializeField] private float audioSpeedChangeRate;
-
     [SerializeField] private int numberOfEnemiesToKillToProceedToBoss;
     [SerializeField] private GameObject motherShip;
 
