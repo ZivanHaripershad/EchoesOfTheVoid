@@ -97,8 +97,6 @@ public class MineDroppingMovement : MonoBehaviour
             {
                 float relativeAvoidForce = avoidForce / (distanceFromCenter * distanceFromCenter);
                 
-                Debug.Log(relativeAvoidForce);
-                
                 if (randomNum == 0)
                 {
                     rb.AddForce((transform.position - Vector3.right) * relativeAvoidForce);

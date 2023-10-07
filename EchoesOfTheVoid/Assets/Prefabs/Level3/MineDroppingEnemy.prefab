@@ -126,7 +126,7 @@ MonoBehaviour:
   thresholdMagnitude: 2
   driftForce: 7
   velReductionFactor: 0.8
-  centerAvoidRadius: 2.6
+  centerAvoidRadius: 2.7
   rotationSpeed: 1
   rotationOffset: 80
   waypointVariation: 4
