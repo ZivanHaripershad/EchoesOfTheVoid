@@ -810,7 +810,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9075438526571558681}
-  - component: {fileID: 4321685416084523548}
+  - component: {fileID: 1681719996497067018}
   - component: {fileID: 1701423807737802837}
   - component: {fileID: 5519235964453950621}
   - component: {fileID: 772435872992305568}
@@ -838,7 +838,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4321685416084523548
+--- !u!114 &1681719996497067018
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -847,7 +847,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8521761110102800290}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68c14414f953dd241b6eee9c6ded2c61, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ed7ad7dc95649848a7aa37316c7d3fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   routes:
@@ -857,7 +857,8 @@ MonoBehaviour:
   - {fileID: 8149757335338421420}
   rotationSpeed: 500
   enemy: {fileID: 4967884429565053734}
-  radius: 2.7
+  missile: {fileID: 0}
+  dropTime: 0.5
 --- !u!50 &1701423807737802837
 Rigidbody2D:
   serializedVersion: 4
