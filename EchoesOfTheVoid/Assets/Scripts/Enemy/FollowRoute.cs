@@ -19,6 +19,7 @@ public class FollowRoute : MonoBehaviour
     private bool firstUpdate;
     private EnemySpeedControl enemySpeedControl;
     private BoxCollider2D collider;
+    private Vector2 enemyPositionNext;
 
     // Start is called before the first frame update
     void Start()
@@ -87,13 +88,13 @@ public class FollowRoute : MonoBehaviour
                 continue;
             }
             
-            tParam += Time.deltaTime * enemySpeed;
-            
             //calculate the position
             enemyPosition = Mathf.Pow(1 - tParam, 3) * p0 +
-                3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
-                3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
-                Mathf.Pow(tParam, 3) * p3;
+                            3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
+                            3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
+                            Mathf.Pow(tParam, 3) * p3;
+            
+            tParam += Time.deltaTime * enemySpeed;
 
             collider.enabled = true;
 
@@ -102,8 +103,13 @@ public class FollowRoute : MonoBehaviour
             firstUpdate = false;
 
             sp.material.color = new Color(1f, 1f, 1f, 1f);
+            
+            enemyPositionNext = Mathf.Pow(1 - tParam, 3) * p0 +
+                            3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
+                            3 * (1 - tParam) * Mathf.Pow(tParam, 2) * p2 +
+                            Mathf.Pow(tParam, 3) * p3;
 
-            Vector3 toTarget = p3 - transform.position;
+            Vector3 toTarget = enemyPositionNext - enemyPosition;
             float angle = Mathf.Atan2(toTarget.y, toTarget.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
