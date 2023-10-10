@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
 
         currentlyPlaying = MusicFileNames.NoMusic;
         currentMusicSliderValue = 0.118f;
-        currentSfxSliderValue = 0.15f;
+        currentSfxSliderValue = 0.118f;
     }
 
     public enum MusicFileNames
