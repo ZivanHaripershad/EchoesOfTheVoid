@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
 
         currentlyPlaying = MusicFileNames.NoMusic;
         currentMusicSliderValue = 0.118f;
-        currentSfxSliderValue = 0.99f;
+        currentSfxSliderValue = 0.15f;
     }
 
     public enum MusicFileNames
@@ -242,6 +242,10 @@ public class AudioManager : MonoBehaviour
         if (_instance.sfxSlider != null)
         {
             Debug.Log("slider volume: " + _instance.sfxSlider.value);
+            if (!_instance.sfxSlider.value.Equals(_instance.currentSfxSliderValue))
+            {
+                PlaySFX("OrbDeposit");
+            }
             SfxVolume(_instance.sfxSlider.value);
         }
     }

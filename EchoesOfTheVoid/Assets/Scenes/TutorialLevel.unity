@@ -153,11 +153,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7987754314443918444, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
   m_PrefabInstance: {fileID: 1878423872088169272}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &201265730 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4283590417314523930, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
-  m_PrefabInstance: {fileID: 1878423872088169272}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &265443032 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647262227947457, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -742,7 +737,7 @@ PrefabInstance:
     - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: pauseMenu
       value: 
-      objectReference: {fileID: 201265730}
+      objectReference: {fileID: 1878423872088169274}
     - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: spaceship
       value: 
@@ -932,6 +927,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 537c540368e704f4abec81a9204a5cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1878423872088169274 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6709938602138246726, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2165110729117150409
 PrefabInstance:
   m_ObjectHideFlags: 0
