@@ -28,6 +28,9 @@ public class AudioManager : MonoBehaviour
     private bool isReduced;
     private MusicFileNames currentlyPlaying;
 
+    public float currentMusicSliderValue;
+    public float currentSfxSliderValue;
+
     void Awake()
     {
         DontDestroyOnLoad(this);
@@ -36,6 +39,8 @@ public class AudioManager : MonoBehaviour
         isReduced = false;
 
         currentlyPlaying = MusicFileNames.NoMusic;
+        currentMusicSliderValue = 0.118f;
+        currentSfxSliderValue = 0.99f;
     }
 
     public enum MusicFileNames
@@ -73,7 +78,7 @@ public class AudioManager : MonoBehaviour
     public void PlayMusic(MusicFileNames clip)
     {
 
-        if (clip == Instance.currentlyPlaying)
+        if (clip == _instance.currentlyPlaying)
             return;
 
         String fileName = "";
@@ -103,21 +108,21 @@ public class AudioManager : MonoBehaviour
                 break;
         }
         
-        Sound s = Array.Find(Instance.musicSounds, x => x.clipName == fileName);
+        Sound s = Array.Find(_instance.musicSounds, x => x.clipName == fileName);
         
         if (s == null)
             Debug.Log("sound not found");
         
-        Instance.musicSource.Stop();
-        Instance.musicSource.clip = s.clip;
-        Instance.musicSource.loop = true;
-        Instance.musicSource.Play();
+        _instance.musicSource.Stop();
+        _instance.musicSource.clip = s.clip;
+        _instance.musicSource.loop = true;
+        _instance.musicSource.Play();
     }
 
     void SetSoundSpeed()
     {
-        Instance.musicSource.pitch = audioSpeed;
-        Instance.sfxSource.pitch = audioSpeed;
+        _instance.musicSource.pitch = audioSpeed;
+        _instance.sfxSource.pitch = audioSpeed;
     }
 
     private IEnumerator ReduceRoutine()
@@ -175,12 +180,12 @@ public class AudioManager : MonoBehaviour
 
     public bool IsMusicPlaying()
     {
-        return Instance.musicSource.isPlaying;
+        return _instance.musicSource.isPlaying;
     }
 
     public void PlaySFX(string clipname)
     {
-        Sound s = Array.Find(Instance.sfxSounds, x => x.clipName == clipname);
+        Sound s = Array.Find(_instance.sfxSounds, x => x.clipName == clipname);
         if (s == null)
         {
             Debug.LogError("Sound: " + clipname + " does NOT exist");
@@ -188,54 +193,56 @@ public class AudioManager : MonoBehaviour
         }
         else
         {
-            Instance.sfxSource.PlayOneShot(s.clip);
+            _instance.sfxSource.PlayOneShot(s.clip);
         }
     }
 
     public void ToggleMusicOff()
     {
-        Instance.musicSource.Stop();
+        _instance.musicSource.Stop();
     }
     
     public void ToggleMusic()
     {
-        Instance.musicSource.mute = !Instance.musicSource.mute;
+        _instance.musicSource.mute = !_instance.musicSource.mute;
     }
 
     public void ToggleSFX()
     {
-        Instance.sfxSource.mute = !Instance.sfxSource.mute;
+        _instance.sfxSource.mute = !_instance.sfxSource.mute;
     }
 
     public void MusicVolume(float volume)
     {
-        Instance.musicSource.volume = volume;
+        _instance.currentMusicSliderValue = volume;
+        _instance.musicSource.volume = volume;
     }
 
     public void SfxVolume(float volume)
     {
-        Instance.sfxSource.volume = volume;
+        _instance.currentSfxSliderValue = volume;
+        _instance.sfxSource.volume = volume;
     }
 
     public void MusicVolumeControl()
     {
         Debug.Log("slider adjusting for music");
-        Instance.musicSlider = FindObjectsOfType<Slider>().ToList().Find( x=>x.name == "BackGroundSlider");
-        if (Instance.musicSlider != null)
+        _instance.musicSlider = FindObjectsOfType<Slider>().ToList().Find( x=>x.name == "BackGroundSlider");
+        if (_instance.musicSlider != null)
         {
-            Debug.Log("slider volume: " + Instance.musicSlider.value);
-            MusicVolume(Instance.musicSlider.value);
+            Debug.Log("slider volume: " + _instance.musicSlider.value);
+            MusicVolume(_instance.musicSlider.value);
         }
     }
 
     public void sfxVolumeControl()
     {
-        Instance.sfxSlider = FindObjectsOfType<Slider>().ToList().Find( x=>x.name == "EffectsSlider");
+        _instance.sfxSlider = FindObjectsOfType<Slider>().ToList().Find( x=>x.name == "EffectsSlider");
         Debug.Log("slider adjusting for effects");
-        if (Instance.sfxSlider != null)
+        if (_instance.sfxSlider != null)
         {
-            Debug.Log("slider volume: " + Instance.sfxSlider.value);
-            SfxVolume(Instance.sfxSlider.value);
+            Debug.Log("slider volume: " + _instance.sfxSlider.value);
+            SfxVolume(_instance.sfxSlider.value);
         }
     }
 

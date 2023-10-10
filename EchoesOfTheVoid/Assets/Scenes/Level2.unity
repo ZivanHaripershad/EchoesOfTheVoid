@@ -429,6 +429,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &691977183 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 681693150976254699, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &717407492 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1740792631080709502, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
@@ -730,11 +735,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ecf7837e4a457a4dba816774eee6b6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1127872361 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3859690231810238999, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
-  m_PrefabInstance: {fileID: 8835873642976109656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1127872362 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1072420876406528904, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
@@ -1841,7 +1841,7 @@ PrefabInstance:
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: pauseMenu
       value: 
-      objectReference: {fileID: 1127872361}
+      objectReference: {fileID: 691977183}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: spaceship
       value: 

@@ -1,14 +1,7 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Mine : MonoBehaviour
 {
-
-    [SerializeField]
-    private AudioSource minePlanted;
-
     [SerializeField]
     private float explodeDelay;
 
@@ -30,7 +23,7 @@ public class Mine : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        minePlanted.Play();
+        AudioManager.Instance.PlaySFX("PlantMine");
         isCountingDown = false;
         InvokeRepeating("CheckMine", 0f, 0.1f);
         player = GameObject.FindGameObjectWithTag("Player");

@@ -15,7 +15,6 @@ public class DestroyEnemy : MonoBehaviour
     public ShieldCounter shieldCounter;
     public GameManagerData gameManagerData;
     
-    [SerializeField] private AudioSource destroyEnemySoundEffect;
     [SerializeField] private HealthCount healthCount;
     [SerializeField] private float bulletSoundDelay;
     [SerializeField] private GameObject graphics;
@@ -128,7 +127,7 @@ public class DestroyEnemy : MonoBehaviour
     {
         gameManagerData.numberOfEnemiesKilled++;
         AchievementsManager.Instance.IncrementNumOfEnemiesKilled();
-        destroyEnemySoundEffect.Play();
+        AudioManager.Instance.PlaySFX("DestroyEnemy");
 
         if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
         {
