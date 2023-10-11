@@ -14,7 +14,6 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private Vector3 targetScale;
     [SerializeField] private GameObject damage;
-    [SerializeField] private AudioSource damageAudio;
     [SerializeField] private float maxHealth;
     [SerializeField] private GameObject explosion;
 
@@ -97,7 +96,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         int randomInt = random.Next(transformsPoints.Length - 1);
         Vector3 newTransform = transformsPoints[randomInt].transform.position;
         transform.rotation = Quaternion.LookRotation(newTransform);
-        damageAudio.Play();
+        AudioManager.Instance.PlaySFX("MineDroppingEnemyDamage");
         StartCoroutine(ChangeScale(newTransform));
         mineDroppingMovement.UpdateWaypoint();
     }

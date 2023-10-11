@@ -27,7 +27,15 @@ public class AchievementsManager : MonoBehaviour
 
     private int numOfEnemiesKilled;
     
+    private bool scholarCompleted;
+
+    private Queue<string> achievementUpdates = new Queue<string>();
     
+    [SerializeField] private float bannerWaitTime;
+    
+    private bool isBannerAvailable = true;
+
+
     void Awake()
     {
         DontDestroyOnLoad(this);
@@ -57,6 +65,7 @@ public class AchievementsManager : MonoBehaviour
         riskTakerCompleted = false;
         orbsCollected = 0;
         speedRunnerCompleted = false;
+        scholarCompleted = false;
         numOfEnemiesKilled = 0;
     }
 
@@ -135,9 +144,17 @@ public class AchievementsManager : MonoBehaviour
     public void CheckIfGodModeCompleted()
     {
         CheckGodModeStatus();
+
+        bool hasGodModeBeenAchieved = achievements[Achievement.GodModeAchievement];
+
+        if (hasGodModeBeenAchieved)
+        {
+            return;
+        }
         
         if (godModeCompleted)
         {
+            AddAchievementUpdate("God Mode \n Achieved");
             SetAchievementToComplete(Achievement.GodModeAchievement);
         }
     }
@@ -149,8 +166,16 @@ public class AchievementsManager : MonoBehaviour
     
     public void CheckIfDeflectorCompleted()
     {
+        bool hasDeflectorBeenAchieved = achievements[Achievement.DeflectorAchievement];
+
+        if (hasDeflectorBeenAchieved)
+        {
+            return;
+        }
+        
         if (numOfShieldsUsed >= 10)
         {
+            AddAchievementUpdate("Deflector \n Achieved");
             SetAchievementToComplete(Achievement.DeflectorAchievement);
         }
     }
@@ -167,8 +192,16 @@ public class AchievementsManager : MonoBehaviour
 
     public void CheckIfProtectorCompleted()
     {
+        bool hasProtectorBeenAchieved = achievements[Achievement.ProtectorAchievement];
+
+        if (hasProtectorBeenAchieved)
+        {
+            return;
+        }
+        
         if (protectorCompleted)
         {
+            AddAchievementUpdate("Protector \n Achieved");
             SetAchievementToComplete(Achievement.ProtectorAchievement);
         }
     }
@@ -185,8 +218,16 @@ public class AchievementsManager : MonoBehaviour
     
     public void CheckIfCollectorCompleted()
     {
+        bool hasCollectorBeenAchieved = achievements[Achievement.CollectorAchievement];
+
+        if (hasCollectorBeenAchieved)
+        {
+            return;
+        }
+        
         if (collectorCompleted)
         {
+            AddAchievementUpdate("Collector \n Achieved");
             SetAchievementToComplete(Achievement.CollectorAchievement);
         }
     }
@@ -203,8 +244,16 @@ public class AchievementsManager : MonoBehaviour
     
     public void CheckIfRiskTakerCompleted()
     {
+        bool hasRiskTakerBeenAchieved = achievements[Achievement.RiskTakerAchievement];
+
+        if (hasRiskTakerBeenAchieved)
+        {
+            return;
+        }
+        
         if (riskTakerCompleted)
         {
+            AddAchievementUpdate("Risk Taker \n Achieved");
             SetAchievementToComplete(Achievement.RiskTakerAchievement);
         }
     }
@@ -216,8 +265,16 @@ public class AchievementsManager : MonoBehaviour
     
     public void CheckIfMillionaireCompleted()
     {
+        bool hasMillionaireBeenAchieved = achievements[Achievement.MillionaireAchievement];
+
+        if (hasMillionaireBeenAchieved)
+        {
+            return;
+        }
+        
         if (orbsCollected >= 100)
         {
+            AddAchievementUpdate("Millionaire \n Achieved");
             SetAchievementToComplete(Achievement.MillionaireAchievement);
         }
     }
@@ -234,8 +291,16 @@ public class AchievementsManager : MonoBehaviour
     
     public void CheckIfSpeedRunnerCompleted()
     {
+        bool hasSpeedRunnerBeenAchieved = achievements[Achievement.SpeedRunnerAchievement];
+
+        if (hasSpeedRunnerBeenAchieved)
+        {
+            return;
+        }
+        
         if (speedRunnerCompleted)
         {
+            AddAchievementUpdate("Speed Runner \n Achieved");
             SetAchievementToComplete(Achievement.SpeedRunnerAchievement);
         }
     }
@@ -247,10 +312,77 @@ public class AchievementsManager : MonoBehaviour
     
     public void CheckIfRampageCompleted()
     {
+        bool hasRampageBeenAchieved = achievements[Achievement.RampageAchievement];
+
+        if (hasRampageBeenAchieved)
+        {
+            return;
+        }
+        
         if (numOfEnemiesKilled >= 100)
         {
+            AddAchievementUpdate("Rampage \n Achieved");
             SetAchievementToComplete(Achievement.RampageAchievement);
         }
+    }
+    
+    public void SetScholarAchievementStatus(bool completed)
+    {
+        scholarCompleted = completed;
+    }
+    
+    public bool GetScholarCompletionStatus()
+    {
+        return scholarCompleted;
+    }
+    
+    public void CheckIfScholarCompleted()
+    {
+        bool hasScholarBeenAchieved = achievements[Achievement.ScholarAchievement];
+
+        if (hasScholarBeenAchieved)
+        {
+            return;
+        }
+        
+        if (scholarCompleted)
+        {
+            AddAchievementUpdate("Scholar \n Achieved");
+            SetAchievementToComplete(Achievement.ScholarAchievement);
+        }
+    }
+    
+    public void ResetBannerWaitTime()
+    {
+        bannerWaitTime = 5;
+    }
+    
+    public float GetBannerWaitTime()
+    {
+        return bannerWaitTime;
+    }
+
+    public void AddAchievementUpdate(string achievementUpdate)
+    {
+        if (achievementUpdates != null)
+        {
+            achievementUpdates.Enqueue(achievementUpdate);
+        }
+    }
+
+    public bool GetIsBannerAvailable()
+    {
+        return isBannerAvailable;
+    }
+
+    public void SetIsBannerAvailable(bool isAvailable)
+    {
+        isBannerAvailable = isAvailable;
+    }
+
+    public Queue<string> GetAchievementUpdates()
+    {
+        return achievementUpdates;
     }
     
 }

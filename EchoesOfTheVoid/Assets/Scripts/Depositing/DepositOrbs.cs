@@ -9,13 +9,7 @@ public class DepositOrbs : MonoBehaviour
 
     public SpaceshipMode spaceshipMode;
     public HealthCount healthCount;
-
-    [SerializeField]
-    private AudioSource depositSoundEffect;
-
-    [SerializeField]
-    private AudioSource cannotDepositSoundEffect;
-
+    
     public OrbCounter orbCounter;
     public BulletCount bulletCount;
 
@@ -57,7 +51,7 @@ public class DepositOrbs : MonoBehaviour
     void Update()
     {
         if(spaceshipMode.collectionMode == false){
-            if(Input.GetKey(KeyCode.S))
+            if(Input.GetKey(KeyCode.Tab))
             {
                 
                 bool deposited = false;
@@ -74,7 +68,7 @@ public class DepositOrbs : MonoBehaviour
                         {
                             if (!tutorialData.depositPower)
                             {
-                                cannotDepositSoundEffect.Play();
+                                AudioManager.Instance.PlaySFX("CannotDeposit");
                                 return;
                             }
                         }
@@ -85,8 +79,10 @@ public class DepositOrbs : MonoBehaviour
                         factoryDeposited = OrbFactoryDeposited.Power;
                     }
                     else
-                        cannotDepositSoundEffect.Play();
-
+                    {
+                        AudioManager.Instance.PlaySFX("CannotDeposit");
+                    }
+                
                 //Ammo
                 if (Input.GetKeyDown(KeyCode.I))
                     if (orbCounter.orbsCollected >= 2)
@@ -95,7 +91,8 @@ public class DepositOrbs : MonoBehaviour
                         {
                             if (!tutorialData.depositAmmo)
                             {
-                                cannotDepositSoundEffect.Play();
+                                AudioManager.Instance.PlaySFX("CannotDeposit");
+
                                 return;
                             }
                         }
@@ -105,7 +102,9 @@ public class DepositOrbs : MonoBehaviour
                         factoryDeposited = OrbFactoryDeposited.Ammo;
                     }
                     else
-                        cannotDepositSoundEffect.Play();
+                    {
+                        AudioManager.Instance.PlaySFX("CannotDeposit");
+                    }
 
                 //Shield
                 if (Input.GetKeyDown(KeyCode.L))
@@ -115,7 +114,7 @@ public class DepositOrbs : MonoBehaviour
                         {
                             if (!tutorialData.depositShield)
                             {
-                                cannotDepositSoundEffect.Play();
+                                AudioManager.Instance.PlaySFX("CannotDeposit");
                                 return;
                             }
                         }
@@ -132,8 +131,10 @@ public class DepositOrbs : MonoBehaviour
                         factoryDeposited = OrbFactoryDeposited.Shield;
                     }
                     else
-                        cannotDepositSoundEffect.Play();
-                
+                    {
+                        AudioManager.Instance.PlaySFX("CannotDeposit");
+                    }
+
                 //Health
                 if (Input.GetKeyDown(KeyCode.K))
                     if (orbCounter.orbsCollected >= 1)
@@ -144,7 +145,7 @@ public class DepositOrbs : MonoBehaviour
                             {
                                 if (!tutorialData.depositHealth)
                                 {
-                                    cannotDepositSoundEffect.Play();
+                                    AudioManager.Instance.PlaySFX("CannotDeposit");
                                     return;
                                 }
                             }
@@ -158,12 +159,14 @@ public class DepositOrbs : MonoBehaviour
                         
                     }
                     else
-                        cannotDepositSoundEffect.Play();
+                    {
+                        AudioManager.Instance.PlaySFX("CannotDeposit");
+                    }
 
                 if (deposited)
                 {
                     //play the sound
-                    depositSoundEffect.Play();
+                    AudioManager.Instance.PlaySFX("OrbDeposit");
 
                     switch (factoryDeposited)
                     {

@@ -222,9 +222,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2729975408662350582, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2729975408662350582, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3613219426929639490, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859193261018517720, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859193261018517720, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859193261018517720, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173529466440093232, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173529466440093232, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5173529466440093232, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195325171519930099, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5195325171519930099, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7079848745540237806, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
       propertyPath: mouseControl
@@ -535,6 +575,10 @@ PrefabInstance:
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 684282363}
+    - target: {fileID: 6402855789814744939, guid: 418ab74a709612c4a897d509d3b1881d, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 684282363}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 418ab74a709612c4a897d509d3b1881d, type: 3}
 --- !u!224 &1362087694 stripped
@@ -785,6 +829,10 @@ PrefabInstance:
     - target: {fileID: 7828262462355331358, guid: e56d4c8e2dd8efd45a92e3b8e883e8ae, type: 3}
       propertyPath: m_Name
       value: Credits_Controls
+      objectReference: {fileID: 0}
+    - target: {fileID: 7828262462355331358, guid: e56d4c8e2dd8efd45a92e3b8e883e8ae, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9139742758550849803, guid: e56d4c8e2dd8efd45a92e3b8e883e8ae, type: 3}
       propertyPath: mouseControl

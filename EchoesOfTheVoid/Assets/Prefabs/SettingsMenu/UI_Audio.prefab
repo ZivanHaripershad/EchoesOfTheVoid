@@ -392,7 +392,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.00021362305, y: 0}
   m_SizeDelta: {x: 0.00038147, y: -5.758}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -429,7 +429,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.118
+  m_FillAmount: 0.109
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -796,7 +796,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1292630150712809786
 RectTransform:
   m_ObjectHideFlags: 0
@@ -930,8 +930,8 @@ RectTransform:
   m_Father: {fileID: 7800429055013010487}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0.0000019073486}
   m_SizeDelta: {x: 11.79893, y: -7.32085}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1120,7 +1120,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.00021362305, y: 0}
   m_SizeDelta: {x: 0.00038147, y: -5.758}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1329,8 +1329,8 @@ RectTransform:
   m_Father: {fileID: 8521371023648185337}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.118, y: 0}
-  m_AnchorMax: {x: 0.118, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.7133179, y: 0.0000047683716}
   m_SizeDelta: {x: 12.00854, y: -8.15599}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1419,6 +1419,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6104636168972939955}
   - component: {fileID: 1876651953731305950}
+  - component: {fileID: 103520121}
   m_Layer: 5
   m_Name: BackGroundSlider
   m_TagString: Untagged
@@ -1496,7 +1497,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0.118
+  m_Value: 0.109
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1512,6 +1513,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &103520121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7124911903375423812}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d6ecaef1aa04e97914c4f3ba7a81bee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7924227031719102865
 GameObject:
   m_ObjectHideFlags: 0
@@ -1522,6 +1535,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2642481824223225517}
   - component: {fileID: 5982213962017585879}
+  - component: {fileID: 7681620749157720600}
   m_Layer: 5
   m_Name: EffectsSlider
   m_TagString: Untagged
@@ -1615,6 +1629,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7681620749157720600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924227031719102865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 234a714986aa467494aef8ba5533d1a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8264928228212821586
 GameObject:
   m_ObjectHideFlags: 0

@@ -321,7 +321,7 @@ public class TutorialLevelController : MonoBehaviour
             uiManager.SetAtmosphereObjectToActive();
             tutorialData.depositPower = true;
 
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.Tab))
             {
                 tutorialData.popUpIndex++;
             }
@@ -402,7 +402,7 @@ public class TutorialLevelController : MonoBehaviour
             orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
             enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
             mouseControl.EnableMouse();
-            AchievementsManager.Instance.SetAchievementToComplete(AchievementsManager.Achievement.ScholarAchievement);
+            AchievementsManager.Instance.SetScholarAchievementStatus(true);
         }
 
         //if game is paused

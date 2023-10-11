@@ -126,14 +126,13 @@ MonoBehaviour:
   thresholdMagnitude: 2
   driftForce: 7
   velReductionFactor: 0.8
-  avoidFoce: 50
-  centerAvoidRadius: 3
+  centerAvoidRadius: 2.7
   rotationSpeed: 1
   rotationOffset: 80
   waypointVariation: 4
   mine: {fileID: 998427232293872886, guid: 32f9d86d28ad2df40a639e442b229713, type: 3}
   mineWaitDuration: 7
-  avoidForce: 0
+  avoidForce: 5
 --- !u!50 &2715511332520450947
 Rigidbody2D:
   serializedVersion: 4

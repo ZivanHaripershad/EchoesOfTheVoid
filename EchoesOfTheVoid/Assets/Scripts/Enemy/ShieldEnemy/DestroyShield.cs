@@ -5,10 +5,8 @@ using UnityEngine;
 
 public class DestroyShield : MonoBehaviour
 {
-
-    [SerializeField] private AudioSource powerDownEffect;
+    
     [SerializeField] private ActivateShield activateShield;
-    [SerializeField] private DestroyEnemy destroyEnemy;
 
     void DeactivateShield()
     {
@@ -22,7 +20,7 @@ public class DestroyShield : MonoBehaviour
             if (activateShield.IsActive())
             {
                 //destroy the shield
-                powerDownEffect.Play();
+                AudioManager.Instance.PlaySFX("EarthShieldDestroyed");
                 
                 Destroy(other.gameObject);
                 Invoke("DeactivateShield", 0.5f);
