@@ -242,11 +242,15 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 53187d700846a494aaf8b55928548452, type: 3}
   - clipName: ObjectiveInProgress
     clip: {fileID: 8300000, guid: a161b6a39b268c449a26bcaa7d5b8a7a, type: 3}
+  - clipName: MineDroppingEnemyDamage
+    clip: {fileID: 8300000, guid: e410c0a13ccdaff459717ac4dcf42d36, type: 3}
   musicSource: {fileID: 2406677496876818795}
   sfxSource: {fileID: 242568350414305245}
   normalAudioSpeed: 1
   reducedAudioSpeed: 0.5
   audioSpeedChangeRate: 0.8
+  currentMusicSliderValue: 0
+  currentSfxSliderValue: 0
 --- !u!1 &8652413427407366345
 GameObject:
   m_ObjectHideFlags: 0

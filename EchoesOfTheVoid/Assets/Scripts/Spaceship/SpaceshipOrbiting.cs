@@ -77,7 +77,7 @@ public class SpaceshipOrbiting : MonoBehaviour
             rotationDirection = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) ? -1f : Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) ? 1f: 0f;
             
             //////////////// inertia //////////////////
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) )
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
                 inertia = -driftSpeed;
             
             if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W))

@@ -3,8 +3,6 @@ using UnityEngine;
 public class MotherShipDamage : MonoBehaviour
 {
     [SerializeField] private MotherShipMovement motherShipMovement;
-    [SerializeField] private AudioSource hitBoss;
-    [SerializeField] private AudioSource killMotherShip;
     [SerializeField] private MotherShipHealth motherShipHealth;
     [SerializeField] private GameObject explosion;
     [SerializeField] private float delayAfterKillingMothership;
@@ -34,7 +32,7 @@ public class MotherShipDamage : MonoBehaviour
         
         if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("DoubleDamageBullet"))
         {
-            hitBoss.Play();
+            AudioManager.Instance.PlaySFX("MothershipDamage");
 
             if (motherShipHealth.IsDead())
             {

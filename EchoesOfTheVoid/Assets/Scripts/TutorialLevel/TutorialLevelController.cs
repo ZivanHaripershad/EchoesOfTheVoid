@@ -402,7 +402,7 @@ public class TutorialLevelController : MonoBehaviour
             orbsNumber.text = gameManagerData.numberOfOrbsCollected.ToString();
             enemiesNumber.text = gameManagerData.numberOfEnemiesKilled.ToString();
             mouseControl.EnableMouse();
-            AchievementsManager.Instance.SetAchievementToComplete(AchievementsManager.Achievement.ScholarAchievement);
+            AchievementsManager.Instance.SetScholarAchievementStatus(true);
         }
 
         //if game is paused

@@ -19,9 +19,6 @@ public class BulletSpawnScript : MonoBehaviour
     public float countDown;
     
     private float timePassed;
-    [SerializeField]
-    private AudioSource shootSoundEffect;
-    [SerializeField] private AudioSource cannotFireSoundEffect;
     private float downTime, pressTime = 0;
     private bool ready = false;
     [SerializeField]
@@ -162,7 +159,7 @@ public class BulletSpawnScript : MonoBehaviour
                 {
                     if (bulletCount.generateBullets == false)
                     {
-                        shootSoundEffect.Play();
+                        AudioManager.Instance.PlaySFX("LaserShot");
                         timePassed = 0;
                         if (bulletCount.currentBullets % 3 != 0)
                         {
@@ -198,7 +195,7 @@ public class BulletSpawnScript : MonoBehaviour
                 }
                 else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
                 {
-                    cannotFireSoundEffect.Play();
+                    AudioManager.Instance.PlaySFX("CannotFire");
                 }
             }
 

@@ -606,6 +606,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DarkenBackground
       objectReference: {fileID: 0}
+    - target: {fileID: 2165110729248641384, guid: 8e693997b252f0c4386564cf1bd20cc8, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2165110729248641386, guid: 8e693997b252f0c4386564cf1bd20cc8, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -796,6 +800,18 @@ PrefabInstance:
     - target: {fileID: 6740749572374220113, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
       propertyPath: m_Name
       value: Characters
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727992634779906723, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727992634779906725, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: m_SortingLayer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7727992634779906725, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -1534833467
       objectReference: {fileID: 0}
     - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
       propertyPath: gameManager
