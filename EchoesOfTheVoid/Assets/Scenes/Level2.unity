@@ -1440,10 +1440,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2141491985, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2123847065802448554, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: m_Name
       value: Popups
@@ -1492,6 +1488,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4261147048771343726, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1127872360}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
 --- !u!114 &2123847065029719147 stripped

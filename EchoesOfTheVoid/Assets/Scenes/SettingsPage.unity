@@ -266,6 +266,34 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5982213962017585879, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982213962017585879, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982213962017585879, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 6580683867681546063, guid: 72167c77c49864d4999cbfb84541e810, type: 3}
+    - target: {fileID: 5982213962017585879, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982213962017585879, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: OnMouseUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982213962017585879, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: AudioManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5982213962017585879, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7079848745540237806, guid: bdb81474d1a3a9843a35785f53107025, type: 3}
       propertyPath: mouseControl
       value: 

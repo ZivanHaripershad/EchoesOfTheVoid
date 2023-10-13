@@ -1105,7 +1105,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2079459952, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+    - target: {fileID: 5558356165670550534, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1615665836}

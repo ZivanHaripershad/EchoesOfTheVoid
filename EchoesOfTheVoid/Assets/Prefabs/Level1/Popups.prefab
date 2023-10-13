@@ -3725,7 +3725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2296508911222910766
 Transform:
   m_ObjectHideFlags: 0
@@ -3760,7 +3760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2296508911228304894
 Transform:
   m_ObjectHideFlags: 0
@@ -3892,11 +3892,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4667885146790217371}
   - component: {fileID: 4667885146790217351}
-  - component: {fileID: 4667885146790217350}
   - component: {fileID: 4667885146790217369}
   - component: {fileID: 4667885146790217368}
+  - component: {fileID: 874134264460389076}
   m_Layer: 0
-  m_Name: mainmenu
+  m_Name: NextLevel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3958,7 +3958,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 3bf4e30533b496245b2a69de77c8e2ce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c7fa64039978cd429ca16be86b71182, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3969,22 +3969,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4667885146790217350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4667885146790217370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f6ca0c2948974efa99ea27cf00015164, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 4667885146790217351}
-  defaultText: {fileID: 21300000, guid: 3bf4e30533b496245b2a69de77c8e2ce, type: 3}
-  hoveredText: {fileID: 21300000, guid: 78b8ebde98cf7a747b22a73126010ce9, type: 3}
-  mouseControl: {fileID: 0}
 --- !u!82 &4667885146790217369
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4094,16 +4078,32 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.059411526, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.02, y: 1.18}
+    oldSize: {x: 4.05, y: 1.18}
     newSize: {x: 5.02, y: 1.18}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 5.02, y: 1.18}
+  m_Size: {x: 4.3070593, y: 1.18}
   m_EdgeRadius: 0
+--- !u!114 &874134264460389076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4667885146790217370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0f9920637164ae98985ee8af4f43d7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 4667885146790217351}
+  defaultText: {fileID: 21300000, guid: 3c7fa64039978cd429ca16be86b71182, type: 3}
+  hoveredText: {fileID: 21300000, guid: 539eeb77dba11114ba5bb8143174040a, type: 3}
+  mouseControl: {fileID: 0}

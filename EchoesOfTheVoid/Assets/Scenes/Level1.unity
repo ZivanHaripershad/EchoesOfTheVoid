@@ -671,6 +671,10 @@ PrefabInstance:
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1878423871885546977}
+    - target: {fileID: 874134264460389076, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1878423871885546977}
     - target: {fileID: 2296508910407747927, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
       propertyPath: mouseControl
       value: 
@@ -727,15 +731,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Popups
       objectReference: {fileID: 0}
-    - target: {fileID: 2296508911222910767, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3504202637807655434, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
-      propertyPath: mouseControl
-      value: 
-      objectReference: {fileID: 1878423871885546977}
-    - target: {fileID: 4667885146790217350, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1878423871885546977}
