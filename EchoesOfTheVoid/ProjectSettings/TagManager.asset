@@ -34,6 +34,7 @@ TagManager:
   - MineEnemyWayPoints
   - MineEnemy
   - Mine
+  - OrbStealingWaypoint
   layers:
   - Default
   - TransparentFX
