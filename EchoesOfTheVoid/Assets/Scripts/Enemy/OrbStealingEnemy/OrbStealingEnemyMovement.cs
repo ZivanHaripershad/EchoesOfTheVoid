@@ -13,6 +13,7 @@ public class OrbStealingEnemyMovement : MonoBehaviour
     private int currentWaypoint;
     private GameObject nextOrb;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private Animator animator;
 
     // Start is called before the first frame update
     void Start()
@@ -58,6 +59,7 @@ public class OrbStealingEnemyMovement : MonoBehaviour
             if (Vector3.Distance(transform.position, nextOrb.transform.position) < collectionDistance)
             {
                 Destroy(nextOrb);
+                animator.SetBool("isCollecting", false);
                 isMovingTowardsOrb = false;
                 return;
             }
@@ -124,9 +126,12 @@ public class OrbStealingEnemyMovement : MonoBehaviour
                     minDistOrb = orb;
                 }
             }
-            
+
             if (minDist < detectionDistance)
+            {
+                animator.SetBool("isCollecting", true);
                 return minDistOrb;
+            }
         }
 
         return null;
