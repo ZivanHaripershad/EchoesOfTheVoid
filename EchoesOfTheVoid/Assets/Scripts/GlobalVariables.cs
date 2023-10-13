@@ -7,6 +7,8 @@ public class GlobalVariables : MonoBehaviour
     public int prevEnemySpawned;
     public int prevPrevEnemySpawned;
     public bool mustPause;
+    public int prevMissileEnemySpawned;
+    public int prevPrevMissileEnemySpawned;
 
     public bool stopSpawningEnemies;
     
@@ -15,6 +17,8 @@ public class GlobalVariables : MonoBehaviour
     {
         prevEnemySpawned = -100;
         prevPrevEnemySpawned = -200;
+        prevPrevMissileEnemySpawned = -100;
+        prevPrevMissileEnemySpawned = -200;
         mustPause = false;
         stopSpawningEnemies = true;
     }

@@ -1,20 +1,21 @@
 using System.Collections;
 using Random = UnityEngine.Random;
 using UnityEngine;
-
-public class FollowRoute : MonoBehaviour
+ 
+public class MissileEnemyMovement : MonoBehaviour
 {
     [SerializeField] private Transform[] routes; //all the created routes
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject enemy;
-    [SerializeField] private float radius;
-    
+    [SerializeField] private GameObject missile;
+    [SerializeField] private float dropTime;
+
+    private bool dropped; 
     private float tParam;
     private GlobalVariables variables;
     private SpriteRenderer sp;
     private Vector2 enemyPosition;
     private bool coroutineAllowed;
-    private Vector3 worldCenterPosition;
     private float enemySpeed;
     private bool firstUpdate;
     private EnemySpeedControl enemySpeedControl;
@@ -33,11 +34,11 @@ public class FollowRoute : MonoBehaviour
 
         variables = GameObject.FindGameObjectWithTag("GlobalVars").GetComponent<GlobalVariables>();
         enemySpeedControl = GameObject.FindGameObjectWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
-        
-        worldCenterPosition = new Vector3(0, 0, 0);
 
         collider = GetComponentInChildren<BoxCollider2D>();
         collider.enabled = false;
+        
+        dropped = false;
     }
 
     // Update is called once per frame
@@ -56,8 +57,8 @@ public class FollowRoute : MonoBehaviour
 
     private IEnumerator GoByRoute()
     {
-        int prevPrev = variables.prevPrevEnemySpawned;
-        int prev = variables.prevEnemySpawned;
+        int prevPrev = variables.prevPrevMissileEnemySpawned;
+        int prev = variables.prevMissileEnemySpawned;
 
         int routeToGoTo = Random.Range(0, routes.Length);
 
@@ -65,8 +66,8 @@ public class FollowRoute : MonoBehaviour
             routeToGoTo = Random.Range(0, routes.Length);
 
         //set prev and prevprev
-        variables.prevPrevEnemySpawned = prev;
-        variables.prevEnemySpawned = routeToGoTo;
+        variables.prevPrevMissileEnemySpawned = prev;
+        variables.prevMissileEnemySpawned = routeToGoTo;
 
         //don't start new follow until this one is over
         coroutineAllowed = false;
@@ -82,12 +83,7 @@ public class FollowRoute : MonoBehaviour
 
         while (tParam < 1)
         {
-            if (variables.mustPause && Vector3.Distance(transform.position, worldCenterPosition) < radius && !firstUpdate)
-            {
-                yield return null;
-                continue;
-            }
-            
+         
             //calculate the position
             enemyPosition = Mathf.Pow(1 - tParam, 3) * p0 +
                             3 * Mathf.Pow(1 - tParam, 2) * tParam * p1 +
@@ -113,6 +109,12 @@ public class FollowRoute : MonoBehaviour
             float angle = Mathf.Atan2(toTarget.y, toTarget.x) * Mathf.Rad2Deg;
             Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * rotationSpeed);
+
+            if (tParam > dropTime && !dropped)
+            {
+                dropped = true;
+                Instantiate(missile, gameObject.transform.position, gameObject.transform.rotation);
+            }
 
             //only render 1 per frame 
             yield return new WaitForEndOfFrame();
