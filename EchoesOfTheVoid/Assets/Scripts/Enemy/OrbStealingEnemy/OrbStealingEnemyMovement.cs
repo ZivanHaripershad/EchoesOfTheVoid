@@ -1,16 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class OrbStealingEnemyMovement : MonoBehaviour
 {
-    [SerializeField] private List<Vector3> waypoints;
+    private List<Vector3> waypoints;
     [SerializeField] private float moveSpeed;
     private bool isMovingTowardsOrb;
-    [SerializeField] private float thresholdDistance;
+    [SerializeField] private float collectionDistance;
     [SerializeField] private float detectionDistance;
     private int currentWaypoint;
     private GameObject nextOrb;
+    [SerializeField] private float rotationSpeed;
 
     // Start is called before the first frame update
     void Start()
@@ -18,6 +20,8 @@ public class OrbStealingEnemyMovement : MonoBehaviour
         isMovingTowardsOrb = false;
         currentWaypoint = 0;
         GameObject[] waypointsObjects = GameObject.FindGameObjectsWithTag("OrbStealingWaypoint");
+
+        waypoints = new List<Vector3>();
         
         foreach (var obj in waypointsObjects)
         {
@@ -32,12 +36,12 @@ public class OrbStealingEnemyMovement : MonoBehaviour
         if (!isMovingTowardsOrb)
         {
             nextOrb = GetNearestOrb();
-
+        
             if (nextOrb != null)
                 isMovingTowardsOrb = true;
                
         }
-
+        
         if (isMovingTowardsOrb)
         {
             if (nextOrb == null)
@@ -45,30 +49,44 @@ public class OrbStealingEnemyMovement : MonoBehaviour
                 isMovingTowardsOrb = false;
                 return;
             }
+        
             
-            Debug.Log("Move towards....");
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(nextOrb.transform.position.x, nextOrb.transform.position.y, 0), moveSpeed * Time.deltaTime);
             
-            if (Vector3.Distance(transform.position, nextOrb.transform.position) < thresholdDistance)
+            Vector3 orbPos = new Vector3(nextOrb.transform.position.x, nextOrb.transform.position.y, 0);
+            MoveToPoint(orbPos);
+            
+            if (Vector3.Distance(transform.position, nextOrb.transform.position) < collectionDistance)
             {
                 Destroy(nextOrb);
                 isMovingTowardsOrb = false;
                 return;
             }
-
+        
             return;
         }
         
+        Vector2 nextWaypoint = waypoints[currentWaypoint];
         
-        //if no orb, move between waypoints;
-        Vector3 nextWaypoint = waypoints[currentWaypoint];
-
-        transform.position = Vector3.MoveTowards(transform.position, new Vector3(nextWaypoint.x, nextWaypoint.y), moveSpeed * Time.deltaTime);
-        if (Vector3.Distance(transform.position, nextWaypoint) < thresholdDistance)
+        MoveToPoint(nextWaypoint);
+        
+        if (Vector2.Distance(transform.position, nextWaypoint) < collectionDistance)
         {
             GetNextWaypoints();
         }
 
+
+    }
+
+    private void MoveToPoint(Vector2 nextWaypoint)
+    {
+        transform.position = Vector2.MoveTowards(transform.position, nextWaypoint, moveSpeed * Time.deltaTime);
+        Vector2 direction = nextWaypoint - (Vector2)transform.position;
+        if (direction != Vector2.zero)
+        {
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, angle - 90),
+                rotationSpeed * Time.deltaTime);
+        }
     }
 
     private void GetNextWaypoints()
@@ -106,8 +124,9 @@ public class OrbStealingEnemyMovement : MonoBehaviour
                     minDistOrb = orb;
                 }
             }
-
-            return minDistOrb;
+            
+            if (minDist < detectionDistance)
+                return minDistOrb;
         }
 
         return null;
