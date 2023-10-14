@@ -321,7 +321,7 @@ public class TutorialLevelController : MonoBehaviour
             uiManager.SetAtmosphereObjectToActive();
             tutorialData.depositPower = true;
 
-            if (Input.GetKey(KeyCode.Tab))
+            if (Input.GetKey(KeyCode.Tab) || Input.GetKey(KeyCode.C))
             {
                 tutorialData.popUpIndex++;
             }

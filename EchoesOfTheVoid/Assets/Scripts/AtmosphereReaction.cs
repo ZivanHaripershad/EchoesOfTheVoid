@@ -72,7 +72,7 @@ public class AtmosphereReaction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Tab) && orbDepositingMode.depositingMode)
+        if ((Input.GetKey(KeyCode.Tab) || Input.GetKey(KeyCode.C)) && orbDepositingMode.depositingMode)
         {
             isUp = true;
             if (AudioManager.Instance)
@@ -95,7 +95,7 @@ public class AtmosphereReaction : MonoBehaviour
             StartCoroutine(Fade(healthFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(darkenBackground, 0f, darkenBackgroundAlpha, fadeInDuration));
         }
-        else if (Input.GetKeyUp(KeyCode.Tab))
+        else if (Input.GetKeyUp(KeyCode.Tab) || Input.GetKeyUp(KeyCode.C))
         {
             isUp = false;
             if (AudioManager.Instance)

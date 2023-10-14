@@ -51,7 +51,7 @@ public class DepositOrbs : MonoBehaviour
     void Update()
     {
         if(spaceshipMode.collectionMode == false){
-            if(Input.GetKey(KeyCode.Tab))
+            if(Input.GetKey(KeyCode.Tab) || Input.GetKey(KeyCode.C))
             {
                 
                 bool deposited = false;
