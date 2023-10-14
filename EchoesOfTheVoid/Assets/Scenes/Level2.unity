@@ -1318,6 +1318,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Managers
       objectReference: {fileID: 0}
+    - target: {fileID: 9101455898971688634, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: missionObjectiveBanner
+      value: 
+      objectReference: {fileID: 1127872359}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
 --- !u!114 &4494188772095388438 stripped
