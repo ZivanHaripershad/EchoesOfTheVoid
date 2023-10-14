@@ -146,6 +146,8 @@ MonoBehaviour:
   prevEnemySpawned: 0
   prevPrevEnemySpawned: 0
   mustPause: 0
+  prevMissileEnemySpawned: 0
+  prevPrevMissileEnemySpawned: 0
   stopSpawningEnemies: 0
 --- !u!1 &7724348955087736769
 GameObject:
@@ -194,4 +196,6 @@ MonoBehaviour:
   prevEnemySpawned: 0
   prevPrevEnemySpawned: 0
   mustPause: 0
+  prevMissileEnemySpawned: 0
+  prevPrevMissileEnemySpawned: 0
   stopSpawningEnemies: 0

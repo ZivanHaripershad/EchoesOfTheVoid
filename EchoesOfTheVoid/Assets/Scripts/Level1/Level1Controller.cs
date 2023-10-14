@@ -149,6 +149,7 @@ public class Level1Controller : MonoBehaviour
             case 1: //gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
+                SpawnOrbStealingEnemy();
 
                 if (CheckEndingCriteria())
                 {
@@ -196,7 +197,12 @@ public class Level1Controller : MonoBehaviour
         if (Time.timeScale == 0)
             mouseControl.EnableMouse();
     }
-    
+
+    private void SpawnOrbStealingEnemy()
+    {
+        
+    }
+
     private void SpawnNormalEnemies()
     {
         if (Time.timeScale != 0)
