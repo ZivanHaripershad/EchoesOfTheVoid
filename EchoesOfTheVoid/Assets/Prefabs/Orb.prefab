@@ -192,3 +192,4 @@ MonoBehaviour:
   orbMagnetForce: 6
   orbMagnetRadius: 2
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}

@@ -13,8 +13,10 @@ public class OrbCounterUI : MonoBehaviour
 
     [SerializeField] private OrbCounter orbCounter;
 
-    void Awake(){
-        orbCounterText.text = "0";
+    void Awake()
+    {
+        orbCounter.orbsCollected = 0;
+        UpdateOrbText();
         instance = this;
     }
 
@@ -31,18 +33,23 @@ public class OrbCounterUI : MonoBehaviour
     {
         gameManagerData.numberOfOrbsCollected += numOrbs;
         orbCounter.orbsCollected += numOrbs;
-        orbCounterText.text = orbCounter.orbsCollected.ToString();
+        UpdateOrbText();
     }
     
     public void DecrementOrbs(int numOrbs = 1)
     {
         orbCounter.orbsCollected -= numOrbs;
-        orbCounterText.text = orbCounter.orbsCollected.ToString();
+        UpdateOrbText();
     }
 
     public void SetOrbText(int numOrbs)
     {
         orbCounter.orbsCollected = numOrbs;
-        orbCounterText.text = orbCounter.orbsCollected.ToString();
+        UpdateOrbText();
+    }
+
+    private void UpdateOrbText()
+    {
+        orbCounterText.text = orbCounter.orbsCollected + "/" + GameStateManager.Instance.GetMaxOrbCapacity();
     }
 }

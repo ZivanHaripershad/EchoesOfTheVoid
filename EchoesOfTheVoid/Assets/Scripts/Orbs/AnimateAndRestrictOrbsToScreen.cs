@@ -33,6 +33,7 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
     private GameObject player;
     
     [SerializeField] private SpaceshipMode spaceshipMode;
+    [SerializeField] private OrbCounter orbCounter;
 
 
     // Start is called before the first frame update
@@ -121,6 +122,11 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
         float distance = direction.magnitude;
 
         var mustAttract = false;
+
+        if (orbCounter.orbsCollected >= GameStateManager.Instance.GetMaxOrbCapacity())
+        {
+            return;
+        }
 
         if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
         {

@@ -1710,8 +1710,6 @@ MonoBehaviour:
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   countDown: 2
-  shootSoundEffect: {fileID: 3550091861344348698}
-  cannotFireSoundEffect: {fileID: 3550091861947934116}
   reloadTimePerBullet: 0.2
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
   doubleDamageBullet: {fileID: 7841022512663862257, guid: df62b4321451111488e51893b85c296d, type: 3}
@@ -2801,8 +2799,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20342c9fdf517df488abc21e8d475094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbCollectSoundEffect: {fileID: 3550091861823600973}
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
 --- !u!114 &3550091862325039193
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2818,8 +2816,6 @@ MonoBehaviour:
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
-  depositSoundEffect: {fileID: 3550091862875117369}
-  cannotDepositSoundEffect: {fileID: 3550091862875117350}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}

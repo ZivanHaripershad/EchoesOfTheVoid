@@ -211,6 +211,10 @@ public class Level3Controller : MonoBehaviour
 
                 break;
             case 3: // mine enemy intro
+                
+                if (Time.timeScale != 0)
+                    mouseControl.DisableMouse();
+                
                 SpawnBoss();
                 HandleMissionUpdates();
                 CheckHealth();
@@ -222,6 +226,9 @@ public class Level3Controller : MonoBehaviour
                 break;
                 
             case 4: //gameplay
+                if (Time.timeScale != 0)
+                    mouseControl.DisableMouse();
+                
                 HandleMissionUpdates();
                 SpawnBoss();
 
