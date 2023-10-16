@@ -22,10 +22,20 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject orbText;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject missionObjectiveBanner;
+    [SerializeField] private GameObject networkObjective;
+    [SerializeField] private GameObject healthObjective;
     
     //level1
+    [SerializeField] private GameObject level1EnemyObjective;
+    
+    //level2
     [SerializeField] private GameObject primaryTargetMessage; 
+    [SerializeField] private GameObject level2EnemyObjective;
 
+    //level3
+    [SerializeField] private GameObject level3EnemyObjective;
+
+    
     private MouseControl mouseControl;
 
     private bool levelLayersAreActive; 
@@ -45,14 +55,38 @@ public class UIManager : MonoBehaviour
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
+        
+        if (missionObjectiveBanner)
+            missionObjectiveBanner.SetActive(false);
+        
+        //level1
 
+        if (level1EnemyObjective)
+        {
+            level1EnemyObjective.SetActive(false);
+        }
+        
+        networkObjective.SetActive(false);
+        healthObjective.SetActive(false);
+        
+        //level2
+
+        if (level2EnemyObjective)
+        {
+            level2EnemyObjective.SetActive(false);
+        }
+        
+        //level3
+
+        if (level3EnemyObjective)
+        {
+            level3EnemyObjective.SetActive(false);
+        }
+        
         //todo: level2 uiManager
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
         
-        if (missionObjectiveBanner)
-            missionObjectiveBanner.SetActive(false);
-
         levelLayersAreActive = false;
         mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
     }

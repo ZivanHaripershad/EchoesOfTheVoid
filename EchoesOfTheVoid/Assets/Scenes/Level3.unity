@@ -404,6 +404,16 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1295126263305036684, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
   m_PrefabInstance: {fileID: 1295126262269965311}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061289078 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 794223509529837020, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
+  m_PrefabInstance: {fileID: 1759520680677072667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1061289079 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1951063031278458147, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
+  m_PrefabInstance: {fileID: 1759520680677072667}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1184472824 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1295126261290036487, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
@@ -557,6 +567,11 @@ Transform:
 Transform:
   m_CorrespondingSourceObject: {fileID: 1295126261977846621, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
   m_PrefabInstance: {fileID: 1295126262269965311}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2034981753 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5808606955430890788, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
+  m_PrefabInstance: {fileID: 1759520680677072667}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2111470758 stripped
 Transform:
@@ -1301,9 +1316,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1759520680677072681}
     - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
+      propertyPath: healthObjective
+      value: 
+      objectReference: {fileID: 1061289079}
+    - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
       propertyPath: healthLowMessage
       value: 
       objectReference: {fileID: 1759520680677072674}
+    - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
+      propertyPath: networkObjective
+      value: 
+      objectReference: {fileID: 1061289078}
     - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
       propertyPath: cannotFireMessage
       value: 
@@ -1316,6 +1339,10 @@ PrefabInstance:
       propertyPath: purchaseAmmoMessage
       value: 
       objectReference: {fileID: 1759520680677072677}
+    - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
+      propertyPath: level3EnemyObjective
+      value: 
+      objectReference: {fileID: 2034981753}
     - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
       propertyPath: primaryTargetMessage
       value: 

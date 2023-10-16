@@ -6,4 +6,6 @@ using UnityEngine;
 public class Level2Data : ScriptableObject
 {
     public int popUpIndex;
+    public int mothershipDamageTaken;
+    public int maxMothershipHealth;
 }

@@ -528,6 +528,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1295126263307222641, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
   m_PrefabInstance: {fileID: 1598161469}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1162953338 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 465327016785616722, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1162953339 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7484332479076327829, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1162953340 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9037405067242447743, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1277285896 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1295126261989917707, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
@@ -853,6 +868,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2123847065802448555, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2123847065826282618, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4261147048771343726, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
@@ -1291,9 +1310,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1127872373}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: healthObjective
+      value: 
+      objectReference: {fileID: 1162953340}
+    - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: healthLowMessage
       value: 
       objectReference: {fileID: 1127872366}
+    - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: networkObjective
+      value: 
+      objectReference: {fileID: 1162953339}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: cannotFireMessage
       value: 
@@ -1306,6 +1333,10 @@ PrefabInstance:
       propertyPath: purchaseAmmoMessage
       value: 
       objectReference: {fileID: 1127872369}
+    - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: level2EnemyObjective
+      value: 
+      objectReference: {fileID: 1162953338}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: primaryTargetMessage
       value: 

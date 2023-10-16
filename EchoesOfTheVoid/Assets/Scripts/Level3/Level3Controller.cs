@@ -81,6 +81,8 @@ public class Level3Controller : MonoBehaviour
         orbCounter.planetOrbsDeposited = 0;
         orbCounter.orbsCollected = 0;
         level3Data.popUpIndex = 0;
+        level3Data.mineEnemyMaxHealth = 15;
+        level3Data.mineEnemyDamageTaken = 0;
 
         //set up game manager
         gameManagerData.numberOfEnemiesKilled = 0;

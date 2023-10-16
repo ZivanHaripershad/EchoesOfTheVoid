@@ -82,6 +82,8 @@ public class Level2Controller : MonoBehaviour
         orbCounter.planetOrbsDeposited = 0;
         orbCounter.orbsCollected = 0;
         level2Data.popUpIndex = 0;
+        level2Data.maxMothershipHealth = 15;
+        level2Data.mothershipDamageTaken = 0;
 
         //set up game manager
         gameManagerData.numberOfEnemiesKilled = 0;

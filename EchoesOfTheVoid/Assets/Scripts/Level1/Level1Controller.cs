@@ -32,7 +32,7 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private GameObject healthLowMessage;
     [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
     [SerializeField] private GameObject missionObjectiveCanvas;
-    
+
     private Text missionObjectiveText;
     private Coroutine audioCoroutine;
     private int popupIndex;
@@ -195,7 +195,9 @@ public class Level1Controller : MonoBehaviour
         
         //if game is paused
         if (Time.timeScale == 0)
+        {
             mouseControl.EnableMouse();
+        }
     }
 
     private void SpawnOrbStealingEnemy()
@@ -206,7 +208,9 @@ public class Level1Controller : MonoBehaviour
     private void SpawnNormalEnemies()
     {
         if (Time.timeScale != 0)
+        {
             mouseControl.DisableMouse();
+        }
 
         //activate level objects
         uiManager.SetLevelObjectsToActive();

@@ -16,6 +16,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     [SerializeField] private GameObject damage;
     [SerializeField] private float maxHealth;
     [SerializeField] private GameObject explosion;
+    [SerializeField] private Level3Data level3Data;
 
     private float currentHealth;
     private ObjectiveManager objectiveManager;
@@ -42,12 +43,14 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         if (other.CompareTag("Bullet"))
         {
             currentHealth--;
+            level3Data.mineEnemyDamageTaken++;
             EnemyHealthBannerUpdate();
             CheckHealth();
         }
         else if (other.gameObject.CompareTag("DoubleDamageBullet"))
         {
             currentHealth -= 2;
+            level3Data.mineEnemyDamageTaken += 2;
             EnemyHealthBannerUpdate();
             CheckHealth();
         }

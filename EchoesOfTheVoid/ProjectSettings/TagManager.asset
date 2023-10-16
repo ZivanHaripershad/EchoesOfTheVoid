@@ -35,6 +35,9 @@ TagManager:
   - MineEnemy
   - Mine
   - OrbStealingWaypoint
+  - EnemyObjectiveCircle
+  - NetworkObjectiveCircle
+  - HealthObjectiveCircle
   layers:
   - Default
   - TransparentFX
