@@ -84,7 +84,7 @@ public class AtmosphereReaction : MonoBehaviour
 
     void Update()
     {
-        if ((Input.GetKey(KeyCode.Tab) || Input.GetKey(KeyCode.C)) && orbDepositingMode.depositingMode)
+        if (Input.GetKey(KeyCode.Tab) && orbDepositingMode.depositingMode)
         {
             isUp = true;
             if (AudioManager.Instance)
@@ -100,9 +100,18 @@ public class AtmosphereReaction : MonoBehaviour
             healthFactory.SetActive(true);
             
             darkenBackground.SetActive(true);
-            
-            networkObjective.SetActive(true);
-            healthObjective.SetActive(true);
+
+            if (networkObjective)
+            {
+                networkObjective.SetActive(true);
+                StartCoroutine(Fade(networkObjective, 0f, 1f, fadeInDuration));
+            }
+
+            if (healthObjective)
+            {
+                healthObjective.SetActive(true);
+                StartCoroutine(Fade(healthObjective, 0f, 1f, fadeInDuration));
+            }
 
             if (level1EnemyObjective)
             {
@@ -126,15 +135,25 @@ public class AtmosphereReaction : MonoBehaviour
             StartCoroutine(Fade(powerFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(shieldFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(healthFactory, 0f, 1f, fadeInDuration));
-            StartCoroutine(Fade(networkObjective, 0f, 1f, fadeInDuration));
-            StartCoroutine(Fade(healthObjective, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(darkenBackground, 0f, darkenBackgroundAlpha, fadeInDuration));
         }
-        else if (Input.GetKeyUp(KeyCode.Tab) || Input.GetKeyUp(KeyCode.C))
+        else if (Input.GetKeyUp(KeyCode.Tab))
         {
             isUp = false;
             if (AudioManager.Instance)
                 AudioManager.Instance.IncreaseAudioSpeed();
+            
+            if (networkObjective)
+            {
+                networkObjective.SetActive(true);
+                StartCoroutine(Fade(networkObjective, 1f, 0f, fadeOutDuration));
+            }
+
+            if (healthObjective)
+            {
+                healthObjective.SetActive(true);
+                StartCoroutine(Fade(healthObjective, 1f, 0f, fadeOutDuration));
+            }
             
             if (level1EnemyObjective)
             {
@@ -158,8 +177,6 @@ public class AtmosphereReaction : MonoBehaviour
             StartCoroutine(Fade(powerFactory, 1f, 0f, fadeOutDuration));
             StartCoroutine(Fade(shieldFactory, 1f, 0f, fadeOutDuration));
             StartCoroutine(Fade(healthFactory, 1f, 0f, fadeOutDuration));
-            StartCoroutine(Fade(networkObjective, 1f, 0f, fadeOutDuration));
-            StartCoroutine(Fade(healthObjective, 1f, 0f, fadeOutDuration));
             StartCoroutine(Fade(darkenBackground, darkenBackgroundAlpha, 0f, fadeOutDuration));
         }
     }

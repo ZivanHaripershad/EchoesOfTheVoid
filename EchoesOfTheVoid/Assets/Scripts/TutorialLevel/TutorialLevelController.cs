@@ -158,18 +158,32 @@ public class TutorialLevelController : MonoBehaviour
             if (Time.timeScale != 0)
                 mouseControl.DisableMouse();
 
+            if (Input.GetKey(KeyCode.W))
+            {
+                wPressed = true;
+            }
+            
             if (Input.GetKey(KeyCode.A))
             {
                 aPressed = true;
             }
 
+            if (Input.GetKey(KeyCode.S))
+            {
+                sPressed = true;
+            }
+            
             if (Input.GetKey(KeyCode.D))
             {
                 dPressed = true;
             }
 
-            if (aPressed && dPressed)
+            if (wPressed && aPressed && sPressed && dPressed)
             {
+                wPressed = false;
+                aPressed = false;
+                sPressed = false;
+                dPressed = false;
                 gameManagerData.tutorialWaitTime = 3;
                 tutorialData.popUpIndex++;
             }
@@ -321,7 +335,7 @@ public class TutorialLevelController : MonoBehaviour
             uiManager.SetAtmosphereObjectToActive();
             tutorialData.depositPower = true;
 
-            if (Input.GetKey(KeyCode.Tab) || Input.GetKey(KeyCode.C))
+            if (Input.GetKey(KeyCode.Tab))
             {
                 tutorialData.popUpIndex++;
             }
