@@ -50,7 +50,34 @@ public class Level1Controller : MonoBehaviour
     
     private void Start()
     {
+        GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level1;
         
+        GameStateManager.Instance.SetMaxOrbCapacity(4);
+
+        if (GameStateManager.Instance.IsLevel2Completed)
+        {
+            if (SelectedUpgradeLevel2.Instance != null &&
+                SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+            {
+                Debug.Log("Setting First Capacity");
+                GameStateManager.Instance.SetMaxOrbCapacity(6);
+            }
+        }
+
+
+        if (GameStateManager.Instance.IsLevel3Completed)
+        {
+            if (SelectedUpgradeLevel3.Instance != null &&
+                SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+            {
+                Debug.Log("Setting Third Capacity");
+                GameStateManager.Instance.SetMaxOrbCapacity(8);
+            }
+        }
+
+
         AudioManager.Instance.ToggleMusicOff();
         AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
         

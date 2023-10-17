@@ -167,25 +167,44 @@ public class BulletSpawnScript : MonoBehaviour
                         }
                         else
                         {
-                            if (SelectedUpgradeLevel2.Instance != null &&
-                                SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
-                                SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
+                            if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
                             {
-                                Instantiate(doubleDamageBullet, transform.position, transform.rotation);
-                            }
-                            else if (SelectedUpgradeLevel3.Instance != null &&
-                                     SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
-                                     SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
-                            {
-                                Instantiate(doubleDamageBullet, transform.position, transform.rotation);
-                            }
-                            else
-                            {
-                                Instantiate(bullet, transform.position, transform.rotation);
+                                if ((gameManagerData.level.Equals(GameManagerData.Level.Level1) ||
+                                    gameManagerData.level.Equals(GameManagerData.Level.Level3)) &&
+                                    GameStateManager.Instance.IsLevel2Completed)
+                                {
+                                    if (SelectedUpgradeLevel2.Instance != null &&
+                                        SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                                        SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
+                                    {
+                                        Instantiate(doubleDamageBullet, transform.position, transform.rotation);
+                                    }
+                                    else
+                                    {
+                                        Instantiate(bullet, transform.position, transform.rotation);
+                                    }
+                                }
+                                else if(gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                                {
+                                    if (SelectedUpgradeLevel2.Instance != null &&
+                                        SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                                        SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
+                                    {
+                                        Instantiate(doubleDamageBullet, transform.position, transform.rotation);
+                                    }
+                                    else
+                                    {
+                                        Instantiate(bullet, transform.position, transform.rotation);
+                                    }
+                                }
+                                else
+                                {
+                                    Instantiate(bullet, transform.position, transform.rotation);
+                                }
                             }
                         }
-                        
-                        bulletCount.currentBullets = bulletCount.currentBullets - 1;
+
+                        bulletCount.currentBullets -= 1;
                         EnableMessage(cannotFireMessage, false);
                     }
                     else

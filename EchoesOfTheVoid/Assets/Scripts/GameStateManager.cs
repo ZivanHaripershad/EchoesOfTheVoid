@@ -11,6 +11,7 @@ public class GameStateManager : MonoBehaviour
     private bool isLevel1Completed;
     private bool isLevel2Completed;
     private bool isLevel3Completed;
+    private GameManagerData.Level currentLevel;
 
     void Awake()
     {
@@ -43,12 +44,12 @@ public class GameStateManager : MonoBehaviour
 
     public int GetMaxOrbCapacity()
     {
-        return maxOrbCapacity;
+        return _instance.maxOrbCapacity;
     }
 
     public void SetMaxOrbCapacity(int maxOrbCapacity)
     {
-        this.maxOrbCapacity = maxOrbCapacity;
+        _instance.maxOrbCapacity = maxOrbCapacity;
     }
     
     public bool IsLevel1Completed
@@ -69,4 +70,9 @@ public class GameStateManager : MonoBehaviour
         set => isLevel3Completed = value;
     }
 
+    public GameManagerData.Level CurrentLevel
+    {
+        get => _instance.currentLevel;
+        set => _instance.currentLevel = value;
+    }
 }

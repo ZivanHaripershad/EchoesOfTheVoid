@@ -34,6 +34,7 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
     
     [SerializeField] private SpaceshipMode spaceshipMode;
     [SerializeField] private OrbCounter orbCounter;
+    [SerializeField] private GameManagerData gameManagerData;
 
 
     // Start is called before the first frame update
@@ -128,18 +129,29 @@ public class AnimateAndRestrictOrbsToScreen : MonoBehaviour
             return;
         }
 
-        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        mustAttract = false;
+        
+        if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
         {
-            var upgrade = SelectedUpgradeLevel1.Instance.GetUpgrade();
-            mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
+            if ((gameManagerData.level.Equals(GameManagerData.Level.Level2) ||
+                 gameManagerData.level.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
+            {
+                if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+                {
+                    var upgrade = SelectedUpgradeLevel1.Instance.GetUpgrade();
+                    mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
+                }
+            }
+            else if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+            {
+                if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+                {
+                    var upgrade = SelectedUpgradeLevel1.Instance.GetUpgrade();
+                    mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
+                }
+            }
         }
         
-        if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
-        {
-            var upgrade = SelectedUpgradeLevel2.Instance.GetUpgrade();
-            mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
-        }
-
         if (distance < orbMagnetRadius && mustAttract && spaceshipMode.collectionMode)
         {
             Vector3 attraction = direction.normalized * orbMagnetForce;
