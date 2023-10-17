@@ -10,8 +10,7 @@ public class Level3Card3 : Level3Card
     {
         cardDesc = GameObject.Find("Card3Desc").gameObject;
         cardDesc.SetActive(false);
-        upgrade = new BulletAccuracyUpgrade();
-        upgrade.SetValue(0.5f);
+        upgrade = new OrbCapacityUpgrade();
         currentSprite = normalSprite;
     }
 }

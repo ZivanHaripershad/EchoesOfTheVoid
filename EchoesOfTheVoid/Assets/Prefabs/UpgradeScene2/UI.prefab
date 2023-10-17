@@ -266,7 +266,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 410, y: -300}
+  m_AnchoredPosition: {x: 410, y: -311.4}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &405420484
@@ -298,8 +298,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 68cee53313ed25a4d9ff808e3fd5ec79, type: 3}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: 61b923ad096f48145b5f99f190609849, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -309,10 +309,10 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: 'Ship handling is
+    m_LineSpacing: 1.2
+  m_Text: 'Increase orb carrying
 
-    increased by 10%'
+    capacity by 2'
 --- !u!1 &468748538
 GameObject:
   m_ObjectHideFlags: 0
@@ -348,7 +348,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -410, y: -300}
+  m_AnchoredPosition: {x: -410, y: -310.8}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &468748541
@@ -380,8 +380,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 68cee53313ed25a4d9ff808e3fd5ec79, type: 3}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: 61b923ad096f48145b5f99f190609849, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -391,8 +391,8 @@ MonoBehaviour:
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: "Orbs float towards the ship \nwhen in close proximity"
+    m_LineSpacing: 1.2
+  m_Text: "Enemies have a 20% chance \nof dropping a health orb"
 --- !u!1 &510931592
 GameObject:
   m_ObjectHideFlags: 0
@@ -611,7 +611,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -300}
+  m_AnchoredPosition: {x: 0, y: -311.1}
   m_SizeDelta: {x: 400, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &823962258
@@ -643,18 +643,18 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 68cee53313ed25a4d9ff808e3fd5ec79, type: 3}
-    m_FontSize: 30
+    m_Font: {fileID: 12800000, guid: 61b923ad096f48145b5f99f190609849, type: 3}
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
-    m_MaxSize: 40
+    m_MaxSize: 202
     m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
-    m_LineSpacing: 1
+    m_LineSpacing: 1.2
   m_Text: 'Damage is doubled
 
     on every third shot'
@@ -1219,7 +1219,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 1899193cf12cde34cbbb9b2709c6450e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1acb20f3a2e808c4d89be67e789a6fac, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1270,9 +1270,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 1555595373530551545}
   cardDesc: {fileID: 1470234715}
-  hoverSprite: {fileID: 21300000, guid: 1f96253acf35824418a490c8c9437155, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 0a6fec67531a1c24f9cdf6c14ce34e90, type: 3}
-  normalSprite: {fileID: 21300000, guid: 1899193cf12cde34cbbb9b2709c6450e, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 376371ae99fdb5145a08b266978f2334, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 4ed557464c7693641a293cc6577b3b24, type: 3}
+  normalSprite: {fileID: 21300000, guid: 1acb20f3a2e808c4d89be67e789a6fac, type: 3}
   upgradeScene2Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
   mouseControl: {fileID: 6556346273793334640}
@@ -1640,7 +1640,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 6755e3acd6460044b93d054210b04b13, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2c8fc1a37ed97940830de1909f15bf9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1691,9 +1691,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3263166644291205358}
   cardDesc: {fileID: 1502176003}
-  hoverSprite: {fileID: 21300000, guid: fcff126e1e0a51d43aec0c4d3af13b48, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 9ef53c07639e5c844a43d560b14f8270, type: 3}
-  normalSprite: {fileID: 21300000, guid: 6755e3acd6460044b93d054210b04b13, type: 3}
+  hoverSprite: {fileID: 21300000, guid: 038a10619eee38f45ad7a35ef23c8b47, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 21c59cb08508e944684ccf48558b1dce, type: 3}
+  normalSprite: {fileID: 21300000, guid: b2c8fc1a37ed97940830de1909f15bf9, type: 3}
   upgradeScene2Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
   mouseControl: {fileID: 6556346273793334640}

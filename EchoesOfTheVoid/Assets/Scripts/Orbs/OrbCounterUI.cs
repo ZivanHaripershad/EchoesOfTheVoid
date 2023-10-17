@@ -16,6 +16,35 @@ public class OrbCounterUI : MonoBehaviour
     void Awake()
     {
         orbCounter.orbsCollected = 0;
+        
+        if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+        {
+            if (GameStateManager.Instance.IsLevel2Completed)
+            {
+                if (SelectedUpgradeLevel2.Instance != null &&
+                    SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+                {
+                    GameStateManager.Instance.SetMaxOrbCapacity(6);
+                }
+            }
+
+            if (GameStateManager.Instance.IsLevel3Completed)
+            {
+                if (SelectedUpgradeLevel3.Instance != null &&
+                    SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+                {
+                    GameStateManager.Instance.SetMaxOrbCapacity(8);
+                }
+            }
+            
+        }
+        else
+        {
+            GameStateManager.Instance.SetMaxOrbCapacity(4);
+        }
+        
         UpdateOrbText();
         instance = this;
     }

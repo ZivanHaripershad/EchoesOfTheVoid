@@ -90,23 +90,23 @@ public class TutorialLevelController : MonoBehaviour
         dPressed = false;
         
         //remove upgrades from other levels
-        if (SelectedUpgradeLevel1.Instance != null &&
-            SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel1.Instance.SetUpgrade(null);
-        }
-        
-        if (SelectedUpgradeLevel2.Instance != null &&
-            SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel2.Instance.SetUpgrade(null);
-        }
-        
-        if (SelectedUpgradeLevel3.Instance != null &&
-            SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel3.Instance.SetUpgrade(null);
-        }
+        // if (SelectedUpgradeLevel1.Instance != null &&
+        //     SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel1.Instance.SetUpgrade(null);
+        // }
+        //
+        // if (SelectedUpgradeLevel2.Instance != null &&
+        //     SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel2.Instance.SetUpgrade(null);
+        // }
+        //
+        // if (SelectedUpgradeLevel3.Instance != null &&
+        //     SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel3.Instance.SetUpgrade(null);
+        // }
     }
 
     private void Update()

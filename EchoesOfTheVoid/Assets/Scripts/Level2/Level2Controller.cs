@@ -115,17 +115,17 @@ public class Level2Controller : MonoBehaviour
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
 
         //remove upgrades from other levels
-        if (SelectedUpgradeLevel1.Instance != null &&
-            SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel1.Instance.SetUpgrade(null);
-        }
-
-        if (SelectedUpgradeLevel3.Instance != null &&
-            SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel3.Instance.SetUpgrade(null);
-        }
+        // if (SelectedUpgradeLevel1.Instance != null &&
+        //     SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel1.Instance.SetUpgrade(null);
+        // }
+        //
+        // if (SelectedUpgradeLevel3.Instance != null &&
+        //     SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel3.Instance.SetUpgrade(null);
+        // }
 
         completedLevelTime = 0f;
     }
@@ -345,6 +345,7 @@ public class Level2Controller : MonoBehaviour
                 }
             }
             
+            GameStateManager.Instance.IsLevel2Completed = true;
             sceneManager.displayedEnding = true;
             var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
             planetHealthNum.text =  healthPercentage + "%";

@@ -11,7 +11,7 @@ public class Level2Card1 : Level2Card
     {
         cardDesc = GameObject.Find("Card1Desc").gameObject;
         cardDesc.SetActive(false);
-        upgrade = new CollectionRadiusUpgrade();
+        upgrade = new HealthUpgrade();
         currentSprite = normalSprite;
     }
 }
