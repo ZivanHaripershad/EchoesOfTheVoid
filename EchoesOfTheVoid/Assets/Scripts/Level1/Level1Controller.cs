@@ -77,6 +77,7 @@ public class Level1Controller : MonoBehaviour
             }
         }
 
+        OrbCounterUI.GetInstance().UpdateOrbText();
 
         AudioManager.Instance.ToggleMusicOff();
         AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,7 +17,6 @@ public class OrbCounterUI : MonoBehaviour
     void Awake()
     {
         orbCounter.orbsCollected = 0;
-        UpdateOrbText();
         instance = this;
     }
 
@@ -48,8 +48,8 @@ public class OrbCounterUI : MonoBehaviour
         UpdateOrbText();
     }
 
-    private void UpdateOrbText()
+    public void UpdateOrbText()
     {
-        orbCounterText.text = orbCounter.orbsCollected + "/" + GameStateManager.Instance.GetMaxOrbCapacity();
+        instance.orbCounterText.text = orbCounter.orbsCollected + "/" + GameStateManager.Instance.GetMaxOrbCapacity();
     }
 }

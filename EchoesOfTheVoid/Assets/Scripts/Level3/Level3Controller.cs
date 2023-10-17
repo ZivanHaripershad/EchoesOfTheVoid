@@ -84,6 +84,8 @@ public class Level3Controller : MonoBehaviour
                 GameStateManager.Instance.SetMaxOrbCapacity(8);
             }
         }
+        
+        OrbCounterUI.GetInstance().UpdateOrbText();
 
         AudioManager.Instance.ToggleMusicOff();
         AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.Level3Music);
