@@ -202,6 +202,10 @@ public class BulletSpawnScript : MonoBehaviour
                                     Instantiate(bullet, transform.position, transform.rotation);
                                 }
                             }
+                            else
+                            {
+                                Instantiate(bullet, transform.position, transform.rotation);
+                            }
                         }
 
                         bulletCount.currentBullets -= 1;

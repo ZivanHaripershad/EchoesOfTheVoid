@@ -23,7 +23,7 @@ public class DestroyOrbStealingEnemy : DestroyEnemy
             else
             {
                 //damage 
-                AudioManager.Instance.PlaySFX("OrbStealingEnemyDamage");
+                AudioManager.Instance.PlaySFX("DamageOrbStealingEnemy");
                 
             }
         }
