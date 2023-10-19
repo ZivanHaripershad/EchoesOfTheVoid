@@ -306,6 +306,7 @@ MonoBehaviour:
   level1EnemyObjective: {fileID: 0}
   primaryTargetMessage: {fileID: 0}
   level2EnemyObjective: {fileID: 0}
+  level3EnemyObjective: {fileID: 0}
 --- !u!1 &5520965529951086682
 GameObject:
   m_ObjectHideFlags: 0

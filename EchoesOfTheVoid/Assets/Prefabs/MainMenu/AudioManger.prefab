@@ -244,6 +244,16 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: a161b6a39b268c449a26bcaa7d5b8a7a, type: 3}
   - clipName: MineDroppingEnemyDamage
     clip: {fileID: 8300000, guid: e410c0a13ccdaff459717ac4dcf42d36, type: 3}
+  - clipName: MothershipDamage
+    clip: {fileID: 8300000, guid: fb62978a9fceb0b49966e85ce516ff36, type: 3}
+  - clipName: PlantMine
+    clip: {fileID: 8300000, guid: ddfd0445b9ef6514d898dac2eb87897a, type: 3}
+  - clipName: DestroyOrbStealingEnemy
+    clip: {fileID: 8300000, guid: e55e97ac8fcffbe449b2f4a23331a284, type: 3}
+  - clipName: DamageOrbStealingEnemy
+    clip: {fileID: 8300000, guid: e55e97ac8fcffbe449b2f4a23331a284, type: 3}
+  - clipName: CannotCollect
+    clip: {fileID: 8300000, guid: cf34f7f096e74434b83eb24c9c5bf027, type: 3}
   musicSource: {fileID: 2406677496876818795}
   sfxSource: {fileID: 242568350414305245}
   normalAudioSpeed: 1
