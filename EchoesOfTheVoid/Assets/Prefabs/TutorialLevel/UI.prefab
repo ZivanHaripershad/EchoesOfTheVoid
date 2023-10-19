@@ -335,7 +335,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 334396011}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 2.71, z: 0}
   m_LocalScale: {x: 0.74, y: 0.74, z: 0.57}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -632,7 +632,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 543851228}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5, y: 0, z: 0}
+  m_LocalPosition: {x: 2.71, y: 0, z: 0}
   m_LocalScale: {x: 0.74, y: 0.74, z: 0.57}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1175,8 +1175,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000013351, y: -340}
-  m_SizeDelta: {x: 97.276, y: 26.9152}
+  m_AnchoredPosition: {x: -0.000013351, y: -379.9}
+  m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &850397853
 CanvasRenderer:
@@ -1207,8 +1207,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 61b923ad096f48145b5f99f190609849, type: 3}
-    m_FontSize: 24
+    m_Font: {fileID: 12800000, guid: e9e87789fcf70b94d8e1eb1f744f598c, type: 3}
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1219,7 +1219,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cost: 1 Orbs'
+  m_Text: 'Planet Health: 1 Orbs'
 --- !u!1 &1108702367
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,8 +1356,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000013351, y: 252}
-  m_SizeDelta: {x: 97.276, y: 26.9152}
+  m_AnchoredPosition: {x: -0.000013351, y: 212}
+  m_SizeDelta: {x: 300, y: 26.9152}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1529386803
 CanvasRenderer:
@@ -1388,8 +1388,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 61b923ad096f48145b5f99f190609849, type: 3}
-    m_FontSize: 24
+    m_Font: {fileID: 12800000, guid: e9e87789fcf70b94d8e1eb1f744f598c, type: 3}
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -1400,7 +1400,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cost: 2 Orbs'
+  m_Text: 'Reload Ammo: 2 Orbs'
 --- !u!1 &1579949672
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,8 +1537,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 268, y: -80}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 296, y: -86}
+  m_SizeDelta: {x: 300, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1655025343
 CanvasRenderer:
@@ -1569,8 +1569,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 61b923ad096f48145b5f99f190609849, type: 3}
-    m_FontSize: 24
+    m_Font: {fileID: 12800000, guid: e9e87789fcf70b94d8e1eb1f744f598c, type: 3}
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -1581,7 +1581,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cost: 3 Orbs'
+  m_Text: 'Planet Shield: 3 Orbs'
 --- !u!1 &1663939222
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,7 +1795,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779784234}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5, y: 0, z: 0}
+  m_LocalPosition: {x: -2.71, y: 0, z: 0}
   m_LocalScale: {x: 0.74, y: 0.74, z: 0.57}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2222,7 +2222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1924396196}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: -2.5, z: 0}
+  m_LocalPosition: {x: -0.01, y: -2.71, z: 0}
   m_LocalScale: {x: 0.74, y: 0.74, z: 0.57}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2703,8 +2703,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -271, y: -80}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -293.3, y: -86}
+  m_SizeDelta: {x: 400, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2007893004
 CanvasRenderer:
@@ -2735,8 +2735,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: 61b923ad096f48145b5f99f190609849, type: 3}
-    m_FontSize: 24
+    m_Font: {fileID: 12800000, guid: e9e87789fcf70b94d8e1eb1f744f598c, type: 3}
+    m_FontSize: 21
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 1
@@ -2747,7 +2747,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Cost: 1 Orb'
+  m_Text: 'Planet Energy: 1 Orb'
 --- !u!1 &2070318715
 GameObject:
   m_ObjectHideFlags: 0
