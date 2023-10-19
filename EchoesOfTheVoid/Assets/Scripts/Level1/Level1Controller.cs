@@ -233,12 +233,26 @@ public class Level1Controller : MonoBehaviour
 
     private void SpawnOrbStealingEnemy()
     {
-        //get the current fill level of the energy bar
-        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 4 && sceneManager.numOrbStealingSpawned < 1)
+        void Spawn()
         {
-            //spawn first 
             InstantiateOrbStealingEnemy();
             sceneManager.numOrbStealingSpawned++;
+        }
+
+        //get the current fill level of the energy bar
+        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 4 && sceneManager.numOrbStealingSpawned < 1)
+        { 
+            Spawn();
+        }
+        
+        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 2 && sceneManager.numOrbStealingSpawned < 2)
+        {
+            Spawn();
+        }
+        
+        if (orbCounter.planetOrbsDeposited > (orbCounter.planetOrbMax * 3) / 4 && sceneManager.numOrbStealingSpawned < 2)
+        {
+            Spawn();
         }
     }
 
