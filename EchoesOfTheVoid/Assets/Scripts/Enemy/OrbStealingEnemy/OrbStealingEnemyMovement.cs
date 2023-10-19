@@ -58,6 +58,7 @@ public class OrbStealingEnemyMovement : MonoBehaviour
             
             if (Vector3.Distance(transform.position, nextOrb.transform.position) < collectionDistance)
             {
+                AudioManager.Instance.PlaySFX("StealOrb");
                 Destroy(nextOrb);
                 animator.SetBool("isCollecting", false);
                 isMovingTowardsOrb = false;

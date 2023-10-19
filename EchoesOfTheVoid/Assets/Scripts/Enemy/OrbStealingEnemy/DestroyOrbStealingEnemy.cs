@@ -8,6 +8,13 @@ public class DestroyOrbStealingEnemy : DestroyEnemy
 {
 
     [SerializeField] private int health;
+    [SerializeField] private int lowHealth;
+    [SerializeField] private GameObject smoke;
+
+    void Start()
+    {
+        smoke.SetActive(false);
+    }
 
     private new void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,17 +22,20 @@ public class DestroyOrbStealingEnemy : DestroyEnemy
         {
             Destroy(collision.gameObject);
 
-            if (--health == 0)
+            if (--health <= 0)
             {
-                AudioManager.Instance.PlaySFX("DestroyOrbStealingEnemy");
-                DestroyGameObject(collision, true, collision.gameObject.transform);
+                AudioManager.Instance.PlaySFX("");
+                DestroyGameObject(collision, false, collision.gameObject.transform);
             }
             else
             {
                 //damage 
-                AudioManager.Instance.PlaySFX("OrbStealingEnemyDamage");
-                
+                AudioManager.Instance.PlaySFX("DamageOrbStealingEnemy");
+                if (health == lowHealth)
+                    smoke.SetActive(true);
             }
+            
+            Debug.Log(health);
         }
     }
 }

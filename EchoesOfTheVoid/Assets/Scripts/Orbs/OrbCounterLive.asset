@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: OrbCounterLive
   m_EditorClassIdentifier: 
   maxOrbs: 0
-  orbsCollected: 10
+  orbsCollected: 5
   planetOrbMax: 10
-  planetOrbsDeposited: 0
+  planetOrbsDeposited: 5
