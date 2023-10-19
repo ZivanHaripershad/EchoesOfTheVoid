@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class Level1Controller : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private GameObject healthLowMessage;
     [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
     [SerializeField] private GameObject missionObjectiveCanvas;
+    [SerializeField] private GameObject orbStealingEnemy;
 
     private Text missionObjectiveText;
     private Coroutine audioCoroutine;
@@ -44,6 +46,7 @@ public class Level1Controller : MonoBehaviour
         public bool soundsChanged;
         public bool hasStartedSpawning;
         public bool displayedEnding;
+        public int numOrbStealingSpawned;
     }
 
     private SceneManager sceneManager;
@@ -230,7 +233,23 @@ public class Level1Controller : MonoBehaviour
 
     private void SpawnOrbStealingEnemy()
     {
-        
+        //get the current fill level of the energy bar
+        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 4 && sceneManager.numOrbStealingSpawned < 1)
+        {
+            //spawn first 
+            InstantiateOrbStealingEnemy();
+            sceneManager.numOrbStealingSpawned++;
+        }
+    }
+
+    private void InstantiateOrbStealingEnemy()
+    {
+        //choose a spawn point
+        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("OrbStealingWaypoint");
+        Random random = new Random();
+        Vector3 position = waypoints[random.Next(waypoints.Length)].gameObject.transform.position;
+
+        Instantiate(orbStealingEnemy, position, Quaternion.identity);
     }
 
     private void SpawnNormalEnemies()
@@ -245,6 +264,7 @@ public class Level1Controller : MonoBehaviour
         uiManager.SetAtmosphereObjectToActive();
 
         enemySpawning.StartSpawningEnemies();
+        SpawnOrbStealingEnemy();
     }
     
     private void DisplayEndingScene()
