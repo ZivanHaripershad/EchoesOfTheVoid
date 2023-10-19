@@ -24,7 +24,7 @@ public class DestroyOrbStealingEnemy : DestroyEnemy
 
             if (--health <= 0)
             {
-                AudioManager.Instance.PlaySFX("");
+                AudioManager.Instance.PlaySFX("DestroyOrbStealingEnemy");
                 DestroyGameObject(collision, false, collision.gameObject.transform);
             }
             else

@@ -255,7 +255,7 @@ MonoBehaviour:
   - clipName: DestroyOrbStealingEnemy
     clip: {fileID: 8300000, guid: e55e97ac8fcffbe449b2f4a23331a284, type: 3}
   - clipName: DamageOrbStealingEnemy
-    clip: {fileID: 8300000, guid: e55e97ac8fcffbe449b2f4a23331a284, type: 3}
+    clip: {fileID: 8300000, guid: 9df7aeeae5c7ba24e9ff600f17811380, type: 3}
   - clipName: CannotCollect
     clip: {fileID: 8300000, guid: cf34f7f096e74434b83eb24c9c5bf027, type: 3}
   - clipName: StealOrb

@@ -427,10 +427,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManger
       objectReference: {fileID: 0}
-    - target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
-      propertyPath: sfxSounds.Array.data[25].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 9df7aeeae5c7ba24e9ff600f17811380, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
 --- !u!1001 &4098149243455146163
