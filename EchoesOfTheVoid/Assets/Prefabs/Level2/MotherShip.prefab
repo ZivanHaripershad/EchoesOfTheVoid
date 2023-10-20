@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f0bad92a1b9f13c41b850a960c60a29a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -336,6 +336,7 @@ MonoBehaviour:
   healthWindowSp: {fileID: 6576416008249461642}
   motherShipGiveShields: {fileID: 7975090669408555782}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  damage: {fileID: 7063491825668383760, guid: ae0f2d208361c1e449c35b7047fbedf8, type: 3}
 --- !u!82 &-8464398043955780724
 AudioSource:
   m_ObjectHideFlags: 0
