@@ -776,8 +776,8 @@ MonoBehaviour:
   fillSoundFadeSpeed: 1
   haloAnimator: {fileID: 7727992635498098542}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-  reduceSpawnIntervalAndVariation: 0.9
-  reduceTimeTillNextWave: 0.9
+  reduceSpawnIntervalAndVariation: 0.85
+  reduceTimeTillNextWave: 0.85
   firstFilledSpriteNumber: 6
   secondFilledSpriteNumber: 36
   thirdFilledSpriteNumber: 66
