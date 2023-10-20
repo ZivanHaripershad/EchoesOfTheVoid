@@ -14,6 +14,15 @@ public class Level2UpgradeManager : MonoBehaviour
 
     private void Start()
     {
+        if (SelectedUpgradeLevel2.Instance == null ||
+            SelectedUpgradeLevel2.Instance.GetUpgrade() == null)
+        {
+            spriteRenderer.sprite = null;
+            var descriptionText = canvas.transform.Find("Description").GetComponent<Text>();
+            descriptionText.text = "";
+            return;
+        }
+        
         var level2UpgradeName = SelectedUpgradeLevel2.Instance.GetUpgrade().GetName();
 
         for (int k = 0; k < upgradeSprites.Count; k++)

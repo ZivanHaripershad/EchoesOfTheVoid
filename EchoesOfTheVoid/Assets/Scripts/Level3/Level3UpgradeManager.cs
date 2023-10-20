@@ -14,6 +14,15 @@ public class Level3UpgradeManager : MonoBehaviour
 
     private void Start()
     {
+        if (SelectedUpgradeLevel3.Instance == null ||
+            SelectedUpgradeLevel3.Instance.GetUpgrade() == null)
+        {
+            spriteRenderer.sprite = null;
+            var descriptionText = canvas.transform.Find("Description").GetComponent<Text>();
+            descriptionText.text = "";
+            return;
+        }
+        
         var level3UpgradeName = SelectedUpgradeLevel3.Instance.GetUpgrade().GetName();
 
         for (int k = 0; k < upgradeSprites.Count; k++)
