@@ -262,6 +262,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5eb3145c45fab184f8370fced8e318a3, type: 3}
   - clipName: DetectOrb
     clip: {fileID: 8300000, guid: 6e97860b681a5df4da53bb7fa8a28e9e, type: 3}
+  - clipName: ShieldEnemyAngry
+    clip: {fileID: 8300000, guid: 6753dbffe146f4d4a89c740ab23d08b2, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
   normalAudioSpeed: 1
