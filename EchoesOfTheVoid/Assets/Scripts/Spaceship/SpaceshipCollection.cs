@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class SpaceshipCollection : MonoBehaviour
 {
-    public float moveSpeed = 5;
+    [SerializeField] private float moveSpeed;
     
     [SerializeField] private SpaceshipMode spaceshipMode;
     [SerializeField] private OrbDepositingMode orbDepositingMode;
@@ -47,28 +47,26 @@ public class SpaceshipCollection : MonoBehaviour
         isEjecting = false;
         gameManagerData.timeSpentFlying = 0f;
         
-        if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+       if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
+       {
+           if (SelectedUpgradeLevel1.Instance != null &&
+               SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+               SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShipVelocityUpgrade")
+           {
+               moveSpeed = 7;
+           }
+       }
+
+       if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
         {
-            if ((gameManagerData.level.Equals(GameManagerData.Level.Level1) ||
-                 gameManagerData.level.Equals(GameManagerData.Level.Level2)) && GameStateManager.Instance.IsLevel3Completed)
+            if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
             {
-                if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
-                    SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
-                {
-                    var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
-                    stunWaitTime -= (stunWaitTime * reducedStunPercentage);
-                }
-            }
-            else if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
-            {
-                if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
-                    SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
-                {
-                    var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
-                    stunWaitTime -= (stunWaitTime * reducedStunPercentage);
-                }
+                var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
+                stunWaitTime -= (stunWaitTime * reducedStunPercentage);
             }
         }
+        
     }
 
     private void SetEjectingToFalse()
