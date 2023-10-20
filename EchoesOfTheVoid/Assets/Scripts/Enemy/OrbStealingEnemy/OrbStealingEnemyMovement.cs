@@ -37,10 +37,13 @@ public class OrbStealingEnemyMovement : MonoBehaviour
         if (!isMovingTowardsOrb)
         {
             nextOrb = GetNearestOrb();
-        
+
             if (nextOrb != null)
+            {
+                AudioManager.Instance.PlaySFX("DetectOrb");
                 isMovingTowardsOrb = true;
-               
+            }
+
         }
         
         if (isMovingTowardsOrb)

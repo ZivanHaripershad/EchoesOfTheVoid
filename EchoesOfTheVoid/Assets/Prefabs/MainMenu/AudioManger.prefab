@@ -259,6 +259,8 @@ MonoBehaviour:
   - clipName: CannotCollect
     clip: {fileID: 8300000, guid: cf34f7f096e74434b83eb24c9c5bf027, type: 3}
   - clipName: StealOrb
+    clip: {fileID: 8300000, guid: 5eb3145c45fab184f8370fced8e318a3, type: 3}
+  - clipName: DetectOrb
     clip: {fileID: 8300000, guid: 6e97860b681a5df4da53bb7fa8a28e9e, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
