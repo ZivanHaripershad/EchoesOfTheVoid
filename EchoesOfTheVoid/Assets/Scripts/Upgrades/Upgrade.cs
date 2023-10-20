@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 public class Upgrade
 {
     private string name;
     private float value;
+    private string description;
 
     protected void SetName(string name)
     {
@@ -25,5 +23,15 @@ public class Upgrade
     public float GetValue()
     {
         return value;
+    }
+
+    public void SetDescription(string description)
+    {
+        this.description = description;
+    }
+
+    public string GetDescription()
+    {
+        return description;
     }
 }

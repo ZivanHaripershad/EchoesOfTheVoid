@@ -7,5 +7,6 @@ public class ShipHandlingUpgrade : Upgrade
     public ShipHandlingUpgrade()
     {
         SetName("ShipHandlingUpgrade");
+        SetDescription("Reduce stun duration by 40%");
     }
 }

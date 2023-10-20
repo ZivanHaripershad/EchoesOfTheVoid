@@ -7,5 +7,6 @@ public class CollectionRadiusUpgrade : Upgrade
     public CollectionRadiusUpgrade()
     {
         SetName("CollectionRadiusUpgrade");
+        SetDescription("Orbs float towards the ship when in close proximity");
     }
 }
