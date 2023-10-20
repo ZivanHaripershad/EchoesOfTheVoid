@@ -185,13 +185,6 @@ public class MotherShipMovement : MonoBehaviour
                 MoveInOval();
             }
         }
-
-        if (isShaking)
-        {
-            currentShake = Mathf.Sin(Time.time * shakeSpeed) * shakeIntensity;
-            //get current direction 
-            transform.position += new Vector3(currentShake, currentShake, 0f);
-        }
     }
 
     private void MoveToNearestEnemy(Vector3 targetPosition, bool isGoingTo)

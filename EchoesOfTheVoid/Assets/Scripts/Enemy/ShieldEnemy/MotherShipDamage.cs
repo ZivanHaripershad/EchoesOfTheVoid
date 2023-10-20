@@ -10,6 +10,7 @@ public class MotherShipDamage : MonoBehaviour
     [SerializeField] private MotherShipGiveShields motherShipGiveShields;
     private ObjectiveManager objectiveManager;
     public GameManagerData gameManagerData;
+    [SerializeField] private GameObject damage;
 
     private void Start()
     {
@@ -45,8 +46,11 @@ public class MotherShipDamage : MonoBehaviour
                 AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
                 Destroy(gameObject);
             }
-            else 
+            else
+            {
+                Instantiate(damage, gameObject.transform.position, gameObject.transform.rotation);
                 motherShipMovement.StartShaking();
+            }
         }
     }
 }

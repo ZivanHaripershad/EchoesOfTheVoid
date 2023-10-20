@@ -295,7 +295,7 @@ MonoBehaviour:
   yRadius: 3
   coolDowntimer: 1
   shakeTime: 1
-  shakeIntensity: 0.11
+  shakeIntensity: 0.04
   shakeSpeed: 25
   nearEnemyThreshold: 0.5
   flightPathRotationSpeed: 10
