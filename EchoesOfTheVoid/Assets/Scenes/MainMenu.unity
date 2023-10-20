@@ -427,6 +427,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManger
       objectReference: {fileID: 0}
+    - target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
+      propertyPath: sfxSounds.Array.size
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
+      propertyPath: sfxSounds.Array.data[29].clip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6753dbffe146f4d4a89c740ab23d08b2, type: 3}
+    - target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
+      propertyPath: sfxSounds.Array.data[29].clipName
+      value: ShieldEnemyAngry
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
 --- !u!1001 &4098149243455146163

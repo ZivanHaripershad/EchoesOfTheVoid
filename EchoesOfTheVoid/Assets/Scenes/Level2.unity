@@ -270,7 +270,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &691977183 stripped
 GameObject:
@@ -520,7 +520,7 @@ Transform:
   - {fileID: 119304769626823278}
   - {fileID: 8835873642976109657}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1598161469
 PrefabInstance:
@@ -531,7 +531,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1295126261981863900, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1295126261981863900, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -773,10 +773,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2123847065950296510, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4261147048771343726, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: mouseControl
       value: 
@@ -889,7 +885,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2699604234724152471, guid: b547dccd15e01544babf980d63f3f58a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2699604234724152471, guid: b547dccd15e01544babf980d63f3f58a, type: 3}
       propertyPath: m_LocalPosition.x
