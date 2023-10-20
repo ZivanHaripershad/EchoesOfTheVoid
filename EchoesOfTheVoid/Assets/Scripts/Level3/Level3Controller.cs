@@ -69,7 +69,6 @@ public class Level3Controller : MonoBehaviour
                 SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
                 SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
             {
-                Debug.Log("Setting First Capacity");
                 GameStateManager.Instance.SetMaxOrbCapacity(6);
             }
         }
@@ -80,7 +79,6 @@ public class Level3Controller : MonoBehaviour
                      SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
                      SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
             {
-                Debug.Log("Setting Fourth Capacity");
                 GameStateManager.Instance.SetMaxOrbCapacity(8);
             }
         }
