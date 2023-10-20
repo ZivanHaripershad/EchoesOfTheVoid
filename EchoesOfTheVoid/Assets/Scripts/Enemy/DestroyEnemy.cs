@@ -16,8 +16,6 @@ public class DestroyEnemy : MonoBehaviour
     public GameManagerData gameManagerData;
     
     [SerializeField] private HealthCount healthCount;
-    [SerializeField] private float bulletSoundDelay;
-    [SerializeField] private GameObject graphics;
     private ObjectiveManager objectiveManager;
 
     private Animator earthDamageAnimator; 
@@ -57,7 +55,6 @@ public class DestroyEnemy : MonoBehaviour
     public void DestroyGameObject(Collider2D collision, bool musSpawnOrb, Transform orbSpawnPoint)
     {
         gameObject.GetComponentInChildren<Collider2D>().enabled = false;
-        graphics.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0f);
         Instantiate(explosion, orbSpawnPoint.position, orbSpawnPoint.rotation);
         
         if (musSpawnOrb)
@@ -66,7 +63,7 @@ public class DestroyEnemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void OnTriggerEnter2D(Collider2D collision)
     {
 
         bool planetDamage = false;

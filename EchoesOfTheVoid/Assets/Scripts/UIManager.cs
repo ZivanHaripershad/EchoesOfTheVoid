@@ -22,13 +22,25 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject orbText;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject missionObjectiveBanner;
+    [SerializeField] private GameObject networkObjective;
+    [SerializeField] private GameObject healthObjective;
     
     //level1
+    [SerializeField] private GameObject level1EnemyObjective;
+    
+    //level2
     [SerializeField] private GameObject primaryTargetMessage; 
+    [SerializeField] private GameObject level2EnemyObjective;
 
+    //level3
+    [SerializeField] private GameObject level3EnemyObjective;
+
+    
     private MouseControl mouseControl;
 
-    private bool levelLayersAreActive; 
+    private bool levelLayersAreActive;
+
+    private bool atmosphereActiveBeforePause;
     
     void Start()
     {
@@ -45,16 +57,46 @@ public class UIManager : MonoBehaviour
         powerFactory.SetActive(false);
         shieldFactory.SetActive(false);
         healthFactory.SetActive(false);
+        
+        if (missionObjectiveBanner)
+            missionObjectiveBanner.SetActive(false);
+        
+        if (networkObjective)
+        {
+            networkObjective.SetActive(false);
+        }
 
+        if (healthObjective)
+        {
+            healthObjective.SetActive(false);
+        }
+        
+        //level1
+        if (level1EnemyObjective)
+        {
+            level1EnemyObjective.SetActive(false);
+        }
+
+        //level2
+        if (level2EnemyObjective)
+        {
+            level2EnemyObjective.SetActive(false);
+        }
+        
+        //level3
+        if (level3EnemyObjective)
+        {
+            level3EnemyObjective.SetActive(false);
+        }
+        
         //todo: level2 uiManager
         if (primaryTargetMessage)
             primaryTargetMessage.SetActive(false);
         
-        if (missionObjectiveBanner)
-            missionObjectiveBanner.SetActive(false);
-
         levelLayersAreActive = false;
         mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
+
+        atmosphereActiveBeforePause = false;
     }
 
     public void SetAtmosphereObjectToActive()
@@ -119,7 +161,13 @@ public class UIManager : MonoBehaviour
         //check when the user presses exit
         if (Input.GetKeyDown(KeyCode.Escape) && levelLayersAreActive)
         {
-            //puase the game
+            if (bulletFactory.activeSelf || powerFactory.activeSelf || healthFactory.activeSelf || shieldFactory.activeSelf)
+            {
+                ControlAtmosphereOnPauseMenu(false);
+                atmosphereActiveBeforePause = true;
+            }
+            
+            //pause the game
             pauseMenu.SetActive(true);
             
             if (mouseControl == null) 
@@ -128,6 +176,59 @@ public class UIManager : MonoBehaviour
             mouseControl.EnableMouse();
             
             Time.timeScale = 0; 
+        }
+
+        if (Time.timeScale != 0 && atmosphereActiveBeforePause)
+        {
+            ControlAtmosphereOnPauseMenu(true);
+            atmosphereActiveBeforePause = false;
+        }
+    }
+
+    private void ControlAtmosphereOnPauseMenu(bool active)
+    {
+        SetActiveRecursively(atmosphereReaction, active);
+        SetActiveRecursively(bulletFactory, active);
+        SetActiveRecursively(powerFactory, active);
+        SetActiveRecursively(shieldFactory, active);
+        SetActiveRecursively(healthFactory, active);
+        
+        if (networkObjective)
+        {
+            SetActiveRecursively(networkObjective, active);
+        }
+
+        if (healthObjective)
+        {
+            SetActiveRecursively(healthObjective, active);
+        }
+
+        //level1
+        if (level1EnemyObjective)
+        {
+            SetActiveRecursively(level1EnemyObjective, active);
+        }
+
+        //level2
+        if (level2EnemyObjective)
+        {
+            SetActiveRecursively(level2EnemyObjective, active);
+        }
+
+        //level3
+        if (level3EnemyObjective)
+        {
+            SetActiveRecursively(level3EnemyObjective, active);
+        }
+    }
+
+    private static void SetActiveRecursively(GameObject rootObject, bool active)
+    {
+        rootObject.SetActive(active);
+    		
+        foreach (Transform childTransform in rootObject.transform)
+        {
+            SetActiveRecursively(childTransform.gameObject, active);
         }
     }
 }

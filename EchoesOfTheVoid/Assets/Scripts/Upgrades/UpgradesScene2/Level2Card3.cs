@@ -10,8 +10,7 @@ public class Level2Card3 : Level2Card
     {
         cardDesc = GameObject.Find("Card3Desc").gameObject;
         cardDesc.SetActive(false);
-        upgrade = new ShipHandlingUpgrade();
-        upgrade.SetValue(0.1f);
+        upgrade = new OrbCapacityUpgrade();
         currentSprite = normalSprite;
     }
 }

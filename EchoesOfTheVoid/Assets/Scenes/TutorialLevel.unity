@@ -850,14 +850,30 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1435292192}
+    - target: {fileID: 334396011, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 495850743, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1435292192}
+    - target: {fileID: 543851228, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 543851233, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 1435292192}
+    - target: {fileID: 1779784234, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1924396196, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1924396202, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
       propertyPath: gameManager
       value: 
@@ -1105,7 +1121,7 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2079459952, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
+    - target: {fileID: 5558356165670550534, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1615665836}

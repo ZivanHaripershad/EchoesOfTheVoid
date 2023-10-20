@@ -17,7 +17,19 @@ public class AtmosphereReaction : MonoBehaviour
 
     [SerializeField]
     private GameObject healthFactory;
+    
+    [SerializeField] private GameObject networkObjective;
+    [SerializeField] private GameObject healthObjective;
+    
+    //level1
+    [SerializeField] private GameObject level1EnemyObjective;
+    
+    //level2
+    [SerializeField] private GameObject level2EnemyObjective;
 
+    //level3
+    [SerializeField] private GameObject level3EnemyObjective;
+    
     [SerializeField] private BulletDeposit bulletDeposit;
     [SerializeField] private HealthDeposit healthDeposit;
     [SerializeField] private PowerDeposit powerDeposit;
@@ -89,6 +101,36 @@ public class AtmosphereReaction : MonoBehaviour
             
             darkenBackground.SetActive(true);
 
+            if (networkObjective)
+            {
+                networkObjective.SetActive(true);
+                StartCoroutine(Fade(networkObjective, 0f, 1f, fadeInDuration));
+            }
+
+            if (healthObjective)
+            {
+                healthObjective.SetActive(true);
+                StartCoroutine(Fade(healthObjective, 0f, 1f, fadeInDuration));
+            }
+
+            if (level1EnemyObjective)
+            {
+                level1EnemyObjective.SetActive(true);
+                StartCoroutine(Fade(level1EnemyObjective, 0f, 1f, fadeInDuration));
+            }
+            
+            if (level2EnemyObjective)
+            {
+                level2EnemyObjective.SetActive(true);
+                StartCoroutine(Fade(level2EnemyObjective, 0f, 1f, fadeInDuration));
+            }
+            
+            if (level3EnemyObjective)
+            {
+                level3EnemyObjective.SetActive(true);
+                StartCoroutine(Fade(level3EnemyObjective, 0f, 1f, fadeInDuration));
+            }
+
             StartCoroutine(Fade(bulletFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(powerFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(shieldFactory, 0f, 1f, fadeInDuration));
@@ -100,6 +142,37 @@ public class AtmosphereReaction : MonoBehaviour
             isUp = false;
             if (AudioManager.Instance)
                 AudioManager.Instance.IncreaseAudioSpeed();
+            
+            if (networkObjective)
+            {
+                networkObjective.SetActive(true);
+                StartCoroutine(Fade(networkObjective, 1f, 0f, fadeOutDuration));
+            }
+
+            if (healthObjective)
+            {
+                healthObjective.SetActive(true);
+                StartCoroutine(Fade(healthObjective, 1f, 0f, fadeOutDuration));
+            }
+            
+            if (level1EnemyObjective)
+            {
+                level1EnemyObjective.SetActive(true);
+                StartCoroutine(Fade(level1EnemyObjective, 1f, 0f, fadeOutDuration));
+            }
+            
+            if (level2EnemyObjective)
+            {
+                level2EnemyObjective.SetActive(true);
+                StartCoroutine(Fade(level2EnemyObjective, 1f, 0f, fadeOutDuration));
+            }
+            
+            if (level3EnemyObjective)
+            {
+                level3EnemyObjective.SetActive(true);
+                StartCoroutine(Fade(level3EnemyObjective, 1f, 0f, fadeOutDuration));
+            }
+            
             StartCoroutine(Fade(bulletFactory, 1f, 0f, fadeOutDuration));
             StartCoroutine(Fade(powerFactory, 1f, 0f, fadeOutDuration));
             StartCoroutine(Fade(shieldFactory, 1f, 0f, fadeOutDuration));

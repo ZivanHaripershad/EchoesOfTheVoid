@@ -47,7 +47,32 @@ public class ShieldLogic : MonoBehaviour
 
     public void AddShield()
     {
-        for (int k = 1; k < 4; k++)
+        int maxNumOfShield = 3;
+
+        if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+        {
+            if ((gameManagerData.level.Equals(GameManagerData.Level.Level2) ||
+                 gameManagerData.level.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
+            {
+                if (SelectedUpgradeLevel1.Instance != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShieldUpgrade")
+                {
+                    maxNumOfShield = 4;
+                }
+            }
+            else if(gameManagerData.level.Equals(GameManagerData.Level.Level1))
+            {
+                if (SelectedUpgradeLevel1.Instance != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShieldUpgrade")
+                {
+                    maxNumOfShield = 4;
+                }
+            }
+        }
+        
+        for (int k = 1; k < maxNumOfShield; k++)
         {
             shieldCount = k;
             shieldAnimator.SetInteger("shieldCount", k);

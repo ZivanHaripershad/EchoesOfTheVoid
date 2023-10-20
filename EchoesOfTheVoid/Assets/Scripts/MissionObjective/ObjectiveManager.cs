@@ -11,7 +11,7 @@ public class ObjectiveManager : MonoBehaviour
 
     public void UpdateEnemiesDestroyedBanner()
     {
-        if (gameManagerData.numberOfEnemiesKilled % 5 == 0)
+        if (gameManagerData.numberOfEnemiesKilled % 5 == 0 && gameManagerData.numberOfEnemiesKilled <= 20)
         {
             var enemiesKilledUpdate = gameManagerData.numberOfEnemiesKilled + "/" + gameManagerData.numberOfEnemiesToKill + " enemies destroyed";
             missionObjectiveBanner.AddMissionUpdate(enemiesKilledUpdate);

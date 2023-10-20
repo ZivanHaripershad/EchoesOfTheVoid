@@ -6,4 +6,6 @@ using UnityEngine;
 public class Level3Data : ScriptableObject
 {
     public int popUpIndex;
+    public int mineEnemyMaxHealth;
+    public int mineEnemyDamageTaken;
 }

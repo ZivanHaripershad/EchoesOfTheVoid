@@ -58,7 +58,35 @@ public class Level3Controller : MonoBehaviour
     
     private void Start()
     {
+        GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level3;
+
+       
+        GameStateManager.Instance.SetMaxOrbCapacity(4);
+
+        if (GameStateManager.Instance.IsLevel2Completed)
+        {
+            if (SelectedUpgradeLevel2.Instance != null &&
+                SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+            {
+                Debug.Log("Setting First Capacity");
+                GameStateManager.Instance.SetMaxOrbCapacity(6);
+            }
+        }
+    
+        if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
+        {
+           if (SelectedUpgradeLevel3.Instance != null &&
+                     SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                     SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+            {
+                Debug.Log("Setting Fourth Capacity");
+                GameStateManager.Instance.SetMaxOrbCapacity(8);
+            }
+        }
         
+        OrbCounterUI.GetInstance().UpdateOrbText();
+
         AudioManager.Instance.ToggleMusicOff();
         AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.Level3Music);
         
@@ -81,6 +109,8 @@ public class Level3Controller : MonoBehaviour
         orbCounter.planetOrbsDeposited = 0;
         orbCounter.orbsCollected = 0;
         level3Data.popUpIndex = 0;
+        level3Data.mineEnemyMaxHealth = 15;
+        level3Data.mineEnemyDamageTaken = 0;
 
         //set up game manager
         gameManagerData.numberOfEnemiesKilled = 0;
@@ -108,17 +138,17 @@ public class Level3Controller : MonoBehaviour
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
 
         //remove upgrades from other levels
-        if (SelectedUpgradeLevel1.Instance != null &&
-            SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel1.Instance.SetUpgrade(null);
-        }
-
-        if (SelectedUpgradeLevel2.Instance != null &&
-            SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel2.Instance.SetUpgrade(null);
-        }
+        // if (SelectedUpgradeLevel1.Instance != null &&
+        //     SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel1.Instance.SetUpgrade(null);
+        // }
+        //
+        // if (SelectedUpgradeLevel2.Instance != null &&
+        //     SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel2.Instance.SetUpgrade(null);
+        // }
     }
 
     private bool CheckEndingCriteria()
@@ -209,6 +239,10 @@ public class Level3Controller : MonoBehaviour
 
                 break;
             case 3: // mine enemy intro
+                
+                if (Time.timeScale != 0)
+                    mouseControl.DisableMouse();
+                
                 SpawnBoss();
                 HandleMissionUpdates();
                 CheckHealth();
@@ -220,6 +254,9 @@ public class Level3Controller : MonoBehaviour
                 break;
                 
             case 4: //gameplay
+                if (Time.timeScale != 0)
+                    mouseControl.DisableMouse();
+                
                 HandleMissionUpdates();
                 SpawnBoss();
 
@@ -323,6 +360,7 @@ public class Level3Controller : MonoBehaviour
     {
         if (!sceneManager.displayedEnding)
         {
+            GameStateManager.Instance.IsLevel3Completed = true;
             sceneManager.displayedEnding = true;
             var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
             planetHealthNum.text =  healthPercentage + "%";

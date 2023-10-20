@@ -67,7 +67,7 @@ public class Card : MonoBehaviour
         var card2SpriteRenderer = card2.spriteRenderer;
         var card3SpriteRenderer = card3.spriteRenderer;
         
-        if (upgradeScene1Manager.GetUpgrade() != null && upgradeScene1Manager.GetUpgrade().GetName() == "ShipHandlingUpgrade")
+        if (upgradeScene1Manager.GetUpgrade() != null && upgradeScene1Manager.GetUpgrade().GetName() == "ShieldUpgrade")
         {
             card1SpriteRenderer.sprite = card1.normalSprite;
             card1.currentSprite = card1.normalSprite;
@@ -77,7 +77,7 @@ public class Card : MonoBehaviour
             card3.currentSprite = card3.selectedSprite;
         }
         else if (upgradeScene1Manager.GetUpgrade() != null &&
-                 upgradeScene1Manager.GetUpgrade().GetName() == "BulletFireRateUpgrade")
+                 upgradeScene1Manager.GetUpgrade().GetName() == "TurretUpgrade")
         {
             card1SpriteRenderer.sprite = card1.normalSprite;
             card1.currentSprite = card1.normalSprite;

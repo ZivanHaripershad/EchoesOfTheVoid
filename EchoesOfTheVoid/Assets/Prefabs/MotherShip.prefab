@@ -122,6 +122,7 @@ MonoBehaviour:
   maxHealth: 15
   lowHealth: 1
   animator: {fileID: 8430692945547833122}
+  level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
 --- !u!1 &7975090668322753650
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +203,7 @@ GameObject:
   - component: {fileID: -7504938269219230000}
   m_Layer: 0
   m_Name: MotherShip
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -329,8 +330,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   motherShipMovement: {fileID: 7975090668442905496}
-  hitBoss: {fileID: -8464398043955780724}
-  killMotherShip: {fileID: 5867821504800781024}
   motherShipHealth: {fileID: 1092106289473344820}
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   delayAfterKillingMothership: 5

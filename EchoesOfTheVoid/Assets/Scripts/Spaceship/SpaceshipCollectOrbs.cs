@@ -6,10 +6,19 @@ public class SpaceshipCollectOrbs : MonoBehaviour
 {
     
     [SerializeField] private SpaceshipMode spaceshipMode;
+    [SerializeField] private OrbCounter orbCounter;
 
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collider){
+        
         if(collider.gameObject.CompareTag("Orb") && spaceshipMode.collectionMode){
+            
+            if (orbCounter.orbsCollected >= GameStateManager.Instance.GetMaxOrbCapacity())
+            {
+                AudioManager.Instance.PlaySFX("CannotCollect");
+                return;
+            }
+            
             AudioManager.Instance.PlaySFX("OrbCollection");
             AchievementsManager.Instance.IncrementOrbsCollected();
             OrbCounterUI.GetInstance().IncrementOrbs();

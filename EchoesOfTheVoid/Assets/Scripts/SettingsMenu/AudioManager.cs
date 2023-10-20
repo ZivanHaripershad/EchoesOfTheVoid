@@ -40,7 +40,7 @@ public class AudioManager : MonoBehaviour
 
         currentlyPlaying = MusicFileNames.NoMusic;
         currentMusicSliderValue = 0.118f;
-        currentSfxSliderValue = 0.118f;
+        currentSfxSliderValue = 0.7f;
     }
 
     public enum MusicFileNames
@@ -52,7 +52,9 @@ public class AudioManager : MonoBehaviour
         TutorialLevelMusic, 
         EndingMusic, 
         GreenBossMusic,
-        Level3Music
+        Level3Music,
+        AchievementsPageMusic,
+        UpgradeScreenMusic
     }
 
     public static AudioManager Instance
@@ -105,6 +107,12 @@ public class AudioManager : MonoBehaviour
                 break;
             case MusicFileNames.Level3Music:
                 fileName = "Level3Music";
+                break;
+            case MusicFileNames.AchievementsPageMusic:
+                fileName = "AchievementsPageMusic";
+                break;
+            case MusicFileNames.UpgradeScreenMusic:
+                fileName = "UpgradeScreenMusic";
                 break;
         }
         

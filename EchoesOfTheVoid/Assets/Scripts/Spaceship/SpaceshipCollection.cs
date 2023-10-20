@@ -47,11 +47,27 @@ public class SpaceshipCollection : MonoBehaviour
         isEjecting = false;
         gameManagerData.timeSpentFlying = 0f;
         
-        if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
-            SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
+        if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
         {
-            var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
-            stunWaitTime -= (stunWaitTime * reducedStunPercentage);
+            if ((gameManagerData.level.Equals(GameManagerData.Level.Level1) ||
+                 gameManagerData.level.Equals(GameManagerData.Level.Level2)) && GameStateManager.Instance.IsLevel3Completed)
+            {
+                if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
+                {
+                    var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
+                    stunWaitTime -= (stunWaitTime * reducedStunPercentage);
+                }
+            }
+            else if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
+            {
+                if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
+                {
+                    var reducedStunPercentage = SelectedUpgradeLevel3.Instance.GetUpgrade().GetValue();
+                    stunWaitTime -= (stunWaitTime * reducedStunPercentage);
+                }
+            }
         }
     }
 

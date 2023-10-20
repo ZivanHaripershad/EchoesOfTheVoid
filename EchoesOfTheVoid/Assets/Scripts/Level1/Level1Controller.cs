@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = System.Random;
 
 public class Level1Controller : MonoBehaviour
 {
@@ -32,7 +33,8 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private GameObject healthLowMessage;
     [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
     [SerializeField] private GameObject missionObjectiveCanvas;
-    
+    [SerializeField] private GameObject orbStealingEnemy;
+
     private Text missionObjectiveText;
     private Coroutine audioCoroutine;
     private int popupIndex;
@@ -44,13 +46,42 @@ public class Level1Controller : MonoBehaviour
         public bool soundsChanged;
         public bool hasStartedSpawning;
         public bool displayedEnding;
+        public int numOrbStealingSpawned;
     }
 
     private SceneManager sceneManager;
     
     private void Start()
     {
+        GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level1;
         
+        GameStateManager.Instance.SetMaxOrbCapacity(4);
+
+        if (GameStateManager.Instance.IsLevel2Completed)
+        {
+            if (SelectedUpgradeLevel2.Instance != null &&
+                SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+            {
+                Debug.Log("Setting First Capacity");
+                GameStateManager.Instance.SetMaxOrbCapacity(6);
+            }
+        }
+
+
+        if (GameStateManager.Instance.IsLevel3Completed)
+        {
+            if (SelectedUpgradeLevel3.Instance != null &&
+                SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+                SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
+            {
+                Debug.Log("Setting Third Capacity");
+                GameStateManager.Instance.SetMaxOrbCapacity(8);
+            }
+        }
+
+        OrbCounterUI.GetInstance().UpdateOrbText();
+
         AudioManager.Instance.ToggleMusicOff();
         AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
         
@@ -94,17 +125,17 @@ public class Level1Controller : MonoBehaviour
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
 
         //remove upgrades from other levels
-        if (SelectedUpgradeLevel2.Instance != null &&
-            SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel2.Instance.SetUpgrade(null);
-        }
-
-        if (SelectedUpgradeLevel3.Instance != null &&
-            SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
-        {
-            SelectedUpgradeLevel3.Instance.SetUpgrade(null);
-        }
+        // if (SelectedUpgradeLevel2.Instance != null &&
+        //     SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel2.Instance.SetUpgrade(null);
+        // }
+        //
+        // if (SelectedUpgradeLevel3.Instance != null &&
+        //     SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
+        // {
+        //     SelectedUpgradeLevel3.Instance.SetUpgrade(null);
+        // }
     }
 
     private bool CheckEndingCriteria()
@@ -149,6 +180,7 @@ public class Level1Controller : MonoBehaviour
             case 1: //gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
+                SpawnOrbStealingEnemy();
 
                 if (CheckEndingCriteria())
                 {
@@ -194,25 +226,66 @@ public class Level1Controller : MonoBehaviour
         
         //if game is paused
         if (Time.timeScale == 0)
+        {
             mouseControl.EnableMouse();
+        }
     }
-    
+
+    private void SpawnOrbStealingEnemy()
+    {
+        void Spawn()
+        {
+            InstantiateOrbStealingEnemy();
+            sceneManager.numOrbStealingSpawned++;
+        }
+
+        //get the current fill level of the energy bar
+        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 4 && sceneManager.numOrbStealingSpawned < 1)
+        { 
+            Spawn();
+        }
+        
+        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 2 && sceneManager.numOrbStealingSpawned < 2)
+        {
+            Spawn();
+        }
+        
+        if (orbCounter.planetOrbsDeposited > (orbCounter.planetOrbMax * 3) / 4 && sceneManager.numOrbStealingSpawned < 2)
+        {
+            Spawn();
+        }
+    }
+
+    private void InstantiateOrbStealingEnemy()
+    {
+        //choose a spawn point
+        GameObject[] waypoints = GameObject.FindGameObjectsWithTag("OrbStealingWaypoint");
+        Random random = new Random();
+        Vector3 position = waypoints[random.Next(waypoints.Length)].gameObject.transform.position;
+
+        Instantiate(orbStealingEnemy, position, Quaternion.identity);
+    }
+
     private void SpawnNormalEnemies()
     {
         if (Time.timeScale != 0)
+        {
             mouseControl.DisableMouse();
+        }
 
         //activate level objects
         uiManager.SetLevelObjectsToActive();
         uiManager.SetAtmosphereObjectToActive();
 
         enemySpawning.StartSpawningEnemies();
+        SpawnOrbStealingEnemy();
     }
     
     private void DisplayEndingScene()
     {
         if (!sceneManager.displayedEnding)
         {
+            GameStateManager.Instance.IsLevel1Completed = true;
             sceneManager.displayedEnding = true;
             var healthPercentage = Math.Round((decimal)healthCount.currentHealth / healthCount.maxHealth * 100);
             planetHealthNum.text =  healthPercentage + "%";

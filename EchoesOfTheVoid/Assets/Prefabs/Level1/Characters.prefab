@@ -776,8 +776,8 @@ MonoBehaviour:
   fillSoundFadeSpeed: 1
   haloAnimator: {fileID: 7727992635498098542}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-  reduceSpawnIntervalAndVariation: 0.9
-  reduceTimeTillNextWave: 0.9
+  reduceSpawnIntervalAndVariation: 0.85
+  reduceTimeTillNextWave: 0.85
   firstFilledSpriteNumber: 6
   secondFilledSpriteNumber: 36
   thirdFilledSpriteNumber: 66
@@ -2036,8 +2036,6 @@ MonoBehaviour:
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   countDown: 2
-  shootSoundEffect: {fileID: 7727992634318503748}
-  cannotFireSoundEffect: {fileID: 7727992633848869114}
   reloadTimePerBullet: 0.2
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
   doubleDamageBullet: {fileID: 7841022512663862257, guid: df62b4321451111488e51893b85c296d, type: 3}
@@ -2488,6 +2486,14 @@ PrefabInstance:
       value: 270
       objectReference: {fileID: 0}
     - target: {fileID: 1581476107, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_Size.x
+      value: 6.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476107, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: m_Size.y
+      value: 8.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581476107, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 24818cff91279584c92d34cf2e8422a7, type: 3}
@@ -2905,8 +2911,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20342c9fdf517df488abc21e8d475094, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  orbCollectSoundEffect: {fileID: 7727992633725611027}
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+  orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
 --- !u!114 &7727992635569161479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2922,8 +2928,6 @@ MonoBehaviour:
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
-  depositSoundEffect: {fileID: 7727992635043988071}
-  cannotDepositSoundEffect: {fileID: 7727992635043988088}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   factoryCosts: {fileID: 11400000, guid: 749d391a17a25b542b48480e3faaa642, type: 2}

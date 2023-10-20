@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &615616551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 615616552}
+  - component: {fileID: 615616553}
+  m_Layer: 0
+  m_Name: ObjectiveCircleManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &615616552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615616551}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6535801911701228847}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &615616553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 615616551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8c0b475334642d9b0c61c91a900dc8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1415707349470762499
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +77,7 @@ Transform:
   - {fileID: 7018123690808852150}
   - {fileID: 7018123691340173433}
   - {fileID: 9056077670002553084}
+  - {fileID: 615616552}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -198,6 +243,7 @@ MonoBehaviour:
   healthLowMessage: {fileID: 0}
   missionObjectiveBanner: {fileID: 0}
   missionObjectiveCanvas: {fileID: 0}
+  orbStealingEnemy: {fileID: 5879588011643876490, guid: 93143b9ca140ee6448cc680c5125d498, type: 3}
 --- !u!1 &7018123691444164731
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,4 +353,9 @@ MonoBehaviour:
   orbText: {fileID: 0}
   pauseMenu: {fileID: 0}
   missionObjectiveBanner: {fileID: 0}
+  networkObjective: {fileID: 0}
+  healthObjective: {fileID: 0}
+  level1EnemyObjective: {fileID: 0}
   primaryTargetMessage: {fileID: 0}
+  level2EnemyObjective: {fileID: 0}
+  level3EnemyObjective: {fileID: 0}

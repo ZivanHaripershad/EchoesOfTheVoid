@@ -10,8 +10,7 @@ public class Card3 : Card
     {
         cardDesc = GameObject.Find("Card3Desc").gameObject;
         cardDesc.SetActive(false);
-        upgrade = new ShipHandlingUpgrade();
-        upgrade.SetValue(0.05f);
+        upgrade = new ShieldUpgrade();
         currentSprite = normalSprite;
     }
 }
