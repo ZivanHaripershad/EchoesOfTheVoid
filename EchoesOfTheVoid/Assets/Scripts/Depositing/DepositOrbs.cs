@@ -72,9 +72,16 @@ public class DepositOrbs : MonoBehaviour
                                 return;
                             }
                         }
+
+                        if (!GameStateManager.Instance.IsCooledDown)
+                        {
+                            AudioManager.Instance.PlaySFX("CannotDeposit");
+                            return;
+                        }
+
                         orbCounter.planetOrbsDeposited++;
                         objectiveManager.UpdatePlanetEnergyBanner();
-                        
+                        GameStateManager.Instance.IsCooledDown = false;
                         deposited = true;
                         factoryDeposited = OrbFactoryDeposited.Power;
                     }

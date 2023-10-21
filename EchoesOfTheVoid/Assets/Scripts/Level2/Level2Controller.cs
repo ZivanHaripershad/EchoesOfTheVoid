@@ -88,7 +88,7 @@ public class Level2Controller : MonoBehaviour
         OrbCounterUI.GetInstance().UpdateOrbText();
         
         AudioManager.Instance.ToggleMusicOff();
-        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.Level2BackgroundMusic);
         
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)

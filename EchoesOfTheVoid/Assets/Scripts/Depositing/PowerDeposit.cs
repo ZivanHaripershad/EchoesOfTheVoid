@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PowerDeposit : Deposit
 {
-
+    
     override 
     public void RenderSprites(){
         if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
@@ -18,7 +16,24 @@ public class PowerDeposit : Deposit
             spriteRenderer.sprite = enabledFactorySprite;
         }
         
+        Debug.Log("Is cooled down: " + GameStateManager.Instance.IsCooledDown);
+        Debug.Log("cooled down time: " + GameStateManager.Instance.CoolDownTime );
+        
+        if (GameStateManager.Instance.CoolDownTime >= GameStateManager.Instance.MaxDepositCoolDown 
+            && !GameStateManager.Instance.IsCooledDown)
+        {
+            GameStateManager.Instance.CoolDownTime = 0f;
+            GameStateManager.Instance.IsCooledDown = true;
+        }
+        
+        if (!GameStateManager.Instance.IsCooledDown)
+        {
+            spriteRenderer.sprite = disabledFactorySprite;
+            return;
+        }
+        
         if(orbCounter.orbsCollected >= factoryCosts.powerCost && orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax){
+            GameStateManager.Instance.CoolDownTime = 0f;
             spriteRenderer.sprite = enabledFactorySprite;
         }
         else{
