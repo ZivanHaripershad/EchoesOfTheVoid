@@ -119,7 +119,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ecd0e73cc9c5142b50a9b97df286fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 15
+  maxHealth: 10
   lowHealth: 3
   animator: {fileID: 8430692945547833122}
   smoke: {fileID: 2187002344602966869}
