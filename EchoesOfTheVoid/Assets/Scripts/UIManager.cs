@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
 
     //level3
     [SerializeField] private GameObject level3EnemyObjective;
+    
+    [SerializeField] private Level1Data level1Data;
+    [SerializeField] private Level2Data level2Data;
+    [SerializeField] private Level3Data level3Data;
 
     
     private MouseControl mouseControl;
@@ -168,7 +172,10 @@ public class UIManager : MonoBehaviour
             }
             
             //pause the game
-            pauseMenu.SetActive(true);
+            if (level1Data.popUpIndex != 3 && level2Data.popUpIndex != 6 && level3Data.popUpIndex != 6)
+            {
+                pauseMenu.SetActive(true);
+            }
             
             if (mouseControl == null) 
                 mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();

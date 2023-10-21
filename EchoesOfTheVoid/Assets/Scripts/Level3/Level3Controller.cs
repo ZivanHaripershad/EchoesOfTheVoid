@@ -134,19 +134,6 @@ public class Level3Controller : MonoBehaviour
         popUpWaitTime = 0f;
         
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
-
-        //remove upgrades from other levels
-        // if (SelectedUpgradeLevel1.Instance != null &&
-        //     SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
-        // {
-        //     SelectedUpgradeLevel1.Instance.SetUpgrade(null);
-        // }
-        //
-        // if (SelectedUpgradeLevel2.Instance != null &&
-        //     SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
-        // {
-        //     SelectedUpgradeLevel2.Instance.SetUpgrade(null);
-        // }
     }
 
     private bool CheckEndingCriteria()
