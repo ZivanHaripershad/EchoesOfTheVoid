@@ -203,6 +203,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0cd6137b47c507544a343cf65ed357e2, type: 3}
   - clipName: UpgradeScreenMusic
     clip: {fileID: 8300000, guid: 8a843a056f5bd7f488de9d0abc3c43de, type: 3}
+  - clipName: Level2BackgroundMusic
+    clip: {fileID: 8300000, guid: ccb8d8c6d8ea64049af04744b0d04af4, type: 3}
   sfxSounds:
   - clipName: ButtonClick
     clip: {fileID: 8300000, guid: 230a2ca6d9e96834f8376a92a8a025e7, type: 3}
