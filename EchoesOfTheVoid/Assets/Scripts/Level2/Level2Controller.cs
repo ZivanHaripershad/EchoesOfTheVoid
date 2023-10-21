@@ -69,22 +69,10 @@ public class Level2Controller : MonoBehaviour
                 SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
                 SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
             {
-                Debug.Log("Setting Second Capacity");
-                GameStateManager.Instance.SetMaxOrbCapacity(6);
+                GameStateManager.Instance.SetMaxOrbCapacity(GameStateManager.Instance.GetMaxOrbCapacity() + 2);
             }
         }
-        
-        if (GameStateManager.Instance.IsLevel3Completed)
-        {
-            if (SelectedUpgradeLevel3.Instance != null &&
-                     SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
-                     SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
-            {
-                Debug.Log("Setting Third Capacity");
-                GameStateManager.Instance.SetMaxOrbCapacity(8);
-            }
-        }
-        
+
         OrbCounterUI.GetInstance().UpdateOrbText();
         
         AudioManager.Instance.ToggleMusicOff();
