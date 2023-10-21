@@ -142,6 +142,9 @@ public class Level2Controller : MonoBehaviour
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
 
         completedLevelTime = 0f;
+        
+        GameStateManager.Instance.CoolDownTime = 0f;
+        GameStateManager.Instance.IsCooledDown = true;
     }
 
     private bool CheckEndingCriteria()

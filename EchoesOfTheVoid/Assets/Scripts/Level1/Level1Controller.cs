@@ -123,6 +123,9 @@ public class Level1Controller : MonoBehaviour
         healthCount.currentHealth = healthCount.maxHealth;
         
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
+        
+        GameStateManager.Instance.CoolDownTime = 0f;
+        GameStateManager.Instance.IsCooledDown = true;
     }
 
     private bool CheckEndingCriteria()

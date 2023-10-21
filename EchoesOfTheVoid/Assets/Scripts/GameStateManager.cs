@@ -48,7 +48,7 @@ public class GameStateManager : MonoBehaviour
     
     private void Update()
     {
-        if (!_instance.isCooledDown)
+        if (_instance && !_instance.isCooledDown)
         {
             _instance.coolDownTime += Time.deltaTime;
         }

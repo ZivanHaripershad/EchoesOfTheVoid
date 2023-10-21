@@ -134,6 +134,9 @@ public class Level3Controller : MonoBehaviour
         popUpWaitTime = 0f;
         
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
+
+        GameStateManager.Instance.CoolDownTime = 0f;
+        GameStateManager.Instance.IsCooledDown = true;
     }
 
     private bool CheckEndingCriteria()
