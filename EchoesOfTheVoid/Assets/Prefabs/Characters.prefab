@@ -1277,7 +1277,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  maxShootSpeed: 0.5
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}

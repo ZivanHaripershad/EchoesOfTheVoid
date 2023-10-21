@@ -38,9 +38,9 @@ public class BulletSpawnScript : MonoBehaviour
     private GameObject purchaseAmmoMessage;
     
     private float maxShootSpeed;
-    [SerializeField] private float shootSpeedL1;
-    [SerializeField] private float shootSpeedL2;
-    [SerializeField] private float shootSpeedL3;
+    private const float shootSpeedL1 = 0.5f;
+    private const float shootSpeedL2 = 0.4f;
+    private const float shootSpeedL3 = 0.3f;
 
     // Start is called before the first frame update
     void Start()
