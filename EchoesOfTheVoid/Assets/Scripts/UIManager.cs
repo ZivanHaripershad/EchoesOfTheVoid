@@ -153,10 +153,16 @@ public class UIManager : MonoBehaviour
     public void DestroyRemainingOrbs()
     {
         var orbs = GameObject.FindGameObjectsWithTag("Orb");
+        var healthOrbs = GameObject.FindGameObjectsWithTag("HealthOrb");
 
         for (int i = 0; i < orbs.Length; i++)
         {
             Destroy(orbs[i]);
+        }
+        
+        for (int i = 0; i < healthOrbs.Length; i++)
+        {
+            Destroy(healthOrbs[i]);
         }
     }
 

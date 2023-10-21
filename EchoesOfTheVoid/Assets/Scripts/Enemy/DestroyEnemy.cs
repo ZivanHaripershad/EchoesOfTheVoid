@@ -12,6 +12,9 @@ public class DestroyEnemy : MonoBehaviour
     [SerializeField]
     GameObject orb;
     
+    [SerializeField]
+    GameObject healthOrb;
+    
     public ShieldCounter shieldCounter;
     public GameManagerData gameManagerData;
     
@@ -63,9 +66,43 @@ public class DestroyEnemy : MonoBehaviour
     {
         gameObject.GetComponentInChildren<Collider2D>().enabled = false;
         Instantiate(explosion, orbSpawnPoint.position, orbSpawnPoint.rotation);
-        
+
         if (musSpawnOrb)
+        {
             SpawnOrb(collision);
+            
+            if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+            {
+                if (gameManagerData.level.Equals(GameManagerData.Level.Level3) && GameStateManager.Instance.IsLevel2Completed)
+                {
+                    if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null
+                        && SelectedUpgradeLevel2.Instance.GetUpgrade().GetName().Equals("HealthUpgrade"))
+                    {
+                        int result = Random.Range(0, 5);
+
+                        if (result == 1)
+                        {
+                            SpawnHealthOrb(collision);
+                        }
+                    }
+                }
+                else if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                {
+                    if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null
+                                                               && SelectedUpgradeLevel2.Instance.GetUpgrade().GetName().Equals("HealthUpgrade"))
+                    {
+                        int result = Random.Range(0, 5);
+
+                        if (result == 1)
+                        {
+                            SpawnHealthOrb(collision);
+                        }
+                    }
+                }
+            }
+            
+            
+        }
         
         Destroy(gameObject);
     }
@@ -149,6 +186,31 @@ public class DestroyEnemy : MonoBehaviour
 
         GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
         Rigidbody2D rb = myOrb.GetComponent<Rigidbody2D>();
+
+        //get the collision movement direction
+        Vector2 vel = collision.gameObject.GetComponent<Rigidbody2D>().GetRelativeVector(Vector3.right);
+
+        float jitterX;
+        if (vel.x > 0)
+            jitterX = Random.Range(0.1f, 2f);
+        else
+            jitterX = Random.Range(-2f, -0.1f);
+
+        float jitterY;
+        if (vel.y > 0)
+            jitterY = Random.Range(0.1f, 2f);
+        else
+            jitterY = Random.Range(-2f, -0.1f);
+
+        Vector2 withJitter = new Vector2((vel.x + jitterX) * 100, (vel.y + jitterY) * 100);
+
+        rb.AddForce(withJitter);
+    }
+    
+    private void SpawnHealthOrb(Collider2D collision)
+    {
+        GameObject myHealthOrb = Instantiate(healthOrb, transform.position, Quaternion.identity); //instantiate an orb
+        Rigidbody2D rb = myHealthOrb.GetComponent<Rigidbody2D>();
 
         //get the collision movement direction
         Vector2 vel = collision.gameObject.GetComponent<Rigidbody2D>().GetRelativeVector(Vector3.right);

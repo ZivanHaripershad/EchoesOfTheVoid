@@ -105,6 +105,7 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
+        gameManagerData.expireHealthOrbs = true;
         gameManagerData.level = GameManagerData.Level.Level2;
         gameManagerData.isShieldUp = false;
         

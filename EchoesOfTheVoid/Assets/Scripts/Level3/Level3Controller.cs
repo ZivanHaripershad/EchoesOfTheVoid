@@ -117,7 +117,7 @@ public class Level3Controller : MonoBehaviour
         gameManagerData.expireOrbs = true;
         gameManagerData.level = GameManagerData.Level.Level3;
         gameManagerData.isShieldUp = false;
-        
+        gameManagerData.expireHealthOrbs = true;
         gameManagerData.spawnInterval = 3;
         gameManagerData.spawnTimerVariation = 2;
         gameManagerData.timeTillNextWave = 4;

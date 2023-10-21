@@ -2154,6 +2154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   orb: {fileID: 434657277462207545, guid: 872e95c08d9a45343904527f2d274f42, type: 3}
+  healthOrb: {fileID: 1355727311134938888, guid: d288980223b21344f973794c0be20d31, type: 3}
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}

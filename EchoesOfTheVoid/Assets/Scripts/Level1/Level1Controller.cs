@@ -84,6 +84,7 @@ public class Level1Controller : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
+        gameManagerData.expireHealthOrbs = true;
         gameManagerData.numberOfEnemiesToKill = numberOfEnemiesToKill;
         gameManagerData.level = GameManagerData.Level.Level1;
         gameManagerData.isShieldUp = false;

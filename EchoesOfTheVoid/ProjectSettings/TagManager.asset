@@ -39,6 +39,7 @@ TagManager:
   - NetworkObjectiveCircle
   - HealthObjectiveCircle
   - EnemyGiveShieldAnimTrigger
+  - HealthOrb
   layers:
   - Default
   - TransparentFX
