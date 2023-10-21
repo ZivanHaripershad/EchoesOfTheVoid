@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1534833467
+  m_SortingLayerID: 583945681
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: f0bad92a1b9f13c41b850a960c60a29a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -217,8 +217,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 583945681
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -243,10 +243,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18889911d83c4c41bd932bdd3ddf5b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleTransitionSpeed: 0
-  rotationTransitionSpeed: 0
-  rotationOffset: 0
-  rotationReduction: 0
+  scaleTransitionSpeed: 5
+  rotationTransitionSpeed: 5
+  rotationOffset: 5
+  rotationReduction: 5
 --- !u!1 &7975090668322753650
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,7 +390,7 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1534833467
+  m_SortingLayerID: 583945681
   m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 35070c10e814ae2418a50decfb413790, type: 3}
@@ -426,6 +426,8 @@ MonoBehaviour:
   flightPathRotationSpeed: 10
   enterSpeedModifier: 2
   healthWindowSpriteRenderer: {fileID: 6576416008249461642}
+  giveShieldSpriteRednerer: {fileID: 7317766005900944395}
+  giveShieldsObject: {fileID: 7975090669408555781}
   shieldAnimator: {fileID: 7937324578195657379}
   giveShieldsAnimDistance: 2
 --- !u!70 &7975090668442905499
@@ -696,7 +698,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7975090669408555781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.16, z: 0}
+  m_LocalPosition: {x: 0, y: 2.01, z: 0}
   m_LocalScale: {x: 1.15, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -770,9 +772,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -1534833467
+  m_SortingLayerID: 583945681
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
