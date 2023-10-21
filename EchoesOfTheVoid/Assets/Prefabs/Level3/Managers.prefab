@@ -155,7 +155,7 @@ MonoBehaviour:
   maxEnemiesToSpawn: 3
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
-  shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
+  shieldEnemy: {fileID: 8650069386969585281, guid: 28c2147fe82e92c4eb438645c9871b17, type: 3}
   shieldEnemySpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
