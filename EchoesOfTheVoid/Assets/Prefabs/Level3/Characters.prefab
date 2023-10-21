@@ -2274,12 +2274,16 @@ PrefabInstance:
       objectReference: {fileID: 5000476146650059306, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: stunWaitTime
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: spaceshipMode
       value: 
       objectReference: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: stunFrequency
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: shootingSprite
       value: 
@@ -2312,6 +2316,10 @@ PrefabInstance:
       propertyPath: trailRendererRight
       value: 
       objectReference: {fileID: 3550091862473172955}
+    - target: {fileID: 1262546044, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: stunRotationMagnitude
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 1581476106, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
