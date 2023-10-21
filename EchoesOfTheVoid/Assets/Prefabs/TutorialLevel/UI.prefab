@@ -326,7 +326,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &334396012
 Transform:
   m_ObjectHideFlags: 0
@@ -623,7 +623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &543851229
 Transform:
   m_ObjectHideFlags: 0
@@ -1786,7 +1786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1779784235
 Transform:
   m_ObjectHideFlags: 0
@@ -2213,7 +2213,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1924396197
 Transform:
   m_ObjectHideFlags: 0
@@ -2559,9 +2559,12 @@ MonoBehaviour:
   shieldDeposit: {fileID: 543851233}
   darkenBackground: {fileID: 0}
   darkenBackgroundAlpha: 0.3
-  orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   fadeInDuration: 0.1
   fadeOutDuration: 0.4
+  level1Upgrade: {fileID: 0}
+  level2Upgrade: {fileID: 0}
+  level3Upgrade: {fileID: 0}
+  orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
 --- !u!1 &1962596712
 GameObject:
   m_ObjectHideFlags: 0
@@ -4719,7 +4722,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6580683867681546063, guid: 72167c77c49864d4999cbfb84541e810, type: 3}
+      - m_Target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: MusicVolumeControl
         m_Mode: 1
@@ -5054,7 +5057,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6580683867681546063, guid: 72167c77c49864d4999cbfb84541e810, type: 3}
+      - m_Target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: sfxVolumeControl
         m_Mode: 1

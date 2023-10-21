@@ -3399,7 +3399,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6580683867681546063, guid: 72167c77c49864d4999cbfb84541e810, type: 3}
+      - m_Target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: sfxVolumeControl
         m_Mode: 1
@@ -4086,7 +4086,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 6580683867681546063, guid: 72167c77c49864d4999cbfb84541e810, type: 3}
+      - m_Target: {fileID: 9221887872487597540, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
         m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
         m_MethodName: MusicVolumeControl
         m_Mode: 1
