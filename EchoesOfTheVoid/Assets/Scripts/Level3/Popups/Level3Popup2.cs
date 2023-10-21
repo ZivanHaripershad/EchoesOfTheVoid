@@ -6,7 +6,7 @@
     
     private void Next()
     {
-        level3Data.popUpIndex = 1;
+        level3Data.popUpIndex = 2;
     }
     
     public override void OnMouseDown()

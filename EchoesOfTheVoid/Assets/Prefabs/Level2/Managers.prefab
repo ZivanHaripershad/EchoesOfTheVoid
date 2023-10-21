@@ -149,6 +149,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   popupParent: {fileID: 0}
   mouseControl: {fileID: 0}
   healthDeposit: {fileID: 0}
@@ -156,7 +157,7 @@ MonoBehaviour:
   orbsNumber: {fileID: 0}
   enemiesNumber: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  numberOfEnemiesToKillToProceedToBoss: 1
+  numberOfEnemiesToKillToProceedToBoss: 3
   motherShip: {fileID: 7975090668442905501, guid: 40149edd0ad22c343be57f571d206a3c, type: 3}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}

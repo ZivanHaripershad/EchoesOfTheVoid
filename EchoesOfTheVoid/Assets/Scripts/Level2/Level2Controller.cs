@@ -194,10 +194,11 @@ public class Level2Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
-                
+                break;
+            case 1: //show enemy cards
                 enemySpawning.ResetSpawning();
                 break;
-            case 1: //initialize gameplay
+            case 2: //initialize gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 CheckHealth();
@@ -205,7 +206,7 @@ public class Level2Controller : MonoBehaviour
                 level2Data.popUpIndex++;
 
                 break;
-            case 2: //Shieldians intro
+            case 3: //Shieldians intro
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 if (popUpWaitTime <= 0)
@@ -215,7 +216,7 @@ public class Level2Controller : MonoBehaviour
                 popUpWaitTime -= Time.deltaTime;
                 CheckHealth();
                 break;
-            case 3: //Mothership intro
+            case 4: //Mothership intro
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 CheckHealth();
@@ -225,12 +226,12 @@ public class Level2Controller : MonoBehaviour
                 }
                 popUpWaitTime -= Time.deltaTime;
                 break;
-            case 4: //continue gameplay
+            case 5: //continue gameplay
                 HandleMissionUpdates();
                 SpawnNormalEnemies();
                 if (CheckEndingCriteria())
                 {
-                    level2Data.popUpIndex = 5;
+                    level2Data.popUpIndex = 6;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
@@ -246,7 +247,7 @@ public class Level2Controller : MonoBehaviour
 
                 break;
             //end screen
-            case 5:
+            case 6:
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
                     if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level2))
@@ -262,7 +263,7 @@ public class Level2Controller : MonoBehaviour
                 
                 break;
             //retry screen
-            case 6:
+            case 7:
                 mouseControl.EnableMouse();
                 completedLevelTime = 0f;
                 gameManagerData.level2TimeCompletion = 0f;
@@ -280,7 +281,7 @@ public class Level2Controller : MonoBehaviour
         {
             //show retry screen
             RemoveLevelObjects();
-            level2Data.popUpIndex = 6;
+            level2Data.popUpIndex = 7;
         }
     }
 

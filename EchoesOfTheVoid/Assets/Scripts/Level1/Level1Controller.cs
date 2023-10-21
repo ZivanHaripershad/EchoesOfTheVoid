@@ -142,16 +142,18 @@ public class Level1Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
+                break;
+            case 1:
                 enemySpawning.ResetSpawning();
                 break;
-            case 1: //gameplay
+            case 2: //gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 SpawnOrbStealingEnemy();
 
                 if (CheckEndingCriteria())
                 {
-                    level1Data.popUpIndex = 2;
+                    level1Data.popUpIndex = 3;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
@@ -162,7 +164,7 @@ public class Level1Controller : MonoBehaviour
                 {
                     //show retry screen
                     RemoveLevelObjects();
-                    level1Data.popUpIndex = 3;
+                    level1Data.popUpIndex = 4;
                 }
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
@@ -171,7 +173,7 @@ public class Level1Controller : MonoBehaviour
                 }
 
                 break;
-            case 2: //ending screen
+            case 3: //ending screen
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
                     if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level1))
@@ -186,7 +188,7 @@ public class Level1Controller : MonoBehaviour
                 }
                 
                 break;
-            case 3: //retry screen
+            case 4: //retry screen
                 mouseControl.EnableMouse();
                 break;
         }

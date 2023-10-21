@@ -199,10 +199,12 @@ public class Level3Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
+                break;
+            case 1: //show enemy intro cards
                 enemySpawning.ResetSpawning();
                 popUpWaitTime = 10;
                 break;
-            case 1: //gameplay intro
+            case 2: //gameplay intro
                 
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
@@ -214,7 +216,7 @@ public class Level3Controller : MonoBehaviour
                 popUpWaitTime -= Time.deltaTime;
                 break;
             
-            case 2: //gameplay
+            case 3: //gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 CheckHealth();
@@ -226,7 +228,7 @@ public class Level3Controller : MonoBehaviour
                 popUpWaitTime = 10f;
 
                 break;
-            case 3: // mine enemy intro
+            case 4: // mine enemy intro
                 
                 if (Time.timeScale != 0)
                     mouseControl.DisableMouse();
@@ -241,7 +243,7 @@ public class Level3Controller : MonoBehaviour
                 popUpWaitTime -= Time.deltaTime;
                 break;
                 
-            case 4: //gameplay
+            case 5: //gameplay
                 if (Time.timeScale != 0)
                     mouseControl.DisableMouse();
                 
@@ -251,7 +253,7 @@ public class Level3Controller : MonoBehaviour
                 if (CheckEndingCriteria())
                 {
                     Debug.Log("Level 3 completed");
-                    level3Data.popUpIndex = 5;
+                    level3Data.popUpIndex = 6;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
@@ -267,7 +269,7 @@ public class Level3Controller : MonoBehaviour
                 
                 break;
 
-            case 5: //endscreen
+            case 6: //endscreen
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
                     if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level3))
@@ -277,7 +279,7 @@ public class Level3Controller : MonoBehaviour
                 }
                 break;
             
-            case 6: //retry screen
+            case 7: //retry screen
                 mouseControl.EnableMouse();
                 break;
             
@@ -294,7 +296,7 @@ public class Level3Controller : MonoBehaviour
         {
             //show retry screen
             RemoveLevelObjects();
-            level3Data.popUpIndex = 6;
+            level3Data.popUpIndex = 7;
         }
     }
 

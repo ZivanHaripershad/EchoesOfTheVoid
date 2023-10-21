@@ -13,7 +13,7 @@ public class DestroyOrbStealingEnemy : DestroyEnemy
 
     void Start()
     {
-        // smoke.SetActive(false);
+        smoke.SetActive(false);
     }
 
     private new void OnTriggerEnter2D(Collider2D collision)
