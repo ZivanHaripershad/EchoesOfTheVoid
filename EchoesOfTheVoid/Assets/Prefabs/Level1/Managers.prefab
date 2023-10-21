@@ -243,7 +243,7 @@ MonoBehaviour:
   healthLowMessage: {fileID: 0}
   missionObjectiveBanner: {fileID: 0}
   missionObjectiveCanvas: {fileID: 0}
-  orbStealingEnemy: {fileID: 5879588011643876490, guid: 93143b9ca140ee6448cc680c5125d498, type: 3}
+  orbStealingEnemy: {fileID: 1049714837875054767, guid: ee0641842d67b9b469b5e78efc1f97cf, type: 3}
 --- !u!1 &7018123691444164731
 GameObject:
   m_ObjectHideFlags: 0
