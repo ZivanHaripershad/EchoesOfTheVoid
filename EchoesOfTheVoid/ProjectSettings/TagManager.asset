@@ -38,6 +38,7 @@ TagManager:
   - EnemyObjectiveCircle
   - NetworkObjectiveCircle
   - HealthObjectiveCircle
+  - EnemyGiveShieldAnimTrigger
   layers:
   - Default
   - TransparentFX

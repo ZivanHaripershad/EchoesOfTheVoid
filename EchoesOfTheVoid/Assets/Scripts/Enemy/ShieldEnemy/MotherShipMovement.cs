@@ -35,6 +35,9 @@ public class MotherShipMovement : MonoBehaviour
     private bool isReturning;
     private bool hasEnteredScene;
     private int flightEntrancePathNumber;
+    [SerializeField] private Animator shieldAnimator;
+    [SerializeField] private float giveShieldsAnimDistance;
+    private bool givenShield;
 
     private void Start()
     {
@@ -48,6 +51,7 @@ public class MotherShipMovement : MonoBehaviour
         flightEntrancePathNumber = 0; 
         gameObject.transform.position = new Vector3(2.39f, -5.86f, 0f);
         enemySpeedControl = GameObject.FindWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
+        givenShield = false;
     }
 
     void MoveInOval()
@@ -162,6 +166,7 @@ public class MotherShipMovement : MonoBehaviour
                 {
                     minDistance = tryMe;
                     toFlyTo = enemy;
+                    givenShield = false;
                 }
             }
         }
@@ -169,10 +174,19 @@ public class MotherShipMovement : MonoBehaviour
         if (toFlyTo != null)
         {
             MoveToNearestEnemy(toFlyTo.transform.position, true);
+            
+            if (Vector3.Distance(transform.position, toFlyTo.transform.position) < giveShieldsAnimDistance && !givenShield)
+            {
+                shieldAnimator.SetTrigger("isActive");
+                givenShield = true;
+            }
+            
             isReturning = true;
         }
         else
         {
+
+            givenShield = false;
             if (isReturning)
             {
                 MoveToNearestEnemy(lastPositionInOval, false);

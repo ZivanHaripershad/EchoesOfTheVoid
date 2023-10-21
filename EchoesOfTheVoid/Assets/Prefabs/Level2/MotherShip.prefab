@@ -301,6 +301,8 @@ MonoBehaviour:
   flightPathRotationSpeed: 10
   enterSpeedModifier: 2
   healthWindowSpriteRenderer: {fileID: 6576416008249461642}
+  shieldAnimator: {fileID: 7937324578195657379}
+  giveShieldsAnimDistance: 2
 --- !u!70 &7975090668442905499
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

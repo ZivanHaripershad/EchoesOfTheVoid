@@ -266,6 +266,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 6753dbffe146f4d4a89c740ab23d08b2, type: 3}
   - clipName: ShieldEnemyShieldDestroyed
     clip: {fileID: 8300000, guid: be0c4f8f5b2f8ee4f98965025591d57d, type: 3}
+  - clipName: MotherShipGiveShields
+    clip: {fileID: 8300000, guid: b72161f433a0e9942bc02da4ec9064d8, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
   normalAudioSpeed: 1

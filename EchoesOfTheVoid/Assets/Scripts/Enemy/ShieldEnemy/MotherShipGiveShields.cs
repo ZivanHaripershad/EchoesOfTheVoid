@@ -14,7 +14,7 @@ public class MotherShipGiveShields : MonoBehaviour
             if (activateShield != null && activateShield.CanBeActivated())
             {
                 activateShield.Activate();
-                animator.SetTrigger("isActive");
+                AudioManager.Instance.PlaySFX("MotherShipGiveShields");
             }
         }
     }
