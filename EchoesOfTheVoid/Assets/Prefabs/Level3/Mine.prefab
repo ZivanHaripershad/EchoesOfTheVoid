@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 998427232293872886}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.64, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 0.01}
+  m_LocalScale: {x: 0.38, y: 0.38, z: 0.38}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -78,12 +78,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 60e974617b798a54fbb35edfd5778e7e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bf2ae966d6f379d4c908f247504700ee, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 32.78, y: 32.78}
+  m_Size: {x: 0.84, y: 0.94}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -122,7 +122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be4a6696c5b277446acb6385e3072822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minePlanted: {fileID: 998427232293872887}
   explodeDelay: 0.02
   explosionRadius: 2
   detectionRadius: 2
@@ -335,4 +334,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 16.39
+  m_Radius: 0.6079817
