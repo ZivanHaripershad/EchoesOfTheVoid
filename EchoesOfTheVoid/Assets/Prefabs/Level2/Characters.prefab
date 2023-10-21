@@ -1139,7 +1139,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 71ae5c5dcbbc5fb40a7c35b26a07b42a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1765,7 +1765,7 @@ MonoBehaviour:
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
   countDown: 2
-  reloadTimePerBullet: 0.2
+  reloadTimePerBullet: 0.05
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
   doubleDamageBullet: {fileID: 7841022512663862257, guid: df62b4321451111488e51893b85c296d, type: 3}
 --- !u!82 &6723253171319475611

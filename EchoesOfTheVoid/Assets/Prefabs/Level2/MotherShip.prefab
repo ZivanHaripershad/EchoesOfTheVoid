@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f0bad92a1b9f13c41b850a960c60a29a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -267,7 +267,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 4
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 35070c10e814ae2418a50decfb413790, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -301,6 +301,8 @@ MonoBehaviour:
   flightPathRotationSpeed: 10
   enterSpeedModifier: 2
   healthWindowSpriteRenderer: {fileID: 6576416008249461642}
+  shieldAnimator: {fileID: 7937324578195657379}
+  giveShieldsAnimDistance: 2
 --- !u!70 &7975090668442905499
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -336,6 +338,7 @@ MonoBehaviour:
   healthWindowSp: {fileID: 6576416008249461642}
   motherShipGiveShields: {fileID: 7975090669408555782}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  damage: {fileID: 7063491825668383760, guid: ae0f2d208361c1e449c35b7047fbedf8, type: 3}
 --- !u!82 &-8464398043955780724
 AudioSource:
   m_ObjectHideFlags: 0
@@ -571,8 +574,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7975090669408555781}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 2.16, z: 0}
+  m_LocalScale: {x: 1.15, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7975090668442905497}
@@ -604,9 +607,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.033925373, y: 0.81264734}
+  m_Offset: {x: 0.03392541, y: -0.18182078}
   serializedVersion: 2
-  m_Radius: 2.7121277
+  m_Radius: 2.3095887
 --- !u!212 &7317766005900944395
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -653,7 +656,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 3.28, y: 7.12}
+  m_Size: {x: 6.7, y: 4.04}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
