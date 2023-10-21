@@ -15,10 +15,7 @@ public class PowerDeposit : Deposit
             
             spriteRenderer.sprite = enabledFactorySprite;
         }
-        
-        Debug.Log("Is cooled down: " + GameStateManager.Instance.IsCooledDown);
-        Debug.Log("cooled down time: " + GameStateManager.Instance.CoolDownTime );
-        
+
         if (GameStateManager.Instance.CoolDownTime >= GameStateManager.Instance.MaxDepositCoolDown 
             && !GameStateManager.Instance.IsCooledDown)
         {
