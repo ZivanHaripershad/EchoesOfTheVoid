@@ -2022,6 +2022,7 @@ MonoBehaviour:
   rotationSpeed: 100
   enemy: {fileID: 8012780089176710275}
   radius: 2.7
+  doubleDamageRoutes: 00000000010000000500000008000000
 --- !u!50 &4350141238360582128
 Rigidbody2D:
   serializedVersion: 4

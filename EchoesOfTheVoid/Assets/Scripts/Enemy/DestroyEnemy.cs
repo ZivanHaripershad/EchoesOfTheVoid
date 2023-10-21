@@ -20,7 +20,9 @@ public class DestroyEnemy : MonoBehaviour
 
     private Animator earthDamageAnimator; 
 
-    private ActivateShield activateShield; 
+    private ActivateShield activateShield;
+
+    private bool isDoubleDamage = false;
     
 
     // Start is called before the first frame update
@@ -30,6 +32,11 @@ public class DestroyEnemy : MonoBehaviour
         earthDamageAnimator = GameObject.FindGameObjectWithTag("EarthDamage").GetComponent<Animator>();
         activateShield = GetComponentInChildren<ActivateShield>();
         objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
+    }
+
+    public void SetDoubleDamage()
+    {
+        isDoubleDamage = true;
     }
 
     void checkDamage()
@@ -67,21 +74,30 @@ public class DestroyEnemy : MonoBehaviour
     {
 
         bool planetDamage = false;
-        
+
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
-            AudioManager.Instance.PlaySFX("CrashIntoPlanet");
+        {
+            if (isDoubleDamage)
+                AudioManager.Instance.PlaySFX("DoubleDamageCrashIntoPlanet");
+            else
+                AudioManager.Instance.PlaySFX("CrashIntoPlanet");
+        }
+            
             
         if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("DoubleDamageBullet"))
         {
             if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive)
             {
-                Debug.Log("shield damage");
                 shieldCounter.currentShieldAmount--;
             }
 
             if (collision.gameObject.CompareTag("Earth") && !shieldCounter.isShieldActive)
             {
-                healthCount.currentHealth--;
+                if (isDoubleDamage)
+                    healthCount.currentHealth -= 2;
+                else
+                    healthCount.currentHealth--;
+                
                 checkDamage();
                 DestroyGameObject(collision, false, gameObject.transform);
             }

@@ -268,6 +268,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: be0c4f8f5b2f8ee4f98965025591d57d, type: 3}
   - clipName: MotherShipGiveShields
     clip: {fileID: 8300000, guid: b72161f433a0e9942bc02da4ec9064d8, type: 3}
+  - clipName: DoubleDamageCrashIntoPlanet
+    clip: {fileID: 8300000, guid: 86f9a0f25d6e9a24790a11e18b84b77a, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
   normalAudioSpeed: 1

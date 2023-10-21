@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using Random = UnityEngine.Random;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class FollowRoute : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     [SerializeField] private GameObject enemy;
     [SerializeField] private float radius;
+    [SerializeField] private int[] doubleDamageRoutes;
     
     private float tParam;
     private GlobalVariables variables;
@@ -63,6 +65,10 @@ public class FollowRoute : MonoBehaviour
 
         while (routeToGoTo == prev || routeToGoTo == prevPrev)
             routeToGoTo = Random.Range(0, routes.Length);
+
+        if (Array.IndexOf(doubleDamageRoutes, routeToGoTo) != -1)
+            gameObject.GetComponent<DestroyEnemy>().SetDoubleDamage();
+        
 
         //set prev and prevprev
         variables.prevPrevEnemySpawned = prev;
