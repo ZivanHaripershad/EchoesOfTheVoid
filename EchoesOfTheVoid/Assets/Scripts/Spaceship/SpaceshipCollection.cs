@@ -36,6 +36,8 @@ public class SpaceshipCollection : MonoBehaviour
     private bool isStunned;
 
     [SerializeField] private GameManagerData gameManagerData;
+    [SerializeField] private float stunRotationMagnitude;
+    [SerializeField] private float stunFrequency;
 
     void Start()
     {
@@ -178,7 +180,14 @@ public class SpaceshipCollection : MonoBehaviour
     private IEnumerator StunPlayerCoroutine()
     {
         isStunned = true;
-        yield return new WaitForSeconds(stunWaitTime);
+        float currentTime = stunWaitTime;
+        while (currentTime > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, (float) Math.Sin(currentTime * stunFrequency) * stunRotationMagnitude);
+            
+            currentTime -= Time.deltaTime;
+            yield return null;
+        }
         isStunned = false;
     }
 }
