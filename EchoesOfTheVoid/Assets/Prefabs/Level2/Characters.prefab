@@ -483,8 +483,8 @@ MonoBehaviour:
   fillSoundFadeSpeed: 1
   haloAnimator: {fileID: 6723253170947183119}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-  reduceSpawnIntervalAndVariation: 0.98
-  reduceTimeTillNextWave: 0.98
+  reduceSpawnIntervalAndVariation: 0.985
+  reduceTimeTillNextWave: 0.985
   firstFilledSpriteNumber: 9
   secondFilledSpriteNumber: 45
   thirdFilledSpriteNumber: 82
@@ -2829,6 +2829,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  earthDamageAnimator: {fileID: 4702458932368537970}
 --- !u!114 &6723253170875594854
 MonoBehaviour:
   m_ObjectHideFlags: 0

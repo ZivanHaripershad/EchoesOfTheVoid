@@ -2800,6 +2800,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  earthDamageAnimator: {fileID: 6667398769317224880}
 --- !u!114 &3550091862325039193
 MonoBehaviour:
   m_ObjectHideFlags: 0
