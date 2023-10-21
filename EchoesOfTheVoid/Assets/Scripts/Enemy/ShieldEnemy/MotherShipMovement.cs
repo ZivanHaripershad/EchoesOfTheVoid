@@ -29,6 +29,8 @@ public class MotherShipMovement : MonoBehaviour
     [SerializeField] private float flightPathRotationSpeed;
     [SerializeField] private float enterSpeedModifier;
     [SerializeField] private SpriteRenderer healthWindowSpriteRenderer;
+    [SerializeField] private SpriteRenderer giveShieldSpriteRednerer;
+    [SerializeField] private GameObject giveShieldsObject;
 
     private EnemySpeedControl enemySpeedControl;
     private Vector3 lastPositionInOval; 
@@ -56,6 +58,7 @@ public class MotherShipMovement : MonoBehaviour
 
     void MoveInOval()
     {
+        
         if (isMovingForward)
         {
             timer += Time.deltaTime * enemySpeedControl.GetMotherShipOrbitSpeed();
@@ -63,6 +66,10 @@ public class MotherShipMovement : MonoBehaviour
             sp.flipY = false;
             healthWindowSpriteRenderer.flipX = false;
             healthWindowSpriteRenderer.flipY = false;
+            giveShieldSpriteRednerer.flipX = false;
+            giveShieldSpriteRednerer.flipY = false;
+            giveShieldSpriteRednerer.transform.localPosition = new Vector3(0,  2.01f, 0);
+
         }
         else
         {
@@ -73,6 +80,10 @@ public class MotherShipMovement : MonoBehaviour
             //todo: position correctly
             healthWindowSpriteRenderer.flipX = true;
             healthWindowSpriteRenderer.flipY = true;
+            giveShieldSpriteRednerer.flipX = true;
+            giveShieldSpriteRednerer.flipY = true;
+            giveShieldSpriteRednerer.transform.localPosition = new Vector3(0,  -2.01f, 0);
+
         }
     
         // Calculate the new position of the GameObject on the oval path
@@ -203,23 +214,38 @@ public class MotherShipMovement : MonoBehaviour
 
     private void MoveToNearestEnemy(Vector3 targetPosition, bool isGoingTo)
     {
-        // Calculate the new position to move towards.
-        Vector3 lookDirection = Vector3.left - transform.position;
 
-        if (lookDirection != Vector3.left)
+        if (isMovingForward)
         {
-            // Calculate the angle (in degrees) between the lookDirection and the forward direction of the sprite.
-            float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+            // Calculate the new position to move towards.
+            Vector3 lookDirection = Vector3.left - transform.position;
 
-            // //todo: modify
-            //  if (isGoingTo)
-            //      angle -= 90;
-            //  else angle += 90;
+            if (lookDirection != Vector3.left)
+            {
+                // Calculate the angle (in degrees) between the lookDirection and the forward direction of the sprite.
+                float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 
-             angle += 90;
+                angle += 90;
 
-            // Rotate the sprite around the Z-axis to face the target position. 
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+                // Rotate the sprite around the Z-axis to face the target position. 
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
+        }
+        else
+        {
+            // Calculate the new position to move towards.
+            Vector3 lookDirection = Vector3.right - transform.position;
+
+            if (lookDirection != Vector3.right)
+            {
+                // Calculate the angle (in degrees) between the lookDirection and the forward direction of the sprite.
+                float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+
+                angle -= 90;
+
+                // Rotate the sprite around the Z-axis to face the target position. 
+                transform.rotation = Quaternion.Euler(0, 0, angle);
+            }
         }
 
         // Interpolate between the current position and the target position.

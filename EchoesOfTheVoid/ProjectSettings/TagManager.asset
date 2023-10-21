@@ -85,6 +85,9 @@ TagManager:
   - name: Factory
     uniqueID: 479793123
     locked: 0
+  - name: MotherShip
+    uniqueID: 583945681
+    locked: 0
   - name: Earth
     uniqueID: 2760133829
     locked: 0

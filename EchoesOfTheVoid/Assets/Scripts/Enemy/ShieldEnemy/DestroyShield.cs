@@ -20,6 +20,7 @@ public class DestroyShield : MonoBehaviour
         AudioManager.Instance.PlaySFX("ShieldEnemyAngry");
         directEnemyMovement.SpeedUp();
         animator.SetTrigger("isAngry");
+        GetComponent<DestroyEnemy>().SetDoubleDamage();
     }
     
     void OnTriggerEnter2D(Collider2D other)
