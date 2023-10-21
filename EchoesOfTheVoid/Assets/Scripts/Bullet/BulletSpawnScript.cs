@@ -10,7 +10,6 @@ public class BulletSpawnScript : MonoBehaviour
 {
     public GameManagerData gameManagerData;
     public OrbCounter orbCounter;
-    public float maxShootSpeed;
     public SpaceshipMode spaceshipMode;
     public OrbDepositingMode orbDepositingMode;
     public BulletCount bulletCount;
@@ -37,6 +36,11 @@ public class BulletSpawnScript : MonoBehaviour
     private GameObject reloadMessage;
     private GameObject cannotFireMessage;
     private GameObject purchaseAmmoMessage;
+    
+    private float maxShootSpeed;
+    [SerializeField] private float shootSpeedL1;
+    [SerializeField] private float shootSpeedL2;
+    [SerializeField] private float shootSpeedL3;
 
     // Start is called before the first frame update
     void Start()
@@ -56,10 +60,17 @@ public class BulletSpawnScript : MonoBehaviour
         progressBar = progressBarInner.GetComponent<SpriteRenderer>();
         progressBar.size = new Vector2(0, 1);
 
-        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null && SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "BulletFireRateUpgrade")
+        switch (gameManagerData.level)
         {
-            var upgradeSpeed = SelectedUpgradeLevel1.Instance.GetUpgrade().GetValue();
-            maxShootSpeed += (maxShootSpeed * upgradeSpeed);
+            case GameManagerData.Level.Level1:
+                maxShootSpeed = shootSpeedL1; 
+                break;
+            case GameManagerData.Level.Level2:
+                maxShootSpeed = shootSpeedL2; 
+                break; 
+            case GameManagerData.Level.Level3:
+                maxShootSpeed = shootSpeedL3; 
+                break;
         }
     
     }
@@ -163,7 +174,8 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if (timePassed > maxShootSpeed)
             {
-                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
+                // if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
                     AudioManager.Instance.PlaySFX("LaserShot");
                     timePassed = 0;

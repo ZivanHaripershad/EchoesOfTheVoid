@@ -5,9 +5,6 @@ public class MotherShipDamage : MonoBehaviour
     [SerializeField] private MotherShipMovement motherShipMovement;
     [SerializeField] private MotherShipHealth motherShipHealth;
     [SerializeField] private GameObject explosion;
-    [SerializeField] private float delayAfterKillingMothership;
-    [SerializeField] private SpriteRenderer healthWindowSp;
-    [SerializeField] private MotherShipGiveShields motherShipGiveShields;
     private ObjectiveManager objectiveManager;
     public GameManagerData gameManagerData;
     [SerializeField] private GameObject damage;
