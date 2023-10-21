@@ -175,7 +175,7 @@ public class BulletSpawnScript : MonoBehaviour
             if (timePassed > maxShootSpeed)
             {
                 // if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
                 {
                     AudioManager.Instance.PlaySFX("LaserShot");
                     timePassed = 0;
