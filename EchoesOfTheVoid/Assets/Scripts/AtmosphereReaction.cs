@@ -36,12 +36,20 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField] private ShieldDeposit shieldDeposit;
     [SerializeField] private GameObject darkenBackground;
     [SerializeField] private float darkenBackgroundAlpha;
-
-    public OrbDepositingMode orbDepositingMode;
-
     [SerializeField] private float fadeInDuration;
     [SerializeField] private float fadeOutDuration;
     
+    //level1
+    [SerializeField] private GameObject level1Upgrade;
+    
+    //level2
+    [SerializeField] private GameObject level2Upgrade;
+
+    //level3
+    [SerializeField] private GameObject level3Upgrade;
+    
+    public OrbDepositingMode orbDepositingMode;
+
     private bool isUp;
 
     public bool IsUp()
@@ -130,6 +138,24 @@ public class AtmosphereReaction : MonoBehaviour
                 level3EnemyObjective.SetActive(true);
                 StartCoroutine(Fade(level3EnemyObjective, 0f, 1f, fadeInDuration));
             }
+            
+            if (level1Upgrade)
+            {
+                level1Upgrade.SetActive(true);
+                StartCoroutine(Fade(level1Upgrade, 0f, 1f, fadeInDuration));
+            }
+            
+            if (level2Upgrade)
+            {
+                level2Upgrade.SetActive(true);
+                StartCoroutine(Fade(level2Upgrade, 0f, 1f, fadeInDuration));
+            }
+            
+            if (level3Upgrade)
+            {
+                level3Upgrade.SetActive(true);
+                StartCoroutine(Fade(level3Upgrade, 0f, 1f, fadeInDuration));
+            }
 
             StartCoroutine(Fade(bulletFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(powerFactory, 0f, 1f, fadeInDuration));
@@ -171,6 +197,24 @@ public class AtmosphereReaction : MonoBehaviour
             {
                 level3EnemyObjective.SetActive(true);
                 StartCoroutine(Fade(level3EnemyObjective, 1f, 0f, fadeOutDuration));
+            }
+            
+            if (level1Upgrade)
+            {
+                level1Upgrade.SetActive(true);
+                StartCoroutine(Fade(level1Upgrade, 1f, 0f, fadeOutDuration));
+            }
+            
+            if (level2Upgrade)
+            {
+                level2Upgrade.SetActive(true);
+                StartCoroutine(Fade(level2Upgrade, 1f, 0f, fadeOutDuration));
+            }
+            
+            if (level3Upgrade)
+            {
+                level3Upgrade.SetActive(true);
+                StartCoroutine(Fade(level3Upgrade, 1f, 0f, fadeOutDuration));
             }
             
             StartCoroutine(Fade(bulletFactory, 1f, 0f, fadeOutDuration));
