@@ -36,7 +36,7 @@ public class SpaceshipCollectOrbs : MonoBehaviour
             }
             
             healthCount.currentHealth++;
-            AudioManager.Instance.PlaySFX("OrbCollection");
+            AudioManager.Instance.PlaySFX("CollectHealth");
             CheckHealth();
             Destroy(collider.gameObject);
         }
