@@ -49,7 +49,7 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField] private GameObject level3Upgrade;
     
     [SerializeField] private GameManagerData gameManagerData;
-    
+
     public OrbDepositingMode orbDepositingMode;
 
     private bool isUp;
@@ -152,7 +152,7 @@ public class AtmosphereReaction : MonoBehaviour
 
             if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
             {
-                if (level1Upgrade)
+                if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {
                     level1Upgrade.SetActive(true);
                     StartCoroutine(Fade(level1Upgrade, 0f, 1f, fadeInDuration));
@@ -166,12 +166,12 @@ public class AtmosphereReaction : MonoBehaviour
 
             if (gameManagerData.level.Equals(GameManagerData.Level.Level3))
             {
-                if (level1Upgrade)
+                if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {
                     level1Upgrade.SetActive(true);
                     StartCoroutine(Fade(level1Upgrade, 0f, 1f, fadeInDuration));
                 }
-                if (level2Upgrade)
+                if (level2Upgrade && GameStateManager.Instance.IsLevel2Completed)
                 {
                     level2Upgrade.SetActive(true);
                     StartCoroutine(Fade(level2Upgrade, 0f, 1f, fadeInDuration));
@@ -237,7 +237,7 @@ public class AtmosphereReaction : MonoBehaviour
 
             if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
             {
-                if (level1Upgrade)
+                if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {
                     level1Upgrade.SetActive(true);
                     StartCoroutine(Fade(level1Upgrade, 1f, 0f, fadeOutDuration));
@@ -251,12 +251,12 @@ public class AtmosphereReaction : MonoBehaviour
 
             if (gameManagerData.level.Equals(GameManagerData.Level.Level3))
             {
-                if (level1Upgrade)
+                if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {
                     level1Upgrade.SetActive(true);
                     StartCoroutine(Fade(level1Upgrade, 1f, 0f, fadeOutDuration));
                 }
-                if (level2Upgrade)
+                if (level2Upgrade && GameStateManager.Instance.IsLevel2Completed)
                 {
                     level2Upgrade.SetActive(true);
                     StartCoroutine(Fade(level2Upgrade, 1f, 0f, fadeOutDuration));

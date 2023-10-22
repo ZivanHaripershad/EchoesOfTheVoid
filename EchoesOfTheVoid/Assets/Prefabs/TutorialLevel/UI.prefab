@@ -2564,6 +2564,7 @@ MonoBehaviour:
   level1Upgrade: {fileID: 0}
   level2Upgrade: {fileID: 0}
   level3Upgrade: {fileID: 0}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
 --- !u!1 &1962596712
 GameObject:
