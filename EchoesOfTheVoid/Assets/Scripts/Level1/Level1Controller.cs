@@ -164,7 +164,7 @@ public class Level1Controller : MonoBehaviour
                     return;
                 }
 
-                if (healthCount.currentHealth == 0)
+                if (healthCount.currentHealth <= 0)
                 {
                     //show retry screen
                     RemoveLevelObjects();

@@ -48,6 +48,13 @@ public class GameStateManager : MonoBehaviour
     
     private void Update()
     {
+        if (_instance && _instance.CoolDownTime >= _instance.MaxDepositCoolDown 
+            && !_instance.IsCooledDown)
+        {
+            _instance.CoolDownTime = 0f;
+            _instance.IsCooledDown = true;
+        }
+        
         if (_instance && !_instance.isCooledDown)
         {
             _instance.coolDownTime += Time.deltaTime;

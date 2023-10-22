@@ -184,7 +184,7 @@ public class DepositOrbs : MonoBehaviour
                         case OrbFactoryDeposited.Power:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.powerCost);
                              powerFactoryAnim.SetTrigger("isSelected");
-                            break;
+                             break;
                         case OrbFactoryDeposited.Health:
                              OrbCounterUI.GetInstance().DecrementOrbs(factoryCosts.healthCost);
                              healthFactoryAnim.SetTrigger("isSelected");
