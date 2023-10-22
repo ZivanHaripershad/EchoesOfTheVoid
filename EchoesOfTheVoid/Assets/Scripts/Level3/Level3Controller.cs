@@ -55,12 +55,14 @@ public class Level3Controller : MonoBehaviour
     }
 
     private Level3Controller.SceneManager sceneManager;
-    
-    private void Start()
+
+    private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level3;
+    }
 
-       
+    private void Start()
+    {
         GameStateManager.Instance.SetMaxOrbCapacity(4);
 
         if (GameStateManager.Instance.IsLevel2Completed)

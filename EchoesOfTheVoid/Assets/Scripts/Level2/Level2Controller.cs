@@ -57,10 +57,13 @@ public class Level2Controller : MonoBehaviour
 
     private SceneManager sceneManager;
     
-    private void Start()
+    private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level2;
-        
+    }
+    
+    private void Start()
+    {
         GameStateManager.Instance.SetMaxOrbCapacity(4);
 
         if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))

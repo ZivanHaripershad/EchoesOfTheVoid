@@ -49,17 +49,24 @@ public class SpaceshipCollection : MonoBehaviour
         isEjecting = false;
         gameManagerData.timeSpentFlying = 0f;
         
-       if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
+        
+        Debug.Log("current level: " + GameStateManager.Instance.CurrentLevel);
+
+        if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
        {
+           Debug.Log("in here: ");
+
            if (SelectedUpgradeLevel3.Instance != null &&
                SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
                SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ShipVelocityUpgrade")
            {
+               Debug.Log("current move speed: " + moveSpeed);
                moveSpeed = 7;
+               Debug.Log("new move speed: " + moveSpeed);
            }
        }
 
-       if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
+       if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
         {
             if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
                 SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")

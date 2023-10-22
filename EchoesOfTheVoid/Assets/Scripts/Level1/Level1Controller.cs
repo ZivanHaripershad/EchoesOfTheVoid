@@ -51,10 +51,13 @@ public class Level1Controller : MonoBehaviour
 
     private SceneManager sceneManager;
     
-    private void Start()
+    private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level1;
-        
+    }
+
+    private void Start()
+    {
         GameStateManager.Instance.SetMaxOrbCapacity(4);
 
         OrbCounterUI.GetInstance().UpdateOrbText();
