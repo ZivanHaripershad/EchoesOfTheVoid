@@ -298,6 +298,7 @@ MonoBehaviour:
   level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
   smoke: {fileID: 2553885283480257098}
   lowHealth: 3
+  delayAfterDamage: 0.5
 --- !u!58 &2715511332520450946
 CircleCollider2D:
   m_ObjectHideFlags: 0
