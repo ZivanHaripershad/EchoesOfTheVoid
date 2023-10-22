@@ -2626,6 +2626,7 @@ MonoBehaviour:
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
+  powerFactoryAnim: {fileID: 1072420875731805426}
 --- !u!82 &1072420874781139743
 AudioSource:
   m_ObjectHideFlags: 0

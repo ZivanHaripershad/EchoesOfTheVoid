@@ -294,7 +294,7 @@ public class Level3Controller : MonoBehaviour
 
     private void CheckHealth()
     {
-        if (healthCount.currentHealth == 0)
+        if (healthCount.currentHealth <= 0)
         {
             //show retry screen
             RemoveLevelObjects();
