@@ -30,7 +30,7 @@ public class BulletSpawnScript : MonoBehaviour
     private float fadeColor = 0;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject doubleDamageBullet;
-    [SerializeField] private BurstUpgradeState burstUpgradeState;
+    // [SerializeField] private BurstUpgradeState burstUpgradeState;
 
     private GameObject canvasUI;
     
@@ -63,6 +63,9 @@ public class BulletSpawnScript : MonoBehaviour
 
         switch (GameStateManager.Instance.CurrentLevel)
         {
+            case GameManagerData.Level.Tutorial:
+                maxShootSpeed = shootSpeedL1; 
+                break;
             case GameManagerData.Level.Level1:
                 maxShootSpeed = shootSpeedL1; 
                 break;
@@ -173,7 +176,7 @@ public class BulletSpawnScript : MonoBehaviour
         if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false &&
             spaceshipMode.canRotateAroundPlanet)
         {
-            if (burstUpgradeState.isBurstUpgradeReady)
+            /*if (burstUpgradeState.isBurstUpgradeReady)
             {
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
@@ -188,7 +191,7 @@ public class BulletSpawnScript : MonoBehaviour
                 }
             }
             else
-            {
+            {*/
                 if (timePassed > maxShootSpeed)
                 {
                     if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
@@ -252,7 +255,7 @@ public class BulletSpawnScript : MonoBehaviour
                 }
 
                 timePassed += Time.deltaTime;
-            }
+            // }
             
             
         }
