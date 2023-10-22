@@ -38,6 +38,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Level1Data level1Data;
     [SerializeField] private Level2Data level2Data;
     [SerializeField] private Level3Data level3Data;
+    
+    // [SerializeField] private BurstUpgradeState burstUpgradeState;
+
+    // [SerializeField] private Animator burstUpgradeAnimator;
 
     
     private MouseControl mouseControl;
@@ -166,6 +170,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    // public void ReplenishBurstUpgrade()
+    // {
+    //     burstUpgradeAnimator.SetTrigger("replenish");
+    // }
+    //
+    // public void CoolDownBurstUpgrade()
+    // {
+    //     burstUpgradeAnimator.SetTrigger("cooldown");
+    // }
+
     private void Update()
     {
         //check when the user presses exit
@@ -196,6 +210,28 @@ public class UIManager : MonoBehaviour
             ControlAtmosphereOnPauseMenu(true);
             atmosphereActiveBeforePause = false;
         }
+
+        // if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
+        //     burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeReplenish"))
+        // {
+        //     Debug.Log("Burst Is Ready to use");
+        //     burstUpgradeState.isBurstUpgradeReady = true;
+        //     burstUpgradeState.isBurstUpgradeReplenishing = false;
+        // }
+        //
+        // if (burstUpgradeState.isBurstUpgradeCoolingDown &&
+        //     !burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeCoolDown"))
+        // {
+        //     burstUpgradeAnimator.SetTrigger("cooldown");
+        // }
+        //
+        // if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
+        //     burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeCoolDown"))
+        // {
+        //     Debug.Log("Burst Is Not Ready to use");
+        //     burstUpgradeState.isBurstUpgradeCoolingDown = false;
+        //     burstUpgradeState.isBurstUpgradeReady = false;
+        // }
     }
 
     private void ControlAtmosphereOnPauseMenu(bool active)

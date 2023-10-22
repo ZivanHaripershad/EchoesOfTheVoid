@@ -245,6 +245,7 @@ MonoBehaviour:
   missionObjectiveBanner: {fileID: 0}
   missionObjectiveCanvas: {fileID: 0}
   orbStealingEnemy: {fileID: 1049714837875054767, guid: ee0641842d67b9b469b5e78efc1f97cf, type: 3}
+  burstUpgradeState: {fileID: 11400000, guid: 60228d171de5c934c84ec7665b72ce0e, type: 2}
 --- !u!1 &7018123691444164731
 GameObject:
   m_ObjectHideFlags: 0

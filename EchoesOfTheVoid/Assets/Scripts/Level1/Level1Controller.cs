@@ -34,6 +34,7 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
     [SerializeField] private GameObject missionObjectiveCanvas;
     [SerializeField] private GameObject orbStealingEnemy;
+    [SerializeField] private BurstUpgradeState burstUpgradeState;
 
     private Text missionObjectiveText;
     private Coroutine audioCoroutine;
@@ -107,6 +108,11 @@ public class Level1Controller : MonoBehaviour
         
         GameStateManager.Instance.CoolDownTime = 0f;
         GameStateManager.Instance.IsCooledDown = true;
+        
+        
+        burstUpgradeState.isBurstUpgradeReady = false;
+        burstUpgradeState.isBurstUpgradeReplenishing = false;
+        burstUpgradeState.isBurstUpgradeCoolingDown = false;
     }
 
     private bool CheckEndingCriteria()
@@ -154,6 +160,13 @@ public class Level1Controller : MonoBehaviour
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 SpawnOrbStealingEnemy();
+
+                // if (!burstUpgradeState.isBurstUpgradeReady &&
+                //     !burstUpgradeState.isBurstUpgradeReplenishing)
+                // {
+                //     uiManager.ReplenishBurstUpgrade();
+                //     burstUpgradeState.isBurstUpgradeReplenishing = true;
+                // }
 
                 if (CheckEndingCriteria())
                 {
@@ -206,35 +219,40 @@ public class Level1Controller : MonoBehaviour
 
     private void SpawnOrbStealingEnemy()
     {
-        void Spawn()
+        void Spawn(int startPoint)
         {
-            InstantiateOrbStealingEnemy();
+            InstantiateOrbStealingEnemy(startPoint);
             sceneManager.numOrbStealingSpawned++;
         }
 
         //get the current fill level of the energy bar
-        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 4 && sceneManager.numOrbStealingSpawned < 1)
+        if (orbCounter.planetOrbsDeposited >= (orbCounter.planetOrbMax * 0.2) && sceneManager.numOrbStealingSpawned < 1)
         { 
-            Spawn();
+            Spawn(4);
         }
         
-        if (orbCounter.planetOrbsDeposited > orbCounter.planetOrbMax / 2 && sceneManager.numOrbStealingSpawned < 2)
+        if (orbCounter.planetOrbsDeposited >= (orbCounter.planetOrbMax * 0.4) && sceneManager.numOrbStealingSpawned < 2)
         {
-            Spawn();
+            Spawn(8);
         }
         
-        if (orbCounter.planetOrbsDeposited > (orbCounter.planetOrbMax * 3) / 4 && sceneManager.numOrbStealingSpawned < 2)
+        if (orbCounter.planetOrbsDeposited >= (orbCounter.planetOrbMax * 0.6) && sceneManager.numOrbStealingSpawned < 3)
         {
-            Spawn();
+            Spawn(18);
+        }
+        
+        if (orbCounter.planetOrbsDeposited >= (orbCounter.planetOrbMax * 0.8) && sceneManager.numOrbStealingSpawned < 4)
+        {
+            Spawn(26);
         }
     }
 
-    private void InstantiateOrbStealingEnemy()
+    private void InstantiateOrbStealingEnemy(int spawnPoint)
     {
         //choose a spawn point
         GameObject[] waypoints = GameObject.FindGameObjectsWithTag("OrbStealingWaypoint");
-        Random random = new Random();
-        Vector3 position = waypoints[random.Next(waypoints.Length)].gameObject.transform.position;
+        // Random random = new Random();
+        Vector3 position = waypoints[spawnPoint-1].gameObject.transform.position;
 
         Instantiate(orbStealingEnemy, position, Quaternion.identity);
     }
