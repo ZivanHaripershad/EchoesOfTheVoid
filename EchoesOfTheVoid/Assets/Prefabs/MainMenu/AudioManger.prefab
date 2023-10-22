@@ -274,6 +274,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 86f9a0f25d6e9a24790a11e18b84b77a, type: 3}
   - clipName: CollectHealth
     clip: {fileID: 8300000, guid: d38d282a404d0d149a70cf85eaeb4893, type: 3}
+  - clipName: AchievementUnlocked
+    clip: {fileID: 8300000, guid: eb7a3ffb566c901458f05d6cfce0e6a4, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
   normalAudioSpeed: 1
