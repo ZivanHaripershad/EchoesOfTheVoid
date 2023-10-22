@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 public class GameStateManager : MonoBehaviour
 {
-    
     private static GameStateManager _instance;
 
     private int maxOrbCapacity;
@@ -12,6 +11,11 @@ public class GameStateManager : MonoBehaviour
     private bool isLevel2Completed;
     private bool isLevel3Completed;
     private GameManagerData.Level currentLevel;
+    
+    [SerializeField] private float maxDepositCoolDown;
+
+    private bool isCooledDown;
+    private float coolDownTime;
 
     void Awake()
     {
@@ -39,6 +43,14 @@ public class GameStateManager : MonoBehaviour
                 }
             }
             return _instance;
+        }
+    }
+    
+    private void Update()
+    {
+        if (_instance && !_instance.isCooledDown)
+        {
+            _instance.coolDownTime += Time.deltaTime;
         }
     }
 
@@ -74,5 +86,23 @@ public class GameStateManager : MonoBehaviour
     {
         get => _instance.currentLevel;
         set => _instance.currentLevel = value;
+    }
+    
+    public bool IsCooledDown
+    {
+        get => _instance.isCooledDown;
+        set => _instance.isCooledDown = value;
+    }
+
+    public float CoolDownTime
+    {
+        get => _instance.coolDownTime;
+        set => _instance.coolDownTime = value;
+    }
+    
+    public float MaxDepositCoolDown
+    {
+        get => _instance.maxDepositCoolDown;
+        set => _instance.maxDepositCoolDown = value;
     }
 }

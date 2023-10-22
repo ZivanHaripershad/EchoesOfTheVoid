@@ -9,6 +9,7 @@ public class MotherShipHealth : MonoBehaviour
     [SerializeField] private int maxHealth;
     [SerializeField] private int lowHealth;
     [SerializeField] private Animator animator;
+    [SerializeField] private GameObject smoke;
 
     [SerializeField] private Level2Data level2Data;
     
@@ -42,9 +43,12 @@ public class MotherShipHealth : MonoBehaviour
         {
             objectiveManager.UpdatePrimaryTargetHealthBanner(healthPercentage);
         }
-        
+
         if (health <= lowHealth)
+        {
             animator.SetBool("isLowHealth", true);
+            smoke.SetActive(true);
+        }
     }
 
     public bool IsDead()

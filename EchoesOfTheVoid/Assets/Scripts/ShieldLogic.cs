@@ -49,8 +49,8 @@ public class ShieldLogic : MonoBehaviour
     {
         int maxNumOfShield = 3;
         
-        if ((gameManagerData.level.Equals(GameManagerData.Level.Level2) ||
-             gameManagerData.level.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
+        if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+             GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
         {
             if (SelectedUpgradeLevel1.Instance != null &&
                 SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
@@ -59,7 +59,7 @@ public class ShieldLogic : MonoBehaviour
                 maxNumOfShield = 4;
             }
         }
-        else if(gameManagerData.level.Equals(GameManagerData.Level.Level1))
+        else if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
         {
             if (SelectedUpgradeLevel1.Instance != null &&
                 SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&

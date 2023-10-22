@@ -8,5 +8,6 @@ public class ReduceStunUpgrade : Upgrade
     public ReduceStunUpgrade()
     {
         SetName("ReduceStunUpgrade");
+        SetDescription("Reduce stun duration by 40%");
     }
 }

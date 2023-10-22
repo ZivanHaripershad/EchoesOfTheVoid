@@ -36,6 +36,8 @@ public class SpaceshipCollection : MonoBehaviour
     private bool isStunned;
 
     [SerializeField] private GameManagerData gameManagerData;
+    [SerializeField] private float stunRotationMagnitude;
+    [SerializeField] private float stunFrequency;
 
     void Start()
     {
@@ -47,17 +49,24 @@ public class SpaceshipCollection : MonoBehaviour
         isEjecting = false;
         gameManagerData.timeSpentFlying = 0f;
         
-       if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
+        
+        Debug.Log("current level: " + GameStateManager.Instance.CurrentLevel);
+
+        if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
        {
-           if (SelectedUpgradeLevel1.Instance != null &&
-               SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
-               SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShipVelocityUpgrade")
+           Debug.Log("in here: ");
+
+           if (SelectedUpgradeLevel3.Instance != null &&
+               SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+               SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ShipVelocityUpgrade")
            {
+               Debug.Log("current move speed: " + moveSpeed);
                moveSpeed = 7;
+               Debug.Log("new move speed: " + moveSpeed);
            }
        }
 
-       if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
+       if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
         {
             if (SelectedUpgradeLevel3.Instance != null && SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
                 SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ReduceStunUpgrade")
@@ -154,7 +163,7 @@ public class SpaceshipCollection : MonoBehaviour
 
                 transform.position = newPosition;
 
-                if (!AchievementsManager.Instance.GetCollectorCompletionStatus() && !gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+                if (!AchievementsManager.Instance.GetCollectorCompletionStatus() && !GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
                 {
                     gameManagerData.timeSpentFlying += Time.deltaTime;
                 }
@@ -178,7 +187,14 @@ public class SpaceshipCollection : MonoBehaviour
     private IEnumerator StunPlayerCoroutine()
     {
         isStunned = true;
-        yield return new WaitForSeconds(stunWaitTime);
+        float currentTime = stunWaitTime;
+        while (currentTime > 0)
+        {
+            transform.rotation = Quaternion.Euler(0, 0, (float) Math.Sin(currentTime * stunFrequency) * stunRotationMagnitude);
+            
+            currentTime -= Time.deltaTime;
+            yield return null;
+        }
         isStunned = false;
     }
 }

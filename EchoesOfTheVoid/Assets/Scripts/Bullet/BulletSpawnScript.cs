@@ -10,7 +10,6 @@ public class BulletSpawnScript : MonoBehaviour
 {
     public GameManagerData gameManagerData;
     public OrbCounter orbCounter;
-    public float maxShootSpeed;
     public SpaceshipMode spaceshipMode;
     public OrbDepositingMode orbDepositingMode;
     public BulletCount bulletCount;
@@ -37,6 +36,11 @@ public class BulletSpawnScript : MonoBehaviour
     private GameObject reloadMessage;
     private GameObject cannotFireMessage;
     private GameObject purchaseAmmoMessage;
+    
+    private float maxShootSpeed;
+    private const float shootSpeedL1 = 0.5f;
+    private const float shootSpeedL2 = 0.4f;
+    private const float shootSpeedL3 = 0.3f;
 
     // Start is called before the first frame update
     void Start()
@@ -56,10 +60,17 @@ public class BulletSpawnScript : MonoBehaviour
         progressBar = progressBarInner.GetComponent<SpriteRenderer>();
         progressBar.size = new Vector2(0, 1);
 
-        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null && SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "BulletFireRateUpgrade")
+        switch (GameStateManager.Instance.CurrentLevel)
         {
-            var upgradeSpeed = SelectedUpgradeLevel1.Instance.GetUpgrade().GetValue();
-            maxShootSpeed += (maxShootSpeed * upgradeSpeed);
+            case GameManagerData.Level.Level1:
+                maxShootSpeed = shootSpeedL1; 
+                break;
+            case GameManagerData.Level.Level2:
+                maxShootSpeed = shootSpeedL2; 
+                break; 
+            case GameManagerData.Level.Level3:
+                maxShootSpeed = shootSpeedL3; 
+                break;
         }
     
     }
@@ -97,6 +108,10 @@ public class BulletSpawnScript : MonoBehaviour
             if (bulletCount.currentBullets == 0 && bulletCount.generateBullets == false)
             {
                 EnableMessage(reloadMessage, true);
+            }
+            
+            if (bulletCount.generateBullets == false)
+            {
                 ReplenishAmmo();
             }
 
@@ -107,6 +122,10 @@ public class BulletSpawnScript : MonoBehaviour
             if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
             {
                 EnableMessage(reloadMessage, true);
+            }
+            
+            if (bulletCount.generateBullets == false)
+            {
                 ReplenishAmmo();
             }
             
@@ -115,7 +134,7 @@ public class BulletSpawnScript : MonoBehaviour
                 EnableMessage(purchaseAmmoMessage, true);
                 ReplenishAmmo();
             }
-
+            
             Shoot();
         }
         
@@ -155,47 +174,40 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if (timePassed > maxShootSpeed)
             {
+                // if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
                 if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
                 {
-                    if (bulletCount.generateBullets == false)
+                    AudioManager.Instance.PlaySFX("LaserShot");
+                    timePassed = 0;
+                    if (bulletCount.currentBullets % 3 != 0)
                     {
-                        AudioManager.Instance.PlaySFX("LaserShot");
-                        timePassed = 0;
-                        if (bulletCount.currentBullets % 3 != 0)
+                        Instantiate(bullet, transform.position, transform.rotation);
+                    }
+                    else
+                    {
+                        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
                         {
-                            Instantiate(bullet, transform.position, transform.rotation);
-                        }
-                        else
-                        {
-                            if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+                            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3) &&
+                                GameStateManager.Instance.IsLevel2Completed)
                             {
-                                if ((gameManagerData.level.Equals(GameManagerData.Level.Level1) ||
-                                    gameManagerData.level.Equals(GameManagerData.Level.Level3)) &&
-                                    GameStateManager.Instance.IsLevel2Completed)
+                                if (SelectedUpgradeLevel2.Instance != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
                                 {
-                                    if (SelectedUpgradeLevel2.Instance != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
-                                    {
-                                        Instantiate(doubleDamageBullet, transform.position, transform.rotation);
-                                    }
-                                    else
-                                    {
-                                        Instantiate(bullet, transform.position, transform.rotation);
-                                    }
+                                    Instantiate(doubleDamageBullet, transform.position, transform.rotation);
                                 }
-                                else if(gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                                else
                                 {
-                                    if (SelectedUpgradeLevel2.Instance != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
-                                    {
-                                        Instantiate(doubleDamageBullet, transform.position, transform.rotation);
-                                    }
-                                    else
-                                    {
-                                        Instantiate(bullet, transform.position, transform.rotation);
-                                    }
+                                    Instantiate(bullet, transform.position, transform.rotation);
+                                }
+                            }
+                            else if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
+                            {
+                                if (SelectedUpgradeLevel2.Instance != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
+                                {
+                                    Instantiate(doubleDamageBullet, transform.position, transform.rotation);
                                 }
                                 else
                                 {
@@ -207,14 +219,15 @@ public class BulletSpawnScript : MonoBehaviour
                                 Instantiate(bullet, transform.position, transform.rotation);
                             }
                         }
+                        else
+                        {
+                            Instantiate(bullet, transform.position, transform.rotation);
+                        }
+                    }
 
-                        bulletCount.currentBullets -= 1;
-                        EnableMessage(cannotFireMessage, false);
-                    }
-                    else
-                    {
-                        EnableMessage(cannotFireMessage, true);
-                    }
+                    bulletCount.currentBullets -= 1;
+                    EnableMessage(cannotFireMessage, false);
+                
                 }
                 else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
                 {

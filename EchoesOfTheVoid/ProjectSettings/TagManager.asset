@@ -38,6 +38,8 @@ TagManager:
   - EnemyObjectiveCircle
   - NetworkObjectiveCircle
   - HealthObjectiveCircle
+  - EnemyGiveShieldAnimTrigger
+  - HealthOrb
   layers:
   - Default
   - TransparentFX
@@ -83,6 +85,9 @@ TagManager:
     locked: 0
   - name: Factory
     uniqueID: 479793123
+    locked: 0
+  - name: MotherShip
+    uniqueID: 583945681
     locked: 0
   - name: Earth
     uniqueID: 2760133829

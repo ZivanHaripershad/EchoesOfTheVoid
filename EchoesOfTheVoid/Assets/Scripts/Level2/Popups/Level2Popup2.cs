@@ -8,7 +8,7 @@ public class Level2Popup2 : Button
     
     private void Next()
     {
-        level2Data.popUpIndex = 1;
+        level2Data.popUpIndex = 2;
     }
     
     public override void OnMouseDown()

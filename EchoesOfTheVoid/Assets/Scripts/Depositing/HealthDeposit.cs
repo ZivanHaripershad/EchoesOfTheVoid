@@ -18,7 +18,7 @@ public class HealthDeposit : Deposit
 
     override 
     public void RenderSprites(){
-        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+        if (GameStateManager.Instance.CurrentLevel.Equals( GameManagerData.Level.Tutorial))
         {
             if (!tutorialData.depositHealth)
             {

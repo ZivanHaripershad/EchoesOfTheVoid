@@ -270,7 +270,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &691977183 stripped
 GameObject:
@@ -401,11 +401,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8695935279420001661, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
   m_PrefabInstance: {fileID: 8835873642976109656}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1127872372 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1072420874745951559, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
-  m_PrefabInstance: {fileID: 8835873642976109656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1127872373 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1072420876093096913, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
@@ -466,6 +461,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2123847065950296510, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
   m_PrefabInstance: {fileID: 2123847065029719146}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1370937306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1799307003525579059, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1389496189 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1295126261977846621, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
@@ -520,7 +520,7 @@ Transform:
   - {fileID: 119304769626823278}
   - {fileID: 8835873642976109657}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1598161469
 PrefabInstance:
@@ -531,7 +531,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1295126261981863900, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1295126261981863900, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -725,6 +725,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1146913575379835710, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1127872360}
     - target: {fileID: 2123847065802448554, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: m_Name
       value: Popups
@@ -773,11 +777,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2123847065950296510, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4261147048771343726, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1127872360}
+    - target: {fileID: 5883857795615285664, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1127872360}
@@ -807,6 +811,11 @@ GameObject:
 --- !u!1 &2123847065029719150 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4508240453199851421, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
+  m_PrefabInstance: {fileID: 2123847065029719146}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2123847065029719151 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 284626253769805469, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
   m_PrefabInstance: {fileID: 2123847065029719146}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2291373139196448235
@@ -889,7 +898,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2699604234724152471, guid: b547dccd15e01544babf980d63f3f58a, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2699604234724152471, guid: b547dccd15e01544babf980d63f3f58a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1131,25 +1140,29 @@ PrefabInstance:
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: popUps.Array.data[1]
       value: 
-      objectReference: {fileID: 2296508910440384774}
+      objectReference: {fileID: 2123847065029719151}
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: popUps.Array.data[2]
       value: 
-      objectReference: {fileID: 2123847065029719150}
+      objectReference: {fileID: 2296508910440384774}
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: popUps.Array.data[3]
       value: 
-      objectReference: {fileID: 2123847065029719149}
+      objectReference: {fileID: 2123847065029719150}
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: popUps.Array.data[4]
       value: 
-      objectReference: {fileID: 2123847065029719148}
+      objectReference: {fileID: 2123847065029719149}
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: popUps.Array.data[5]
       value: 
-      objectReference: {fileID: 1331899860}
+      objectReference: {fileID: 2123847065029719148}
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: popUps.Array.data[6]
+      value: 
+      objectReference: {fileID: 1331899860}
+    - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: popUps.Array.data[7]
       value: 
       objectReference: {fileID: 749617130}
     - target: {fileID: 4494188772095388441, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
@@ -1179,7 +1192,7 @@ PrefabInstance:
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: bulletUi
       value: 
-      objectReference: {fileID: 1127872372}
+      objectReference: {fileID: 1370937306}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: healthUi
       value: 

@@ -35,7 +35,7 @@ public class AchievementBanner: MonoBehaviour
             AchievementsManager.Instance.SetIsBannerAvailable(false);
             achievementObjectiveCanvas.SetActive(true);
             var missionUpdate = achievementUpdates.Dequeue();
-            AudioManager.Instance.PlaySFX("ObjectiveInProgress");
+            AudioManager.Instance.PlaySFX("AchievementUnlocked");
             missionObjectiveText.text = missionUpdate;
         }
         

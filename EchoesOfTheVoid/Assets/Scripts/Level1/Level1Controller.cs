@@ -51,34 +51,14 @@ public class Level1Controller : MonoBehaviour
 
     private SceneManager sceneManager;
     
-    private void Start()
+    private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level1;
-        
+    }
+
+    private void Start()
+    {
         GameStateManager.Instance.SetMaxOrbCapacity(4);
-
-        if (GameStateManager.Instance.IsLevel2Completed)
-        {
-            if (SelectedUpgradeLevel2.Instance != null &&
-                SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
-                SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
-            {
-                Debug.Log("Setting First Capacity");
-                GameStateManager.Instance.SetMaxOrbCapacity(6);
-            }
-        }
-
-
-        if (GameStateManager.Instance.IsLevel3Completed)
-        {
-            if (SelectedUpgradeLevel3.Instance != null &&
-                SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
-                SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
-            {
-                Debug.Log("Setting Third Capacity");
-                GameStateManager.Instance.SetMaxOrbCapacity(8);
-            }
-        }
 
         OrbCounterUI.GetInstance().UpdateOrbText();
 
@@ -107,6 +87,7 @@ public class Level1Controller : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
+        gameManagerData.expireHealthOrbs = true;
         gameManagerData.numberOfEnemiesToKill = numberOfEnemiesToKill;
         gameManagerData.level = GameManagerData.Level.Level1;
         gameManagerData.isShieldUp = false;
@@ -123,19 +104,9 @@ public class Level1Controller : MonoBehaviour
         healthCount.currentHealth = healthCount.maxHealth;
         
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
-
-        //remove upgrades from other levels
-        // if (SelectedUpgradeLevel2.Instance != null &&
-        //     SelectedUpgradeLevel2.Instance.GetUpgrade() != null)
-        // {
-        //     SelectedUpgradeLevel2.Instance.SetUpgrade(null);
-        // }
-        //
-        // if (SelectedUpgradeLevel3.Instance != null &&
-        //     SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
-        // {
-        //     SelectedUpgradeLevel3.Instance.SetUpgrade(null);
-        // }
+        
+        GameStateManager.Instance.CoolDownTime = 0f;
+        GameStateManager.Instance.IsCooledDown = true;
     }
 
     private bool CheckEndingCriteria()
@@ -175,16 +146,18 @@ public class Level1Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
+                break;
+            case 1:
                 enemySpawning.ResetSpawning();
                 break;
-            case 1: //gameplay
+            case 2: //gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 SpawnOrbStealingEnemy();
 
                 if (CheckEndingCriteria())
                 {
-                    level1Data.popUpIndex = 2;
+                    level1Data.popUpIndex = 3;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
@@ -195,7 +168,7 @@ public class Level1Controller : MonoBehaviour
                 {
                     //show retry screen
                     RemoveLevelObjects();
-                    level1Data.popUpIndex = 3;
+                    level1Data.popUpIndex = 4;
                 }
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
@@ -204,7 +177,7 @@ public class Level1Controller : MonoBehaviour
                 }
 
                 break;
-            case 2: //ending screen
+            case 3: //ending screen
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
                     if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level1))
@@ -219,7 +192,7 @@ public class Level1Controller : MonoBehaviour
                 }
                 
                 break;
-            case 3: //retry screen
+            case 4: //retry screen
                 mouseControl.EnableMouse();
                 break;
         }

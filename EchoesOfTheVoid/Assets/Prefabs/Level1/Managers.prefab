@@ -228,6 +228,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   popupParent: {fileID: 0}
   mouseControl: {fileID: 0}
   healthDeposit: {fileID: 0}
@@ -243,7 +244,7 @@ MonoBehaviour:
   healthLowMessage: {fileID: 0}
   missionObjectiveBanner: {fileID: 0}
   missionObjectiveCanvas: {fileID: 0}
-  orbStealingEnemy: {fileID: 5879588011643876490, guid: 93143b9ca140ee6448cc680c5125d498, type: 3}
+  orbStealingEnemy: {fileID: 1049714837875054767, guid: ee0641842d67b9b469b5e78efc1f97cf, type: 3}
 --- !u!1 &7018123691444164731
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,3 +360,6 @@ MonoBehaviour:
   primaryTargetMessage: {fileID: 0}
   level2EnemyObjective: {fileID: 0}
   level3EnemyObjective: {fileID: 0}
+  level1Data: {fileID: 11400000, guid: 7fbd4839518bcdd4bb6ad48c2d0c22c9, type: 2}
+  level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
+  level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}

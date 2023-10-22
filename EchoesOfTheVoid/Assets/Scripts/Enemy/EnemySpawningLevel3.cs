@@ -34,34 +34,35 @@ public class EnemySpawningLevel3 : EnemySpawning {
     {
         while (true)
         {
-            int result = Random.Range(0, 2);
-            
-            if (result == 0)
+            int enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
+        
+            for (int i = 0; i < enemiesToSpawn; i++)
             {
-                int enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
-            
-                for (int i = 0; i < enemiesToSpawn; i++)
+                int result = Random.Range(0, 3);
+
+                if (result == 0)
                 {
-                    //enemies in a wave
+                    //shield enemies
+                    float randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
+                    yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
+            
+                    //get a random spawn point
+                    int point = Random.Range(0, shieldEnemySpawnPoints.Length - 1);
+                    Instantiate(shieldEnemy, new Vector3(
+                            shieldEnemySpawnPoints[point].transform.position.x,
+                            shieldEnemySpawnPoints[point].transform.position.y, 0),
+                        quaternion.identity);
+                }
+                else
+                {
+                    //purple enemies in a wave
                     float randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
                     yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
                     Instantiate(pathFollowingEnemy, Vector3.zero, quaternion.identity);
+                    
                 }
+              
             }
-            else
-            {
-                float randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
-                yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
-                
-                //get a random spawn point
-                int point = Random.Range(0, shieldEnemySpawnPoints.Length - 1);
-                Instantiate(shieldEnemy, new Vector3(
-                        shieldEnemySpawnPoints[point].transform.position.x,
-                        shieldEnemySpawnPoints[point].transform.position.y, 0),
-                    quaternion.identity);
-            }
-            
-            
         }
     }
 }

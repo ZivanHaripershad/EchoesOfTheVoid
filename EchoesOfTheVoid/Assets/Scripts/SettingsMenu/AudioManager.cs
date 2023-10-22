@@ -54,7 +54,8 @@ public class AudioManager : MonoBehaviour
         GreenBossMusic,
         Level3Music,
         AchievementsPageMusic,
-        UpgradeScreenMusic
+        UpgradeScreenMusic,
+        Level2BackgroundMusic
     }
 
     public static AudioManager Instance
@@ -113,6 +114,9 @@ public class AudioManager : MonoBehaviour
                 break;
             case MusicFileNames.UpgradeScreenMusic:
                 fileName = "UpgradeScreenMusic";
+                break;
+            case MusicFileNames.Level2BackgroundMusic:
+                fileName = "Level2BackgroundMusic";
                 break;
         }
         

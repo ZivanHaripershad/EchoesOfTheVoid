@@ -203,6 +203,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 0cd6137b47c507544a343cf65ed357e2, type: 3}
   - clipName: UpgradeScreenMusic
     clip: {fileID: 8300000, guid: 8a843a056f5bd7f488de9d0abc3c43de, type: 3}
+  - clipName: Level2BackgroundMusic
+    clip: {fileID: 8300000, guid: ccb8d8c6d8ea64049af04744b0d04af4, type: 3}
   sfxSounds:
   - clipName: ButtonClick
     clip: {fileID: 8300000, guid: 230a2ca6d9e96834f8376a92a8a025e7, type: 3}
@@ -262,6 +264,18 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: 5eb3145c45fab184f8370fced8e318a3, type: 3}
   - clipName: DetectOrb
     clip: {fileID: 8300000, guid: 6e97860b681a5df4da53bb7fa8a28e9e, type: 3}
+  - clipName: ShieldEnemyAngry
+    clip: {fileID: 8300000, guid: 6753dbffe146f4d4a89c740ab23d08b2, type: 3}
+  - clipName: ShieldEnemyShieldDestroyed
+    clip: {fileID: 8300000, guid: be0c4f8f5b2f8ee4f98965025591d57d, type: 3}
+  - clipName: MotherShipGiveShields
+    clip: {fileID: 8300000, guid: b72161f433a0e9942bc02da4ec9064d8, type: 3}
+  - clipName: DoubleDamageCrashIntoPlanet
+    clip: {fileID: 8300000, guid: 86f9a0f25d6e9a24790a11e18b84b77a, type: 3}
+  - clipName: CollectHealth
+    clip: {fileID: 8300000, guid: d38d282a404d0d149a70cf85eaeb4893, type: 3}
+  - clipName: AchievementUnlocked
+    clip: {fileID: 8300000, guid: eb7a3ffb566c901458f05d6cfce0e6a4, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
   normalAudioSpeed: 1

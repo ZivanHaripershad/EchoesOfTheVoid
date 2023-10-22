@@ -57,10 +57,13 @@ public class Level2Controller : MonoBehaviour
 
     private SceneManager sceneManager;
     
-    private void Start()
+    private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level2;
-        
+    }
+    
+    private void Start()
+    {
         GameStateManager.Instance.SetMaxOrbCapacity(4);
 
         if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
@@ -69,26 +72,14 @@ public class Level2Controller : MonoBehaviour
                 SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
                 SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
             {
-                Debug.Log("Setting Second Capacity");
-                GameStateManager.Instance.SetMaxOrbCapacity(6);
+                GameStateManager.Instance.SetMaxOrbCapacity(GameStateManager.Instance.GetMaxOrbCapacity() + 2);
             }
         }
-        
-        if (GameStateManager.Instance.IsLevel3Completed)
-        {
-            if (SelectedUpgradeLevel3.Instance != null &&
-                     SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
-                     SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "OrbCapacityUpgrade")
-            {
-                Debug.Log("Setting Third Capacity");
-                GameStateManager.Instance.SetMaxOrbCapacity(8);
-            }
-        }
-        
+
         OrbCounterUI.GetInstance().UpdateOrbText();
         
         AudioManager.Instance.ToggleMusicOff();
-        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GamePlayMusic);
+        AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.Level2BackgroundMusic);
         
         popupParent.SetActive(true);
         for (int i = 0; i < popUps.Length; i++)
@@ -117,6 +108,7 @@ public class Level2Controller : MonoBehaviour
         gameManagerData.numberOfOrbsCollected = 0;
         gameManagerData.hasResetAmmo = true;
         gameManagerData.expireOrbs = true;
+        gameManagerData.expireHealthOrbs = true;
         gameManagerData.level = GameManagerData.Level.Level2;
         gameManagerData.isShieldUp = false;
         
@@ -141,20 +133,10 @@ public class Level2Controller : MonoBehaviour
         
         missionObjectiveText = missionObjectiveCanvas.transform.Find("Objective").GetComponent<Text>();
 
-        //remove upgrades from other levels
-        // if (SelectedUpgradeLevel1.Instance != null &&
-        //     SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
-        // {
-        //     SelectedUpgradeLevel1.Instance.SetUpgrade(null);
-        // }
-        //
-        // if (SelectedUpgradeLevel3.Instance != null &&
-        //     SelectedUpgradeLevel3.Instance.GetUpgrade() != null)
-        // {
-        //     SelectedUpgradeLevel3.Instance.SetUpgrade(null);
-        // }
-
         completedLevelTime = 0f;
+        
+        GameStateManager.Instance.CoolDownTime = 0f;
+        GameStateManager.Instance.IsCooledDown = true;
     }
 
     private bool CheckEndingCriteria()
@@ -216,10 +198,11 @@ public class Level2Controller : MonoBehaviour
         switch (popupIndex)
         {
             case 0: //show mission brief
-                
+                break;
+            case 1: //show enemy cards
                 enemySpawning.ResetSpawning();
                 break;
-            case 1: //initialize gameplay
+            case 2: //initialize gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 CheckHealth();
@@ -227,7 +210,7 @@ public class Level2Controller : MonoBehaviour
                 level2Data.popUpIndex++;
 
                 break;
-            case 2: //Shieldians intro
+            case 3: //Shieldians intro
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 if (popUpWaitTime <= 0)
@@ -237,7 +220,7 @@ public class Level2Controller : MonoBehaviour
                 popUpWaitTime -= Time.deltaTime;
                 CheckHealth();
                 break;
-            case 3: //Mothership intro
+            case 4: //Mothership intro
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 CheckHealth();
@@ -247,12 +230,12 @@ public class Level2Controller : MonoBehaviour
                 }
                 popUpWaitTime -= Time.deltaTime;
                 break;
-            case 4: //continue gameplay
+            case 5: //continue gameplay
                 HandleMissionUpdates();
                 SpawnNormalEnemies();
                 if (CheckEndingCriteria())
                 {
-                    level2Data.popUpIndex = 5;
+                    level2Data.popUpIndex = 6;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
@@ -268,7 +251,7 @@ public class Level2Controller : MonoBehaviour
 
                 break;
             //end screen
-            case 5:
+            case 6:
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
                     if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level2))
@@ -284,7 +267,7 @@ public class Level2Controller : MonoBehaviour
                 
                 break;
             //retry screen
-            case 6:
+            case 7:
                 mouseControl.EnableMouse();
                 completedLevelTime = 0f;
                 gameManagerData.level2TimeCompletion = 0f;
@@ -302,7 +285,7 @@ public class Level2Controller : MonoBehaviour
         {
             //show retry screen
             RemoveLevelObjects();
-            level2Data.popUpIndex = 6;
+            level2Data.popUpIndex = 7;
         }
     }
 

@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
 
     //level3
     [SerializeField] private GameObject level3EnemyObjective;
+    
+    [SerializeField] private Level1Data level1Data;
+    [SerializeField] private Level2Data level2Data;
+    [SerializeField] private Level3Data level3Data;
 
     
     private MouseControl mouseControl;
@@ -149,10 +153,16 @@ public class UIManager : MonoBehaviour
     public void DestroyRemainingOrbs()
     {
         var orbs = GameObject.FindGameObjectsWithTag("Orb");
+        var healthOrbs = GameObject.FindGameObjectsWithTag("HealthOrb");
 
         for (int i = 0; i < orbs.Length; i++)
         {
             Destroy(orbs[i]);
+        }
+        
+        for (int i = 0; i < healthOrbs.Length; i++)
+        {
+            Destroy(healthOrbs[i]);
         }
     }
 
@@ -168,7 +178,10 @@ public class UIManager : MonoBehaviour
             }
             
             //pause the game
-            pauseMenu.SetActive(true);
+            if (level1Data.popUpIndex != 4 && level2Data.popUpIndex != 7 && level3Data.popUpIndex != 7)
+            {
+                pauseMenu.SetActive(true);
+            }
             
             if (mouseControl == null) 
                 mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();

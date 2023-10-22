@@ -104,6 +104,9 @@ MonoBehaviour:
   primaryTargetMessage: {fileID: 0}
   level2EnemyObjective: {fileID: 0}
   level3EnemyObjective: {fileID: 0}
+  level1Data: {fileID: 11400000, guid: 7fbd4839518bcdd4bb6ad48c2d0c22c9, type: 2}
+  level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
+  level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
 --- !u!1 &5771408474997582948
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +155,7 @@ MonoBehaviour:
   maxEnemiesToSpawn: 3
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
-  shieldEnemy: {fileID: 5832461917253914927, guid: d3c57e71e88130f408fd426caaa2b2c5, type: 3}
+  shieldEnemy: {fileID: 8650069386969585281, guid: 28c2147fe82e92c4eb438645c9871b17, type: 3}
   shieldEnemySpawnPoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -240,6 +243,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   popupParent: {fileID: 0}
   mouseControl: {fileID: 0}
   healthDeposit: {fileID: 0}
@@ -247,7 +251,7 @@ MonoBehaviour:
   orbsNumber: {fileID: 0}
   enemiesNumber: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  numberOfEnemiesToKillToProceedToBoss: 1
+  numberOfEnemiesToKillToProceedToBoss: 3
   mineEnemy: {fileID: 2715511332520450952, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}

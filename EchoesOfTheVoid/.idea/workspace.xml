@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="60ff8c0a-3c9a-4d40-b5cb-b5f652eb175a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Ballistic Ship.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Ballistic Ship.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Minion.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Minion.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Orb_Stealer.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Orb_Stealer.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Shield Drone.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Shield Drone.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Shield Mothership.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/Shield Mothership.png.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/The Mineporter.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Images/enemycards/The Mineporter.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level1/Managers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level1/Managers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level1/Popups.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level1/Popups.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level2/Characters.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level2/Characters.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level2/Managers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level2/Managers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level2/MotherShip.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level2/MotherShip.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level2/Popups.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level2/Popups.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level3/Managers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level3/Managers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Level3/Popups.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Level3/Popups.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level1.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level2.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Level3.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Depositing/PowerDeposit.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Depositing/PowerDeposit.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawningLevel2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawningLevel2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawningLevel3.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/EnemySpawningLevel3.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Enemy/OrbStealingEnemy/DestroyOrbStealingEnemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Enemy/OrbStealingEnemy/DestroyOrbStealingEnemy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameStateManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level1/Level1Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level1/Level1Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level1/Popups/Level1Popup2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level1/Popups/Level1Popup2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level2/Level2Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level2/Level2Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level2/Popups/Level2Popup2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level2/Popups/Level2Popup2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level3/Level3Controller.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level3/Level3Controller.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Level3/Popups/Level3Popup2.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Level3/Popups/Level3Popup2.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 1
+}]]></component>
+  <component name="ProjectId" id="2X5UzIOfSmdXdmZaLbCRijXi8HG" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "dart.analysis.tool.window.visible": "false",
+    "git-widget-placeholder": "Merging deliverable-8-shield-enemy-additions",
+    "show.migrate.to.gradle.popup": "false",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="60ff8c0a-3c9a-4d40-b5cb-b5f652eb175a" name="Changes" comment="" />
+      <created>1697918714072</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1697918714072</updated>
+      <workItem from="1697918714650" duration="43000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

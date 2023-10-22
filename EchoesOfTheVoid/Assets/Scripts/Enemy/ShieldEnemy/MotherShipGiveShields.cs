@@ -6,7 +6,6 @@ using UnityEngine;
 public class MotherShipGiveShields : MonoBehaviour
 {
     [SerializeField] private Animator animator;
-
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
@@ -15,7 +14,7 @@ public class MotherShipGiveShields : MonoBehaviour
             if (activateShield != null && activateShield.CanBeActivated())
             {
                 activateShield.Activate();
-                animator.SetTrigger("isActive");
+                AudioManager.Instance.PlaySFX("MotherShipGiveShields");
             }
         }
     }
