@@ -10,7 +10,7 @@ public class Card2 : Card
     {
         cardDesc = GameObject.Find("Card2Desc").gameObject;
         cardDesc.SetActive(false);
-        upgrade = new TurretUpgrade();
+        upgrade = new BurstUpgrade();
         currentSprite = normalSprite;
     }
 }
