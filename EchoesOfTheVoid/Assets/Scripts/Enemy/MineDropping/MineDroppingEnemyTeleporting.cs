@@ -17,6 +17,8 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private GameObject explosion;
     [SerializeField] private Level3Data level3Data;
+    [SerializeField] private GameObject smoke;
+    [SerializeField] private float lowHealth;
 
     private float currentHealth;
     private ObjectiveManager objectiveManager;
@@ -90,6 +92,11 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
             Instantiate(damage, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1),
                 Quaternion.identity);
             Teleport();
+
+            if (currentHealth <= lowHealth)
+            {
+                smoke.SetActive(true);
+            }
         }
     }
 
