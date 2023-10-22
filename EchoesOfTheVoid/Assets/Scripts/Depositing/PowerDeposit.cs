@@ -3,6 +3,8 @@ using UnityEngine;
 public class PowerDeposit : Deposit
 {
     
+    [SerializeField] private Animator powerFactoryAnim;
+    
     override 
     public void RenderSprites(){
         if (GameStateManager.Instance.CurrentLevel.Equals( GameManagerData.Level.Tutorial))
@@ -19,8 +21,7 @@ public class PowerDeposit : Deposit
         if (GameStateManager.Instance.CoolDownTime >= GameStateManager.Instance.MaxDepositCoolDown 
             && !GameStateManager.Instance.IsCooledDown)
         {
-            GameStateManager.Instance.CoolDownTime = 0f;
-            GameStateManager.Instance.IsCooledDown = true;
+            powerFactoryAnim.SetBool("isCooledDown", GameStateManager.Instance.IsCooledDown);
         }
         
         if (!GameStateManager.Instance.IsCooledDown)
