@@ -48,6 +48,8 @@ public class AtmosphereReaction : MonoBehaviour
     //level3
     [SerializeField] private GameObject level3Upgrade;
     
+    [SerializeField] private GameManagerData gameManagerData;
+    
     public OrbDepositingMode orbDepositingMode;
 
     private bool isUp;
@@ -138,24 +140,49 @@ public class AtmosphereReaction : MonoBehaviour
                 level3EnemyObjective.SetActive(true);
                 StartCoroutine(Fade(level3EnemyObjective, 0f, 1f, fadeInDuration));
             }
-            
-            if (level1Upgrade)
+
+            if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
             {
-                level1Upgrade.SetActive(true);
-                StartCoroutine(Fade(level1Upgrade, 0f, 1f, fadeInDuration));
+                if (level1Upgrade)
+                {
+                    level1Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level1Upgrade, 0f, 1f, fadeInDuration));
+                }
+            }
+
+            if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+            {
+                if (level1Upgrade)
+                {
+                    level1Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level1Upgrade, 0f, 1f, fadeInDuration));
+                }
+                if (level2Upgrade)
+                {
+                    level2Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level2Upgrade, 0f, 1f, fadeInDuration));
+                }
+            }
+
+            if (gameManagerData.level.Equals(GameManagerData.Level.Level3))
+            {
+                if (level1Upgrade)
+                {
+                    level1Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level1Upgrade, 0f, 1f, fadeInDuration));
+                }
+                if (level2Upgrade)
+                {
+                    level2Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level2Upgrade, 0f, 1f, fadeInDuration));
+                }
+                if (level3Upgrade)
+                {
+                    level3Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level3Upgrade, 0f, 1f, fadeInDuration));
+                }
             }
             
-            if (level2Upgrade)
-            {
-                level2Upgrade.SetActive(true);
-                StartCoroutine(Fade(level2Upgrade, 0f, 1f, fadeInDuration));
-            }
-            
-            if (level3Upgrade)
-            {
-                level3Upgrade.SetActive(true);
-                StartCoroutine(Fade(level3Upgrade, 0f, 1f, fadeInDuration));
-            }
 
             StartCoroutine(Fade(bulletFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(powerFactory, 0f, 1f, fadeInDuration));
@@ -199,24 +226,48 @@ public class AtmosphereReaction : MonoBehaviour
                 StartCoroutine(Fade(level3EnemyObjective, 1f, 0f, fadeOutDuration));
             }
             
-            if (level1Upgrade)
+            if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
             {
-                level1Upgrade.SetActive(true);
-                StartCoroutine(Fade(level1Upgrade, 1f, 0f, fadeOutDuration));
+                if (level1Upgrade)
+                {
+                    level1Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level1Upgrade, 1f, 0f, fadeOutDuration));
+                }
             }
-            
-            if (level2Upgrade)
+
+            if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
             {
-                level2Upgrade.SetActive(true);
-                StartCoroutine(Fade(level2Upgrade, 1f, 0f, fadeOutDuration));
+                if (level1Upgrade)
+                {
+                    level1Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level1Upgrade, 1f, 0f, fadeOutDuration));
+                }
+                if (level2Upgrade)
+                {
+                    level2Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level2Upgrade, 1f, 0f, fadeOutDuration));
+                }
             }
-            
-            if (level3Upgrade)
+
+            if (gameManagerData.level.Equals(GameManagerData.Level.Level3))
             {
-                level3Upgrade.SetActive(true);
-                StartCoroutine(Fade(level3Upgrade, 1f, 0f, fadeOutDuration));
+                if (level1Upgrade)
+                {
+                    level1Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level1Upgrade, 1f, 0f, fadeOutDuration));
+                }
+                if (level2Upgrade)
+                {
+                    level2Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level2Upgrade, 1f, 0f, fadeOutDuration));
+                }
+                if (level3Upgrade)
+                {
+                    level3Upgrade.SetActive(true);
+                    StartCoroutine(Fade(level3Upgrade, 1f, 0f, fadeOutDuration));
+                }
             }
-            
+
             StartCoroutine(Fade(bulletFactory, 1f, 0f, fadeOutDuration));
             StartCoroutine(Fade(powerFactory, 1f, 0f, fadeOutDuration));
             StartCoroutine(Fade(shieldFactory, 1f, 0f, fadeOutDuration));
