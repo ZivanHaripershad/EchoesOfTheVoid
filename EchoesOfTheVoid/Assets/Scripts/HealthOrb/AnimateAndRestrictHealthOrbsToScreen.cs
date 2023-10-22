@@ -131,10 +131,10 @@ public class AnimateAndRestrictHealthOrbsToScreen : MonoBehaviour
 
         mustAttract = false;
         
-        if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
         {
-            if ((gameManagerData.level.Equals(GameManagerData.Level.Level2) ||
-                 gameManagerData.level.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
+            if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+                 GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
             {
                 if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
                 {
@@ -142,7 +142,7 @@ public class AnimateAndRestrictHealthOrbsToScreen : MonoBehaviour
                     mustAttract = upgrade.GetName().Equals("CollectionRadiusUpgrade");
                 }
             }
-            else if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+            else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
             {
                 if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null)
                 {

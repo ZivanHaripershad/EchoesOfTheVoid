@@ -13,7 +13,7 @@ public class ShieldDeposit : Deposit
             return;
         }
         
-        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+        if (GameStateManager.Instance.CurrentLevel.Equals( GameManagerData.Level.Tutorial))
         {
             if (!tutorialData.depositShield)
             {

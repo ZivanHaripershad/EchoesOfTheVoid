@@ -34,7 +34,7 @@ public class MotherShipDamage : MonoBehaviour
 
             if (motherShipHealth.IsDead())
             {
-                if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
                 {
                     objectiveManager.UpdateMothershipDestroyedBanner();
                 }

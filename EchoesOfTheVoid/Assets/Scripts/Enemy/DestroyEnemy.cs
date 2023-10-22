@@ -71,9 +71,9 @@ public class DestroyEnemy : MonoBehaviour
         {
             SpawnOrb(collision);
             
-            if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+            if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
             {
-                if (gameManagerData.level.Equals(GameManagerData.Level.Level3) && GameStateManager.Instance.IsLevel2Completed)
+                if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3) && GameStateManager.Instance.IsLevel2Completed)
                 {
                     if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null
                         && SelectedUpgradeLevel2.Instance.GetUpgrade().GetName().Equals("HealthUpgrade"))
@@ -86,7 +86,7 @@ public class DestroyEnemy : MonoBehaviour
                         }
                     }
                 }
-                else if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
                 {
                     if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null
                                                                && SelectedUpgradeLevel2.Instance.GetUpgrade().GetName().Equals("HealthUpgrade"))
@@ -179,7 +179,7 @@ public class DestroyEnemy : MonoBehaviour
         AchievementsManager.Instance.IncrementNumOfEnemiesKilled();
         AudioManager.Instance.PlaySFX("DestroyEnemy");
 
-        if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+        if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
         {
             objectiveManager.UpdateEnemiesDestroyedBanner();
         }

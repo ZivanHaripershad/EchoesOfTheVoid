@@ -60,7 +60,7 @@ public class BulletSpawnScript : MonoBehaviour
         progressBar = progressBarInner.GetComponent<SpriteRenderer>();
         progressBar.size = new Vector2(0, 1);
 
-        switch (gameManagerData.level)
+        switch (GameStateManager.Instance.CurrentLevel)
         {
             case GameManagerData.Level.Level1:
                 maxShootSpeed = shootSpeedL1; 
@@ -185,9 +185,9 @@ public class BulletSpawnScript : MonoBehaviour
                     }
                     else
                     {
-                        if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+                        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
                         {
-                            if (gameManagerData.level.Equals(GameManagerData.Level.Level3) &&
+                            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3) &&
                                 GameStateManager.Instance.IsLevel2Completed)
                             {
                                 if (SelectedUpgradeLevel2.Instance != null &&
@@ -201,7 +201,7 @@ public class BulletSpawnScript : MonoBehaviour
                                     Instantiate(bullet, transform.position, transform.rotation);
                                 }
                             }
-                            else if(gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                            else if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
                             {
                                 if (SelectedUpgradeLevel2.Instance != null &&
                                     SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&

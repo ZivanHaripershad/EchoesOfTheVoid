@@ -163,7 +163,7 @@ public class SpaceshipCollection : MonoBehaviour
 
                 transform.position = newPosition;
 
-                if (!AchievementsManager.Instance.GetCollectorCompletionStatus() && !gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
+                if (!AchievementsManager.Instance.GetCollectorCompletionStatus() && !GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
                 {
                     gameManagerData.timeSpentFlying += Time.deltaTime;
                 }

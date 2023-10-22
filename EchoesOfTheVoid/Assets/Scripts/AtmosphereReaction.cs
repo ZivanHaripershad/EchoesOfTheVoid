@@ -141,7 +141,7 @@ public class AtmosphereReaction : MonoBehaviour
                 StartCoroutine(Fade(level3EnemyObjective, 0f, 1f, fadeInDuration));
             }
 
-            if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
             {
                 if (level1Upgrade)
                 {
@@ -150,7 +150,7 @@ public class AtmosphereReaction : MonoBehaviour
                 }
             }
 
-            if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
             {
                 if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {
@@ -164,7 +164,7 @@ public class AtmosphereReaction : MonoBehaviour
                 }
             }
 
-            if (gameManagerData.level.Equals(GameManagerData.Level.Level3))
+            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
             {
                 if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {
@@ -226,7 +226,7 @@ public class AtmosphereReaction : MonoBehaviour
                 StartCoroutine(Fade(level3EnemyObjective, 1f, 0f, fadeOutDuration));
             }
             
-            if (gameManagerData.level.Equals(GameManagerData.Level.Level1))
+            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
             {
                 if (level1Upgrade)
                 {
@@ -235,7 +235,7 @@ public class AtmosphereReaction : MonoBehaviour
                 }
             }
 
-            if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
             {
                 if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {
@@ -249,7 +249,7 @@ public class AtmosphereReaction : MonoBehaviour
                 }
             }
 
-            if (gameManagerData.level.Equals(GameManagerData.Level.Level3))
+            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
             {
                 if (level1Upgrade && GameStateManager.Instance.IsLevel1Completed)
                 {

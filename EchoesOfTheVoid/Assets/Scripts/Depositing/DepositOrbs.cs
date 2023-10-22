@@ -64,7 +64,7 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.J))
                     if (orbCounter.orbsCollected >= 1 && orbCounter.planetOrbsDeposited < orbCounter.planetOrbMax)
                     {
-                        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                        if (GameStateManager.Instance.CurrentLevel.Equals( GameManagerData.Level.Tutorial))
                         {
                             if (!tutorialData.depositPower)
                             {
@@ -94,7 +94,7 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.I))
                     if (orbCounter.orbsCollected >= 2)
                     {
-                        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                        if (GameStateManager.Instance.CurrentLevel.Equals( GameManagerData.Level.Tutorial))
                         {
                             if (!tutorialData.depositAmmo)
                             {
@@ -117,7 +117,7 @@ public class DepositOrbs : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.L))
                     if (orbCounter.orbsCollected >= 3 && gameManager.IsShieldEnabled() && shieldLogic.CanAddShields())
                     {
-                        if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                        if (GameStateManager.Instance.CurrentLevel.Equals( GameManagerData.Level.Tutorial))
                         {
                             if (!tutorialData.depositShield)
                             {
@@ -130,7 +130,7 @@ public class DepositOrbs : MonoBehaviour
                         shieldLogic.AddShield();
                         AchievementsManager.Instance.IncrementNumOfShieldsUsed();
 
-                        if (gameManagerData.level.Equals(GameManagerData.Level.Level2))
+                        if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
                         {
                             gameManagerData.numLevel2ShieldsUsed++;
                         }
@@ -148,7 +148,7 @@ public class DepositOrbs : MonoBehaviour
                     {
                         if (healthCount.currentHealth < healthCount.maxHealth)
                         {
-                            if (gameManagerData.level.Equals( GameManagerData.Level.Tutorial))
+                            if (GameStateManager.Instance.CurrentLevel.Equals( GameManagerData.Level.Tutorial))
                             {
                                 if (!tutorialData.depositHealth)
                                 {
