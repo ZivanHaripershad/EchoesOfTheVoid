@@ -11,7 +11,7 @@ public class GameStateManager : MonoBehaviour
     private bool isLevel2Completed;
     private bool isLevel3Completed;
     private GameManagerData.Level currentLevel;
-    
+
     [SerializeField] private float maxDepositCoolDown;
 
     private bool isCooledDown;

@@ -34,6 +34,7 @@ public class Level1Controller : MonoBehaviour
     [SerializeField] private MissionObjectiveBanner missionObjectiveBanner;
     [SerializeField] private GameObject missionObjectiveCanvas;
     [SerializeField] private GameObject orbStealingEnemy;
+    [SerializeField] private BurstUpgradeState burstUpgradeState;
 
     private Text missionObjectiveText;
     private Coroutine audioCoroutine;
@@ -107,6 +108,11 @@ public class Level1Controller : MonoBehaviour
         
         GameStateManager.Instance.CoolDownTime = 0f;
         GameStateManager.Instance.IsCooledDown = true;
+        
+        
+        burstUpgradeState.isBurstUpgradeReady = false;
+        burstUpgradeState.isBurstUpgradeReplenishing = false;
+        burstUpgradeState.isBurstUpgradeCoolingDown = false;
     }
 
     private bool CheckEndingCriteria()
@@ -154,6 +160,13 @@ public class Level1Controller : MonoBehaviour
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 SpawnOrbStealingEnemy();
+
+                // if (!burstUpgradeState.isBurstUpgradeReady &&
+                //     !burstUpgradeState.isBurstUpgradeReplenishing)
+                // {
+                //     uiManager.ReplenishBurstUpgrade();
+                //     burstUpgradeState.isBurstUpgradeReplenishing = true;
+                // }
 
                 if (CheckEndingCriteria())
                 {

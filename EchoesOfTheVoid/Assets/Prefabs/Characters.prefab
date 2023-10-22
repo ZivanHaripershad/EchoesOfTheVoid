@@ -1284,6 +1284,7 @@ MonoBehaviour:
   reloadTimePerBullet: 0.05
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
   doubleDamageBullet: {fileID: 0}
+  burstUpgradeState: {fileID: 11400000, guid: 60228d171de5c934c84ec7665b72ce0e, type: 2}
 --- !u!82 &1078472946
 AudioSource:
   m_ObjectHideFlags: 0

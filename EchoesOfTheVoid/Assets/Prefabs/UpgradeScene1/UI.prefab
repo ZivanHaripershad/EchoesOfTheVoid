@@ -655,9 +655,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1.2
-  m_Text: 'Drop an auto firing
+  m_Text: 'Shoot a burst of rapid
 
-    turret in collection mode'
+    shots while holding Enter'
 --- !u!1 &1206842528
 GameObject:
   m_ObjectHideFlags: 0
@@ -1954,7 +1954,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c79a8de26ee30b047932a6bea3ecd9e7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 16529e0c0869c704d82b92966ca30c55, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1982,7 +1982,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.9, y: 3.84}
+    oldSize: {x: 2.91, y: 3.84}
     newSize: {x: 4.02, y: 1.02}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -2005,9 +2005,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spriteRenderer: {fileID: 3263166644844677006}
   cardDesc: {fileID: 1206842528}
-  hoverSprite: {fileID: 21300000, guid: f814e49fab754d64cbb72c28841c371f, type: 3}
-  selectedSprite: {fileID: 21300000, guid: 188ccd80bd6265e4da69e6a5939cbab3, type: 3}
-  normalSprite: {fileID: 21300000, guid: c79a8de26ee30b047932a6bea3ecd9e7, type: 3}
+  hoverSprite: {fileID: 21300000, guid: d9f660291d7cb5f41b207934a187e3fc, type: 3}
+  selectedSprite: {fileID: 21300000, guid: 2b7484d7b7d253d48a1d538ba1f735a6, type: 3}
+  normalSprite: {fileID: 21300000, guid: 16529e0c0869c704d82b92966ca30c55, type: 3}
   upgradeScene1Manager: {fileID: 0}
   upgradesSelectedText: {fileID: 549890567}
   mouseControl: {fileID: 6556346273793334640}
