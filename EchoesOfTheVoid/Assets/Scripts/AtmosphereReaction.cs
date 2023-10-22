@@ -94,7 +94,7 @@ public class AtmosphereReaction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.Tab) && orbDepositingMode.depositingMode)
+        if (Input.GetKeyDown(KeyCode.Tab) && orbDepositingMode.depositingMode)
         {
             isUp = true;
             if (AudioManager.Instance)
