@@ -51,9 +51,9 @@ public class SpaceshipCollection : MonoBehaviour
         
        if(gameManagerData.level.Equals(GameManagerData.Level.Level3))
        {
-           if (SelectedUpgradeLevel1.Instance != null &&
-               SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
-               SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShipVelocityUpgrade")
+           if (SelectedUpgradeLevel3.Instance != null &&
+               SelectedUpgradeLevel3.Instance.GetUpgrade() != null &&
+               SelectedUpgradeLevel3.Instance.GetUpgrade().GetName() == "ShipVelocityUpgrade")
            {
                moveSpeed = 7;
            }

@@ -187,8 +187,7 @@ public class BulletSpawnScript : MonoBehaviour
                     {
                         if (!gameManagerData.level.Equals(GameManagerData.Level.Tutorial))
                         {
-                            if ((gameManagerData.level.Equals(GameManagerData.Level.Level1) ||
-                                gameManagerData.level.Equals(GameManagerData.Level.Level3)) &&
+                            if (gameManagerData.level.Equals(GameManagerData.Level.Level3) &&
                                 GameStateManager.Instance.IsLevel2Completed)
                             {
                                 if (SelectedUpgradeLevel2.Instance != null &&
