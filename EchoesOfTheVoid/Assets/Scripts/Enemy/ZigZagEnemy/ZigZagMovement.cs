@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ZigZagMovement : MonoBehaviour
@@ -14,12 +15,13 @@ public class ZigZagMovement : MonoBehaviour
     [SerializeField] private float zigzagFrequency; // How quickly the object changes direction (zigzags per second)
     [SerializeField] private float zigzagAmplitude; // How far the object moves to each side during a zigzag
     private float currentZigzagOffset;
-    [SerializeField] private float speedIncreaseFactor = 1.05f;
+    [SerializeField] private float speedIncreaseFactor;
     private bool isAngry;
-    [SerializeField] private float initialSpeed = 0.2f;
-    [SerializeField] private float zigzagAmplitudeReductionFactor = 0.97f;
-    [SerializeField] private float zigzagFrequencyIncreseFactor = 0.05f;
-    [SerializeField] private float diveBombDistance = 3f;
+    [SerializeField] private float initialSpeed;
+    [SerializeField] private float zigzagAmplitudeReductionFactor;
+    [SerializeField] private float zigzagFrequencyIncreseFactor;
+    [SerializeField] private float diveBombDistance;
+    [SerializeField] private float forwardDirection;
 
     private void Start()
     {
@@ -34,6 +36,9 @@ public class ZigZagMovement : MonoBehaviour
         
         if (Vector3.Distance(transform.position, Vector3.zero) <= diveBombDistance)
         {
+            
+            Forward();
+            
             Vector2 dir = targetPosition - transform.position;
             float ang = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
             Quaternion rot = Quaternion.Euler(0f, 0f, ang - 90);
@@ -46,7 +51,12 @@ public class ZigZagMovement : MonoBehaviour
         }
         
         // Calculate zigzag offset based on time and frequency
-        currentZigzagOffset = Mathf.Sin(Time.time * 2 * Mathf.PI * zigzagFrequency) * zigzagAmplitude;
+        float sin = Mathf.Sin(Time.time * 2 * Mathf.PI * zigzagFrequency);
+        SetAnimation(sin);
+        currentZigzagOffset =  sin * zigzagAmplitude;
+
+        
+        
         zigzagAmplitude *= zigzagAmplitudeReductionFactor;
         zigzagFrequency *= zigzagFrequencyIncreseFactor;
 
@@ -66,6 +76,52 @@ public class ZigZagMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, newTargetPosition, step);
         
         
+    }
+
+    private void SetAnimation(float currentOffset)
+    {
+
+        if (currentOffset > 0.70 && currentOffset < 1)
+        {
+            Forward();
+            return;
+        }
+        
+        if (currentOffset < -0.70 && currentOffset > -1)
+        {
+            Forward();
+            return;
+        }
+
+        if (currentOffset >= 0 && currentOffset < 0.70)
+        {
+            Right();
+            return;
+        }
+        
+        Left();
+
+    }
+
+    private void Right()
+    {
+        animator.SetBool("forward", false);
+        animator.SetBool("left", false);
+        animator.SetBool("right", true);
+    }
+
+    private void Left()
+    {
+        animator.SetBool("forward", false);
+        animator.SetBool("left", true);
+        animator.SetBool("right", false);
+    }
+
+    private void Forward()
+    {
+        animator.SetBool("forward", true);
+        animator.SetBool("left", false);
+        animator.SetBool("right", false);
     }
 
     // private void FixedUpdate()
