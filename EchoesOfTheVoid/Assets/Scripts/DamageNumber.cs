@@ -7,28 +7,16 @@ using Random = System.Random;
 public class DamageNumber : MonoBehaviour
 {
 
-    private Rigidbody2D rb;
+    [SerializeField] private Rigidbody2D rb;
     private readonly int maxForce = 2;
     private readonly int minForce = 1;
     private float forceDelay = 0.2f;
     private bool addedForce = false;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        rb = GetComponent<Rigidbody2D>();
-    }
 
     private void AddForce()
     {
-        Random random = new Random();
-        int randomBearing = random.Next(360);
-        int radomForceX = random.Next(maxForce) + minForce;
-        int radomForceY = random.Next(maxForce) + minForce;
-        int randomSpin = random.Next(maxForce) + minForce;
-
-        rb.AddTorque(randomSpin, ForceMode2D.Impulse);
-        rb.AddForce(new Vector3(radomForceX, radomForceY, 0), ForceMode2D.Impulse);
+        
     }
 
     // Update is called once per frame
@@ -40,5 +28,29 @@ public class DamageNumber : MonoBehaviour
             addedForce = true;
             AddForce();
         }
+    }
+
+    public void AddBulletForce(Quaternion transformRotation)
+    {
+        //0 to 90 = top right 
+        //90 to 180 = top left
+        //180 to 270 = bottom left
+        //270 to 360 = bottom right
+        
+        Random random = new Random();
+        int radomForceX = random.Next(maxForce) + minForce;
+        int radomForceY = random.Next(maxForce) + minForce;
+        int randomSpin = random.Next(maxForce) + minForce;
+
+        rb.AddTorque(randomSpin, ForceMode2D.Impulse);
+
+        float angle = transformRotation.eulerAngles.z;
+        
+        float magnitudeX = Mathf.Cos(angle * Mathf.Deg2Rad);
+        float magnitudeY = Mathf.Sin(angle * Mathf.Deg2Rad);
+
+        rb.AddForce(new Vector3(radomForceX * magnitudeX, radomForceY * magnitudeY, 0), ForceMode2D.Impulse);
+        
+
     }
 }

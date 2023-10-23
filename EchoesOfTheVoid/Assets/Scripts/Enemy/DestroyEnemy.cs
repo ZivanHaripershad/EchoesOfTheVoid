@@ -145,7 +145,8 @@ public class DestroyEnemy : MonoBehaviour
             if (collision.gameObject.CompareTag("Bullet"))
             {
 
-                Instantiate(minusOne, gameObject.transform.position, gameObject.transform.rotation);
+                GameObject damage = Instantiate(minusOne, gameObject.transform.position, gameObject.transform.rotation);
+                damage.GetComponent<DamageNumber>().AddBulletForce(collision.gameObject.transform.rotation);
                 if (activateShield != null && activateShield.IsActive()) //has shield
                 {
                 }
