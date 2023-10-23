@@ -8,25 +8,23 @@ public class ZigZagMovement : MonoBehaviour
     [SerializeField] private Vector3 targetPosition = new Vector3(0, 0, 0);
     [SerializeField] private float angrySpeed = 100f;
     
-    private float speedMultiplier; 
     private EnemySpeedControl enemySpeedControl;
     [SerializeField] private Animator animator;
     
     [SerializeField] private float zigzagFrequency; // How quickly the object changes direction (zigzags per second)
     [SerializeField] private float zigzagAmplitude; // How far the object moves to each side during a zigzag
     private float currentZigzagOffset;
-    [SerializeField] private float speedIncreaseFactor;
     private bool isAngry;
-    [SerializeField] private float initialSpeed;
     [SerializeField] private float zigzagAmplitudeReductionFactor;
     [SerializeField] private float zigzagFrequencyIncreseFactor;
     [SerializeField] private float diveBombDistance;
-    [SerializeField] private float forwardDirection;
+    [SerializeField] private float zigZagSpeedReduction;
+    [SerializeField] private float speed;
+    [SerializeField] private float moveTowardsPlanetSpeed;
 
     private void Start()
     {
         enemySpeedControl = GameObject.FindWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
-        speedMultiplier = initialSpeed;
         currentZigzagOffset = 0;
         isAngry = false;
     }
@@ -44,18 +42,16 @@ public class ZigZagMovement : MonoBehaviour
             Quaternion rot = Quaternion.Euler(0f, 0f, ang - 90);
             transform.rotation = rot;
             
-            var s =  enemySpeedControl.GetShieldEnemySpeed() * Time.deltaTime * speedMultiplier; // calculate distance to move
+            var s =  enemySpeedControl.GetShieldEnemySpeed() * Time.deltaTime * angrySpeed; // calculate distance to move
             transform.position = Vector3.MoveTowards(transform.position, targetPosition, s);
             
             return;
         }
         
         // Calculate zigzag offset based on time and frequency
-        float sin = Mathf.Sin(Time.time * 2 * Mathf.PI * zigzagFrequency);
+        float sin = Mathf.Sin(Time.time * 2 * Mathf.PI * zigzagFrequency * zigZagSpeedReduction);
         SetAnimation(sin);
-        currentZigzagOffset =  sin * zigzagAmplitude;
-
-        
+        currentZigzagOffset = sin * zigzagAmplitude;
         
         zigzagAmplitude *= zigzagAmplitudeReductionFactor;
         zigzagFrequency *= zigzagFrequencyIncreseFactor;
@@ -70,10 +66,11 @@ public class ZigZagMovement : MonoBehaviour
         Quaternion rotation = Quaternion.Euler(0f, 0f, angle - 90);
         transform.rotation = rotation;
 
-        speedMultiplier += speedIncreaseFactor * Time.deltaTime;
+        // speedMultiplier += speedIncreaseFactor * Time.deltaTime;
         
-        var step = enemySpeedControl.GetShieldEnemySpeed() * Time.deltaTime * speedMultiplier; // calculate distance to move
+        var step = enemySpeedControl.GetShieldEnemySpeed() * Time.deltaTime * speed; // calculate distance to move
         transform.position = Vector3.MoveTowards(transform.position, newTargetPosition, step);
+        transform.position = Vector3.MoveTowards(transform.position, new Vector3(0, 0, 0), moveTowardsPlanetSpeed * Time.deltaTime);
         
         
     }

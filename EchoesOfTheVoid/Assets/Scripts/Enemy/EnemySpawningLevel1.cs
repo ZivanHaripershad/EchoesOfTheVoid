@@ -8,6 +8,12 @@ using Random = UnityEngine.Random;
 public class EnemySpawningLevel1 : EnemySpawning {
     
     [SerializeField] private GameObject enemy;
+
+    private Vector3[] zigzagEnemySpawnPoints =
+    {
+        new Vector3(-9.3f, 0, 0), 
+        new Vector3(9.3f, 0, 0)
+    };
     
     public void StartSpawningEnemies()
     {

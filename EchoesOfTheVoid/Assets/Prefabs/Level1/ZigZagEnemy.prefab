@@ -122,16 +122,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: 0, z: 0}
-  angrySpeed: 100
+  angrySpeed: 20
   animator: {fileID: 4103287114770477556}
-  zigzagFrequency: 0.1
-  zigzagAmplitude: 300
-  speedIncreaseFactor: 1.05
-  initialSpeed: 0.4
-  zigzagAmplitudeReductionFactor: 0.999
-  zigzagFrequencyIncreseFactor: 1.002
-  diveBombDistance: 4.5
-  forwardDirection: 0
+  zigzagFrequency: 0.5
+  zigzagAmplitude: 800
+  zigzagAmplitudeReductionFactor: 0.9999
+  zigzagFrequencyIncreseFactor: 1.001
+  diveBombDistance: 5
+  zigZagSpeedReduction: 0.15
+  speed: 3
+  moveTowardsPlanetSpeed: 0.1
 --- !u!114 &4103287114770477552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,6 +150,8 @@ MonoBehaviour:
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  minusOne: {fileID: 703711336679778492, guid: 75c00be99f08b1c489d18db8a316df02, type: 3}
+  minusTwo: {fileID: 2170800988991528520, guid: ff41e4e27730db74ea307da844f91477, type: 3}
 --- !u!58 &4103287114770477555
 CircleCollider2D:
   m_ObjectHideFlags: 0
