@@ -124,13 +124,13 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   angrySpeed: 20
   animator: {fileID: 4103287114770477556}
-  zigzagFrequency: 0.5
-  zigzagAmplitude: 800
-  zigzagAmplitudeReductionFactor: 0.9999
+  zigzagFrequency: 0.2
+  zigzagAmplitude: 250
+  zigzagAmplitudeReductionFactor: 0.99999
   zigzagFrequencyIncreseFactor: 1.001
   diveBombDistance: 5
-  zigZagSpeedReduction: 0.15
-  speed: 3
+  zigZagSpeedReduction: 0.3
+  speed: 5
   moveTowardsPlanetSpeed: 0.1
 --- !u!114 &4103287114770477552
 MonoBehaviour:
