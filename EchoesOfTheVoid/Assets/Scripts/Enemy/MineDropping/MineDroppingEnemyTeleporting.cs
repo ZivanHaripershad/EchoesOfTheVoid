@@ -17,11 +17,14 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     [SerializeField] private float maxHealth;
     [SerializeField] private GameObject explosion;
     [SerializeField] private Level3Data level3Data;
+    [SerializeField] private GameObject smoke;
+    [SerializeField] private float lowHealth;
 
     private float currentHealth;
     private ObjectiveManager objectiveManager;
+    [SerializeField] private float delayAfterDamage;
 
-    
+
     private void Start()
     {
         teleportPoints = GameObject.FindGameObjectsWithTag("MineEnemyWayPoints");
@@ -89,17 +92,23 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         {
             Instantiate(damage, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, -1),
                 Quaternion.identity);
-            Teleport();
+            AudioManager.Instance.PlaySFX("GreenDamage");
+            Invoke(nameof(Teleport), delayAfterDamage);
+
+            if (currentHealth <= lowHealth)
+            {
+                smoke.SetActive(true);
+            }
         }
     }
 
     private void Teleport()
     {
+        AudioManager.Instance.PlaySFX("GreenTeleport");
         Random random = new Random();
         int randomInt = random.Next(transformsPoints.Length - 1);
         Vector3 newTransform = transformsPoints[randomInt].transform.position;
         transform.rotation = Quaternion.LookRotation(newTransform);
-        AudioManager.Instance.PlaySFX("MineDroppingEnemyDamage");
         StartCoroutine(ChangeScale(newTransform));
         mineDroppingMovement.UpdateWaypoint();
     }

@@ -19,9 +19,9 @@ public class OrbStealingEnemyMovement : MonoBehaviour
     void Start()
     {
         isMovingTowardsOrb = false;
-        currentWaypoint = 0;
         GameObject[] waypointsObjects = GameObject.FindGameObjectsWithTag("OrbStealingWaypoint");
-
+        
+        currentWaypoint = Random.Range(0, waypointsObjects.Length);
         waypoints = new List<Vector3>();
         
         foreach (var obj in waypointsObjects)

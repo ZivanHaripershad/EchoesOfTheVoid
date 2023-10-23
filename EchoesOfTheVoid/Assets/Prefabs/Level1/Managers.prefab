@@ -294,6 +294,10 @@ MonoBehaviour:
   maxEnemiesToSpawn: 3
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   enemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
+  zigZagEnemy: {fileID: 4103287114770477557, guid: ea82684bbcb821a4292676751d58263b, type: 3}
+  maxEnemiesBeforeZig: 8
+  minEnemiesAfterZig: 3
+  zigZagSpawnOdds: 7
 --- !u!1 &7018123691496249568
 GameObject:
   m_ObjectHideFlags: 0

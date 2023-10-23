@@ -680,6 +680,8 @@ MonoBehaviour:
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  minusOne: {fileID: 703711336679778492, guid: 75c00be99f08b1c489d18db8a316df02, type: 3}
+  minusTwo: {fileID: 2170800988991528520, guid: ff41e4e27730db74ea307da844f91477, type: 3}
 --- !u!114 &5402933689760052658
 MonoBehaviour:
   m_ObjectHideFlags: 0
