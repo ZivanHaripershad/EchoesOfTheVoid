@@ -51,6 +51,7 @@ public class AtmosphereReaction : MonoBehaviour
     [SerializeField] private GameManagerData gameManagerData;
 
     public OrbDepositingMode orbDepositingMode;
+    public SpaceshipMode spaceshipMode;
 
     private bool isUp;
 
@@ -94,7 +95,7 @@ public class AtmosphereReaction : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Tab) && orbDepositingMode.depositingMode)
+        if (Input.GetKeyDown(KeyCode.Tab) && orbDepositingMode.depositingMode && !spaceshipMode.returningToPlanet)
         {
             isUp = true;
             if (AudioManager.Instance)

@@ -6430,6 +6430,7 @@ MonoBehaviour:
   level3Upgrade: {fileID: 4615402309337392319}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   orbDepositingMode: {fileID: 11400000, guid: 89fbdb963ab73b04cbe68b4a8498720c, type: 2}
+  spaceshipMode: {fileID: 11400000, guid: 259bf2bf10e10f44dad6548bb4bbc3d0, type: 2}
 --- !u!1 &8864007381170278527
 GameObject:
   m_ObjectHideFlags: 0
@@ -7148,7 +7149,6 @@ MonoBehaviour:
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   tutorialData: {fileID: 11400000, guid: 6c338158585f9044a8708367602186bb, type: 2}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  powerFactoryAnim: {fileID: 8864007379965575460}
 --- !u!82 &8864007381184677577
 AudioSource:
   m_ObjectHideFlags: 0
