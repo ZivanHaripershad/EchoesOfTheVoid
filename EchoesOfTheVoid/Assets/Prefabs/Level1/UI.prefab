@@ -1904,6 +1904,18 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3c1e7e4bc46d8bf4580b7f0b87a93719, type: 3}
   - {fileID: 21300000, guid: ac81c633f85d34b4eb75631541dde24b, type: 3}
   - {fileID: 21300000, guid: d07204d5998bc574aae7ecdb46df3a48, type: 3}
+  goldSprites:
+  - {fileID: 21300000, guid: d3fde6c6458b6fb41bbb1540fd943b4d, type: 3}
+  - {fileID: 21300000, guid: f7799faf4c2c7834496b7f99127989eb, type: 3}
+  - {fileID: 21300000, guid: f2a85c011fc2cd943af978d8255f471a, type: 3}
+  - {fileID: 21300000, guid: ab6313ef9daae3f478393353a624a9fd, type: 3}
+  - {fileID: 21300000, guid: 6dce1669f88039d40875c592bdbac9a0, type: 3}
+  - {fileID: 21300000, guid: e31c56ebf7d04ce449d8bd37a4708e2e, type: 3}
+  - {fileID: 21300000, guid: 3edddc77bf053734f80802281120e2d4, type: 3}
+  - {fileID: 21300000, guid: 7c92882f69bda8c46bd787b49de47dc0, type: 3}
+  - {fileID: 21300000, guid: b19be104b46889c4ca0ac86ede1864bb, type: 3}
+  - {fileID: 21300000, guid: c28a6f96fc33b5e4b948ae95752eb21b, type: 3}
+  - {fileID: 21300000, guid: ba2f5c3d3bcc5f045af3427a44ad5dec, type: 3}
   bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
 --- !u!1 &1072420874761001470
 GameObject:

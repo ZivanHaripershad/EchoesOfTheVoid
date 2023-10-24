@@ -73,6 +73,8 @@ public class EnemySpawningLevel2 : EnemySpawning {
                 }
               
             }
+            
+            yield return new WaitForSeconds(gameManagerData.timeTillNextWave);
         }
     }
     

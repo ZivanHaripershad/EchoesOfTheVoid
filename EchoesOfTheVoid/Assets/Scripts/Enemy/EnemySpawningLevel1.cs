@@ -39,46 +39,28 @@ public class EnemySpawningLevel1 : EnemySpawning {
         {
             int enemiesToSpawn = Random.Range(minEnemiesToSpawn, maxEnemiesToSpawn + 1);
 
-            for (int i = 0; i < enemiesToSpawn ; i++)
+            for (int i = 0; i < enemiesToSpawn; i++)
             {
-                //adds a variation to when the enemy spawns in the wave
-                float randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
-                yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
 
-                if (Random.Range(0, zigZagSpawnOdds) == 0)
+                int result = Random.Range(0, 10);
+
+                if (result == 0)
                 {
-                    //wait until enough normal enemies have spawned before spawning another zigzag
-                    if (currentEnemySpawnCount >= minEnemiesAfterZig)
-                    {
-                        Instantiate(zigZagEnemy, zigzagEnemySpawnPoints[currentZigZagSpawnPoint++], Quaternion.identity);
-                        if (currentZigZagSpawnPoint > zigzagEnemySpawnPoints.Length - 1)
-                            currentZigZagSpawnPoint = 0;
-                        currentEnemySpawnCount = 0;
-                    }
-                    else
-                    {
-                        Instantiate(enemy, Vector3.zero, quaternion.identity);
-                    }
+                    float randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
+                    yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
+                    Instantiate(zigZagEnemy, zigzagEnemySpawnPoints[currentZigZagSpawnPoint++], Quaternion.identity);
+                    if (currentZigZagSpawnPoint > zigzagEnemySpawnPoints.Length - 1)
+                        currentZigZagSpawnPoint = 0;
                 }
                 else
                 {
-                    currentEnemySpawnCount++;
-                    
-                    //if enough normal enemies have spawned, spawn a zigzag
-                    if (currentEnemySpawnCount >= maxEnemiesBeforeZig)
-                    {
-                        currentEnemySpawnCount = 0; 
-                        Instantiate(zigZagEnemy, zigzagEnemySpawnPoints[currentZigZagSpawnPoint++], Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(enemy, Vector3.zero, quaternion.identity);
-                    }
+                    //purple enemies in a wave
+                    float randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
+                    yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
+                    Instantiate(enemy, Vector3.zero, quaternion.identity);
                 }
-
-
             }
-
+            
             //waves
             yield return new WaitForSeconds(gameManagerData.timeTillNextWave);
         }
