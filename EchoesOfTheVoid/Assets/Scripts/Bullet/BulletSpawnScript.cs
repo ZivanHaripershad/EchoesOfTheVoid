@@ -38,6 +38,7 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField] public float burstInitialHoldTime;
     [SerializeField] private float maxBurstHold;
     [SerializeField] private float timeBetweenBurstShots;
+    [SerializeField] private Animator burstHoldDownAnimator;
 
 
     private GameObject canvasUI;
@@ -173,11 +174,16 @@ public class BulletSpawnScript : MonoBehaviour
     {
         bool isReady = burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
                                       IsBustState("BurstUpgradeReplenish");
+
+        if (!isReady && readySoundEffectPlayed)
+        {
+            readySoundEffectPlayed = false;
+        }
+        
         if (isReady && !readySoundEffectPlayed)
         {
             readySoundEffectPlayed = true;
             AudioManager.Instance.PlaySFX("BurstUpgradeReady");
-            
         }
 
         return isReady;
@@ -333,12 +339,14 @@ public class BulletSpawnScript : MonoBehaviour
                 burstPressTime = burstDownTime + burstInitialHoldTime;
                 burstReady = true;
                 Debug.Log("Keydown");
+                burstHoldDownAnimator.SetBool("isHoldingDown", true);
             }
 
             if (Input.GetKeyUp(KeyCode.Return))
             {
                 Debug.Log("KeyUp");
                 burstReady = false;
+                burstHoldDownAnimator.SetBool("isHoldingDown", false);
             }
                 
             Debug.Log("Time.Time: " + Time.time);

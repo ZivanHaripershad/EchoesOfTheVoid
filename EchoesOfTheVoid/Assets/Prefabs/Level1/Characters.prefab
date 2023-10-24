@@ -2045,6 +2045,7 @@ MonoBehaviour:
   burstInitialHoldTime: 1.5
   maxBurstHold: 2.5
   timeBetweenBurstShots: 0.15
+  burstHoldDownAnimator: {fileID: 0}
 --- !u!82 &7727992633848869114
 AudioSource:
   m_ObjectHideFlags: 0
