@@ -113,10 +113,14 @@ public class DestroyEnemy : MonoBehaviour
     public void OnTriggerEnter2D(Collider2D collision)
     {
 
+        Debug.Log("Collider");
+        Debug.Log(collision.gameObject.tag);
         bool planetDamage = false;
 
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
         {
+            
+            Debug.Log("Sound trigger!!!");
             if (isDoubleDamage)
                 AudioManager.Instance.PlaySFX("DoubleDamageCrashIntoPlanet");
             else
