@@ -280,6 +280,8 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: e410c0a13ccdaff459717ac4dcf42d36, type: 3}
   - clipName: BurstUpgradeReady
     clip: {fileID: 8300000, guid: 570a1a02a5265f846905a24193be457c, type: 3}
+  - clipName: ZigZagTurning
+    clip: {fileID: 8300000, guid: 58764d8de9b5a1942943ab20af7887be, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
   normalAudioSpeed: 1

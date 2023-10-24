@@ -169,7 +169,7 @@ public class BulletSpawnScript : MonoBehaviour
         return burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName(nm);
     }
 
-    bool IsBurstReady()
+    public bool IsBurstReady()
     {
         bool isReady = burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
                                       IsBustState("BurstUpgradeReplenish");
@@ -177,6 +177,7 @@ public class BulletSpawnScript : MonoBehaviour
         {
             readySoundEffectPlayed = true;
             AudioManager.Instance.PlaySFX("BurstUpgradeReady");
+            
         }
 
         return isReady;
@@ -371,6 +372,7 @@ public class BulletSpawnScript : MonoBehaviour
             }
         }
     }
+    
 
     private void ShootSingleBullet()
     {
