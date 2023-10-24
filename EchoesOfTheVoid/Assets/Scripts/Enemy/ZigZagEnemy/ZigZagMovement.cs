@@ -21,12 +21,14 @@ public class ZigZagMovement : MonoBehaviour
     [SerializeField] private float zigZagSpeedReduction;
     [SerializeField] private float speed;
     [SerializeField] private float moveTowardsPlanetSpeed;
+    private bool hasPlayed;
 
     private void Start()
     {
         enemySpeedControl = GameObject.FindWithTag("EnemySpeedControl").GetComponent<EnemySpeedControl>();
         currentZigzagOffset = 0;
         isAngry = false;
+        hasPlayed = false;
     }
 
     private void FixedUpdate()
@@ -81,23 +83,36 @@ public class ZigZagMovement : MonoBehaviour
         if (currentOffset > 0.70 && currentOffset < 1)
         {
             Forward();
+            hasPlayed = false;
             return;
         }
         
         if (currentOffset < -0.70 && currentOffset > -1)
         {
             Forward();
+            hasPlayed = false;
             return;
         }
 
         if (currentOffset >= 0 && currentOffset < 0.70)
         {
             Right();
+            PlayTurn();
             return;
         }
         
+        PlayTurn();
         Left();
-
+    }
+    
+    void PlayTurn()
+    {
+        if (!hasPlayed)
+        {
+            hasPlayed = true;
+            Debug.Log("Play sound");
+            AudioManager.Instance.PlaySFX("ZigZagTurning");
+        }
     }
 
     private void Right()
