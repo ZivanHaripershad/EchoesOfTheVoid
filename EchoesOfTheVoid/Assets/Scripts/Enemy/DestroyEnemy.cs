@@ -26,6 +26,9 @@ public class DestroyEnemy : MonoBehaviour
     private ActivateShield activateShield;
 
     private bool isDoubleDamage = false;
+
+    [SerializeField] private GameObject minusOne;
+    [SerializeField] private GameObject minusTwo;
     
 
     // Start is called before the first frame update
@@ -141,6 +144,9 @@ public class DestroyEnemy : MonoBehaviour
             
             if (collision.gameObject.CompareTag("Bullet"))
             {
+
+                GameObject damage = Instantiate(minusOne, gameObject.transform.position, gameObject.transform.rotation);
+                damage.GetComponent<DamageNumber>().AddBulletForce(collision.gameObject.transform.rotation);
                 if (activateShield != null && activateShield.IsActive()) //has shield
                 {
                 }
@@ -155,10 +161,12 @@ public class DestroyEnemy : MonoBehaviour
             
             if (collision.gameObject.CompareTag("DoubleDamageBullet"))
             {
+                Instantiate(minusTwo, gameObject.transform.position, gameObject.transform.rotation);
                 DestroyGameObject(collision, true, collision.gameObject.transform);
                 AudioManager.Instance.PlaySFX("DestroyEnemy");
                 //destroy the bullet
                 Destroy(collision.gameObject);
+                
             }
                 
         }

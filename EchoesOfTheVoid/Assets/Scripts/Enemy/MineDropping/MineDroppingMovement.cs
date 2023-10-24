@@ -30,7 +30,7 @@ public class MineDroppingMovement : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         lastWaypoint = 0;
-        currentWaypoint = 0; 
+        currentWaypoint = 2; 
         isFlyingToWaypoint = true;
         randomNum = 0;
 

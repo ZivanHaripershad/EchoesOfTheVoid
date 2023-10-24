@@ -109,10 +109,6 @@ public class Level1Controller : MonoBehaviour
         GameStateManager.Instance.CoolDownTime = 0f;
         GameStateManager.Instance.IsCooledDown = true;
         
-        
-        burstUpgradeState.isBurstUpgradeReady = false;
-        burstUpgradeState.isBurstUpgradeReplenishing = false;
-        burstUpgradeState.isBurstUpgradeCoolingDown = false;
     }
 
     private bool CheckEndingCriteria()
@@ -160,13 +156,7 @@ public class Level1Controller : MonoBehaviour
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 SpawnOrbStealingEnemy();
-
-                // if (!burstUpgradeState.isBurstUpgradeReady &&
-                //     !burstUpgradeState.isBurstUpgradeReplenishing)
-                // {
-                //     uiManager.ReplenishBurstUpgrade();
-                //     burstUpgradeState.isBurstUpgradeReplenishing = true;
-                // }
+                
 
                 if (CheckEndingCriteria())
                 {

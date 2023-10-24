@@ -1712,7 +1712,13 @@ MonoBehaviour:
   reloadTimePerBullet: 0.2
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
   doubleDamageBullet: {fileID: 7841022512663862257, guid: df62b4321451111488e51893b85c296d, type: 3}
+  burstBullet: {fileID: 0}
   burstUpgradeState: {fileID: 11400000, guid: 60228d171de5c934c84ec7665b72ce0e, type: 2}
+  burstUpgradeAnimator: {fileID: 0}
+  bulletBarUi: {fileID: 0}
+  burstInitialHoldTime: 1.5
+  maxBurstHold: 2.5
+  timeBetweenBurstShots: 0.15
 --- !u!82 &3550091861947934116
 AudioSource:
   m_ObjectHideFlags: 0

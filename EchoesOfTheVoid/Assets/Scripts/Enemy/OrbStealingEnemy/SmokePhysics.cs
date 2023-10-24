@@ -51,11 +51,11 @@ public class SmokePhysics : MonoBehaviour
             // Rotate the sprite based on velocity direction
             if (velocity != Vector3.zero)
             {
-                float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg + rotationOffset;
+                float angle = Mathf.Atan2(velocity.y, velocity.x) * Mathf.Rad2Deg ;
     
                 if (angle != 0)
                 {
-                    Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                    Quaternion targetRotation = Quaternion.Euler(new Vector3(0, 0, angle + rotationOffset));
     
                     // Smoothly interpolate the rotation
                     sp.transform.rotation = Quaternion.Lerp(sp.transform.rotation, targetRotation,

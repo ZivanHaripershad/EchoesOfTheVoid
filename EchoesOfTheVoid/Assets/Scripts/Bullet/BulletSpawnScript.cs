@@ -16,10 +16,10 @@ public class BulletSpawnScript : MonoBehaviour
     //for bullet reload timer
     [SerializeField]
     public float countDown;
-    
     private float timePassed;
-    private float downTime, pressTime = 0;
+    private float downTime, pressTime = 0, burstPressTime = 0, burstDownTime;
     private bool ready = false;
+    private bool burstReady = false;
     [SerializeField]
     private float reloadTimePerBullet;
     private GameObject progressBarInner;
@@ -30,10 +30,17 @@ public class BulletSpawnScript : MonoBehaviour
     private float fadeColor = 0;
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject doubleDamageBullet;
-    // [SerializeField] private BurstUpgradeState burstUpgradeState;
+    [SerializeField] private GameObject burstBullet;
+    [SerializeField] private BurstUpgradeState burstUpgradeState;
+    [SerializeField] private Animator burstUpgradeAnimator;
+    [SerializeField] private BulletBarUI bulletBarUi;
+    
+    [SerializeField] public float burstInitialHoldTime;
+    [SerializeField] private float maxBurstHold;
+    [SerializeField] private float timeBetweenBurstShots;
+
 
     private GameObject canvasUI;
-    
     private GameObject reloadMessage;
     private GameObject cannotFireMessage;
     private GameObject purchaseAmmoMessage;
@@ -76,6 +83,10 @@ public class BulletSpawnScript : MonoBehaviour
                 maxShootSpeed = shootSpeedL3; 
                 break;
         }
+        
+        burstUpgradeState.isBurstUpgradeReady = false;
+        burstUpgradeState.isBurstUpgradeReplenishing = false;
+        burstUpgradeState.isBurstUpgradeCoolingDown = false;
     
     }
 
@@ -106,6 +117,10 @@ public class BulletSpawnScript : MonoBehaviour
         }
         
         CheckBulletStatus();
+        
+        InitiateBurstUpgradeReplenish();
+        
+        ManageBurstUpgradeStates();
 
         if (gameManagerData.tutorialActive)
         {
@@ -123,6 +138,11 @@ public class BulletSpawnScript : MonoBehaviour
         }
         else
         {
+            if (burstUpgradeState.isBurstUpgradeReady)
+            {
+                Shoot();
+            }
+            
             if ((bulletCount.currentBullets == 0 && orbCounter.orbsCollected <= 1) && bulletCount.generateBullets == false)
             {
                 EnableMessage(reloadMessage, true);
@@ -142,6 +162,45 @@ public class BulletSpawnScript : MonoBehaviour
             Shoot();
         }
         
+    }
+
+    private void ManageBurstUpgradeStates()
+    {
+        if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
+            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeReplenish"))
+        {
+            Debug.Log("Burst Is Ready to use");
+            burstUpgradeState.isBurstUpgradeReady = true;
+            burstUpgradeState.isBurstUpgradeReplenishing = false;
+        }
+
+        if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
+            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeCoolDown"))
+        {
+            Debug.Log("Burst Is Not Ready to use");
+            burstUpgradeState.isBurstUpgradeCoolingDown = false;
+            burstUpgradeState.isBurstUpgradeReady = false;
+        }
+    }
+
+    private void InitiateBurstUpgradeReplenish()
+    {
+        if (!burstUpgradeState.isBurstUpgradeReady &&
+            !burstUpgradeState.isBurstUpgradeReplenishing)
+        {
+            ReplenishBurstUpgrade();
+            burstUpgradeState.isBurstUpgradeReplenishing = true;
+        }
+    }
+
+    public void ReplenishBurstUpgrade()
+    {
+        burstUpgradeAnimator.SetTrigger("replenish");
+    }
+    
+    public void CoolDownBurstUpgrade()
+    {
+        burstUpgradeAnimator.SetTrigger("cooldown");
     }
 
     private void CheckBulletStatus()
@@ -176,62 +235,72 @@ public class BulletSpawnScript : MonoBehaviour
         if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false &&
             spaceshipMode.canRotateAroundPlanet)
         {
-            /*if (burstUpgradeState.isBurstUpgradeReady)
+            if (burstUpgradeState.isBurstUpgradeReady)
             {
-                if (Input.GetKeyDown(KeyCode.Return))
+               
+                if (Input.GetKeyDown(KeyCode.Return) && burstReady == false)
                 {
+                    burstDownTime = Time.time;
+                    burstPressTime = burstDownTime + burstInitialHoldTime;
+                    burstReady = true;
+                }
+
+                if (Input.GetKeyUp(KeyCode.Return))
+                {
+                    burstReady = false;
+                }
+
+                if (Time.time >= burstPressTime && burstReady)
+                {
+                    StartBurst();
+                    burstPressTime = 0;
                     if (!burstUpgradeState.isBurstUpgradeCoolingDown)
                     {
                         Debug.Log("starting cool down");
+                        CoolDownBurstUpgrade();
                         burstUpgradeState.isBurstUpgradeCoolingDown = true;
                     }
-                    
-                    AudioManager.Instance.PlaySFX("LaserShot");
-                    Instantiate(bullet, transform.position, transform.rotation);
+
+                    burstReady = false;
                 }
+                
             }
-            else
-            {*/
-                if (timePassed > maxShootSpeed)
+            
+            if (timePassed > maxShootSpeed)
+            {
+                if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
                 {
-                    if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
+                    AudioManager.Instance.PlaySFX("LaserShot");
+                    timePassed = 0;
+                    if (bulletCount.currentBullets % 3 != 0)
                     {
-                        AudioManager.Instance.PlaySFX("LaserShot");
-                        timePassed = 0;
-                        if (bulletCount.currentBullets % 3 != 0)
+                        Instantiate(bullet, transform.position, transform.rotation);
+                    }
+                    else
+                    {
+                        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial) || !burstUpgradeState.isBurstUpgradeReady)
                         {
-                            Instantiate(bullet, transform.position, transform.rotation);
-                        }
-                        else
-                        {
-                            if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
+                            if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3) &&
+                                GameStateManager.Instance.IsLevel2Completed)
                             {
-                                if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3) &&
-                                    GameStateManager.Instance.IsLevel2Completed)
+                                if (SelectedUpgradeLevel2.Instance != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
                                 {
-                                    if (SelectedUpgradeLevel2.Instance != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
-                                    {
-                                        Instantiate(doubleDamageBullet, transform.position, transform.rotation);
-                                    }
-                                    else
-                                    {
-                                        Instantiate(bullet, transform.position, transform.rotation);
-                                    }
+                                    Instantiate(doubleDamageBullet, transform.position, transform.rotation);
                                 }
-                                else if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
+                                else
                                 {
-                                    if (SelectedUpgradeLevel2.Instance != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
-                                        SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
-                                    {
-                                        Instantiate(doubleDamageBullet, transform.position, transform.rotation);
-                                    }
-                                    else
-                                    {
-                                        Instantiate(bullet, transform.position, transform.rotation);
-                                    }
+                                    Instantiate(bullet, transform.position, transform.rotation);
+                                }
+                            }
+                            else if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
+                            {
+                                if (SelectedUpgradeLevel2.Instance != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
+                                    SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "DoubleDamageUpgrade")
+                                {
+                                    Instantiate(doubleDamageBullet, transform.position, transform.rotation);
                                 }
                                 else
                                 {
@@ -243,26 +312,58 @@ public class BulletSpawnScript : MonoBehaviour
                                 Instantiate(bullet, transform.position, transform.rotation);
                             }
                         }
-
-                        bulletCount.currentBullets -= 1;
-                        EnableMessage(cannotFireMessage, false);
-                    
+                        else
+                        {
+                            Instantiate(bullet, transform.position, transform.rotation);
+                        }
                     }
-                    else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
-                    {
-                        AudioManager.Instance.PlaySFX("CannotFire");
-                    }
+            
+                    bulletCount.currentBullets -= 1;
+                    EnableMessage(cannotFireMessage, false);
+                
                 }
+                else if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets == 0)
+                {
+                    AudioManager.Instance.PlaySFX("CannotFire");
+                }
+            }
+            
+            timePassed += Time.deltaTime;
+        
+        }
+    }
 
-                timePassed += Time.deltaTime;
-            // }
-            
-            
+    private void StartBurst()
+    {
+        bulletCount.currentBullets = bulletCount.maxBullets;
+        bulletBarUi.SetBurstShotSprites();
+
+        for (int i = 0; i < bulletCount.maxBullets; i++)
+        {
+            Invoke("ShootSingleBullet", i * timeBetweenBurstShots);
+        }
+    }
+
+    private void ShootSingleBullet()
+    {
+        AudioManager.Instance.PlaySFX("LaserShot");
+        Instantiate(burstBullet, transform.position, transform.rotation);
+        bulletCount.currentBullets--;
+        
+        if (bulletCount.currentBullets == 0)
+        {
+            bulletBarUi.UnsetBurstSprites();
+            bulletCount.generateBullets = true;
         }
     }
 
     private void ReplenishAmmo()
     {
+        if (spaceshipMode.collectionMode)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.R) && ready == false)
         {
             downTime = Time.time;

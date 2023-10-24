@@ -5,23 +5,53 @@ using UnityEngine;
 public class BulletBarUI : MonoBehaviour
 {
 
-    [SerializeField]
-    Sprite[] sprites;
+    [SerializeField] Sprite[] sprites;
+
+    [SerializeField] Sprite[] goldSprites;
 
     public BulletCount bulletCount;
 
     private SpriteRenderer spriteRenderer;
+
+    private bool isBurstShot;
+
     //number of bullets = sprite number
 
     // Start is called before the first frame update
     void Start()
     {
+        isBurstShot = false;
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        spriteRenderer.sprite = sprites[bulletCount.currentBullets];
+        if (!isBurstShot)
+        {
+            spriteRenderer.sprite = sprites[bulletCount.currentBullets];
+        }
+        else
+        {
+            spriteRenderer.sprite = goldSprites[bulletCount.currentBullets];
+
+            if (bulletCount.currentBullets == 0)
+            {
+                spriteRenderer.sprite = sprites[bulletCount.currentBullets];
+                isBurstShot = false;
+            }
+        }
     }
+
+    public void SetBurstShotSprites()
+    {
+        isBurstShot = true;
+    }
+
+    public void UnsetBurstSprites()
+    {
+        spriteRenderer.sprite = sprites[bulletCount.currentBullets];
+        isBurstShot = false;
+    }
+
 }

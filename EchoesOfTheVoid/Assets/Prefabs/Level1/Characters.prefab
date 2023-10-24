@@ -776,8 +776,8 @@ MonoBehaviour:
   fillSoundFadeSpeed: 1
   haloAnimator: {fileID: 7727992635498098542}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-  reduceSpawnIntervalAndVariation: 0.85
-  reduceTimeTillNextWave: 0.85
+  reduceSpawnIntervalAndVariation: 0.9
+  reduceTimeTillNextWave: 0.9
   firstFilledSpriteNumber: 6
   secondFilledSpriteNumber: 36
   thirdFilledSpriteNumber: 66
@@ -2038,6 +2038,13 @@ MonoBehaviour:
   reloadTimePerBullet: 0.05
   bullet: {fileID: 7841022512663862257, guid: 709c7ed6f441ee04997be555bfe0b15d, type: 3}
   doubleDamageBullet: {fileID: 7841022512663862257, guid: df62b4321451111488e51893b85c296d, type: 3}
+  burstBullet: {fileID: 8994751696379760568, guid: a36d0b86923b6194bb664f0a51064ae4, type: 3}
+  burstUpgradeState: {fileID: 11400000, guid: 60228d171de5c934c84ec7665b72ce0e, type: 2}
+  burstUpgradeAnimator: {fileID: 0}
+  bulletBarUi: {fileID: 0}
+  burstInitialHoldTime: 1.5
+  maxBurstHold: 2.5
+  timeBetweenBurstShots: 0.15
 --- !u!82 &7727992633848869114
 AudioSource:
   m_ObjectHideFlags: 0

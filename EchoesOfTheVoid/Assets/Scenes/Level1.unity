@@ -327,6 +327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &1051954180 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 683321685, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1084518025 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2093897180, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
@@ -357,6 +362,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1533825403 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1072420874745951553, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa5c929a993ce44dabced16360881b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1551474403
@@ -394,18 +410,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1905418252 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2296508911195563491, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
-  m_PrefabInstance: {fileID: 2296508909307217391}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1001 &1970693574
+--- !u!1001 &1792083249
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -502,6 +507,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f96a20ff806f80844b4fe0baf34f3392, type: 3}
+--- !u!114 &1905418252 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2296508911195563491, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
+  m_PrefabInstance: {fileID: 2296508909307217391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1983064768 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2296508911222910767, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
@@ -591,10 +607,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1551474404}
     m_Modifications:
-    - target: {fileID: 683321683, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1072420874795578791, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
       propertyPath: gameManager
       value: 
@@ -976,9 +988,13 @@ PrefabInstance:
       value: Characters
       objectReference: {fileID: 0}
     - target: {fileID: 7727992634318503747, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
-      propertyPath: burstUpgradeState
+      propertyPath: bulletBarUi
       value: 
-      objectReference: {fileID: 11400000, guid: 60228d171de5c934c84ec7665b72ce0e, type: 2}
+      objectReference: {fileID: 1533825403}
+    - target: {fileID: 7727992634318503747, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: burstUpgradeAnimator
+      value: 
+      objectReference: {fileID: 1051954180}
     - target: {fileID: 7727992635569161479, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
       propertyPath: gameManager
       value: 

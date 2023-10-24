@@ -344,7 +344,7 @@ public class Level3Controller : MonoBehaviour
             popUpWaitTime = 10;
             AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.GreenBossMusic);
             sceneManager.mineEnemyShipHasEntered = true;
-            mineEnemyInstance = Instantiate(mineEnemy, new Vector3(-10.76f, 3.72f, 0), Quaternion.Euler(0, 0, -45));
+            mineEnemyInstance = Instantiate(mineEnemy, new Vector3(-1.08f, 6.07f, 0), Quaternion.Euler(0, 0, -45));
         }
     }
 

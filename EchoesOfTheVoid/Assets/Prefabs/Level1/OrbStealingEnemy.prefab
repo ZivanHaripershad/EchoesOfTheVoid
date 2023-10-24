@@ -144,9 +144,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   orb: {fileID: 434657277462207545, guid: 872e95c08d9a45343904527f2d274f42, type: 3}
+  healthOrb: {fileID: 0}
   shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  minusOne: {fileID: 703711336679778492, guid: 75c00be99f08b1c489d18db8a316df02, type: 3}
+  minusTwo: {fileID: 2170800988991528520, guid: ff41e4e27730db74ea307da844f91477, type: 3}
   health: 3
   lowHealth: 1
   smoke: {fileID: 6848048896986469941}
