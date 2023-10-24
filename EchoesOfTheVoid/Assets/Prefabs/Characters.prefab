@@ -1291,6 +1291,8 @@ MonoBehaviour:
   burstInitialHoldTime: 1.5
   maxBurstHold: 2.5
   timeBetweenBurstShots: 0.15
+  burstHoldDownAnimator: {fileID: 0}
+  burstUpgradeUi: {fileID: 0}
 --- !u!82 &1078472946
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2523,6 +2525,10 @@ PrefabInstance:
       propertyPath: gameManagerData
       value: 
       objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: bulletSpawnScript
+      value: 
+      objectReference: {fileID: 1682849611}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: burstUpgradeState
       value: 

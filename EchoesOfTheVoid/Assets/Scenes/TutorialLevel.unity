@@ -439,6 +439,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1938465647, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
   m_PrefabInstance: {fileID: 1878423872088169272}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1166385012 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1784711797286825024, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1187323513 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3964351518525468597, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -481,6 +486,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add951b01801130449c3eb720c89ae64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1478249797 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8630179622085311647, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1499791406 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6852647261396076855, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
@@ -800,6 +810,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1097035917}
     - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
+      propertyPath: burstHoldAnimation
+      value: 
+      objectReference: {fileID: 1166385012}
+    - target: {fileID: 462461866058999629, guid: fc1533fa0deddbf42a34885da029c00f, type: 3}
       propertyPath: purchaseAmmoMessage
       value: 
       objectReference: {fileID: 465778462}
@@ -1074,7 +1088,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1525115773}
     - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: burstUpgradeUi
+      value: 
+      objectReference: {fileID: 1478249797}
+    - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: burstUpgradeAnimator
+      value: 
+      objectReference: {fileID: 1525115772}
+    - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: burstHoldDownAnimator
       value: 
       objectReference: {fileID: 1525115772}
     - target: {fileID: 1883152205773968858, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}

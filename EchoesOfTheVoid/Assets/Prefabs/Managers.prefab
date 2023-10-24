@@ -241,6 +241,7 @@ MonoBehaviour:
   level2Data: {fileID: 0}
   level3Data: {fileID: 0}
   burstUpgradeIcon: {fileID: 0}
+  burstHoldAnimation: {fileID: 0}
 --- !u!1 &462461866178193367
 GameObject:
   m_ObjectHideFlags: 0

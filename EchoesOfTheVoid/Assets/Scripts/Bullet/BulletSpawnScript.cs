@@ -39,6 +39,8 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField] private float maxBurstHold;
     [SerializeField] private float timeBetweenBurstShots;
     [SerializeField] private Animator burstHoldDownAnimator;
+    [SerializeField] private GameObject burstUpgradeUi;
+    private Text holdBurstUpgradeText;
 
 
     private GameObject canvasUI;
@@ -90,7 +92,10 @@ public class BulletSpawnScript : MonoBehaviour
         burstUpgradeState.isBurstUpgradeReady = false;
         burstUpgradeState.isBurstUpgradeReplenishing = false;
         burstUpgradeState.isBurstUpgradeCoolingDown = false;
-    
+        
+        holdBurstUpgradeText = burstUpgradeUi.transform.Find("HoldDownEnter").GetComponent<Text>();
+        holdBurstUpgradeText.enabled = false;
+
     }
 
     void EnableMessage(GameObject message, bool toEnable)
@@ -141,6 +146,7 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if (IsBurstReady())
             {
+                holdBurstUpgradeText.enabled = true;
                 Shoot();
             }
             
@@ -357,7 +363,7 @@ public class BulletSpawnScript : MonoBehaviour
             if (Time.time >= burstPressTime && burstReady)
             {
                 StartBurst();
-                CoolDownBurstUpgrade();
+                holdBurstUpgradeText.enabled = false;
                 burstReady = false;
             }
                 

@@ -216,6 +216,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2165110729248641386, guid: 8e693997b252f0c4386564cf1bd20cc8, type: 3}
   m_PrefabInstance: {fileID: 2165110729117150409}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &193661575 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6143218646014471147, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &369470761 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 579590081, guid: 7e96ce934e25e2c42af56b5ed63e3142, type: 3}
@@ -231,6 +236,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3340011574097711648, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
   m_PrefabInstance: {fileID: 3340011573645493396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &572701920 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 565679796926257251, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &617950203 stripped
 MonoBehaviour:
@@ -905,6 +915,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1533825403}
     - target: {fileID: 7727992634318503747, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
+      propertyPath: burstUpgradeUi
+      value: 
+      objectReference: {fileID: 193661575}
+    - target: {fileID: 7727992634318503747, guid: 90cbf3888e0861a4e845f31bc2f8e377, type: 3}
       propertyPath: burstUpgradeAnimator
       value: 
       objectReference: {fileID: 1051954180}
@@ -1157,6 +1171,10 @@ PrefabInstance:
       propertyPath: atmosphereReaction
       value: 
       objectReference: {fileID: 1878423872381352023}
+    - target: {fileID: 7018123691496249569, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: burstHoldAnimation
+      value: 
+      objectReference: {fileID: 572701920}
     - target: {fileID: 7018123691496249569, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: purchaseAmmoMessage
       value: 

@@ -483,8 +483,8 @@ MonoBehaviour:
   fillSoundFadeSpeed: 1
   haloAnimator: {fileID: 6723253170947183119}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
-  reduceSpawnIntervalAndVariation: 0.985
-  reduceTimeTillNextWave: 0.985
+  reduceSpawnIntervalAndVariation: 0.96
+  reduceTimeTillNextWave: 0.96
   firstFilledSpriteNumber: 9
   secondFilledSpriteNumber: 45
   thirdFilledSpriteNumber: 82
@@ -1774,6 +1774,8 @@ MonoBehaviour:
   burstInitialHoldTime: 1.5
   maxBurstHold: 2.5
   timeBetweenBurstShots: 0.15
+  burstHoldDownAnimator: {fileID: 0}
+  burstUpgradeUi: {fileID: 0}
 --- !u!82 &6723253171319475611
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2440,6 +2442,10 @@ PrefabInstance:
       propertyPath: gameManagerData
       value: 
       objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: bulletSpawnScript
+      value: 
+      objectReference: {fileID: 6723253171923321378}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: burstUpgradeState
       value: 

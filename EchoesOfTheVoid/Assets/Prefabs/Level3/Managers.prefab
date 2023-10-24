@@ -108,6 +108,7 @@ MonoBehaviour:
   level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
   level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
   burstUpgradeIcon: {fileID: 0}
+  burstHoldAnimation: {fileID: 0}
 --- !u!1 &5771408474997582948
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,6 +158,7 @@ MonoBehaviour:
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   pathFollowingEnemy: {fileID: 6737672069299986439, guid: 9e6f8ae5452dddb47aa4a9e5a5dcde97, type: 3}
   shieldEnemy: {fileID: 8650069386969585281, guid: 28c2147fe82e92c4eb438645c9871b17, type: 3}
+  zigZagEnemy: {fileID: 4103287114770477557, guid: ea82684bbcb821a4292676751d58263b, type: 3}
   shieldEnemySpawnPoints:
   - {fileID: 0}
   - {fileID: 0}

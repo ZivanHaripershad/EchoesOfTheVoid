@@ -40,6 +40,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Level3Data level3Data;
     
     [SerializeField] private GameObject burstUpgradeIcon;
+    [SerializeField] private GameObject burstHoldAnimation;
 
     private MouseControl mouseControl;
 
@@ -104,6 +105,8 @@ public class UIManager : MonoBehaviour
         atmosphereActiveBeforePause = false;
         
         burstUpgradeIcon.SetActive(false);
+        
+        burstHoldAnimation.SetActive(false);
     }
 
     public void SetAtmosphereObjectToActive()
@@ -176,6 +179,7 @@ public class UIManager : MonoBehaviour
             missionObjectiveBanner.SetActive(false);
         
         burstUpgradeIcon.SetActive(false);
+        burstHoldAnimation.SetActive(false);
     }
 
     public void DestroyRemainingOrbs()

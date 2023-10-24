@@ -312,6 +312,7 @@ MonoBehaviour:
   level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
   level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
   burstUpgradeIcon: {fileID: 0}
+  burstHoldAnimation: {fileID: 0}
 --- !u!1 &5520965529951086682
 GameObject:
   m_ObjectHideFlags: 0

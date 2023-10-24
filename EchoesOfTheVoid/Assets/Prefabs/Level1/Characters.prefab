@@ -2046,6 +2046,7 @@ MonoBehaviour:
   maxBurstHold: 2.5
   timeBetweenBurstShots: 0.15
   burstHoldDownAnimator: {fileID: 0}
+  burstUpgradeUi: {fileID: 0}
 --- !u!82 &7727992633848869114
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2542,7 +2543,7 @@ PrefabInstance:
       objectReference: {fileID: 7727992634227142846}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: angularSpeedFactor
-      value: 40
+      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: trailRendererRight
