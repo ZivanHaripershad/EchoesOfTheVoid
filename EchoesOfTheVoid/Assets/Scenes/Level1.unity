@@ -348,6 +348,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1150766313, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
   m_PrefabInstance: {fileID: 2296508909307217391}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1380151120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 683321683, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
+  m_PrefabInstance: {fileID: 1509692780408560181}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1474537173 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1474537173, guid: 95e169338880c064fb44e9e9ea4b6d27, type: 3}
@@ -1220,6 +1225,10 @@ PrefabInstance:
       propertyPath: healthObjective
       value: 
       objectReference: {fileID: 1474537173}
+    - target: {fileID: 7018123691496249569, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: burstUpgradeIcon
+      value: 
+      objectReference: {fileID: 1380151120}
     - target: {fileID: 7018123691496249569, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: healthLowMessage
       value: 

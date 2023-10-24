@@ -8,6 +8,6 @@ public class BurstUpgrade : Upgrade
     public BurstUpgrade()
     {
         SetName("BurstUpgrade");
-        SetDescription("Shoot a burst of rapid \n shots while holding Enter");
+        SetDescription("Shoot a burst of rapid \n shots for a limited time");
     }
 }

@@ -193,12 +193,12 @@ public class BulletSpawnScript : MonoBehaviour
         }
     }
 
-    public void ReplenishBurstUpgrade()
+    private void ReplenishBurstUpgrade()
     {
         burstUpgradeAnimator.SetTrigger("replenish");
     }
     
-    public void CoolDownBurstUpgrade()
+    private void CoolDownBurstUpgrade()
     {
         burstUpgradeAnimator.SetTrigger("cooldown");
     }
@@ -235,37 +235,29 @@ public class BulletSpawnScript : MonoBehaviour
         if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false &&
             spaceshipMode.canRotateAroundPlanet)
         {
-            if (burstUpgradeState.isBurstUpgradeReady)
+            if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
             {
-               
-                if (Input.GetKeyDown(KeyCode.Return) && burstReady == false)
+                if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+                     GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
                 {
-                    burstDownTime = Time.time;
-                    burstPressTime = burstDownTime + burstInitialHoldTime;
-                    burstReady = true;
-                }
-
-                if (Input.GetKeyUp(KeyCode.Return))
-                {
-                    burstReady = false;
-                }
-
-                if (Time.time >= burstPressTime && burstReady)
-                {
-                    StartBurst();
-                    burstPressTime = 0;
-                    if (!burstUpgradeState.isBurstUpgradeCoolingDown)
+                    if (SelectedUpgradeLevel1.Instance != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
                     {
-                        Debug.Log("starting cool down");
-                        CoolDownBurstUpgrade();
-                        burstUpgradeState.isBurstUpgradeCoolingDown = true;
+                        ActivateBurstUpgrade();
                     }
-
-                    burstReady = false;
                 }
-                
+                else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
+                {
+                    if (SelectedUpgradeLevel1.Instance != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                    {
+                        ActivateBurstUpgrade();
+                    }
+                }
             }
-            
+
             if (timePassed > maxShootSpeed)
             {
                 if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
@@ -330,6 +322,38 @@ public class BulletSpawnScript : MonoBehaviour
             
             timePassed += Time.deltaTime;
         
+        }
+    }
+
+    private void ActivateBurstUpgrade()
+    {
+        if (burstUpgradeState.isBurstUpgradeReady)
+        {
+            if (Input.GetKeyDown(KeyCode.Return) && burstReady == false)
+            {
+                burstDownTime = Time.time;
+                burstPressTime = burstDownTime + burstInitialHoldTime;
+                burstReady = true;
+            }
+
+            if (Input.GetKeyUp(KeyCode.Return))
+            {
+                burstReady = false;
+            }
+
+            if (Time.time >= burstPressTime && burstReady)
+            {
+                StartBurst();
+                burstPressTime = 0;
+                if (!burstUpgradeState.isBurstUpgradeCoolingDown)
+                {
+                    Debug.Log("starting cool down");
+                    CoolDownBurstUpgrade();
+                    burstUpgradeState.isBurstUpgradeCoolingDown = true;
+                }
+
+                burstReady = false;
+            }
         }
     }
 
