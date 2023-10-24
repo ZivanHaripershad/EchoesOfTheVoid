@@ -210,7 +210,7 @@ public class UIManager : MonoBehaviour
             }
             
             //pause the game
-            if (level1Data.popUpIndex != 4 && level2Data.popUpIndex != 7 && level3Data.popUpIndex != 7)
+            if (level1Data.popUpIndex != 5 && level2Data.popUpIndex != 7 && level3Data.popUpIndex != 7)
             {
                 pauseMenu.SetActive(true);
             }

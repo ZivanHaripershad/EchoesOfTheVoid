@@ -775,6 +775,10 @@ PrefabInstance:
       propertyPath: mouseControl
       value: 
       objectReference: {fileID: 1878423871885546977}
+    - target: {fileID: 1858515286900434950, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
+      propertyPath: mouseControl
+      value: 
+      objectReference: {fileID: 1878423871885546977}
     - target: {fileID: 2296508910407747927, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
       propertyPath: mouseControl
       value: 
@@ -848,6 +852,11 @@ PrefabInstance:
 --- !u!1 &2296508909307217392 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2941650102463737087, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
+  m_PrefabInstance: {fileID: 2296508909307217391}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2296508909307217393 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6058072031971207406, guid: 414a0efa012f79d43a823b12645a66e0, type: 3}
   m_PrefabInstance: {fileID: 2296508909307217391}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2406011014721138722 stripped
@@ -1030,13 +1039,17 @@ PrefabInstance:
     - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: popUps.Array.data[2]
       value: 
-      objectReference: {fileID: 1150766313}
+      objectReference: {fileID: 2296508909307217393}
     - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: popUps.Array.data[3]
       value: 
-      objectReference: {fileID: 1987381457}
+      objectReference: {fileID: 1150766313}
     - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
       propertyPath: popUps.Array.data[4]
+      value: 
+      objectReference: {fileID: 1987381457}
+    - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}
+      propertyPath: popUps.Array.data[5]
       value: 
       objectReference: {fileID: 12250192}
     - target: {fileID: 1152025910, guid: 332f6f264dd6d8f4e8dd2cbc653912c2, type: 3}

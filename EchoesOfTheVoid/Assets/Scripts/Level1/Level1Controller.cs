@@ -149,10 +149,12 @@ public class Level1Controller : MonoBehaviour
         {
             case 0: //show mission brief
                 break;
-            case 1:
+            case 1: //enemy intro 1
+                break;
+            case 2: //enemy intro 2
                 enemySpawning.ResetSpawning();
                 break;
-            case 2: //gameplay
+            case 3: //gameplay
                 SpawnNormalEnemies();
                 HandleMissionUpdates();
                 SpawnOrbStealingEnemy();
@@ -160,7 +162,7 @@ public class Level1Controller : MonoBehaviour
 
                 if (CheckEndingCriteria())
                 {
-                    level1Data.popUpIndex = 3;
+                    level1Data.popUpIndex = 4;
                     AudioManager.Instance.PlayMusic(AudioManager.MusicFileNames.EndingMusic);
                     RemoveLevelObjects();
                     DisplayEndingScene();
@@ -171,7 +173,7 @@ public class Level1Controller : MonoBehaviour
                 {
                     //show retry screen
                     RemoveLevelObjects();
-                    level1Data.popUpIndex = 4;
+                    level1Data.popUpIndex = 5;
                 }
                 
                 if (orbCounter.planetOrbsDeposited >= orbCounter.planetOrbMax && HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
@@ -180,7 +182,7 @@ public class Level1Controller : MonoBehaviour
                 }
 
                 break;
-            case 3: //ending screen
+            case 4: //ending screen
                 if (healthCount.currentHealth == healthCount.maxHealth)
                 {
                     if (!AchievementsManager.Instance.CheckLevelGodModeCompleted(GameManagerData.Level.Level1))
@@ -195,7 +197,7 @@ public class Level1Controller : MonoBehaviour
                 }
                 
                 break;
-            case 4: //retry screen
+            case 5: //retry screen
                 mouseControl.EnableMouse();
                 break;
         }
