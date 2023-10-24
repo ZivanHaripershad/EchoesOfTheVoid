@@ -492,6 +492,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6852647261381150492, guid: 90d571cf016fff5438e35cf192504d70, type: 3}
   m_PrefabInstance: {fileID: 6852647262090430745}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1525115772 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3488141411698417394, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1525115773 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1906750540, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
+  m_PrefabInstance: {fileID: 1878423872088169272}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: baa5c929a993ce44dabced16360881b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1549538115 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5596176916392310718, guid: 83a417c8b3a533b47a5e90657f3a8f8b, type: 3}
@@ -1044,6 +1060,14 @@ PrefabInstance:
       propertyPath: shieldFactoryAnim
       value: 
       objectReference: {fileID: 1878423872088169276}
+    - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: bulletBarUi
+      value: 
+      objectReference: {fileID: 1525115773}
+    - target: {fileID: 1682849611, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
+      propertyPath: burstUpgradeAnimator
+      value: 
+      objectReference: {fileID: 1525115772}
     - target: {fileID: 1883152205773968858, guid: 2eba8f2f8af4d174cb446092dcd15fc7, type: 3}
       propertyPath: atmosphereReaction
       value: 
