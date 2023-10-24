@@ -36,6 +36,8 @@ public class SpaceshipOrbiting : MonoBehaviour
     [SerializeField] private GameManagerData gameManagerData;
     [SerializeField] private BurstUpgradeState burstUpgradeState;
 
+    [SerializeField] private BulletSpawnScript bulletSpawnScript;
+
     void Start()
     {
         //set the original position of the spaceship
@@ -118,6 +120,8 @@ public class SpaceshipOrbiting : MonoBehaviour
             trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
             trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
         }
+        
+        animator.SetBool("isBurstMode", bulletSpawnScript.IsBurstReady());
 
         //this is for every instance after you do your first collection, which then allows you to go to the nearest position of the planet and rotate again
         if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet){
@@ -150,16 +154,9 @@ public class SpaceshipOrbiting : MonoBehaviour
                 spaceshipMode.collectionMode = false;
                 spaceshipMode.returningToPlanet = false;
                 spaceshipMode.canRotateAroundPlanet = true;
-
-                if (animator != null)
-                {
-                    animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
-                    animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
-                    animator.SetBool("isBurstMode", burstUpgradeState.isBurstUpgradeReady);
-                }
-                else{
-                    Debug.LogWarning("animator is null");
-                }
+                
+                animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
+                animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
             }
             else{
                 // move object towards nearest point

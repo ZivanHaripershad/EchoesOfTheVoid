@@ -49,6 +49,7 @@ public class BulletSpawnScript : MonoBehaviour
     private const float shootSpeedL1 = 0.5f;
     private const float shootSpeedL2 = 0.4f;
     private const float shootSpeedL3 = 0.3f;
+    private bool readySoundEffectPlayed;
 
     // Start is called before the first frame update
     void Start()
@@ -60,6 +61,7 @@ public class BulletSpawnScript : MonoBehaviour
         
         timePassed = 0;
         currReloadTime = 0;
+        readySoundEffectPlayed = false;
         
         bulletCount.currentBullets = bulletCount.maxBullets;
         bulletCount.generateBullets = false;
@@ -119,8 +121,6 @@ public class BulletSpawnScript : MonoBehaviour
         CheckBulletStatus();
         
         InitiateBurstUpgradeReplenish();
-        
-        ManageBurstUpgradeStates();
 
         if (gameManagerData.tutorialActive)
         {
@@ -138,7 +138,7 @@ public class BulletSpawnScript : MonoBehaviour
         }
         else
         {
-            if (burstUpgradeState.isBurstUpgradeReady)
+            if (IsBurstReady())
             {
                 Shoot();
             }
@@ -164,34 +164,28 @@ public class BulletSpawnScript : MonoBehaviour
         
     }
 
-    private void ManageBurstUpgradeStates()
+    bool IsBustState(String nm)
     {
-        if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
-            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeReplenish") && burstUpgradeState.isBurstUpgradeReplenishing)
+        return burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName(nm);
+    }
+
+    public bool IsBurstReady()
+    {
+        bool isReady = burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
+                                      IsBustState("BurstUpgradeReplenish");
+        if (isReady && !readySoundEffectPlayed)
         {
-            Debug.Log("Burst Is Ready to use");
+            readySoundEffectPlayed = true;
             AudioManager.Instance.PlaySFX("BurstUpgradeReady");
-            burstUpgradeState.isBurstUpgradeReady = true;
-            burstUpgradeState.isBurstUpgradeReplenishing = false;
+            
         }
 
-        if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
-            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeCoolDown") && burstUpgradeState.isBurstUpgradeCoolingDown)
-        {
-            Debug.Log("Burst Is Not Ready to use");
-            burstUpgradeState.isBurstUpgradeCoolingDown = false;
-            burstUpgradeState.isBurstUpgradeReady = false;
-        }
+        return isReady;
     }
 
     private void InitiateBurstUpgradeReplenish()
     {
-        if (!burstUpgradeState.isBurstUpgradeReady &&
-            !burstUpgradeState.isBurstUpgradeReplenishing)
-        {
-            ReplenishBurstUpgrade();
-            burstUpgradeState.isBurstUpgradeReplenishing = true;
-        }
+        ReplenishBurstUpgrade();
     }
 
     private void ReplenishBurstUpgrade()
@@ -236,6 +230,7 @@ public class BulletSpawnScript : MonoBehaviour
         if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false &&
             spaceshipMode.canRotateAroundPlanet)
         {
+            
             if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
             {
                 if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
@@ -258,7 +253,9 @@ public class BulletSpawnScript : MonoBehaviour
                     }
                 }
             }
-
+            
+            
+            
             if (timePassed > maxShootSpeed)
             {
                 if (Input.GetKeyDown(KeyCode.Return) && bulletCount.currentBullets > 0)
@@ -271,7 +268,7 @@ public class BulletSpawnScript : MonoBehaviour
                     }
                     else
                     {
-                        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial) || !burstUpgradeState.isBurstUpgradeReady)
+                        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial) || !IsBurstReady())
                         {
                             if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3) &&
                                 GameStateManager.Instance.IsLevel2Completed)
@@ -328,33 +325,34 @@ public class BulletSpawnScript : MonoBehaviour
 
     private void ActivateBurstUpgrade()
     {
-        if (burstUpgradeState.isBurstUpgradeReady)
+        if (IsBurstReady())
         {
             if (Input.GetKeyDown(KeyCode.Return) && burstReady == false)
             {
                 burstDownTime = Time.time;
                 burstPressTime = burstDownTime + burstInitialHoldTime;
                 burstReady = true;
+                Debug.Log("Keydown");
             }
 
             if (Input.GetKeyUp(KeyCode.Return))
             {
+                Debug.Log("KeyUp");
                 burstReady = false;
             }
+                
+            Debug.Log("Time.Time: " + Time.time);
+            Debug.Log("bustPressTime: " + burstPressTime);
+            Debug.Log("Bust ready: " + burstReady);
+            Debug.Log("-------------------------");
 
             if (Time.time >= burstPressTime && burstReady)
             {
                 StartBurst();
-                burstPressTime = 0;
-                if (!burstUpgradeState.isBurstUpgradeCoolingDown)
-                {
-                    Debug.Log("starting cool down");
-                    CoolDownBurstUpgrade();
-                    burstUpgradeState.isBurstUpgradeCoolingDown = true;
-                }
-
+                CoolDownBurstUpgrade();
                 burstReady = false;
             }
+                
         }
     }
 
@@ -362,12 +360,19 @@ public class BulletSpawnScript : MonoBehaviour
     {
         bulletCount.currentBullets = bulletCount.maxBullets;
         bulletBarUi.SetBurstShotSprites();
+        CoolDownBurstUpgrade();
 
         for (int i = 0; i < bulletCount.maxBullets; i++)
         {
             Invoke("ShootSingleBullet", i * timeBetweenBurstShots);
+
+            if (i == bulletCount.maxBullets - 1)
+            {
+                ReplenishBurstUpgrade();
+            }
         }
     }
+    
 
     private void ShootSingleBullet()
     {

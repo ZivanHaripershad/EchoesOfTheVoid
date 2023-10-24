@@ -2528,6 +2528,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
+      propertyPath: bulletSpawnScript
+      value: 
+      objectReference: {fileID: 7727992634318503747}
+    - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: burstUpgradeState
       value: 
       objectReference: {fileID: 11400000, guid: 60228d171de5c934c84ec7665b72ce0e, type: 2}
