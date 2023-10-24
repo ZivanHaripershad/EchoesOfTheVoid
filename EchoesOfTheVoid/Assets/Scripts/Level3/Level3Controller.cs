@@ -59,6 +59,18 @@ public class Level3Controller : MonoBehaviour
     private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level3;
+        
+        //reset counters
+        if (GameStateManager.Instance.IsMarkingModeOn)
+        {
+            orbCounter.planetOrbMax = 10;
+            level3Data.mineEnemyMaxHealth = 10;
+        }
+        else
+        {
+            orbCounter.planetOrbMax = 15;
+            level3Data.mineEnemyMaxHealth = 20;
+        }
     }
 
     private void Start()
@@ -103,13 +115,11 @@ public class Level3Controller : MonoBehaviour
         sceneManager.mineEnemyShipHasEntered = false;
         sceneManager.displayedEnding = false;
         sceneManager.bossTimer = 10f;
-        
-        //reset counters
-        orbCounter.planetOrbMax = 15;
+
         orbCounter.planetOrbsDeposited = 0;
         orbCounter.orbsCollected = 0;
+        
         level3Data.popUpIndex = 0;
-        level3Data.mineEnemyMaxHealth = 15;
         level3Data.mineEnemyDamageTaken = 0;
 
         //set up game manager

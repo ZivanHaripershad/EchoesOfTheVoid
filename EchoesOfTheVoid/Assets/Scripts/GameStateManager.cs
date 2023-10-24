@@ -17,6 +17,7 @@ public class GameStateManager : MonoBehaviour
     private bool isCooledDown;
     private float coolDownTime;
     private bool isMarkingModeOn;
+    private int level1NumberOfEnemiesToKill;
 
     void Awake()
     {
@@ -119,4 +120,11 @@ public class GameStateManager : MonoBehaviour
         get => _instance.isMarkingModeOn;
         set => _instance.isMarkingModeOn = value;
     }
+    
+    public int Level1NumberOfEnemiesToKill
+    {
+        get => _instance.level1NumberOfEnemiesToKill;
+        set => _instance.level1NumberOfEnemiesToKill = value;
+    }
+    
 }

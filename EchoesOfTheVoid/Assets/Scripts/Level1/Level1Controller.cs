@@ -55,6 +55,16 @@ public class Level1Controller : MonoBehaviour
     private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level1;
+        
+        //reset counters
+        if (GameStateManager.Instance.IsMarkingModeOn)
+        {
+            orbCounter.planetOrbMax = 5;
+        }
+        else
+        {
+            orbCounter.planetOrbMax = 10;
+        }
     }
 
     private void Start()
@@ -77,10 +87,9 @@ public class Level1Controller : MonoBehaviour
         sceneManager.hasStartedSpawning = false;
         sceneManager.displayedEnding = false;
 
-        //reset counters
-        orbCounter.planetOrbMax = 10;
         orbCounter.planetOrbsDeposited = 0;
         orbCounter.orbsCollected = 0;
+        
         level1Data.popUpIndex = 0;
 
         //set up game manager
@@ -99,8 +108,6 @@ public class Level1Controller : MonoBehaviour
         //set up shield and mouse
         mouseControl.EnableMouse();
         gameManager.EnableShield();
-        
-        Debug.Log("Is Level 1 Shield Enabled: " + gameManager.IsShieldEnabled());
 
         healthCount.currentHealth = healthCount.maxHealth;
         

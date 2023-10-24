@@ -14,7 +14,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private Vector3 targetScale;
     [SerializeField] private GameObject damage;
-    [SerializeField] private float maxHealth;
+    private float maxHealth;
     [SerializeField] private GameObject explosion;
     [SerializeField] private Level3Data level3Data;
     [SerializeField] private GameObject smoke;
@@ -33,8 +33,11 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         {
             transformsPoints[i] = teleportPoints[i].transform;
         }
-
-        currentHealth = maxHealth;
+        
+        currentHealth = level3Data.mineEnemyMaxHealth;
+        maxHealth = level3Data.mineEnemyMaxHealth;
+        
+        Debug.Log("Mine dropping health: " + maxHealth);
 
         mineDroppingMovement = GetComponent<MineDroppingMovement>();
         objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();

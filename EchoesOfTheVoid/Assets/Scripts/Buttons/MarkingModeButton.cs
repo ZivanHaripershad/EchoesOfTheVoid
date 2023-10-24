@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class MarkingModeButton : MonoBehaviour
@@ -6,7 +7,19 @@ public class MarkingModeButton : MonoBehaviour
     [SerializeField] protected Sprite markingModeOn;
     [SerializeField] protected Sprite markingModeOff;
     [SerializeField] protected MouseControl mouseControl;
-    
+
+    private void Start()
+    {
+        if (GameStateManager.Instance.IsMarkingModeOn)
+        {
+            spriteRenderer.sprite = markingModeOn;
+        }
+        else
+        {
+            spriteRenderer.sprite = markingModeOff;
+        }
+    }
+
     private void OnMouseDown()
     {
         mouseControl.EnableMouse();
