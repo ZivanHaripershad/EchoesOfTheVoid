@@ -16,6 +16,7 @@ public class GameStateManager : MonoBehaviour
 
     private bool isCooledDown;
     private float coolDownTime;
+    private bool isMarkingModeOn;
 
     void Awake()
     {
@@ -111,5 +112,11 @@ public class GameStateManager : MonoBehaviour
     {
         get => _instance.maxDepositCoolDown;
         set => _instance.maxDepositCoolDown = value;
+    }
+    
+    public bool IsMarkingModeOn
+    {
+        get => _instance.isMarkingModeOn;
+        set => _instance.isMarkingModeOn = value;
     }
 }
