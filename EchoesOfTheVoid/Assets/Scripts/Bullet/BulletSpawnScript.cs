@@ -167,15 +167,16 @@ public class BulletSpawnScript : MonoBehaviour
     private void ManageBurstUpgradeStates()
     {
         if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
-            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeReplenish"))
+            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeReplenish") && burstUpgradeState.isBurstUpgradeReplenishing)
         {
             Debug.Log("Burst Is Ready to use");
+            AudioManager.Instance.PlaySFX("BurstUpgradeReady");
             burstUpgradeState.isBurstUpgradeReady = true;
             burstUpgradeState.isBurstUpgradeReplenishing = false;
         }
 
         if (burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
-            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeCoolDown"))
+            burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName("BurstUpgradeCoolDown") && burstUpgradeState.isBurstUpgradeCoolingDown)
         {
             Debug.Log("Burst Is Not Ready to use");
             burstUpgradeState.isBurstUpgradeCoolingDown = false;

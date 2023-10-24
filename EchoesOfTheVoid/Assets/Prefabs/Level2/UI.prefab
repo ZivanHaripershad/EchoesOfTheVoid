@@ -4837,7 +4837,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e688c0ecb28caf64c8e42c06addf11b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b16e9882172796447a7006da8565ddff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7038,6 +7038,8 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: 98b66b761ce537c49afeb003d658f7e4, type: 3}
   - upgradeName: TurretUpgrade
     sprite: {fileID: 21300000, guid: f68f1ac012a19094bb5cbb0bafe73f9f, type: 3}
+  - upgradeName: BurstUpgrade
+    sprite: {fileID: 21300000, guid: 1de5bec30937a9049a5c397187cc9e55, type: 3}
   spriteRenderer: {fileID: 7333054206715977869}
   canvas: {fileID: 7327644049914364321}
 --- !u!1 &8695935279420001661

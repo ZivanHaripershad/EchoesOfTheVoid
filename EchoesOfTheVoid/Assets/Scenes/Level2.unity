@@ -163,6 +163,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1295126263305036684, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
   m_PrefabInstance: {fileID: 1598161469}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &323633577 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3398014904034549009, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &380055215 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1295126263219781422, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
@@ -1253,6 +1258,10 @@ PrefabInstance:
       propertyPath: healthObjective
       value: 
       objectReference: {fileID: 1162953340}
+    - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
+      propertyPath: burstUpgradeIcon
+      value: 
+      objectReference: {fileID: 323633577}
     - target: {fileID: 4494188773660649144, guid: 7f3f6304f7f91b84e8a12879d8e739ef, type: 3}
       propertyPath: healthLowMessage
       value: 

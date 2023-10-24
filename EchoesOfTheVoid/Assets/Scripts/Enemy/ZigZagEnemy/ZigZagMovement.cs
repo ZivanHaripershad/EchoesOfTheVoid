@@ -111,7 +111,7 @@ public class ZigZagMovement : MonoBehaviour
         {
             hasPlayed = true;
             Debug.Log("Play sound");
-            AudioManager.Instance.PlaySFX("ZigZagTurning");
+            // AudioManager.Instance.PlaySFX("ZigZagTurning");
         }
     }
 

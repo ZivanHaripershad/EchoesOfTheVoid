@@ -34,6 +34,7 @@ public class SpaceshipOrbiting : MonoBehaviour
     Animator animator;
 
     [SerializeField] private GameManagerData gameManagerData;
+    [SerializeField] private BurstUpgradeState burstUpgradeState;
 
     void Start()
     {
@@ -154,6 +155,7 @@ public class SpaceshipOrbiting : MonoBehaviour
                 {
                     animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
                     animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
+                    animator.SetBool("isBurstMode", burstUpgradeState.isBurstUpgradeReady);
                 }
                 else{
                     Debug.LogWarning("animator is null");

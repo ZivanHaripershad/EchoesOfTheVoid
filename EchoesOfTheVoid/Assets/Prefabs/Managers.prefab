@@ -231,7 +231,16 @@ MonoBehaviour:
   orbText: {fileID: 0}
   pauseMenu: {fileID: 0}
   missionObjectiveBanner: {fileID: 0}
+  networkObjective: {fileID: 0}
+  healthObjective: {fileID: 0}
+  level1EnemyObjective: {fileID: 0}
   primaryTargetMessage: {fileID: 0}
+  level2EnemyObjective: {fileID: 0}
+  level3EnemyObjective: {fileID: 0}
+  level1Data: {fileID: 0}
+  level2Data: {fileID: 0}
+  level3Data: {fileID: 0}
+  burstUpgradeIcon: {fileID: 0}
 --- !u!1 &462461866178193367
 GameObject:
   m_ObjectHideFlags: 0
