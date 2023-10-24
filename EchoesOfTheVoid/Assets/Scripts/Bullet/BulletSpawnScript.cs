@@ -31,6 +31,7 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField] private GameObject bullet;
     [SerializeField] private GameObject doubleDamageBullet;
     [SerializeField] private GameObject burstBullet;
+    [SerializeField] private BurstUpgradeState burstUpgradeState;
     [SerializeField] private Animator burstUpgradeAnimator;
     [SerializeField] private BulletBarUI bulletBarUi;
     
@@ -48,6 +49,7 @@ public class BulletSpawnScript : MonoBehaviour
     private const float shootSpeedL1 = 0.5f;
     private const float shootSpeedL2 = 0.4f;
     private const float shootSpeedL3 = 0.3f;
+    private bool readySoundEffectPlayed;
 
     // Start is called before the first frame update
     void Start()
@@ -59,6 +61,7 @@ public class BulletSpawnScript : MonoBehaviour
         
         timePassed = 0;
         currReloadTime = 0;
+        readySoundEffectPlayed = false;
         
         bulletCount.currentBullets = bulletCount.maxBullets;
         bulletCount.generateBullets = false;
@@ -82,6 +85,10 @@ public class BulletSpawnScript : MonoBehaviour
                 maxShootSpeed = shootSpeedL3; 
                 break;
         }
+        
+        burstUpgradeState.isBurstUpgradeReady = false;
+        burstUpgradeState.isBurstUpgradeReplenishing = false;
+        burstUpgradeState.isBurstUpgradeCoolingDown = false;
     
     }
 
@@ -164,8 +171,15 @@ public class BulletSpawnScript : MonoBehaviour
 
     bool IsBurstReady()
     {
-        return burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
-               IsBustState("BurstUpgradeReplenish");
+        bool isReady = burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
+                                      IsBustState("BurstUpgradeReplenish");
+        if (isReady && !readySoundEffectPlayed)
+        {
+            readySoundEffectPlayed = true;
+            AudioManager.Instance.PlaySFX("BurstUpgradeReady");
+        }
+
+        return isReady;
     }
 
     private void InitiateBurstUpgradeReplenish()
@@ -173,12 +187,12 @@ public class BulletSpawnScript : MonoBehaviour
         ReplenishBurstUpgrade();
     }
 
-    public void ReplenishBurstUpgrade()
+    private void ReplenishBurstUpgrade()
     {
         burstUpgradeAnimator.SetTrigger("replenish");
     }
     
-    public void CoolDownBurstUpgrade()
+    private void CoolDownBurstUpgrade()
     {
         burstUpgradeAnimator.SetTrigger("cooldown");
     }
@@ -215,36 +229,31 @@ public class BulletSpawnScript : MonoBehaviour
         if (spaceshipMode.collectionMode == false && orbDepositingMode.depositingMode == false &&
             spaceshipMode.canRotateAroundPlanet)
         {
-            if (IsBurstReady())
+            
+            if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
             {
-               
-                if (Input.GetKeyDown(KeyCode.Return) && burstReady == false)
+                if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+                     GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
                 {
-                    burstDownTime = Time.time;
-                    burstPressTime = burstDownTime + burstInitialHoldTime;
-                    burstReady = true;
-                    Debug.Log("Keydown");
+                    if (SelectedUpgradeLevel1.Instance != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                    {
+                        ActivateBurstUpgrade();
+                    }
                 }
-
-                if (Input.GetKeyUp(KeyCode.Return))
+                else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
                 {
-                    Debug.Log("KeyUp");
-                    burstReady = false;
+                    if (SelectedUpgradeLevel1.Instance != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                        SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                    {
+                        ActivateBurstUpgrade();
+                    }
                 }
-                
-                Debug.Log("Time.Time: " + Time.time);
-                Debug.Log("bustPressTime: " + burstPressTime);
-                Debug.Log("Bust ready: " + burstReady);
-                Debug.Log("-------------------------");
-
-                if (Time.time >= burstPressTime && burstReady)
-                {
-                    StartBurst();
-                    CoolDownBurstUpgrade();
-                    burstReady = false;
-                }
-                
             }
+            
+            
             
             if (timePassed > maxShootSpeed)
             {
@@ -310,6 +319,39 @@ public class BulletSpawnScript : MonoBehaviour
             
             timePassed += Time.deltaTime;
         
+        }
+    }
+
+    private void ActivateBurstUpgrade()
+    {
+        if (IsBurstReady())
+        {
+            if (Input.GetKeyDown(KeyCode.Return) && burstReady == false)
+            {
+                burstDownTime = Time.time;
+                burstPressTime = burstDownTime + burstInitialHoldTime;
+                burstReady = true;
+                Debug.Log("Keydown");
+            }
+
+            if (Input.GetKeyUp(KeyCode.Return))
+            {
+                Debug.Log("KeyUp");
+                burstReady = false;
+            }
+                
+            Debug.Log("Time.Time: " + Time.time);
+            Debug.Log("bustPressTime: " + burstPressTime);
+            Debug.Log("Bust ready: " + burstReady);
+            Debug.Log("-------------------------");
+
+            if (Time.time >= burstPressTime && burstReady)
+            {
+                StartBurst();
+                CoolDownBurstUpgrade();
+                burstReady = false;
+            }
+                
         }
     }
 
