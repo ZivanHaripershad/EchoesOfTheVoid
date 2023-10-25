@@ -129,7 +129,7 @@ MonoBehaviour:
   zigzagAmplitudeReductionFactor: 0.999995
   zigzagFrequencyIncreseFactor: 1.0008
   diveBombDistance: 5
-  zigZagSpeedReduction: 0.3
+  zigZagSpeedReduction: 0.2
   speed: 5
   moveTowardsPlanetSpeed: 0.1
 --- !u!114 &4103287114770477552
