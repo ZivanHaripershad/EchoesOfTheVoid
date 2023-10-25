@@ -78,7 +78,7 @@ public class EnemySpawningLevel3 : EnemySpawning {
                     
                     case 5:  case 6: //minion
                         
-                        if (GameObject.FindGameObjectWithTag("MineEnemy"))
+                        if (!GameObject.FindGameObjectWithTag("MineEnemy"))
                         {
                             //Minion enemy
                             int corner = Random.Range(0, 4);
