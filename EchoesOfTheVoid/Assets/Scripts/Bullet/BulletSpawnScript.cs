@@ -237,7 +237,7 @@ public class BulletSpawnScript : MonoBehaviour
         
     }
 
-    bool IsBustState(String nm)
+    bool IsBurstState(String nm)
     {
         return burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).IsName(nm);
     }
@@ -248,7 +248,7 @@ public class BulletSpawnScript : MonoBehaviour
             return false;
         
         bool isReady = burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
-                                      IsBustState("BurstUpgradeReplenish");
+                                      IsBurstState("BurstUpgradeReplenish");
 
         if (!isReady && readySoundEffectPlayed)
         {
