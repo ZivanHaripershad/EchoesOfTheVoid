@@ -38,6 +38,10 @@ public class EnemySpawning : MonoBehaviour {
         var mineEnemy = GameObject.FindGameObjectWithTag("MineEnemy");
         if (mineEnemy != null)
             Destroy(mineEnemy);
+        
+        var minionEnemy = GameObject.FindGameObjectWithTag("MinionEnemy");
+        if (minionEnemy != null)
+            Destroy(minionEnemy);
 
         var mines = GameObject.FindGameObjectsWithTag("Mine");
 
@@ -45,6 +49,8 @@ public class EnemySpawning : MonoBehaviour {
         {
             Destroy(mine);
         }
+        
+        
     }
 }
 

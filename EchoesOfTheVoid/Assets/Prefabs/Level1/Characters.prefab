@@ -2226,7 +2226,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d83d45a7e65035d45be542b3bb2335ae, type: 3}
   - {fileID: 21300000, guid: 7bdc9ac36413a954eaf1d70afb88f08b, type: 3}
   - {fileID: 21300000, guid: 88fff41ee6cee2242ada4eee50c89e1e, type: 3}
-  burstActivateSp: {fileID: 0}
   burstUpgradeUi: {fileID: 0}
 --- !u!82 &7727992633848869114
 AudioSource:
