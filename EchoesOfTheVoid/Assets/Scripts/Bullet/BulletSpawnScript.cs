@@ -186,6 +186,9 @@ public class BulletSpawnScript : MonoBehaviour
 
     public bool IsBurstReady()
     {
+        if (!burstUpgradeAnimator)
+            return false;
+        
         bool isReady = burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
                                       IsBustState("BurstUpgradeReplenish");
 

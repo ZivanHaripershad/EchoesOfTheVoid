@@ -51,7 +51,7 @@ MonoBehaviour:
   jitterAdditionSpeed: 2
   randomJitter: 0.2
   animator: {fileID: 593361860038984506}
-  delayAfterDestroyingShield: 5
+  delayAfterDestroyingShield: 1
 --- !u!212 &4904684452857927898
 SpriteRenderer:
   m_ObjectHideFlags: 0

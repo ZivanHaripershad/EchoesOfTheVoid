@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="60ff8c0a-3c9a-4d40-b5cb-b5f652eb175a" name="Changes" comment="" />
+    <list default="true" id="60ff8c0a-3c9a-4d40-b5cb-b5f652eb175a" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
@@ -27,7 +32,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "deliverable-8-shield-enemy-additions",
+    "git-widget-placeholder": "reimnplement-burst",
     "show.migrate.to.gradle.popup": "false",
     "vue.rearranger.settings.migration": "true"
   }
@@ -42,6 +47,7 @@
       <updated>1697918714072</updated>
       <workItem from="1697918714650" duration="43000" />
       <workItem from="1698052701593" duration="58000" />
+      <workItem from="1698243901553" duration="50000" />
     </task>
     <servers />
   </component>

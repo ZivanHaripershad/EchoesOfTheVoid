@@ -42,6 +42,7 @@ TagManager:
   - HealthOrb
   - MinionShield
   - MineEnemyShieldCenter
+  - MinionEnemy
   layers:
   - Default
   - TransparentFX

@@ -49,12 +49,12 @@ public class EnemySpawningLevel3 : EnemySpawning {
         
             for (int i = 0; i < enemiesToSpawn; i++)
             {
-                int result = Random.Range(0, 12);
+                int result = Random.Range(0, 13);
                 float randomNumber;
 
                 switch (result)
                 {
-                    case 1: case 2: case 3: //shield enemies
+                    case 0: case 1: case 2: //shield enemies
                         
                         randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
                         yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
@@ -67,7 +67,7 @@ public class EnemySpawningLevel3 : EnemySpawning {
                             quaternion.identity);
                         break;
                     
-                    case 4: //zigzag 
+                    case 3: //zigzag 
                         
                          randomNumber = Random.Range(0f, gameManagerData.spawnTimerVariation);
                         yield return new WaitForSeconds(gameManagerData.spawnInterval + randomNumber);
@@ -76,9 +76,9 @@ public class EnemySpawningLevel3 : EnemySpawning {
                             currentZigZagSpawnPoint = 0;
                          break;
                     
-                    case 5:  case 6: //minion
+                    case 4:  case 5: case 6: case 7: //minion
                         
-                        if (!GameObject.FindGameObjectWithTag("MineEnemy"))
+                        if (GameObject.FindGameObjectWithTag("MineEnemy") && !GameObject.FindGameObjectWithTag("MinionEnemy"))
                         {
                             //Minion enemy
                             int corner = Random.Range(0, 4);
