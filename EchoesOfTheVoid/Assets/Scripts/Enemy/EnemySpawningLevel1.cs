@@ -42,7 +42,7 @@ public class EnemySpawningLevel1 : EnemySpawning {
             for (int i = 0; i < enemiesToSpawn; i++)
             {
 
-                int result = Random.Range(0, 10);
+                int result = Random.Range(0, 5);
 
                 if (result == 0)
                 {

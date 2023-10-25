@@ -29,13 +29,12 @@ public class BulletBarUI : MonoBehaviour
     {
         if (!isBurstShot)
         {
-            Debug.Log(bulletCount.currentBullets);
-            if (bulletCount.currentBullets >= 0 && bulletCount.currentBullets < sprites.Length - 1)
+            if (bulletCount.currentBullets >= 0 && bulletCount.currentBullets < sprites.Length)
                 spriteRenderer.sprite = sprites[bulletCount.currentBullets];
         }
         else
         {
-            if (bulletCount.currentBullets >= 0 && bulletCount.currentBullets < sprites.Length - 1)
+            if (bulletCount.currentBullets >= 0 && bulletCount.currentBullets < sprites.Length)
                 spriteRenderer.sprite = goldSprites[bulletCount.currentBullets];
 
             if (bulletCount.currentBullets == 0)

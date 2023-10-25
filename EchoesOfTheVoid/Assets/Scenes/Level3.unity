@@ -153,16 +153,6 @@ Animator:
   m_CorrespondingSourceObject: {fileID: 8864007381170278525, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
   m_PrefabInstance: {fileID: 1759520680677072667}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &288662670 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 338323155510392680, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
-  m_PrefabInstance: {fileID: 1759520680677072667}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &288662672 stripped
-SpriteRenderer:
-  m_CorrespondingSourceObject: {fileID: 262855675498253779, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
-  m_PrefabInstance: {fileID: 1759520680677072667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &363984741
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,6 +213,26 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8368030273535035262, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
   m_PrefabInstance: {fileID: 8368030273351815626}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &517016286 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1250383195993292987, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
+  m_PrefabInstance: {fileID: 1759520680677072667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!212 &517016287 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8259439905610072874, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
+  m_PrefabInstance: {fileID: 1759520680677072667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &517016288 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2755183654381384082, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
+  m_PrefabInstance: {fileID: 1759520680677072667}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &517016289 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 6240934408039073878, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
+  m_PrefabInstance: {fileID: 1759520680677072667}
   m_PrefabAsset: {fileID: 0}
 --- !u!95 &611157049 stripped
 Animator:
@@ -444,11 +454,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1602800953 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 4494528477873373805, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
-  m_PrefabInstance: {fileID: 1759520680677072667}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1602800954 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8864007381186318487, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
@@ -537,11 +542,6 @@ Transform:
 --- !u!1 &2034981753 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5808606955430890788, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
-  m_PrefabInstance: {fileID: 1759520680677072667}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &2078941061 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3118148956200828007, guid: c035b70bb7f56ef408f241167114c8f1, type: 3}
   m_PrefabInstance: {fileID: 1759520680677072667}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &2111470758 stripped
@@ -1301,7 +1301,7 @@ PrefabInstance:
     - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
       propertyPath: burstUpgradeIcon
       value: 
-      objectReference: {fileID: 2078941061}
+      objectReference: {fileID: 517016288}
     - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
       propertyPath: healthLowMessage
       value: 
@@ -1321,7 +1321,7 @@ PrefabInstance:
     - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
       propertyPath: burstHoldAnimation
       value: 
-      objectReference: {fileID: 288662670}
+      objectReference: {fileID: 517016286}
     - target: {fileID: 5771408474944810238, guid: d139655e8b2fc0c4cbf2682b206bed5d, type: 3}
       propertyPath: purchaseAmmoMessage
       value: 
@@ -1573,11 +1573,11 @@ PrefabInstance:
     - target: {fileID: 3550091861344348701, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
       propertyPath: burstActivateSp
       value: 
-      objectReference: {fileID: 288662672}
+      objectReference: {fileID: 517016287}
     - target: {fileID: 3550091861344348701, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
       propertyPath: burstUpgradeAnimator
       value: 
-      objectReference: {fileID: 1602800953}
+      objectReference: {fileID: 517016289}
     - target: {fileID: 3550091862325039193, guid: 6770b39a73053c84d9aeae377371f625, type: 3}
       propertyPath: gameManager
       value: 

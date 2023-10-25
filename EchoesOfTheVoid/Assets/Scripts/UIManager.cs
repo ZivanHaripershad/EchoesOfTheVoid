@@ -105,8 +105,32 @@ public class UIManager : MonoBehaviour
         atmosphereActiveBeforePause = false;
         
         burstUpgradeIcon.SetActive(false);
-        
         burstHoldAnimation.SetActive(false);
+        
+        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
+        {
+            if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+                 GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
+            {
+                if (SelectedUpgradeLevel1.Instance != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    burstUpgradeIcon.SetActive(true);
+                    burstHoldAnimation.SetActive(true);
+                }
+            }
+            else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
+            {
+                if (SelectedUpgradeLevel1.Instance != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    burstUpgradeIcon.SetActive(true);
+                    burstHoldAnimation.SetActive(true);
+                }
+            }
+        }
     }
 
     public void SetAtmosphereObjectToActive()

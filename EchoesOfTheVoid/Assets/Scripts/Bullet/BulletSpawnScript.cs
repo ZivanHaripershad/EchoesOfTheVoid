@@ -339,7 +339,6 @@ public class BulletSpawnScript : MonoBehaviour
         
         if (IsBurstReady())
         {
-            Debug.Log("bURST READY");
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 totalDownTime = 0;
@@ -359,9 +358,10 @@ public class BulletSpawnScript : MonoBehaviour
                 else
                 {
                     int sprite = (int)(totalDownTime / burstInitialHoldTime * burstActivateSprites.Length);
+                    Debug.Log("Sprite: " + sprite);
+                    Debug.Log("Len: " + burstActivateSprites.Length );
                     if (sprite < burstActivateSprites.Length && sprite > -1)
-                        burstActivateSp.sprite =
-                            burstActivateSprites[sprite];
+                         burstActivateSp.sprite =burstActivateSprites[sprite];
                 }
             }
 
