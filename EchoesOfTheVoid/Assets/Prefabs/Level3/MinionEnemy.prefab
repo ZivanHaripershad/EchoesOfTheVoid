@@ -115,4 +115,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
-  smoothSpeed: 0.8
+  smoothSpeed: 2
+  followXOffset: 1
+  followYOffset: 1
+  shieldDepositTime: 20
+  minionShield: {fileID: 1790946529961842047, guid: 5bfee174968a22242a5a47c0376dcc1e, type: 3}
