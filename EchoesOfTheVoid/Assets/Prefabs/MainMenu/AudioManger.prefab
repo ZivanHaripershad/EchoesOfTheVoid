@@ -278,6 +278,14 @@ MonoBehaviour:
     clip: {fileID: 8300000, guid: eb7a3ffb566c901458f05d6cfce0e6a4, type: 3}
   - clipName: GreenTeleport
     clip: {fileID: 8300000, guid: e410c0a13ccdaff459717ac4dcf42d36, type: 3}
+  - clipName: BurstUpgradeReady
+    clip: {fileID: 8300000, guid: d8dc8d549be5f6641936c9972bb837de, type: 3}
+  - clipName: ZigZagTurning
+    clip: {fileID: 8300000, guid: 58764d8de9b5a1942943ab20af7887be, type: 3}
+  - clipName: mineShieldAdded
+    clip: {fileID: 8300000, guid: 0db7152b85e7abd4da22b22992485f14, type: 3}
+  - clipName: mineShieldBroken
+    clip: {fileID: 8300000, guid: 24ea6c75d388e7c4bbdc4d7e40061154, type: 3}
   musicSource: {fileID: 418781281125571520}
   sfxSource: {fileID: 2878984974762249590}
   normalAudioSpeed: 1

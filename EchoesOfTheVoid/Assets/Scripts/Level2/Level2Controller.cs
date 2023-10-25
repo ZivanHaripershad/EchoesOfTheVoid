@@ -60,6 +60,17 @@ public class Level2Controller : MonoBehaviour
     private void Awake()
     {
         GameStateManager.Instance.CurrentLevel = GameManagerData.Level.Level2;
+        
+        if (GameStateManager.Instance.IsMarkingModeOn)
+        {
+            orbCounter.planetOrbMax = 5;
+            level2Data.maxMothershipHealth = 10;
+        }
+        else
+        {
+            orbCounter.planetOrbMax = 10;
+            level2Data.maxMothershipHealth = 15;
+        }
     }
     
     private void Start()
@@ -96,11 +107,11 @@ public class Level2Controller : MonoBehaviour
         sceneManager.bossTimer = 10f;
         
         //reset counters
-        orbCounter.planetOrbMax = 10;
+
         orbCounter.planetOrbsDeposited = 0;
         orbCounter.orbsCollected = 0;
+        
         level2Data.popUpIndex = 0;
-        level2Data.maxMothershipHealth = 15;
         level2Data.mothershipDamageTaken = 0;
 
         //set up game manager

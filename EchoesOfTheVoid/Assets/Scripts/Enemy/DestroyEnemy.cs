@@ -27,8 +27,8 @@ public class DestroyEnemy : MonoBehaviour
 
     private bool isDoubleDamage = false;
 
-    [SerializeField] private GameObject minusOne;
-    [SerializeField] private GameObject minusTwo;
+    [SerializeField] protected GameObject minusOne;
+    [SerializeField] protected GameObject minusTwo;
     
 
     // Start is called before the first frame update
@@ -112,7 +112,6 @@ public class DestroyEnemy : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-
         bool planetDamage = false;
 
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
@@ -194,7 +193,7 @@ public class DestroyEnemy : MonoBehaviour
 
         GameObject myOrb = Instantiate(orb, transform.position, Quaternion.identity); //instantiate an orb
         Rigidbody2D rb = myOrb.GetComponent<Rigidbody2D>();
-
+        
         //get the collision movement direction
         Vector2 vel = collision.gameObject.GetComponent<Rigidbody2D>().GetRelativeVector(Vector3.right);
 

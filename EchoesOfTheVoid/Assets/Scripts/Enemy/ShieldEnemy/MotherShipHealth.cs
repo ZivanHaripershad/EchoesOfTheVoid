@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class MotherShipHealth : MonoBehaviour
 {
-    [SerializeField] private int maxHealth;
     [SerializeField] private int lowHealth;
     [SerializeField] private Animator animator;
     [SerializeField] private GameObject smoke;
@@ -15,11 +14,16 @@ public class MotherShipHealth : MonoBehaviour
     
     private ObjectiveManager objectiveManager;
     private float health;
+    private int maxHealth;
 
     // Start is called before the first frame update
     void Start()
     {
-        health = maxHealth;
+        health = level2Data.maxMothershipHealth;
+        maxHealth = level2Data.maxMothershipHealth;
+        
+        Debug.Log("Mothership health: " + maxHealth);
+        
         objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
     }
 

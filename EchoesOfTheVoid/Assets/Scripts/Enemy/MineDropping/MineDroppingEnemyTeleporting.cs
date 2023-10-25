@@ -14,7 +14,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     [SerializeField] private float duration;
     [SerializeField] private Vector3 targetScale;
     [SerializeField] private GameObject damage;
-    [SerializeField] private float maxHealth;
+    private float maxHealth;
     [SerializeField] private GameObject explosion;
     [SerializeField] private Level3Data level3Data;
     [SerializeField] private GameObject smoke;
@@ -23,6 +23,9 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     private float currentHealth;
     private ObjectiveManager objectiveManager;
     [SerializeField] private float delayAfterDamage;
+
+    [SerializeField] private GameObject minusOne;
+    [SerializeField] private GameObject minusTwo;
 
 
     private void Start()
@@ -33,8 +36,11 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
         {
             transformsPoints[i] = teleportPoints[i].transform;
         }
-
-        currentHealth = maxHealth;
+        
+        currentHealth = level3Data.mineEnemyMaxHealth;
+        maxHealth = level3Data.mineEnemyMaxHealth;
+        
+        Debug.Log("Mine dropping health: " + maxHealth);
 
         mineDroppingMovement = GetComponent<MineDroppingMovement>();
         objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
@@ -49,6 +55,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
             level3Data.mineEnemyDamageTaken++;
             EnemyHealthBannerUpdate();
             CheckHealth();
+            DamageNumber(minusOne, other);
         }
         else if (other.gameObject.CompareTag("DoubleDamageBullet"))
         {
@@ -56,7 +63,14 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
             level3Data.mineEnemyDamageTaken += 2;
             EnemyHealthBannerUpdate();
             CheckHealth();
+            DamageNumber(minusTwo, other);
         }
+    }
+
+    private void DamageNumber(GameObject number, Collider2D other)
+    {
+        GameObject dmg = Instantiate(number, gameObject.transform.position, gameObject.transform.rotation);
+        dmg.GetComponent<DamageNumber>().AddBulletForce(other.transform.rotation);
     }
 
     private void EnemyHealthBannerUpdate()

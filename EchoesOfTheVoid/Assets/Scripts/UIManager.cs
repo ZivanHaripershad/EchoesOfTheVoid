@@ -38,6 +38,9 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Level1Data level1Data;
     [SerializeField] private Level2Data level2Data;
     [SerializeField] private Level3Data level3Data;
+    
+    [SerializeField] private GameObject burstUpgradeIcon;
+    [SerializeField] private GameObject burstHoldAnimation;
 
     private MouseControl mouseControl;
 
@@ -100,6 +103,9 @@ public class UIManager : MonoBehaviour
         mouseControl = GameObject.FindGameObjectWithTag("MouseControl").GetComponent<MouseControl>();
 
         atmosphereActiveBeforePause = false;
+        
+        burstUpgradeIcon.SetActive(false);
+        burstHoldAnimation.SetActive(false);
     }
 
     public void SetAtmosphereObjectToActive()
@@ -123,6 +129,31 @@ public class UIManager : MonoBehaviour
         orbUi.SetActive(true);
         orbText.SetActive(true);
         levelLayersAreActive = true;
+        
+        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
+        {
+            if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+                 GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
+            {
+                if (SelectedUpgradeLevel1.Instance != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    burstUpgradeIcon.SetActive(true);
+                    burstHoldAnimation.SetActive(true);
+                }
+            }
+            else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
+            {
+                if (SelectedUpgradeLevel1.Instance != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    burstUpgradeIcon.SetActive(true);
+                    burstHoldAnimation.SetActive(true);
+                }
+            }
+        }
     }
 
     public void SetLevelObjectsToInactive()
@@ -147,6 +178,9 @@ public class UIManager : MonoBehaviour
         
         if (missionObjectiveBanner)
             missionObjectiveBanner.SetActive(false);
+        
+        burstUpgradeIcon.SetActive(false);
+        burstHoldAnimation.SetActive(false);
     }
 
     public void DestroyRemainingOrbs()
@@ -177,7 +211,7 @@ public class UIManager : MonoBehaviour
             }
             
             //pause the game
-            if (level1Data.popUpIndex != 4 && level2Data.popUpIndex != 7 && level3Data.popUpIndex != 7)
+            if (level1Data.popUpIndex != 5 && level2Data.popUpIndex != 7 && level3Data.popUpIndex != 7)
             {
                 pauseMenu.SetActive(true);
             }

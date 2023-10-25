@@ -58,7 +58,7 @@ public class FillPowerBar : MonoBehaviour
 
     void Awake()
     {
-        counter.planetOrbMax = 10;
+        // counter.planetOrbMax = 10;
         counter.planetOrbsDeposited = 0;
     }
 

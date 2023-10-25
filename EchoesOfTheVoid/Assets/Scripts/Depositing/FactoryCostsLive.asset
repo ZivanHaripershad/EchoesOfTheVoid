@@ -15,3 +15,4 @@ MonoBehaviour:
   bulletCost: 2
   powerCost: 1
   shieldCost: 3
+  healthCost: 1

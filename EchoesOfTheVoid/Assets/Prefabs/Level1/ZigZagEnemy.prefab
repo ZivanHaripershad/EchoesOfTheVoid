@@ -126,10 +126,10 @@ MonoBehaviour:
   animator: {fileID: 4103287114770477556}
   zigzagFrequency: 0.2
   zigzagAmplitude: 250
-  zigzagAmplitudeReductionFactor: 0.99999
-  zigzagFrequencyIncreseFactor: 1.001
+  zigzagAmplitudeReductionFactor: 0.999995
+  zigzagFrequencyIncreseFactor: 1.0008
   diveBombDistance: 5
-  zigZagSpeedReduction: 0.3
+  zigZagSpeedReduction: 0.2
   speed: 5
   moveTowardsPlanetSpeed: 0.1
 --- !u!114 &4103287114770477552
@@ -162,7 +162,7 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0.38368258}

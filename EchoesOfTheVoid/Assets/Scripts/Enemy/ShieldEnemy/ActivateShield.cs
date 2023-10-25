@@ -30,7 +30,9 @@ public class ActivateShield : MonoBehaviour
     public void Deactivate()
     {
         isActive = false;
-        animator.SetBool("shieldActive", false);
+        if(animator)
+            animator.SetBool("shieldActive", false);
+        
         Destroy(gameObject);
     }
 

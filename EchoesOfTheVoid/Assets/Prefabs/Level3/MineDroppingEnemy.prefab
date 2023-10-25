@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &966820381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 966820382}
+  m_Layer: 0
+  m_Name: MineEnemyShieldCenter
+  m_TagString: MineEnemyShieldCenter
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &966820382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 966820381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.54, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2715511332520450948}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2553885283480257098
 GameObject:
   m_ObjectHideFlags: 0
@@ -159,6 +190,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 520819858308263304}
+  - {fileID: 966820382}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -293,12 +325,13 @@ MonoBehaviour:
   duration: 0.1
   targetScale: {x: 0.13, y: 0.13, z: 0.13}
   damage: {fileID: 4859398520907724579, guid: c31fd6c069d6a394e98cb1ea5ce54d3d, type: 3}
-  maxHealth: 15
   explosion: {fileID: 3088605219885802407, guid: 60e3e17394cc2104b86aed75a3ab5a83, type: 3}
   level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
   smoke: {fileID: 2553885283480257098}
   lowHealth: 3
   delayAfterDamage: 0.5
+  minusOne: {fileID: 703711336679778492, guid: 75c00be99f08b1c489d18db8a316df02, type: 3}
+  minusTwo: {fileID: 2170800988991528520, guid: ff41e4e27730db74ea307da844f91477, type: 3}
 --- !u!58 &2715511332520450946
 CircleCollider2D:
   m_ObjectHideFlags: 0

@@ -8,10 +8,19 @@ public class MotherShipDamage : MonoBehaviour
     private ObjectiveManager objectiveManager;
     public GameManagerData gameManagerData;
     [SerializeField] private GameObject damage;
+    
+    [SerializeField] private GameObject minusOne;
+    [SerializeField] private GameObject minusTwo;
 
     private void Start()
     {
         objectiveManager = GameObject.FindWithTag("ObjectiveManager").GetComponent<ObjectiveManager>();
+    }
+    
+    private void DamageNumber(GameObject number, Collider2D other)
+    {
+        GameObject dmg = Instantiate(number, gameObject.transform.position, gameObject.transform.rotation);
+        dmg.GetComponent<DamageNumber>().AddBulletForce(other.transform.rotation);
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -20,12 +29,14 @@ public class MotherShipDamage : MonoBehaviour
         {
             //damage
             motherShipHealth.TakeDamage(1);
+            DamageNumber(minusOne, other);
         }
         
         if (other.gameObject.CompareTag("DoubleDamageBullet"))
         {
             //damage
             motherShipHealth.TakeDamage(2);
+            DamageNumber(minusTwo, other);
         }
         
         if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("DoubleDamageBullet"))

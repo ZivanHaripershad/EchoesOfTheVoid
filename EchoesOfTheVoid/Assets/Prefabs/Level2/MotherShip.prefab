@@ -119,7 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17ecd0e73cc9c5142b50a9b97df286fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
   lowHealth: 3
   animator: {fileID: 8430692945547833122}
   smoke: {fileID: 2187002344602966869}
@@ -463,6 +462,8 @@ MonoBehaviour:
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
   damage: {fileID: 7063491825668383760, guid: ae0f2d208361c1e449c35b7047fbedf8, type: 3}
+  minusOne: {fileID: 703711336679778492, guid: 75c00be99f08b1c489d18db8a316df02, type: 3}
+  minusTwo: {fileID: 2170800988991528520, guid: ff41e4e27730db74ea307da844f91477, type: 3}
 --- !u!82 &-8464398043955780724
 AudioSource:
   m_ObjectHideFlags: 0

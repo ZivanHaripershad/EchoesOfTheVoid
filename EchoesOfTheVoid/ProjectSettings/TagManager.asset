@@ -40,6 +40,10 @@ TagManager:
   - HealthObjectiveCircle
   - EnemyGiveShieldAnimTrigger
   - HealthOrb
+  - MinionShield
+  - MineEnemyShieldCenter
+  - MinionEnemy
+  - BurstUpgradeHold
   layers:
   - Default
   - TransparentFX

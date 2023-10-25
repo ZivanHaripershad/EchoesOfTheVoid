@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explodeDelay: 0.02
-  explosionRadius: 2
+  explosionRadius: 1.4
   detectionRadius: 2
   explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
   expirationTime: 25

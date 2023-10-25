@@ -10,8 +10,7 @@ public class SpaceshipOrbiting : MonoBehaviour
     private float angle = 90f; // the current angle of rotation
     private Vector3 offset; // the offset from the center object position
     public float rotationDirection = 0f; // the direction of the rotation
-    [SerializeField]
-    public float angularSpeedFactor = 40f; // the factor to apply to base angular speed
+    private float angularSpeedFactor; // the factor to apply to base angular speed
     public float baseAngularSpeed = 2f; // the base angular speed
     public SpaceshipMode spaceshipMode;
     public float driftSpeed = 0.3f; //movment inertia
@@ -34,6 +33,9 @@ public class SpaceshipOrbiting : MonoBehaviour
     Animator animator;
 
     [SerializeField] private GameManagerData gameManagerData;
+    [SerializeField] private BurstUpgradeState burstUpgradeState;
+
+    [SerializeField] private BulletSpawnScript bulletSpawnScript;
 
     void Start()
     {
@@ -47,17 +49,21 @@ public class SpaceshipOrbiting : MonoBehaviour
         spaceshipMode.canRotateAroundPlanet = true;
         inertia = 0;
 
-        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
-            SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "ShipHandlingUpgrade")
+        if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
         {
-            var upgradeInertia = SelectedUpgradeLevel1.Instance.GetUpgrade().GetValue();
-            inertiaReductionFactor += (inertiaReductionFactor * upgradeInertia);
+            angularSpeedFactor = 60f;
         }
-        else if (SelectedUpgradeLevel2.Instance != null && SelectedUpgradeLevel2.Instance.GetUpgrade() != null &&
-            SelectedUpgradeLevel2.Instance.GetUpgrade().GetName() == "ShipHandlingUpgrade")
+        else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
         {
-            var upgradeInertia = SelectedUpgradeLevel2.Instance.GetUpgrade().GetValue();
-            inertiaReductionFactor += (inertiaReductionFactor * upgradeInertia);
+            angularSpeedFactor = 60f;
+        }
+        else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2))
+        {
+            angularSpeedFactor = 70f;
+        }
+        else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3))
+        {
+            angularSpeedFactor = 75f;
         }
 
         Cursor.visible = false;
@@ -117,6 +123,8 @@ public class SpaceshipOrbiting : MonoBehaviour
             trailRendererLeft.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
             trailRendererRight.material.SetColor("_Color", new Color(1f, 1f, 1f, 0.0f));
         }
+        
+        animator.SetBool("isBurstMode", bulletSpawnScript.IsBurstReady());
 
         //this is for every instance after you do your first collection, which then allows you to go to the nearest position of the planet and rotate again
         if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet){
@@ -149,15 +157,9 @@ public class SpaceshipOrbiting : MonoBehaviour
                 spaceshipMode.collectionMode = false;
                 spaceshipMode.returningToPlanet = false;
                 spaceshipMode.canRotateAroundPlanet = true;
-
-                if (animator != null)
-                {
-                    animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
-                    animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
-                }
-                else{
-                    Debug.LogWarning("animator is null");
-                }
+                
+                animator.SetBool("isCollectionMode", spaceshipMode.collectionMode);
+                animator.SetBool("isOrbitingMode", !spaceshipMode.collectionMode);
             }
             else{
                 // move object towards nearest point

@@ -7,6 +7,6 @@ public class ShipVelocityUpgrade : Upgrade
     public ShipVelocityUpgrade()
     {
         SetName("ShipVelocityUpgrade");
-        SetDescription("Ship's velocity while \n flying is increased");
+        SetDescription("Ship's velocity while flying is increased");
     }
 }
