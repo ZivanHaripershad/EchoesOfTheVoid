@@ -2735,7 +2735,7 @@ PrefabInstance:
       objectReference: {fileID: 8867782665444800076}
     - target: {fileID: 724417595091963874, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: inertiaReductionFactor
-      value: 0.05
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6145913263776041513, guid: 7621f64e5c4703146ab86e2b71562899, type: 3}
       propertyPath: m_RootOrder
