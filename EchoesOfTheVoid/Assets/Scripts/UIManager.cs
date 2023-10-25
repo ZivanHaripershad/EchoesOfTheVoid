@@ -138,12 +138,9 @@ public class UIManager : MonoBehaviour
                 if (SelectedUpgradeLevel1.Instance != null && 
                     SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
                     SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
-                { 
-                    Debug.Log("Enabling burst stuff");
-                   burstUpgradeIcon.SetActive(true);
-                   burstHoldAnimation.SetActive(true);
-                   Debug.Log("Is burst animation active: " + burstHoldAnimation.activeSelf);
-
+                {
+                    burstUpgradeIcon.SetActive(true);
+                    burstHoldAnimation.SetActive(true);
                 }
             }
             else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
