@@ -191,7 +191,8 @@ public class AtmosphereReaction : MonoBehaviour
             StartCoroutine(Fade(healthFactory, 0f, 1f, fadeInDuration));
             StartCoroutine(Fade(darkenBackground, 0f, darkenBackgroundAlpha, fadeInDuration));
         }
-        else if (Input.GetKeyUp(KeyCode.Tab))
+        
+        if (Input.GetKeyUp(KeyCode.Tab))
         {
             isUp = false;
             if (AudioManager.Instance)
