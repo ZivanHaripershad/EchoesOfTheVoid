@@ -14,7 +14,17 @@ public class HealthBarUpdate : MonoBehaviour
     void Start()
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
-        healthCount.currentHealth = healthCount.maxHealth;
+        
+        if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
+        {
+            healthCount.currentHealth = 6;
+
+        }
+        else
+        {
+            healthCount.currentHealth = healthCount.maxHealth;
+        }
+        
     }
 
     // Update is called once per frame

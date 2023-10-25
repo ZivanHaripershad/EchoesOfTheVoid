@@ -170,6 +170,7 @@ MonoBehaviour:
   enemiesNumber: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
   variables: {fileID: 0}
+  bulletCount: {fileID: 11400000, guid: 3fdd6b1695e31fa4b8dc8f8e895420e6, type: 2}
 --- !u!1 &462461866058999628
 GameObject:
   m_ObjectHideFlags: 0

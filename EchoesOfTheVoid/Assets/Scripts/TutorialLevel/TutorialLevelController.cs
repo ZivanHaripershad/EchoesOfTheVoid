@@ -40,7 +40,9 @@ public class TutorialLevelController : MonoBehaviour
     private OrbCounter orbCounter;
     [SerializeField]
     private GlobalVariables variables;
-
+    [SerializeField]
+    private BulletCount bulletCount;
+    
     private int popUpIndex;
     
     private bool wPressed;
@@ -82,9 +84,6 @@ public class TutorialLevelController : MonoBehaviour
         gameManagerData.spawnInterval = 3;
         gameManagerData.spawnTimerVariation = 2;
         gameManagerData.timeTillNextWave = 4;
-
-        healthCount.currentHealth = healthCount.maxHealth;
-
 
         gameManager.DisableShield();
         mouseControl.EnableMouse();
