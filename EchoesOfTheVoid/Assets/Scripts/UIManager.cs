@@ -106,31 +106,6 @@ public class UIManager : MonoBehaviour
         
         burstUpgradeIcon.SetActive(false);
         burstHoldAnimation.SetActive(false);
-        
-        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
-        {
-            if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
-                 GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
-            {
-                if (SelectedUpgradeLevel1.Instance != null && 
-                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
-                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
-                {
-                    burstUpgradeIcon.SetActive(true);
-                    burstHoldAnimation.SetActive(true);
-                }
-            }
-            else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
-            {
-                if (SelectedUpgradeLevel1.Instance != null && 
-                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
-                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
-                {
-                    burstUpgradeIcon.SetActive(true);
-                    burstHoldAnimation.SetActive(true);
-                }
-            }
-        }
     }
 
     public void SetAtmosphereObjectToActive()
@@ -163,8 +138,12 @@ public class UIManager : MonoBehaviour
                 if (SelectedUpgradeLevel1.Instance != null && 
                     SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
                     SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
-                {
+                { 
+                    Debug.Log("Enabling burst stuff");
                    burstUpgradeIcon.SetActive(true);
+                   burstHoldAnimation.SetActive(true);
+                   Debug.Log("Is burst animation active: " + burstHoldAnimation.activeSelf);
+
                 }
             }
             else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
@@ -174,6 +153,7 @@ public class UIManager : MonoBehaviour
                     SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
                 {
                     burstUpgradeIcon.SetActive(true);
+                    burstHoldAnimation.SetActive(true);
                 }
             }
         }
