@@ -64,7 +64,32 @@ public class BulletSpawnScript : MonoBehaviour
         reloadMessage = GameObject.FindGameObjectWithTag("Reload");
         cannotFireMessage = GameObject.FindGameObjectWithTag("CannotFire");
         purchaseAmmoMessage = GameObject.FindGameObjectWithTag("PurchaseAmmo");
-        burstActivateSp = GameObject.FindGameObjectWithTag("BurstUpgradeHold").GetComponent<SpriteRenderer>();
+        
+        
+        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
+        {
+            if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+                 GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) &&
+                GameStateManager.Instance.IsLevel1Completed)
+            {
+                if (SelectedUpgradeLevel1.Instance != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    burstActivateSp = GameObject.FindGameObjectWithTag("BurstUpgradeHold").GetComponent<SpriteRenderer>();
+                }
+            }
+            else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
+            {
+                if (SelectedUpgradeLevel1.Instance != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    burstActivateSp = GameObject.FindGameObjectWithTag("BurstUpgradeHold").GetComponent<SpriteRenderer>();
+                }
+            }
+        }
+        
         
         timePassed = 0;
         currReloadTime = 0;

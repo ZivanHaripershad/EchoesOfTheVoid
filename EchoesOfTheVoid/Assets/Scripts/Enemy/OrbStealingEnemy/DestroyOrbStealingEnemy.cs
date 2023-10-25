@@ -18,11 +18,26 @@ public class DestroyOrbStealingEnemy : DestroyEnemy
 
     private new void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Bullet"))
+        if (collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("DoubleDamageBullet"))
         {
-            Destroy(collision.gameObject);
+            health -= collision.gameObject.CompareTag("Bullet") ? 1 : 2;
+            GameObject minus = null;
 
-            if (--health <= 0)
+            Transform pos = gameObject.transform;
+            if (collision.gameObject.CompareTag("Bullet"))
+            {
+                minus = Instantiate(minusOne, pos.position, pos.rotation);
+            }
+            else
+            {
+                minus = Instantiate(minusTwo, pos.position, pos.rotation);
+            }
+            
+            Destroy(collision.gameObject);
+            
+            minus.GetComponent<DamageNumber>().AddBulletForce(collision.gameObject.transform.rotation);
+
+            if (health <= 0)
             {
                 AudioManager.Instance.PlaySFX("DestroyOrbStealingEnemy");
                 DestroyGameObject(collision, false, collision.gameObject.transform);
