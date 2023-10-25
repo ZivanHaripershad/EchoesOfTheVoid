@@ -1289,8 +1289,9 @@ MonoBehaviour:
   burstUpgradeAnimator: {fileID: 0}
   bulletBarUi: {fileID: 0}
   burstInitialHoldTime: 1.5
-  maxBurstHold: 2.5
   timeBetweenBurstShots: 0.15
+  burstActivateSprites: []
+  burstActivateSp: {fileID: 0}
 --- !u!82 &1078472946
 AudioSource:
   m_ObjectHideFlags: 0

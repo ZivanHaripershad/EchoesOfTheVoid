@@ -645,6 +645,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2123847065826282618, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
   m_PrefabInstance: {fileID: 2123847065029719146}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &2139903159 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 2139903159, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &119304769626823278 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8878186717763441051, guid: a4479bb550148354393df29740b4a387, type: 3}
@@ -693,6 +698,10 @@ PrefabInstance:
       propertyPath: bulletBarUi
       value: 
       objectReference: {fileID: 540318663}
+    - target: {fileID: 6723253171923321378, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
+      propertyPath: burstActivateSp
+      value: 
+      objectReference: {fileID: 2139903159}
     - target: {fileID: 6723253171923321378, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
       propertyPath: burstUpgradeAnimator
       value: 
