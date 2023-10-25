@@ -116,8 +116,6 @@ public class DestroyEnemy : MonoBehaviour
 
         if (collision.gameObject.CompareTag("EarthSoundTrigger"))
         {
-            
-            Debug.Log("Sound trigger!!!");
             if (isDoubleDamage)
                 AudioManager.Instance.PlaySFX("DoubleDamageCrashIntoPlanet");
             else

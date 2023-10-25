@@ -157,7 +157,6 @@ public class Level3Controller : MonoBehaviour
         if (HealthCount.HealthStatus.LOW.Equals(healthDeposit.GetHealthStatus()))
         {
             //show health too low message
-            Debug.Log("Health low message");
             healthLowMessage.GetComponent<UrgentMessage>().Show();
             return false;
         }
