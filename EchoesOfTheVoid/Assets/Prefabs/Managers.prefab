@@ -237,9 +237,9 @@ MonoBehaviour:
   primaryTargetMessage: {fileID: 0}
   level2EnemyObjective: {fileID: 0}
   level3EnemyObjective: {fileID: 0}
-  level1Data: {fileID: 0}
-  level2Data: {fileID: 0}
-  level3Data: {fileID: 0}
+  level1Data: {fileID: 11400000, guid: 7fbd4839518bcdd4bb6ad48c2d0c22c9, type: 2}
+  level2Data: {fileID: 11400000, guid: f0cdfb368efb2e542904696925012416, type: 2}
+  level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
   burstUpgradeIcon: {fileID: 0}
   burstHoldAnimation: {fileID: 0}
 --- !u!1 &462461866178193367

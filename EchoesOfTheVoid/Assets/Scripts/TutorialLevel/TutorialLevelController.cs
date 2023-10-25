@@ -83,7 +83,7 @@ public class TutorialLevelController : MonoBehaviour
         gameManagerData.spawnTimerVariation = 2;
         gameManagerData.timeTillNextWave = 4;
 
-        healthCount.currentHealth = healthCount.maxHealth - 1;
+        healthCount.currentHealth = healthCount.maxHealth;
 
 
         gameManager.DisableShield();
