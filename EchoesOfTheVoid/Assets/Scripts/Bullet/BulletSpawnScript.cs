@@ -19,7 +19,6 @@ public class BulletSpawnScript : MonoBehaviour
     private float timePassed;
     private float downTime, pressTime = 0, burstPressTime = 0, burstDownTime;
     private bool ready = false;
-    private bool burstReady = false;
     [SerializeField]
     private float reloadTimePerBullet;
     private GameObject progressBarInner;
@@ -36,8 +35,10 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField] private BulletBarUI bulletBarUi;
     
     [SerializeField] public float burstInitialHoldTime;
-    [SerializeField] private float maxBurstHold;
     [SerializeField] private float timeBetweenBurstShots;
+
+    [SerializeField] private Sprite[] burstActivateSprites;
+    [SerializeField] private SpriteRenderer burstActivateSp;
 
 
     private GameObject canvasUI;
@@ -50,6 +51,11 @@ public class BulletSpawnScript : MonoBehaviour
     private const float shootSpeedL2 = 0.4f;
     private const float shootSpeedL3 = 0.3f;
     private bool readySoundEffectPlayed;
+
+    //check if upgrade was chosen
+    private bool burstUpgradeChosen = false;
+    private bool clicking = false;
+    private float totalDownTime  = 0; 
 
     // Start is called before the first frame update
     void Start()
@@ -85,6 +91,10 @@ public class BulletSpawnScript : MonoBehaviour
                 maxShootSpeed = shootSpeedL3; 
                 break;
         }
+
+        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+            SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "BurstUpgrade")
+            burstUpgradeChosen = true;
         
         burstUpgradeState.isBurstUpgradeReady = false;
         burstUpgradeState.isBurstUpgradeReplenishing = false;
@@ -120,7 +130,8 @@ public class BulletSpawnScript : MonoBehaviour
         
         CheckBulletStatus();
         
-        InitiateBurstUpgradeReplenish();
+        if (burstUpgradeChosen)
+            InitiateBurstUpgradeReplenish();
 
         if (gameManagerData.tutorialActive)
         {
@@ -325,34 +336,38 @@ public class BulletSpawnScript : MonoBehaviour
 
     private void ActivateBurstUpgrade()
     {
+        
         if (IsBurstReady())
         {
-            if (Input.GetKeyDown(KeyCode.Return) && burstReady == false)
+            Debug.Log("bURST READY");
+            if (Input.GetKeyDown(KeyCode.Return))
             {
-                burstDownTime = Time.time;
-                burstPressTime = burstDownTime + burstInitialHoldTime;
-                burstReady = true;
-                Debug.Log("Keydown");
+                totalDownTime = 0;
+                clicking = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.Return))
+            if (clicking && Input.GetKey(KeyCode.Return))
             {
-                Debug.Log("KeyUp");
-                burstReady = false;
-            }
-                
-            Debug.Log("Time.Time: " + Time.time);
-            Debug.Log("bustPressTime: " + burstPressTime);
-            Debug.Log("Bust ready: " + burstReady);
-            Debug.Log("-------------------------");
+                totalDownTime += Time.deltaTime;
 
-            if (Time.time >= burstPressTime && burstReady)
-            {
-                StartBurst();
-                CoolDownBurstUpgrade();
-                burstReady = false;
+                if (totalDownTime >= burstInitialHoldTime)
+                {
+                    clicking = false; 
+                    StartBurst();
+                    CoolDownBurstUpgrade();
+                }
+                else
+                {
+                    burstActivateSp.sprite =
+                        burstActivateSprites[(int)(totalDownTime / burstInitialHoldTime * burstActivateSprites.Length)];
+                }
             }
-                
+
+            if (clicking && Input.GetKeyUp(KeyCode.Return))
+            {
+                burstActivateSp.sprite = burstActivateSprites[0];
+                clicking = false;
+            }
         }
     }
 
@@ -360,7 +375,6 @@ public class BulletSpawnScript : MonoBehaviour
     {
         bulletCount.currentBullets = bulletCount.maxBullets;
         bulletBarUi.SetBurstShotSprites();
-        CoolDownBurstUpgrade();
 
         for (int i = 0; i < bulletCount.maxBullets; i++)
         {

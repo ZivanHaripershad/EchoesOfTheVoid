@@ -242,7 +242,6 @@ public class AudioManager : MonoBehaviour
         _instance.musicSlider = FindObjectsOfType<Slider>().ToList().Find( x=>x.name == "BackGroundSlider");
         if (_instance.musicSlider != null)
         {
-            Debug.Log("slider volume: " + _instance.musicSlider.value);
             MusicVolume(_instance.musicSlider.value);
         }
     }
@@ -253,7 +252,6 @@ public class AudioManager : MonoBehaviour
         Debug.Log("slider adjusting for effects");
         if (_instance.sfxSlider != null)
         {
-            Debug.Log("slider volume: " + _instance.sfxSlider.value);
             if (!_instance.sfxSlider.value.Equals(_instance.currentSfxSliderValue))
             {
                 PlaySFX("OrbDeposit");

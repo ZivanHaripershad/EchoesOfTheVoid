@@ -252,7 +252,7 @@ MonoBehaviour:
   orbsNumber: {fileID: 0}
   enemiesNumber: {fileID: 0}
   orbCounter: {fileID: 11400000, guid: 859f7b8849821ba41b77b62a5a6e0821, type: 2}
-  numberOfEnemiesToKillToProceedToBoss: 3
+  numberOfEnemiesToKillToProceedToBoss: 1
   mineEnemy: {fileID: 2715511332520450952, guid: 22d89fa47bc4d3443acdbe2ba99a5af7, type: 3}
   healthLowMessage: {fileID: 0}
   primaryTargetNotEliminated: {fileID: 0}

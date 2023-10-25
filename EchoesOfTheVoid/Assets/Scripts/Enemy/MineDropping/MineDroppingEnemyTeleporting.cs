@@ -24,6 +24,9 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
     private ObjectiveManager objectiveManager;
     [SerializeField] private float delayAfterDamage;
 
+    [SerializeField] private GameObject minusOne;
+    [SerializeField] private GameObject minusTwo;
+
 
     private void Start()
     {
@@ -49,6 +52,7 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
             level3Data.mineEnemyDamageTaken++;
             EnemyHealthBannerUpdate();
             CheckHealth();
+            DamageNumber(minusOne, other);
         }
         else if (other.gameObject.CompareTag("DoubleDamageBullet"))
         {
@@ -56,7 +60,14 @@ public class MineDroppingEnemyTeleporting : MonoBehaviour
             level3Data.mineEnemyDamageTaken += 2;
             EnemyHealthBannerUpdate();
             CheckHealth();
+            DamageNumber(minusTwo, other);
         }
+    }
+
+    private void DamageNumber(GameObject number, Collider2D other)
+    {
+        GameObject dmg = Instantiate(number, gameObject.transform.position, gameObject.transform.rotation);
+        dmg.GetComponent<DamageNumber>().AddBulletForce(other.transform.rotation);
     }
 
     private void EnemyHealthBannerUpdate()
