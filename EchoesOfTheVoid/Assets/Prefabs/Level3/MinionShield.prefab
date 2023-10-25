@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 3034251507229201747}
   - component: {fileID: 2505040915310242746}
   - component: {fileID: 4904684452857927898}
+  - component: {fileID: 593361860038984506}
+  - component: {fileID: 1222250703063342168}
   m_Layer: 0
   m_Name: MinionShield
-  m_TagString: Untagged
+  m_TagString: MinionShield
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,7 +47,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449f98b4df5181c4fb52827fa505d517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 5
+  followSpeed: 20
+  jitterAdditionSpeed: 2
+  randomJitter: 0.2
+  animator: {fileID: 593361860038984506}
+  delayAfterDestroyingShield: 5
 --- !u!212 &4904684452857927898
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -87,14 +93,51 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 51501a1e9f74aec41a23ce94af079ecf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2.2, y: 2.2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &593361860038984506
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790946529961842047}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 73b6e813a8304fd43a4b276751269a42, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!58 &1222250703063342168
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1790946529961842047}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.00000011920929, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.0052668

@@ -41,6 +41,7 @@ TagManager:
   - EnemyGiveShieldAnimTrigger
   - HealthOrb
   - MinionShield
+  - MineEnemyShieldCenter
   layers:
   - Default
   - TransparentFX
