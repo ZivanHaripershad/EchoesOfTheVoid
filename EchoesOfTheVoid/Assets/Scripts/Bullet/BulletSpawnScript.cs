@@ -95,7 +95,15 @@ public class BulletSpawnScript : MonoBehaviour
         currReloadTime = 0;
         readySoundEffectPlayed = false;
         
-        bulletCount.currentBullets = bulletCount.maxBullets;
+        if(GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
+        {
+            bulletCount.currentBullets = 0;
+        }
+        else
+        {
+            bulletCount.currentBullets = bulletCount.maxBullets;
+        }
+        
         bulletCount.generateBullets = false;
         
         progressBarInner = GameObject.FindGameObjectsWithTag("progressBarInner")[0];
