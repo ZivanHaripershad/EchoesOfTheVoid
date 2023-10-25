@@ -114,7 +114,7 @@ public class DestroyEnemy : MonoBehaviour
     {
         bool planetDamage = false;
 
-        if (collision.gameObject.CompareTag("EarthSoundTrigger"))
+        if (collision.gameObject.CompareTag("EarthSoundTrigger") && !gameObject.CompareTag("MinionEnemy"))
         {
             if (isDoubleDamage)
                 AudioManager.Instance.PlaySFX("DoubleDamageCrashIntoPlanet");
@@ -125,12 +125,12 @@ public class DestroyEnemy : MonoBehaviour
             
         if (collision.gameObject.CompareTag("Earth") || collision.gameObject.CompareTag("Bullet") || collision.gameObject.CompareTag("DoubleDamageBullet"))
         {
-            if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive)
+            if(collision.gameObject.CompareTag("Earth") && shieldCounter.isShieldActive && !gameObject.CompareTag("MinionEnemy"))
             {
                 shieldCounter.currentShieldAmount--;
             }
 
-            if (collision.gameObject.CompareTag("Earth") && !shieldCounter.isShieldActive)
+            if (collision.gameObject.CompareTag("Earth") && !shieldCounter.isShieldActive && !gameObject.CompareTag("MinionEnemy"))
             {
                 if (isDoubleDamage)
                     healthCount.currentHealth -= 2;
@@ -170,7 +170,7 @@ public class DestroyEnemy : MonoBehaviour
                 
         }
 
-        if (collision.gameObject.CompareTag("Shield"))
+        if (collision.gameObject.CompareTag("Shield") && !gameObject.CompareTag("MinionEnemy"))
         {
             if (collision.gameObject.GetComponent<ShieldLogic>().DestroyShield(gameObject.transform.position))
             {

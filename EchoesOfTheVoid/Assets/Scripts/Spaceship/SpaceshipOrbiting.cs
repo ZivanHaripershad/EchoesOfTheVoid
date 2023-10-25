@@ -80,14 +80,43 @@ public class SpaceshipOrbiting : MonoBehaviour
         //this is for when the game starts and you initially move around the planet
         if(spaceshipMode.collectionMode == false && spaceshipMode.returningToPlanet == false && !spaceshipCollection.isEjecting){
             // Determine if clockwise or anticlockwise rotation should be applied based on key presses
-            rotationDirection = Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S) ? -1f : Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) ? 1f: 0f;
+            rotationDirection = Input.GetKey(KeyCode.D) ? -1f : Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W) ? 1f: 0f;
+
+            if (Input.GetKey(KeyCode.W))
+            { //go down
+                if (transform.rotation.eulerAngles.z > 0 + 90 && transform.rotation.eulerAngles.z < 180 + 90)
+                {
+                    //go down the left side, anti cw
+                    rotationDirection = -1f;
+                    inertia = -driftSpeed;
+                }
+                else
+                {
+                    rotationDirection = 1f;
+                    inertia = driftSpeed;
+                }
+            }
+            else if (Input.GetKey(KeyCode.S))
+            { //go up
+                if (transform.rotation.eulerAngles.z > 0 + 90 && transform.rotation.eulerAngles.z < 180 + 90)
+                {
+                    //go down the left side, anti cw
+                    rotationDirection = 1f;
+                    inertia = driftSpeed;
+                }
+                else
+                {
+                    rotationDirection = -1f;
+                    inertia = -driftSpeed;
+                }
+            }
             
             //////////////// inertia //////////////////
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.S))
+            else if (Input.GetKey(KeyCode.D))
                 inertia = -driftSpeed;
-            
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.W))
+            else if (Input.GetKey(KeyCode.A))
                 inertia = driftSpeed;
+            
            
             if (inertia > 0)
                 inertia -= inertiaReductionFactor * Time.deltaTime;
