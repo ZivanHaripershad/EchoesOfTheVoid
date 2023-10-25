@@ -292,7 +292,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 5
-  m_SortingOrder: 2
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f286fdf8c6fac0142ac674a0ccb798b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1139,7 +1139,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1534833467
   m_SortingLayer: 5
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 71ae5c5dcbbc5fb40a7c35b26a07b42a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1955,7 +1955,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d83d45a7e65035d45be542b3bb2335ae, type: 3}
   - {fileID: 21300000, guid: 7bdc9ac36413a954eaf1d70afb88f08b, type: 3}
   - {fileID: 21300000, guid: 88fff41ee6cee2242ada4eee50c89e1e, type: 3}
-  burstActivateSp: {fileID: 0}
   burstUpgradeUi: {fileID: 0}
 --- !u!82 &6723253171319475611
 AudioSource:

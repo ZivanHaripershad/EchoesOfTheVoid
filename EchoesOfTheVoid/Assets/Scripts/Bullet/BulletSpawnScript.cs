@@ -38,7 +38,7 @@ public class BulletSpawnScript : MonoBehaviour
     [SerializeField] private float timeBetweenBurstShots;
 
     [SerializeField] private Sprite[] burstActivateSprites;
-    [SerializeField] private SpriteRenderer burstActivateSp;
+    private SpriteRenderer burstActivateSp;
     [SerializeField] private GameObject burstUpgradeUi;
     private Text holdBurstUpgradeText;
     private GameObject canvasUI;
@@ -64,6 +64,7 @@ public class BulletSpawnScript : MonoBehaviour
         reloadMessage = GameObject.FindGameObjectWithTag("Reload");
         cannotFireMessage = GameObject.FindGameObjectWithTag("CannotFire");
         purchaseAmmoMessage = GameObject.FindGameObjectWithTag("PurchaseAmmo");
+        burstActivateSp = GameObject.FindGameObjectWithTag("BurstUpgradeHold").GetComponent<SpriteRenderer>();
         
         timePassed = 0;
         currReloadTime = 0;
@@ -91,10 +92,8 @@ public class BulletSpawnScript : MonoBehaviour
                 maxShootSpeed = shootSpeedL3; 
                 break;
         }
-
-        if (SelectedUpgradeLevel1.Instance != null && SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
-            SelectedUpgradeLevel1.Instance.GetUpgrade().GetName() == "BurstUpgrade")
-            burstUpgradeChosen = true;
+        
+        EnableBurst(false);
         
         burstUpgradeState.isBurstUpgradeReady = false;
         burstUpgradeState.isBurstUpgradeReplenishing = false;
@@ -102,7 +101,41 @@ public class BulletSpawnScript : MonoBehaviour
         
         holdBurstUpgradeText = burstUpgradeUi.transform.Find("HoldDownEnter").GetComponent<Text>();
         holdBurstUpgradeText.enabled = false;
+        
 
+    }
+
+    private void EnableBurst(bool mustActivate)
+    {
+        if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
+        {
+            if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
+                 GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) &&
+                GameStateManager.Instance.IsLevel1Completed)
+            {
+                if (SelectedUpgradeLevel1.Instance != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    if (mustActivate)
+                        ActivateBurstUpgrade();
+                    else 
+                        burstUpgradeChosen = true;
+                }
+            }
+            else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
+            {
+                if (SelectedUpgradeLevel1.Instance != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade() != null &&
+                    SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
+                {
+                    if (mustActivate)
+                        ActivateBurstUpgrade();
+                    else 
+                        burstUpgradeChosen = true;
+                }
+            }
+        }
     }
 
     void EnableMessage(GameObject message, bool toEnable)
@@ -254,29 +287,7 @@ public class BulletSpawnScript : MonoBehaviour
             spaceshipMode.canRotateAroundPlanet)
         {
             
-            if (!GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Tutorial))
-            {
-                if ((GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level2) ||
-                     GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level3)) && GameStateManager.Instance.IsLevel1Completed)
-                {
-                    if (SelectedUpgradeLevel1.Instance != null && 
-                        SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
-                        SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
-                    {
-                        ActivateBurstUpgrade();
-                    }
-                }
-                else if (GameStateManager.Instance.CurrentLevel.Equals(GameManagerData.Level.Level1))
-                {
-                    if (SelectedUpgradeLevel1.Instance != null && 
-                        SelectedUpgradeLevel1.Instance.GetUpgrade() != null && 
-                        SelectedUpgradeLevel1.Instance.GetUpgrade().GetName().Equals("BurstUpgrade"))
-                    {
-                        ActivateBurstUpgrade();
-                    }
-                }
-            }
-            
+            EnableBurst(true);
             
             
             if (timePassed > maxShootSpeed)

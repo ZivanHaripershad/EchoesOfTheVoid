@@ -1621,7 +1621,7 @@ GameObject:
   - component: {fileID: 5144122524505373819}
   m_Layer: 0
   m_Name: BurstUpgradeHold
-  m_TagString: Untagged
+  m_TagString: BurstUpgradeHold
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
