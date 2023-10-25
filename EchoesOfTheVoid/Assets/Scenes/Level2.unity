@@ -323,6 +323,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1295126262260730756, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
   m_PrefabInstance: {fileID: 1598161469}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &949848213 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3117125417876447844, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1008797422 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2123847064562119300, guid: b05dc732e2490f44090feebf0f6e1598, type: 3}
@@ -703,6 +708,10 @@ PrefabInstance:
       propertyPath: bulletBarUi
       value: 
       objectReference: {fileID: 540318663}
+    - target: {fileID: 6723253171923321378, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
+      propertyPath: burstUpgradeUi
+      value: 
+      objectReference: {fileID: 949848213}
     - target: {fileID: 6723253171923321378, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
       propertyPath: burstActivateSp
       value: 

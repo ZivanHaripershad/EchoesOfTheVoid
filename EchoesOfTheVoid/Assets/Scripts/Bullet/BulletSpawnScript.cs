@@ -39,10 +39,8 @@ public class BulletSpawnScript : MonoBehaviour
 
     [SerializeField] private Sprite[] burstActivateSprites;
     [SerializeField] private SpriteRenderer burstActivateSp;
-    
-    
-
-
+    [SerializeField] private GameObject burstUpgradeUi;
+    private Text holdBurstUpgradeText;
     private GameObject canvasUI;
     private GameObject reloadMessage;
     private GameObject cannotFireMessage;
@@ -101,7 +99,10 @@ public class BulletSpawnScript : MonoBehaviour
         burstUpgradeState.isBurstUpgradeReady = false;
         burstUpgradeState.isBurstUpgradeReplenishing = false;
         burstUpgradeState.isBurstUpgradeCoolingDown = false;
-    
+        
+        holdBurstUpgradeText = burstUpgradeUi.transform.Find("HoldDownEnter").GetComponent<Text>();
+        holdBurstUpgradeText.enabled = false;
+
     }
 
     void EnableMessage(GameObject message, bool toEnable)
@@ -153,6 +154,7 @@ public class BulletSpawnScript : MonoBehaviour
         {
             if (IsBurstReady())
             {
+                holdBurstUpgradeText.enabled = true;
                 Shoot();
             }
             
@@ -186,11 +188,16 @@ public class BulletSpawnScript : MonoBehaviour
     {
         bool isReady = burstUpgradeAnimator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 &&
                                       IsBustState("BurstUpgradeReplenish");
+
+        if (!isReady && readySoundEffectPlayed)
+        {
+            readySoundEffectPlayed = false;
+        }
+        
         if (isReady && !readySoundEffectPlayed)
         {
             readySoundEffectPlayed = true;
             AudioManager.Instance.PlaySFX("BurstUpgradeReady");
-            
         }
 
         return isReady;
@@ -353,6 +360,7 @@ public class BulletSpawnScript : MonoBehaviour
 
                 if (totalDownTime >= burstInitialHoldTime)
                 {
+                    holdBurstUpgradeText.enabled = false;
                     clicking = false; 
                     StartBurst();
                     CoolDownBurstUpgrade();
@@ -360,8 +368,6 @@ public class BulletSpawnScript : MonoBehaviour
                 else
                 {
                     int sprite = (int)(totalDownTime / burstInitialHoldTime * burstActivateSprites.Length);
-                    Debug.Log("Sprite: " + sprite);
-                    Debug.Log("Len: " + burstActivateSprites.Length );
                     if (sprite < burstActivateSprites.Length && sprite > -1)
                          burstActivateSp.sprite =burstActivateSprites[sprite];
                 }
