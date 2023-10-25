@@ -64,12 +64,12 @@ public class Level3Controller : MonoBehaviour
         if (GameStateManager.Instance.IsMarkingModeOn)
         {
             orbCounter.planetOrbMax = 10;
-            level3Data.mineEnemyMaxHealth = 10;
+            level3Data.mineEnemyMaxHealth = 7;
         }
         else
         {
             orbCounter.planetOrbMax = 15;
-            level3Data.mineEnemyMaxHealth = 20;
+            level3Data.mineEnemyMaxHealth = 15;
         }
     }
 
