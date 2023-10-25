@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Shield : MonoBehaviour
 {
@@ -10,14 +12,31 @@ public class Shield : MonoBehaviour
     [SerializeField] private float followSpeed;
     [SerializeField] private float jitterAdditionSpeed;
     [SerializeField] private float randomJitter;
+    [SerializeField] private Animator animator;
 
     private float currentJitterX; 
-    private float currentJitterY; 
+    private float currentJitterY;
+    [SerializeField] private float delayAfterDestroyingShield;
 
     // Start is called before the first frame update
     void Start()
     {
         mineEnemy = GameObject.FindGameObjectWithTag("MineEnemyShieldCenter");
+    }
+
+    void DestroyMe()
+    {
+        Destroy(gameObject);
+    }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Bullet") || other.gameObject.CompareTag("DoubleDamageBullet"))
+        {
+            Destroy(other.gameObject);
+            animator.SetTrigger("destroy");
+            Invoke(nameof(DestroyMe), delayAfterDestroyingShield);
+        }
     }
 
     // Update is called once per frame

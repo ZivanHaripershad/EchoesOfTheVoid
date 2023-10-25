@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7476221947539358044}
   - component: {fileID: 7476221947539358045}
   - component: {fileID: 7476221947539358042}
+  - component: {fileID: 4888583208480651589}
   m_Layer: 0
   m_Name: MinionEnemy
   m_TagString: Untagged
@@ -120,3 +121,25 @@ MonoBehaviour:
   followYOffset: 1
   shieldDepositTime: 20
   minionShield: {fileID: 1790946529961842047, guid: 5bfee174968a22242a5a47c0376dcc1e, type: 3}
+  destroyDelayAfterGreenDies: 3
+  maxCooldown: 20
+--- !u!114 &4888583208480651589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476221947539358046}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54c52c7e27551b546813ace480a641b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 106871564845176592, guid: 2a0f21de94d51774faeb827656a1be42, type: 3}
+  orb: {fileID: 434657277462207545, guid: 872e95c08d9a45343904527f2d274f42, type: 3}
+  healthOrb: {fileID: 1355727311134938888, guid: d288980223b21344f973794c0be20d31, type: 3}
+  shieldCounter: {fileID: 11400000, guid: 3a750cbec5ff3fc40a83f6ab020da1ac, type: 2}
+  gameManagerData: {fileID: 11400000, guid: 13f06dd28b0b0d642bd0a229249cde4a, type: 2}
+  healthCount: {fileID: 11400000, guid: 0d3372283a69cc9438538bcd11f7f075, type: 2}
+  minusOne: {fileID: 703711336679778492, guid: 75c00be99f08b1c489d18db8a316df02, type: 3}
+  minusTwo: {fileID: 2170800988991528520, guid: ff41e4e27730db74ea307da844f91477, type: 3}
