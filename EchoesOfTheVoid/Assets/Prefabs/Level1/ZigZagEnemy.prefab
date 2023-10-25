@@ -126,8 +126,8 @@ MonoBehaviour:
   animator: {fileID: 4103287114770477556}
   zigzagFrequency: 0.2
   zigzagAmplitude: 250
-  zigzagAmplitudeReductionFactor: 0.99999
-  zigzagFrequencyIncreseFactor: 1.001
+  zigzagAmplitudeReductionFactor: 0.999995
+  zigzagFrequencyIncreseFactor: 1.0008
   diveBombDistance: 5
   zigZagSpeedReduction: 0.3
   speed: 5

@@ -39,6 +39,8 @@ public class BulletSpawnScript : MonoBehaviour
 
     [SerializeField] private Sprite[] burstActivateSprites;
     [SerializeField] private SpriteRenderer burstActivateSp;
+    
+    
 
 
     private GameObject canvasUI;
