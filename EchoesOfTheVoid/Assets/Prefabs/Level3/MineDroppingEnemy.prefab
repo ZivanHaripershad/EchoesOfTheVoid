@@ -293,12 +293,13 @@ MonoBehaviour:
   duration: 0.1
   targetScale: {x: 0.13, y: 0.13, z: 0.13}
   damage: {fileID: 4859398520907724579, guid: c31fd6c069d6a394e98cb1ea5ce54d3d, type: 3}
-  maxHealth: 20
   explosion: {fileID: 3088605219885802407, guid: 60e3e17394cc2104b86aed75a3ab5a83, type: 3}
   level3Data: {fileID: 11400000, guid: 72e6e5ed08969854cb2a09ea6903fc5b, type: 2}
   smoke: {fileID: 2553885283480257098}
   lowHealth: 3
   delayAfterDamage: 0.5
+  minusOne: {fileID: 703711336679778492, guid: 75c00be99f08b1c489d18db8a316df02, type: 3}
+  minusTwo: {fileID: 2170800988991528520, guid: ff41e4e27730db74ea307da844f91477, type: 3}
 --- !u!58 &2715511332520450946
 CircleCollider2D:
   m_ObjectHideFlags: 0
