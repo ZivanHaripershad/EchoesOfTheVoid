@@ -22,6 +22,7 @@ public class Shield : MonoBehaviour
     void Start()
     {
         mineEnemy = GameObject.FindGameObjectWithTag("MineEnemyShieldCenter");
+        AudioManager.Instance.PlaySFX("mineShieldAdded");
     }
 
     void DestroyMe()
@@ -35,6 +36,7 @@ public class Shield : MonoBehaviour
         {
             Destroy(other.gameObject);
             animator.SetTrigger("destroy");
+            AudioManager.Instance.PlaySFX("mineShieldBroken");
             Invoke(nameof(DestroyMe), delayAfterDestroyingShield);
         }
     }

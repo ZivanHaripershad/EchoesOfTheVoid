@@ -188,6 +188,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  minionEnemy: {fileID: 7476221947539358046, guid: 8d385b2ea971c5041a8b638388f3d6e3, type: 3}
 --- !u!1 &5771408475363288160
 GameObject:
   m_ObjectHideFlags: 0
