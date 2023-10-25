@@ -183,11 +183,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1295126263027722848, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
   m_PrefabInstance: {fileID: 1598161469}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &533857970 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3117125417876447844, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
-  m_PrefabInstance: {fileID: 8835873642976109656}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &540318662 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 1960848789055814579, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
@@ -610,6 +605,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1295126262987435272, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
   m_PrefabInstance: {fileID: 1598161469}
   m_PrefabAsset: {fileID: 0}
+--- !u!212 &1732057675 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 8580218820669759268, guid: 31575684e75c64f4d821c7688ac88375, type: 3}
+  m_PrefabInstance: {fileID: 8835873642976109656}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1829301343 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1295126261837966945, guid: f061b2dfe40473c4f805f6af80fb81bf, type: 3}
@@ -704,15 +704,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 540318663}
     - target: {fileID: 6723253171923321378, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
-      propertyPath: burstUpgradeUi
+      propertyPath: burstActivateSp
       value: 
-      objectReference: {fileID: 533857970}
+      objectReference: {fileID: 1732057675}
     - target: {fileID: 6723253171923321378, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
       propertyPath: burstUpgradeAnimator
-      value: 
-      objectReference: {fileID: 540318662}
-    - target: {fileID: 6723253171923321378, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
-      propertyPath: burstHoldDownAnimator
       value: 
       objectReference: {fileID: 540318662}
     - target: {fileID: 7780363621617037360, guid: 9f46cbbaee2904743b838c6910aefb76, type: 3}
